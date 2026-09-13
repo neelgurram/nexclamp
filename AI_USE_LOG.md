@@ -91,6 +91,19 @@ is written. AI-verified is not the same as human-verified.
 
 Both led to the relative structural oracle (D-006).
 
+**Build workflow `wf_dd699b26-8ce` (completed).**
+- **Agents:** 28 in total, no errors. Ten modules each had one builder and one adversarial reviewer, with fixers where the review found medium-or-worse issues.
+- **Usage:** about 6.8 M subagent tokens, 1506 tool uses, about 103 minutes.
+- **Builder notes:** each builder recorded contract changes and defects in `docs/build_notes/`.
+
+**Integration (main session).** The main session then:
+1. Ran an end-to-end integration check on real pilot variants. It surfaced a misclassified numerical blow-up and a jnml validator coverage gap (D-020).
+2. Applied the builders' defect reports to the core modules (D-021).
+3. Aligned the class-6 rule with the primary endpoint (D-021).
+4. Kept hidden agent-study evaluators out of Git (D-022).
+
+Every change came with updated or new tests. The full suite was run before committing `3cdb957`.
+
 **Accepted, modified, or rejected.** All code is pending Neel's review. Nothing has been released.
 
 **Scientific control.** The following remain provisional and are listed for Neel's decision in DECISIONS.md:

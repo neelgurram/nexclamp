@@ -51,11 +51,16 @@ def tree_sha256(root: Path, exclude: tuple[str, ...] = ("variant.json", "PROVENA
     return sha256_json(tree_manifest(root, exclude))
 
 
+# Paths whose content can change a simulation or a derived number. Edits elsewhere (documentation,
+# audit evidence) do not make a run "dirty".
+PROVENANCE_PATHS = ("src", "configs", "data", "models", "scripts", "workflows", "pyproject.toml", "requirements.lock")
+
+
 def git_state(repo: Path = REPO_ROOT) -> tuple[str, bool]:
     try:
         commit = subprocess.run(["git", "rev-parse", "HEAD"], cwd=repo, capture_output=True, text=True, check=True).stdout.strip()
-        dirty = bool(subprocess.run(["git", "status", "--porcelain", "--untracked-files=no"], cwd=repo,
-                                    capture_output=True, text=True, check=True).stdout.strip())
+        dirty = bool(subprocess.run(["git", "status", "--porcelain", "--untracked-files=no", "--", *PROVENANCE_PATHS],
+                                    cwd=repo, capture_output=True, text=True, check=True).stdout.strip())
         return commit, dirty
     except (OSError, subprocess.CalledProcessError):
         # Inside the container there is no .git; the image records the commit it was built from.
