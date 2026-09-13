@@ -32,6 +32,12 @@ protocols, runtime-adjusted coverage, and robustness to stricter and looser tole
 
 RQ4 (generalisation to held-out models) is answered by the primary endpoint itself.
 
+**Pilot data are exploratory (DECISIONS D-026).** The primary comparison, its confidence
+interval and hypothesis test, and generalisation to unseen models and to an unseen mutation
+family use only the single confirmatory held-out campaign. Pilot iterations are
+development data. They are reported descriptively, labelled exploratory, and never pooled
+into any confirmatory estimate. This is enforced in code by the campaign registry.
+
 ## 2. What is measured on what
 
 **Unit of analysis.** One admissible non-equivalent mutant (class 5 or 6) of a held-out

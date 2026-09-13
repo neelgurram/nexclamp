@@ -152,6 +152,71 @@ Content addressing guarantees those traces match their inputs, but provenance is
 - run on a committed, clean tree;
 - check that every `run.json` records the same commit with `git_dirty = false`.
 
+Now enforced in code: `evaluate_heldout` calls `registry.check_single_clean_commit` (D-026).
+
+**D-026 Pilot data are exploratory and developmental; they never enter the confirmatory estimate** (Neel's direction, 2026-09-13; fixed)
+
+*Role of the pilot.*
+- It is the first publication-oriented experimental phase. It should produce rigorous exploratory results, candidate case studies, validated methods, runtime estimates, and evidence on whether silent behavioural drift exists.
+- It is also the development set. It may be used to debug the pipeline, refine mutation operators, calibrate tolerances, select features and revise protocols.
+
+*Pilot bounds.* 2-6 openly licensed NeuroML models; 4-8 stimulation protocols; 3-8 electrophysiological features; at least 3 mutation families; about 20-60 mutants; valid-transformation controls.
+
+*Separation.* Pilot data are labelled exploratory/developmental and are never combined with the final held-out data for the primary confirmatory estimate.
+
+*After the pilot, freeze all of the following, then run the held-out experiment once without changing them* (checklist in `PLAN.md`, "Post-pilot freeze sequence"):
+- software version;
+- model eligibility rules;
+- mutation definitions;
+- feature definitions;
+- tolerances;
+- canonical protocol;
+- protocol-selection algorithm;
+- hashed discovery/held-out splits;
+- the preregistered primary hypothesis and analysis.
+
+*In the manuscript.*
+- The pilot may appear as method-development evidence, preliminary/exploratory findings, illustrative case studies, and motivation for the frozen design.
+- The held-out study alone provides:
+  - the primary detection-rate comparison;
+  - the main confidence intervals and hypothesis test;
+  - generalisation to unseen models;
+  - generalisation to an unseen mutation family.
+
+*Enforcement* (`src/neurosem/experiments/registry.py`, tests in `tests/unit/test_campaign_registry.py`):
+- every campaign has a permanent role (`exploratory_pilot`, `discovery`, `confirmatory_heldout`) in `results/campaign_registry.json`;
+- `evaluate_heldout` refuses:
+  - a campaign registered as exploratory or discovery;
+  - a campaign name that already holds data;
+  - a config-directory override;
+  - models outside the held-out split;
+  - runs from more than one commit or from a dirty tree;
+- `assert_not_pooled` refuses to combine a confirmatory campaign with any other.
+
+**D-027 Pilot data are preserved; finished campaigns are sealed; a revision is a new campaign** (Neel's direction, 2026-09-13; fixed)
+Neel: "Do not discard pilot data. Preserve all pilot configurations, raw outputs, code versions, exclusions, revisions, and decision logs so the manuscript can report the development process transparently."
+- **Code versions.** Git tag per iteration (`pilot-v1-code` at `d323afa`).
+- **Configurations.** `make_context` copies the config files into `results/processed/<campaign>/config_snapshot/`, write-once and hash-checked. A campaign refuses a changed config or simulator, so a change needs a new campaign name.
+- **Raw outputs.** Traces are too large for Git. `scripts/archive_campaign.py`:
+  - writes `ARCHIVE_MANIFEST.sha256` (hash of every raw file, workspace and run scratch, including Git-ignored traces);
+  - writes a write-once tar under `archive/` (Git-ignored) with its hash in `ARCHIVE.json`;
+  - copies the run logs into the tracked results.
+  Durable off-machine storage is Neel's choice (N-16); nothing has been uploaded.
+- **Sealing.** `SEALED.json` makes the pipeline refuse to write into the campaign again. Derived analyses may still read it.
+- **Exclusions, revisions and decisions.** `docs/pilot/PILOT_REGISTER.md` lists each iteration's exclusions and the commits that changed how its numbers were produced. Decisions stay in this file.
+
+**D-028 Pilot iteration 1 exceeded the pilot bounds; it is kept as iteration 1, and a bounded iteration 2 is drafted** (provisional; N-14)
+- **What exceeded the bounds.** Campaign `pilot` used 10 protocols (bound 4-8) and 18 features (bound 3-8). Its 2 models, 3 families, 52 mutants and 16 controls are within the bounds.
+- **Relation to D-024.** This replaces D-024's rationale as the governing scope rule.
+- **What happens to iteration 1.** It is not rerun, trimmed or discarded. It is reported as exploratory iteration 1, with the deviation stated.
+- **Iteration 2.** `docs/pilot/pilot_v2_design.md` and `configs/pilot_v2_draft/` propose:
+  - 4 models from three sources;
+  - 7 protocols;
+  - 8 features;
+  - 3 families, with about 44 mutants and about 32 controls.
+  It has not been run.
+- **Canonical features setting.** The canonical harness's compared features are now configurable (`canonical.features`; default unchanged), so iteration 2 can compare the canonical test and the battery like for like.
+
 ## Models and licensing
 
 **D-017 Pilot fixtures: Pospischil 2008 RS and LTS** (provisional)
@@ -177,6 +242,9 @@ Model files keep their own licenses: MIT, or LGPL-3.0 for the NeuroML2 HH exampl
 | N-08 | Whether to add NEURON as a cross-simulator (optional in the spec) | deferred |
 | N-09 | Accept correlated Pospischil cells in the full study, and which curated candidates to add | see `docs/model_curation_candidates.md` when available |
 | N-11 | Report the jNeuroML validator gap (`channelDensityVShift` references are not checked by test 10025) to the NeuroML maintainers? | not reported; outward-facing, needs Neel |
-| N-13 | **Milestone 6 decision.** The pilot met all three formal criteria, but its only silent mutants are numerical-configuration changes (two explained largely by the harness/battery base-step asymmetry). The canonical harness caught every behaviour-changing biophysical and reference edit on the two correlated pilot models. Choose: a second design-frozen pilot on independent models; reframe as an evaluation of existing validation adequacy; or continue as specified | Recommend option 1 or 2 in `docs/pilot/pilot_interpretation.md`, not continuing on the numerical silent mutants |
+| N-13 | **Milestone 6 decision.** The pilot met all three formal criteria, but its only silent mutants are numerical-configuration changes (two explained largely by the harness/battery base-step asymmetry). The canonical harness caught every behaviour-changing biophysical and reference edit on the two correlated pilot models. Choose: a second design-frozen pilot on independent models; reframe as an evaluation of existing validation adequacy; or continue as specified | Recommend option 1 or 2 in `docs/pilot/pilot_interpretation.md`, not continuing on the numerical silent mutants. **Update:** Neel's direction (D-026) sets the path: bounded exploratory pilot iterations, then freeze, then one held-out study. Option 1 is taken up as iteration 2 (N-14). Whether the paper leads with silent drift or with validation adequacy stays open until the pilot phase ends. |
+| N-14 | Approve pilot iteration 2 (`docs/pilot/pilot_v2_design.md`): models RS, LTS, Wang-Buzsaki, NeuroML2 HH; protocols P03-P09; 8 features; one site per operator | draft as proposed; not run |
+| N-15 | Numerical family in iteration 2: drop `increase_dt` (silent only through the harness/battery base-step asymmetry) and the inert `wrong_segment_group` and `solver_config`; or apply `increase_dt` as the same absolute step to both; or keep and report separately | drop the three, via an operator-exclusion option still to implement |
+| N-16 | Durable storage for pilot archives (iteration 1: 1.92 GB tar including smoke runs; local and Git-ignored now): external drive, institutional storage, or a restricted Zenodo deposit at release | local only; nothing uploaded (outward-facing) |
 | N-12 | Where the hidden agent-study evaluators live permanently (separate private repository, encrypted archive, or offline), and whether Neel revises them independently, given they were written by the assistant that built NeuroSem | local only, Git-ignored, hashes committed |
 | N-10 | Project name. The audit (`docs/m0_evidence/names/`, independently re-checked) found: no PyPI, conda-forge or GitHub-account conflict, but a 2025 CMAME article with an arXiv preprint and code named "NeuroSEM" (a computational simulation framework); an active GPL-3.0 GitHub project spelled "NeuroSem" in neuroscience and language models; the neuromarketing company NeuroSEM holding neurosem.com since 2013; and heavy overloading of "SEM" in neuroscience | **Recommend renaming before any public release.** Preferred: **PerturbPrint** (package/CLI `perturbprint`); it matches the defined term "perturbation fingerprint" and had zero hits in every source that answered (Zenodo, EUIPO and some rate-limited indexes could not be checked). `docs/NAME_CONFLICT_AUDIT.md` recommends deciding before preregistration and the frozen study, whose raw results are immutable. Runner-up: DriftClamp. Not legal clearance; re-check registries before release. Code keeps the working name `neurosem` until Neel decides (a rename is a mechanical refactor). |

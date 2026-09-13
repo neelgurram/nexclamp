@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import dataclasses as dc
+import os
 from pathlib import Path
 from typing import Any
 
@@ -12,6 +13,22 @@ from neurosem.provenance import REPO_ROOT, sha256_file
 from neurosem.schemas import ExecConfig
 
 CONFIG_DIR = REPO_ROOT / "configs"
+# A development campaign (for example a bounded pilot iteration) may load a complete set of
+# config files from another directory. The held-out evaluation refuses any override, because
+# configs/FROZEN.lock covers configs/ only.
+CONFIG_DIR_ENV = "NEUROSEM_CONFIG_DIR"
+
+
+def config_dir() -> Path:
+    value = os.environ.get(CONFIG_DIR_ENV)
+    if not value:
+        return CONFIG_DIR
+    p = Path(value)
+    return p if p.is_absolute() else REPO_ROOT / p
+
+
+def uses_default_config_dir() -> bool:
+    return config_dir().resolve() == CONFIG_DIR.resolve()
 
 
 @dc.dataclass(frozen=True)
@@ -30,26 +47,26 @@ class LoadedConfig:
 def load_yaml(path: Path | str) -> LoadedConfig:
     p = Path(path)
     if not p.is_absolute():
-        p = CONFIG_DIR / p
+        p = config_dir() / p
     with open(p, encoding="utf-8") as f:
         data = yaml.safe_load(f) or {}
     return LoadedConfig(p, sha256_file(p), data)
 
 
 def study() -> LoadedConfig:
-    return load_yaml(CONFIG_DIR / "study.yaml")
+    return load_yaml(config_dir() / "study.yaml")
 
 
 def features() -> LoadedConfig:
-    return load_yaml(CONFIG_DIR / "features.yaml")
+    return load_yaml(config_dir() / "features.yaml")
 
 
 def tolerances() -> LoadedConfig:
-    return load_yaml(CONFIG_DIR / "tolerances.yaml")
+    return load_yaml(config_dir() / "tolerances.yaml")
 
 
 def agent_policy() -> LoadedConfig:
-    return load_yaml(CONFIG_DIR / "agent_policy.yaml")
+    return load_yaml(config_dir() / "agent_policy.yaml")
 
 
 def nominal_exec(cfg: LoadedConfig | None = None) -> ExecConfig:

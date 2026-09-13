@@ -26,8 +26,9 @@ from typing import Any
 import numpy as np
 
 from neurosem import config
+from neurosem.experiments import registry
 from neurosem.models import Workspace, load_models, materialize
-from neurosem.protocols.definitions import CANONICAL_ID, batched, templates_from_config
+from neurosem.protocols.definitions import CANONICAL_FEATURES, CANONICAL_ID, batched, templates_from_config
 from neurosem.provenance import REPO_ROOT, utc_now
 from neurosem.schemas import (ConcreteProtocol, MutantClass, RunStatus, VariantKind, VariantRecord, dumps, to_jsonable,
                               variant_from_dict)
@@ -65,21 +66,39 @@ class Context:
         return dict(self.cfg["rheobase"])
 
     @property
+    def canonical_features(self) -> tuple[str, ...]:
+        """Features compared on the canonical harness (``canonical.features``; default CANONICAL_FEATURES)."""
+        return tuple((self.cfg.get("canonical") or {}).get("features") or CANONICAL_FEATURES)
+
+    @property
     def settle(self) -> float:
         return float(self.cfg["numerics"]["settle_ms"])
 
 
-def make_context(campaign: str, workers: int | None = None) -> Context:
+def make_context(campaign: str, workers: int | None = None, role: str = registry.EXPLORATORY_PILOT) -> Context:
+    """Open ``campaign`` for writing under ``role``.
+
+    Refuses sealed campaigns, a role different from the registered one, and a configuration
+    or simulator different from the one the campaign was created with (a revision is a new
+    campaign name, so every campaign's data stay reportable; DECISIONS D-027).
+    """
     cfg = config.study()
+    results = config.results_dir(cfg)
+    registry.assert_writable(campaign, role, results)
     sim = JNeuroML(max_memory=cfg["numerics"]["java_max_memory"])
     if not sim.available():
         raise ToolFailure("Java/jNeuroML unavailable: run scripts/bootstrap_java.py")
     fcfg, tcfg = config.features(), config.tolerances()
-    processed = config.results_dir(cfg) / "processed" / campaign
-    processed.mkdir(parents=True, exist_ok=True)
-    snap = {"campaign": campaign, "created_utc": utc_now(),
+    processed = results / "processed" / campaign
+    snap = {"campaign": campaign, "role": role, "created_utc": utc_now(),
             "configs": {p.path.name: p.sha256 for p in (cfg, fcfg, tcfg)}, "simulator": sim.version_info()}
-    (processed / "campaign_configs.json").write_text(json.dumps(snap, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    registry.check_config_snapshot(processed, snap)
+    processed.mkdir(parents=True, exist_ok=True)
+    registry.register(campaign, role, results)
+    registry.snapshot_configs(processed, (cfg, fcfg, tcfg))
+    snap_file = processed / "campaign_configs.json"
+    if not snap_file.is_file():
+        snap_file.write_text(json.dumps(snap, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     return Context(campaign, cfg, fcfg.data, tcfg.data, sim, RunRecorder(campaign, sim, features_cfg=fcfg.data),
                    workers or int(cfg["execution"]["workers"]), processed,
                    config.work_dir(cfg) / "variants" / campaign)
@@ -123,7 +142,7 @@ def _reference_one(ctx: Context, model_id: str) -> RefState:
         raise ToolFailure(f"cannot validate reference {model_id}")
     if not st.valid:
         raise ValueError(f"reference model {model_id} is not structurally valid: {st.jnml.messages}")
-    canonical = canonical_protocol(ws)
+    canonical = canonical_protocol(ws, ctx.canonical_features)
     rh = ctx.rec.run_rheobase(ws, variant, ctx.nominal, ctx.rcfg, ctx.settle)
     if rh.status is not RunStatus.OK:
         raise RuntimeError(f"reference rheobase search failed for {model_id}: {rh.record.get('cost')}")

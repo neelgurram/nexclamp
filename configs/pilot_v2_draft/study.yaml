@@ -1,0 +1,77 @@
+# DRAFT: exploratory pilot iteration 2 (campaign `pilot-v2`). STATUS: draft, NOT RUN.
+# Awaiting Neel (DECISIONS N-14, N-15). Design and evidence: docs/pilot/pilot_v2_design.md.
+# Exploratory/developmental data (D-026); never used for the confirmatory estimate.
+# features.yaml, tolerances.yaml and agent_policy.yaml in this directory are unchanged copies.
+# Differences from configs/study.yaml are marked "# v2".
+# Run only after approval:
+#   NEUROSEM_CONFIG_DIR=configs/pilot_v2_draft neurosem pilot --campaign pilot-v2
+
+study_id: neurosem
+status: draft_pilot_v2                 # v2
+
+simulator: jneuroml
+
+numerics:
+  dt_nominal_ms: 0.005
+  refinement_factors: [1, 2, 4]
+  admissibility_factor: 2
+  settle_ms: 300
+  timeout_s: 7200
+  java_max_memory: 2G
+
+rheobase:
+  step_duration_ms: 500
+  initial_hi_nA: 0.5
+  grid: 12
+  rounds: 4
+  expand: 4.0
+  max_hi_nA: 32.0
+  spike_threshold_mV: -20.0
+  fallback_rheobase_nA: 0.1
+
+canonical:
+  protocol_id: P00_canonical
+  source: shipped_harness
+  # v2: canonical compared on the battery's feature set where applicable (like-for-like, N-06)
+  features: [spike_count, first_spike_latency, last_isi, adaptation_index, ap_amplitude, ahp_depth]
+
+# v2: 7 protocols (bound 4-8), 8 features (bound 3-8)
+protocols:
+  - protocol_id: P03_rheobase
+  - protocol_id: P04_step_2x
+    features: [spike_count, first_spike_latency, last_isi, adaptation_index, ap_amplitude, ahp_depth]
+  - protocol_id: P05_long_step
+    features: [spike_count, first_spike_latency, last_isi, adaptation_index, ap_amplitude, ahp_depth]
+  - protocol_id: P06_ramp
+    features: [spike_count, first_spike_latency]
+  - protocol_id: P07_hyperpolarizing_step
+    features: [steady_state_voltage, spike_count]
+  - protocol_id: P08_rebound
+    features: [spike_count, first_spike_latency]
+  - protocol_id: P09_short_pulse
+    features: [spike_count, first_spike_latency, ap_amplitude, ahp_depth]
+
+execution:
+  workers: 12
+
+paths:
+  work: work
+  results: results
+
+pilot:
+  models: [pospischil2008_rs, pospischil2008_lts, wangbuzsaki1996_wb, nml2_hh_example]   # v2
+  mutation_families: [biophysical, reference, numerical]
+  # v2 (N-15, not yet implemented): exclude wrong_segment_group, solver_config, increase_dt
+  mutants_per_operator: 1            # v2: about 11 mutants per model, about 44 total
+  transforms_per_operator: 1
+
+analysis:
+  n_boot: 10000
+  n_perm: 10000
+  seed: 20260913
+
+selection:
+  budget_k: 4
+  random_draws: 10000
+  seed: 20260913
+  tie_break: [cost, protocol_id]

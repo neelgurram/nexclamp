@@ -13,12 +13,13 @@ from collections import Counter
 from pathlib import Path
 
 from neurosem.experiments import campaign as cp
+from neurosem.experiments import registry
 from neurosem.validation.convergence import EXCLUDED_DEFINEDNESS, EXCLUDED_REGIME
 
 
 def run_pilot(campaign: str = "pilot", model_ids: list[str] | None = None, workers: int | None = None,
               seed: int | None = None, n_mutants: int | None = None, n_transforms: int | None = None) -> Path:
-    ctx = cp.make_context(campaign, workers)
+    ctx = cp.make_context(campaign, workers, role=registry.EXPLORATORY_PILOT)
     pcfg = ctx.cfg["pilot"]
     model_ids = model_ids or list(pcfg["models"])
     seed = int(seed if seed is not None else ctx.cfg["selection"]["seed"])
@@ -46,7 +47,9 @@ def write_report(ctx, refs, tol, outcomes, summary, seed) -> Path:
     crit3 = nt > 0 and fp / nt <= 0.1
     lines = [
         f"# Pilot report: campaign `{ctx.campaign}`", "",
-        "*Generated automatically from `results/processed/{0}/`. Development-stage pilot on discovery models; "
+        "**EXPLORATORY / DEVELOPMENTAL DATA.** Never pooled with the held-out data for the primary confirmatory "
+        "estimate (DECISIONS D-026).", "",
+        "*Generated automatically from `results/processed/{0}/`. Development-stage pilot; "
         "not a confirmatory result. Thresholds used below for the pilot decision are provisional and must be "
         "reviewed by Neel.*".format(ctx.campaign), "",
         "## Setup", "",

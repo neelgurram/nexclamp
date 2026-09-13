@@ -255,6 +255,13 @@ For each, state estimator and reporting. Current draft proposals are in
 
 - What the pilot (Milestone 6) was allowed to inform: operators, features, tolerance
   constants, protocol parameters (discovery and pilot models only).
+- Status of pilot data (DECISIONS D-026): exploratory/developmental. Pilot data are never
+  combined with held-out data for the primary confirmatory estimate. They may be reported as
+  method-development evidence, preliminary findings, illustrative case studies and motivation
+  for the frozen design.
+- Every pilot iteration, with its configuration, code version, exclusions and revisions, is
+  listed in `docs/pilot/PILOT_REGISTER.md` and preserved (D-027). Iteration 1 exceeded the
+  pilot bounds on protocols and features (D-028); this is stated here as data already seen.
 - Pilot models and whether they may appear in the held-out set: [NEEL DECISION REQUIRED]
 - Pilot outcomes known at registration: [NEEL DECISION REQUIRED: summarise honestly]
 

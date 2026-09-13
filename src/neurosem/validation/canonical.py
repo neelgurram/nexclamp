@@ -76,7 +76,7 @@ def _targeted_component_ids(files: list[Path], population: str) -> set[str]:
     return ids
 
 
-def canonical_protocol(ws: Workspace) -> ConcreteProtocol:
+def canonical_protocol(ws: Workspace, features: tuple[str, ...] = CANONICAL_FEATURES) -> ConcreteProtocol:
     """Canonical analysis window = union of the pulses that target the RECORDED population.
 
     Harnesses can contain several inputs, some aimed at other cells (e.g. Prinz 2004) or an
@@ -115,7 +115,7 @@ def canonical_protocol(ws: Workspace) -> ConcreteProtocol:
     if end <= start:
         start, end = 0.0, length_ms
     return ConcreteProtocol(CANONICAL_ID, "canonical", tuple(chosen), length_ms, AnalysisWindow(start, end),
-                            CANONICAL_FEATURES, description=f"shipped harness {ws.model.harness_lems}; window: {rule}")
+                            tuple(features), description=f"shipped harness {ws.model.harness_lems}; window: {rule}")
 
 
 _STEP_ATTR = re.compile(r'(<(?:Simulation|Component)\b[^>]*?\bstep=")([^"]+)(")', re.DOTALL)

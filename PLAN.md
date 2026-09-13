@@ -197,17 +197,44 @@ The handoff's initial prompt also asks for `PLAN.md`, `REQUIREMENTS.md`, `PRIOR_
 2. The report states a mutant count within 20-60, or the deviation is recorded.
 3. Neel reviews the report, the audit sheet (M4), the diagnostics of any silent mutants (M5) and `tolerances.csv`, then records a continue / reframe / stop decision in `DECISIONS.md`.
 
-**Status: in progress. The pilot is running; results pending.**
-- Started 2026-09-13T17:11:01Z at `d323afa`; a `neurosem` Python process and jLEMS Java processes were active at 18:44Z.
-- Configuration: models `pospischil2008_rs` and `pospischil2008_lts`; families biophysical, reference, numerical; 2 sites per operator; 1 site per transform operator; seed 20260913; nominal dt 0.005 ms (`configs/study.yaml`).
-- Scope note for Neel: the spec's pilot table names 4 protocols and 3-5 features. The pilot runs the full implemented battery (P01-P10 plus the canonical harness and rheobase) with the configured feature set. That is a larger pilot than the table, and it should be stated in the preregistration's "data already seen" section.
-- Evidence so far: `work/logs/pilot_run.log`, `work/logs/pilot_commit.txt`. No partial output is interpreted here.
+**Role (Neel, D-026).** The pilot phase is exploratory and developmental. It is publication-oriented but never pooled with the held-out confirmatory estimate. It stays within the bounds: 2-6 models, 4-8 protocols, 3-8 features, at least 3 families, about 20-60 mutants, and valid-transformation controls. It may run as several iterations. Each iteration is a new, sealed campaign listed in `docs/pilot/PILOT_REGISTER.md`.
+
+**Status: iteration 1 done (exploratory); iteration 2 drafted, awaiting Neel (N-14, N-15).**
+- **Iteration 1 (`pilot`).**
+  - Ran 2026-09-13 17:11-18:55Z at `d323afa` (tag `pilot-v1-code`).
+  - Scope: 2 models, 52 mutants, 16 controls.
+  - Exceeds the bounds on protocols (10) and features (18) (D-028).
+  - Outcome: `docs/pilot/pilot_interpretation.md`.
+  - Preserved and sealed (D-027).
+- **Iteration 2 (`pilot-v2`).**
+  - Draft in `docs/pilot/pilot_v2_design.md` and `configs/pilot_v2_draft/`.
+  - Scope: 4 models, 7 protocols, 8 features, about 44 mutants.
+  - Not run.
 
 **Next actions.**
-1. Do not edit simulation-relevant paths (`src`, `configs`, `data`, `models`, `scripts`, `workflows`, `pyproject.toml`, `requirements.lock`) while it runs. Otherwise later runs are marked dirty (D-023). Documentation edits are safe.
-2. When it ends, run exit steps 2-3.
-3. Neel decides N-03, N-04 and N-07 with the pilot evidence, before any freeze.
-4. Keep valid transformations in the false-positive denominator whatever the battery says about them (P-06).
+1. Neel decides N-14 and N-15 (and N-03, N-04, N-07 on pilot evidence).
+2. Implement the operator-exclusion option (N-15), with tests. Then run `pilot-v2` on a clean commit and seal it.
+3. Further iterations are allowed while the pilot phase lasts. Each gets a new campaign name and is reported.
+4. Neel ends the pilot phase. Then the post-pilot freeze sequence below starts.
+5. Keep valid transformations in the false-positive denominator whatever the battery says about them (P-06).
+6. While a campaign runs, do not edit simulation-relevant paths (D-023).
+
+## Post-pilot freeze sequence (D-026)
+
+Nothing here starts until Neel ends the pilot phase. Each step is a commit, and the order matters. After step 9, none of these decisions change.
+
+| # | Freeze | Artefact | Enforced by |
+|---|---|---|---|
+| 1 | Software version | annotated tag on a clean commit; the held-out campaign must run on exactly that commit | `registry.check_single_clean_commit` in `evaluate_heldout`; tag check still to add |
+| 2 | Model eligibility rules | preregistration section 4.1; `data/model_manifest.csv` | `configs/FROZEN.lock` (manifest entry still to add to the lock's required entries) |
+| 3 | Mutation definitions | operator code at the tag; `docs/mutation_catalog.md`; operator selection in `configs/study.yaml` | tag + lock |
+| 4 | Feature definitions | `configs/features.yaml`; per-protocol and canonical feature lists in `configs/study.yaml` | lock |
+| 5 | Tolerances | `configs/tolerances.yaml` with `status: frozen` (N-03) | lock |
+| 6 | Canonical protocol | `canonical` block of `configs/study.yaml` (N-06) | lock |
+| 7 | Protocol-selection algorithm and the selected battery | `selection/greedy.py` at the tag; `selection` block; selection JSON computed on discovery data only | tag + lock; `HeldoutGate` |
+| 8 | Discovery / held-out splits (models and at least one unseen family) | `data/splits/*`, `data/splits/SPLITS.sha256` (N-02) | `HeldoutGate` |
+| 9 | Primary hypothesis and analysis | registered, timestamped preregistration (Neel); data already seen = every pilot iteration | procedural |
+| 10 | Held-out experiment, once | `neurosem evaluate-heldout` on a fresh `confirmatory_heldout` campaign | gate + registry (refuses pilot campaigns, reused names, config overrides, dirty or mixed commits) |
 
 ## Milestone 7: Selection and holdouts
 

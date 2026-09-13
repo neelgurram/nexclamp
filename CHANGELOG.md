@@ -6,6 +6,20 @@ Versioning from the first tagged release. Decisions referenced as D-xxx are in `
 
 ## [Unreleased]
 
+### Pilot role, preservation and bounded iteration 2 (2026-09-13)
+
+#### Added
+- `experiments/registry.py`: permanent campaign roles (`results/campaign_registry.json`), sealing, config snapshots, a one-configuration-per-campaign guard, a single-clean-commit check, SHA-256 archive manifests and write-once tar archives (D-026, D-027).
+- `scripts/archive_campaign.py`; campaign `pilot` archived (5,186 files, 1.92 GB tar, Git-ignored) and sealed; tag `pilot-v1-code` at `d323afa`.
+- `NEUROSEM_CONFIG_DIR` for development campaigns; `canonical.features` setting (default unchanged).
+- `docs/pilot/PILOT_REGISTER.md`, `docs/pilot/pilot_v2_design.md`, `configs/pilot_v2_draft/` (draft, not run).
+- `PLAN.md` post-pilot freeze sequence; D-026 to D-028; N-14 to N-16.
+
+#### Changed
+- `evaluate_heldout` refuses exploratory or discovery campaigns, reused campaign names, config overrides, non-held-out models, and mixed-commit or dirty runs.
+- Pilot reports are labelled exploratory/developmental.
+- Preregistration section 15 and the statistical plan state that pilot data are never pooled.
+
 ### Milestones 1-7 infrastructure and the Milestone 6 pilot (branch `m0-audit`, 2026-09-13)
 
 Neel instructed Claude to build the whole project (D-003). The integrity gates stay in place:

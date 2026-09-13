@@ -126,3 +126,28 @@ Scope that was dropped is recorded openly: 144 second-round candidates at estima
 - pilot thresholds
 - splits and exclusions
 - all interpretation
+
+---
+
+## Entry 003: Pilot role, preservation and bounded iteration 2
+
+| Field | Value |
+|---|---|
+| Date | 2026-09-13 |
+| Human instruction | Neel's "Pilot scope and purpose" direction (DECISIONS D-026, D-027) |
+| Tool / model | Claude Code desktop, Claude Opus 5 (`claude-opus-5`), main session only |
+| Branch | `m0-audit` |
+
+**What the AI did**
+- Recorded Neel's direction as D-026 (pilot is exploratory and never pooled), D-027 (preservation and sealing) and D-028 (iteration 1 exceeded the bounds).
+- Wrote the campaign registry and its guards (`experiments/registry.py`) and wired them into `make_context`, the pilot and `evaluate_heldout`, with unit tests.
+- Tagged the iteration-1 code (`pilot-v1-code`), archived and sealed campaign `pilot` (`scripts/archive_campaign.py`), and wrote `docs/pilot/PILOT_REGISTER.md`.
+- Drafted pilot iteration 2 (`docs/pilot/pilot_v2_design.md`, `configs/pilot_v2_draft/`) from iteration-1 data, and added the post-pilot freeze sequence to `PLAN.md`.
+
+**What the AI did not do**
+- It ran no new simulations and did not run iteration 2.
+- It accessed no held-out data.
+- It uploaded no archive.
+- It changed no tolerance, feature or protocol in `configs/`.
+
+**Human decisions pending:** N-14 (iteration-2 design), N-15 (numerical family), N-16 (archive storage).

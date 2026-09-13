@@ -30,6 +30,10 @@ results/agent_study/private/
 # their hashes so integrity can be verified after the trials (DECISIONS D-022).
 agent_study/hidden/
 
+# Write-once campaign archives (traces, workspaces, logs); their hashes are committed in
+# results/processed/<campaign>/ARCHIVE.json and ARCHIVE_MANIFEST.sha256 (DECISIONS D-027)
+archive/
+
 # Regenerable workspaces and bulky raw traces (hashes are tracked in results/index/)
 work/
 results/raw/**/*.npz

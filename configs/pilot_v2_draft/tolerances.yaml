@@ -1,0 +1,38 @@
+# Detection tolerances (spec "Tolerance calibration"). STATUS: provisional.
+#
+#   tau(m, p, f) = max( abs_floor_f,  rel_f * |f_h(m, p)|,  c * |f_h(m, p) - f_h/2(m, p)| )
+#
+# computed on the *reference* model m for protocol p at nominal step h and h/2.
+# The floors below are starting values only. `neurosem calibrate-tolerances` measures
+# reference refinement differences on DISCOVERY models and writes a proposal to
+# results/processed/tolerance_proposal.yaml; Neel approves the final values before the
+# frozen study. Never adjust these after looking at held-out results.
+
+status: provisional
+c_refinement: 3.0
+
+features:
+  baseline_voltage:     {abs_floor: 0.5,  rel: 0.0}     # mV
+  steady_state_voltage: {abs_floor: 0.5,  rel: 0.0}     # mV
+  voltage_deflection:   {abs_floor: 0.5,  rel: 0.05}    # mV
+  sag_ratio:            {abs_floor: 0.02, rel: 0.05}
+  minimum_voltage:      {abs_floor: 0.5,  rel: 0.0}     # mV
+  maximum_voltage:      {abs_floor: 1.0,  rel: 0.0}     # mV
+  spike_count:          {abs_floor: 0.5,  rel: 0.0}     # any change in count
+  mean_frequency:       {abs_floor: 0.5,  rel: 0.05}    # Hz
+  first_spike_latency:  {abs_floor: 0.5,  rel: 0.02}    # ms
+  ap_amplitude:         {abs_floor: 1.0,  rel: 0.02}    # mV
+  ap_half_width:        {abs_floor: 0.05, rel: 0.05}    # ms
+  ahp_depth:            {abs_floor: 0.5,  rel: 0.05}    # mV
+  first_isi:            {abs_floor: 0.5,  rel: 0.02}    # ms
+  last_isi:             {abs_floor: 0.5,  rel: 0.02}    # ms
+  adaptation_index:     {abs_floor: 0.01, rel: 0.10}
+  burst_count:          {abs_floor: 0.5,  rel: 0.0}
+  rheobase:             {abs_floor: 0.0,  rel: 0.02, resolution_multiple: 2.0}   # nA; floor >= 2 x search resolution
+
+# Non-numeric comparisons.
+categorical: {firing_regime: exact}
+definedness_mismatch_is_detection: true      # defined in one model, undefined/not-applicable in the other
+
+# Tolerance-sensitivity analysis (secondary endpoint): multiply every tau by these.
+sensitivity_multipliers: [0.5, 1.0, 2.0, 4.0]

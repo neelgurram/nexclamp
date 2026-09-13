@@ -1,0 +1,74 @@
+# NeuroSem study configuration.
+# STATUS: provisional. Values become binding only when frozen by preregistration
+# (docs/preregistration.md + configs/FROZEN.lock). Never edit after held-out access.
+
+study_id: neurosem
+status: provisional
+
+simulator: jneuroml
+
+numerics:
+  # jLEMS integrates standard NeuroML core types with fixed-step forward Euler.
+  # Pilot probe (2026-09-13, docs/pilot/dt_probe.md): spike times converge at first order;
+  # h = 0.005 ms keeps the RS 5th-spike error to about 4 ms relative to h = 0.001 ms,
+  # at roughly 4 s per 1 s simulated cell. See DECISIONS.md D-007.
+  dt_nominal_ms: 0.005
+  refinement_factors: [1, 2, 4]      # h, h/2, h/4 for tolerance calibration
+  admissibility_factor: 2            # non-equivalence must reproduce at h/2
+  settle_ms: 300                     # pre-stimulus settling; eFEL baseline window = last 10 %
+  timeout_s: 7200
+  java_max_memory: 2G
+
+rheobase:
+  step_duration_ms: 500
+  initial_hi_nA: 0.5
+  grid: 12
+  rounds: 4
+  expand: 4.0
+  max_hi_nA: 32.0
+  spike_threshold_mV: -20.0          # same as eFEL Threshold in configs/features.yaml
+  fallback_rheobase_nA: 0.1          # used to scale protocols only if the reference is spontaneously active
+
+canonical:
+  protocol_id: P00_canonical
+  source: shipped_harness            # the simulation distributed with the model is the conventional regression test
+
+# Protocol parameters (spec "Protocol battery"). Omitted fields use the defaults in
+# src/neurosem/protocols/definitions.py.
+protocols:
+  - protocol_id: P01_baseline
+  - protocol_id: P02_weak_step
+  - protocol_id: P03_rheobase
+  - protocol_id: P04_step_2x
+  - protocol_id: P05_long_step
+  - protocol_id: P06_ramp
+  - protocol_id: P07_hyperpolarizing_step
+  - protocol_id: P08_rebound
+  - protocol_id: P09_short_pulse
+  - protocol_id: P10_paired_pulses
+  - protocol_id: P11_chirp
+  - protocol_id: P12_frozen_noise
+
+execution:
+  workers: 12
+
+paths:
+  work: work                          # regenerable variant workspaces and run scratch (git-ignored)
+  results: results
+
+pilot:
+  models: [pospischil2008_rs, pospischil2008_lts]
+  mutation_families: [biophysical, reference, numerical]
+  mutants_per_operator: 2            # sites sampled per operator per model (spec pilot: 5-10 mutants per model)
+  transforms_per_operator: 1         # spec pilot: 4-6 valid transformations
+
+analysis:
+  n_boot: 10000                      # cluster bootstrap resamples (primary endpoint CI)
+  n_perm: 10000                      # cluster sign-flip permutations
+  seed: 20260913
+
+selection:
+  budget_k: 4
+  random_draws: 10000
+  seed: 20260913
+  tie_break: [cost, protocol_id]
