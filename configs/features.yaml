@@ -1,0 +1,48 @@
+# Feature definitions (spec "Initial features"). STATUS: provisional until preregistration.
+#
+# Every concept maps to exactly one frozen eFEL feature variant (eFEL offers several with
+# different windows; see DEPENDENCY_AUDIT.md). Undefined features stay undefined:
+# never replaced by zero. A feature is "not applicable" for a trace when fewer than
+# `min_spikes` spikes occur in the analysis window; that is recorded as its own state.
+
+efel_version: "5.7.34"
+
+# Applied with efel.reset() + efel.set_setting() before EVERY extraction (settings are
+# process-global in eFEL and unknown names are accepted silently, so names are checked).
+settings:
+  Threshold: -20.0            # mV, spike detection
+  DerivativeThreshold: 10.0   # mV/ms, AP onset
+  DownDerivativeThreshold: -12.0
+  interp_step: 0.01           # ms; <= every refinement level's recording step is not required, but
+                              # time features are quantised to this value (sensitivity-checked)
+  strict_stiminterval: true   # count only spikes inside the analysis window
+  ignore_first_ISI: false
+  strict_burst_factor: 2.0
+
+features:
+  baseline_voltage:     {efel: voltage_base,                 agg: scalar, unit: mV,  min_spikes: 0}
+  steady_state_voltage: {efel: steady_state_voltage_stimend, agg: scalar, unit: mV,  min_spikes: 0}
+  voltage_deflection:   {efel: voltage_deflection_vb_ssse,   agg: scalar, unit: mV,  min_spikes: 0}
+  sag_ratio:            {efel: sag_ratio1,                   agg: scalar, unit: "1", min_spikes: 0,
+                         requires: hyperpolarizing}
+  minimum_voltage:      {efel: minimum_voltage,              agg: scalar, unit: mV,  min_spikes: 0}
+  maximum_voltage:      {efel: maximum_voltage,              agg: scalar, unit: mV,  min_spikes: 0}
+  spike_count:          {efel: spike_count_stimint,          agg: scalar, unit: "1", min_spikes: 0, kind: count}
+  mean_frequency:       {efel: mean_frequency,               agg: scalar, unit: Hz,  min_spikes: 2}
+  first_spike_latency:  {efel: time_to_first_spike,          agg: scalar, unit: ms,  min_spikes: 1}
+  ap_amplitude:         {efel: AP_amplitude,                 agg: first,  unit: mV,  min_spikes: 1}
+  ap_half_width:        {efel: AP_duration_half_width,       agg: first,  unit: ms,  min_spikes: 1}
+  ahp_depth:            {efel: AHP_depth,                    agg: first,  unit: mV,  min_spikes: 2}
+  first_isi:            {efel: all_ISI_values,               agg: first,  unit: ms,  min_spikes: 2}
+  last_isi:             {efel: all_ISI_values,               agg: last,   unit: ms,  min_spikes: 2}
+  adaptation_index:     {efel: adaptation_index2,            agg: scalar, unit: "1", min_spikes: 4}
+  burst_count:          {efel: strict_burst_number,          agg: scalar, unit: "1", min_spikes: 4, kind: count}
+  firing_regime:        {neurosem: firing_regime,            kind: categorical}
+  rheobase:             {neurosem: rheobase,                 unit: nA}
+
+# Qualitative firing regime (NeuroSem logic on top of eFEL outputs), evaluated in order.
+firing_regime:
+  labels: [silent, single_spike, depolarization_block, bursting, adapting, tonic]
+  depolarization_block_min_gap_fraction: 0.5   # last spike before this fraction of the window with v held > -40 mV
+  bursting_min_bursts: 2
+  adapting_min_index: 0.1                      # adaptation_index2 above this = adapting

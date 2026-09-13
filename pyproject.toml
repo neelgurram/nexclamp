@@ -1,0 +1,51 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "neurosem"
+version = "0.1.0.dev0"
+description = "Detecting silent behavioural drift in computational neuron models with mutation-calibrated perturbation fingerprints"
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+license = { file = "LICENSE" }
+authors = [{ name = "Neel Gurram" }]
+classifiers = [
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Bio-Informatics",
+    "Intended Audience :: Science/Research",
+]
+# Exact pins are in requirements.lock (see DEPENDENCY_AUDIT.md). Ranges here are
+# what the package is known to work with; the frozen study uses the lock file.
+dependencies = [
+    "pyneuroml==1.3.22",
+    "libNeuroML==0.6.7",
+    "efel==5.7.34",
+    "lxml>=5",
+    "numpy>=2",
+    "scipy>=1.12",
+    "pandas>=2.2",
+    "pyyaml>=6",
+    "matplotlib>=3.8",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "pytest-cov", "ruff"]
+
+[project.scripts]
+neurosem = "neurosem.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = [
+    "jnml: requires Java + jNeuroML (skipped when unavailable)",
+    "slow: long-running simulation tests",
+]
+addopts = "-ra"
+
+[tool.ruff]
+line-length = 110
+target-version = "py312"
