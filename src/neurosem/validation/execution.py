@@ -17,6 +17,7 @@ from __future__ import annotations
 
 import concurrent.futures as cf
 import dataclasses as dc
+import functools
 import json
 import re
 import shutil
@@ -48,6 +49,13 @@ STATUS_SEVERITY = [RunStatus.TOOL_FAILURE, RunStatus.INVALID, RunStatus.BUILD_ER
 
 class ReproducibilityError(RuntimeError):
     """A re-simulation produced different bytes than the immutable record."""
+
+
+@functools.lru_cache(maxsize=1)
+def feature_code_digest() -> str:
+    """Digest of the feature-extraction source, so changed feature code never reuses stale features."""
+    d = Path(__file__).resolve().parents[1] / "features"
+    return sha256_json({p.name: sha256_file(p) for p in sorted(d.glob("*.py"))})
 
 
 def worst_status(statuses: Sequence[RunStatus]) -> RunStatus:
@@ -167,28 +175,67 @@ class RunRecorder:
     def _run_id(self, payload: dict) -> str:
         return "r-" + sha256_json(payload)[:20]
 
-    def _load_cached(self, run_dir: Path, protocols: Sequence[ConcreteProtocol]) -> RunOutput | None:
+    def features_key(self, trace_sha: str) -> str:
+        """Features depend on the stored trace, the feature config, the eFEL build and NeuroSem's feature code."""
+        import efel
+
+        return sha256_json({"trace_sha256": trace_sha, "features_cfg": self.features_cfg, "efel": efel.__version__,
+                            "feature_code": feature_code_digest()})[:16]
+
+    def _extract_and_store(self, run_dir: Path, trace_sha: str, traces: dict[str, Trace],
+                           protocols: Sequence[ConcreteProtocol]) -> tuple[dict[str, dict], str, str, int]:
+        import efel
+
+        from neurosem.features import efel_adapter
+
+        key = self.features_key(trace_sha)
+        warnings: list[str] = []
+        tables = efel_adapter.extract_all(traces, list(protocols), self.features_cfg, warnings=warnings)
+        payload = {"features_key": key, "trace_sha256": trace_sha, "efel_version": efel.__version__,
+                   "feature_code_digest": feature_code_digest(), "features_cfg_sha256": sha256_json(self.features_cfg),
+                   "tables": {pid: efel_adapter.feature_table_to_json(t) for pid, t in tables.items()}}
+        path = run_dir / f"features_{key}.json"
+        sha = write_immutable_text(path, json.dumps(payload, indent=2, sort_keys=True) + "\n")
+        if warnings:
+            write_immutable_text(run_dir / f"efel_warnings_{key}.txt", "\n".join(warnings) + "\n")
+        return tables, relpath(path), sha, len(warnings)
+
+    def _load_cached(self, run_dir: Path, protocols: Sequence[ConcreteProtocol], need_traces: bool = False) -> RunOutput | None:
+        """Return a cached run, or None when it must be (re-)simulated.
+
+        Features for the current features key are loaded from Git-tracked JSON even when the
+        (Git-ignored) traces are absent; traces are re-simulated only when needed, and must
+        then reproduce the recorded hash.
+        """
         from neurosem.features import efel_adapter, trace_metrics
 
         rj = run_dir / "run.json"
         if not rj.is_file():
             return None
         rec = RunRecord(**json.loads(rj.read_text(encoding="utf-8")))
-        npz = run_dir / "traces.npz"
-        fj = run_dir / "features.json"
         if rec.status != RunStatus.OK.value:
             return RunOutput(RunStatus(rec.status), [rec], {}, {}, True, [rec.message])
-        if not (npz.is_file() and fj.is_file()):
-            return None                       # re-simulate and verify against rec.trace_sha256
-        if sha256_file(npz) != rec.trace_sha256:
-            raise ReproducibilityError(f"stored traces for {rec.run_id} do not match their record")
-        traces = trace_metrics.unpack_traces(npz.read_bytes())
-        tables = {pid: efel_adapter.feature_table_from_json(t) for pid, t in json.loads(fj.read_text(encoding="utf-8")).items()}
-        return RunOutput(RunStatus.OK, [rec], traces, tables, True, [])
+        npz = run_dir / "traces.npz"
+        traces: dict[str, Trace] = {}
+        if npz.is_file():
+            if sha256_file(npz) != rec.trace_sha256:
+                raise ReproducibilityError(f"stored traces for {rec.run_id} do not match their record")
+            traces = trace_metrics.unpack_traces(npz.read_bytes())
+        elif need_traces:
+            return None
+        fj = run_dir / f"features_{self.features_key(rec.trace_sha256)}.json"
+        if fj.is_file():
+            tables = {pid: efel_adapter.feature_table_from_json(t)
+                      for pid, t in json.loads(fj.read_text(encoding="utf-8"))["tables"].items()}
+            return RunOutput(RunStatus.OK, [rec], traces, tables, True, [])
+        if traces:
+            tables, _, _, _ = self._extract_and_store(run_dir, rec.trace_sha256, traces, protocols)
+            return RunOutput(RunStatus.OK, [rec], traces, tables, True, [])
+        return None
 
     def _finish(self, *, run_id: str, run_kind: str, stage: Workspace, variant: VariantRecord, protocols: Sequence[ConcreteProtocol],
                 dt_ms: float, duration_ms: float, result, replicate: int) -> RunOutput:
-        from neurosem.features import efel_adapter, trace_metrics
+        from neurosem.features import trace_metrics
 
         run_dir = self.raw / run_id
         digest, _ = self.env()
@@ -198,7 +245,7 @@ class RunRecorder:
         trace_path = feature_path = trace_sha = feature_sha = ""
         tables: dict[str, dict] = {}
         traces: dict[str, Trace] = {}
-        warnings: list[str] = []
+        n_warnings = 0
         status = result.status
         if result.traces and status in (RunStatus.OK, RunStatus.UNSTABLE):
             packed = trace_metrics.pack_traces(result.traces)
@@ -211,15 +258,10 @@ class RunRecorder:
                 trace_path = relpath(run_dir / "traces.npz")
             traces = trace_metrics.unpack_traces(packed)
             if status is RunStatus.OK:
-                tables = efel_adapter.extract_all(traces, list(protocols), self.features_cfg, warnings=warnings)
-                ftext = json.dumps({pid: efel_adapter.feature_table_to_json(t) for pid, t in tables.items()},
-                                   indent=2, sort_keys=True) + "\n"
-                feature_sha = write_immutable_text(run_dir / "features.json", ftext)
-                feature_path = relpath(run_dir / "features.json")
+                tables, feature_path, feature_sha, n_warnings = self._extract_and_store(run_dir, trace_sha, traces, protocols)
         message = result.message
-        if warnings:
-            message = (message + " | " if message else "") + f"{len(warnings)} eFEL warnings"
-            write_immutable_text(run_dir / "efel_warnings.txt", "\n".join(warnings) + "\n")
+        if n_warnings:
+            message = (message + " | " if message else "") + f"{n_warnings} eFEL warnings"
         rec = prior_rec or RunRecord(
             run_id=run_id, campaign=self.campaign, run_kind=run_kind, model_id=variant.model_id,
             variant_id=variant.variant_id, variant_tree_sha256=variant.tree_sha256,
@@ -237,15 +279,16 @@ class RunRecorder:
 
     # ------------------------------------------------------------ public API
     def run_battery(self, ws: Workspace, variant: VariantRecord, protocols: Sequence[ConcreteProtocol],
-                    level_exec: ExecConfig, replicate: int = 0) -> RunOutput:
+                    level_exec: ExecConfig, replicate: int = 0, need_traces: bool = False) -> RunOutput:
         exec_eff = apply_overrides(level_exec, variant.exec_overrides)
-        outs = [self._run_probe_group(ws, variant, group, exec_eff, replicate) for group in group_by_length(protocols)]
+        outs = [self._run_probe_group(ws, variant, group, exec_eff, replicate, need_traces)
+                for group in group_by_length(protocols)]
         return RunOutput(worst_status([o.status for o in outs]), [r for o in outs for r in o.records],
                          {k: v for o in outs for k, v in o.traces.items()}, {k: v for o in outs for k, v in o.tables.items()},
                          all(o.cached for o in outs), [m for o in outs for m in o.messages])
 
     def _run_probe_group(self, ws: Workspace, variant: VariantRecord, group: Sequence[ConcreteProtocol],
-                         exec_eff: ExecConfig, replicate: int) -> RunOutput:
+                         exec_eff: ExecConfig, replicate: int, need_traces: bool = False) -> RunOutput:
         stage = self._stage(effective_workspace(ws, variant))
         bundle = write_probe(stage, group, exec_eff, tag=f"battery_{int(group[0].total_ms)}")
         payload = {"kind": "probe", "inputs": inputs_manifest(bundle.lems_file, stage.root),
@@ -253,7 +296,7 @@ class RunRecorder:
                    "replicate": replicate}
         run_id = self._run_id(payload)
         with self._lock(run_id):
-            cached = self._load_cached(self.raw / run_id, group)
+            cached = self._load_cached(self.raw / run_id, group, need_traces)
             if cached is not None:
                 shutil.rmtree(stage.root, ignore_errors=True)
                 return cached
@@ -263,7 +306,7 @@ class RunRecorder:
                                 dt_ms=exec_eff.dt_ms, duration_ms=bundle.length_ms, result=result, replicate=replicate)
 
     def run_canonical(self, ws: Workspace, variant: VariantRecord, canonical_proto: ConcreteProtocol,
-                      level_factor: int = 1, replicate: int = 0) -> RunOutput:
+                      level_factor: int = 1, replicate: int = 0, need_traces: bool = False) -> RunOutput:
         from neurosem.validation.canonical import refine_harness_step
 
         stage = self._stage(ws)
@@ -277,7 +320,7 @@ class RunRecorder:
                    "replicate": replicate}
         run_id = self._run_id(payload)
         with self._lock(run_id):
-            cached = self._load_cached(self.raw / run_id, [canonical_proto])
+            cached = self._load_cached(self.raw / run_id, [canonical_proto], need_traces)
             if cached is not None:
                 shutil.rmtree(stage.root, ignore_errors=True)
                 return cached

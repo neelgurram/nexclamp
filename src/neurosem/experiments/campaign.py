@@ -141,8 +141,8 @@ def _reference_one(ctx: Context, model_id: str) -> RefState:
             raise RuntimeError(f"reference {model_id} failed at refinement factor {f}: {v.status} {v.messages}")
 
     # Deterministic re-execution (M2 exit criterion): replicate the nominal battery and canonical runs.
-    rep = ctx.rec.run_battery(ws, variant, protocols, ctx.nominal, replicate=1)
-    base = ctx.rec.run_battery(ws, variant, protocols, ctx.nominal, replicate=0)
+    rep = ctx.rec.run_battery(ws, variant, protocols, ctx.nominal, replicate=1, need_traces=True)
+    base = ctx.rec.run_battery(ws, variant, protocols, ctx.nominal, replicate=0, need_traces=True)
     identical = all(np.array_equal(base.traces[k].v_mV, rep.traces[k].v_mV) for k in base.traces) and \
         set(base.traces) == set(rep.traces)
     determinism = {"model_id": model_id, "bitwise_identical_battery_traces": bool(identical),

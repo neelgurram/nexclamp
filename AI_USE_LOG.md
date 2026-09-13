@@ -54,3 +54,47 @@ humans are authors, and the human author is responsible for all content.
 **Human verification required.** Neel must spot-check citations in
 `docs/novelty_matrix.csv`, especially the closest-prior-work rows, before any novelty claim
 is written. AI-verified is not the same as human-verified.
+
+---
+
+## Entry 002: Implementation (Milestones 1-7 infrastructure) and pilot preparation
+
+| Field | Value |
+|---|---|
+| Date | 2026-09-13 |
+| Human instruction | Neel attached `NEUROSEM_FINAL_SPEC.pdf` and wrote "keep going, and build out the entire thing" (see DECISIONS.md D-003) |
+| Tool / model | Claude Code desktop, Claude Opus 5 (`claude-opus-5`) |
+| Orchestration | Main session wrote the core layers. Workflow `wf_dd699b26-8ce` ran parallel module builders, each followed by an adversarial reviewer and a fixer |
+| Transcripts | Claude Code session transcripts under `~/.claude/projects/C--Users-gurra-Continuum/` (session d876c622-…); workflow journals in its `subagents/workflows/` folder |
+| Branch | `m0-audit` |
+
+**Written by the main session:**
+- `schemas.py`, `units.py`, `provenance.py`, `config.py`, `models.py`, `cli.py`
+- `simulators/*`, `protocols/*`, `validation/*`
+- `experiments/{campaign,pilot,discovery,heldout}.py`
+- configs, model manifest, `docs/ARCHITECTURE.md`, `DECISIONS.md`
+- validation-layer unit tests
+
+**Written by workflow agents (listed in their reports):**
+- modules: features, mutations, transforms, selection/splits, analysis/figures, agent-study harness
+- tests for the core modules
+- infrastructure: Docker, CI, lock file, Java bootstrap, CITATION
+- scientific documentation and a model-curation sweep
+
+**Tests executed.** Unit and integration tests via pytest, including real jNeuroML runs. Development probes on the pilot models:
+- time-step convergence (`docs/pilot/dt_probe.md`);
+- smoke runs of the full protocol battery.
+
+**Problems found and handled:**
+1. jNeuroML's validator does not check included files.
+2. Upstream LTS channel files fail standalone validation.
+
+Both led to the relative structural oracle (D-006).
+
+**Accepted, modified, or rejected.** All code is pending Neel's review. Nothing has been released.
+
+**Scientific control.** The following remain provisional and are listed for Neel's decision in DECISIONS.md:
+- tolerance constants
+- pilot thresholds
+- splits and exclusions
+- all interpretation
