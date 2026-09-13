@@ -30,6 +30,7 @@ from neurosem.schemas import RunStatus, SimResult, Trace, ValidationResult
 from neurosem.simulators.base import PHYSICAL_V_BOUND_MV, OutputSpec
 
 _OUTPUT_FILE_RE = re.compile(r'<OutputFile\b[^>]*\bfileName\s*=\s*"([^"]+)"')
+_DT_HINT = re.compile(r"caused by too large a time step|NaN|Infinity", re.IGNORECASE)
 
 
 class ToolUnavailable(RuntimeError):
@@ -149,9 +150,18 @@ class JNeuroML:
         runtime = time.perf_counter() - t0
         out = proc.stdout + proc.stderr
         tail = "\n".join(out.strip().splitlines()[-25:])
-        ran = re.search(r"Finished \d+ steps", out) is not None
+        started = re.search(r"Finished \d+ steps", out) is not None or "simulation started" in out
         if proc.returncode != 0:
-            status = RunStatus.RUNTIME_ERROR if ran else RunStatus.BUILD_ERROR
+            # jLEMS reports errors raised while stepping with "simulation started (t = ...)" and, when
+            # the failure may stem from the step size, an explicit hint (verified 2026-09-13: a x20 dt
+            # mutant overflowed HH rate expressions mid-run). Such runs executed and then diverged:
+            # spec class 3 (numerically unstable), not class 2 (non-executable).
+            if started and _DT_HINT.search(out):
+                status = RunStatus.UNSTABLE
+            elif started:
+                status = RunStatus.RUNTIME_ERROR
+            else:
+                status = RunStatus.BUILD_ERROR
             return SimResult(status, proc.returncode, runtime, {}, cmd, _first_error(out), tail)
         try:
             traces = {}

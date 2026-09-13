@@ -98,6 +98,14 @@ Runtime-matched baselines use simulated cell-steps as the cost, averaged across 
 **D-016 Frozen eFEL feature variants** (provisional)
 One eFEL variant is used per concept (see `configs/features.yaml`), for example `steady_state_voltage_stimend` (not `steady_state_voltage`, which measures after the stimulus), `spike_count_stimint`, `adaptation_index2` and `strict_burst_number`. Settings are `interp_step = 0.01 ms` and `strict_stiminterval = true`. Settings are reset before every extraction, and unknown setting names are rejected.
 
+**D-020 Runs that start and then diverge are "numerically unstable"; validator coverage gap recorded** (provisional)
+Integration check, 2026-09-13:
+- **Unstable runs.** A ×20 time-step mutant (battery step 0.1 ms) overflowed HH rate expressions mid-simulation. jLEMS printed "simulation started" together with a hint that the time step may be too large. Such runs are now classified as numerically unstable (spec class 3), not build errors. A mid-run error without that hint stays a runtime error (class 2).
+- **Validator gap.** `jnml -validate` test 10025 ("Ion channel in channelDensity should exist") checks `channelDensity` but not `channelDensityVShift`. With `ionChannel="Nax"` on the RS cell's VShift Na density, the file still validates, while the same error on a plain `channelDensity` is caught.
+- **Consequence for omitted includes.** Removing the Na include from RS.cell.nml leaves a structurally "valid" cell that fails to build when reused. The shipped harness still runs, because it includes the channel itself.
+
+Such variants are class 2 (structurally valid, non-executable) and are flagged `canonical_runs_but_battery_failed`. Reporting the validator gap upstream to NeuroML is Neel's decision (N-11).
+
 ## Models and licensing
 
 **D-017 Pilot fixtures: Pospischil 2008 RS and LTS** (provisional)
@@ -122,4 +130,5 @@ Model files keep their own licenses: MIT, or LGPL-3.0 for the NeuroML2 HH exampl
 | N-07 | Protocol amplitudes for models with very low rheobase (LTS short pulses, ramp, rebound) | keep as specified for the pilot; revisit only with discovery data, before freezing |
 | N-08 | Whether to add NEURON as a cross-simulator (optional in the spec) | deferred |
 | N-09 | Accept correlated Pospischil cells in the full study, and which curated candidates to add | see `docs/model_curation_candidates.md` when available |
+| N-11 | Report the jNeuroML validator gap (`channelDensityVShift` references are not checked by test 10025) to the NeuroML maintainers? | not reported; outward-facing, needs Neel |
 | N-10 | Project name. The audit (`docs/m0_evidence/names/`, independently re-checked) found: no PyPI, conda-forge or GitHub-account conflict, but a 2025 CMAME article with an arXiv preprint and code named "NeuroSEM" (a computational simulation framework); an active GPL-3.0 GitHub project spelled "NeuroSem" in neuroscience and language models; the neuromarketing company NeuroSEM holding neurosem.com since 2013; and heavy overloading of "SEM" in neuroscience | **Recommend renaming before any public release.** Preferred: **PerturbPrint** (package/CLI `perturbprint`); it matches the defined term "perturbation fingerprint" and had zero hits in every source checked. Runner-up: DriftClamp. Not legal clearance; re-check registries before release. Code keeps the working name `neurosem` until Neel decides (a rename is a mechanical refactor). |

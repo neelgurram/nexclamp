@@ -215,6 +215,7 @@ class VariantOutcome:
     detecting_protocols: list[str]
     canonical_detected: bool
     runtime_s: float
+    canonical_runs_battery_failed: bool = False   # shipped harness runs, but the model fails when reused
 
 
 def _variant_one(ctx: Context, ref: RefState, tol: ToleranceTable, v: VariantRecord) -> VariantOutcome:
@@ -245,8 +246,10 @@ def _variant_one(ctx: Context, ref: RefState, tol: ToleranceTable, v: VariantRec
     k = classify(True, fp_h, fp_h2, det_h, det_h2)
     write_detections(det_h + (det_h2 or []), out / "detections.csv")
     dprot = sorted(detecting_protocols(det_h, det_h2)) if k.admissible else []
+    split_fate = (fp_h.status is not RunStatus.OK and CANONICAL_ID in fp_h.tables
+                  and bool(fp_h.tables[CANONICAL_ID]))
     outcome = VariantOutcome(v, True, st.libneuroml_strict, fp_h.status.value, k, det_h, det_h2, dprot,
-                             any(d.protocol_id == CANONICAL_ID for d in det_h), round(runtime, 3))
+                             any(d.protocol_id == CANONICAL_ID for d in det_h), round(runtime, 3), split_fate)
     _write_diagnostic(ctx, outcome, fp_h, fp_h2, out / "diagnostic.md")
     return outcome
 
@@ -277,6 +280,7 @@ def aggregate(ctx: Context, refs: dict[str, RefState], outcomes: Sequence[Varian
                      "n_detections_h": len(o.detections_h),
                      "n_detections_h2": "" if o.detections_h2 is None else len(o.detections_h2),
                      "canonical_detected_h": o.canonical_detected, "detecting_protocols": ";".join(o.detecting_protocols),
+                     "canonical_runs_but_battery_failed": o.canonical_runs_battery_failed,
                      "runtime_s": o.runtime_s})
     _write_rows(p / "classification.csv", rows)
     write_detections([d for o in outcomes for d in o.detections_h + (o.detections_h2 or [])], p / "detections.csv")
