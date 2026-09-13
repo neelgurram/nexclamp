@@ -300,10 +300,15 @@ class RunRecorder:
             if cached is not None:
                 shutil.rmtree(stage.root, ignore_errors=True)
                 return cached
-            result = self.sim.run_lems(bundle.lems_file, [bundle.output], timeout_s=self.timeout_s,
-                                       sample_every_ms=exec_eff.sample_every_ms)
-            return self._finish(run_id=run_id, run_kind="probe", stage=stage, variant=variant, protocols=group,
-                                dt_ms=exec_eff.dt_ms, duration_ms=bundle.length_ms, result=result, replicate=replicate)
+            try:
+                result = self.sim.run_lems(bundle.lems_file, [bundle.output], timeout_s=self.timeout_s,
+                                           sample_every_ms=exec_eff.sample_every_ms)
+                return self._finish(run_id=run_id, run_kind="probe", stage=stage, variant=variant, protocols=group,
+                                    dt_ms=exec_eff.dt_ms, duration_ms=bundle.length_ms, result=result, replicate=replicate)
+            except Exception:
+                if stage.root.exists():
+                    self._discard(stage, run_id, failed=True)
+                raise
 
     def run_canonical(self, ws: Workspace, variant: VariantRecord, canonical_proto: ConcreteProtocol,
                       level_factor: int = 1, replicate: int = 0, need_traces: bool = False) -> RunOutput:
@@ -324,11 +329,16 @@ class RunRecorder:
             if cached is not None:
                 shutil.rmtree(stage.root, ignore_errors=True)
                 return cached
-            result = self.sim.run_lems(stage.harness_path, [canonical_output(ws.model)], timeout_s=self.timeout_s,
-                                       sample_every_ms=sample_every)
-            return self._finish(run_id=run_id, run_kind="canonical", stage=stage, variant=variant,
-                                protocols=[canonical_proto], dt_ms=dt_ms, duration_ms=canonical_proto.total_ms,
-                                result=result, replicate=replicate)
+            try:
+                result = self.sim.run_lems(stage.harness_path, [canonical_output(ws.model)], timeout_s=self.timeout_s,
+                                           sample_every_ms=sample_every)
+                return self._finish(run_id=run_id, run_kind="canonical", stage=stage, variant=variant,
+                                    protocols=[canonical_proto], dt_ms=dt_ms, duration_ms=canonical_proto.total_ms,
+                                    result=result, replicate=replicate)
+            except Exception:
+                if stage.root.exists():
+                    self._discard(stage, run_id, failed=True)
+                raise
 
     def run_rheobase(self, ws: Workspace, variant: VariantRecord, level_exec: ExecConfig, rcfg: dict,
                      settle_ms: float) -> RheobaseOutcome:

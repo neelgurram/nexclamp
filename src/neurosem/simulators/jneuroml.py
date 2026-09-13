@@ -173,13 +173,38 @@ def _first_error(out: str) -> str:
     return "simulator exited with a non-zero status"
 
 
+MAX_TIME_LABEL_JITTER = 0.25   # fraction of one step
+
+
+def regularize_time(t_ms: np.ndarray, name: str = "") -> np.ndarray:
+    """Replace jLEMS's printed time labels by the exact uniform grid they encode.
+
+    jLEMS prints time with about 8 significant digits of an accumulated floating-point
+    clock (verified 2026-09-13: at dt = 0.001 ms over 1000 ms, labels deviate by up to 3% of
+    a step, e.g. 0.51097697 s). The integration itself uses a fixed step, so the ideal grid
+    t0 + i*dt is the true sample time. Deviations above MAX_TIME_LABEL_JITTER of a step mean
+    the output is not a fixed-step recording and are rejected.
+    """
+    n = t_ms.size
+    if n < 2:
+        return t_ms
+    dt = (t_ms[-1] - t_ms[0]) / (n - 1)
+    if not dt > 0:
+        raise ValueError(f"{name}: non-increasing time column")
+    ideal = t_ms[0] + np.arange(n) * dt
+    dev = float(np.max(np.abs(t_ms - ideal)) / dt)
+    if dev > MAX_TIME_LABEL_JITTER:
+        raise ValueError(f"{name}: time column is not a fixed-step grid (max deviation {dev:.3f} steps)")
+    return ideal
+
+
 def load_dat(path: Path, columns: dict[str, int], sample_every_ms: float | None = None) -> dict[str, Trace]:
     """Read a jLEMS OutputFile (whitespace columns, SI units) into ms/mV traces."""
     if not path.is_file():
         raise FileNotFoundError(path)
     df = pd.read_csv(path, sep=r"\s+", header=None, engine="c", dtype=np.float64)
     arr = df.to_numpy()
-    t_ms = arr[:, 0] * 1e3
+    t_ms = regularize_time(arr[:, 0] * 1e3, path.name)
     stride = 1
     if sample_every_ms:
         native = float(np.median(np.diff(t_ms[: min(len(t_ms), 1000)])))
