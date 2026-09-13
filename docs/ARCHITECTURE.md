@@ -25,6 +25,18 @@ Core modules already implemented and verified against real jNeuroML runs:
   non-canonical detection with no canonical detection at the nominal level.
 - Orchestration lives in `experiments/campaign.py` (reference, calibrate, generate, variant, aggregate stages);
   `experiments/pilot.py`, `discovery.py`, `heldout.py` and `analyze.py` build on it.
+- `structural.check(ws, sim, reference=None)` validates every NeuroML file in the model's include closure in
+  one jnml call and parses per-file blocks. References must pass on the cell file and harness network files; a
+  variant is invalid if it adds any normalised error absent from its reference (DECISIONS D-006, D-020).
+- Cached features are stored as `features_<key>.json`, where `key` hashes the trace SHA-256, the feature config,
+  the eFEL version and the source of `neurosem/features/*.py`. Features are reloaded from these tracked files when
+  the Git-ignored traces are absent; traces are re-simulated only when needed and must reproduce their hash.
+- `simulators/jneuroml.py` regularises printed time labels to the exact fixed-step grid (labels carry ~8
+  significant digits). A run that started and then failed with jLEMS's time-step hint is `UNSTABLE`; a run that
+  started and failed without the hint is `RUNTIME_ERROR`; a run that never started is `BUILD_ERROR`.
+- `campaign.aggregate` writes `detection_matrix.csv` through `selection.matrix.DetectionMatrix` (with the
+  `__cost__` row) and flags `canonical_runs_but_battery_failed` variants in `classification.csv`.
+- Variant workspaces live at `work/variants/<campaign>/{mutants,transforms}/<model_id>/<variant_id>/`.
 
 ## 1. Data flow
 
