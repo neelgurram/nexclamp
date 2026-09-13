@@ -1,0 +1,256 @@
+{
+  "lens": "Software-testing methodology (mutation analysis, equivalent mutants, test-suite minimisation, oracle problem, metamorphic vs differential testing). Reviewed NEUROSEM_CLAUDE_HANDOFF (extracted.md; PDF authoritative) with cross-checks against NEUROSEM_FINAL_SPEC where it supersedes. Retrieved 2026-09-13. Bibliographic facts come from Crossref works API records retrieved this session; content claims rest only on abstracts retrieved from OpenAlex, Semantic Scholar or Europe PMC, and are marked unverified where only metadata was available. Fixture facts come from raw files fetched at OpenSourceBrain/PospischilEtAl2008@049081c39357d9e7c478b63ef7b10f374d1c50f4. Illustrative arithmetic is methodological reasoning, not a NeuroSem result. Scratch: C:/Users/gurra/AppData/Local/Temp/claude/C--Users-gurra-Continuum/d876c622-d308-4d4a-bbf3-2b2374480647/scratchpad/m0/swt/ (xref_*.json, s2_abstracts.json, openalex_abstracts.json, FS.cell.nml, RS.net.nml, LEMS_RS.xml).",
+  "issues": [
+    {
+      "id": "SWT-01",
+      "handoff_section": "Definitions (Admissible non-equivalent mutant; Silent semantic drift); Protocol selection (comparison against the exhaustive candidate battery); Statistics (primary outcome); Controls (Exhaustive empirical battery)",
+      "assumption": "Mutants whose divergence shows up 'somewhere in the predefined exhaustive battery' form a neutral denominator for comparing a selected battery with canonical testing, and the exhaustive candidate battery is a meaningful comparator.",
+      "category": "scientifically_weak",
+      "severity": "critical",
+      "analysis": "The equivalence oracle and the thing being evaluated are the same set of protocols. Admissibility is defined by detection under the exhaustive battery. Protocol selection draws from, and is compared against, 'the exhaustive candidate battery'. Three consequences follow.\n(1) The exhaustive battery scores 100% on the primary denominator by construction, so it is not a comparator but the labelling rule.\n(2) A mutant whose behavioural change lies outside the candidate protocols (another amplitude, duration, temperature or recorded variable) is labelled 'behaviourally equivalent'. It can never count as a miss, so the study cannot estimate what the approach fails to detect. This is the classic equivalent-versus-stubborn confusion: Yao, Harman and Jia (ICSE 2014) separated truly equivalent mutants from stubborn ones (non-equivalent but undetected by a high-quality suite) by human analysis, and found their distribution very uneven across operators.\n(3) The handoff does not say whether the canonical protocol is itself a candidate column, or whether it is forced into the selected set. If it is included, any battery containing it detects at least everything canonical detects, for every mutant (detection is a union over protocols). The paired comparison against canonical then only tests whether any extra detection exists. Together with (1), a positive primary result is close to guaranteed and a reviewer can call the design tautological.\nThe final spec's cascade figure mentions 'unresolved survivors', but neither document defines how survivors are adjudicated independently of the candidate battery.",
+      "evidence_urls": [
+        "https://api.crossref.org/works/10.1145/2568225.2568265",
+        "https://api.openalex.org/works/doi:10.1145/2568225.2568265?select=doi,title,publication_year,abstract_inverted_index",
+        "https://api.crossref.org/works/10.1109/TSE.2013.44",
+        "https://api.crossref.org/works/10.1145/2931037.2931040"
+      ],
+      "recommendation": "Separate the labelling oracle from the evaluated test set:\n(a) Define an adjudication battery used only to label equivalence and silence. It should be a strict superset with different parameters from the candidate protocols (denser amplitude grid, longer durations, finer dt, and trace-level metrics besides eFEL features). Freeze it before protocol selection, and never allow it as a selectable column.\n(b) Report, per base model and family, mutants that are divergent under adjudication but outside every candidate protocol ('stubborn for the candidate set'). Report remaining survivors as 'unresolved', not 'equivalent'.\n(c) State explicitly whether the canonical protocol is a candidate column and whether it is forced into the selected set. Add one prespecified contrast where the selected battery excludes canonical, so the primary comparison is not dominance by construction.\n(d) Rename the 'exhaustive candidate battery' comparator to 'full candidate battery (upper bound on the candidate set)'.",
+      "needs_neel_decision": true,
+      "decision_question": "Should NeuroSem adopt a separate, frozen adjudication battery for labelling equivalence and silence, distinct from the selectable candidate protocols? And is the canonical protocol (i) excluded from the candidate set, (ii) a candidate column, or (iii) always forced into the selected battery?"
+    },
+    {
+      "id": "SWT-02",
+      "handoff_section": "Mutations (classification: 'behaviorally equivalent'); Neel's required knowledge item 6; Controls (Deterministic mutation sensitivity control)",
+      "assumption": "One empirical category, 'behaviorally equivalent', adequately handles the equivalent-mutant problem for NeuroML/LEMS mutants.",
+      "category": "underspecified",
+      "severity": "high",
+      "analysis": "The equivalent-mutant problem is long-standing: Madeyski et al.'s systematic review (IEEE TSE 2014) found that detection methods are still far from perfect. The handoff's single empirical label merges four situations that must be reported differently.\n(a) Trivially equivalent (dead code): the mutated element is never used. Concrete case in the recommended fixture family: FS.cell.nml at the pinned SHA includes IM.channel.nml but assigns no IM channelDensity, so any mutation of IM kinetics or parameters in FS is equivalent by construction. The tool audit also found LEMS Meta method='rk4' is expected to be a no-op in jLEMS (source reading only).\n(b) Duplicate: two operators produce the same flattened model.\n(c) Sub-tolerance: a real but small effect below tau. Its label depends on the chosen mutation magnitude and on tau, both unspecified.\n(d) Stubborn: divergence exists only outside the tested domain (see SWT-01).\nTrivial Compiler Equivalence shows cheap canonicalisation removes many useless mutants. Papadakis et al. (ICSE 2015) report it discarding over 7% equivalent and 21% duplicated mutants on large C programs and detecting about 30% of known equivalent mutants. Kintis et al. (IEEE TSE 2018) extend this to Java. Without these distinctions, the magnitude grid silently controls the equivalence rate, and therefore the denominator of every research question.",
+      "evidence_urls": [
+        "https://raw.githubusercontent.com/OpenSourceBrain/PospischilEtAl2008/049081c39357d9e7c478b63ef7b10f374d1c50f4/NeuroML2/cells/FS/FS.cell.nml",
+        "https://api.crossref.org/works/10.1109/TSE.2013.44",
+        "https://api.openalex.org/works/doi:10.1109/TSE.2013.44?select=doi,title,publication_year,abstract_inverted_index",
+        "https://api.crossref.org/works/10.1109/ICSE.2015.103",
+        "https://api.crossref.org/works/10.1109/tse.2017.2684805",
+        "https://api.openalex.org/works/doi:10.1109/tse.2017.2684805?select=doi,title,publication_year,abstract_inverted_index",
+        "https://api.crossref.org/works/10.1145/2568225.2568265",
+        "https://github.com/LEMS/jLEMS/blob/master/src/main/java/org/lemsml/jlems/core/sim/Sim.java"
+      ],
+      "recommendation": "Build a 'trivial equivalence' pre-filter analogous to TCE, and split the equivalent label:\n(1) Canonicalise each mutant (flattened LEMS component tree or libNeuroML object model, with units normalised to SI), hash it, and compare with the reference and other mutants. Identical to the reference means TRIVIALLY_EQUIVALENT; identical to another mutant means DUPLICATE. No simulation is needed for either.\n(2) Run a static dead-element check: included but unreferenced ComponentTypes, channels without densities, Meta settings ignored by the chosen simulator.\n(3) Label remaining non-detected mutants SUB_TOLERANCE when some trace or feature difference is non-zero but below tau, and UNRESOLVED otherwise.\n(4) Preregister mutation magnitudes per operator (e.g., a fixed multiplicative grid with a literature justification) before any detection outcome is seen.\n(5) Manually audit a stratified sample of each label in M4. Report all categories in the validation cascade.",
+      "needs_neel_decision": true,
+      "decision_question": "Approve (a) splitting 'behaviorally equivalent' into trivially-equivalent, duplicate, sub-tolerance and unresolved, and (b) a preregistered, outcome-blind mutation-magnitude grid per operator? If yes, which magnitudes (e.g., conductance x0.5/x0.8/x1.25/x2)?"
+    },
+    {
+      "id": "SWT-03",
+      "handoff_section": "Mutations (Stimulus family: amplitude, onset, duration, total time, recorded variable; Numerical family: integration step, solver configuration, output sampling); Protocols",
+      "assumption": "Stimulus and numerical mutations of a model can be detected, or missed, by the other stimulation protocols in the same way as biophysical mutations.",
+      "category": "infeasible",
+      "severity": "high",
+      "analysis": "The handoff never defines the system under test. In the recommended RS fixture, the stimulus is part of the model bundle: RS.net.nml declares pulseGenerator 'Input_1' (delay 0.3 s, duration 0.4 s, amplitude 7.5E-10 A) wired through an inputList. LEMS_RS.xml holds the run settings: Simulation length 1000 ms, step 0.001 ms, and one OutputColumn recording v.\nNeuroSem's protocol engine must substitute its own inputs, durations, dt levels and recordings for every non-canonical protocol. The tool audit plans per-protocol LEMSSimulation files with explicitInput/inputList, and dt levels h, h/2, h/4. So a mutation of the bundle's stimulus amplitude, onset, duration, total time or recorded variable is overwritten and cannot be observed by any other protocol. It is either detected by canonical (if canonical reuses the bundle's stimulus) or invisible to everything.\nThe same applies to dt and output-sampling mutations when NeuroSem sets dt itself. Such mutants cannot show the battery-beats-canonical effect, but they would enter the detection matrix and denominators. Mutating NeuroSem's own protocol templates instead turns them into faults in the test harness, not in the model.",
+      "evidence_urls": [
+        "https://raw.githubusercontent.com/OpenSourceBrain/PospischilEtAl2008/049081c39357d9e7c478b63ef7b10f374d1c50f4/NeuroML2/cells/RS/RS.net.nml",
+        "https://raw.githubusercontent.com/OpenSourceBrain/PospischilEtAl2008/049081c39357d9e7c478b63ef7b10f374d1c50f4/NeuroML2/cells/RS/LEMS_RS.xml",
+        "https://raw.githubusercontent.com/NeuroML/pyNeuroML/v1.3.22/pyneuroml/lems/LEMSSimulation.py"
+      ],
+      "recommendation": "Define the unit under test in DECISIONS.md, choosing between:\n(A) Cell-level model (cell, channel and ion-pool files) as the unit under test. Protocols, network wrapper and simulation settings belong to the NeuroSem harness. Stimulus and numerical faults are then 'configuration/harness faults', evaluated in a separate secondary analysis ('does canonical regression notice a corrupted canonical test configuration?') and excluded from the protocol-selection matrix.\n(B) Full model bundle as the unit under test. Specify a propagation rule so a stimulus or numerical mutation carries into every generated protocol (e.g., a relative amplitude scale or onset offset applied to each template; a dt multiplier applied to each dt level). Record in the manifest that the mutant then modifies the harness.\nEither way, keep these families out of the held-out-family choice unless their observability has been shown in the pilot.",
+      "needs_neel_decision": true,
+      "decision_question": "Is NeuroSem's system under test (A) the cell-level biophysical model, with stimulus and numerical faults moved to a separate configuration-fault analysis, or (B) the whole model bundle, with an explicit rule for propagating stimulus and numerical mutations into every generated protocol?"
+    },
+    {
+      "id": "SWT-04",
+      "handoff_section": "Tolerances (tau = max(abs floor, r|f|, c|f_h - f_h/2|)); Mutations (Numerical: integration step, solver configuration, output sampling); Leakage prevention (hold out an entire mutation family)",
+      "assumption": "Numerical mutants (e.g., a larger integration step) are labelled by protocol sensitivity, independently of how tolerances are calibrated.",
+      "category": "scientifically_weak",
+      "severity": "high",
+      "analysis": "The tolerance is built from exactly the quantity a dt mutant perturbs. For a method converging at order q, the gap between runs at 2h and h is roughly 2^q times the gap between h and h/2 (asymptotic inference, not measured here). So a dt-doubling mutant's feature difference is about 2^q * |f_h - f_h/2|, and it is classed detected or equivalent essentially by whether c exceeds 2^q, not by which protocol is used.\nThe order itself is uncertain for the pilot simulator. The tool audits disagree: one reading of jLEMS source infers forward Euler for standard NeuroML models; the verifier's reading of the bundled jlems 0.12.0 finds the RK4 default with flattening. Neither was executed.\nOther numerical sub-operators are problematic:\n- 'Solver configuration' via Meta method may be a no-op.\n- 'Output sampling' interacts with eFEL, which always resamples to interp_step (default 0.1 ms), so a recording-interval mutant tests the feature pipeline more than the protocols.\n- 'Spatial discretisation' does not apply to single-compartment pilot models.\nIf the numerical family were chosen as the held-out family, the held-out result would mostly measure the constant c.",
+      "evidence_urls": [
+        "https://raw.githubusercontent.com/LEMS/jLEMS/development/src/main/java/org/lemsml/jlems/core/sim/Sim.java",
+        "https://github.com/LEMS/jLEMS/blob/development/src/main/java/org/lemsml/jlems/core/run/StateInstance.java",
+        "https://raw.githubusercontent.com/openbraininstitute/eFEL/master/efel/api.py",
+        "https://pypi.org/pypi/efel/json"
+      ],
+      "recommendation": "(1) In M1/M2, empirically measure convergence order on each fixture (h, h/2, h/4, h/8 on one protocol) before fixing c.\n(2) Freeze c, and the numerical-mutant magnitudes relative to h (e.g., multipliers 4 and 16), before generating numerical mutants. Report the analytically expected detection boundary alongside the observed labels.\n(3) Drop, or demote to a diagnostic, any sub-operator shown to be a no-op in the chosen simulator (Meta method in jLEMS), and spatial discretisation for single-compartment models.\n(4) Report the numerical family separately from the primary detection rate, and do not choose it as the held-out family.\n(5) Fix eFEL interp_step at or below the finest recording interval, and treat output-sampling mutants as tests of the feature pipeline.",
+      "needs_neel_decision": true,
+      "decision_question": "Should the numerical mutation family be kept out of the primary detection-rate denominator and out of the held-out-family choice, and reported as a separate diagnostic of tolerance calibration?"
+    },
+    {
+      "id": "SWT-08",
+      "handoff_section": "Protocol selection (greedy vs random count- and runtime-matched sets); Success criteria / pivot ('selection fails against random on holdout'); Statistics (random-baseline distribution)",
+      "assumption": "Greedy selection on the detection matrix has room to beat cost-matched random protocol sets, and raw mutant counts are an unbiased measure of coverage.",
+      "category": "scientifically_weak",
+      "severity": "high",
+      "analysis": "Whether greedy can beat random depends mainly on the density and structure of the detection matrix, which the handoff does not plan to report.\n- Dense matrix: large conductance or reversal changes usually alter spiking under most protocols, so random k-sets reach the coverage ceiling. Illustration (independence assumption, not a result): if each protocol detects a given mutant with probability 0.5, a random 4-set covers it with probability 1-(0.5)^4 = 0.9375, leaving little headroom. The pivot rule could then fire even though selection is sound.\n- Redundant mutants: many similar mutants (e.g., several magnitudes of one conductance) produce identical detection rows. Greedy follows raw counts and over-weights over-represented operators.\nMutation-testing methodology calls this a validity threat. Papadakis et al. (ISSTA 2016) showed that mixing subsuming and subsumed mutants produces Type I errors in about 62% of experiments without countermeasures. Ammann, Delamaro and Offutt (ICST 2014) show redundant mutants inflate mutation scores and give a way to compute minimal mutant sets. Kurtz et al. (FSE 2016) use dominator mutants.\nRandom baselines are strong in analogous problems: Gopinath et al. (IEEE TR 2017) found no evaluated mutation-reduction strategy gained more than 5% over random sampling. Papadakis et al. (ICSE 2018) found suite size confounds mutation-score comparisons, which is why count matching matters.\nFinally, with 10-16 candidates and k=4, the complete count-matched random distribution is tiny: C(16,4)=1820 subsets. Sampled random sets add needless Monte Carlo error.",
+      "evidence_urls": [
+        "https://api.crossref.org/works/10.1145/2931037.2931040",
+        "https://api.crossref.org/works/10.1109/icst.2014.13",
+        "https://api.openalex.org/works/doi:10.1109/icst.2014.13?select=doi,title,publication_year,abstract_inverted_index",
+        "https://api.crossref.org/works/10.1145/2950290.2950322",
+        "https://api.crossref.org/works/10.1109/tr.2017.2705662",
+        "https://api.openalex.org/works/doi:10.1109/tr.2017.2705662?select=doi,title,publication_year,abstract_inverted_index",
+        "https://api.crossref.org/works/10.1145/3180155.3180183",
+        "https://api.crossref.org/works/10.1145/2905055.2905094",
+        "https://api.crossref.org/works/10.1109/access.2023.3289073"
+      ],
+      "recommendation": "(1) Preregister reporting of matrix density, the distribution of per-mutant detection counts (row sums), and per-protocol column sums on discovery data.\n(2) Enumerate the exact count-matched random distribution (all C(n,k) subsets). Report the selected set's percentile and the expected random coverage. Use a seeded, documented sampler only for runtime-matched sets.\n(3) Alongside the raw detection rate, report a redundancy-robust score: collapse mutants with identical detection rows within a base model (or use a dominator/minimal-mutant set), and weight by base model and family.\n(4) Add a prespecified secondary endpoint on 'hard' mutants: those detected by at most a fixed number of adjudication-battery protocols, defined before selection (see SWT-01).\n(5) Rephrase the pivot criterion so that failure to beat random at a coverage ceiling is reported as a ceiling effect, not as proof that selection fails.",
+      "needs_neel_decision": true,
+      "decision_question": "Add (a) exact enumeration of the random baseline, (b) a redundancy-robust (deduplicated/dominator) detection score, and (c) a prespecified 'hard-mutant' secondary endpoint, while keeping the primary endpoint unchanged?"
+    },
+    {
+      "id": "SWT-09",
+      "handoff_section": "Solo scope (pilot success rule; '100-160 carefully curated admissible mutants'); Leakage prevention (hold out at least one entire mutation family); Milestones M4/M6",
+      "assumption": "Hand-curated mutants and a single held-out mutation family give an unbiased test of whether a battery selected on discovery mutants generalises to faults, and 'at least one' canonical-silent mutant is a meaningful pilot gate.",
+      "category": "scientifically_weak",
+      "severity": "high",
+      "analysis": "Three overfitting channels are not controlled.\n(1) Curation on outcome: admissibility is defined by detection, so 'carefully curated admissible mutants' lets the developer keep or drop mutants after seeing whether protocols detect them. The same person designs the protocols, the operators and the magnitudes, so selection partly learns the mutant generator.\n(2) Minimisation can overfit its target: Rothermel et al. (ICSM) found fault detection of minimised suites can be severely compromised. Wong et al. (ICSE 1995) studied the same effect of test-set minimisation (abstract not retrieved). Holding out one family is a single draw whose outcome depends heavily on which family is chosen, and the handoff does not say when or how it is chosen.\n(3) The pilot gate requires only one reproducible canonical-silent mutant. That is almost guaranteed by construction, for example a T-current or M-current kinetics change that a depolarising step at the canonical amplitude barely probes. It shows existence, not prevalence.",
+      "evidence_urls": [
+        "https://api.crossref.org/works/10.1109/ICSM.1998.738487",
+        "https://api.openalex.org/works/doi:10.1109/ICSM.1998.738487?select=doi,title,publication_year,abstract_inverted_index",
+        "https://api.crossref.org/works/10.1145/225014.225018",
+        "https://api.crossref.org/works/10.1145/2568225.2568265"
+      ],
+      "recommendation": "(1) Generate mutants with a preregistered, seeded sampling design (operator x target element x magnitude grid), fixed before any detection outcome exists. Allow only rule-based exclusion (invalid, non-executable, unstable, trivially equivalent), applied identically to all splits and logged. 'Curation' should mean auditing correctness of operator application, never choosing by detection.\n(2) Choose and hash the held-out family (and models) before building the discovery detection matrix, and document the rationale.\n(3) Add leave-one-family-out selection on discovery data as a secondary, discovery-only diagnostic of family sensitivity.\n(4) Express the M6 pilot gate as a minimum count and proportion of canonical-silent mutants among sampled (not hand-designed) admissible mutants, set before running the pilot. Any hand-designed illustrative mutants go in a separate, labelled demonstration set.",
+      "needs_neel_decision": true,
+      "decision_question": "Replace 'carefully curated admissible mutants' with outcome-blind, preregistered mutant sampling plus rule-based exclusion, and change the M6 pilot gate from 'at least one' silent mutant to a prespecified minimum count or proportion among sampled mutants? If yes, what minimum?"
+    },
+    {
+      "id": "SWT-10",
+      "handoff_section": "Transformations (Valid transformations used to estimate false positives); Controls (No-change control, Valid-transformation false-positive control); Success criteria ('Low, transparent false positives')",
+      "assumption": "The listed valid transformations (unit conversion, XML formatting and comments, numeric formatting, identifier rename, file factoring, reordering, explicit defaults) are a sufficient control for false positives of the calibrated tolerances.",
+      "category": "scientifically_weak",
+      "severity": "high",
+      "analysis": "Most listed transformations change only the serialisation. After parsing they should give the same component values, and under a deterministic fixed-step solver the traces should be bit-identical (inference; to verify in M2 by trace hashing). A false-positive rate near zero on such controls is then guaranteed however tight tau is, so it says nothing about whether tolerances are well calibrated. Only unit conversion, and possibly reordering where it changes evaluation order, can introduce genuine floating-point differences.\nThe handoff also verifies each valid transformation with the same exhaustive battery used for evaluation, which is circular (see SWT-01).\nFalse-positive exposure also grows with the number of protocol-feature comparisons. Detection is 'any prespecified protocol-feature difference exceeds tau', so a k-protocol battery with several features makes many more comparisons than canonical. A small per-comparison false-positive rate can become a large per-transformation rate for the battery but not for canonical, biasing the primary contrast.",
+      "evidence_urls": [
+        "https://api.crossref.org/works/10.1145/2931037.2931040",
+        "https://raw.githubusercontent.com/OpenSourceBrain/osb-model-validation/master/omv/analyzers/analyzer.py",
+        "https://pypi.org/pypi/efel/json"
+      ],
+      "recommendation": "Add 'near-null' controls that produce real but scientifically irrelevant numeric differences, and report false positives per transformation, per protocol-feature comparison, and per battery size (canonical, k=1..K):\n(i) Rerun the reference on a second platform, or with a second LEMS interpreter or exporter where the model supports it (e.g., PyLEMS for strict-valid fixtures; jNeuroML_NEURON). Keep these separate from the runs used to fit c.\n(ii) Rerun at a dt level not used in calibration (e.g., h/8).\n(iii) Apply relative parameter perturbations far below any biological meaning (e.g., 1e-9).\n(iv) Shift stimulus onset by less than one dt on the refinement grid, where timing allows.\nSeparately, record trace-hash equality for the formatting-type controls and report them as 'bit-identical controls', not as evidence that tolerances are adequate. Verify valid transformations with the independent adjudication battery (SWT-01), not the candidate battery.",
+      "needs_neel_decision": true,
+      "decision_question": "Add near-null numeric controls (cross-platform or cross-interpreter reruns, an uncalibrated dt level, tiny parameter perturbations) to the false-positive analysis, and report false positives per comparison and per battery size?"
+    },
+    {
+      "id": "SWT-12",
+      "handoff_section": "Definitions (Canonical protocol); Protocol selection (compare against canonical testing); Statistics (primary outcome: selected battery versus canonical regression)",
+      "assumption": "'Canonical regression' is a well-defined baseline, and a difference between the selected battery and canonical measures the value of additional stimulation protocols.",
+      "category": "underspecified",
+      "severity": "high",
+      "analysis": "The handoff defines the canonical protocol only as a single conventional stimulation. It does not say which comparator the canonical test uses. That leaves two confounded factors: the number of stimuli, and the richness of the comparison (eFEL features plus calibrated tau versus a community-style check).\nThe community check this project would realistically replace is OMV. Per the OMV audit, OMV compares spike times or rates against a stored .mep with one relative tolerance per observable (numpy.allclose rtol) and fails on any change in spike count. Whether the canonical stimulus is each model's existing OMV test or a NeuroSem-standardised step is also open. For the Pospischil fixtures the existing OMV references are the NEURON_MODIFIED .mep files, which sit under a licence carve-out.\nIf canonical uses the weaker OMV-style comparator and the battery uses features plus tau, a battery advantage cannot be attributed to protocols. If canonical uses NeuroSem's full comparator, the baseline is stronger than the practice the paper claims to improve on.",
+      "evidence_urls": [
+        "https://raw.githubusercontent.com/OpenSourceBrain/osb-model-validation/master/utilities/tests/.test.ex9.pylems.omt",
+        "https://raw.githubusercontent.com/OpenSourceBrain/osb-model-validation/master/omv/analyzers/analyzer.py",
+        "https://api.github.com/repos/OpenSourceBrain/PospischilEtAl2008/license?ref=049081c39357d9e7c478b63ef7b10f374d1c50f4"
+      ],
+      "recommendation": "Preregister a 2x2 baseline design:\n- Stimulus set: canonical only vs selected battery.\n- Comparator: community comparator (OMV-style spike-time/rate check with its stored tolerance) vs NeuroSem comparator (frozen eFEL features plus calibrated tau).\nThe primary contrast should hold the comparator fixed (NeuroSem comparator on both sides), so any difference is due to protocols. Report the community-comparator cells as ecological context. Also preregister, per model, exactly which stimulus is canonical: the existing OMV/LEMS reference stimulus, or a standardised step at a fixed rheobase multiple.",
+      "needs_neel_decision": true,
+      "decision_question": "For each model, is the canonical protocol its existing published reference test (e.g., OMV .mep stimulus) or a NeuroSem-standardised step? And should the primary contrast hold the comparator fixed (features plus tau on both sides), with the OMV-style comparator reported as secondary context?"
+    },
+    {
+      "id": "SWT-05",
+      "handoff_section": "Mutations ('Mutant: model produced by exactly one recorded mutation operator'; one fault per mutant; classification 'structurally invalid' / 'non-executable'); Milestone M4 (one-change enforcement)",
+      "assumption": "'Exactly one mutation operator' and 'structurally invalid versus non-executable' are well-defined for XML/LEMS models and can be enforced automatically.",
+      "category": "underspecified",
+      "severity": "medium",
+      "analysis": "One change has no single meaning for XML/LEMS models:\n- A 'missing include' is a one-line textual deletion that removes many components.\n- A 'duplicate assignment' adds an element.\n- A unit conversion rewrites value and unit together.\n- 'Wrong segment group' is one attribute but changes many segments in multicompartment models.\n- An identifier rename (a valid transformation) touches every reference.\nA textual line diff therefore neither enforces nor measures one change.\nThe validity categories depend on which oracle is used, and the audit already found oracles disagreeing. libNeuroML strict validation rejects the LTS fixture's IT.channel.nml, LTS.cell.nml and LTS.net.nml (custom gate type), while jnml -validate accepts them in CI. libNeuroML's validate_neuroml2 is generateDS object validation, not XSD validation. LEMS-level errors such as a wrong compatible component appear only when jLEMS builds the model.\nModel-level mutation work elsewhere defines operators on typed model elements, not text: Simulink operators (Hanh and Binh, KSE 2012), fault injection and mutation for Simulink (Bartocci et al., FSE 2022), and model-based mutation testing (Belli et al., Sci. Comput. Program. 2016). These are cited from metadata only; content not read.",
+      "evidence_urls": [
+        "https://github.com/NeuralEnsemble/libNeuroML/blob/master/neuroml/utils.py",
+        "https://api.crossref.org/works/10.1109/kse.2012.22",
+        "https://api.crossref.org/works/10.1145/3540250.3558932",
+        "https://api.crossref.org/works/10.1016/j.scico.2016.01.003"
+      ],
+      "recommendation": "(1) Define a mutation footprint per operator as a typed edit on the libNeuroML object model or flattened LEMS component tree: exactly one attribute value changed, or one reference retargeted, or one element added or removed. Also record the canonicalised (C14N, SI-normalised) textual diff.\n(2) Implement an automatic footprint checker that fails a mutant whose semantic diff exceeds the operator's declared footprint, and unit-test it on known single and multi-edit examples.\n(3) Name an ordered validity oracle chain and classify by the first failing stage: XML well-formedness; XSD validity against pinned NeuroML_v2.3.1 via jnml -validate; jLEMS build; run completes without NaN/Inf; numerical-stability check. Record the stage and message.\n(4) Report generation yield per operator (invalid, non-executable, unstable, trivially equivalent, admissible). Operators that mostly produce crashes feed the pivot criterion rather than being silently dropped.",
+      "needs_neel_decision": true,
+      "decision_question": "Approve jnml -validate (NeuroML v2.3.1 schema) plus jLEMS build as the authoritative structural-validity and executability oracles for mutant classification, with libNeuroML object validation as a pre-check only?"
+    },
+    {
+      "id": "SWT-06",
+      "handoff_section": "Mutations ('Use one fault per mutant in the primary study'); Research questions RQ5 and RQ7; Mission (detecting changes after editing, translation, refactoring or repair)",
+      "assumption": "A battery that detects single controlled faults will also detect real multi-edit transformations (translations, refactorings, AI-assisted edits), i.e., the coupling effect holds for neuron models.",
+      "category": "uncertain",
+      "severity": "medium",
+      "analysis": "Generalising from simple mutants to complex real changes relies on the coupling effect. Offutt's investigation (ACM TOSEM 1992) supports the hypothesis that test data detecting simple faults also detect more complex ones, but only for a specific class of software faults. Evidence that mutants stand in for real faults comes from programs: Just et al. (FSE 2014), and Papadakis et al. (ICSE 2018), who found the correlation weak once suite size is controlled.\nConductance-based models are continuous dynamical systems with strong parameter degeneracy. Prinz, Bucher and Marder (Nat. Neurosci. 2004) simulated millions of pyloric network variants and found virtually indistinguishable activity arising from widely disparate parameter sets. Several simultaneous edits can therefore compensate each other, making realistic multi-edit changes potentially more silent than any single fault, which is the opposite of what coupling assumes. The handoff's primary study is single-fault only; the final spec leaves compound faults to an optional stress test.",
+      "evidence_urls": [
+        "https://api.crossref.org/works/10.1145/125489.125473",
+        "https://api.openalex.org/works/doi:10.1145/125489.125473?select=doi,title,publication_year,abstract_inverted_index",
+        "https://api.crossref.org/works/10.1145/2635868.2635929",
+        "https://api.crossref.org/works/10.1145/3180155.3180183",
+        "https://api.crossref.org/works/10.1038/nn1352",
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI:%2210.1038/nn1352%22&resultType=core&format=json"
+      ],
+      "recommendation": "(1) State coupling as an explicit, untested assumption in the threats-to-validity section, and restrict primary claims to single-fault mutants of the defined families.\n(2) Add a small, prespecified secondary set of compensating second-order mutants, e.g., paired conductance changes chosen by a preregistered rule so the canonical spike count is approximately preserved.\n(3) Add a small set of real historical transformations with documented diffs as an external-validity probe. One candidate: the Pospischil NeuroML conversion's documented differences from the original ModelDB NEURON code (diffs_to_original.txt in the fixture repository).\nKeep both sets out of protocol selection.",
+      "needs_neel_decision": true,
+      "decision_question": "Add a small secondary evaluation set of compensating second-order mutants and real historical model transformations, excluded from selection, to probe whether single-fault results carry over to realistic changes?"
+    },
+    {
+      "id": "SWT-07",
+      "handoff_section": "Protocol selection (greedy maximum coverage steps 1-5; budget k; runtime-matched random sets); Protocols (rheobase search as prerequisite for rheobase-normalised tests)",
+      "assumption": "The five-step greedy procedure is fully specified, deterministic, near-optimal, and fair to compare against runtime-matched random sets.",
+      "category": "underspecified",
+      "severity": "medium",
+      "analysis": "(1) Ties: with about 100 binary rows and 10-16 columns, equal marginal gains will be common, especially at later steps where several protocols add 0 or 1 newly covered mutants. The handoff gives no tie-break or zero-gain stopping rule, so the frozen battery can depend on column order.\n(2) Optimality: max k-cover is NP-hard, and Feige (J. ACM 1998) shows (1-1/e) is the approximation threshold for efficient algorithms assuming P != NP. The greedy (1-1/e) guarantee itself is classically attributed to Nemhauser, Wolsey and Fisher (Math. Program. 1978); I verified only metadata for that paper, not its content. At NeuroSem's scale approximation is unnecessary: C(16,4)=1820 subsets can be scored exactly, so reporting only greedy hides the optimality gap.\n(3) Cost: greedy counts coverage per protocol, whereas one comparison is runtime-matched. Budgeted maximum coverage is a distinct problem (Khuller, Moss and Naor, Inf. Process. Lett. 1999; metadata only, content unverified here).\n(4) Dependencies: rheobase search (protocol 3) must run before every rheobase-normalised protocol, and the hyperpolarising step shares its prefix with the rebound test. Protocol costs are therefore not additive per column, and runtime matching must account for shared prerequisites. Greedy selection on mutation coverage is itself established prior art (Jatana et al. 2016; Jehan and Wotawa, IEEE Access 2023), consistent with the handoff's no-novelty rule for minimisation.",
+      "evidence_urls": [
+        "https://api.crossref.org/works/10.1145/285055.285059",
+        "https://api.openalex.org/works/doi:10.1145/285055.285059?select=doi,title,publication_year,abstract_inverted_index",
+        "https://api.crossref.org/works/10.1007/BF01588971",
+        "https://api.crossref.org/works/10.1016/S0020-0190(99)00031-9",
+        "https://api.crossref.org/works/10.1145/2905055.2905094",
+        "https://api.crossref.org/works/10.1109/access.2023.3289073",
+        "https://api.crossref.org/works/10.1002/stv.430"
+      ],
+      "recommendation": "(1) Preregister a deterministic tie-break order, e.g., larger marginal gain, then lower median simulated runtime including unpaid prerequisites, then lower protocol ID. Also preregister a zero-gain rule (stop, or fill remaining slots in a stated order), and unit-test determinism under column permutation.\n(2) Enumerate all k-subsets on discovery data. Report the exact optimum, the greedy-optimum gap, and every co-optimal or tied set. Report held-out performance for the frozen greedy set as primary, and the spread across tied sets as sensitivity.\n(3) Model cost at set level (union of required simulations, including shared rheobase search), and use that same cost function for runtime-matched random sets.\n(4) Cite greedy mutation-coverage minimisation as prior art in the novelty matrix.",
+      "needs_neel_decision": false,
+      "decision_question": "None; implementation-level specification within the approved greedy design. Exact enumeration and tie-set reporting are added as diagnostics only."
+    },
+    {
+      "id": "SWT-11",
+      "handoff_section": "Plain-language concept; Existing field (novelty exclusions list 'metamorphic testing generally'); Transformations (valid transformations); Final spec 'Metamorphic testing' background",
+      "assumption": "Metamorphic testing is the right conceptual frame for NeuroSem's core check.",
+      "category": "scientifically_weak",
+      "severity": "medium",
+      "analysis": "NeuroSem's core check runs the reference model and the transformed model on identical stimuli and compares outputs within tolerance. That is differential, back-to-back regression testing, with the reference version as a pseudo-oracle (Vouk, Inf. Softw. Technol. 1990 on back-to-back testing; metadata only). Barr et al.'s oracle survey (IEEE TSE 2015) treats specification-, metamorphic- and implicit-oracle approaches as distinct families.\nMetamorphic testing checks necessary relations among several executions of the same program under related inputs (Chen et al., ACM CSUR 2018; Segura et al., IEEE TSE 2016). In NeuroSem, metamorphic relations appear only in controls: unit conversion preserves behaviour, dt refinement converges, extending a run preserves the overlapping interval.\nMarsh, Cohen and Cottingham (ICST 2025) applied metamorphic and differential testing as separate techniques to computational-biology tools, and reported heavy manual effort for domain tests and for validating correctness. Framing the main method as metamorphic invites reviewer pushback and misplaces the prior art. Relevant differential prior art includes cross-simulator result comparison (Bergmann and Sauro, Bioinformatics 2008, for SBML simulators) and metamorphic V&V of simulation models (Olsen and Raunak, IEEE TR 2019; Raunak and Olsen, MET 2021).",
+      "evidence_urls": [
+        "https://api.crossref.org/works/10.1016/0950-5849(90)90044-r",
+        "https://api.crossref.org/works/10.1109/TSE.2014.2372785",
+        "https://api.crossref.org/works/10.1145/3143561",
+        "https://api.crossref.org/works/10.1109/TSE.2016.2532875",
+        "https://api.crossref.org/works/10.1109/icst62969.2025.10988959",
+        "https://api.crossref.org/works/10.1093/bioinformatics/btn319",
+        "https://api.crossref.org/works/10.1109/tr.2018.2850315",
+        "https://api.crossref.org/works/10.1109/met52542.2021.00015"
+      ],
+      "recommendation": "Frame the core method as 'mutation-calibrated differential (back-to-back) regression testing with a reference-model oracle and a selected stimulation battery'. Reserve 'metamorphic relations' for the named control relations (unit-conversion invariance, refinement convergence, interval extension). Add differential, back-to-back and cross-simulator comparison work to docs/novelty_matrix.csv and to the novelty-exclusion list.",
+      "needs_neel_decision": true,
+      "decision_question": "Should the manuscript frame NeuroSem as differential/back-to-back regression testing evaluated by mutation analysis, using 'metamorphic' only for the control relations?"
+    },
+    {
+      "id": "SWT-13",
+      "handoff_section": "Definitions (Reference model; Mutant; Silent semantic drift); Mandatory Claude operating rules ('Do not treat every parameter change as a defect'); Claude Code case study tasks",
+      "assumption": "Divergence from the reference model is a reliable oracle for a defect in every transformation NeuroSem evaluates.",
+      "category": "scientifically_weak",
+      "severity": "medium",
+      "analysis": "A reference-version oracle can report only 'different from the reference', not 'incorrect'. Barr et al. (IEEE TSE 2015) define the oracle problem as telling correct from incorrect behaviour and note that when automated oracles fall short, the human remains the final source. Kanewala and Bieman's review (Inf. Softw. Technol. 2014) covers testing scientific software, where oracles are notoriously hard (metadata verified; content not re-read here).\nThe handoff's own rules and tasks show the conflict. Operators such as conductance scaling are also legitimate scientific edits. Case-study tasks include 'Change one requested conductance' (divergence is intended), 'Repair seeded errors' (the oracle is the unseeded original, not the task input) and 'Improve runtime while preserving tested behavior' (a dt change is itself a numerical mutant).\nThere is a second oracle risk: if the reference is not numerically converged at its native dt, 'divergence' may reflect reference error. The RS fixture runs at 0.001 ms, but other models may not.",
+      "evidence_urls": [
+        "https://api.crossref.org/works/10.1109/TSE.2014.2372785",
+        "https://api.crossref.org/works/10.1016/j.infsof.2014.05.006",
+        "https://raw.githubusercontent.com/OpenSourceBrain/PospischilEtAl2008/049081c39357d9e7c478b63ef7b10f374d1c50f4/NeuroML2/cells/RS/LEMS_RS.xml"
+      ],
+      "recommendation": "(1) Give every transformation record an intent label: PRESERVE, or CHANGE(target set). For PRESERVE the oracle is 'no protocol-feature difference beyond tau'. For CHANGE the oracle is 'the requested target changed as specified, and features outside a preregistered allowed-change set stay within tau'. Otherwise restrict agent tasks to PRESERVE intent.\n(2) Word detections as 'behavioural change relative to the reference under the stated intent', not 'fault'.\n(3) Make reference convergence (h vs h/2 feature differences within the tau floors on all candidate protocols) an inclusion criterion before a model can serve as an oracle.",
+      "needs_neel_decision": true,
+      "decision_question": "Should every transformation carry an intent label (preserve vs. change-specified-target) that defines its oracle, with agent tasks involving intended changes scored against an allowed-change set, or restricted to preserve-intent tasks only?"
+    },
+    {
+      "id": "SWT-14",
+      "handoff_section": "Definitions ('Silent semantic drift'; 'Empirical semantic certificate'); Neel's required knowledge item 7",
+      "assumption": "The terms 'silent semantic drift' and 'empirical semantic certificate' accurately convey a finite, test-based, single-step behavioural difference.",
+      "category": "scientifically_weak",
+      "severity": "low",
+      "analysis": "Reviewers from software engineering or programming languages may read these terms more strongly than defined.\n- 'Semantic' suggests formal semantics, and LEMS does define a formal component semantics, so 'semantic drift' implies a claim about model meaning, not behaviour on sampled stimuli.\n- 'Drift' suggests gradual accumulation over time or versions. A Crossref title search this session returned several recent works using 'semantic ... drift' for meaning change in language and LLM contexts. NeuroSem's mutants are one-step changes.\n- 'Certificate' in verification means a checkable proof artifact: proof-carrying code (Necula, POPL 1997) and translation validation, which checks each individual translation (Pnueli, Siegel and Singerman, TACAS/LNCS 1998). Both cited from metadata only.\nThe handoff itself forbids calling finite testing a formal equivalence proof, yet 'certificate' implies one. Translation validation is also the formal counterpart of NeuroSem's goal for translated models, so it belongs in related work.",
+      "evidence_urls": [
+        "https://api.crossref.org/works?rows=4&select=DOI,title,author,issued,container-title&query.bibliographic=semantic%20drift",
+        "https://api.crossref.org/works/10.1145/263699.263712",
+        "https://api.crossref.org/works/10.1007/BFb0054170"
+      ],
+      "recommendation": "Use operational terms: 'canonical-silent behavioural change' (or 'hidden behavioural change') instead of 'silent semantic drift', and 'tested-preservation record' (or 'battery pass report') instead of 'empirical semantic certificate'. If the original terms are kept, define them at first use with an explicit not-a-proof clause, and cite translation validation as the formal alternative the method does not provide.",
+      "needs_neel_decision": true,
+      "decision_question": "Rename 'silent semantic drift' and 'empirical semantic certificate' to operational terms (e.g., 'canonical-silent behavioural change' and 'tested-preservation record') in code, docs and manuscript?"
+    }
+  ]
+}

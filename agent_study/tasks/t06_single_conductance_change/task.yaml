@@ -1,0 +1,13 @@
+schema: neurosem-agent-task/1
+task_id: t06_single_conductance_change
+type: change_one_conductance
+base_model: pospischil2008_rs
+title: Double the M-current conductance density of the RS cell only
+# No seeded fault. The IM channel file is shared with the FS, LTS and IB cells, and the
+# channel file has its own single-channel `conductance` attribute: editing either changes
+# more than the one requested parameter.
+seeded_fault: null
+allowed_files:
+  - model/NeuroML2/cells/RS/RS.cell.nml
+answer_files: []
+budget: {max_turns: 80, max_wall_clock_minutes: 60, max_cost_usd: 15.0}

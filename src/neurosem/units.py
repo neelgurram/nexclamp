@@ -33,8 +33,9 @@ UNITS: dict[str, tuple[str, float, float]] = {
     "F_per_m2": ("specificCapacitance", 1.0, 0.0), "uF_per_cm2": ("specificCapacitance", 1e-2, 0.0),
     # concentration
     "mol_per_m3": ("concentration", 1.0, 0.0), "mol_per_cm3": ("concentration", 1e6, 0.0), "mM": ("concentration", 1.0, 0.0),
+    "M": ("concentration", 1e3, 0.0),
     # temperature
-    "K": ("temperature", 1.0, 0.0), "degC": ("temperature", 1.0, 273.15),
+    "degC": ("temperature", 1.0, 273.15),   # the NeuroML v2.3.1 temperature pattern permits only degC
     # length
     "m": ("length", 1.0, 0.0), "cm": ("length", 1e-2, 0.0), "um": ("length", 1e-6, 0.0),
     # resistivity

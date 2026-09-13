@@ -1,0 +1,1190 @@
+{
+  "finder": "arxiv-openalex",
+  "date": "2026-09-13",
+  "note": "Assigned sources arXiv and OpenAlex were largely rate-limited; Europe PMC REST and Crossref REST APIs were used as documented fallbacks. arXiv-only preprints may therefore be under-covered; re-run arXiv/OpenAlex queries after the rate limits reset. Metadata (title/authors/year/venue) is copied from retrieved API records. Closeness scores are judgements from titles/abstract snippets, not full-text reads.",
+  "candidates": [
+    {
+      "title": "NeuronUnit: A package for data-driven validation of neuron models using SciUnit",
+      "authors": "Gerkin RC, Birgiolas J, Jarvis RJ, Omar C, Crook SM",
+      "year": "2019",
+      "venue": "bioRxiv",
+      "url": "https://doi.org/10.1101/665331",
+      "doi": "10.1101/665331",
+      "kind": "preprint",
+      "found_via": "Europe PMC: 'NeuroML'; Europe PMC: 'SciUnit OR NeuronUnit'; Crossref: 'SciUnit test-driven framework validation' (+2 more); metadata confirmed via Crossref /works/<doi> [fallback source used because arXiv/OpenAlex were rate-limited]",
+      "why_relevant": "NeuronUnit: SciUnit-based, data-driven validation of neuron models, comparing model predictions with experimental observations through statistical tests. A partial overlap (automated electrophysiological testing of neuron models), but the retrieved record shows no controlled mutation, tolerance calibration by refinement, or protocol-battery selection. The SciUnit framework paper itself was not retrieved (unverified).",
+      "estimated_closeness": 3
+    },
+    {
+      "title": "HippoUnit: A software tool for the automated testing and systematic comparison of detailed models of hippocampal neurons based on electrophysiological data",
+      "authors": "Sáray S, Rössert CA, Appukuttan S, Migliore R, Vitale P, Lupascu CA, Bologna LL, Van Geit W, Romani A, Davison AP, Muller E, Freund TF, Káli S",
+      "year": "2021",
+      "venue": "PLoS computational biology",
+      "url": "https://doi.org/10.1371/journal.pcbi.1008114",
+      "doi": "10.1371/journal.pcbi.1008114",
+      "kind": "paper",
+      "found_via": "Europe PMC: 'SciUnit OR NeuronUnit'; Europe PMC: 'eFEL AND electrophysiology'; Europe PMC: 'BluePyOpt' (+3 more); metadata confirmed via Crossref /works/<doi> [fallback source used because arXiv/OpenAlex were rate-limited]",
+      "why_relevant": "HippoUnit: automated testing and systematic comparison of detailed hippocampal neuron models against electrophysiological data (per title). A strong partial overlap (a battery of stimulus-based tests with feature comparisons applied to many models), but aimed at validation against data, not detecting drift from controlled mutations or selecting a compact battery.",
+      "estimated_closeness": 3
+    },
+    {
+      "title": "A universal workflow for creation, validation, and generalization of detailed neuronal models",
+      "authors": "Reva M, Rössert C, Arnaudon A, Damart T, Mandge D, Tuncel A, Ramaswamy S, Markram H, Van Geit W",
+      "year": "2023",
+      "venue": "Patterns (New York, N.Y.)",
+      "url": "https://doi.org/10.1016/j.patter.2023.100855",
+      "doi": "10.1016/j.patter.2023.100855",
+      "kind": "paper",
+      "found_via": "OpenAlex: 'NeuroML mutation testing'; Europe PMC: 'reproducibility AND \"neuron models\" AND (simulator OR NeuroML)'; Europe PMC: 'BluePyOpt'",
+      "why_relevant": "Automated workflow for creating, validating and generalising detailed electrical neuron models across morphologies. Overlaps on multi-feature validation and generalisation beyond the fitting set; does not target detection of behaviour-changing edits or battery minimisation.",
+      "estimated_closeness": 3
+    },
+    {
+      "title": "Reproducing and quantitatively validating a biologically-constrained point-neuron model of CA1 pyramidal cells",
+      "authors": "Appukuttan S, Davison AP",
+      "year": "2022",
+      "venue": "Frontiers in integrative neuroscience",
+      "url": "https://doi.org/10.3389/fnint.2022.1041423",
+      "doi": "10.3389/fnint.2022.1041423",
+      "kind": "paper",
+      "found_via": "Europe PMC: '(NEURON OR NEST OR Brian2 OR Arbor) AND simulator AND comparison AND neuron'; Europe PMC: 'reproducibility AND \"neuron models\" AND (simulator OR NeuroML)'; Europe PMC: 'SciUnit OR NeuronUnit' (+1 more) [fallback source used because arXiv/OpenAlex were rate-limited]",
+      "why_relevant": "Independently reimplements a Brian point-neuron CA1 model in Brian2 and NEURON and quantitatively validates the reproductions (e.g. frequency-current profiles). Closest retrieved example of cross-simulator translation with behavioural checks; no mutation analysis or protocol optimisation.",
+      "estimated_closeness": 3
+    },
+    {
+      "title": "NeuroML-DB: Sharing and characterizing data-driven neuroscience models described in NeuroML",
+      "authors": "Birgiolas J, Haynes V, Gleeson P, Gerkin RC, Dietrich SW, Crook S",
+      "year": "2023",
+      "venue": "PLoS computational biology",
+      "url": "https://doi.org/10.1371/journal.pcbi.1010941",
+      "doi": "10.1371/journal.pcbi.1010941",
+      "kind": "paper",
+      "found_via": "Europe PMC: 'NeuroML'; Europe PMC: '\"Open Source Brain\"'; Europe PMC: 'pyNeuroML' (+8 more) [fallback source used because arXiv/OpenAlex were rate-limited]",
+      "why_relevant": "NeuroML-DB shares and characterises NeuroML models. May apply standard stimulation protocols across many NeuroML models (to verify from full text), which would make it a close source for multi-protocol characterisation and fixture selection; the retrieved record shows no mutation or regression-detection method.",
+      "estimated_closeness": 3
+    },
+    {
+      "title": "Optimal experimental designs for characterising ion channel gating by filling the phase-voltage space of model dynamics",
+      "authors": "Mirams GR, Clerx M, Whittaker DG, Lei CL",
+      "year": "2024",
+      "venue": "bioRxiv",
+      "url": "https://doi.org/10.1101/2024.05.02.592179",
+      "doi": "10.1101/2024.05.02.592179",
+      "kind": "preprint",
+      "found_via": "Europe PMC: '\"optimal experimental design\" AND (\"ion channel\" OR \"neuron model\") AND protocol' [fallback source used because arXiv/OpenAlex were rate-limited]",
+      "why_relevant": "Optimises voltage-clamp protocol design for characterising ion-channel gating from model dynamics. Closest retrieved analogue of automatic stimulation-protocol optimisation for mechanistic electrophysiology models, but aimed at parameter identifiability, not detecting behaviour-changing edits.",
+      "estimated_closeness": 3
+    },
+    {
+      "title": "Optimising experimental designs for model selection of ion channel drug binding mechanisms",
+      "authors": "Patten-Elliott F, Lei CL, Preston SP, Wilkinson RD, Mirams GR",
+      "year": "2024",
+      "venue": "bioRxiv",
+      "url": "https://doi.org/10.1101/2024.08.20.608856",
+      "doi": "10.1101/2024.08.20.608856",
+      "kind": "preprint",
+      "found_via": "Europe PMC: '\"optimal experimental design\" AND (\"ion channel\" OR \"neuron model\") AND protocol' [fallback source used because arXiv/OpenAlex were rate-limited]",
+      "why_relevant": "Optimises experimental designs to discriminate between candidate ion-channel drug-binding models. Protocol optimisation for model discrimination overlaps conceptually with choosing stimuli that separate a model from its variants; cardiac/hERG domain, no mutation-family holdout.",
+      "estimated_closeness": 3
+    },
+    {
+      "title": "Improving the Efficacy of Testing Scientific Software: Insights from Mutation Testing",
+      "authors": "Kris Roker, Upulee Kanewala",
+      "year": "2024",
+      "venue": "2024 IEEE International Conference on Software Testing, Verification and Validation Workshops (ICSTW)",
+      "url": "https://doi.org/10.1109/icstw60967.2024.00056",
+      "doi": "10.1109/icstw60967.2024.00056",
+      "kind": "paper",
+      "found_via": "Crossref: 'mutation testing scientific simulation software'; metadata confirmed via Crossref /works/<doi> [fallback source used because arXiv/OpenAlex were rate-limited]",
+      "why_relevant": "Uses mutation testing to assess and improve test efficacy for scientific software. Generic (non-neuroscience) overlap with using controlled faults to evaluate a test suite.",
+      "estimated_closeness": 3
+    },
+    {
+      "title": "Investigating test selection techniques for scientific software using Hook’s mutation sensitivity testing",
+      "authors": "Rob Gray, Diane Kelly",
+      "year": "2010",
+      "venue": "Procedia Computer Science",
+      "url": "https://doi.org/10.1016/j.procs.2010.04.165",
+      "doi": "10.1016/j.procs.2010.04.165",
+      "kind": "paper",
+      "found_via": "Crossref: 'mutation testing scientific simulation software'; metadata confirmed via Crossref /works/<doi> [fallback source used because arXiv/OpenAlex were rate-limited]",
+      "why_relevant": "Investigates test selection techniques for scientific software using Hook's mutation sensitivity testing. Combines mutation-based evaluation with test selection in scientific code, a generic analogue of mutation-calibrated battery selection; not neuron models or electrophysiology features.",
+      "estimated_closeness": 3
+    },
+    {
+      "title": "The NeuroML ecosystem for standardized multi-scale modeling in neuroscience",
+      "authors": "Sinha A, Gleeson P, Marin B, Dura-Bernal S, Panagiotou S, Crook S, Cantarelli M, Cannon RC, Davison AP, Gurnani H, Silver RA",
+      "year": "2025",
+      "venue": "eLife",
+      "url": "https://doi.org/10.7554/elife.95135",
+      "doi": "10.7554/elife.95135",
+      "kind": "paper",
+      "found_via": "Europe PMC: 'reproducibility AND \"neuron models\" AND (simulator OR NeuroML)'; Europe PMC: 'NeuroML'; Europe PMC: '\"Open Source Brain\"' (+8 more); metadata confirmed via Crossref /works/<doi> [fallback source used because arXiv/OpenAlex were rate-limited]",
+      "why_relevant": "Canonical current citation for the NeuroML ecosystem (model description, validation and simulation tooling) that NeuroSem reuses. Standardised model representation and validation, not mutation-calibrated behavioural testing. A 2023 bioRxiv preprint version (10.1101/2023.12.07.570537) also appeared in results.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "LEMS: a language for expressing complex biological models in concise and hierarchical form and its use in underpinning NeuroML 2",
+      "authors": "Cannon RC, Gleeson P, Crook S, Ganapathy G, Marin B, Piasini E, Silver RA",
+      "year": "2014",
+      "venue": "Frontiers in neuroinformatics",
+      "url": "https://doi.org/10.3389/fninf.2014.00079",
+      "doi": "10.3389/fninf.2014.00079",
+      "kind": "paper",
+      "found_via": "Europe PMC: 'reproducibility AND \"neuron models\" AND (simulator OR NeuroML)'; Europe PMC: 'NeuroML'; Europe PMC: 'LEMS AND NeuroML' (+1 more); metadata confirmed via Crossref /works/<doi> [fallback source used because arXiv/OpenAlex were rate-limited]",
+      "why_relevant": "Canonical LEMS citation (the language underpinning NeuroML 2). Needed as a reused-tool citation; it is not a testing method.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "libNeuroML and PyLEMS: using Python to combine procedural and declarative modeling approaches in computational neuroscience",
+      "authors": "Vella M, Cannon RC, Crook S, Davison AP, Ganapathy G, Robinson HP, Silver RA, Gleeson P",
+      "year": "2014",
+      "venue": "Frontiers in neuroinformatics",
+      "url": "https://doi.org/10.3389/fninf.2014.00038",
+      "doi": "10.3389/fninf.2014.00038",
+      "kind": "paper",
+      "found_via": "Europe PMC: 'reproducibility AND \"neuron models\" AND (simulator OR NeuroML)'; Europe PMC: 'LEMS AND NeuroML'; Europe PMC: '\"OSB Model Validation\" OR (\"Open Source Brain\" AND \"model validation\")' (+1 more) [fallback source used because arXiv/OpenAlex were rate-limited]",
+      "why_relevant": "Canonical citation for libNeuroML and PyLEMS, the Python libraries behind pyNeuroML-style parsing and simulation. Reused tooling, not a testing method. No separate pyNeuroML/jNeuroML paper surfaced via these sources.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Open Source Brain: A Collaborative Resource for Visualizing, Analyzing, Simulating, and Developing Standardized Models of Neurons and Circuits",
+      "authors": "Gleeson P, Cantarelli M, Marin B, Quintana A, Earnshaw M, Sadeh S, Piasini E, Birgiolas J, Cannon RC, Cayco-Gajic NA, Crook S, Davison AP, Dura-Bernal S, Ecker A, Hines ML, Idili G, Lanore F, Larson SD, Lytton WW, Majumdar A, McDougal RA, Sivagnanam S, Solinas S, Stanislovas R, van Albada SJ, van Geit W, Silver RA",
+      "year": "2019",
+      "venue": "Neuron",
+      "url": "https://doi.org/10.1016/j.neuron.2019.05.019",
+      "doi": "10.1016/j.neuron.2019.05.019",
+      "kind": "paper",
+      "found_via": "Europe PMC: 'reproducibility AND \"neuron models\" AND (simulator OR NeuroML)'; Europe PMC: 'NeuroML'; Europe PMC: '\"Open Source Brain\"' (+4 more); metadata confirmed via Crossref /works/<doi> [fallback source used because arXiv/OpenAlex were rate-limited]",
+      "why_relevant": "Canonical Open Source Brain citation. The handoff lists OSB Model Validation (OMV) as reused infrastructure. The OMV-specific citation was not retrieved via arXiv/OpenAlex/Europe PMC/Crossref (Crossref query returned nothing relevant), so that remains unverified.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "eFEL: electrophysiology feature extraction library",
+      "authors": "Mandge D, Tuncel A, Jaquier A, Kilic I, Damart T, Markram H, Van Geit W, Ranjan R",
+      "year": "2026",
+      "venue": "Bioinformatics (Oxford, England)",
+      "url": "https://doi.org/10.1093/bioinformatics/btag328",
+      "doi": "10.1093/bioinformatics/btag328",
+      "kind": "paper",
+      "found_via": "Europe PMC: 'eFEL AND electrophysiology'; Europe PMC: 'BluePyOpt'; Europe PMC: 'software testing computational neuroscience models'; metadata confirmed via Crossref /works/<doi> [fallback source used because arXiv/OpenAlex were rate-limited]",
+      "why_relevant": "Canonical eFEL citation (electrophysiology feature extraction library), confirmed via Crossref. NeuroSem reuses it for feature fingerprints and claims no novelty for feature extraction.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "BluePyOpt: Leveraging Open Source Software and Cloud Infrastructure to Optimise Model Parameters in Neuroscience",
+      "authors": "Van Geit W, Gevaert M, Chindemi G, Rössert C, Courcol JD, Muller EB, Schürmann F, Segev I, Markram H",
+      "year": "2016",
+      "venue": "Frontiers in neuroinformatics",
+      "url": "https://doi.org/10.3389/fninf.2016.00017",
+      "doi": "10.3389/fninf.2016.00017",
+      "kind": "paper",
+      "found_via": "OpenAlex: 'NeuroML mutation testing'; Europe PMC: 'NeuroML AND mutation'; Europe PMC: 'eFEL AND electrophysiology' (+2 more); metadata confirmed via Crossref /works/<doi>",
+      "why_relevant": "BluePyOpt, a neuron model parameter optimisation framework from the same toolchain as eFEL. Relevant as prior feature-based model fitting infrastructure; its use of multi-protocol feature objectives needs confirming from full text.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "A new reduced-morphology model for CA1 pyramidal cells and its validation and comparison with other models using HippoUnit",
+      "authors": "Tomko M, Benuskova L, Jedlicka P",
+      "year": "2021",
+      "venue": "Scientific reports",
+      "url": "https://doi.org/10.1038/s41598-021-87002-7",
+      "doi": "10.1038/s41598-021-87002-7",
+      "kind": "paper",
+      "found_via": "Europe PMC: 'SciUnit OR NeuronUnit'; Europe PMC: 'HippoUnit'; Europe PMC: 'SciUnit AND (framework OR validation) AND model' [fallback source used because arXiv/OpenAlex were rate-limited]",
+      "why_relevant": "Builds a reduced-morphology CA1 model and uses HippoUnit to validate and compare it with other models. An example of checking a model transformation (simplification) with a stimulus-test battery; no controlled mutants or optimised protocol selection.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Reproducible Neural Network Simulations: Statistical Methods for Model Validation on the Level of Network Activity Data",
+      "authors": "Gutzen R, von Papen M, Trensch G, Quaglio P, Grün S, Denker M",
+      "year": "2018",
+      "venue": "Frontiers in neuroinformatics",
+      "url": "https://doi.org/10.3389/fninf.2018.00090",
+      "doi": "10.3389/fninf.2018.00090",
+      "kind": "paper",
+      "found_via": "Europe PMC: 'SciUnit OR NeuronUnit'; Europe PMC: 'SciUnit AND (framework OR validation) AND model'; Europe PMC: 'reimplementation AND neuron model AND reproducib* AND (ReScience OR replication)' [fallback source used because arXiv/OpenAlex were rate-limited]",
+      "why_relevant": "Statistical methods for validating neural network simulations against reference data across simulation environments. Relevant to differential/cross-simulator testing, but at network-activity level with no controlled single-fault mutants.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Unit testing, model validation, and biological simulation",
+      "authors": "Sarma GP, Jacobs TW, Watts MD, Ghayoomie SV, Larson SD, Gerkin RC",
+      "year": "2016",
+      "venue": "F1000Research",
+      "url": "https://doi.org/10.12688/f1000research.9315.1",
+      "doi": "10.12688/f1000research.9315.1",
+      "kind": "paper",
+      "found_via": "Europe PMC: 'SciUnit OR NeuronUnit'; Europe PMC: 'SciUnit AND (framework OR validation) AND model' [fallback source used because arXiv/OpenAlex were rate-limited]",
+      "why_relevant": "Discusses how software unit testing and scientific model validation apply to biological simulation (OpenWorm/SciUnit context). Conceptual background for separating software correctness from behavioural validation.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Towards systematic, data-driven validation of a collaborative, multi-scale model of Caenorhabditis elegans",
+      "authors": "Gerkin RC, Jarvis RJ, Crook SM, Crook SM",
+      "year": "2018",
+      "venue": "Philosophical transactions of the Royal Society of London. Series B, Biological sciences",
+      "url": "https://doi.org/10.1098/rstb.2017.0381",
+      "doi": "10.1098/rstb.2017.0381",
+      "kind": "paper",
+      "found_via": "Europe PMC: 'reproducibility AND \"neuron models\" AND (simulator OR NeuroML)'; Europe PMC: 'SciUnit OR NeuronUnit'; Europe PMC: 'SciUnit AND (framework OR validation) AND model' (+1 more) [fallback source used because arXiv/OpenAlex were rate-limited]",
+      "why_relevant": "Systematic, data-driven validation of the OpenWorm multi-scale C. elegans model with scale-specific tests. Test-driven model validation in neuroscience; no mutation-based sensitivity evaluation.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Reproducibility in Computational Neuroscience Models and Simulations",
+      "authors": "McDougal RA, Bulanova AS, Lytton WW",
+      "year": "2016",
+      "venue": "IEEE transactions on bio-medical engineering",
+      "url": "https://doi.org/10.1109/tbme.2016.2539602",
+      "doi": "10.1109/tbme.2016.2539602",
+      "kind": "paper",
+      "found_via": "Europe PMC: 'reproducibility AND \"neuron models\" AND (simulator OR NeuroML)'; Europe PMC: 'NeuroML'; Europe PMC: 'LEMS AND NeuroML' (+2 more) [fallback source used because arXiv/OpenAlex were rate-limited]",
+      "why_relevant": "IEEE TBME article on reproducibility practices for computational neuroscience models and simulations. Background for provenance/reproducibility claims and IEEE-venue context; not a behavioural-regression method.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Challenges in Reproducibility, Replicability, and Comparability of Computational Models and Tools for Neuronal and Glial Networks, Cells, and Subcellular Structures",
+      "authors": "Manninen T, Aćimović J, Havela R, Teppola H, Linne ML",
+      "year": "2018",
+      "venue": "Frontiers in neuroinformatics",
+      "url": "https://doi.org/10.3389/fninf.2018.00020",
+      "doi": "10.3389/fninf.2018.00020",
+      "kind": "paper",
+      "found_via": "Europe PMC: 'LEMS AND NeuroML'; Europe PMC: 'reimplementation AND neuron model AND reproducib* AND (ReScience OR replication)' [fallback source used because arXiv/OpenAlex were rate-limited]",
+      "why_relevant": "Reviews challenges in reproducing, replicating and comparing neuronal/glial models and tools, including difficulty reimplementing models from publications. Motivates silent-drift concerns after reimplementation; no detection method.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Building on models-a perspective for computational neuroscience",
+      "authors": "Plesser HE, Davison AP, Diesmann M, Fukai T, Gemmeke T, Gleeson P, Knight JC, Nowotny T, René A, Rhodes O, Roque AC, Senk J, Schwalger T, Stadtmann T, Tiddia G, van Albada SJ",
+      "year": "2025",
+      "venue": "Cerebral cortex (New York, N.Y. : 1991)",
+      "url": "https://doi.org/10.1093/cercor/bhaf295",
+      "doi": "10.1093/cercor/bhaf295",
+      "kind": "paper",
+      "found_via": "Europe PMC: '(NEURON OR NEST OR Brian2 OR Arbor) AND simulator AND comparison AND neuron'; Europe PMC: 'NeuroML'; Europe PMC: '\"Open Source Brain\"' (+4 more) [fallback source used because arXiv/OpenAlex were rate-limited]",
+      "why_relevant": "Perspective on replication problems and limited re-use of circuit models in computational neuroscience, with a re-used cortical model as a case. Context for model transformation and re-implementation risk.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Sustainable computational science: the ReScience initiative",
+      "authors": "Rougier NP, Hinsen K, Alexandre F, Arildsen T, Barba LA, Benureau FCY, Brown CT, de Buyl P, Caglayan O, Davison AP, Delsuc MA, Detorakis G, Diem AK, Drix D, Enel P, Girard B, Guest O, Hall MG, Henriques RN, Hinaut X, Jaron KS, Khamassi M, Klein A, Manninen T, Marchesi P, McGlinn D, Metzner C, Petchey O, Plesser HE, Poisot T, Ram K, Ram Y, Roesch E, Rossant C, Rostami V, Shifman A, Stachelek J, Stimberg M, Stollmeier F, Vaggi F, Viejo G, Vitay J, Vostinar AE, Yurchak R, Zito T",
+      "year": "2017",
+      "venue": "PeerJ. Computer science",
+      "url": "https://doi.org/10.7717/peerj-cs.142",
+      "doi": "10.7717/peerj-cs.142",
+      "kind": "paper",
+      "found_via": "Europe PMC: 'SciUnit OR NeuronUnit'; Europe PMC: 'SciUnit AND (framework OR validation) AND model'; Europe PMC: '\"OSB Model Validation\" OR (\"Open Source Brain\" AND \"model validation\")' [fallback source used because arXiv/OpenAlex were rate-limited]",
+      "why_relevant": "ReScience initiative for publishing independent replications of computational studies. Relevant to reimplementation and behavioural-equivalence checking practice; no automated mutation/protocol method.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Credibility, Replicability, and Reproducibility in Simulation for Biomedicine and Clinical Applications in Neuroscience",
+      "authors": "Mulugeta L, Drach A, Erdemir A, Hunt CA, Horner M, Ku JP, Myers JG, Vadigepalli R, Lytton WW",
+      "year": "2018",
+      "venue": "Frontiers in neuroinformatics",
+      "url": "https://doi.org/10.3389/fninf.2018.00018",
+      "doi": "10.3389/fninf.2018.00018",
+      "kind": "paper",
+      "found_via": "Europe PMC: '\"OSB Model Validation\" OR (\"Open Source Brain\" AND \"model validation\")' [fallback source used because arXiv/OpenAlex were rate-limited]",
+      "why_relevant": "Credibility, replicability and reproducibility of simulation in biomedicine and clinical neuroscience (V&V framing). Background for positioning finite test evidence as credibility evidence, not proof.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Simulation of networks of spiking neurons: a review of tools and strategies",
+      "authors": "Brette R, Rudolph M, Carnevale T, Hines M, Beeman D, Bower JM, Diesmann M, Morrison A, Goodman PH, Harris FC, Zirpe M, Natschläger T, Pecevski D, Ermentrout B, Djurfeldt M, Lansner A, Rochel O, Vieville T, Muller E, Davison AP, El Boustani S, Destexhe A",
+      "year": "2007",
+      "venue": "Journal of computational neuroscience",
+      "url": "https://doi.org/10.1007/s10827-007-0038-6",
+      "doi": "10.1007/s10827-007-0038-6",
+      "kind": "paper",
+      "found_via": "Europe PMC: '\"current clamp\" AND protocols AND \"neuron models\" AND (comparison OR characterization) AND NeuroML' [fallback source used because arXiv/OpenAlex were rate-limited]",
+      "why_relevant": "Review of spiking-network simulation tools and strategies, including cross-simulator benchmark models. Early reference point for comparing simulators on common models (differential-testing lens).",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Code Generation in Computational Neuroscience: A Review of Tools and Techniques",
+      "authors": "Blundell I, Brette R, Cleland TA, Close TG, Coca D, Davison AP, Diaz-Pier S, Fernandez Musoles C, Gleeson P, Goodman DFM, Hines M, Hopkins MW, Kumbhar P, Lester DR, Marin B, Morrison A, Müller E, Nowotny T, Peyser A, Plotnikov D, Richmond P, Rowley A, Rumpe B, Stimberg M, Stokes AB, Tomkins A, Trensch G, Woodman M, Eppler JM",
+      "year": "2018",
+      "venue": "Frontiers in neuroinformatics",
+      "url": "https://doi.org/10.3389/fninf.2018.00068",
+      "doi": "10.3389/fninf.2018.00068",
+      "kind": "paper",
+      "found_via": "Europe PMC: 'reproducibility AND \"neuron models\" AND (simulator OR NeuroML)'; Europe PMC: 'LEMS AND NeuroML'; Europe PMC: 'jNeuroML OR \"jLEMS\"' [fallback source used because arXiv/OpenAlex were rate-limited]",
+      "why_relevant": "Review of code generation in computational neuroscience. Relevant because translating model descriptions into simulator code is a transformation where silent behavioural change can occur; no behavioural regression method.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "EDEN: A High-Performance, General-Purpose, NeuroML-Based Neural Simulator",
+      "authors": "Panagiotou S, Sidiropoulos H, Soudris D, Negrello M, Strydis C",
+      "year": "2022",
+      "venue": "Frontiers in neuroinformatics",
+      "url": "https://doi.org/10.3389/fninf.2022.724336",
+      "doi": "10.3389/fninf.2022.724336",
+      "kind": "paper",
+      "found_via": "Europe PMC: '(NEURON OR NEST OR Brian2 OR Arbor) AND simulator AND comparison AND neuron'; Europe PMC: 'reproducibility AND \"neuron models\" AND (simulator OR NeuroML)'; Europe PMC: 'NeuroML' (+3 more) [fallback source used because arXiv/OpenAlex were rate-limited]",
+      "why_relevant": "EDEN, a NeuroML-based general-purpose simulator. A candidate second execution backend for optional cross-simulator comparison of NeuroML models.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "An Optimizing Multi-platform Source-to-source Compiler Framework for the NEURON MODeling Language",
+      "authors": "Kumbhar P, Awile O, Keegan L, Blanco Alonso J, King J, Hines M, Schürmann F",
+      "year": "2020",
+      "venue": "Computational Science--ICCS ... : international conference ... : proceedings. ICCS",
+      "url": "https://europepmc.org/article/PMC/PMC7302241",
+      "doi": "",
+      "kind": "paper",
+      "found_via": "Europe PMC: '(\"code translation\" OR \"model translation\") AND (NEURON OR NeuroML OR Brian) AND neuron' [fallback source used because arXiv/OpenAlex were rate-limited]",
+      "why_relevant": "Source-to-source compiler framework for the NEURON MODeling Language (NMODL), i.e. automated translation of mechanism code across platforms. Translation lens; whether behavioural-equivalence testing is included needs confirming from full text.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Neuromorphic intermediate representation: A unified instruction set for interoperable brain-inspired computing",
+      "authors": "Pedersen JE, Abreu S, Jobst M, Lenz G, Fra V, Bauer FC, Muir DR, Zhou P, Vogginger B, Heckel K, Urgese G, Shankar S, Stewart TC, Sheik S, Eshraghian JK",
+      "year": "2024",
+      "venue": "Nature communications",
+      "url": "https://doi.org/10.1038/s41467-024-52259-9",
+      "doi": "10.1038/s41467-024-52259-9",
+      "kind": "paper",
+      "found_via": "Europe PMC: 'reproducibility AND \"neuron models\" AND (simulator OR NeuroML)'; Europe PMC: 'NeuroML' [fallback source used because arXiv/OpenAlex were rate-limited]",
+      "why_relevant": "Neuromorphic intermediate representation for interoperable spiking models across software/hardware platforms, motivated by reproducibility across stacks. Cross-platform translation lens; not conductance-based mutation testing.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "BioSimulators: a central registry of simulation engines and services for recommending specific tools",
+      "authors": "Shaikh B, Smith LP, Vasilescu D, Marupilla G, Wilson M, Agmon E, Agnew H, Andrews SS, Anwar A, Beber ME, Bergmann FT, Brooks D, Brusch L, Calzone L, Choi K, Cooper J, Detloff J, Drawert B, Dumontier M, Ermentrout GB, Faeder JR, Freiburger AP, Fröhlich F, Funahashi A, Garny A, Gennari JH, Gleeson P, Goelzer A, Haiman Z, Hasenauer J, Hellerstein JL, Hermjakob H, Hoops S, Ison JC, Jahn D, Jakubowski HV, Jordan R, Kalaš M, König M, Liebermeister W, Sheriff RSM, Mandal S, McDougal R, Medley JK, Mendes P, Müller R, Myers CJ, Naldi A, Nguyen TVN, Nickerson DP, Olivier BG, Patoliya D, Paulevé L, Petzold LR, Priya A, Rampadarath AK, Rohwer JM, Saglam AS, Singh D, Sinha A, Snoep J, Sorby H, Spangler R, Starruß J, Thomas PJ, van Niekerk D, Weindl D, Zhang F, Zhukova A, Goldberg AP, Schaff JC, Blinov ML, Sauro HM, Moraru II, Karr JR",
+      "year": "2022",
+      "venue": "Nucleic acids research",
+      "url": "https://doi.org/10.1093/nar/gkac331",
+      "doi": "10.1093/nar/gkac331",
+      "kind": "paper",
+      "found_via": "Europe PMC: 'LEMS AND NeuroML'; Europe PMC: 'pyNeuroML' [fallback source used because arXiv/OpenAlex were rate-limited]",
+      "why_relevant": "BioSimulators registry of simulation engines with standard interfaces for reproducing simulations. Relevant to cross-simulator execution and simulator validation infrastructure (systems-biology focus).",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Model-driven optimal experimental design for calibrating cardiac electrophysiology models",
+      "authors": "Lei CL, Clerx M, Gavaghan DJ, Mirams GR",
+      "year": "2022",
+      "venue": "bioRxiv",
+      "url": "https://doi.org/10.1101/2022.11.01.514669",
+      "doi": "10.1101/2022.11.01.514669",
+      "kind": "preprint",
+      "found_via": "Europe PMC: '\"optimal experimental design\" AND (\"ion channel\" OR \"neuron model\") AND protocol' [fallback source used because arXiv/OpenAlex were rate-limited]",
+      "why_relevant": "Model-driven optimal experimental design for calibrating cardiac electrophysiology models. Protocol optimisation in electrophysiology modelling; aimed at calibration, not regression detection.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Systematic generation of biophysically detailed models for diverse cortical neuron types",
+      "authors": "Gouwens NW, Berg J, Feng D, Sorensen SA, Zeng H, Hawrylycz MJ, Koch C, Arkhipov A",
+      "year": "2018",
+      "venue": "Nature communications",
+      "url": "https://doi.org/10.1038/s41467-017-02718-3",
+      "doi": "10.1038/s41467-017-02718-3",
+      "kind": "paper",
+      "found_via": "Europe PMC: '\"electrophysiological features\" AND \"stimulus protocols\" AND model validation' [fallback source used because arXiv/OpenAlex were rate-limited]",
+      "why_relevant": "Systematic generation of biophysically detailed models for many Allen Cell Types neurons, fitted and assessed on electrophysiological features. Relevant precedent for multi-stimulus feature characterisation at scale; not mutation testing.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Metamorphic Testing: A Simple Yet Effective Approach for Testing Scientific Software",
+      "authors": "Upulee Kanewala, Tsong Yueh Chen",
+      "year": "2019",
+      "venue": "Computing in Science & Engineering",
+      "url": "https://doi.org/10.1109/mcse.2018.2875368",
+      "doi": "10.1109/mcse.2018.2875368",
+      "kind": "paper",
+      "found_via": "Crossref: 'metamorphic testing scientific software'; metadata confirmed via Crossref /works/<doi> [fallback source used because arXiv/OpenAlex were rate-limited]",
+      "why_relevant": "Metamorphic testing as an approach for scientific software without a test oracle. Represents the generic metamorphic-testing prior art NeuroSem must not claim.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Testing Scientific Software: A Systematic Literature Review",
+      "authors": "Kanewala U, Bieman JM",
+      "year": "2014",
+      "venue": "Information and software technology",
+      "url": "https://doi.org/10.1016/j.infsof.2014.05.006",
+      "doi": "10.1016/j.infsof.2014.05.006",
+      "kind": "paper",
+      "found_via": "Europe PMC: '\"metamorphic testing\" AND (simulation OR bioinformatics OR \"scientific software\")' [fallback source used because arXiv/OpenAlex were rate-limited]",
+      "why_relevant": "Systematic literature review on testing scientific software (oracle problem, techniques). Generic background establishing that scientific-software testing is not new.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Metamorphic relation prioritization for effective regression testing",
+      "authors": "Madhusudan Srinivasan, Upulee Kanewala",
+      "year": "2022",
+      "venue": "Software Testing, Verification and Reliability",
+      "url": "https://doi.org/10.1002/stvr.1807",
+      "doi": "10.1002/stvr.1807",
+      "kind": "paper",
+      "found_via": "Crossref: 'metamorphic testing scientific software' [fallback source used because arXiv/OpenAlex were rate-limited]",
+      "why_relevant": "Prioritises metamorphic relations for effective regression testing. Generic test prioritisation/selection prior art relevant to the protocol-selection component; not neuroscience-specific.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Leveraging Large Language Models for Code Translation and Software Development in Scientific Computing",
+      "authors": "Akash Dhruv, Anshu Dubey",
+      "year": "2025",
+      "venue": "Proceedings of the Platform for Advanced Scientific Computing Conference",
+      "url": "https://doi.org/10.1145/3732775.3733572",
+      "doi": "10.1145/3732775.3733572",
+      "kind": "paper",
+      "found_via": "Crossref: 'large language model code translation scientific software testing'; metadata confirmed via Crossref /works/<doi> [fallback source used because arXiv/OpenAlex were rate-limited]",
+      "why_relevant": "Uses large language models for code translation and software development in scientific computing. Relevant to the optional AI-assisted transformation lens; neuron-model behavioural checking is not indicated.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "High-Performance Computing Code Translation Agent: Validating and Improve the Quality of Large Language Models Output in High-Performance Computing Translation Tasks",
+      "authors": "Shuairan Chen",
+      "year": "2025",
+      "venue": "unverified",
+      "url": "https://doi.org/10.31274/cc-20251215-121",
+      "doi": "10.31274/cc-20251215-121",
+      "kind": "other",
+      "found_via": "Crossref: 'large language model code translation scientific software testing' [fallback source used because arXiv/OpenAlex were rate-limited]",
+      "why_relevant": "Report on an HPC code-translation agent that validates and improves LLM-translated scientific code. AI-assisted translation with validation; not neuroscience models or stimulus-feature fingerprints.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Twelve quick tips for AI-assisted coding in science",
+      "authors": "Bridgeford EW, Campbell ID, Chen Z, Lin Z, Ritz H, Vandekerckhove J, Poldrack RA",
+      "year": "2026",
+      "venue": "PLoS computational biology",
+      "url": "https://doi.org/10.1371/journal.pcbi.1014428",
+      "doi": "10.1371/journal.pcbi.1014428",
+      "kind": "paper",
+      "found_via": "Europe PMC: 'software testing computational neuroscience models' [fallback source used because arXiv/OpenAlex were rate-limited]",
+      "why_relevant": "Practical tips on AI-assisted coding in science, focused on code quality and scientific validity. Context for the isolated AI-transformation case study; no empirical drift detection method.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Fuzzing the brain: automated stress testing for the safety of ML-driven neurostimulation",
+      "authors": "Downing M, Peng M, Granley J, Beyeler M, Bultan T",
+      "year": "2026",
+      "venue": "Journal of neural engineering",
+      "url": "https://doi.org/10.1088/1741-2552/ae4927",
+      "doi": "10.1088/1741-2552/ae4927",
+      "kind": "paper",
+      "found_via": "Europe PMC: 'stimulation protocol selection neuron model validation' [fallback source used because arXiv/OpenAlex were rate-limited]",
+      "why_relevant": "Applies automated stress testing (fuzzing) to ML-generated neurostimulation patterns for safety. A software-testing technique in a neural-stimulation setting; it tests stimulation-generating models, not conductance-based neuron model edits.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Neuronal excitability and parameter variability in the Hodgkin-Huxley model",
+      "authors": "Alon Korngreen",
+      "year": "2026",
+      "venue": "PLoS Computational Biology",
+      "url": "https://doi.org/10.1371/journal.pcbi.1014458",
+      "doi": "10.1371/journal.pcbi.1014458",
+      "kind": "paper",
+      "found_via": "OpenAlex: 'NeuroML mutation testing'",
+      "why_relevant": "Studies how parameter variability shapes excitability in Hodgkin-Huxley models. Relevant to NeuroSem's rule that parameter changes are not automatically defects and to choosing behaviourally meaningful biophysical mutations.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Simple models of quantitative firing phenotypes in hippocampal neurons: Comprehensive coverage of intrinsic diversity",
+      "authors": "Siva Venkadesh, Alexander O. Komendantov, Diek W. Wheeler, David J. Hamilton, Giorgio A. Ascoli",
+      "year": "2019",
+      "venue": "PLoS Computational Biology",
+      "url": "https://doi.org/10.1371/journal.pcbi.1007462",
+      "doi": "10.1371/journal.pcbi.1007462",
+      "kind": "paper",
+      "found_via": "OpenAlex: 'NeuroML mutation testing'",
+      "why_relevant": "Simple models covering quantitative firing phenotypes of hippocampal neurons. Relevant to qualitative firing-regime features and model diversity (spiking, adaptation, bursting) for fixture selection.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "FindSim: A Framework for Integrating Neuronal Data and Signaling Models",
+      "authors": "Nisha A. Viswan, G. V. HarshaRani, Melanie I. Stefan, Upinder S. Bhalla",
+      "year": "2018",
+      "venue": "Frontiers in Neuroinformatics",
+      "url": "https://doi.org/10.3389/fninf.2018.00038",
+      "doi": "10.3389/fninf.2018.00038",
+      "kind": "paper",
+      "found_via": "OpenAlex: 'NeuroML mutation testing'",
+      "why_relevant": "FindSim framework for integrating neuronal experimental data with signalling models by running defined experiments against models. Experiment-driven model scoring overlaps with protocol-based model testing; no mutation or battery optimisation indicated.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "A unified model library maps how neuromodulation reshapes the excitability landscape of neurons across the brain",
+      "authors": "Guarino D, Carannante I, Destexhe A",
+      "year": "2025",
+      "venue": "PLoS computational biology",
+      "url": "https://doi.org/10.1371/journal.pcbi.1013765",
+      "doi": "10.1371/journal.pcbi.1013765",
+      "kind": "paper",
+      "found_via": "Europe PMC: '\"electrophysiological features\" AND \"stimulus protocols\" AND model validation' [fallback source used because arXiv/OpenAlex were rate-limited]",
+      "why_relevant": "Unified model library mapping how neuromodulation reshapes neuronal excitability across the brain (retrieved via a stimulus-protocol/feature query). Possible precedent for systematic multi-stimulus excitability characterisation of model variants; verify from full text.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "An ion channel omnimodel for standardized biophysical neuron modelling",
+      "authors": "Chintaluri C, Podlaski W, Bozelos PA, Gonçalves PJ, Lueckmann J, Macke JH, Vogels TP",
+      "year": "2025",
+      "venue": "bioRxiv",
+      "url": "https://doi.org/10.1101/2025.10.03.680368",
+      "doi": "10.1101/2025.10.03.680368",
+      "kind": "preprint",
+      "found_via": "Europe PMC: '(NEURON OR NEST OR Brian2 OR Arbor) AND simulator AND comparison AND neuron'; Europe PMC: 'NeuroML'; Europe PMC: 'pyNeuroML' [fallback source used because arXiv/OpenAlex were rate-limited]",
+      "why_relevant": "Proposes a standardised ion-channel omnimodel formulation for biophysical neuron modelling. Relevant to representational conversion of channel models, where behaviour preservation must be checked.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Is neuron coverage a meaningful measure for testing deep neural networks?",
+      "authors": "Fabrice Harel-Canada, Lingxiao Wang, Muhammad Ali Gulzar, Quanquan Gu, Miryung Kim",
+      "year": "2020",
+      "venue": "unverified",
+      "url": "https://doi.org/10.1145/3368089.3409754",
+      "doi": "10.1145/3368089.3409754",
+      "kind": "paper",
+      "found_via": "OpenAlex: 'conductance neuron model metamorphic testing'",
+      "why_relevant": "Representative false friend: 'neuron coverage' testing of deep neural networks. Handoff queries mixing neuron/metamorphic/mutation terms were dominated by DNN-testing work like this, which is unrelated to biophysical neuron models.",
+      "estimated_closeness": 1
+    }
+  ],
+  "queries_run": [
+    {
+      "source": "arXiv API (export.arxiv.org/api/query)",
+      "query": "all:conductance AND all:neuron AND all:metamorphic AND all:testing",
+      "result_note": "HTTP 200; total=0, returned=0; zero hits"
+    },
+    {
+      "source": "arXiv API (export.arxiv.org/api/query)",
+      "query": "abs:metamorphic AND abs:neuron",
+      "result_note": "HTTP 429 (rate limited); no results returned"
+    },
+    {
+      "source": "arXiv API (export.arxiv.org/api/query)",
+      "query": "all:NeuroML AND all:mutation",
+      "result_note": "HTTP 429 (rate limited); no results returned"
+    },
+    {
+      "source": "arXiv API (export.arxiv.org/api/query)",
+      "query": "all:NeuroML",
+      "result_note": "HTTP 429 (rate limited); no results returned"
+    },
+    {
+      "source": "arXiv API (export.arxiv.org/api/query)",
+      "query": "all:neuron AND all:model AND all:semantic AND all:regression",
+      "result_note": "HTTP 429 (rate limited); no results returned"
+    },
+    {
+      "source": "arXiv API (export.arxiv.org/api/query)",
+      "query": "all:behavioral AND all:preservation AND all:neuronal AND all:model AND all:conversion",
+      "result_note": "HTTP 429 (rate limited); no results returned"
+    },
+    {
+      "source": "arXiv API (export.arxiv.org/api/query)",
+      "query": "all:perturbation AND all:fingerprint AND all:neuron AND all:model",
+      "result_note": "HTTP 429 (rate limited); no results returned"
+    },
+    {
+      "source": "arXiv API (export.arxiv.org/api/query)",
+      "query": "all:stimulation AND all:protocol AND all:selection AND all:model AND all:validation",
+      "result_note": "HTTP 429 (rate limited); no results returned"
+    },
+    {
+      "source": "arXiv API (export.arxiv.org/api/query)",
+      "query": "all:mutation AND all:testing AND all:computational AND all:neuroscience",
+      "result_note": "NOT EXECUTED: arXiv run stopped after persistent HTTP 429 on all prior attempts (4 retries each, 20 s spacing)"
+    },
+    {
+      "source": "arXiv API (export.arxiv.org/api/query)",
+      "query": "all:\"coding agent\" AND all:neuron AND all:simulation",
+      "result_note": "NOT EXECUTED: arXiv run stopped after persistent HTTP 429 on all prior attempts (4 retries each, 20 s spacing)"
+    },
+    {
+      "source": "arXiv API (export.arxiv.org/api/query)",
+      "query": "abs:\"large language model\" AND abs:neuron AND abs:simulation AND abs:code",
+      "result_note": "NOT EXECUTED: arXiv run stopped after persistent HTTP 429 on all prior attempts (4 retries each, 20 s spacing)"
+    },
+    {
+      "source": "arXiv API (export.arxiv.org/api/query)",
+      "query": "abs:\"code translation\" AND abs:scientific AND abs:equivalence",
+      "result_note": "NOT EXECUTED: arXiv run stopped after persistent HTTP 429 on all prior attempts (4 retries each, 20 s spacing)"
+    },
+    {
+      "source": "arXiv API (export.arxiv.org/api/query)",
+      "query": "abs:LLM AND abs:Fortran AND abs:translation",
+      "result_note": "NOT EXECUTED: arXiv run stopped after persistent HTTP 429 on all prior attempts (4 retries each, 20 s spacing)"
+    },
+    {
+      "source": "arXiv API (export.arxiv.org/api/query)",
+      "query": "abs:\"metamorphic testing\" AND abs:\"scientific software\"",
+      "result_note": "NOT EXECUTED: arXiv run stopped after persistent HTTP 429 on all prior attempts (4 retries each, 20 s spacing)"
+    },
+    {
+      "source": "arXiv API (export.arxiv.org/api/query)",
+      "query": "abs:\"metamorphic testing\" AND abs:simulation",
+      "result_note": "NOT EXECUTED: arXiv run stopped after persistent HTTP 429 on all prior attempts (4 retries each, 20 s spacing)"
+    },
+    {
+      "source": "arXiv API (export.arxiv.org/api/query)",
+      "query": "abs:\"mutation testing\" AND abs:scientific",
+      "result_note": "NOT EXECUTED: arXiv run stopped after persistent HTTP 429 on all prior attempts (4 retries each, 20 s spacing)"
+    },
+    {
+      "source": "arXiv API (export.arxiv.org/api/query)",
+      "query": "abs:simulator AND abs:NEST AND abs:NEURON AND abs:Brian",
+      "result_note": "NOT EXECUTED: arXiv run stopped after persistent HTTP 429 on all prior attempts (4 retries each, 20 s spacing)"
+    },
+    {
+      "source": "arXiv API (export.arxiv.org/api/query)",
+      "query": "abs:Arbor AND abs:neuron AND abs:simulator",
+      "result_note": "NOT EXECUTED: arXiv run stopped after persistent HTTP 429 on all prior attempts (4 retries each, 20 s spacing)"
+    },
+    {
+      "source": "arXiv API (export.arxiv.org/api/query)",
+      "query": "abs:reproducibility AND abs:spiking AND abs:neuron AND abs:model",
+      "result_note": "NOT EXECUTED: arXiv run stopped after persistent HTTP 429 on all prior attempts (4 retries each, 20 s spacing)"
+    },
+    {
+      "source": "arXiv API (export.arxiv.org/api/query)",
+      "query": "abs:SciUnit OR abs:NeuronUnit",
+      "result_note": "NOT EXECUTED: arXiv run stopped after persistent HTTP 429 on all prior attempts (4 retries each, 20 s spacing)"
+    },
+    {
+      "source": "arXiv API (export.arxiv.org/api/query)",
+      "query": "abs:\"electrophysiological features\" AND abs:neuron AND abs:model",
+      "result_note": "NOT EXECUTED: arXiv run stopped after persistent HTTP 429 on all prior attempts (4 retries each, 20 s spacing)"
+    },
+    {
+      "source": "arXiv API (export.arxiv.org/api/query)",
+      "query": "abs:\"experimental design\" AND abs:stimulus AND abs:neuron AND abs:model AND abs:discrimination",
+      "result_note": "NOT EXECUTED: arXiv run stopped after persistent HTTP 429 on all prior attempts (4 retries each, 20 s spacing)"
+    },
+    {
+      "source": "arXiv API (export.arxiv.org/api/query)",
+      "query": "abs:\"test suite minimization\" AND abs:mutation",
+      "result_note": "NOT EXECUTED: arXiv run stopped after persistent HTTP 429 on all prior attempts (4 retries each, 20 s spacing)"
+    },
+    {
+      "source": "arXiv API (export.arxiv.org/api/query)",
+      "query": "abs:\"differential testing\" AND abs:simulator",
+      "result_note": "NOT EXECUTED: arXiv run stopped after persistent HTTP 429 on all prior attempts (4 retries each, 20 s spacing)"
+    },
+    {
+      "source": "OpenAlex API (api.openalex.org/works?search=)",
+      "query": "conductance neuron model metamorphic testing",
+      "result_note": "HTTP 200; total=2324, returned=50; mostly off-topic (DNN testing / developmental biology)"
+    },
+    {
+      "source": "OpenAlex API (api.openalex.org/works?search=)",
+      "query": "NeuroML mutation testing",
+      "result_note": "HTTP 200; total=47, returned=47; mixed NeuroML/neuron-modelling hits, no mutation-testing work on NeuroML"
+    },
+    {
+      "source": "OpenAlex API (api.openalex.org/works?search=)",
+      "query": "neuron model semantic regression",
+      "result_note": "HTTP 429 (rate limited); no results returned; body reported daily budget exhausted, resets midnight UTC"
+    },
+    {
+      "source": "OpenAlex API (api.openalex.org/works?search=)",
+      "query": "behavioral preservation neuronal model conversion",
+      "result_note": "HTTP 429 (rate limited); no results returned; body reported daily budget exhausted, resets midnight UTC"
+    },
+    {
+      "source": "OpenAlex API (api.openalex.org/works?search=)",
+      "query": "perturbation fingerprint neuron model",
+      "result_note": "HTTP 429 (rate limited); no results returned; body reported daily budget exhausted, resets midnight UTC"
+    },
+    {
+      "source": "OpenAlex API (api.openalex.org/works?search=)",
+      "query": "automatic stimulation protocol selection model validation",
+      "result_note": "HTTP 429 (rate limited); no results returned; body reported daily budget exhausted, resets midnight UTC"
+    },
+    {
+      "source": "OpenAlex API (api.openalex.org/works?search=)",
+      "query": "mutation testing computational neuroscience",
+      "result_note": "HTTP 429 (rate limited); no results returned; body reported daily budget exhausted, resets midnight UTC"
+    },
+    {
+      "source": "OpenAlex API (api.openalex.org/works?search=)",
+      "query": "AI coding agent neuron simulation",
+      "result_note": "HTTP 429 (rate limited); no results returned; body reported daily budget exhausted, resets midnight UTC"
+    },
+    {
+      "source": "OpenAlex API (api.openalex.org/works?search=)",
+      "query": "AI-assisted translation of scientific simulation code",
+      "result_note": "HTTP 429 (rate limited); no results returned; body reported daily budget exhausted, resets midnight UTC"
+    },
+    {
+      "source": "OpenAlex API (api.openalex.org/works?search=)",
+      "query": "large language model code translation scientific computing equivalence testing",
+      "result_note": "HTTP 429 (rate limited); no results returned; body reported daily budget exhausted, resets midnight UTC"
+    },
+    {
+      "source": "OpenAlex API (api.openalex.org/works?search=)",
+      "query": "LLM refactoring scientific software behavior preservation",
+      "result_note": "HTTP 429 (rate limited); no results returned; body reported daily budget exhausted, resets midnight UTC"
+    },
+    {
+      "source": "OpenAlex API (api.openalex.org/works?search=)",
+      "query": "large language model computational neuroscience model code generation",
+      "result_note": "HTTP 429 (rate limited); no results returned; body reported daily budget exhausted, resets midnight UTC"
+    },
+    {
+      "source": "OpenAlex API (api.openalex.org/works?search=)",
+      "query": "differential testing neural simulators NEURON NEST Brian",
+      "result_note": "HTTP 429 (rate limited); no results returned; body reported daily budget exhausted, resets midnight UTC"
+    },
+    {
+      "source": "OpenAlex API (api.openalex.org/works?search=)",
+      "query": "comparison of spiking neural network simulators NEST NEURON Brian2",
+      "result_note": "HTTP 429 (rate limited); no results returned; body reported daily budget exhausted, resets midnight UTC"
+    },
+    {
+      "source": "OpenAlex API (api.openalex.org/works?search=)",
+      "query": "Arbor neural simulator validation",
+      "result_note": "HTTP 429 (rate limited); no results returned; body reported daily budget exhausted, resets midnight UTC"
+    },
+    {
+      "source": "OpenAlex API (api.openalex.org/works?search=)",
+      "query": "cross-simulator reproducibility neuron models NeuroML",
+      "result_note": "HTTP 429 (rate limited); no results returned; body reported daily budget exhausted, resets midnight UTC"
+    },
+    {
+      "source": "OpenAlex API (api.openalex.org/works?search=)",
+      "query": "reproducibility spiking neuron models benchmark",
+      "result_note": "HTTP 429 (rate limited); no results returned; body reported daily budget exhausted, resets midnight UTC"
+    },
+    {
+      "source": "OpenAlex API (api.openalex.org/works?search=)",
+      "query": "reproducibility conductance-based neuron models reimplementation",
+      "result_note": "HTTP 429 (rate limited); no results returned; body reported daily budget exhausted, resets midnight UTC"
+    },
+    {
+      "source": "OpenAlex API (api.openalex.org/works?search=)",
+      "query": "NeuroML model validation",
+      "result_note": "HTTP 429 (rate limited); no results returned; body reported daily budget exhausted, resets midnight UTC"
+    },
+    {
+      "source": "OpenAlex API (api.openalex.org/works?search=)",
+      "query": "Open Source Brain model validation",
+      "result_note": "HTTP 429 (rate limited); no results returned; body reported daily budget exhausted, resets midnight UTC"
+    },
+    {
+      "source": "OpenAlex API (api.openalex.org/works?search=)",
+      "query": "NeuroML version 2 LEMS",
+      "result_note": "HTTP 429 (rate limited); no results returned; body reported daily budget exhausted, resets midnight UTC"
+    },
+    {
+      "source": "OpenAlex API (api.openalex.org/works?search=)",
+      "query": "LEMS Low Entropy Model Specification",
+      "result_note": "NOT EXECUTED: OpenAlex anonymous daily budget exhausted ($0 remaining, Retry-After ~33563 s)"
+    },
+    {
+      "source": "OpenAlex API (api.openalex.org/works?search=)",
+      "query": "pyNeuroML",
+      "result_note": "NOT EXECUTED: OpenAlex anonymous daily budget exhausted ($0 remaining, Retry-After ~33563 s)"
+    },
+    {
+      "source": "OpenAlex API (api.openalex.org/works?search=)",
+      "query": "SciUnit framework test-driven scientific model validation",
+      "result_note": "NOT EXECUTED: OpenAlex anonymous daily budget exhausted ($0 remaining, Retry-After ~33563 s)"
+    },
+    {
+      "source": "OpenAlex API (api.openalex.org/works?search=)",
+      "query": "NeuronUnit",
+      "result_note": "NOT EXECUTED: OpenAlex anonymous daily budget exhausted ($0 remaining, Retry-After ~33563 s)"
+    },
+    {
+      "source": "OpenAlex API (api.openalex.org/works?search=)",
+      "query": "Electrophys Feature Extraction Library eFEL",
+      "result_note": "NOT EXECUTED: OpenAlex anonymous daily budget exhausted ($0 remaining, Retry-After ~33563 s)"
+    },
+    {
+      "source": "OpenAlex API (api.openalex.org/works?search=)",
+      "query": "BluePyOpt neuron model optimisation",
+      "result_note": "NOT EXECUTED: OpenAlex anonymous daily budget exhausted ($0 remaining, Retry-After ~33563 s)"
+    },
+    {
+      "source": "OpenAlex API (api.openalex.org/works?search=)",
+      "query": "HippoUnit validation hippocampal models",
+      "result_note": "NOT EXECUTED: OpenAlex anonymous daily budget exhausted ($0 remaining, Retry-After ~33563 s)"
+    },
+    {
+      "source": "OpenAlex API (api.openalex.org/works?search=)",
+      "query": "metamorphic testing scientific software",
+      "result_note": "NOT EXECUTED: OpenAlex anonymous daily budget exhausted ($0 remaining, Retry-After ~33563 s)"
+    },
+    {
+      "source": "OpenAlex API (api.openalex.org/works?search=)",
+      "query": "metamorphic testing simulation models",
+      "result_note": "NOT EXECUTED: OpenAlex anonymous daily budget exhausted ($0 remaining, Retry-After ~33563 s)"
+    },
+    {
+      "source": "OpenAlex API (api.openalex.org/works?search=)",
+      "query": "mutation testing scientific software",
+      "result_note": "NOT EXECUTED: OpenAlex anonymous daily budget exhausted ($0 remaining, Retry-After ~33563 s)"
+    },
+    {
+      "source": "OpenAlex API (api.openalex.org/works?search=)",
+      "query": "mutation analysis simulation models",
+      "result_note": "NOT EXECUTED: OpenAlex anonymous daily budget exhausted ($0 remaining, Retry-After ~33563 s)"
+    },
+    {
+      "source": "OpenAlex API (api.openalex.org/works?search=)",
+      "query": "test suite minimization mutation score",
+      "result_note": "NOT EXECUTED: OpenAlex anonymous daily budget exhausted ($0 remaining, Retry-After ~33563 s)"
+    },
+    {
+      "source": "OpenAlex API (api.openalex.org/works?search=)",
+      "query": "optimal stimulus design discriminate neuron models",
+      "result_note": "NOT EXECUTED: OpenAlex anonymous daily budget exhausted ($0 remaining, Retry-After ~33563 s)"
+    },
+    {
+      "source": "OpenAlex API (api.openalex.org/works?search=)",
+      "query": "optimal experimental design ion channel model voltage clamp protocol",
+      "result_note": "NOT EXECUTED: OpenAlex anonymous daily budget exhausted ($0 remaining, Retry-After ~33563 s)"
+    },
+    {
+      "source": "OpenAlex API (api.openalex.org/works?search=)",
+      "query": "electrophysiological features multiple stimulus protocols model validation",
+      "result_note": "NOT EXECUTED: OpenAlex anonymous daily budget exhausted ($0 remaining, Retry-After ~33563 s)"
+    },
+    {
+      "source": "OpenAlex API (api.openalex.org/works?search=)",
+      "query": "software testing computational neuroscience",
+      "result_note": "NOT EXECUTED: OpenAlex anonymous daily budget exhausted ($0 remaining, Retry-After ~33563 s)"
+    },
+    {
+      "source": "OpenAlex API (api.openalex.org/works?search=)",
+      "query": "verification and validation computational neuroscience models",
+      "result_note": "NOT EXECUTED: OpenAlex anonymous daily budget exhausted ($0 remaining, Retry-After ~33563 s)"
+    },
+    {
+      "source": "OpenAlex API (api.openalex.org/works?search=)",
+      "query": "regression testing neuron simulation",
+      "result_note": "NOT EXECUTED: OpenAlex anonymous daily budget exhausted ($0 remaining, Retry-After ~33563 s)"
+    },
+    {
+      "source": "OpenAlex API (api.openalex.org/works?search=)",
+      "query": "numerical accuracy integration time step neuron simulation",
+      "result_note": "NOT EXECUTED: OpenAlex anonymous daily budget exhausted ($0 remaining, Retry-After ~33563 s)"
+    },
+    {
+      "source": "OpenAlex API (api.openalex.org/works?search=)",
+      "query": "systems biology model SBML testing reproducibility simulators",
+      "result_note": "NOT EXECUTED: OpenAlex anonymous daily budget exhausted ($0 remaining, Retry-After ~33563 s)"
+    },
+    {
+      "source": "OpenAlex API (api.openalex.org/works?search=)",
+      "query": "ModelDB model reproducibility",
+      "result_note": "NOT EXECUTED: OpenAlex anonymous daily budget exhausted ($0 remaining, Retry-After ~33563 s)"
+    },
+    {
+      "source": "OpenAlex API (api.openalex.org/works?search=)",
+      "query": "NetPyNE NeuroML export import",
+      "result_note": "NOT EXECUTED: OpenAlex anonymous daily budget exhausted ($0 remaining, Retry-After ~33563 s)"
+    },
+    {
+      "source": "OpenAlex API (api.openalex.org/works?search=)",
+      "query": "model fingerprint electrophysiology features perturbation",
+      "result_note": "NOT EXECUTED: OpenAlex anonymous daily budget exhausted ($0 remaining, Retry-After ~33563 s)"
+    },
+    {
+      "source": "Europe PMC REST API (fallback)",
+      "query": "\"metamorphic testing\" AND neuron",
+      "result_note": "HTTP 200; total=8, returned=8"
+    },
+    {
+      "source": "Europe PMC REST API (fallback)",
+      "query": "NeuroML AND mutation",
+      "result_note": "HTTP 200; total=11, returned=11"
+    },
+    {
+      "source": "Europe PMC REST API (fallback)",
+      "query": "\"neuron model\" AND regression AND semantic",
+      "result_note": "HTTP 200; total=66, returned=50"
+    },
+    {
+      "source": "Europe PMC REST API (fallback)",
+      "query": "neuron model conversion behaviour preserved NeuroML",
+      "result_note": "HTTP 200; total=6, returned=6"
+    },
+    {
+      "source": "Europe PMC REST API (fallback)",
+      "query": "\"perturbation fingerprint\" AND neuron",
+      "result_note": "HTTP 200; total=0, returned=0"
+    },
+    {
+      "source": "Europe PMC REST API (fallback)",
+      "query": "stimulation protocol selection neuron model validation",
+      "result_note": "HTTP 200; total=6887, returned=50"
+    },
+    {
+      "source": "Europe PMC REST API (fallback)",
+      "query": "\"mutation testing\" AND neuroscience",
+      "result_note": "HTTP 200; total=225, returned=50"
+    },
+    {
+      "source": "Europe PMC REST API (fallback)",
+      "query": "(\"large language model\" OR \"coding agent\") AND neuron AND simulation",
+      "result_note": "HTTP 200; total=127, returned=50"
+    },
+    {
+      "source": "Europe PMC REST API (fallback)",
+      "query": "(\"large language model\" OR LLM) AND (translation OR refactoring) AND \"scientific software\"",
+      "result_note": "HTTP 200; total=11, returned=11"
+    },
+    {
+      "source": "Europe PMC REST API (fallback)",
+      "query": "(NEURON OR NEST OR Brian2 OR Arbor) AND simulator AND comparison AND neuron",
+      "result_note": "HTTP 200; total=2635, returned=50"
+    },
+    {
+      "source": "Europe PMC REST API (fallback)",
+      "query": "reproducibility AND \"neuron models\" AND (simulator OR NeuroML)",
+      "result_note": "HTTP 200; total=140, returned=50"
+    },
+    {
+      "source": "Europe PMC REST API (fallback)",
+      "query": "NeuroML",
+      "result_note": "HTTP 200; total=257, returned=50"
+    },
+    {
+      "source": "Europe PMC REST API (fallback)",
+      "query": "\"Open Source Brain\"",
+      "result_note": "HTTP 200; total=181, returned=50"
+    },
+    {
+      "source": "Europe PMC REST API (fallback)",
+      "query": "LEMS AND NeuroML",
+      "result_note": "HTTP 200; total=44, returned=44"
+    },
+    {
+      "source": "Europe PMC REST API (fallback)",
+      "query": "pyNeuroML",
+      "result_note": "HTTP 200; total=16, returned=16"
+    },
+    {
+      "source": "Europe PMC REST API (fallback)",
+      "query": "SciUnit OR NeuronUnit",
+      "result_note": "HTTP 200; total=30, returned=30"
+    },
+    {
+      "source": "Europe PMC REST API (fallback)",
+      "query": "eFEL AND electrophysiology",
+      "result_note": "HTTP 200; total=52, returned=50"
+    },
+    {
+      "source": "Europe PMC REST API (fallback)",
+      "query": "BluePyOpt",
+      "result_note": "HTTP 200; total=82, returned=50"
+    },
+    {
+      "source": "Europe PMC REST API (fallback)",
+      "query": "HippoUnit",
+      "result_note": "HTTP 200; total=13, returned=13"
+    },
+    {
+      "source": "Europe PMC REST API (fallback)",
+      "query": "\"electrophysiological features\" AND \"stimulus protocols\" AND model validation",
+      "result_note": "HTTP 200; total=11, returned=11"
+    },
+    {
+      "source": "Europe PMC REST API (fallback)",
+      "query": "optimal stimulus design discriminate neuron models",
+      "result_note": "HTTP 200; total=2431, returned=50"
+    },
+    {
+      "source": "Europe PMC REST API (fallback)",
+      "query": "\"optimal experimental design\" AND (\"ion channel\" OR \"neuron model\") AND protocol",
+      "result_note": "HTTP 200; total=17, returned=17"
+    },
+    {
+      "source": "Europe PMC REST API (fallback)",
+      "query": "software testing computational neuroscience models",
+      "result_note": "HTTP 200; total=28204, returned=50"
+    },
+    {
+      "source": "Europe PMC REST API (fallback)",
+      "query": "time step convergence neuron simulation accuracy",
+      "result_note": "HTTP 200; total=4563, returned=50"
+    },
+    {
+      "source": "Crossref REST API (fallback)",
+      "query": "metamorphic testing neuron model",
+      "result_note": "HTTP 200; total=3786916, returned=40"
+    },
+    {
+      "source": "Crossref REST API (fallback)",
+      "query": "NeuroML mutation testing",
+      "result_note": "HTTP 200; total=826449, returned=40"
+    },
+    {
+      "source": "Crossref REST API (fallback)",
+      "query": "neuron model semantic regression testing",
+      "result_note": "HTTP 200; total=4086746, returned=40"
+    },
+    {
+      "source": "Crossref REST API (fallback)",
+      "query": "behavioral preservation neuronal model conversion",
+      "result_note": "HTTP 200; total=4062191, returned=40"
+    },
+    {
+      "source": "Crossref REST API (fallback)",
+      "query": "perturbation fingerprint neuron model",
+      "result_note": "HTTP 200; total=3243616, returned=40"
+    },
+    {
+      "source": "Crossref REST API (fallback)",
+      "query": "automatic stimulation protocol selection model validation",
+      "result_note": "HTTP 200; total=4656994, returned=40"
+    },
+    {
+      "source": "Crossref REST API (fallback)",
+      "query": "mutation testing computational neuroscience",
+      "result_note": "HTTP 200; total=2242924, returned=40"
+    },
+    {
+      "source": "Crossref REST API (fallback)",
+      "query": "AI coding agent neuron simulation",
+      "result_note": "HTTP 200; total=1945372, returned=40"
+    },
+    {
+      "source": "Crossref REST API (fallback)",
+      "query": "metamorphic testing scientific software",
+      "result_note": "HTTP 200; total=2763850, returned=40"
+    },
+    {
+      "source": "Crossref REST API (fallback)",
+      "query": "mutation testing scientific simulation software",
+      "result_note": "HTTP 200; total=3889954, returned=40"
+    },
+    {
+      "source": "Crossref REST API (fallback)",
+      "query": "large language model code translation scientific software testing",
+      "result_note": "HTTP 200; total=8152939, returned=40"
+    },
+    {
+      "source": "Crossref REST API (fallback)",
+      "query": "comparison of neural simulators NEURON NEST Brian reproducibility",
+      "result_note": "HTTP 200; total=2046548, returned=40"
+    },
+    {
+      "source": "Crossref REST API (fallback)",
+      "query": "NeuroML 2 standardised language computational neuroscience",
+      "result_note": "HTTP 200; total=2722820, returned=40"
+    },
+    {
+      "source": "Crossref REST API (fallback)",
+      "query": "LEMS language model specification",
+      "result_note": "HTTP 200; total=4494294, returned=40"
+    },
+    {
+      "source": "Crossref REST API (fallback)",
+      "query": "Open Source Brain platform",
+      "result_note": "HTTP 200; total=2817541, returned=40"
+    },
+    {
+      "source": "Crossref REST API (fallback)",
+      "query": "SciUnit test-driven framework validation",
+      "result_note": "HTTP 200; total=2459474, returned=40"
+    },
+    {
+      "source": "Crossref REST API (fallback)",
+      "query": "NeuronUnit",
+      "result_note": "HTTP 200; total=1, returned=1"
+    },
+    {
+      "source": "Crossref REST API (fallback)",
+      "query": "Electrophys Feature Extraction Library",
+      "result_note": "HTTP 200; total=900641, returned=40"
+    },
+    {
+      "source": "Europe PMC REST API (fallback)",
+      "query": "SciUnit AND (framework OR validation) AND model",
+      "result_note": "HTTP 200; total=27, returned=27"
+    },
+    {
+      "source": "Europe PMC REST API (fallback)",
+      "query": "\"OSB Model Validation\" OR (\"Open Source Brain\" AND \"model validation\")",
+      "result_note": "HTTP 200; total=23, returned=23"
+    },
+    {
+      "source": "Europe PMC REST API (fallback)",
+      "query": "jNeuroML OR \"jLEMS\"",
+      "result_note": "HTTP 200; total=21, returned=21"
+    },
+    {
+      "source": "Europe PMC REST API (fallback)",
+      "query": "\"mutation sensitivity\" AND (\"scientific software\" OR simulation)",
+      "result_note": "HTTP 200; total=61, returned=50"
+    },
+    {
+      "source": "Europe PMC REST API (fallback)",
+      "query": "\"Hodgkin-Huxley\" AND (\"time step\" OR \"integration method\") AND (accuracy OR error) AND simulation",
+      "result_note": "HTTP 200; total=770, returned=50"
+    },
+    {
+      "source": "Europe PMC REST API (fallback)",
+      "query": "\"model discrimination\" AND (stimulus OR protocol) AND (\"neuron model\" OR \"ion channel model\")",
+      "result_note": "HTTP 200; total=3, returned=3"
+    },
+    {
+      "source": "Europe PMC REST API (fallback)",
+      "query": "\"current clamp\" AND protocols AND \"neuron models\" AND (comparison OR characterization) AND NeuroML",
+      "result_note": "HTTP 200; total=14, returned=14"
+    },
+    {
+      "source": "Europe PMC REST API (fallback)",
+      "query": "(\"code translation\" OR \"model translation\") AND (NEURON OR NeuroML OR Brian) AND neuron",
+      "result_note": "HTTP 200; total=72, returned=50"
+    },
+    {
+      "source": "Europe PMC REST API (fallback)",
+      "query": "(\"large language model\" OR LLM) AND (\"computational neuroscience\" OR \"neuron model\") AND (code OR simulation)",
+      "result_note": "HTTP 200; total=80, returned=50"
+    },
+    {
+      "source": "Europe PMC REST API (fallback)",
+      "query": "\"metamorphic testing\" AND (simulation OR bioinformatics OR \"scientific software\")",
+      "result_note": "HTTP 200; total=43, returned=43"
+    },
+    {
+      "source": "Europe PMC REST API (fallback)",
+      "query": "\"test suite\" AND (reduction OR minimization OR selection) AND mutation AND simulation",
+      "result_note": "HTTP 200; total=305, returned=50"
+    },
+    {
+      "source": "Europe PMC REST API (fallback)",
+      "query": "reimplementation AND neuron model AND reproducib* AND (ReScience OR replication)",
+      "result_note": "HTTP 200; total=10, returned=10"
+    },
+    {
+      "source": "Crossref REST API (fallback)",
+      "query": "query.bibliographic=SciUnit a Python framework for test-driven development of scientific models",
+      "result_note": "HTTP 200; only NeuronUnit preprint relevant; SciUnit framework paper not found (unverified)"
+    },
+    {
+      "source": "Crossref REST API (fallback)",
+      "query": "query.bibliographic=osb-model-validation OMV Open Source Brain model validation",
+      "result_note": "HTTP 200; nothing relevant; OMV citation unverified"
+    },
+    {
+      "source": "Crossref REST API /works/<doi> (metadata verification)",
+      "query": "10.7554/elife.95135; 10.3389/fninf.2014.00079; 10.1016/j.neuron.2019.05.019; 10.1101/665331; 10.1093/bioinformatics/btag328; 10.3389/fninf.2016.00017; 10.1371/journal.pcbi.1008114; 10.1109/icstw60967.2024.00056; 10.1145/3732775.3733572; 10.1016/j.procs.2010.04.165; 10.1109/mcse.2018.2875368; 10.1145/2896971.2896981",
+      "result_note": "HTTP 200 for all 12; titles/years/venues/first authors confirmed"
+    },
+    {
+      "source": "Semantic Scholar Graph API (fallback probe)",
+      "query": "paper/search?query=NeuroML&limit=1",
+      "result_note": "HTTP 429; not used"
+    },
+    {
+      "source": "WebSearch tool (fallback, site:arxiv.org)",
+      "query": "site:arxiv.org NeuroML mutation testing neuron model | site:arxiv.org metamorphic testing neuron model simulation | site:arxiv.org large language model translate neuron simulation code NEURON NEST Brian",
+      "result_note": "Not performed: session WebSearch budget exhausted (200/200)"
+    }
+  ],
+  "blocked_sources": [
+    "arXiv API (export.arxiv.org) - persistent HTTP 429 Too Many Requests / timeouts on 2026-09-13; only 1 query completed (0 hits); remaining queries not executed",
+    "OpenAlex API (api.openalex.org) - HTTP 429 after 2 successful queries: anonymous daily usage budget exhausted ($0 remaining; resets at midnight UTC, Retry-After 33563 s); paid top-up not used",
+    "Semantic Scholar Graph API - HTTP 429 on probe request",
+    "WebSearch tool - session search budget exhausted (200/200), so site:arxiv.org fallback could not run"
+  ]
+}

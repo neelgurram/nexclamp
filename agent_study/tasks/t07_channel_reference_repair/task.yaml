@@ -1,0 +1,24 @@
+schema: neurosem-agent-task/1
+task_id: t07_channel_reference_repair
+type: repair_channel_reference
+base_model: pospischil2008_rs
+title: Repair the wrong channel reference of the RS cell M-current density
+# Seeded fault: IM_all points at the Kd channel (same ion species, so still schema-valid).
+# Pre-check on this machine (jNeuroML 0.14.0): `jnml -validate` accepts the edited cell, but
+# the shipped LEMS simulation fails to build because its Display paths name the IM channel.
+seeded_fault:
+  description: IM_all ionChannel changed from IM to Kd (dimensionally compatible wrong component)
+  steps:
+    - registry: mutations
+      operator: wrong_compatible_component
+      site: {file: NeuroML2/cells/RS/RS.cell.nml, locator_contains: IM_all}
+      params: {new: Kd}          # matched against the site's recorded change (ionChannel IM -> Kd)
+  expected_after:
+    - file: NeuroML2/cells/RS/RS.cell.nml
+      xpath: "//channelDensity[@id='IM_all']"
+      attribute: ionChannel
+      value: Kd
+allowed_files:
+  - model/NeuroML2/cells/RS/RS.cell.nml
+answer_files: []
+budget: {max_turns: 80, max_wall_clock_minutes: 60, max_cost_usd: 15.0}

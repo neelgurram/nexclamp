@@ -1,0 +1,1413 @@
+{
+  "finder": "gap-r2-0",
+  "generated_utc": "2026-09-13",
+  "notes": [
+    "Gap-closing finder for completeness-critic round 2. Candidates exclude every work already present in finder_*.json, deepread_r1_*.json and critic_r2.json missing_known_works (grep of ~340 titles/DOIs before adding).",
+    "All metadata was taken from responses retrieved in this session (Crossref REST, OpenCitations, arxiv.org/search HTML, PyPI JSON, GitHub REST). Author strings for DOI entries are Crossref family/given names (first 6, then 'et al.'); arXiv authors are as printed on the search results page.",
+    "Relevance statements rest on titles, arXiv search-page abstract snippets, PyPI summaries and GitHub descriptions only; nothing here was deep-read. Deep-read before using any item in a novelty claim.",
+    "No retrieved work combines controlled mutation of neuron models with multi-protocol electrophysiology fingerprints, refinement-calibrated tolerances, optimised protocol-battery selection and held-out evaluation. This is an absence within the sources and queries actually run (OpenAlex and Semantic Scholar were unavailable), not proof of novelty.",
+    "Name-conflict check: PyPI projects 'neurosem' and 'neuro-sem' return HTTP 404 and no PyPI project name matched /neurosem/ in the Simple index (retrieved 2026-09-13)."
+  ],
+  "candidates": [
+    {
+      "title": "Probabilistic solvers enable a straight-forward exploration of numerical uncertainty in neuroscience models",
+      "authors": "Oesterle Jonathan; Krämer Nicholas; Hennig Philipp; Berens Philipp",
+      "year": "2022",
+      "venue": "Journal of Computational Neuroscience",
+      "url": "https://doi.org/10.1007/s10827-022-00827-7",
+      "doi": "10.1007/s10827-022-00827-7",
+      "kind": "paper",
+      "found_via": "OpenCitations Index v2 /citations of anchor DOI, then Crossref /works/<doi> for metadata (cites Blundell et al. 2018 integration-scheme paper)",
+      "why_relevant": "Per title, uses probabilistic ODE solvers to expose numerical uncertainty in neuroscience models; directly relevant to calibrating feature tolerances by numerical refinement (h, h/2, h/4) and a possible alternative/complement to NeuroSem's refinement rule. No mutation, protocol selection or held-out evaluation indicated.",
+      "estimated_closeness": 3
+    },
+    {
+      "title": "Examining random and designed tests to detect code mistakes in scientific software",
+      "authors": "Kelly Diane; Gray Robert; Shao Yizhen",
+      "year": "2011",
+      "venue": "Journal of Computational Science",
+      "url": "https://doi.org/10.1016/j.jocs.2010.12.002",
+      "doi": "10.1016/j.jocs.2010.12.002",
+      "kind": "paper",
+      "found_via": "OpenCitations Index v2 /citations of anchor DOI, then Crossref /works/<doi> for metadata (cites Hook & Kelly 2010 mutation-sensitivity test selection)",
+      "why_relevant": "Per title, compares random versus designed tests for detecting code mistakes in scientific software; closest SE-in-science analogue to NeuroSem's comparison of a selected battery against random test sets, but on generic scientific code, not neuron models or stimulation protocols.",
+      "estimated_closeness": 3
+    },
+    {
+      "title": "sbml-diff : A Tool for Visually Comparing SBML Models in Synthetic Biology",
+      "authors": "Scott-Brown James; Papachristodoulou Antonis",
+      "year": "2016",
+      "venue": "ACS Synthetic Biology",
+      "url": "https://doi.org/10.1021/acssynbio.6b00273",
+      "doi": "10.1021/acssynbio.6b00273",
+      "kind": "paper",
+      "found_via": "OpenCitations Index v2 /citations of anchor DOI, then Crossref /works/<doi> for metadata (cites Scharm et al. 2016 model-difference detection)",
+      "why_relevant": "Structural (visual) diffing of SBML model versions; represents the structural-comparison baseline that NeuroSem argues is insufficient to detect behavioural drift. Systems biology, no behavioural testing.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "How to test bioinformatics software?",
+      "authors": "Kamali Amir Hossein; Giannoulatou Eleni; Chen Tsong Yueh; Charleston Michael A.; McEwan Alistair L.; Ho Joshua W. K.",
+      "year": "2015",
+      "venue": "Biophysical Reviews",
+      "url": "https://doi.org/10.1007/s12551-015-0177-3",
+      "doi": "10.1007/s12551-015-0177-3",
+      "kind": "paper",
+      "found_via": "OpenCitations Index v2 /citations of anchor DOI, then Crossref /works/<doi> for metadata (cites Hook & Kelly 2010)",
+      "why_relevant": "Per title, a review of how to test bioinformatics software; background for positioning NeuroSem among domain-specific scientific-software testing methods (content not read).",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Adapting modeling and simulation credibility standards to computational systems biology",
+      "authors": "Tatka; Smith; Hellerstein; Sauro (family names only in retrieved Crossref search result; given names unverified)",
+      "year": "2023",
+      "venue": "Journal of Translational Medicine",
+      "url": "https://doi.org/10.1186/s12967-023-04290-5",
+      "doi": "10.1186/s12967-023-04290-5",
+      "kind": "paper",
+      "found_via": "Crossref query.bibliographic lookup of a reference harvested from the pyRMV (arXiv 2608.09956) HTML bibliography",
+      "why_relevant": "Adapts modeling-and-simulation credibility standards to computational systems biology; relevant to how NeuroSem frames an empirical semantic certificate as evidence rather than proof. No mutation or protocol optimisation.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Data driven building of realistic neuron model using IBEA and CMA evolution strategies",
+      "authors": "Damart Tanguy; Van Geit Werner; Markram Henry",
+      "year": "2020",
+      "venue": "Proceedings of the 2020 Genetic and Evolutionary Computation Conference Companion",
+      "url": "https://doi.org/10.1145/3377929.3398161",
+      "doi": "10.1145/3377929.3398161",
+      "kind": "paper",
+      "found_via": "Crossref REST query.bibliographic restricted to IEEE (prefix 10.1109) / ACM (prefix 10.1145) (query \"neuron simulator regression testing\" family)",
+      "why_relevant": "Data-driven construction of realistic neuron models with IBEA and CMA evolution strategies (Blue Brain authors); multi-protocol electrophysiology-feature objectives overlap NeuroSem's feature fingerprint, but the goal is parameter fitting, not change detection.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "An Optimization Framework for Spiking Neuron Models: Parameter Estimation, Network Validation, and Pattern Separation",
+      "authors": "Shrimankar Radhika; Vijayan Asha; Naldi Giovanni; D'Angelo Egidio; Diwakar Shyam",
+      "year": "2026",
+      "venue": "IEEE Access",
+      "url": "https://doi.org/10.1109/access.2026.3713432",
+      "doi": "10.1109/access.2026.3713432",
+      "kind": "paper",
+      "found_via": "Crossref REST query.bibliographic restricted to IEEE (prefix 10.1109) / ACM (prefix 10.1145) (supplement DOI surfaced; main record via https://api.crossref.org/works/10.1109/access.2026.3713432)",
+      "why_relevant": "Recent IEEE Access framework for spiking-neuron model parameter estimation and network validation; a possible IEEE-venue neighbour on model validation. Abstract not in Crossref record; overlap with NeuroSem unverified beyond title.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "COMODI: an ontology to characterise differences in versions of computational models in biology",
+      "authors": "Scharm Martin; Waltemath Dagmar; Mendes Pedro; Wolkenhauer Olaf",
+      "year": "2016",
+      "venue": "Journal of Biomedical Semantics",
+      "url": "https://doi.org/10.1186/s13326-016-0080-2",
+      "doi": "10.1186/s13326-016-0080-2",
+      "kind": "paper",
+      "found_via": "OpenCitations Index v2 /citations of anchor DOI, then Crossref /works/<doi> for metadata (cites Scharm et al. 2016)",
+      "why_relevant": "COMODI ontology for characterising differences between versions of computational biology models; a vocabulary for classifying edits that could inform NeuroSem's transformation/mutation taxonomy. Describes changes; does not test their behavioural effect.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Gsmodutils: a python based framework for test-driven genome scale metabolic model development",
+      "authors": "Gilbert James; Pearcy Nicole; Norman Rupert; Millat Thomas; Winzer Klaus; King John",
+      "year": "2019",
+      "venue": "Bioinformatics",
+      "url": "https://doi.org/10.1093/bioinformatics/btz088",
+      "doi": "10.1093/bioinformatics/btz088",
+      "kind": "paper",
+      "found_via": "OpenCitations Index v2 /citations of anchor DOI, then Crossref /works/<doi> for metadata (cites Scharm et al. 2016)",
+      "why_relevant": "Test-driven development framework for genome-scale metabolic models; domain-specific model testing in systems biology, analogous to SciUnit/OMV in neuroscience, without mutation-calibrated protocol selection.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Evaluation and comparison of methods for neuronal parameter optimization using the Neuroptimus software framework",
+      "authors": "Mohácsi Máté; Török Márk Patrik; Sáray Sára; Tar Luca; Farkas Gábor; Káli Szabolcs",
+      "year": "2024",
+      "venue": "PLOS Computational Biology",
+      "url": "https://doi.org/10.1371/journal.pcbi.1012039",
+      "doi": "10.1371/journal.pcbi.1012039",
+      "kind": "paper",
+      "found_via": "OpenCitations Index v2 /citations of anchor DOI, then Crossref /works/<doi> for metadata (cites HippoUnit)",
+      "why_relevant": "Neuroptimus: systematic evaluation and comparison of neuronal parameter-optimisation methods on benchmark problems; relevant as a neuroscience benchmark-design precedent (multiple models, feature-based objectives), not change detection.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Validation and Trustworthiness of Multiscale Models of Cardiac Electrophysiology",
+      "authors": "Pathmanathan Pras; Gray Richard A.",
+      "year": "2018",
+      "venue": "Frontiers in Physiology",
+      "url": "https://doi.org/10.3389/fphys.2018.00106",
+      "doi": "10.3389/fphys.2018.00106",
+      "kind": "paper",
+      "found_via": "OpenCitations Index v2 /citations of anchor DOI, then Crossref /works/<doi> for metadata (cites Cooper et al. 2011 functional curation)",
+      "why_relevant": "Review of validation and trustworthiness of multiscale cardiac electrophysiology models; closest excitable-cell domain where protocol-based model checking (functional curation) is established.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Discovering optimal features for neuron-type identification from extracellular recordings",
+      "authors": "Haynes Vergil R.; Zhou Yi; Crook Sharon M.",
+      "year": "2024",
+      "venue": "Frontiers in Neuroinformatics",
+      "url": "https://doi.org/10.3389/fninf.2024.1303993",
+      "doi": "10.3389/fninf.2024.1303993",
+      "kind": "paper",
+      "found_via": "OpenCitations Index v2 /citations of anchor DOI, then Crossref /works/<doi> for metadata (cites NeuroML-DB)",
+      "why_relevant": "Selects optimal features for neuron-type identification; feature-subset selection for discrimination is analogous to choosing informative protocol-feature pairs, applied to extracellular data classification.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Bio-realistic neural network implementation on Loihi 2 with Izhikevich neurons",
+      "authors": "Uludağ Recep Buğra; Çağdaş Serhat; İşler Yavuz Selim; Şengör Neslihan Serap; Aktürk İsmail",
+      "year": "2024",
+      "venue": "Neuromorphic Computing and Engineering",
+      "url": "https://doi.org/10.1088/2634-4386/ad5584",
+      "doi": "10.1088/2634-4386/ad5584",
+      "kind": "paper",
+      "found_via": "OpenCitations Index v2 /citations of anchor DOI, then Crossref /works/<doi> for metadata (cites NeuronUnit)",
+      "why_relevant": "Implements bio-realistic Izhikevich-neuron networks on Loihi 2 and cites NeuronUnit; a concrete model-translation (software model to neuromorphic hardware) setting where behaviour preservation must be checked. Whether NeuronUnit tests were used for that check is unverified.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Rallpacks: a set of benchmarks for neuronal simulators",
+      "authors": "Bhalla Upinder S.; Bilitch David H.; Bower James M.",
+      "year": "1992",
+      "venue": "Trends in Neurosciences",
+      "url": "https://doi.org/10.1016/0166-2236(92)90009-w",
+      "doi": "10.1016/0166-2236(92)90009-w",
+      "kind": "paper",
+      "found_via": "OpenCitations Index v2 /references of anchor DOI, title via OpenCitations Meta v1, metadata confirmed via Crossref /works/<doi> (reference list of Henker et al. 2011 simulator-accuracy paper)",
+      "why_relevant": "Rallpacks: benchmark set for neuronal simulators with reference solutions; the canonical precedent for checking simulator numerical accuracy against references, directly relevant to NeuroSem's numerical-refinement tolerances and cross-simulator checks. Benchmarks simulators, not edited models; no mutation or protocol selection.",
+      "estimated_closeness": 3
+    },
+    {
+      "title": "Models of Electrical Activity: Calibration and Prediction Testing on the Same Cell",
+      "authors": "Tomaiuolo Maurizio; Bertram Richard; Leng Gareth; Tabak Joël",
+      "year": "2012",
+      "venue": "Biophysical Journal",
+      "url": "https://doi.org/10.1016/j.bpj.2012.09.034",
+      "doi": "10.1016/j.bpj.2012.09.034",
+      "kind": "paper",
+      "found_via": "OpenCitations Index v2 /citations of anchor DOI, title via OpenCitations Meta v1, metadata confirmed via Crossref /works/<doi> (cites Druckmann et al. 2007) and OpenCitations Index v2 /references of anchor DOI, title via OpenCitations Meta v1, metadata confirmed via Crossref /works/<doi> (reference list of sinusoidal voltage-protocol paper, 10.1113/JP275733)",
+      "why_relevant": "Per title, calibrates electrical-activity models on some recordings and tests predictions on others from the same cell; precedent for protocol-level held-out evaluation in excitable-cell models, though aimed at model fitting rather than detecting changes after edits.",
+      "estimated_closeness": 3
+    },
+    {
+      "title": "A benchmark test for a quantitative assessment of simple neuron models",
+      "authors": "Jolivet Renaud; Kobayashi Ryota; Rauch Alexander; Naud Richard; Shinomoto Shigeru; Gerstner Wulfram",
+      "year": "2008",
+      "venue": "Journal of Neuroscience Methods",
+      "url": "https://doi.org/10.1016/j.jneumeth.2007.11.006",
+      "doi": "10.1016/j.jneumeth.2007.11.006",
+      "kind": "paper",
+      "found_via": "OpenCitations Index v2 /citations of anchor DOI, title via OpenCitations Meta v1, metadata confirmed via Crossref /works/<doi> (cites Druckmann et al. 2007) and OpenCitations Index v2 /references of anchor DOI, title via OpenCitations Meta v1, metadata confirmed via Crossref /works/<doi> (reference list of Jolivet et al. 2008)",
+      "why_relevant": "Benchmark test for quantitatively assessing simple neuron models against recorded responses; precedent for standardised stimulus-based neuron-model scoring and held-out test data, not mutation-based change detection.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Chaste: A test-driven approach to software development for biological modelling",
+      "authors": "Pitt-Francis Joe; Pathmanathan Pras; Bernabeu Miguel O.; Bordas Rafel; Cooper Jonathan; Fletcher Alexander G. et al.",
+      "year": "2009",
+      "venue": "Computer Physics Communications",
+      "url": "https://doi.org/10.1016/j.cpc.2009.07.019",
+      "doi": "10.1016/j.cpc.2009.07.019",
+      "kind": "paper",
+      "found_via": "OpenCitations Index v2 /references of anchor DOI, title via OpenCitations Meta v1, metadata confirmed via Crossref /works/<doi> (reference list of Cooper et al. 2011 functional curation)",
+      "why_relevant": "(OpenCitations Meta listed a wrong venue for this DOI; Crossref record says Computer Physics Communications.) Chaste: test-driven development for biological (cardiac) modelling software; prior art for systematic regression testing of excitable-tissue simulators, at code level rather than via protocol-feature fingerprints of edited models.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Parameter Sensitivity Analysis in Electrophysiological Models Using Multivariable Regression",
+      "authors": "Sobie Eric A.",
+      "year": "2009",
+      "venue": "Biophysical Journal",
+      "url": "https://doi.org/10.1016/j.bpj.2008.10.056",
+      "doi": "10.1016/j.bpj.2008.10.056",
+      "kind": "paper",
+      "found_via": "OpenCitations Index v2 /references of anchor DOI, title via OpenCitations Meta v1, metadata confirmed via Crossref /works/<doi> (reference list of Detecting undetectables 2019, 10.1063/1.5087629)",
+      "why_relevant": "Regression-based sensitivity of electrophysiological output features to conductance parameters; maps which features respond to which parameter changes, conceptually close to NeuroSem's question of which protocol-feature pairs reveal which biophysical mutation family.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Uncertainty and variability in models of the cardiac action potential: Can we build trustworthy models?",
+      "authors": "Johnstone Ross H.; Chang Eugene T.Y.; Bardenet Rémi; de Boer Teun P.; Gavaghan David J.; Pathmanathan Pras et al.",
+      "year": "2016",
+      "venue": "Journal of Molecular and Cellular Cardiology",
+      "url": "https://doi.org/10.1016/j.yjmcc.2015.11.018",
+      "doi": "10.1016/j.yjmcc.2015.11.018",
+      "kind": "paper",
+      "found_via": "OpenCitations Index v2 /references of anchor DOI, title via OpenCitations Meta v1, metadata confirmed via Crossref /works/<doi> (reference lists of Detecting undetectables 2019 and the sinusoidal-protocol paper)",
+      "why_relevant": "Discusses uncertainty and variability in cardiac action-potential models and what makes them trustworthy; background for tolerance setting and for not over-interpreting finite behavioural agreement.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "A model‐driven approach to automatic conversion of physical units",
+      "authors": "Cooper Jonathan; McKeever Steve",
+      "year": "2007",
+      "venue": "Software: Practice and Experience",
+      "url": "https://doi.org/10.1002/spe.828",
+      "doi": "10.1002/spe.828",
+      "kind": "paper",
+      "found_via": "OpenCitations Index v2 /references of anchor DOI, title via OpenCitations Meta v1, metadata confirmed via Crossref /works/<doi> (reference list of Cooper et al. 2011 functional curation)",
+      "why_relevant": "(Crossref issued year 2007; OpenCitations Meta says 2008.) Model-driven automatic conversion of physical units; relevant to NeuroSem's valid-transformation class \"equivalent unit conversion\" and to unit-related mutation operators.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Analysis of real-time numerical integration methods applied to dynamic clamp experiments",
+      "authors": "Butera Robert J; McCarthy Maeve L",
+      "year": "2004",
+      "venue": "Journal of Neural Engineering",
+      "url": "https://doi.org/10.1088/1741-2560/1/4/001",
+      "doi": "10.1088/1741-2560/1/4/001",
+      "kind": "paper",
+      "found_via": "OpenCitations Index v2 /references of anchor DOI, title via OpenCitations Meta v1, metadata confirmed via Crossref /works/<doi> (reference list of Henker et al. 2011 simulator-accuracy paper)",
+      "why_relevant": "Analyses the accuracy of numerical integration methods for conductance-based neuron models run in real time (dynamic clamp); evidence that integration method and step size alone change neuron-model behaviour, supporting NeuroSem's numerical mutation family and refinement-based tolerances.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "VECMAtk: a scalable verification, validation and uncertainty quantification toolkit for scientific simulations",
+      "authors": "Groen D.; Arabnejad H.; Jancauskas V.; Edeling W. N.; Jansson F.; Richardson R. A. et al.",
+      "year": "2021",
+      "venue": "Philosophical Transactions of the Royal Society A: Mathematical, Physical and Engineering Sciences",
+      "url": "https://doi.org/10.1098/rsta.2020.0221",
+      "doi": "10.1098/rsta.2020.0221",
+      "kind": "paper",
+      "found_via": "OpenCitations Index v2 /citations of anchor DOI, title via OpenCitations Meta v1, metadata confirmed via Crossref /works/<doi> (cites Uncertainpy 2018)",
+      "why_relevant": "VECMAtk: a verification, validation and uncertainty-quantification toolkit for scientific simulations; general-purpose VVUQ infrastructure that NeuroSem could be positioned against, without neuron-specific protocols, mutation or protocol selection.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Model input verification of large scale simulations",
+      "authors": "Neykova Rumyana; Groen Derek",
+      "year": "2025",
+      "venue": "Journal of Simulation",
+      "url": "https://doi.org/10.1080/17477778.2025.2490133",
+      "doi": "10.1080/17477778.2025.2490133",
+      "kind": "paper",
+      "found_via": "OpenCitations Index v2 /citations of anchor DOI, title via OpenCitations Meta v1, metadata confirmed via Crossref /works/<doi> (cites Uncertainpy 2018)",
+      "why_relevant": "Verifies model inputs of large-scale simulations; relevant to NeuroSem's stimulus and configuration mutations (wrong amplitude, duration, recorded variable), which pass execution but change what is simulated.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Mutation Sensitivity Testing",
+      "authors": "Hook Daniel; Kelly Diane",
+      "year": "2009",
+      "venue": "Computing in Science & Engineering",
+      "url": "https://doi.org/10.1109/mcse.2009.200",
+      "doi": "10.1109/mcse.2009.200",
+      "kind": "paper",
+      "found_via": "OpenCitations Index v2 /references of anchor DOI, title via OpenCitations Meta v1, metadata confirmed via Crossref /works/<doi> (reference list of Hook & Kelly 2010, 10.1016/j.procs.2010.04.165)",
+      "why_relevant": "Mutation sensitivity testing: uses seeded mutants to assess tests of numerical scientific software that lack exact oracles; the closest scientific-computing precedent for NeuroSem's mutant-based evaluation of test sensitivity, though not applied to neuron models, stimulation protocols or feature tolerances.",
+      "estimated_closeness": 3
+    },
+    {
+      "title": "Improving cardiomyocyte model fidelity and utility via dynamic electrophysiology protocols and optimization algorithms",
+      "authors": "Krogh‐Madsen Trine; Sobie Eric A.; Christini David J.",
+      "year": "2016",
+      "venue": "The Journal of Physiology",
+      "url": "https://doi.org/10.1113/jp270618",
+      "doi": "10.1113/jp270618",
+      "kind": "paper",
+      "found_via": "OpenCitations Index v2 /citations of anchor DOI, title via OpenCitations Meta v1, metadata confirmed via Crossref /works/<doi> (cites Druckmann et al. 2007)",
+      "why_relevant": "Designs dynamic electrophysiology protocols plus optimisation to constrain cardiomyocyte model parameters; precedent for choosing stimulation protocols that are informative about model changes in excitable cells, aimed at identifiability during fitting rather than detecting edits.",
+      "estimated_closeness": 3
+    },
+    {
+      "title": "Large Language Models for Multi-Lingual Equivalent Mutant Detection: An Extended Empirical Study",
+      "authors": "Shu, Honglin; Tian, Zhao; Wang, Dong; Yu, Junji; Zhang, Jiazhe; Cao, Xuejie; Chen, Junjie; Kamei, Yasutaka",
+      "year": "2026 (from arXiv identifier 2607.00511, i.e. first submitted 07-2026; date shown on search page: 1 July, 2026)",
+      "venue": "arXiv preprint",
+      "url": "https://arxiv.org/abs/2607.00511",
+      "doi": "",
+      "kind": "preprint",
+      "found_via": "arxiv.org/search HTML interface (query \"equivalent mutant detection\"); metadata from https://arxiv.org/abs/2607.00511",
+      "why_relevant": "Extended multi-language empirical study of LLM-based equivalent-mutant detection (follow-up to arXiv 2408.01760); relevant to optional AI-assisted screening of behaviourally equivalent model mutants.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "An Empirical Evaluation of Manually Created Equivalent Mutants",
+      "authors": "Straubinger, Philipp; Degenhart, Alexander; Fraser, Gordon",
+      "year": "2024 (from arXiv identifier 2404.09241, i.e. first submitted 04-2024; date shown on search page: 14 April, 2024)",
+      "venue": "arXiv preprint",
+      "url": "https://arxiv.org/abs/2404.09241",
+      "doi": "",
+      "kind": "preprint",
+      "found_via": "arxiv.org/search HTML interface (query \"equivalent mutant detection\"); metadata from https://arxiv.org/abs/2404.09241",
+      "why_relevant": "Empirical evaluation of manually created equivalent mutants; relevant to NeuroSem's manual audit of at least 20 mutants and to how often humans mislabel equivalence.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Using State Infection Conditions to Detect Equivalent Mutants and Speed up Mutation Analysis",
+      "authors": "Just, René; Ernst, Michael D.; Fraser, Gordon",
+      "year": "2013 (from arXiv identifier 1303.2784, i.e. first submitted 03-2013; date shown on search page: 12 March, 2013)",
+      "venue": "arXiv preprint; journal-ref on arXiv abs page: DPA-13021",
+      "url": "https://arxiv.org/abs/1303.2784",
+      "doi": "",
+      "kind": "preprint",
+      "found_via": "arxiv.org/search HTML interface (query \"equivalent mutant detection\"); metadata from https://arxiv.org/abs/1303.2784",
+      "why_relevant": "Uses state-infection conditions to detect equivalent mutants and speed up mutation analysis; classic technique for pruning mutants before expensive execution, analogous to structural pre-screening before simulation.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Data-driven Mutation Analysis for Cyber-Physical Systems",
+      "authors": "Viganò, Enrico; Cornejo, Oscar; Pastore, Fabrizio; Briand, Lionel",
+      "year": "2022 (from arXiv identifier 2201.10160, i.e. first submitted 01-2022; date shown on search page: 5 October, 2022)",
+      "venue": "arXiv preprint; arXiv comments: 19 pages",
+      "url": "https://arxiv.org/abs/2201.10160",
+      "doi": "",
+      "kind": "preprint",
+      "found_via": "arxiv.org/search HTML interface (query \"equivalent mutant detection\"); metadata from https://arxiv.org/abs/2201.10160",
+      "why_relevant": "Data-driven mutation analysis for cyber-physical systems (mutating data rather than code); closer than code mutation to NeuroSem's parameter/stimulus mutants in embedded, signal-producing systems.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Robust Mutation Analysis of Quantum Programs Under Noise",
+      "authors": "Fortz, Sophie; Usandizaga, Eñaut Mendiluze; Ali, Shaukat; Arcaini, Paolo; Mousavi, Mohammad Reza",
+      "year": "2026 (from arXiv identifier 2605.13279, i.e. first submitted 05-2026; date shown on search page: 13 May, 2026)",
+      "venue": "arXiv preprint",
+      "url": "https://arxiv.org/abs/2605.13279",
+      "doi": "",
+      "kind": "preprint",
+      "found_via": "arxiv.org/search HTML interface (query \"equivalent mutant detection\"); metadata from https://arxiv.org/abs/2605.13279",
+      "why_relevant": "Mutation analysis of quantum programs whose outputs are noisy; addresses when a mutant counts as killed under non-deterministic outputs, analogous to NeuroSem's tolerance-based detection criterion.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Unveiling Practical Shortcomings of Patch Overfitting Detection Techniques",
+      "authors": "Williams, David; Avraam, Ioakim; Aleti, Aldeida; Martinez, Matias; Petke, Justyna; Sarro, Federica",
+      "year": "2026 (from arXiv identifier 2603.11262, i.e. first submitted 03-2026; date shown on search page: 11 March, 2026)",
+      "venue": "arXiv preprint; arXiv comments: 12 pages, 5 figures, 5 tables",
+      "url": "https://arxiv.org/abs/2603.11262",
+      "doi": "",
+      "kind": "preprint",
+      "found_via": "arxiv.org/search HTML interface (query \"patch overfitting program repair\"); metadata from https://arxiv.org/abs/2603.11262",
+      "why_relevant": "Shows practical shortcomings of patch-overfitting detection techniques; cautions for scoring AI repairs of neuron models with finite hidden protocols.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Alleviating Patch Overfitting with Automatic Test Generation: A Study of Feasibility and Effectiveness for the Nopol Repair System",
+      "authors": "Yu, Zhongxing; Martinez, Matias; Danglot, Benjamin; Durieux, Thomas; Monperrus, Martin",
+      "year": "2018 (from arXiv identifier 1810.10614, i.e. first submitted 10-2018; date shown on search page: 24 October, 2018)",
+      "venue": "arXiv preprint; journal-ref on arXiv abs page: Empirical Software Engineering (Springer), 2018",
+      "url": "https://arxiv.org/abs/1810.10614",
+      "doi": "10.1007/s10664-018-9619-4",
+      "kind": "preprint",
+      "found_via": "arxiv.org/search HTML interface (query \"patch overfitting program repair\"); metadata from https://arxiv.org/abs/1810.10614",
+      "why_relevant": "Uses automatic test generation to alleviate patch overfitting; parallel to generating additional stimulation protocols to expose repairs that only satisfy the visible test.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Using Data Flow Patterns for Equivalent Mutant Detection",
+      "authors": "Kintis Marinos; Malevris Nicos",
+      "year": "2014",
+      "venue": "2014 IEEE Seventh International Conference on Software Testing, Verification and Validation Workshops",
+      "url": "https://doi.org/10.1109/icstw.2014.21",
+      "doi": "10.1109/icstw.2014.21",
+      "kind": "paper",
+      "found_via": "Crossref REST query.bibliographic restricted to IEEE (prefix 10.1109) / ACM (prefix 10.1145) (query \"equivalent mutant detection\")",
+      "why_relevant": "Data-flow patterns to detect equivalent mutants; NeuroSem must screen behaviourally equivalent mutants out of the detection denominator.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "MutantBench: an Equivalent Mutant Problem Comparison Framework",
+      "authors": "van Hijfte Lars; Oprescu Ana",
+      "year": "2021",
+      "venue": "2021 IEEE International Conference on Software Testing, Verification and Validation Workshops (ICSTW)",
+      "url": "https://doi.org/10.1109/icstw52544.2021.00015",
+      "doi": "10.1109/icstw52544.2021.00015",
+      "kind": "paper",
+      "found_via": "Crossref REST query.bibliographic restricted to IEEE (prefix 10.1109) / ACM (prefix 10.1145) (query \"equivalent mutant detection\")",
+      "why_relevant": "MutantBench: a comparison framework/benchmark for the equivalent-mutant problem; relevant to documenting how NeuroSem classifies equivalent versus non-equivalent mutants.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Equivalent Mutants in the Wild: Identifying and Efficiently Suppressing Equivalent Mutants for Java Programs",
+      "authors": "Kushigian Benjamin; Kaufman Samuel J.; Featherman Ryan; Potter Hannah; Madadi Ardi; Just René",
+      "year": "2024",
+      "venue": "Proceedings of the 33rd ACM SIGSOFT International Symposium on Software Testing and Analysis",
+      "url": "https://doi.org/10.1145/3650212.3680310",
+      "doi": "10.1145/3650212.3680310",
+      "kind": "paper",
+      "found_via": "Crossref REST query.bibliographic restricted to IEEE (prefix 10.1109) / ACM (prefix 10.1145) (query \"equivalent mutant detection\")",
+      "why_relevant": "Empirical study of equivalent mutants in real Java programs and how to suppress them; informs expected prevalence of equivalent mutants and suppression strategy.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Tackling the equivalent mutant problem in real-time systems",
+      "authors": "Basile Davide; Beek Maurice H. ter; Cordy Maxime; Legay Axel",
+      "year": "2020",
+      "venue": "Proceedings of the 24th ACM Conference on Systems and Software Product Line: Volume A - Volume A",
+      "url": "https://doi.org/10.1145/3382025.3414966",
+      "doi": "10.1145/3382025.3414966",
+      "kind": "paper",
+      "found_via": "Crossref REST query.bibliographic restricted to IEEE (prefix 10.1109) / ACM (prefix 10.1145) (query \"equivalent mutant detection\")",
+      "why_relevant": "Equivalent-mutant problem in real-time systems, where equivalence depends on timing behaviour; closer than code-level work to NeuroSem's time-dependent voltage traces.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Random Mutant Selection and Equivalent Mutants Revisited",
+      "authors": "Pitts Rowland",
+      "year": "2022",
+      "venue": "2022 IEEE International Conference on Software Testing, Verification and Validation Workshops (ICSTW)",
+      "url": "https://doi.org/10.1109/icstw55395.2022.00040",
+      "doi": "10.1109/icstw55395.2022.00040",
+      "kind": "paper",
+      "found_via": "Crossref REST query.bibliographic restricted to IEEE (prefix 10.1109) / ACM (prefix 10.1145) (query \"equivalent mutant detection\")",
+      "why_relevant": "Revisits random mutant selection in the presence of equivalent mutants; relevant to sampling 100-160 mutants and to interpreting detection rates.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Large Language Models for Equivalent Mutant Detection: How Far Are We?",
+      "authors": "Tian Zhao; Shu Honglin; Wang Dong; Cao Xuejie; Kamei Yasutaka; Chen Junjie",
+      "year": "2024",
+      "venue": "Proceedings of the 33rd ACM SIGSOFT International Symposium on Software Testing and Analysis",
+      "url": "https://doi.org/10.1145/3650212.3680395",
+      "doi": "10.1145/3650212.3680395",
+      "kind": "paper",
+      "found_via": "Crossref REST query.bibliographic restricted to IEEE (prefix 10.1109) / ACM (prefix 10.1145) (query \"equivalent mutant detection\")",
+      "why_relevant": "Published ISSTA 2024 DOI record of the LLM equivalent-mutant-detection study that the critic listed only as arXiv 2408.01760; relevant to optional AI-assisted mutant classification.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Conformance testing for cyber-physical systems",
+      "authors": "Woehrle Matthias; Lampka Kai; Thiele Lothar",
+      "year": "2012",
+      "venue": "ACM Transactions on Embedded Computing Systems",
+      "url": "https://doi.org/10.1145/2362336.2362351",
+      "doi": "10.1145/2362336.2362351",
+      "kind": "paper",
+      "found_via": "Crossref REST query.bibliographic restricted to IEEE (prefix 10.1109) / ACM (prefix 10.1145) (query \"conformance testing hybrid systems\")",
+      "why_relevant": "Conformance testing for cyber-physical systems: judging whether an implementation's continuous traces conform to a model within tolerances; methodological analogue of NeuroSem's tolerance-based trace/feature comparison.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "A Process for Sound Conformance Testing of Cyber-Physical Systems",
+      "authors": "Araujo Hugo; Carvalho Gustavo; Sampaio Augusto; Mousavi Mohammad Reza; Taromirad Masoumeh",
+      "year": "2017",
+      "venue": "2017 IEEE International Conference on Software Testing, Verification and Validation Workshops (ICSTW)",
+      "url": "https://doi.org/10.1109/icstw.2017.15",
+      "doi": "10.1109/icstw.2017.15",
+      "kind": "paper",
+      "found_via": "Crossref REST query.bibliographic restricted to IEEE (prefix 10.1109) / ACM (prefix 10.1145) (query \"conformance testing hybrid systems\")",
+      "why_relevant": "Sound conformance-testing process for cyber-physical systems; relevant to defining when two continuous-time behaviours count as equivalent under a finite test set.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "The Patch Overfitting Problem in Automated Program Repair: Practical Magnitude and a Baseline for Realistic Benchmarking",
+      "authors": "Petke Justyna; Martinez Matias; Kechagia Maria; Aleti Aldeida; Sarro Federica",
+      "year": "2024",
+      "venue": "Companion Proceedings of the 32nd ACM International Conference on the Foundations of Software Engineering",
+      "url": "https://doi.org/10.1145/3663529.3663776",
+      "doi": "10.1145/3663529.3663776",
+      "kind": "paper",
+      "found_via": "Crossref REST query.bibliographic restricted to IEEE (prefix 10.1109) / ACM (prefix 10.1145) (query \"patch overfitting program repair\")",
+      "why_relevant": "Measures the practical magnitude of patch overfitting in automated program repair; supports NeuroSem's hidden-protocol scoring of AI repairs that pass visible tests but change behaviour.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Poracle: Testing Patches under Preservation Conditions to Combat the Overfitting Problem of Program Repair",
+      "authors": "Ismayilzada Elkhan; Rahman Md Mazba Ur; Kim Dongsun; Yi Jooyong",
+      "year": "2023",
+      "venue": "ACM Transactions on Software Engineering and Methodology",
+      "url": "https://doi.org/10.1145/3625293",
+      "doi": "10.1145/3625293",
+      "kind": "paper",
+      "found_via": "Crossref REST query.bibliographic restricted to IEEE (prefix 10.1109) / ACM (prefix 10.1145) (query \"patch overfitting program repair\")",
+      "why_relevant": "Poracle: tests patches under preservation conditions to detect overfitting; conceptually close to NeuroSem's check that a repair preserves behaviour outside the targeted test.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Overfitting in semantics-based automated program repair",
+      "authors": "Le Xuan-Bach D.; Thung Ferdian; Lo David; Le Goues Claire",
+      "year": "2018",
+      "venue": "Proceedings of the 40th International Conference on Software Engineering",
+      "url": "https://doi.org/10.1145/3180155.3182536",
+      "doi": "10.1145/3180155.3182536",
+      "kind": "paper",
+      "found_via": "Crossref REST query.bibliographic restricted to IEEE (prefix 10.1109) / ACM (prefix 10.1145) (query \"patch overfitting program repair\")",
+      "why_relevant": "Overfitting in semantics-based automated program repair; background for the AI-assisted transformation case study.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "A concept analysis inspired greedy algorithm for test suite minimization",
+      "authors": "Tallam Sriraman; Gupta Neelam",
+      "year": "2005",
+      "venue": "Proceedings of the 6th ACM SIGPLAN-SIGSOFT workshop on Program analysis for software tools and engineering",
+      "url": "https://doi.org/10.1145/1108792.1108802",
+      "doi": "10.1145/1108792.1108802",
+      "kind": "paper",
+      "found_via": "Crossref REST query.bibliographic restricted to IEEE (prefix 10.1109) / ACM (prefix 10.1145) (query \"test suite reduction mutation greedy set cover\")",
+      "why_relevant": "Concept-analysis-inspired greedy test-suite minimisation; classic greedy coverage selection analogous to NeuroSem's greedy protocol selection over a detection matrix.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "An experimental comparison of four test suite reduction techniques",
+      "authors": "Zhong Hao; Zhang Lu; Mei Hong",
+      "year": "2006",
+      "venue": "Proceedings of the 28th international conference on Software engineering",
+      "url": "https://doi.org/10.1145/1134285.1134380",
+      "doi": "10.1145/1134285.1134380",
+      "kind": "paper",
+      "found_via": "Crossref REST query.bibliographic restricted to IEEE (prefix 10.1109) / ACM (prefix 10.1145) (query \"test suite reduction mutation greedy set cover\")",
+      "why_relevant": "Experimental comparison of four test-suite reduction techniques; relevant to justifying greedy selection and to reporting fault-detection loss of reduced suites.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "A Validation and Governance Framework for Multi-Agent LLM Scientific Software Development",
+      "authors": "Bass Tim",
+      "year": "2026",
+      "venue": "Proceedings of the 14th International Conference on Advances in Information Technology",
+      "url": "https://doi.org/10.1145/3816713.3818807",
+      "doi": "10.1145/3816713.3818807",
+      "kind": "paper",
+      "found_via": "Crossref REST query.bibliographic restricted to IEEE (prefix 10.1109) / ACM (prefix 10.1145) (query \"LLM code translation scientific computing validation\")",
+      "why_relevant": "Validation and governance framework for multi-agent LLM scientific software development; adjacent to NeuroSem's optional isolated AI-agent study, not neuroscience-specific.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "A comparison of six numerical methods for integrating a compartmental Hodgkin-Huxley type model",
+      "authors": "Park, R.",
+      "year": "2021 (from arXiv identifier 2105.08159, i.e. first submitted 05-2021; date shown on search page: 17 May, 2021)",
+      "venue": "arXiv preprint; arXiv comments: 86 pages, 25 figures. To be published in Applied Numerical Mathematics",
+      "url": "https://arxiv.org/abs/2105.08159",
+      "doi": "",
+      "kind": "preprint",
+      "found_via": "arxiv.org/search HTML interface (query \"numerical accuracy time step neuron simulation\"); metadata from https://arxiv.org/abs/2105.08159",
+      "why_relevant": "Compares six numerical integrators on a 74-compartment Hodgkin-Huxley-type cortical neuron model; evidence base for choosing refinement levels and for expecting numerical-configuration mutants to change behaviour.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Efficient Sampling-Based Bayesian Active Learning for synaptic characterization",
+      "authors": "Gontier, Camille; Surace, Simone Carlo; Delvendahl, Igor; Müller, Martin; Pfister, Jean-Pascal",
+      "year": "2022 (from arXiv identifier 2201.07539, i.e. first submitted 01-2022; date shown on search page: 30 November, 2022)",
+      "venue": "arXiv preprint; arXiv comments: Major review after submission: - Change of title - Add biological recordings",
+      "url": "https://arxiv.org/abs/2201.07539",
+      "doi": "",
+      "kind": "preprint",
+      "found_via": "arxiv.org/search HTML interface (query \"optimal experimental design current clamp\"); metadata from https://arxiv.org/abs/2201.07539",
+      "why_relevant": "Bayesian active learning that selects input stimuli to maximise information about synaptic model parameters; stimulus-selection analogue of NeuroSem's protocol selection, aimed at parameter inference rather than fault detection.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Oracles That Cannot Fail: Anchoring and the Expectation That Moves With the Fault",
+      "authors": "Canedo, Arquimedes",
+      "year": "2026 (from arXiv identifier 2608.17214, i.e. first submitted 08-2026; date shown on search page: 17 August, 2026)",
+      "venue": "arXiv preprint",
+      "url": "https://arxiv.org/abs/2608.17214",
+      "doi": "",
+      "kind": "preprint",
+      "found_via": "arxiv.org/search HTML interface (query \"mutation testing simulation models\"); metadata from https://arxiv.org/abs/2608.17214",
+      "why_relevant": "Argues that oracles derived from the system under test cannot fail when faults move expectation and measurement together; relevant to NeuroSem using a reference model's own traces as oracle and to the need for independent tolerances.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "How effective are traditional test criteria at detecting bugs in large language models generated code?",
+      "authors": "Hamidi, Asma; Konstantinou, Michael; Degiovanni, Renzo; Papadakis, Mike",
+      "year": "2026 (from arXiv identifier 2609.09315, i.e. first submitted 09-2026; date shown on search page: 8 September, 2026)",
+      "venue": "arXiv preprint",
+      "url": "https://arxiv.org/abs/2609.09315",
+      "doi": "",
+      "kind": "preprint",
+      "found_via": "arxiv.org/search HTML interface (query \"mutation testing simulation models\"); metadata from https://arxiv.org/abs/2609.09315",
+      "why_relevant": "Evaluates whether traditional test adequacy criteria detect bugs in LLM-generated code; relevant to whether conventional single-test adequacy suffices for AI-transformed models.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Hybrid Fault-Driven Mutation Testing for Python",
+      "authors": "Alimadadi, Saba; Gharachorlu, Golnaz",
+      "year": "2026 (from arXiv identifier 2601.19088, i.e. first submitted 01-2026; date shown on search page: 20 July, 2026)",
+      "venue": "arXiv preprint",
+      "url": "https://arxiv.org/abs/2601.19088",
+      "doi": "",
+      "kind": "preprint",
+      "found_via": "arxiv.org/search HTML interface (query \"mutation testing simulation models\"); metadata from https://arxiv.org/abs/2601.19088",
+      "why_relevant": "Hybrid fault-driven mutation testing for Python combining real-fault patterns with mutation operators; relevant to designing domain-specific (biophysical/reference/numerical) mutation families.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "LLMorpheus: Mutation Testing using Large Language Models",
+      "authors": "Tip, Frank; Bell, Jonathan; Schaefer, Max",
+      "year": "2024 (from arXiv identifier 2404.09952, i.e. first submitted 04-2024; date shown on search page: 7 March, 2025)",
+      "venue": "arXiv preprint",
+      "url": "https://arxiv.org/abs/2404.09952",
+      "doi": "",
+      "kind": "preprint",
+      "found_via": "arxiv.org/search HTML interface (query \"mutation testing simulation models\"); metadata from https://arxiv.org/abs/2404.09952",
+      "why_relevant": "LLMorpheus: LLM-generated mutants; relevant if NeuroSem later uses AI to propose realistic model-edit mutations.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "REFINE: A Multi-Agent LLM Approach for Evidence-Guided Code Refactoring",
+      "authors": "Waseem, Muhammad; Ahmad, Aakash; Abrahamsson, Pekka",
+      "year": "2026 (from arXiv identifier 2608.23611, i.e. first submitted 08-2026; date shown on search page: 21 August, 2026)",
+      "venue": "arXiv preprint; arXiv comments: Preprint. 450 Java files from 15 open-source systems; 1,350 model-pass outputs across three LLM configurations. The accompanying replication package will be made publicly available",
+      "url": "https://arxiv.org/abs/2608.23611",
+      "doi": "",
+      "kind": "preprint",
+      "found_via": "arxiv.org/search HTML interface (query \"refactoring behaviour preservation LLM\"); metadata from https://arxiv.org/abs/2608.23611",
+      "why_relevant": "Multi-agent LLM refactoring that must not alter behaviour-relevant structures; adjacent to NeuroSem's valid-transformation (refactor) class and AI case study.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Imaging-101: Benchmarking LLM Coding Agents on Scientific Computational Imaging",
+      "authors": "Chen, Siyi; Ying, Jiahe; Jia, Yixuan; Gu, Yuxuan; Ye, Enze; Bai, Weimin; Zeng, Zhijun; Ren, Shaochi; Gao, Binhong; Li, Yubing; Zhang, Tianhan; Sun, He",
+      "year": "2026 (from arXiv identifier 2607.10789, i.e. first submitted 07-2026; date shown on search page: 12 July, 2026)",
+      "venue": "arXiv preprint",
+      "url": "https://arxiv.org/abs/2607.10789",
+      "doi": "",
+      "kind": "preprint",
+      "found_via": "arxiv.org/search HTML interface (query \"hidden tests coding agents scientific\"); metadata from https://arxiv.org/abs/2607.10789",
+      "why_relevant": "Benchmark of LLM coding agents on scientific computational-imaging pipelines; example of domain-specific agent evaluation design comparable to NeuroSem's isolated agent tasks.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "eFELunit: A SciUnit library for data-driven testing of eFEL features extracted from computational models",
+      "authors": "GitHub owner appukuttan-shailesh (author list unverified)",
+      "year": "2018 (repo created 2018-03-01; last push 2022-09-15)",
+      "venue": "GitHub repository; PyPI package eFELunit 2.0.3",
+      "url": "https://github.com/appukuttan-shailesh/eFELunit",
+      "doi": "",
+      "kind": "software",
+      "found_via": "PyPI Simple index name grep (efel), then https://pypi.org/pypi/eFELunit/json and GitHub REST repos API",
+      "why_relevant": "Wraps eFEL feature comparisons as SciUnit tests of models; overlaps NeuroSem's feature-based checks and is a reuse candidate, but tests models against data, not model versions/mutants, and has no protocol selection. (PyPI summary says morphologies; GitHub description says eFEL features.)",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "biosimulators/Biosimulators_test_suite: tool for validating that biosimulation software tools implement the BioSimulators standards",
+      "authors": "biosimulators GitHub organisation (author list unverified)",
+      "year": "2020 (repo created 2020-07-01; last push 2026-07-02)",
+      "venue": "GitHub repository (MIT)",
+      "url": "https://github.com/biosimulators/Biosimulators_test_suite",
+      "doi": "",
+      "kind": "software",
+      "found_via": "GitHub REST search/repositories \"org:biosimulators test\"",
+      "why_relevant": "Conformance test suite checking that simulators (including a jNeuroML/pyNeuroML wrapper, see biosimulators-pyneuroml) execute standard simulation experiments correctly; simulator-level validation, not model-level behavioural drift detection.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "biosimulators-pyneuroml: BioSimulators-compliant command-line interface to jNeuroML/pyNeuroML, NEURON and NetPyNE",
+      "authors": "unverified",
+      "year": "2021 (first PyPI upload 2021-06-04; version 0.0.16 uploaded 2022-02-22)",
+      "venue": "PyPI (MIT)",
+      "url": "https://pypi.org/project/biosimulators-pyneuroml/",
+      "doi": "",
+      "kind": "software",
+      "found_via": "PyPI Simple index name grep (neuroml), then https://pypi.org/pypi/biosimulators-pyneuroml/json",
+      "why_relevant": "Runs NeuroML/LEMS models through several simulators under a common interface; possible cross-simulator execution path for NeuroSem's optional cross-simulator models. No behavioural comparison claimed.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "nrn-diff: NEURON object differ (recursively finds differences between objects in NEURON)",
+      "authors": "dbbs-lab GitHub organisation (author list unverified)",
+      "year": "2020 (first PyPI upload 2020-06-24; repo created 2023-10-16)",
+      "venue": "PyPI nrn-diff 0.0.3; GitHub (BSD-3-Clause)",
+      "url": "https://github.com/dbbs-lab/nrn-diff",
+      "doi": "",
+      "kind": "software",
+      "found_via": "PyPI Simple index name grep (nrn), then https://pypi.org/pypi/nrn-diff/json and GitHub REST repos API",
+      "why_relevant": "Structural differencing of instantiated NEURON models; a structural-diff baseline that cannot reveal behavioural drift, which NeuroSem targets.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "neuroml-loihi: NeuroML/LEMS to Loihi 2 toolchain (NeuroML2Loihi)",
+      "authors": "GitHub owner DRosen766 (author list unverified)",
+      "year": "2026 (PyPI 1.0.0 uploaded 2026-07-18)",
+      "venue": "PyPI; GitHub (MIT)",
+      "url": "https://github.com/DRosen766/NeuroML2Loihi",
+      "doi": "",
+      "kind": "software",
+      "found_via": "PyPI Simple index name grep (neuroml), then https://pypi.org/pypi/neuroml-loihi/json and GitHub REST repos API",
+      "why_relevant": "Recent translator from NeuroML/LEMS to neuromorphic hardware; a concrete model-translation setting where behaviour preservation must be checked, i.e. a potential NeuroSem use case. No validation method documented in retrieved metadata.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "neuronunit-opt / neuronunitopt: SciUnit library for optimizing data-driven testing of single-neuron physiology models",
+      "authors": "unverified (PyPI homepage points to github.com/russelljjarvis; that NeuronunitOpt repo returned HTTP 404)",
+      "year": "2019 (neuronunit-opt 0.1 uploaded 2019-11-26; neuronunitopt 0.19 uploaded 2021-03-25)",
+      "venue": "PyPI (MIT)",
+      "url": "https://pypi.org/project/neuronunit-opt/",
+      "doi": "",
+      "kind": "software",
+      "found_via": "PyPI Simple index name grep (neuronunit), then https://pypi.org/pypi/neuronunit-opt/json and https://pypi.org/pypi/neuronunitopt/json",
+      "why_relevant": "Combines NeuronUnit rheobase/electrophysiology tests with model optimisation; overlaps multi-test electrophysiology scoring but targets fitting, not change detection.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "metamorphic-guard: Python library for comparing program versions using metamorphic testing",
+      "authors": "unverified (homepage github.com/duhboto/MetamorphicGuard)",
+      "year": "2025 (versions uploaded 2025-11-03 to 2025-11-20; latest 3.6.0)",
+      "venue": "PyPI (MIT)",
+      "url": "https://pypi.org/project/metamorphic-guard/",
+      "doi": "",
+      "kind": "software",
+      "found_via": "PyPI Simple index name grep (metamorph), then https://pypi.org/pypi/metamorphic-guard/json",
+      "why_relevant": "Generic version-comparison via metamorphic relations; general-purpose counterpart of NeuroSem's reference-versus-transformed comparison, with no neuroscience domain, features or protocol selection.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "universalmutator: universal regexp-based mutation tool",
+      "authors": "unverified (homepage github.com/agroce/universalmutator)",
+      "year": "2017 (first PyPI upload 2017-11-07; 1.14.1 uploaded 2026-05-20)",
+      "venue": "PyPI (MIT)",
+      "url": "https://github.com/agroce/universalmutator",
+      "doi": "",
+      "kind": "software",
+      "found_via": "PyPI Simple index name grep (mutat), then https://pypi.org/pypi/universalmutator/json",
+      "why_relevant": "Language-agnostic regex mutation that could in principle mutate NeuroML XML text; shows generic mutation tooling exists, so NeuroSem's contribution must lie in domain-typed biophysical/reference/numerical operators and admissibility classification.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "roybens/Neuron_general (efel_feature_extractor.py): eFEL features for wild-type versus Na-channel variant neuron models",
+      "authors": "GitHub owner roybens (author list unverified); near-identical copies in SethDougherty/Neuron_HH_Adult and timskeee/Neuron_HMM",
+      "year": "2022 (repo created 2022-10-11; last push 2025-08-13)",
+      "venue": "GitHub repository (no licence detected)",
+      "url": "https://github.com/roybens/Neuron_general/blob/b8780b27b2a2b8a06b905567db089a8e68dde17c/efel_feature_extractor.py",
+      "doi": "",
+      "kind": "software",
+      "found_via": "GitHub REST search/code \"efel getFeatureValues mutant language:Python\" (authenticated gh)",
+      "why_relevant": "Extracts eFEL features from models carrying named SCN2A-style channel variants (e.g. R1882Q listed in file) under a current step; terminology collision: \"mutant\" here means a disease variant, not a software fault. Shows feature fingerprints of perturbed models are used in channelopathy work, without mutation testing, protocol selection or held-out evaluation.",
+      "estimated_closeness": 2
+    }
+  ],
+  "queries_run": [
+    {
+      "source": "arXiv HTML search",
+      "query": "differential testing scientific code translation | https://arxiv.org/search/?query=differential+testing+scientific+code+translation&searchtype=all&abstracts=show&size=50&order=",
+      "result_note": "HTTP 200; 3 results (up to 50 inspected by title/abstract snippet); candidates taken: 2607.04058 (already listed by critic)"
+    },
+    {
+      "source": "arXiv HTML search",
+      "query": "LLM scientific code equivalence testing | https://arxiv.org/search/?query=LLM+scientific+code+equivalence+testing&searchtype=all&abstracts=show&size=50&order=",
+      "result_note": "HTTP 200; 6 results (up to 50 inspected by title/abstract snippet); candidates taken: 2607.04058, 2604.19086, 2503.08182 (already listed)"
+    },
+    {
+      "source": "arXiv HTML search",
+      "query": "semantic mutation scientific computing | https://arxiv.org/search/?query=semantic+mutation+scientific+computing&searchtype=all&abstracts=show&size=50&order=",
+      "result_note": "HTTP 200; 3 results (up to 50 inspected by title/abstract snippet); candidates taken: 2605.17437 (already listed by critic)"
+    },
+    {
+      "source": "arXiv HTML search",
+      "query": "metamorphic testing ODE simulation | https://arxiv.org/search/?query=metamorphic+testing+ODE+simulation&searchtype=all&abstracts=show&size=50&order=",
+      "result_note": "HTTP 200; 0 results (up to 50 inspected by title/abstract snippet); candidates taken: none relevant/new"
+    },
+    {
+      "source": "arXiv HTML search",
+      "query": "hidden tests coding agents scientific | https://arxiv.org/search/?query=hidden+tests+coding+agents+scientific&searchtype=all&abstracts=show&size=50&order=",
+      "result_note": "HTTP 200; 3 results (up to 50 inspected by title/abstract snippet); candidates taken: 2607.10789"
+    },
+    {
+      "source": "arXiv HTML search",
+      "query": "refactoring behaviour preservation LLM | https://arxiv.org/search/?query=refactoring+behaviour+preservation+LLM&searchtype=all&abstracts=show&size=50&order=",
+      "result_note": "HTTP 200; 1 results (up to 50 inspected by title/abstract snippet); candidates taken: 2608.23611"
+    },
+    {
+      "source": "arXiv HTML search",
+      "query": "test suite minimization greedy coverage | https://arxiv.org/search/?query=test+suite+minimization+greedy+coverage&searchtype=all&abstracts=show&size=50&order=",
+      "result_note": "HTTP 200; 1 results (up to 50 inspected by title/abstract snippet); candidates taken: none relevant/new"
+    },
+    {
+      "source": "arXiv HTML search",
+      "query": "biophysical neuron model LLM agent | https://arxiv.org/search/?query=biophysical+neuron+model+LLM+agent&searchtype=all&abstracts=show&size=50&order=",
+      "result_note": "HTTP 200; 0 results (up to 50 inspected by title/abstract snippet); candidates taken: none relevant/new"
+    },
+    {
+      "source": "arXiv HTML search",
+      "query": "metamorphic testing neuron simulation | https://arxiv.org/search/?query=metamorphic+testing+neuron+simulation&searchtype=all&abstracts=show&size=50&order=",
+      "result_note": "HTTP 200; 0 results (up to 50 inspected by title/abstract snippet); candidates taken: none relevant/new"
+    },
+    {
+      "source": "arXiv HTML search",
+      "query": "stimulus protocol design neuron model discrimination | https://arxiv.org/search/?query=stimulus+protocol+design+neuron+model+discrimination&searchtype=all&abstracts=show&size=50&order=",
+      "result_note": "HTTP 200; 0 results (up to 50 inspected by title/abstract snippet); candidates taken: none relevant/new"
+    },
+    {
+      "source": "arXiv HTML search",
+      "query": "optimal experimental design current clamp | https://arxiv.org/search/?query=optimal+experimental+design+current+clamp&searchtype=all&abstracts=show&size=50&order=",
+      "result_note": "HTTP 200; 2 results (up to 50 inspected by title/abstract snippet); candidates taken: 2201.07539"
+    },
+    {
+      "source": "arXiv HTML search",
+      "query": "model conversion NEURON NeuroML | https://arxiv.org/search/?query=model+conversion+NEURON+NeuroML&searchtype=all&abstracts=show&size=50&order=",
+      "result_note": "HTTP 200; 0 results (up to 50 inspected by title/abstract snippet); candidates taken: none relevant/new"
+    },
+    {
+      "source": "arXiv HTML search",
+      "query": "regression testing neuron simulator | https://arxiv.org/search/?query=regression+testing+neuron+simulator&searchtype=all&abstracts=show&size=50&order=",
+      "result_note": "HTTP 200; 7 results (up to 50 inspected by title/abstract snippet); candidates taken: none relevant/new"
+    },
+    {
+      "source": "arXiv HTML search",
+      "query": "validation neuron models multiple stimulus protocols | https://arxiv.org/search/?query=validation+neuron+models+multiple+stimulus+protocols&searchtype=all&abstracts=show&size=50&order=",
+      "result_note": "HTTP 200; 0 results (up to 50 inspected by title/abstract snippet); candidates taken: none relevant/new"
+    },
+    {
+      "source": "arXiv HTML search",
+      "query": "numerical accuracy time step neuron simulation | https://arxiv.org/search/?query=numerical+accuracy+time+step+neuron+simulation&searchtype=all&abstracts=show&size=50&order=",
+      "result_note": "HTTP 200; 9 results (up to 50 inspected by title/abstract snippet); candidates taken: 2105.08159"
+    },
+    {
+      "source": "arXiv HTML search",
+      "query": "conductance-based model electrophysiological features optimization | https://arxiv.org/search/?query=conductance-based+model+electrophysiological+features+optimization&searchtype=all&abstracts=show&size=50&order=",
+      "result_note": "HTTP 200; 2 results (up to 50 inspected by title/abstract snippet); candidates taken: none relevant/new"
+    },
+    {
+      "source": "arXiv HTML search",
+      "query": "spiking neuron simulator cross-validation reproducibility | https://arxiv.org/search/?query=spiking+neuron+simulator+cross-validation+reproducibility&searchtype=all&abstracts=show&size=50&order=",
+      "result_note": "HTTP 200; 0 results (up to 50 inspected by title/abstract snippet); candidates taken: none relevant/new"
+    },
+    {
+      "source": "arXiv HTML search",
+      "query": "mutation testing simulation models | https://arxiv.org/search/?query=mutation+testing+simulation+models&searchtype=all&abstracts=show&size=50&order=",
+      "result_note": "HTTP 200; 110 results (up to 50 inspected by title/abstract snippet); candidates taken: 2608.17214, 2601.19088, 2404.09952, 2609.09315, 2608.24250 (already listed)"
+    },
+    {
+      "source": "arXiv HTML search",
+      "query": "test oracle tolerance numerical simulation | https://arxiv.org/search/?query=test+oracle+tolerance+numerical+simulation&searchtype=all&abstracts=show&size=50&order=",
+      "result_note": "HTTP 200; 1 results (up to 50 inspected by title/abstract snippet); candidates taken: 2606.17529 (already listed)"
+    },
+    {
+      "source": "arXiv HTML search",
+      "query": "behavioural equivalence dynamical system models testing | https://arxiv.org/search/?query=behavioural+equivalence+dynamical+system+models+testing&searchtype=all&abstracts=show&size=50&order=",
+      "result_note": "HTTP 200; 4 results (up to 50 inspected by title/abstract snippet); candidates taken: none relevant/new"
+    },
+    {
+      "source": "arXiv HTML search",
+      "query": "fault injection neural simulation | https://arxiv.org/search/?query=fault+injection+neural+simulation&searchtype=all&abstracts=show&size=50&order=",
+      "result_note": "HTTP 200; 26 results (up to 50 inspected by title/abstract snippet); candidates taken: none relevant/new"
+    },
+    {
+      "source": "arXiv HTML search",
+      "query": "code translation equivalence numerical differential testing | https://arxiv.org/search/?query=code+translation+equivalence+numerical+differential+testing&searchtype=all&abstracts=show&size=50&order=",
+      "result_note": "HTTP 200; 0 results (up to 50 inspected by title/abstract snippet); candidates taken: none relevant/new"
+    },
+    {
+      "source": "arXiv HTML search",
+      "query": "LLM generated simulation code silent errors | https://arxiv.org/search/?query=LLM+generated+simulation+code+silent+errors&searchtype=all&abstracts=show&size=50&order=",
+      "result_note": "HTTP 200; 1 results (up to 50 inspected by title/abstract snippet); candidates taken: none relevant/new"
+    },
+    {
+      "source": "arXiv HTML search",
+      "query": "hybrid system conformance testing trace | https://arxiv.org/search/?query=hybrid+system+conformance+testing+trace&searchtype=all&abstracts=show&size=50&order=",
+      "result_note": "HTTP 200; 0 results (up to 50 inspected by title/abstract snippet); candidates taken: none relevant/new"
+    },
+    {
+      "source": "arXiv HTML search",
+      "query": "test selection budget mutation score random baseline | https://arxiv.org/search/?query=test+selection+budget+mutation+score+random+baseline&searchtype=all&abstracts=show&size=50&order=",
+      "result_note": "HTTP 200; 0 results (up to 50 inspected by title/abstract snippet); candidates taken: none relevant/new"
+    },
+    {
+      "source": "arXiv HTML search",
+      "query": "equivalent mutant detection | https://arxiv.org/search/?query=equivalent+mutant+detection&searchtype=all&abstracts=show&size=50&order=",
+      "result_note": "HTTP 200; 20 results (up to 50 inspected by title/abstract snippet); candidates taken: 2607.00511, 2404.09241, 1303.2784, 2201.10160, 2605.13279, 2408.01760 (already listed)"
+    },
+    {
+      "source": "arXiv HTML search",
+      "query": "patch overfitting program repair | https://arxiv.org/search/?query=patch+overfitting+program+repair&searchtype=all&abstracts=show&size=50&order=",
+      "result_note": "HTTP 200; 33 results (up to 50 inspected by title/abstract snippet); candidates taken: 2603.11262, 1810.10614"
+    },
+    {
+      "source": "arXiv HTML search",
+      "query": "neuron model degeneracy stimulus protocol | https://arxiv.org/search/?query=neuron+model+degeneracy+stimulus+protocol&searchtype=all&abstracts=show&size=50&order=",
+      "result_note": "HTTP 200; 0 results (up to 50 inspected by title/abstract snippet); candidates taken: none relevant/new"
+    },
+    {
+      "source": "Crossref REST (prefix 10.1109)",
+      "query": "https://api.crossref.org/works?query.bibliographic=conductance+neuron+model+metamorphic+testing&filter=prefix%3A10.1109&rows=20&select=DOI%2Ctitle%2Ccontainer-title%2Cissued%2Cauthor%2Ctype",
+      "result_note": "HTTP 200; total-results 321712 (relevance-ranked, top 20 inspected); relevant items kept in candidates where new"
+    },
+    {
+      "source": "Crossref REST (prefix 10.1145)",
+      "query": "https://api.crossref.org/works?query.bibliographic=conductance+neuron+model+metamorphic+testing&filter=prefix%3A10.1145&rows=20&select=DOI%2Ctitle%2Ccontainer-title%2Cissued%2Cauthor%2Ctype",
+      "result_note": "HTTP 200; total-results 34016 (relevance-ranked, top 20 inspected); relevant items kept in candidates where new"
+    },
+    {
+      "source": "Crossref REST (prefix 10.1109)",
+      "query": "https://api.crossref.org/works?query.bibliographic=neuron+model+semantic+regression&filter=prefix%3A10.1109&rows=20&select=DOI%2Ctitle%2Ccontainer-title%2Cissued%2Cauthor%2Ctype",
+      "result_note": "HTTP 200; total-results 322076 (relevance-ranked, top 20 inspected); relevant items kept in candidates where new"
+    },
+    {
+      "source": "Crossref REST (prefix 10.1145)",
+      "query": "https://api.crossref.org/works?query.bibliographic=neuron+model+semantic+regression&filter=prefix%3A10.1145&rows=20&select=DOI%2Ctitle%2Ccontainer-title%2Cissued%2Cauthor%2Ctype",
+      "result_note": "HTTP 200; total-results 34673 (relevance-ranked, top 20 inspected); relevant items kept in candidates where new"
+    },
+    {
+      "source": "Crossref REST (prefix 10.1109)",
+      "query": "https://api.crossref.org/works?query.bibliographic=perturbation+fingerprint+neuron+model&filter=prefix%3A10.1109&rows=20&select=DOI%2Ctitle%2Ccontainer-title%2Cissued%2Cauthor%2Ctype",
+      "result_note": "HTTP 200; total-results 286208 (relevance-ranked, top 20 inspected); relevant items kept in candidates where new"
+    },
+    {
+      "source": "Crossref REST (prefix 10.1145)",
+      "query": "https://api.crossref.org/works?query.bibliographic=perturbation+fingerprint+neuron+model&filter=prefix%3A10.1145&rows=20&select=DOI%2Ctitle%2Ccontainer-title%2Cissued%2Cauthor%2Ctype",
+      "result_note": "HTTP 200; total-results 27884 (relevance-ranked, top 20 inspected); relevant items kept in candidates where new"
+    },
+    {
+      "source": "Crossref REST (prefix 10.1109)",
+      "query": "https://api.crossref.org/works?query.bibliographic=automatic+stimulation+protocol+selection+model+validation&filter=prefix%3A10.1109&rows=20&select=DOI%2Ctitle%2Ccontainer-title%2Cissued%2Cauthor%2Ctype",
+      "result_note": "HTTP 200; total-results 458817 (relevance-ranked, top 20 inspected); relevant items kept in candidates where new"
+    },
+    {
+      "source": "Crossref REST (prefix 10.1145)",
+      "query": "https://api.crossref.org/works?query.bibliographic=automatic+stimulation+protocol+selection+model+validation&filter=prefix%3A10.1145&rows=20&select=DOI%2Ctitle%2Ccontainer-title%2Cissued%2Cauthor%2Ctype",
+      "result_note": "HTTP 200; total-results 43317 (relevance-ranked, top 20 inspected); relevant items kept in candidates where new"
+    },
+    {
+      "source": "Crossref REST (prefix 10.1109)",
+      "query": "https://api.crossref.org/works?query.bibliographic=equivalent+mutant+detection&filter=prefix%3A10.1109&rows=20&select=DOI%2Ctitle%2Ccontainer-title%2Cissued%2Cauthor%2Ctype",
+      "result_note": "HTTP 200; total-results 295127 (relevance-ranked, top 20 inspected); relevant items kept in candidates where new"
+    },
+    {
+      "source": "Crossref REST (prefix 10.1145)",
+      "query": "https://api.crossref.org/works?query.bibliographic=equivalent+mutant+detection&filter=prefix%3A10.1145&rows=20&select=DOI%2Ctitle%2Ccontainer-title%2Cissued%2Cauthor%2Ctype",
+      "result_note": "HTTP 200; total-results 18144 (relevance-ranked, top 20 inspected); relevant items kept in candidates where new"
+    },
+    {
+      "source": "Crossref REST (prefix 10.1109)",
+      "query": "https://api.crossref.org/works?query.bibliographic=conformance+testing+hybrid+systems&filter=prefix%3A10.1109&rows=20&select=DOI%2Ctitle%2Ccontainer-title%2Cissued%2Cauthor%2Ctype",
+      "result_note": "HTTP 200; total-results 1241733 (relevance-ranked, top 20 inspected); relevant items kept in candidates where new"
+    },
+    {
+      "source": "Crossref REST (prefix 10.1145)",
+      "query": "https://api.crossref.org/works?query.bibliographic=conformance+testing+hybrid+systems&filter=prefix%3A10.1145&rows=20&select=DOI%2Ctitle%2Ccontainer-title%2Cissued%2Cauthor%2Ctype",
+      "result_note": "HTTP 200; total-results 143881 (relevance-ranked, top 20 inspected); relevant items kept in candidates where new"
+    },
+    {
+      "source": "Crossref REST (prefix 10.1109)",
+      "query": "https://api.crossref.org/works?query.bibliographic=patch+overfitting+program+repair&filter=prefix%3A10.1109&rows=20&select=DOI%2Ctitle%2Ccontainer-title%2Cissued%2Cauthor%2Ctype",
+      "result_note": "HTTP 200; total-results 51445 (relevance-ranked, top 20 inspected); relevant items kept in candidates where new"
+    },
+    {
+      "source": "Crossref REST (prefix 10.1145)",
+      "query": "https://api.crossref.org/works?query.bibliographic=patch+overfitting+program+repair&filter=prefix%3A10.1145&rows=20&select=DOI%2Ctitle%2Ccontainer-title%2Cissued%2Cauthor%2Ctype",
+      "result_note": "HTTP 200; total-results 11749 (relevance-ranked, top 20 inspected); relevant items kept in candidates where new"
+    },
+    {
+      "source": "Crossref REST (prefix 10.1109)",
+      "query": "https://api.crossref.org/works?query.bibliographic=mutation+testing+computational+neuroscience&filter=prefix%3A10.1109&rows=20&select=DOI%2Ctitle%2Ccontainer-title%2Cissued%2Cauthor%2Ctype",
+      "result_note": "HTTP 200; total-results 158325 (relevance-ranked, top 20 inspected); relevant items kept in candidates where new"
+    },
+    {
+      "source": "Crossref REST (prefix 10.1145)",
+      "query": "https://api.crossref.org/works?query.bibliographic=mutation+testing+computational+neuroscience&filter=prefix%3A10.1145&rows=20&select=DOI%2Ctitle%2Ccontainer-title%2Cissued%2Cauthor%2Ctype",
+      "result_note": "HTTP 200; total-results 18512 (relevance-ranked, top 20 inspected); relevant items kept in candidates where new"
+    },
+    {
+      "source": "Crossref REST (prefix 10.1109)",
+      "query": "https://api.crossref.org/works?query.bibliographic=NeuroML+model+validation&filter=prefix%3A10.1109&rows=20&select=DOI%2Ctitle%2Ccontainer-title%2Cissued%2Cauthor%2Ctype",
+      "result_note": "HTTP 200; total-results 293868 (relevance-ranked, top 20 inspected); relevant items kept in candidates where new"
+    },
+    {
+      "source": "Crossref REST (prefix 10.1145)",
+      "query": "https://api.crossref.org/works?query.bibliographic=NeuroML+model+validation&filter=prefix%3A10.1145&rows=20&select=DOI%2Ctitle%2Ccontainer-title%2Cissued%2Cauthor%2Ctype",
+      "result_note": "HTTP 200; total-results 28615 (relevance-ranked, top 20 inspected); relevant items kept in candidates where new"
+    },
+    {
+      "source": "Crossref REST (prefix 10.1109)",
+      "query": "https://api.crossref.org/works?query.bibliographic=neuron+simulator+regression+testing&filter=prefix%3A10.1109&rows=20&select=DOI%2Ctitle%2Ccontainer-title%2Cissued%2Cauthor%2Ctype",
+      "result_note": "HTTP 200; total-results 71383 (relevance-ranked, top 20 inspected); relevant items kept in candidates where new"
+    },
+    {
+      "source": "Crossref REST (prefix 10.1145)",
+      "query": "https://api.crossref.org/works?query.bibliographic=neuron+simulator+regression+testing&filter=prefix%3A10.1145&rows=20&select=DOI%2Ctitle%2Ccontainer-title%2Cissued%2Cauthor%2Ctype",
+      "result_note": "HTTP 200; total-results 9605 (relevance-ranked, top 20 inspected); relevant items kept in candidates where new"
+    },
+    {
+      "source": "Crossref REST (prefix 10.1109)",
+      "query": "https://api.crossref.org/works?query.bibliographic=behavioral+preservation+model+conversion+simulation&filter=prefix%3A10.1109&rows=20&select=DOI%2Ctitle%2Ccontainer-title%2Cissued%2Cauthor%2Ctype",
+      "result_note": "HTTP 200; total-results 446077 (relevance-ranked, top 20 inspected); relevant items kept in candidates where new"
+    },
+    {
+      "source": "Crossref REST (prefix 10.1145)",
+      "query": "https://api.crossref.org/works?query.bibliographic=behavioral+preservation+model+conversion+simulation&filter=prefix%3A10.1145&rows=20&select=DOI%2Ctitle%2Ccontainer-title%2Cissued%2Cauthor%2Ctype",
+      "result_note": "HTTP 200; total-results 41256 (relevance-ranked, top 20 inspected); relevant items kept in candidates where new"
+    },
+    {
+      "source": "Crossref REST (prefix 10.1109)",
+      "query": "https://api.crossref.org/works?query.bibliographic=stimulus+design+model+discrimination+neuron&filter=prefix%3A10.1109&rows=20&select=DOI%2Ctitle%2Ccontainer-title%2Cissued%2Cauthor%2Ctype",
+      "result_note": "HTTP 200; total-results 679123 (relevance-ranked, top 20 inspected); relevant items kept in candidates where new"
+    },
+    {
+      "source": "Crossref REST (prefix 10.1145)",
+      "query": "https://api.crossref.org/works?query.bibliographic=stimulus+design+model+discrimination+neuron&filter=prefix%3A10.1145&rows=20&select=DOI%2Ctitle%2Ccontainer-title%2Cissued%2Cauthor%2Ctype",
+      "result_note": "HTTP 200; total-results 82010 (relevance-ranked, top 20 inspected); relevant items kept in candidates where new"
+    },
+    {
+      "source": "Crossref REST (prefix 10.1109)",
+      "query": "https://api.crossref.org/works?query.bibliographic=test+suite+reduction+mutation+greedy+set+cover&filter=prefix%3A10.1109&rows=20&select=DOI%2Ctitle%2Ccontainer-title%2Cissued%2Cauthor%2Ctype",
+      "result_note": "HTTP 200; total-results 187786 (relevance-ranked, top 20 inspected); relevant items kept in candidates where new"
+    },
+    {
+      "source": "Crossref REST (prefix 10.1145)",
+      "query": "https://api.crossref.org/works?query.bibliographic=test+suite+reduction+mutation+greedy+set+cover&filter=prefix%3A10.1145&rows=20&select=DOI%2Ctitle%2Ccontainer-title%2Cissued%2Cauthor%2Ctype",
+      "result_note": "HTTP 200; total-results 10748 (relevance-ranked, top 20 inspected); relevant items kept in candidates where new"
+    },
+    {
+      "source": "Crossref REST (prefix 10.1109)",
+      "query": "https://api.crossref.org/works?query.bibliographic=mutation+testing+scientific+simulation+software&filter=prefix%3A10.1109&rows=20&select=DOI%2Ctitle%2Ccontainer-title%2Cissued%2Cauthor%2Ctype",
+      "result_note": "HTTP 200; total-results 329048 (relevance-ranked, top 20 inspected); relevant items kept in candidates where new"
+    },
+    {
+      "source": "Crossref REST (prefix 10.1145)",
+      "query": "https://api.crossref.org/works?query.bibliographic=mutation+testing+scientific+simulation+software&filter=prefix%3A10.1145&rows=20&select=DOI%2Ctitle%2Ccontainer-title%2Cissued%2Cauthor%2Ctype",
+      "result_note": "HTTP 200; total-results 77265 (relevance-ranked, top 20 inspected); relevant items kept in candidates where new"
+    },
+    {
+      "source": "Crossref REST (prefix 10.1109)",
+      "query": "https://api.crossref.org/works?query.bibliographic=metamorphic+testing+biological+simulation&filter=prefix%3A10.1109&rows=20&select=DOI%2Ctitle%2Ccontainer-title%2Cissued%2Cauthor%2Ctype",
+      "result_note": "HTTP 200; total-results 177238 (relevance-ranked, top 20 inspected); relevant items kept in candidates where new"
+    },
+    {
+      "source": "Crossref REST (prefix 10.1145)",
+      "query": "https://api.crossref.org/works?query.bibliographic=metamorphic+testing+biological+simulation&filter=prefix%3A10.1145&rows=20&select=DOI%2Ctitle%2Ccontainer-title%2Cissued%2Cauthor%2Ctype",
+      "result_note": "HTTP 200; total-results 20727 (relevance-ranked, top 20 inspected); relevant items kept in candidates where new"
+    },
+    {
+      "source": "Crossref REST (prefix 10.1109)",
+      "query": "https://api.crossref.org/works?query.bibliographic=LLM+code+translation+scientific+computing+validation&filter=prefix%3A10.1109&rows=20&select=DOI%2Ctitle%2Ccontainer-title%2Cissued%2Cauthor%2Ctype",
+      "result_note": "HTTP 200; total-results 514626 (relevance-ranked, top 20 inspected); relevant items kept in candidates where new"
+    },
+    {
+      "source": "Crossref REST (prefix 10.1145)",
+      "query": "https://api.crossref.org/works?query.bibliographic=LLM+code+translation+scientific+computing+validation&filter=prefix%3A10.1145&rows=20&select=DOI%2Ctitle%2Ccontainer-title%2Cissued%2Cauthor%2Ctype",
+      "result_note": "HTTP 200; total-results 134552 (relevance-ranked, top 20 inspected); relevant items kept in candidates where new"
+    },
+    {
+      "source": "Crossref REST (prefix 10.1109)",
+      "query": "https://api.crossref.org/works?query.bibliographic=spiking+neuron+model+simulator+verification&filter=prefix%3A10.1109&rows=20&select=DOI%2Ctitle%2Ccontainer-title%2Cissued%2Cauthor%2Ctype",
+      "result_note": "HTTP 200; total-results 313902 (relevance-ranked, top 20 inspected); relevant items kept in candidates where new"
+    },
+    {
+      "source": "Crossref REST (prefix 10.1145)",
+      "query": "https://api.crossref.org/works?query.bibliographic=spiking+neuron+model+simulator+verification&filter=prefix%3A10.1145&rows=20&select=DOI%2Ctitle%2Ccontainer-title%2Cissued%2Cauthor%2Ctype",
+      "result_note": "HTTP 200; total-results 32516 (relevance-ranked, top 20 inspected); relevant items kept in candidates where new"
+    },
+    {
+      "source": "Crossref REST (prefix 10.1109)",
+      "query": "https://api.crossref.org/works?query.bibliographic=electrophysiological+features+neuron+model+validation&filter=prefix%3A10.1109&rows=20&select=DOI%2Ctitle%2Ccontainer-title%2Cissued%2Cauthor%2Ctype",
+      "result_note": "HTTP 200; total-results 326814 (relevance-ranked, top 20 inspected); relevant items kept in candidates where new"
+    },
+    {
+      "source": "Crossref REST (prefix 10.1145)",
+      "query": "https://api.crossref.org/works?query.bibliographic=electrophysiological+features+neuron+model+validation&filter=prefix%3A10.1145&rows=20&select=DOI%2Ctitle%2Ccontainer-title%2Cissued%2Cauthor%2Ctype",
+      "result_note": "HTTP 200; total-results 31738 (relevance-ranked, top 20 inspected); relevant items kept in candidates where new"
+    },
+    {
+      "source": "Crossref REST (prefix 10.1109)",
+      "query": "https://api.crossref.org/works?query.bibliographic=model-based+testing+Simulink+signal+features+mutation&filter=prefix%3A10.1109&rows=20&select=DOI%2Ctitle%2Ccontainer-title%2Cissued%2Cauthor%2Ctype",
+      "result_note": "error HTTP Error 429: Too Many Requests"
+    },
+    {
+      "source": "Crossref REST (prefix 10.1145)",
+      "query": "https://api.crossref.org/works?query.bibliographic=model-based+testing+Simulink+signal+features+mutation&filter=prefix%3A10.1145&rows=20&select=DOI%2Ctitle%2Ccontainer-title%2Cissued%2Cauthor%2Ctype",
+      "result_note": "HTTP 200; total-results 116908 (relevance-ranked, top 20 inspected); relevant items kept in candidates where new"
+    },
+    {
+      "source": "Crossref REST (prefix 10.1109)",
+      "query": "https://api.crossref.org/works?query.bibliographic=regression+test+selection+simulation+models+tolerance&filter=prefix%3A10.1109&rows=20&select=DOI%2Ctitle%2Ccontainer-title%2Cissued%2Cauthor%2Ctype",
+      "result_note": "HTTP 200; total-results 352858 (relevance-ranked, top 20 inspected); relevant items kept in candidates where new"
+    },
+    {
+      "source": "Crossref REST (prefix 10.1145)",
+      "query": "https://api.crossref.org/works?query.bibliographic=regression+test+selection+simulation+models+tolerance&filter=prefix%3A10.1145&rows=20&select=DOI%2Ctitle%2Ccontainer-title%2Cissued%2Cauthor%2Ctype",
+      "result_note": "HTTP 200; total-results 40610 (relevance-ranked, top 20 inspected); relevant items kept in candidates where new"
+    },
+    {
+      "source": "Crossref REST (prefix 10.1109)",
+      "query": "https://api.crossref.org/works?query.bibliographic=numerical+reproducibility+neural+simulation&filter=prefix%3A10.1109&rows=20&select=DOI%2Ctitle%2Ccontainer-title%2Cissued%2Cauthor%2Ctype",
+      "result_note": "HTTP 200; total-results 328544 (relevance-ranked, top 20 inspected); relevant items kept in candidates where new"
+    },
+    {
+      "source": "Crossref REST (prefix 10.1145)",
+      "query": "https://api.crossref.org/works?query.bibliographic=numerical+reproducibility+neural+simulation&filter=prefix%3A10.1145&rows=20&select=DOI%2Ctitle%2Ccontainer-title%2Cissued%2Cauthor%2Ctype",
+      "result_note": "HTTP 200; total-results 24424 (relevance-ranked, top 20 inspected); relevant items kept in candidates where new"
+    },
+    {
+      "source": "Crossref REST (prefix 10.1109)",
+      "query": "https://api.crossref.org/works?query.bibliographic=differential+testing+simulators&filter=prefix%3A10.1109&rows=20&select=DOI%2Ctitle%2Ccontainer-title%2Cissued%2Cauthor%2Ctype",
+      "result_note": "HTTP 200; total-results 71216 (relevance-ranked, top 20 inspected); relevant items kept in candidates where new"
+    },
+    {
+      "source": "Crossref REST (prefix 10.1145)",
+      "query": "https://api.crossref.org/works?query.bibliographic=differential+testing+simulators&filter=prefix%3A10.1145&rows=20&select=DOI%2Ctitle%2Ccontainer-title%2Cissued%2Cauthor%2Ctype",
+      "result_note": "HTTP 200; total-results 8932 (relevance-ranked, top 20 inspected); relevant items kept in candidates where new"
+    },
+    {
+      "source": "OpenCitations Index v2",
+      "query": "https://api.opencitations.net/index/v2/citations/doi:10.1371/journal.pcbi.1000815 and /references/doi:10.1371/journal.pcbi.1000815 (NeuroML2010)",
+      "result_note": "citations HTTP 200: 296 citing DOIs; references HTTP 200: 48 cited DOIs"
+    },
+    {
+      "source": "OpenCitations Index v2",
+      "query": "https://api.opencitations.net/index/v2/citations/doi:10.3389/fninf.2014.00079 and /references/doi:10.3389/fninf.2014.00079 (LEMS2014)",
+      "result_note": "citations HTTP 200: 111 citing DOIs; references HTTP 200: 55 cited DOIs"
+    },
+    {
+      "source": "OpenCitations Index v2",
+      "query": "https://api.opencitations.net/index/v2/citations/doi:10.1016/j.neuron.2019.05.019 and /references/doi:10.1016/j.neuron.2019.05.019 (OSB2019)",
+      "result_note": "citations HTTP 200: 78 citing DOIs; references HTTP 200: 86 cited DOIs"
+    },
+    {
+      "source": "OpenCitations Index v2",
+      "query": "https://api.opencitations.net/index/v2/citations/doi:10.1145/2591062.2591129 and /references/doi:10.1145/2591062.2591129 (SciUnit2014)",
+      "result_note": "citations HTTP 200: 27 citing DOIs; references HTTP 200: 6 cited DOIs"
+    },
+    {
+      "source": "OpenCitations Index v2",
+      "query": "https://api.opencitations.net/index/v2/citations/doi:10.1101/665331 and /references/doi:10.1101/665331 (NeuronUnit2019)",
+      "result_note": "citations HTTP 200: 11 citing DOIs; references HTTP 200: 31 cited DOIs"
+    },
+    {
+      "source": "OpenCitations Index v2",
+      "query": "https://api.opencitations.net/index/v2/citations/doi:10.1371/journal.pcbi.1008114 and /references/doi:10.1371/journal.pcbi.1008114 (HippoUnit2021)",
+      "result_note": "citations HTTP 200: 27 citing DOIs; references HTTP 200: 70 cited DOIs"
+    },
+    {
+      "source": "OpenCitations Index v2",
+      "query": "https://api.opencitations.net/index/v2/citations/doi:10.1093/bioinformatics/btag328 and /references/doi:10.1093/bioinformatics/btag328 (eFEL2026)",
+      "result_note": "citations HTTP 200: 0 citing DOIs; references HTTP 200: 0 cited DOIs"
+    },
+    {
+      "source": "OpenCitations Index v2",
+      "query": "https://api.opencitations.net/index/v2/citations/doi:10.3389/fninf.2016.00017 and /references/doi:10.3389/fninf.2016.00017 (BluePyOpt2016)",
+      "result_note": "citations HTTP 200: 176 citing DOIs; references HTTP 200: 48 cited DOIs"
+    },
+    {
+      "source": "OpenCitations Index v2",
+      "query": "https://api.opencitations.net/index/v2/citations/doi:10.3389/neuro.01.1.1.001.2007 and /references/doi:10.3389/neuro.01.1.1.001.2007 (Druckmann2007)",
+      "result_note": "citations HTTP 200: 283 citing DOIs; references HTTP 200: 38 cited DOIs"
+    },
+    {
+      "source": "OpenCitations Index v2",
+      "query": "https://api.opencitations.net/index/v2/citations/doi:10.1371/journal.pcbi.1002133 and /references/doi:10.1371/journal.pcbi.1002133 (Druckmann2011)",
+      "result_note": "citations HTTP 200: 50 citing DOIs; references HTTP 200: 45 cited DOIs"
+    },
+    {
+      "source": "OpenCitations Index v2",
+      "query": "https://api.opencitations.net/index/v2/citations/doi:10.7554/elife.95135 and /references/doi:10.7554/elife.95135 (NeuroMLeco2025)",
+      "result_note": "citations HTTP 200: 1 citing DOIs; references HTTP 200: 102 cited DOIs"
+    },
+    {
+      "source": "OpenCitations Index v2",
+      "query": "https://api.opencitations.net/index/v2/citations/doi:10.1371/journal.pcbi.1010941 and /references/doi:10.1371/journal.pcbi.1010941 (NeuroMLDB2023)",
+      "result_note": "citations HTTP 200: 18 citing DOIs; references HTTP 200: 72 cited DOIs"
+    },
+    {
+      "source": "OpenCitations Index v2",
+      "query": "https://api.opencitations.net/index/v2/citations/doi:10.1016/j.patter.2023.100855 and /references/doi:10.1016/j.patter.2023.100855 (UniversalWorkflow2023)",
+      "result_note": "citations HTTP 200: 28 citing DOIs; references HTTP 200: 59 cited DOIs"
+    },
+    {
+      "source": "OpenCitations Index v2",
+      "query": "https://api.opencitations.net/index/v2/citations/doi:10.1016/j.procs.2010.04.165 and /references/doi:10.1016/j.procs.2010.04.165 (HookKelly2010)",
+      "result_note": "citations HTTP 200: 3 citing DOIs; references HTTP 200: 4 cited DOIs"
+    },
+    {
+      "source": "OpenCitations Index v2",
+      "query": "https://api.opencitations.net/index/v2/citations/doi:10.1016/j.pbiomolbio.2011.06.003 and /references/doi:10.1016/j.pbiomolbio.2011.06.003 (FunctionalCuration2011)",
+      "result_note": "citations HTTP 200: 47 citing DOIs; references HTTP 200: 60 cited DOIs"
+    },
+    {
+      "source": "OpenCitations Index v2",
+      "query": "https://api.opencitations.net/index/v2/citations/doi:10.1063/1.5087629 and /references/doi:10.1063/1.5087629 (DetectingUndetectables2019)",
+      "result_note": "citations HTTP 200: 24 citing DOIs; references HTTP 200: 45 cited DOIs"
+    },
+    {
+      "source": "OpenCitations Index v2",
+      "query": "https://api.opencitations.net/index/v2/citations/doi:10.1007/s10827-011-0353-9 and /references/doi:10.1007/s10827-011-0353-9 (Henker2011)",
+      "result_note": "citations HTTP 200: 19 citing DOIs; references HTTP 200: 35 cited DOIs"
+    },
+    {
+      "source": "OpenCitations Index v2",
+      "query": "https://api.opencitations.net/index/v2/citations/doi:10.1093/bioinformatics/btv484 and /references/doi:10.1093/bioinformatics/btv484 (Scharm2016)",
+      "result_note": "citations HTTP 200: 25 citing DOIs; references HTTP 200: 28 cited DOIs"
+    },
+    {
+      "source": "OpenCitations Index v2",
+      "query": "https://api.opencitations.net/index/v2/citations/doi:10.3389/fninf.2018.00050 and /references/doi:10.3389/fninf.2018.00050 (Blundell2018)",
+      "result_note": "citations HTTP 200: 12 citing DOIs; references HTTP 200: 29 cited DOIs"
+    },
+    {
+      "source": "OpenCitations Index v2",
+      "query": "https://api.opencitations.net/index/v2/citations/doi:10.3389/fninf.2018.00049 and /references/doi:10.3389/fninf.2018.00049 (Uncertainpy2018)",
+      "result_note": "citations HTTP 200: 83 citing DOIs; references HTTP 200: 86 cited DOIs"
+    },
+    {
+      "source": "OpenCitations Index v2",
+      "query": "https://api.opencitations.net/index/v2/citations/doi:10.1126/science.1181936 and /references/doi:10.1126/science.1181936 (GerstnerNaud2009)",
+      "result_note": "citations HTTP 200: 223 citing DOIs; references HTTP 200: 19 cited DOIs"
+    },
+    {
+      "source": "OpenCitations Index v2",
+      "query": "https://api.opencitations.net/index/v2/citations/doi:10.1007/s00422-008-0261-x and /references/doi:10.1007/s00422-008-0261-x (Jolivet2008)",
+      "result_note": "citations HTTP 200: 109 citing DOIs; references HTTP 200: 54 cited DOIs"
+    },
+    {
+      "source": "OpenCitations Index v2",
+      "query": "https://api.opencitations.net/index/v2/citations/doi:10.1007/s00422-008-0257-6 and /references/doi:10.1007/s00422-008-0257-6 (VanGeit2008)",
+      "result_note": "citations HTTP 200: 154 citing DOIs; references HTTP 200: 39 cited DOIs"
+    },
+    {
+      "source": "OpenCitations Index v2",
+      "query": "https://api.opencitations.net/index/v2/citations/doi:10.1113/JP275733 and /references/doi:10.1113/JP275733 (Sinusoidal2018)",
+      "result_note": "citations HTTP 200: 72 citing DOIs; references HTTP 200: 48 cited DOIs"
+    },
+    {
+      "source": "OpenCitations Index v2",
+      "query": "https://api.opencitations.net/index/v2/citations/doi:10.12688/f1000research.9315.1 and /references/doi:10.12688/f1000research.9315.1 (UnitTestingModelValidation2016)",
+      "result_note": "citations HTTP 200: 28 citing DOIs; references HTTP 200: 11 cited DOIs"
+    },
+    {
+      "source": "OpenCitations Index v2",
+      "query": "https://api.opencitations.net/index/v2/citations/doi:10.1109/ICST69053.2026.00050 and /references/doi:10.1109/ICST69053.2026.00050 (NeuroCERT2026)",
+      "result_note": "citations HTTP 200: 0 citing DOIs; references HTTP 200: 0 cited DOIs"
+    },
+    {
+      "source": "OpenCitations Meta v1",
+      "query": "https://api.opencitations.net/meta/v1/metadata/doi:...__doi:... (batches of 10 over all 2105 harvested DOIs)",
+      "result_note": "slow (multi-second per 10-DOI batch) and not finished at write-up: 1669 of 2105 DOIs resolved and keyword-screened; forward citations of broad anchors (NeuroML 2010, Druckmann 2007, Gerstner & Naud 2009, BluePyOpt, Van Geit 2008, LEMS, Jolivet 2008) only partly screened"
+    },
+    {
+      "source": "Crossref /works/<doi>",
+      "query": "metadata for OpenCitations citing DOIs of 14 targeted anchors (HippoUnit, NeuronUnit, SciUnit, NeuroML-DB, Unit-testing 2016, Hook&Kelly 2010, Functional curation 2011, Detecting undetectables 2019, Henker 2011, Scharm 2016, Blundell 2018, Universal workflow 2023, Druckmann 2011, NeuroML ecosystem 2025)",
+      "result_note": "292 DOIs resolved; titles keyword-screened (mutation/regression/conversion/protocol/equivalence/LLM/test/validation/numerical ...); new relevant works added as candidates"
+    },
+    {
+      "source": "Crossref /works/<doi> reference arrays",
+      "query": "https://api.crossref.org/works/10.1093/bioinformatics/btag328 (eFEL 2026)",
+      "result_note": "HTTP 200; 44 references deposited; all already in matrix or off-topic (NumPy, SWIG, data formats); no new testing/mutation prior art"
+    },
+    {
+      "source": "Crossref /works/<doi> reference arrays",
+      "query": "https://api.crossref.org/works/10.1109/ICST69053.2026.00050 (NeuroCERT poster)",
+      "result_note": "HTTP 200; 10 references deposited (oracle-problem survey, scientific-software testing review, metamorphic testing 1998, SciUnit, NEURON, SONATA, Pospischil 2008, PROV-DM); all already covered"
+    },
+    {
+      "source": "Crossref /works/<doi> reference arrays",
+      "query": "https://api.crossref.org/works/10.1371/journal.pcbi.1008114 (HippoUnit)",
+      "result_note": "HTTP 200; 73 references; testing-related ones (SciUnit, NeuronUnit, eFEL, BluePyEfe, hbp-validation-framework, NeuroElectro, Marder variability papers) already in matrix or critic list"
+    },
+    {
+      "source": "Crossref /works/<doi> reference arrays",
+      "query": "https://api.crossref.org/works/10.7554/elife.95135 (NeuroML ecosystem)",
+      "result_note": "HTTP 200; 106 references; tool/format citations (NEURON, Arbor, EDEN, NetPyNE, PyNN, SED-ML, BioSimulators, code-generation review) already covered; no mutation/protocol-selection work"
+    },
+    {
+      "source": "arXiv HTML full text",
+      "query": "https://arxiv.org/html/2608.09956 (pyRMV bibliography)",
+      "result_note": "HTTP 200; 48 bibliography items parsed; validation-framework items (Appukuttan 2022, NeuronUnit, HippoUnit, SciUnit, Gutzen 2019, Gerkin 2018) already covered; Tatka 2023 credibility standards added (DOI via Crossref)"
+    },
+    {
+      "source": "Crossref REST query.bibliographic",
+      "query": "https://api.crossref.org/works?query.bibliographic=Adapting+modeling+and+simulation+credibility+standards+to+computational+systems+biology+Tatka",
+      "result_note": "HTTP 200; resolved 10.1186/s12967-023-04290-5"
+    },
+    {
+      "source": "Crossref /works/<doi>",
+      "query": "https://api.crossref.org/works/10.1109/access.2026.3713432 ; /10.1145/3816713.3818807 ; /10.1145/3737611.3776948",
+      "result_note": "HTTP 200; metadata confirmed, no abstracts deposited; SNN verification paper (3737611) judged off-topic (AI SNN verification)"
+    },
+    {
+      "source": "arXiv abs pages",
+      "query": "https://arxiv.org/abs/<id> for 2105.08159 2201.07539 2608.17214 2609.09315 2601.19088 2404.09952 2608.23611 2607.10789 2607.00511 2404.09241 1303.2784 2201.10160 2605.13279 2603.11262 1810.10614 (4 s spacing)",
+      "result_note": "HTTP 200 for all 15; titles and citation_author metadata used; journal-ref/DOI found for 1810.10614 (Empirical Software Engineering, 10.1007/s10664-018-9619-4) and a publication note in comments for 2105.08159; version-history dates parsed unreliably, so years are given from the arXiv identifier prefix instead"
+    },
+    {
+      "source": "PyPI Simple index",
+      "query": "https://pypi.org/simple/ (Accept: application/vnd.pypi.simple.v1+json; 890,791 project names) grep regex neuro|nml|lems|efel|ephys|sciunit|neuronunit|spike.*test|mutat|metamorph|rheobase|currentclamp|current-clamp|patch-?clamp|protocol.*select|hodgkin|neurosem|bluepyopt|nrn|brian|arbor|allensdk|nwb",
+      "result_note": "HTTP 200; 1,556 name hits, manually screened; 47 shortlisted names queried via JSON API"
+    },
+    {
+      "source": "PyPI JSON API",
+      "query": "https://pypi.org/pypi/<name>/json for eFELunit nrn-modeldb-ci nrn-diff neuronunitopt neuronunit-opt biosimulators-pyneuroml neuromllite neuroml-loihi metamorphic-guard metamorphic-relations Metamorphic mutation-testing CompNeuroPy brian2modelfitting neurosim neuro-simulator neuron-simulator neuroneq neuronmodels neuron-model neuromodels neurofeatures ephyspy fit-neuron neurotune neuroelectro NeuroUnits nrnutils sciunit2 neuroscore neurocurator neuroguard neuron-reduce mutation-bench mutation-gate universalmutator mutatest nrn-patch neurosem neuro-sem lems pynml nml-tools icon-nmltools neurobench cerebra-neuro-eval neurodock-evals",
+      "result_note": "neurosem and neuro-sem: HTTP 404 (no PyPI project of that name); cerebra-neuro-eval 404; others 200. Relevant: eFELunit, neuronunit-opt/neuronunitopt, nrn-diff, biosimulators-pyneuroml, neuroml-loihi, metamorphic-guard, universalmutator (candidates); nrn-modeldb-ci 0.3.0 confirms critic-listed repo on PyPI. Name collisions only (unrelated): lems (Large Execution Models), pynml (Network Markup Language), nml-tools (Fortran namelists), Metamorphic (elliptic curves), neurosim (BCI RL gym), neuroscore (developer-artifact scoring), mutation-bench (cancer)"
+    },
+    {
+      "source": "GitHub REST search/repositories (authenticated gh)",
+      "query": "org:neuronsimulator validation | org:neuronsimulator regression | org:neuronsimulator ci",
+      "result_note": "0 | 0 | 3 (nrn-modeldb-ci [critic-listed], nrn-build-ci, nrn-ci-deps: build infrastructure)"
+    },
+    {
+      "source": "GitHub REST search/repositories (authenticated gh)",
+      "query": "org:arbor-sim validation",
+      "result_note": "1: arbor-sim/nsuite (critic-listed)"
+    },
+    {
+      "source": "GitHub REST search/repositories (authenticated gh)",
+      "query": "org:nest testsuite | org:nest regression",
+      "result_note": "0 | 0 (repo-name search; NEST testsuite lives inside nest-simulator repo, not separately)"
+    },
+    {
+      "source": "GitHub REST search/repositories (authenticated gh)",
+      "query": "org:brian-team test | org:brian-team comparison",
+      "result_note": "1 (brian2_pyodide, off-topic) | 0"
+    },
+    {
+      "source": "GitHub REST search/repositories (authenticated gh)",
+      "query": "org:OpenSourceBrain validation | org:NeuroML test | org:NeuroML validation",
+      "result_note": "1 (osb-model-validation, known) | 1 (NeuroMech language tests, off-topic) | 2 (neuroklea, jNeuroML: known)"
+    },
+    {
+      "source": "GitHub REST search/repositories (authenticated gh)",
+      "query": "org:scidash test",
+      "result_note": "3: sciunit (known), scidash, sysbiounit (stub created/pushed same day 2020-02-04; not added)"
+    },
+    {
+      "source": "GitHub REST search/repositories (authenticated gh)",
+      "query": "org:openbraininstitute validation | org:BlueBrain validation | org:BlueBrain test",
+      "result_note": "3 | 10 | 6: circuit/atlas/PSP validation and data pipelines (psp-validation, connectome-validation, minis-validation, bluepyopt-test without description); none on single-neuron model change detection"
+    },
+    {
+      "source": "GitHub REST search/repositories (authenticated gh)",
+      "query": "org:INM-6 validation | org:NeuralEnsemble test | org:AllenInstitute ephys | org:biosimulators test",
+      "result_note": "1 (networkunit, known) | 0 | 6 (experimental ephys analysis tools) | 1 (Biosimulators_test_suite: added)"
+    },
+    {
+      "source": "GitHub REST search/repositories (authenticated gh)",
+      "query": "\"neuron model mutation testing\" | \"neuroml mutation\" | \"electrophysiology feature regression test neuron model\" | \"stimulus protocol selection neuron model\" | \"metamorphic testing neuron\" | \"neuron simulator cross-validation\" | \"modeldb regression\"",
+      "result_note": "2 off-topic ANN repos | 0 | 0 | 0 | 0 | 0 | 0"
+    },
+    {
+      "source": "GitHub REST search/code (authenticated gh)",
+      "query": "efel getFeatureValues mutant language:Python",
+      "result_note": "4 files in 3 repos (roybens/Neuron_general and two copies): eFEL on channel-variant models; added as candidate (terminology collision)"
+    },
+    {
+      "source": "GitHub REST search/code (authenticated gh)",
+      "query": "filename:.test.omt",
+      "result_note": "only 2 files indexed (OpenSourceBrain/del-Molino2017, openworm/muscle_model): code search index covers few OMT files; OMV already in matrix"
+    },
+    {
+      "source": "GitHub REST search/code (authenticated gh)",
+      "query": "modeldb run compare versions neuron",
+      "result_note": "312 hits; relevant repos already known (nrn-modeldb-ci, mcdougallab/modeldb, HippoUnit_demo); rest off-topic"
+    },
+    {
+      "source": "GitHub REST search/code (authenticated gh)",
+      "query": "pynml mutation | neuroml mutant | efel mutant rheobase | jnml regression traces compare tolerance | neuronunit rheobase mutation | lems mutation operator | getFeatureValues perturbation protocol selection",
+      "result_note": "22 | 74 | 104 | 5 | 9 | 376,832 | 0 hits: word-list/corpus/generic files; neuronunit hits are NeuronUnit itself and olfactory-bulb model repos (JustasB/OlfactoryBulb); no repository implementing mutation testing of NeuroML/LEMS models found"
+    },
+    {
+      "source": "GitHub REST repos API",
+      "query": "repos/NeuroML/NeuroMech, scidash/sysbiounit, BlueBrain/bluepyopt-test, brian-team/brian2_pyodide, biosimulators/Biosimulators_test_suite, SethDougherty/Neuron_HH_Adult, roybens/Neuron_general, timskeee/Neuron_HMM, russelljjarvis/fdcheck, JustasB/OlfactoryBulb, appukuttan-shailesh/eFELunit, russelljjarvis/NeuronunitOpt, DRosen766/NeuroML2Loihi, dbbs-lab/nrn-diff",
+      "result_note": "metadata retrieved (description, created/pushed, SPDX licence); russelljjarvis/NeuronunitOpt HTTP 404"
+    },
+    {
+      "source": "Semantic Scholar Graph API",
+      "query": "paper/search?query= metamorphic testing neuron simulation | stimulus protocol design neuron model discrimination | NeuroML mutation testing (4 s spacing, unauthenticated)",
+      "result_note": "HTTP 429 for all three at ~16:41 UTC; no API key available; remaining S2 lens queries not executed"
+    },
+    {
+      "source": "OpenAlex works API",
+      "query": "https://api.openalex.org/works?search=neuroml&per-page=1 (probed 16:36 and ~16:42 UTC)",
+      "result_note": "HTTP 429 Insufficient budget, retryAfter ~26,600 s (resets 00:00 UTC); cites:W... snowball and title_and_abstract.search lens queries not executed; OpenCitations used as interim fallback"
+    },
+    {
+      "source": "Europe PMC REST",
+      "query": "https://www.ebi.ac.uk/europepmc/webservices/rest/MED/33513130/references?format=json (probed 16:36 and 16:43 UTC)",
+      "result_note": "HTTP 503 both times; backward references harvested instead from Crossref reference arrays and OpenCitations /references"
+    }
+  ],
+  "blocked_sources": [
+    "OpenAlex works API: HTTP 429 \"Insufficient budget\" at 16:36 and ~16:42 UTC 2026-09-13, retryAfter ~26,600 s (daily budget resets 00:00 UTC). Forward-citation snowball (filter=cites:W...) and title_and_abstract.search lenses NOT run; OpenCitations Index v2 used as interim fallback.",
+    "Semantic Scholar Graph API: HTTP 429 unauthenticated at ~16:41 UTC (3 queries, 4 s spacing); no API key or alternative IP available. S2 lens queries NOT run.",
+    "Europe PMC /references endpoint: HTTP 503 (maintenance) at 16:36 and 16:43 UTC. Replaced by Crossref reference arrays (eFEL, NeuroCERT, HippoUnit, NeuroML ecosystem) and OpenCitations /references.",
+    "GitHub code search index: covers few .test.omt files (2 hits), so OMV test-file coverage via code search is weak.",
+    "OpenCitations Meta v1: not blocked but slow; slow (multi-second per 10-DOI batch) and not finished at write-up: 1669 of 2105 DOIs resolved and keyword-screened; forward citations of broad anchors (NeuroML 2010, Druckmann 2007, Gerstner & Naud 2009, BluePyOpt, Van Geit 2008, LEMS, Jolivet 2008) only partly screened."
+  ]
+}

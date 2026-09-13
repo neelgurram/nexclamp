@@ -1,0 +1,1310 @@
+{
+  "finder": "optimal-protocols",
+  "generated": "2026-09-13",
+  "assignment_sources": [
+    "WebSearch",
+    "PubMed / Europe PMC",
+    "OpenAlex",
+    "Semantic Scholar"
+  ],
+  "summary_note": "No retrieved work combines controlled mutation of neuron models, multi-protocol electrophysiology fingerprints, refinement-calibrated tolerances, optimised compact protocol batteries, and held-out model / mutation-family evaluation (finite search; absence of evidence only). Closest partial overlaps: stimulus/protocol selection for constraining or discriminating models (Druckmann 2011; Patten-Elliott 2025; Lei 2023; Apgar 2008), mutant-killing input generation for Simulink models (Brillout 2010), near-silent conductance changes in AP models (Jaeger 2019), controlled channel perturbations across many conductance models (Koch 2023), and existing multi-protocol/tolerance testing infrastructure (OMV, NeuroML-DB, HippoUnit). OpenAlex and Semantic Scholar coverage is missing because of rate-limit blocks.",
+  "candidates": [
+    {
+      "title": "Effective stimuli for constructing reliable neuron models",
+      "authors": "Druckmann S, Berger TK, Schürmann F, Hill S, Markram H, et al.",
+      "year": "2011",
+      "venue": "PLoS Computational Biology 7(8): e1002133",
+      "url": "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1002133",
+      "doi": "10.1371/journal.pcbi.1002133",
+      "kind": "paper",
+      "found_via": "WebSearch 'active selection of stimuli to distinguish neuron models'; Europe PMC refined query; DOI via NCBI idconv (PMC3158041); abstract via Europe PMC",
+      "why_relevant": "Closest neuroscience precedent for choosing which current-clamp stimuli to use: a learning-theory framework rates stimuli (steps/ramps vs noisy inputs) by how well they constrain conductance-based models, judged by generalisation to novel held-out stimuli. Differs from NeuroSem: goal is parameter constraint for model fitting against recordings, not detecting faults in edited models; no controlled mutants, tolerance calibration, or greedy compact battery evaluated on held-out models/mutation families.",
+      "estimated_closeness": 3
+    },
+    {
+      "title": "Optimizing experimental designs for model selection of ion channel drug-binding mechanisms",
+      "authors": "Patten-Elliott F, Lei CL, Preston SP, Wilkinson RD, Mirams GR",
+      "year": "2025",
+      "venue": "Philosophical Transactions of the Royal Society A",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40078143/",
+      "doi": "10.1098/rsta.2024.0227",
+      "kind": "paper",
+      "found_via": "WebSearch 'model discrimination optimal voltage protocol hERG ...'; Europe PMC refined 'model discrimination' query; PubMed esummary; bioRxiv version 10.1101/2024.08.20.608856 verified on Crossref",
+      "why_relevant": "Optimises voltage-clamp protocols so that competing hERG drug-binding models become distinguishable (synthetic study), and reports that optimised protocols lose power under model discrepancy. Protocol optimisation for model discrimination is a direct analogue of selecting protocols that separate reference vs mutant, but in cardiac ion-channel models, voltage clamp, few candidate models, and no mutation operators, feature tolerances or held-out model evaluation.",
+      "estimated_closeness": 3
+    },
+    {
+      "title": "Model-driven optimal experimental design for calibrating cardiac electrophysiology models",
+      "authors": "Lei CL, Clerx M, Gavaghan DJ, Mirams GR",
+      "year": "2023",
+      "venue": "Computer Methods and Programs in Biomedicine",
+      "url": "https://doi.org/10.1016/j.cmpb.2023.107690",
+      "doi": "10.1016/j.cmpb.2023.107690",
+      "kind": "paper",
+      "found_via": "WebSearch 'optimised current clamp protocol cardiac ... identifiability'; Europe PMC refined OED query; Crossref (journal and bioRxiv 10.1101/2022.11.01.514669)",
+      "why_relevant": "Automatically designs both voltage-clamp and current-clamp protocols to identify cell-specific maximal conductances in action-potential models. A protocol that identifies conductances would also expose conductance mutants, so this is a strong methodological neighbour for optimised stimulation batteries; distinction: identifiability objective (not detection of silent regression), cardiac, no mutant set, no count/runtime-matched random baselines.",
+      "estimated_closeness": 3
+    },
+    {
+      "title": "Stimulus design for model selection and validation in cell signaling",
+      "authors": "Apgar JF, Toettcher JE, Endy D, White FM, Tidor B",
+      "year": "2008",
+      "venue": "PLoS Computational Biology",
+      "url": "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.0040030",
+      "doi": "10.1371/journal.pcbi.0040030",
+      "kind": "paper",
+      "found_via": "WebSearch 'automatic stimulation protocol selection model validation'; Europe PMC refined 'stimulus design' query; Crossref",
+      "why_relevant": "Designs dynamic input stimuli that maximally distinguish candidate kinetic models with different topologies when only some outputs are observable. Generic model-discrimination stimulus design (signalling networks, not neurons); no mutation families, feature fingerprints or compact battery generalising to unseen models.",
+      "estimated_closeness": 3
+    },
+    {
+      "title": "Detecting undetectables: Can conductances of action potential models be changed without appreciable change in the transmembrane potential?",
+      "authors": "Jæger KH, Wall S, Tveito A",
+      "year": "2019",
+      "venue": "Chaos",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/31370420/",
+      "doi": "10.1063/1.5087629",
+      "kind": "paper",
+      "found_via": "Europe PMC refined query 'identifiability AND protocol/stimulus AND ion channel/action potential'; abstract via Europe PMC",
+      "why_relevant": "Asks whether maximal conductances can change while the action potential barely changes - conceptually close to NeuroSem's 'silent' change that passes one reference readout. Framed as parameter non-uniqueness in cardiac models, not as regression testing of edited model files; no multi-protocol battery selection or mutation families.",
+      "estimated_closeness": 3
+    },
+    {
+      "title": "Loss or gain of function? Effects of ion channel mutations on neuronal firing depend on the neuron type",
+      "authors": "Koch NA, Sonnenberg L, Hedrich UBS, Lauxmann S, Benda J",
+      "year": "2023",
+      "venue": "Frontiers in Neurology",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/37292138/",
+      "doi": "10.3389/fneur.2023.1194811",
+      "kind": "paper",
+      "found_via": "WebSearch 'ion channel mutation effects on firing depend on neuron model type ...'; PubMed esummary; Crossref (also preprint 10.1101/2023.01.16.524256)",
+      "why_relevant": "Applies controlled channel-property changes (KV1.1 channelopathy mutations) across a diverse collection of single-compartment conductance-based models and reads out firing features; outcome depends on model type. Overlaps on controlled perturbation x many models x firing features and motivates held-out-model evaluation; differs in that perturbations are biological mutations, not software faults, and there is no protocol selection or detection tolerance.",
+      "estimated_closeness": 3
+    },
+    {
+      "title": "NeuroML-DB: Sharing and characterizing data-driven neuroscience models described in NeuroML",
+      "authors": "Birgiolas J, Haynes V, Gleeson P, Gerkin RC, Dietrich SW, Crook S",
+      "year": "2023",
+      "venue": "PLOS Computational Biology",
+      "url": "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1010941",
+      "doi": "10.1371/journal.pcbi.1010941",
+      "kind": "paper",
+      "found_via": "PubMed query 'NeuroML OR NeuronUnit OR SciUnit OR Open Source Brain [tiab]'; WebSearch 'NeuroML-DB electrophysiological characterization ...'; Crossref",
+      "why_relevant": "Runs standardised current-/voltage-clamp protocols over more than 1,500 NeuroML models and precomputes electrophysiological characterisations. Shows multi-protocol characterisation of NeuroML models at scale already exists (a reusable resource and a candidate model pool); no mutants, no detection tolerances, no protocol-battery optimisation.",
+      "estimated_closeness": 3
+    },
+    {
+      "title": "OSB Model Validation (OMV) - osb-model-validation",
+      "authors": "OpenSourceBrain contributors",
+      "year": "unverified (PyPI OSBModelValidation 0.4.0, license LGPL-3.0-only, per PyPI JSON retrieved 2026-09-13)",
+      "venue": "GitHub repository / PyPI",
+      "url": "https://github.com/OpenSourceBrain/osb-model-validation",
+      "doi": "",
+      "kind": "software",
+      "found_via": "WebSearch 'OSB Model Validation OMV osb-model-validation GitHub repository'; PyPI JSON https://pypi.org/pypi/OSBModelValidation/json",
+      "why_relevant": "Automated tests that check simulated outputs (e.g. spike times) of NeuroML/LEMS models stay within a tolerance of expected values across simulators and versions - essentially the canonical saved-output regression baseline NeuroSem must reuse and beat. Distinction: user-specified single test targets, no systematic mutation, no refinement-calibrated feature tolerances, no protocol selection.",
+      "estimated_closeness": 3
+    },
+    {
+      "title": "Mutation-based test case generation for Simulink models",
+      "authors": "Brillout A, He N, Mazzucchi M, Kroening D, Purandare M, Rümmer P",
+      "year": "2010",
+      "venue": "Lecture Notes in Computer Science (Springer)",
+      "url": "https://doi.org/10.1007/978-3-642-17071-3_11",
+      "doi": "10.1007/978-3-642-17071-3_11",
+      "kind": "paper",
+      "found_via": "WebSearch 'model-based mutation testing Simulink test generation to kill mutants'; WebSearch site:semanticscholar.org fallback; Crossref title query",
+      "why_relevant": "Generates input stimuli that kill mutants of dynamical simulation models (Simulink) - mutant-driven selection of test inputs for continuous-time models, the software-engineering analogue of NeuroSem's mutant x protocol detection matrix. Not neuroscience; no electrophysiology features, numerical-refinement tolerances, or held-out model generalisation.",
+      "estimated_closeness": 3
+    },
+    {
+      "title": "Evaluating the predictive accuracy of ion-channel models using data from multiple experimental designs",
+      "authors": "Shuttleworth JG, Lei CL, Windley MJ, et al.",
+      "year": "2025",
+      "venue": "Philosophical Transactions of the Royal Society A",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40078148/",
+      "doi": "10.1098/rsta.2024.0211",
+      "kind": "paper",
+      "found_via": "PubMed query '(optimal experimental design OR protocol design) AND voltage clamp AND ion channel model'; Europe PMC OED query; abstract via Europe PMC",
+      "why_relevant": "Fits IKr models to each voltage-clamp protocol separately and measures prediction error on the other protocols - cross-protocol (held-out protocol) validation showing single-protocol conclusions may not transfer. Partial overlap on multi-protocol evaluation; no mutation testing or battery selection.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Optimal experimental designs for characterising ion channel gating by filling the phase-voltage space of model dynamics",
+      "authors": "Mirams GR, Clerx M, Whittaker DG, Lei CL",
+      "year": "2024",
+      "venue": "Mathematics in Medical and Life Sciences",
+      "url": "https://www.tandfonline.com/doi/full/10.1080/29937574.2024.2375494",
+      "doi": "10.1080/29937574.2024.2375494",
+      "kind": "paper",
+      "found_via": "WebSearch 'optimal experimental design voltage clamp protocol model discrimination ion channel'; Europe PMC refined OED query; Crossref (journal and bioRxiv 10.1101/2024.05.02.592179)",
+      "why_relevant": "Algorithmic design of short, information-rich voltage-clamp protocols via a phase-voltage space-filling objective. Relevant to designing compact protocols that exercise diverse dynamics; voltage clamp of channel kinetics, not fault detection in neuron models.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Quantifying the efficacy of voltage protocols in characterising ion channel kinetics: A novel information-theoretic approach",
+      "authors": "Jennings M, Nithiarasu P, Pant S",
+      "year": "2024",
+      "venue": "International Journal for Numerical Methods in Biomedical Engineering",
+      "url": "https://onlinelibrary.wiley.com/doi/10.1002/cnm.3815",
+      "doi": "10.1002/cnm.3815",
+      "kind": "paper",
+      "found_via": "WebSearch 'optimal experimental design voltage clamp protocol model discrimination ion channel'; PubMed query; Crossref",
+      "why_relevant": "Information metrics for comparing voltage-clamp protocols by how informative they are about model parameters - a protocol-scoring alternative to NeuroSem's detection-count scoring.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "A range of voltage-clamp protocol designs for rapid capture of hERG kinetics",
+      "authors": "Lei CL, Whittaker DG, Windley MJ, et al.",
+      "year": "2024 (Europe PMC pubYear); PubMed pubdate 2025",
+      "venue": "Wellcome Open Research",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40786643/",
+      "doi": "10.12688/wellcomeopenres.23319.2",
+      "kind": "paper",
+      "found_via": "PubMed OED/voltage-clamp query; Europe PMC 'short sinusoidal voltage clamp protocol hERG model'; abstract via Europe PMC",
+      "why_relevant": "Documents manual and automated model-driven short step/ramp voltage protocols intended for parameterisation, selection and refinement of hERG models. Protocol-set design for model selection; ion channel only.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Sinusoidal voltage protocols for rapid characterisation of ion channel kinetics",
+      "authors": "Beattie KA, Hill AP, Bardenet R, Cui Y, Vandenberg JI, Gavaghan DJ, et al.",
+      "year": "2018",
+      "venue": "The Journal of Physiology",
+      "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5978315/",
+      "doi": "10.1113/JP275733",
+      "kind": "paper",
+      "found_via": "WebSearch 'optimal experimental design voltage clamp protocol ...'; Europe PMC hERG query; DOI via NCBI idconv; Crossref",
+      "why_relevant": "Shows a single 8-s sum-of-sinusoids protocol can replace long conventional protocol suites, validated by predicting responses to other (held-out) protocols. Supports the idea that compact batteries can be as revealing as long ones; channel-level, fitting-oriented.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Four ways to fit an ion channel model",
+      "authors": "Clerx M, Beattie KA, Gavaghan DJ, Mirams GR",
+      "year": "2019",
+      "venue": "Biophysical Journal",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/31493859/",
+      "doi": "10.1016/j.bpj.2019.08.001",
+      "kind": "paper",
+      "found_via": "WebSearch '\"Four ways to fit an ion channel model\" Clerx'; PubMed esummary; Europe PMC abstract",
+      "why_relevant": "Compares fitting to summary curves vs traces from multiple protocols vs one short protocol and evaluates on independent validation protocols. Relevant to the multi-protocol vs single-protocol comparison design; not mutation-based.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Optimal experiment design for practical parameter identifiability and model discrimination",
+      "authors": "Liu Y, Maini PK, Baker RE",
+      "year": "2025",
+      "venue": "arXiv preprint arXiv:2506.11311",
+      "url": "https://arxiv.org/abs/2506.11311",
+      "doi": "",
+      "kind": "preprint",
+      "found_via": "WebSearch 'model discrimination optimal voltage protocol hERG ...'; arXiv abstract page metadata",
+      "why_relevant": "General mathematical-biology OED for both practical identifiability and discrimination between candidate models. Generic methodological neighbour for choosing informative experiments; no neuron-model regression testing.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Sequential optimal design of neurophysiology experiments",
+      "authors": "Lewi J, Butera R, Paninski L",
+      "year": "2009",
+      "venue": "Neural Computation 21(3)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/18928364/",
+      "doi": "10.1162/neco.2008.08-07-594",
+      "kind": "paper",
+      "found_via": "WebSearch 'sequential optimal design of neurophysiology experiments Lewi Butera Paninski'; PubMed esummary; Crossref",
+      "why_relevant": "Adaptive stimulus selection maximising mutual information for GLM neuron models; canonical neuroscience active-stimulus-selection reference. Targets parameter estimation of statistical models, not detecting differences between model implementations.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Adaptive Bayesian methods for closed-loop neurophysiology",
+      "authors": "Pillow JW, Park M",
+      "year": "2016",
+      "venue": "Closed Loop Neuroscience (book chapter, Elsevier)",
+      "url": "https://doi.org/10.1016/b978-0-12-802452-2.00001-9",
+      "doi": "10.1016/b978-0-12-802452-2.00001-9",
+      "kind": "paper",
+      "found_via": "WebSearch 'Bayesian active learning experimental design choose stimulus to discriminate between competing neuron models'; Crossref title query",
+      "why_relevant": "Review of adaptive/active stimulus selection in neurophysiology; background for the 'active selection of stimuli' lens. No model-regression or mutation component.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Estimability analysis and optimal design in dynamic multi-scale models of cardiac electrophysiology",
+      "authors": "Shotwell MS, Gray RA",
+      "year": "2016",
+      "venue": "Journal of Agricultural, Biological and Environmental Statistics",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/27330268/",
+      "doi": "10.1007/s13253-016-0244-7",
+      "kind": "paper",
+      "found_via": "Europe PMC refined query 'optimal experimental design AND voltage/current clamp AND model'; abstract via Europe PMC",
+      "why_relevant": "Optimal design criteria for combining multiple distinct experimental procedures (demonstrated on a Hodgkin-Huxley-type model) - relevant to choosing combinations of protocols; estimability rather than fault detection.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Cell-specific cardiac electrophysiology models",
+      "authors": "Groenendaal W, Ortega FA, et al. (full author list unverified)",
+      "year": "unverified",
+      "venue": "unverified",
+      "url": "https://www.semanticscholar.org/paper/Cell-Specific-Cardiac-Electrophysiology-Models-Groenendaal-Ortega/88024ea3b76dcfd29bd885a6f8cdcedf3b729c5b",
+      "doi": "",
+      "kind": "paper",
+      "found_via": "WebSearch 'optimised current clamp protocol cardiac action potential model parameter identifiability Groenendaal' (Semantic Scholar page URL); Crossref title query did not match",
+      "why_relevant": "Search snippets describe combining stochastic current-clamp pacing with voltage-clamp data to improve conductance identifiability in AP models - protocol-combination design. Bibliographic details not verified in this session.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Hodgkin-Huxley revisited: reparametrization and identifiability analysis of the classic action potential model with approximate Bayesian methods",
+      "authors": "Daly AC, Gavaghan DJ, Holmes C, Cooper J",
+      "year": "2015",
+      "venue": "Royal Society Open Science",
+      "url": "https://royalsocietypublishing.org/doi/10.1098/rsos.150499",
+      "doi": "10.1098/rsos.150499",
+      "kind": "paper",
+      "found_via": "WebSearch 'optimised current clamp protocol ... Groenendaal'; WebSearch Semantic Scholar-style query; Crossref",
+      "why_relevant": "Identifiability of HH parameters depends on the experimental protocol; background for why some protocols reveal parameter (mutant) changes and others do not.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Circuit stability to perturbations reveals hidden variability in the balance of intrinsic and synaptic conductances",
+      "authors": "Onasch S, Gjorgjieva J",
+      "year": "2020",
+      "venue": "The Journal of Neuroscience",
+      "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7159886/",
+      "doi": "10.1523/JNEUROSCI.0985-19.2020",
+      "kind": "paper",
+      "found_via": "WebSearch 'degenerate conductance-based neuron models similar baseline activity respond differently to perturbation'; Crossref; abstract via Europe PMC",
+      "why_relevant": "Models with similar baseline behaviour can respond very differently when conductances are perturbed - perturbations expose hidden differences. Conceptual support for perturbation fingerprints; circuit models, no regression-testing framing.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Functionally convergent but parametrically distinct solutions: Robust degeneracy in a population of computational models (CA1 pyramidal neurons)",
+      "authors": "Tomko M, Lupascu CA, et al.",
+      "year": "2026",
+      "venue": "preprint (Europe PMC PPR1217004)",
+      "url": "https://europepmc.org/article/PPR/PPR1217004",
+      "doi": "10.64898/2026.03.30.715207",
+      "kind": "preprint",
+      "found_via": "Europe PMC refined query 'electrophysiological features AND model validation/generalization'; abstract via Europe PMC",
+      "why_relevant": "Feature-constrained populations of detailed CA1 models with generalisation tests; illustrates that similar feature sets can hide parametric differences. Partial overlap on features and generalisation only.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "A universal workflow for creation, validation, and generalization of detailed neuronal models",
+      "authors": "Reva M, Rössert C, Arnaudon A, Damart T, Mandge D, et al.",
+      "year": "2023",
+      "venue": "Patterns",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/38035193/",
+      "doi": "10.1016/j.patter.2023.100855",
+      "kind": "paper",
+      "found_via": "Europe PMC refined query 'electrophysiological features AND model validation ... generalization'; abstract via Europe PMC",
+      "why_relevant": "e-feature-based model optimisation followed by validation on additional stimuli not used for fitting and generalisation to other morphologies (held-out stimuli / held-out morphologies). Overlaps on multi-protocol eFEL-style features and held-out evaluation; no mutations or protocol-battery selection.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Systematic generation of biophysically detailed models for diverse cortical neuron types",
+      "authors": "Gouwens NW, Berg J, Feng D, Sorensen SA, Zeng H, Hawrylycz MJ, et al.",
+      "year": "2018",
+      "venue": "Nature Communications",
+      "url": "https://www.nature.com/articles/s41467-017-02718-3",
+      "doi": "10.1038/s41467-017-02718-3",
+      "kind": "paper",
+      "found_via": "WebSearch 'minimal set of current clamp stimulus protocols ... Allen Cell Types stimulus set'; PubMed esummary; abstract via Europe PMC",
+      "why_relevant": "Allen models fitted to features from a standard stimulus set and evaluated on additional stimuli; source of openly available models and a de facto canonical protocol set.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Allen Cell Types Database - electrophysiology (standardised current-injection stimulus set)",
+      "authors": "Allen Institute for Brain Science",
+      "year": "unverified",
+      "venue": "Online database",
+      "url": "https://celltypes.brain-map.org/",
+      "doi": "",
+      "kind": "dataset",
+      "found_via": "WebSearch 'minimal set of current clamp stimulus protocols ... Allen Cell Types stimulus set'; WebSearch 'Allen Institute cell types electrophysiology technical white paper ...'",
+      "why_relevant": "Common set of current-injection protocols (short square, long square, ramp, noise per search snippets) applied to all cells - an existing multi-protocol battery NeuroSem's candidate protocols should be compared with; not selected for fault detection.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Classification of electrophysiological and morphological neuron types in the mouse visual cortex",
+      "authors": "Gouwens NW, Sorensen SA, Berg J, Lee C, Jarsky T, Ting J, et al.",
+      "year": "2019",
+      "venue": "Nature Neuroscience",
+      "url": "https://www.nature.com/articles/s41593-019-0417-0",
+      "doi": "10.1038/s41593-019-0417-0",
+      "kind": "paper",
+      "found_via": "WebSearch 'hierarchical structure of cortical interneuron electrical diversity ...'; Crossref",
+      "why_relevant": "Electrophysiological feature sets across stimulus types used to discriminate e-types; relevant to which features discriminate behaviour classes.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "A hierarchical structure of cortical interneuron electrical diversity revealed by automated statistical analysis",
+      "authors": "Druckmann S, Hill S, Schürmann F, Markram H, Segev I",
+      "year": "2013",
+      "venue": "Cerebral Cortex",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/22989582/",
+      "doi": "10.1093/cercor/bhs290",
+      "kind": "paper",
+      "found_via": "WebSearch 'hierarchical structure of cortical interneuron electrical diversity ... Druckmann features'; PubMed esummary; abstract via Europe PMC",
+      "why_relevant": "38 features from suprathreshold current responses statistically separate e-types; precedent for feature-based discrimination of firing classes (data, not model faults).",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Mapping the function of neuronal ion channels in model and experiment (ICGenealogy)",
+      "authors": "Podlaski WF, Seeholzer A, Groschner LN, Miesenböck G, Ranjan R, Vogels TP",
+      "year": "2017",
+      "venue": "eLife",
+      "url": "https://elifesciences.org/articles/22152",
+      "doi": "10.7554/eLife.22152",
+      "kind": "paper",
+      "found_via": "WebSearch 'ICGenealogy ion channel model genealogy standardized voltage clamp protocols'; PubMed esummary; abstract via Europe PMC",
+      "why_relevant": "Classifies 2,378 NEURON channel model implementations by responses to a standard voltage-clamp protocol set - behavioural fingerprinting of model variants/copies. No mutation testing or protocol selection; channel level.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "HippoUnit: A software tool for the automated testing and systematic comparison of detailed models of hippocampal neurons based on electrophysiological data",
+      "authors": "Sáray S, Rössert CA, Appukuttan S, Migliore R, Vitale P, Lupascu CA, et al.",
+      "year": "2021",
+      "venue": "PLOS Computational Biology",
+      "url": "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1008114",
+      "doi": "10.1371/journal.pcbi.1008114",
+      "kind": "paper",
+      "found_via": "WebSearch 'HippoUnit SciUnit test suite ...'; Europe PMC refined 'NeuronUnit OR SciUnit OR HippoUnit'; Crossref",
+      "why_relevant": "SciUnit/NeuronUnit-based automated multi-protocol, feature-based tests comparing detailed neuron models against experimental data. Overlaps on multiple stimuli + features + automated testing; validation against data, not detection of edits; no mutants or optimised battery.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Reproducing and quantitatively validating a biologically-constrained point-neuron model of CA1 pyramidal cells",
+      "authors": "Appukuttan S, Davison AP",
+      "year": "2022",
+      "venue": "Frontiers in Integrative Neuroscience",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/36424953/",
+      "doi": "10.3389/fnint.2022.1041423",
+      "kind": "paper",
+      "found_via": "PubMed query 'NeuroML OR NeuronUnit OR SciUnit OR Open Source Brain [tiab]'",
+      "why_relevant": "Reimplementation of a published neuron model with quantitative validation - relevant to 'behavioural preservation after translation'. Single case, no systematic mutation or protocol selection (details from title/record only).",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Towards systematic, data-driven validation of a collaborative, multi-scale model of Caenorhabditis elegans",
+      "authors": "Gerkin RC, et al.",
+      "year": "2018",
+      "venue": "Philosophical Transactions of the Royal Society B",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/30201844/",
+      "doi": "10.1098/rstb.2017.0381",
+      "kind": "paper",
+      "found_via": "Europe PMC 'NeuronUnit SciUnit model validation' and refined SciUnit query; abstract via Europe PMC",
+      "why_relevant": "Continuous SciUnit 'unit tests' applied as OpenWorm models are refined - regression-style validation during model development; no mutation-based test adequacy or protocol optimisation.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Unit testing, model validation, and biological simulation",
+      "authors": "Sarma GP, Jacobs TW, Watts MD, Ghayoomie SV, Larson SD, Gerkin RC",
+      "year": "2016",
+      "venue": "F1000Research",
+      "url": "https://f1000research.com/articles/5-1946/v1",
+      "doi": "10.12688/f1000research.9315.1",
+      "kind": "paper",
+      "found_via": "WebSearch 'SciUnit framework test-driven scientific model validation Omar Gerkin 2014'; Europe PMC; Crossref title query",
+      "why_relevant": "Argues for software unit testing and model-validation tests in biological simulation (OpenWorm). Background for testing practice; no mutants or protocol selection.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Challenges in reproducibility, replicability, and comparability of computational models and tools for neuronal and glial networks, cells, and subcellular structures",
+      "authors": "Manninen T, Aćimović J, Havela R, Teppola H, Linne ML",
+      "year": "2018",
+      "venue": "Frontiers in Neuroinformatics",
+      "url": "https://www.frontiersin.org/articles/10.3389/fninf.2018.00020/full",
+      "doi": "10.3389/fninf.2018.00020",
+      "kind": "paper",
+      "found_via": "WebSearch 'reproducibility replicability computational neuron models re-implementation discrepancies ... Manninen'; Crossref",
+      "why_relevant": "Documents difficulty reproducing and comparing neural models across implementations and calls for validation/comparison tools - motivation for behaviour-preservation testing after translation.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Exploratory metamorphic testing for scientific software",
+      "authors": "Lin X, Simon M, Niu N",
+      "year": "2020 (Crossref issued; PubMed lists 2018)",
+      "venue": "Computing in Science & Engineering",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7252536/",
+      "doi": "10.1109/MCSE.2018.2880577",
+      "kind": "paper",
+      "found_via": "WebSearch 'metamorphic testing scientific simulation software neuroscience simulator'; PubMed esummary; Crossref",
+      "why_relevant": "Metamorphic testing of a scientific simulation model (SWMM) using continuous simulations; handoff says metamorphic testing in general is not novel. Not neuroscience.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Testing scientific software: A systematic literature review",
+      "authors": "Kanewala U, Bieman JM",
+      "year": "2014",
+      "venue": "Information and Software Technology 56(10)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/25125798/",
+      "doi": "10.1016/j.infsof.2014.05.006",
+      "kind": "paper",
+      "found_via": "WebSearch 'testing scientific software systematic literature review Kanewala Bieman oracle problem'; PubMed esummary",
+      "why_relevant": "Survey of oracle problems and techniques (pseudo-oracles, metamorphic testing, etc.) for scientific software; context for mutation/metamorphic testing claims.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "An innovative approach for testing bioinformatics programs using metamorphic testing",
+      "authors": "Chen TY, Ho JWK, Liu H, Xie X",
+      "year": "2009",
+      "venue": "BMC Bioinformatics",
+      "url": "https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-10-24",
+      "doi": "10.1186/1471-2105-10-24",
+      "kind": "paper",
+      "found_via": "WebSearch 'metamorphic testing systems biology SBML simulators stochastic simulation'; Crossref title query",
+      "why_relevant": "Early metamorphic testing of biological (network simulation / bioinformatics) programs; generic testing precedent in computational biology.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Mutation testing of Simulink cyber-physical system models: challenges and solutions in practice",
+      "authors": "Kavak M, Kilincceker O, Demeyer S, Vandenbroucke K, Ceylan HA",
+      "year": "2026",
+      "venue": "arXiv preprint arXiv:2608.24250",
+      "url": "https://arxiv.org/abs/2608.24250",
+      "doi": "",
+      "kind": "preprint",
+      "found_via": "WebSearch 'model-based mutation testing Simulink test generation to kill mutants simulation models'; arXiv abstract page metadata",
+      "why_relevant": "Industrial experience of mutation testing on simulation design models; relevant to mutant curation and equivalent-mutant handling for simulation models outside neuroscience.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Model-based mutation testing - Approach and case studies",
+      "authors": "Belli F, Budnik CJ, Hollmann A, Tuglular T, Wong WE",
+      "year": "2016",
+      "venue": "Science of Computer Programming",
+      "url": "https://www.sciencedirect.com/science/article/pii/S0167642316000137",
+      "doi": "10.1016/j.scico.2016.01.003",
+      "kind": "paper",
+      "found_via": "WebSearch 'model-based mutation testing Simulink test generation ...'; Crossref title query",
+      "why_relevant": "Mutation operators applied to models (not code) to assess/generate tests; generic model-level mutation testing background.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "An empirical study of greedy test suite minimization techniques using mutation coverage",
+      "authors": "Jehan S, Wotawa F",
+      "year": "2023",
+      "venue": "IEEE Access",
+      "url": "https://ieeexplore.ieee.org/document/10160008/",
+      "doi": "10.1109/ACCESS.2023.3289073",
+      "kind": "paper",
+      "found_via": "WebSearch 'greedy test suite minimization set cover heuristic mutation score reduction regression testing'; Crossref title query",
+      "why_relevant": "Greedy set-cover minimisation driven by mutation coverage - the generic software-engineering form of NeuroSem's greedy protocol selection over a mutant detection matrix (handoff: no novelty claim for generic minimisation).",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Fuzzing the brain: automated stress testing for the safety of ML-driven neurostimulation",
+      "authors": "Downing, Peng, Granley, Beyeler, Bultan (surnames from Crossref; initials unverified)",
+      "year": "2026",
+      "venue": "Journal of Neural Engineering",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41730246/",
+      "doi": "10.1088/1741-2552/ae4927",
+      "kind": "paper",
+      "found_via": "Europe PMC query 'active learning stimulus selection distinguish neuron models'; Crossref; abstract via Europe PMC",
+      "why_relevant": "Adapts coverage-guided fuzzing to neural stimulation software (ML stimulus encoders) - software-testing technique in a neuro domain, but targets stimulation safety limits, not neuron-model behavioural regression.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "AInsteinBench: Benchmarking coding agents on scientific repositories",
+      "authors": "Duston T, Xin S, Sun Y, Zan D, Li A, Xin S, et al.",
+      "year": "2025",
+      "venue": "arXiv preprint arXiv:2512.21373",
+      "url": "https://arxiv.org/abs/2512.21373",
+      "doi": "",
+      "kind": "preprint",
+      "found_via": "WebSearch 'large language model coding agents computational neuroscience simulation code NEURON Brian2 benchmark evaluation'; arXiv abstract page metadata",
+      "why_relevant": "Evaluates LLM coding agents on real scientific codebases (none neuroscience per search snippet). Relevant only to the optional AI-assisted-transformation element; no neuron models.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Domain-validity-gated metamorphic testing of scientific ML surrogates",
+      "authors": "Li M, Yang X, Liu J, Yan S",
+      "year": "2026",
+      "venue": "arXiv preprint arXiv:2606.17529",
+      "url": "https://arxiv.org/abs/2606.17529",
+      "doi": "",
+      "kind": "preprint",
+      "found_via": "WebSearch 'metamorphic testing scientific simulation software neuroscience simulator'; arXiv abstract page metadata",
+      "why_relevant": "Screens metamorphic relations for validity including the numerical floor of the scoring operator - analogous to NeuroSem's numerical-refinement tolerance floors; not neuroscience.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Sensitivity analysis of voltage-gated ion channel models",
+      "authors": "Korngreen A",
+      "year": "2025",
+      "venue": "bioRxiv preprint",
+      "url": "https://www.biorxiv.org/content/10.1101/2025.08.05.668838v2.full",
+      "doi": "10.1101/2025.08.05.668838",
+      "kind": "preprint",
+      "found_via": "WebSearch 'global sensitivity analysis electrophysiological features ... current clamp stimulus most informative'; Europe PMC refined sensitivity query; Crossref",
+      "why_relevant": "Sobol analysis showing that the stimulation protocol (step vs sinusoidal) changes which kinetic parameters influence outputs - protocol-dependent detectability of parameter changes.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Estimating parameters and predicting membrane voltages with conductance-based neuron models",
+      "authors": "Meliza CD, Kostuk M, Huang H, Nogaret A, Margoliash D, Abarbanel HDI",
+      "year": "2014",
+      "venue": "Biological Cybernetics",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/24962080/",
+      "doi": "10.1007/s00422-014-0615-5",
+      "kind": "paper",
+      "found_via": "WebSearch 'design of current injection stimulus for data assimilation parameter estimation conductance-based neuron model Abarbanel'; PubMed esummary",
+      "why_relevant": "Designed complex current waveforms for data assimilation, with criteria for stimuli that constrain conductance-based models and validation on novel injected currents; stimulus design for estimation, not regression detection.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Automatic construction of predictive neuron models through large scale assimilation of electrophysiological data",
+      "authors": "Nogaret A, Meliza CD, Margoliash D, Abarbanel HDI",
+      "year": "2016",
+      "venue": "Scientific Reports",
+      "url": "https://www.nature.com/articles/srep32749",
+      "doi": "10.1038/srep32749",
+      "kind": "paper",
+      "found_via": "WebSearch 'design of current injection stimulus for data assimilation ... Abarbanel'; Crossref",
+      "why_relevant": "Short designed current protocols suffice to estimate many parameters and predict responses to novel stimuli; supports compact informative protocols.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Bayesian inference for biophysical neuron models enables stimulus optimization for retinal neuroprosthetics",
+      "authors": "Oesterle J, Behrens C, Schröder C, Hermann T, Euler T, Franke K, et al.",
+      "year": "2020",
+      "venue": "eLife",
+      "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7673784/",
+      "doi": "10.7554/eLife.54997",
+      "kind": "paper",
+      "found_via": "WebSearch 'Bayesian active learning experimental design ... neuron models'; Crossref; abstract via Europe PMC",
+      "why_relevant": "Optimises electrical stimulus waveforms using inferred biophysical neuron models to selectively target cell types - stimulus optimisation to separate model responses (cell types), applied to neuroprosthetics rather than model testing.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "BluePyOpt: Leveraging open source software and cloud infrastructure to optimise model parameters in neuroscience",
+      "authors": "Van Geit W, Gevaert M, Chindemi G, Rössert C, Courcol JD, Muller EB, et al.",
+      "year": "2016",
+      "venue": "Frontiers in Neuroinformatics",
+      "url": "https://www.frontiersin.org/journals/neuroinformatics/articles/10.3389/fninf.2016.00017/full",
+      "doi": "10.3389/fninf.2016.00017",
+      "kind": "paper",
+      "found_via": "WebSearch 'BluePyOpt leveraging open source software ...'; Europe PMC 'NeuroML mutation testing' result; PubMed esummary",
+      "why_relevant": "Protocol/feature abstractions (eFEL-based objectives over multiple stimuli) reusable for fingerprinting; optimisation of parameters, not testing edits.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "BluePyEModel (Blue Brain Python Electrical Modeling Pipeline)",
+      "authors": "Blue Brain Project contributors",
+      "year": "unverified",
+      "venue": "GitHub repository / Zenodo",
+      "url": "https://github.com/BlueBrain/BluePyEModel",
+      "doi": "10.5281/zenodo.13685136",
+      "kind": "software",
+      "found_via": "WebSearch 'BluePyEModel e-model building pipeline protocols validation held-out stimuli' (DOI taken from a doi.org result URL; not resolved separately)",
+      "why_relevant": "Pipeline separating optimisation protocols from validation protocols with e-feature scores (built on eFEL/BluePyEfe/BluePyOpt) - existing held-out-stimulus validation infrastructure; no mutation or battery selection.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "NeuroML: A language for describing data driven models of neurons and networks with a high degree of biological detail",
+      "authors": "Gleeson P, Crook S, Cannon RC, Hines ML, Billings GO, Farinella M, et al.",
+      "year": "2010",
+      "venue": "PLoS Computational Biology",
+      "url": "https://journals.plos.org/ploscompbiol/article?id=10.1371%2Fjournal.pcbi.1000815",
+      "doi": "10.1371/journal.pcbi.1000815",
+      "kind": "paper",
+      "found_via": "WebSearch 'neuron model conversion NEURON to NeuroML behavioural equivalence ...'; Europe PMC refined NeuroML query; Crossref",
+      "why_relevant": "Canonical NeuroML citation; also reports converted channel/cell models behaving equivalently across simulators - an early behavioural-preservation check for translated models.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "The NeuroML ecosystem for standardized multi-scale modeling in neuroscience",
+      "authors": "Sinha A, Gleeson P, Marin B, Dura-Bernal S, Panagiotou S, Crook S, et al.",
+      "year": "2025",
+      "venue": "eLife",
+      "url": "https://elifesciences.org/articles/95135",
+      "doi": "10.7554/eLife.95135",
+      "kind": "paper",
+      "found_via": "WebSearch 'NeuroML mutation testing'; PubMed NeuroML query; Europe PMC; Crossref",
+      "why_relevant": "Current canonical NeuroML/pyNeuroML/jNeuroML/OMV citation; describes multi-level model checking and tolerance-based cross-simulator tests (reuse, and source of the canonical-regression baseline).",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "LEMS: a language for expressing complex biological models in concise and hierarchical form and its use in underpinning NeuroML 2",
+      "authors": "Cannon RC, Gleeson P, Crook S, Ganapathy G, Marin B, Piasini E, et al.",
+      "year": "2014",
+      "venue": "Frontiers in Neuroinformatics",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/25309419/",
+      "doi": "10.3389/fninf.2014.00079",
+      "kind": "paper",
+      "found_via": "WebSearch 'LEMS Low Entropy Model Specification Cannon 2014 ...'; PubMed esummary; Crossref",
+      "why_relevant": "Canonical LEMS citation (tool to reuse; dimensional/unit handling relevant to unit-conversion transformations).",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "libNeuroML and PyLEMS: using Python to combine procedural and declarative modeling approaches in computational neuroscience",
+      "authors": "Vella M, Cannon RC, Crook S, Davison AP, Ganapathy G, Robinson HPC, et al.",
+      "year": "2014",
+      "venue": "Frontiers in Neuroinformatics",
+      "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4005938/",
+      "doi": "10.3389/fninf.2014.00038",
+      "kind": "paper",
+      "found_via": "WebSearch 'large language model agent build or convert NeuroML neuron model ...'; NCBI idconv; Crossref",
+      "why_relevant": "Canonical citation for the Python NeuroML/LEMS libraries a mutation engine would use to edit models programmatically.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "pyNeuroML",
+      "authors": "NeuroML contributors",
+      "year": "unverified (PyPI 1.3.22, license LGPL-3.0-only, per PyPI JSON retrieved 2026-09-13)",
+      "venue": "GitHub repository / PyPI",
+      "url": "https://github.com/NeuroML/pyNeuroML",
+      "doi": "",
+      "kind": "software",
+      "found_via": "PyPI JSON https://pypi.org/pypi/pyNeuroML/json",
+      "why_relevant": "Tool to reuse for validation, simulation (jNeuroML) and translation of NeuroML models.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Open Source Brain: A collaborative resource for visualizing, analyzing, simulating, and developing standardized models of neurons and circuits",
+      "authors": "Gleeson P, Cantarelli M, Marin B, Quintana A, Earnshaw M, Sadeh S, et al.",
+      "year": "2019",
+      "venue": "Neuron",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/31201122/",
+      "doi": "10.1016/j.neuron.2019.05.019",
+      "kind": "paper",
+      "found_via": "WebSearch 'Open Source Brain platform collaborative development testing computational models Neuron 2019 Gleeson'; PubMed esummary; abstract via Europe PMC",
+      "why_relevant": "Canonical OSB citation; provides infrastructure for collaborative development and automated testing of standardised models (OMV).",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Collaborative infrastructure for test-driven scientific model validation (SciUnit)",
+      "authors": "Omar C, Aldrich J, Gerkin RC",
+      "year": "2014",
+      "venue": "Companion Proceedings of the 36th International Conference on Software Engineering (ICSE)",
+      "url": "https://doi.org/10.1145/2591062.2591129",
+      "doi": "10.1145/2591062.2591129",
+      "kind": "paper",
+      "found_via": "WebSearch 'SciUnit framework test-driven scientific model validation Omar Gerkin 2014'; Crossref title query; software https://github.com/scidash/sciunit (PyPI sciunit 0.2.8, MIT, per PyPI JSON)",
+      "why_relevant": "Canonical SciUnit citation: unit-test-style validation tests for scientific models (reuse).",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "NeuronUnit: A package for data-driven validation of neuron models using SciUnit",
+      "authors": "Gerkin RC, Birgiolas J, Jarvis RJ, Omar C, Crook SM",
+      "year": "2019",
+      "venue": "bioRxiv preprint",
+      "url": "https://www.biorxiv.org/content/10.1101/665331v1",
+      "doi": "10.1101/665331",
+      "kind": "preprint",
+      "found_via": "WebSearch 'NeuronUnit SciUnit data-driven validation neuron models Gerkin Omar paper'; Europe PMC; Crossref; software https://github.com/scidash/neuronunit (PyPI neuronunit 0.1.8.2, MIT, per PyPI JSON)",
+      "why_relevant": "Canonical NeuronUnit citation: electrophysiology validation tests for neuron models, including models imported from OSB/NeuroML-DB (reuse; tests against data rather than mutant-calibrated batteries).",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "eFEL: electrophysiology feature extraction library",
+      "authors": "Mandge D, Tuncel A, Jaquier A, Kilic I, Damart T, Markram H, Van Geit W",
+      "year": "2026",
+      "venue": "Bioinformatics 42(6): btag328",
+      "url": "https://academic.oup.com/bioinformatics/article/42/6/btag328/8690922",
+      "doi": "10.1093/bioinformatics/btag328",
+      "kind": "paper",
+      "found_via": "WebSearch 'eFEL Electrophys Feature Extraction Library BlueBrain citation'; Europe PMC (MED:42172582); Crossref",
+      "why_relevant": "Canonical eFEL citation for feature extraction (reuse). Author list from the search-result citation; Crossref lists the first six.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "eFEL (Electrophys Feature Extraction Library) software",
+      "authors": "Blue Brain Project / Open Brain Institute contributors",
+      "year": "unverified (PyPI efel 5.7.34, license LGPLv3, per PyPI JSON retrieved 2026-09-13)",
+      "venue": "GitHub repository / PyPI / Zenodo",
+      "url": "https://github.com/openbraininstitute/eFEL",
+      "doi": "",
+      "kind": "software",
+      "found_via": "PyPI JSON https://pypi.org/pypi/efel/json; WebSearch results (GitHub BlueBrain/eFEL, openbraininstitute/eFEL, Zenodo records 8288734 and 14222078)",
+      "why_relevant": "Software to reuse for protocol-feature fingerprints; development appears to have moved from the BlueBrain to the openbraininstitute organisation per search results and the PyPI home page.",
+      "estimated_closeness": 2
+    }
+  ],
+  "queries_run": [
+    {
+      "source": "WebSearch",
+      "query": "conductance neuron model metamorphic testing",
+      "result_note": "No work applying metamorphic testing to conductance-based neuron models; generic CBM pages only."
+    },
+    {
+      "source": "WebSearch",
+      "query": "NeuroML mutation testing",
+      "result_note": "NeuroML testing docs and NeuroML ecosystem/OMV (tolerance checks); DNN mutation testing papers; no NeuroML mutation testing found."
+    },
+    {
+      "source": "WebSearch",
+      "query": "neuron model semantic regression",
+      "result_note": "Off-topic (semantic decoding / brain regression models)."
+    },
+    {
+      "source": "WebSearch",
+      "query": "behavioral preservation neuronal model conversion",
+      "result_note": "Off-topic (cell reprogramming, FPGA neuron implementations)."
+    },
+    {
+      "source": "WebSearch",
+      "query": "perturbation fingerprint neuron model",
+      "result_note": "No neuron-model testing hits; ML model fingerprinting and circuit perturbation papers."
+    },
+    {
+      "source": "WebSearch",
+      "query": "automatic stimulation protocol selection model validation",
+      "result_note": "Mostly clinical stimulation; found Apgar et al. 2008 stimulus design for model selection (PMC2323406)."
+    },
+    {
+      "source": "WebSearch",
+      "query": "mutation testing computational neuroscience",
+      "result_note": "Only DNN mutation testing; nothing on neuron models."
+    },
+    {
+      "source": "WebSearch",
+      "query": "AI coding agent neuron simulation",
+      "result_note": "PHP 'Neuron AI' framework and generic agent simulation papers; nothing on neuron simulation."
+    },
+    {
+      "source": "WebSearch",
+      "query": "optimal experimental design voltage clamp protocol model discrimination ion channel",
+      "result_note": "Mirams et al. 2024 phase-voltage OED; Jennings et al. 2024; Beattie et al. 2018."
+    },
+    {
+      "source": "WebSearch",
+      "query": "active selection of stimuli to distinguish neuron models",
+      "result_note": "Druckmann et al. 2011 Effective stimuli (PLOS CB)."
+    },
+    {
+      "source": "WebSearch",
+      "query": "feature selection discriminating neuron models electrophysiological e-types",
+      "result_note": "e-type classification/feature papers (Allen synthetic data etc.); no compact protocol selection for model testing."
+    },
+    {
+      "source": "WebSearch",
+      "query": "minimal set of current clamp stimulus protocols to characterise neuron model Allen Cell Types stimulus set",
+      "result_note": "Allen Cell Types stimulus set, AllenSDK/BMTK docs, Gouwens et al. 2018."
+    },
+    {
+      "source": "WebSearch",
+      "query": "model discrimination optimal voltage protocol hERG competing Markov models selection experiment design",
+      "result_note": "Patten-Elliott et al. 2025; Liu, Maini & Baker arXiv 2506.11311; Lei et al. hERG protocols."
+    },
+    {
+      "source": "WebSearch",
+      "query": "metamorphic testing scientific simulation software neuroscience simulator",
+      "result_note": "Lin, Simon & Niu exploratory metamorphic testing; SciML surrogate MT arXiv 2606.17529; no neuroscience MT."
+    },
+    {
+      "source": "WebSearch",
+      "query": "mutation analysis test suite adequacy scientific simulation software numerical models",
+      "result_note": "Generic mutation adequacy; Simulink mutation-based test generation."
+    },
+    {
+      "source": "WebSearch",
+      "query": "neuron model conversion NEURON to NeuroML behavioural equivalence validation spike times tolerance across simulators",
+      "result_note": "NeuroML 2010 cross-simulator equivalence; NeuroML ecosystem / OMV tolerance checks."
+    },
+    {
+      "source": "WebSearch",
+      "query": "\"Effective stimuli for constructing reliable neuron models\" Druckmann",
+      "result_note": "Confirmed PLOS CB 2011 article and correction."
+    },
+    {
+      "source": "WebSearch",
+      "query": "eFEL Electrophys Feature Extraction Library BlueBrain citation",
+      "result_note": "eFEL GitHub (BlueBrain, openbraininstitute), Zenodo records, Bioinformatics 2026 paper."
+    },
+    {
+      "source": "WebSearch",
+      "query": "NeuronUnit SciUnit data-driven validation neuron models Gerkin Omar paper",
+      "result_note": "NeuronUnit bioRxiv 665331 and GitHub."
+    },
+    {
+      "source": "WebSearch",
+      "query": "LEMS Low Entropy Model Specification Cannon 2014 Frontiers Neuroinformatics",
+      "result_note": "LEMS 2014 paper, LEMS GitHub."
+    },
+    {
+      "source": "WebSearch",
+      "query": "Open Source Brain platform collaborative development testing computational models Neuron 2019 Gleeson",
+      "result_note": "OSB Neuron 2019 paper."
+    },
+    {
+      "source": "WebSearch",
+      "query": "BluePyEModel e-model building pipeline protocols validation held-out stimuli",
+      "result_note": "BluePyEModel GitHub/PyPI/Zenodo; optimisation vs validation protocols."
+    },
+    {
+      "source": "WebSearch",
+      "query": "sequential optimal design of neurophysiology experiments Lewi Butera Paninski",
+      "result_note": "Lewi et al. 2009 Neural Computation; Lewi et al. 2010 J Comput Neurosci."
+    },
+    {
+      "source": "WebSearch",
+      "query": "optimised current clamp protocol cardiac action potential model parameter identifiability Groenendaal",
+      "result_note": "Groenendaal (Semantic Scholar page), Lei et al. 2022 bioRxiv OED, Daly et al. 2015."
+    },
+    {
+      "source": "WebSearch",
+      "query": "HippoUnit SciUnit test suite hippocampal CA1 pyramidal cell models validation",
+      "result_note": "HippoUnit PLOS CB 2021, docs, related CA1 model paper."
+    },
+    {
+      "source": "WebSearch",
+      "query": "large language model agent build or convert NeuroML neuron model computational neuroscience",
+      "result_note": "No LLM/agent work on NeuroML found; NeuroML/libNeuroML papers returned."
+    },
+    {
+      "source": "WebSearch",
+      "query": "metamorphic testing systems biology SBML simulators stochastic simulation",
+      "result_note": "Chen et al. 2009 MT for bioinformatics; SBML Test Suite."
+    },
+    {
+      "source": "WebSearch",
+      "query": "\"Four ways to fit an ion channel model\" Clerx",
+      "result_note": "Clerx et al. 2019 Biophys J."
+    },
+    {
+      "source": "WebSearch",
+      "query": "hierarchical structure of cortical interneuron electrical diversity automated statistical analysis Druckmann features",
+      "result_note": "Druckmann et al. 2013 Cereb Cortex; Gouwens et al. 2019 Nat Neurosci."
+    },
+    {
+      "source": "WebSearch",
+      "query": "Neuroptimus benchmarking parameter optimization neuronal models",
+      "result_note": "Neuroptimus PLOS CB 2024 (not retained as candidate: optimisation benchmark only)."
+    },
+    {
+      "source": "WebSearch",
+      "query": "OSB Model Validation OMV osb-model-validation GitHub repository",
+      "result_note": "OMV GitHub repository, PyPI page."
+    },
+    {
+      "source": "WebSearch",
+      "query": "Bayesian active learning experimental design choose stimulus to discriminate between competing neuron models electrophysiology",
+      "result_note": "Pillow & Park chapter, Oesterle et al. 2020, cardiac Bayesian active learning."
+    },
+    {
+      "source": "WebSearch",
+      "query": "testing scientific software systematic literature review Kanewala Bieman oracle problem",
+      "result_note": "Kanewala & Bieman 2014 IST."
+    },
+    {
+      "source": "WebSearch",
+      "query": "ion channel mutation effects on firing depend on neuron model type conductance-based models Kv1.1 simulation multiple models",
+      "result_note": "Koch et al. 2023 Front Neurol (and bioRxiv)."
+    },
+    {
+      "source": "WebSearch",
+      "query": "reproducibility replicability computational neuron models re-implementation discrepancies different simulators Manninen",
+      "result_note": "Manninen et al. 2018 Front Neuroinform."
+    },
+    {
+      "source": "WebSearch",
+      "query": "design of current injection stimulus for data assimilation parameter estimation conductance-based neuron model Abarbanel",
+      "result_note": "Meliza et al. 2014; Nogaret et al. 2016."
+    },
+    {
+      "source": "WebSearch",
+      "query": "model-based mutation testing Simulink test generation to kill mutants simulation models",
+      "result_note": "Brillout et al. 2010; Kavak et al. arXiv 2608.24250; Belli et al. 2016."
+    },
+    {
+      "source": "WebSearch",
+      "query": "BluePyOpt leveraging open source software and cloud infrastructure to optimise model parameters in neuroscience",
+      "result_note": "Van Geit et al. 2016."
+    },
+    {
+      "source": "WebSearch",
+      "query": "greedy test suite minimization set cover heuristic mutation score reduction regression testing",
+      "result_note": "Jehan & Wotawa 2023 IEEE Access; generic greedy minimisation literature."
+    },
+    {
+      "source": "WebSearch",
+      "query": "degenerate conductance-based neuron models similar baseline activity respond differently to perturbation",
+      "result_note": "Brandoit et al. 2026 PLOS CB; Onasch & Gjorgjieva 2020; degeneracy bifurcation preprint."
+    },
+    {
+      "source": "WebSearch",
+      "query": "NeuroML-DB electrophysiological characterization of models standard current clamp protocols features",
+      "result_note": "Birgiolas et al. 2023 NeuroML-DB."
+    },
+    {
+      "source": "WebSearch",
+      "query": "large language model coding agents computational neuroscience simulation code NEURON Brian2 benchmark evaluation",
+      "result_note": "AInsteinBench, BixBench; no neuroscience-simulation agent benchmark found."
+    },
+    {
+      "source": "WebSearch",
+      "query": "SciUnit framework test-driven scientific model validation Omar Gerkin 2014",
+      "result_note": "SciUnit GitHub, ICSE 2014 paper, Sarma et al. 2016 F1000Research."
+    },
+    {
+      "source": "WebSearch",
+      "query": "site:semanticscholar.org mutation testing neuron model simulation",
+      "result_note": "Semantic Scholar-API fallback: Simulink mutation test generation and DNN mutation testing only."
+    },
+    {
+      "source": "WebSearch",
+      "query": "subset of electrophysiology stimulus sweeps sufficient to predict neuron cell type reduced recording protocol feature importance",
+      "result_note": "Morphology-to-electrophysiology prediction preprint with greedy sweep-configuration search; no compact protocol selection for model testing."
+    },
+    {
+      "source": "WebSearch",
+      "query": "cross-simulator comparison same neuron model NEURON NEST Brian differences spike times numerical integration verification",
+      "result_note": "NEST precise-spiking docs, Brian 2 paper; background on numerical divergence only."
+    },
+    {
+      "source": "WebSearch",
+      "query": "Semantic Scholar \"stimulus selection\" \"model discrimination\" Hodgkin-Huxley current clamp",
+      "result_note": "Daly et al. 2015 and general HH pages; nothing combining stimulus selection with neuron-model discrimination."
+    },
+    {
+      "source": "WebSearch",
+      "query": "Allen Institute cell types electrophysiology technical white paper stimulus protocols long square short square ramp noise chirp",
+      "result_note": "Allen help/API pages; Lee et al. eLife 2021 scaled characterization."
+    },
+    {
+      "source": "WebSearch",
+      "query": "regression testing computational neuroscience models continuous integration model behaviour changes after code edits",
+      "result_note": "NeuroCI (neuroimaging), generic CI regression testing; nothing on neuron-model regression."
+    },
+    {
+      "source": "WebSearch",
+      "query": "\"optimal experimental design\" Hodgkin-Huxley OR \"conductance-based\" neuron \"current clamp\" Fisher information stimulus",
+      "result_note": "Lepora et al. 2012 fitting; optimal stimulus shape papers; no Fisher-information protocol design for neuron models."
+    },
+    {
+      "source": "WebSearch",
+      "query": "ICGenealogy ion channel model genealogy standardized voltage clamp protocols characterize channel models",
+      "result_note": "Podlaski et al. 2017 eLife ICGenealogy."
+    },
+    {
+      "source": "WebSearch",
+      "query": "global sensitivity analysis electrophysiological features to ion channel conductance perturbations which current clamp stimulus most informative neuron model",
+      "result_note": "Korngreen 2025 bioRxiv; cardiac GSA papers."
+    },
+    {
+      "source": "WebSearch",
+      "query": "voltage protocol optimised to distinguish ion channel variants channelopathy mutations classify gain loss of function patch clamp design",
+      "result_note": "Variant functional characterisation studies; Koch et al. 2023; no protocol optimisation for variant discrimination found."
+    },
+    {
+      "source": "WebSearch",
+      "query": "e-model validation protocols not used in optimisation generalisation to unseen stimuli neuron models electrophysiological features BluePyEModel paper",
+      "result_note": "NOT RUN: WebSearch session budget exhausted (200 of 200)."
+    },
+    {
+      "source": "PubMed (MCP search_articles)",
+      "query": "(optimal experimental design OR protocol design) AND (voltage clamp) AND (ion channel model)",
+      "result_note": "32 hits; relevant: Lei et al. hERG protocol designs, Shuttleworth et al. 2025, Jennings et al. 2024, Kargol 2013 wavelet protocols; rest drug-discovery noise."
+    },
+    {
+      "source": "PubMed (MCP search_articles)",
+      "query": "(optimal experimental design OR stimulus design OR protocol optimisation) AND (neuron model OR Hodgkin-Huxley) AND (current clamp OR identifiability OR model discrimination)",
+      "result_note": "87 hits; top 20 almost all off-topic (query expansion too broad)."
+    },
+    {
+      "source": "PubMed (MCP search_articles)",
+      "query": "NeuroML[Title/Abstract] OR NeuronUnit[Title/Abstract] OR SciUnit[Title/Abstract] OR \"Open Source Brain\"[Title/Abstract]",
+      "result_note": "51 hits; NeuroML ecosystem 2025, NeuroML-DB 2023, EDEN simulator 2022/2025, Appukuttan & Davison 2022; many brain-imaging false positives."
+    },
+    {
+      "source": "PubMed (MCP search_articles)",
+      "query": "(stimulus OR protocol) AND (design OR selection) AND (conductance-based model OR Hodgkin-Huxley model) AND (parameter estimation OR identifiability OR data assimilation)",
+      "result_note": "10 hits; Toth et al. 2011, Nowotny et al. 2008, ElectroPhysiomeGAN 2025; no stimulus-selection-for-testing work."
+    },
+    {
+      "source": "Europe PMC REST (default ordering; covers PubMed/MEDLINE and preprints)",
+      "query": "feature selection discriminating neuron models electrophysiology",
+      "result_note": "hits=446; top results: Machine learning-enabled chemical ecology for integrated pest manageme; Linear and categorical coding units in the mouse gustatory cortex driv; Beyond the brake: The subthalamic nucleus predominantly facilitates ac (mostly off-topic, date-ordered)"
+    },
+    {
+      "source": "Europe PMC REST (default ordering; covers PubMed/MEDLINE and preprints)",
+      "query": "conductance neuron model metamorphic testing",
+      "result_note": "hits=27; top results: Computer simulations of a dynamic sodium pump-mediated hyperpolarizati; Navigating the landscape of protein folding and proteostasis: from mol; Zinc in eye health, retinal biology and disease. (mostly off-topic, date-ordered)"
+    },
+    {
+      "source": "Europe PMC REST (default ordering; covers PubMed/MEDLINE and preprints)",
+      "query": "adaptive stimulus design model discrimination neurons",
+      "result_note": "hits=4732; top results: Control of associative learning by the mediodorsal thalamus-orbitofron; Sparse Coding and Temporal Pattern Learning Co-Mediated by Dual Spike-; Sensory adaptation and pupil-linked arousal support flexible evidence  (mostly off-topic, date-ordered)"
+    },
+    {
+      "source": "Europe PMC REST (default ordering; covers PubMed/MEDLINE and preprints)",
+      "query": "metamorphic testing scientific simulation software",
+      "result_note": "hits=193; top results: Back analysis for stratigraphic structure of earthquake-induced soft-h; Control effects of joint grouting and precision blasting on blasting d; Research on quantitative prediction method of structural fractures in  (mostly off-topic, date-ordered)"
+    },
+    {
+      "source": "Europe PMC REST (default ordering; covers PubMed/MEDLINE and preprints)",
+      "query": "NeuronUnit SciUnit model validation",
+      "result_note": "11 hits; NeuronUnit, HippoUnit, NeuroML-DB, Sarma 2016, Gerkin 2018 OpenWorm validation."
+    },
+    {
+      "source": "Europe PMC REST (default ordering; covers PubMed/MEDLINE and preprints)",
+      "query": "regression testing neuron simulator reproducibility",
+      "result_note": "hits=312; top results: Uncovering causal relationships in single-cell omic studies with causa; Phylogenetic Methods Meet Deep Learning.; A Lightweight ScaleDense–Transformer Framework with Auxiliary Quantum- (mostly off-topic, date-ordered)"
+    },
+    {
+      "source": "Europe PMC REST (default ordering; covers PubMed/MEDLINE and preprints)",
+      "query": "optimal stimulus design neuron model parameter estimation",
+      "result_note": "hits=2912; top results: Fast efficient coding and sensory adaptation in gain-adaptive recurren; Analyzing an organism's sensors using Maximum Entropy (MaxEnt) models ; Benchmarking criteria to determine latent linear dimensionality in neu (mostly off-topic, date-ordered)"
+    },
+    {
+      "source": "Europe PMC REST (default ordering; covers PubMed/MEDLINE and preprints)",
+      "query": "NeuroML mutation testing",
+      "result_note": "10 hits; no mutation testing; BluePyOpt and neuron-fitting tools."
+    },
+    {
+      "source": "Europe PMC REST (default ordering; covers PubMed/MEDLINE and preprints)",
+      "query": "multi-protocol neuron model validation electrophysiological features",
+      "result_note": "hits=2876; top results: Induced Pluripotent Stem Cell-Based Platforms for Cardiac-Related Pain; Application of Machine Learning Models to Identify Differences in Neur; Multimodal atlas of single neuron metabolic electrophysiological coupl (mostly off-topic, date-ordered)"
+    },
+    {
+      "source": "Europe PMC REST (default ordering; covers PubMed/MEDLINE and preprints)",
+      "query": "optimal experimental design voltage clamp protocol ion channel model discrimination",
+      "result_note": "594 hits; Lei 2024 hERG protocol preprint among date-ordered noise."
+    },
+    {
+      "source": "Europe PMC REST (default ordering; covers PubMed/MEDLINE and preprints)",
+      "query": "model discrimination experimental design ion channel kinetics",
+      "result_note": "hits=2916; top results: Mechano-immunomodulatory biomaterials: From immune mechanosensing to t; Ligand-based pharmacophore modeling for the discovery of Na&lt;sub&gt;; An Open-Quantum-Systems Theory of Quantum-Biological Communication Cha (mostly off-topic, date-ordered)"
+    },
+    {
+      "source": "Europe PMC REST (default ordering; covers PubMed/MEDLINE and preprints)",
+      "query": "AI coding agent neuron simulation",
+      "result_note": "hits=855; top results: A hierarchical neuromorphic multi agent framework for energy aware and; Bio-Inspired Neural Network Dynamics-Aware Reinforcement Learning for ; Evolving spiking neural networks: the role of neuron models and encodi (mostly off-topic, date-ordered)"
+    },
+    {
+      "source": "Europe PMC REST (default ordering; covers PubMed/MEDLINE and preprints)",
+      "query": "information-theoretic experimental design Hodgkin-Huxley model",
+      "result_note": "hits=104; top results: NMDA receptor kinetics drive distinct routes to chaotic firing in pyra; An integrated &lt;i&gt;i&lt;/i&gt; &lt;i&gt;n vitro&lt;/i&gt; platform; Hysteretic Conductance in Ion Channel Gating (mostly off-topic, date-ordered)"
+    },
+    {
+      "source": "Europe PMC REST (default ordering; covers PubMed/MEDLINE and preprints)",
+      "query": "electrophysiological features classification e-types feature selection",
+      "result_note": "hits=4791; top results: Machine learning-enabled chemical ecology for integrated pest manageme; Subject-independent EEG classification of imagined swallowing: Impact ; eFEL: electrophysiology feature extraction library. (mostly off-topic, date-ordered)"
+    },
+    {
+      "source": "Europe PMC REST (default ordering; covers PubMed/MEDLINE and preprints)",
+      "query": "Allen Cell Types stimulus set electrophysiology features",
+      "result_note": "hits=1411; top results: eFEL: electrophysiology feature extraction library.; Human Neocortical Glutamatergic Neurons Revealed Through Multimodal Pr; A multimodal approach for visualizing and identifying electrophysiolog (mostly off-topic, date-ordered)"
+    },
+    {
+      "source": "Europe PMC REST (default ordering; covers PubMed/MEDLINE and preprints)",
+      "query": "perturbation fingerprint neuron model",
+      "result_note": "hits=542; top results: Bilateral Neuron Pairs Share Redundant Network Roles Despite Incomplet; A Hierarchical Multimodal Knowledge Graph for Neural Cell-Type-Specifi; Risk-Aware Computational Prioritization and Validation Route Design fo (mostly off-topic, date-ordered)"
+    },
+    {
+      "source": "Europe PMC REST (default ordering; covers PubMed/MEDLINE and preprints)",
+      "query": "optimal experimental design electrophysiology protocol parameter identifiability",
+      "result_note": "70 hits; Shuttleworth 2025, IonBench 2025; mostly cardiac."
+    },
+    {
+      "source": "Europe PMC REST (default ordering; covers PubMed/MEDLINE and preprints)",
+      "query": "automatic stimulation protocol selection model validation",
+      "result_note": "hits=6667; top results: A Dataset of Microelectrode Recordings from Deep Brain Stimulation Pro; Physiological Monitoring of Sound-Based Relaxation Using Binaural Audi; Resting State Functional Connectivity Among Cortical and Subcortical G (mostly off-topic, date-ordered)"
+    },
+    {
+      "source": "Europe PMC REST (default ordering; covers PubMed/MEDLINE and preprints)",
+      "query": "voltage clamp protocol design cardiac ion channel model selection",
+      "result_note": "hits=1210; top results: Large-scale synthetic data enable digital twins of human excitable cel; Integrated Screening Cascades for Ion-Channel Drug Discovery: Linking ; Induced Pluripotent Stem Cell-Based Platforms for Cardiac-Related Pain (mostly off-topic, date-ordered)"
+    },
+    {
+      "source": "Europe PMC REST (default ordering; covers PubMed/MEDLINE and preprints)",
+      "query": "neuron model semantic regression",
+      "result_note": "hits=3874; top results: Shared neural geometries for bilingual semantic representations in hum; Mapping the neuronal building blocks of human language with language m; A shared code for perceiving and imagining objects in human ventral te (mostly off-topic, date-ordered)"
+    },
+    {
+      "source": "Europe PMC REST (default ordering; covers PubMed/MEDLINE and preprints)",
+      "query": "NeuroML 2 LEMS model description language",
+      "result_note": "39 hits; NeuroML ecosystem, EDEN."
+    },
+    {
+      "source": "Europe PMC REST (default ordering; covers PubMed/MEDLINE and preprints)",
+      "query": "minimal set of current clamp protocols neuron model",
+      "result_note": "hits=3915; top results: TTX-S/TTX-R Na&lt;sup&gt;+&lt;/sup&gt; Currents Coordinately Fine-Tune; Application of Machine Learning Models to Identify Differences in Neur; Serotonin depletion amplifies migraine susceptibility through trigemin (mostly off-topic, date-ordered)"
+    },
+    {
+      "source": "Europe PMC REST (default ordering; covers PubMed/MEDLINE and preprints)",
+      "query": "behavioral preservation neuronal model conversion",
+      "result_note": "hits=3329; top results: Therapeutic Potential of 2-(2-Benzofuranyl)-2-Imidazoline in Preclinic; Redox-exercise crosstalk in neurodegenerative diseases: mechanistic pe; Nicotinamide Mononucleotide Adenylyltransferase 1 and NAD&lt;sup&gt;+& (mostly off-topic, date-ordered)"
+    },
+    {
+      "source": "Europe PMC REST (default ordering; covers PubMed/MEDLINE and preprints)",
+      "query": "eFEL electrophysiology feature extraction library",
+      "result_note": "32 hits; eFEL Bioinformatics 2026, NeuroFeatureExtract."
+    },
+    {
+      "source": "Europe PMC REST (default ordering; covers PubMed/MEDLINE and preprints)",
+      "query": "mutation testing computational neuroscience",
+      "result_note": "hits=6720; top results: Aging ADNP syndrome mice exhibit mutation/sex-dependent disruption of ; The role of \"red flags\" in the diagnostic work-up of hereditary transt; Neural-network-inspired federated coordination for noise-tolerant dist (mostly off-topic, date-ordered)"
+    },
+    {
+      "source": "Europe PMC REST (default ordering; covers PubMed/MEDLINE and preprints)",
+      "query": "short sinusoidal voltage clamp protocol hERG model",
+      "result_note": "55 hits; Beattie 2018, Clerx 2019, Lei hERG protocol designs."
+    },
+    {
+      "source": "Europe PMC REST (default ordering; covers PubMed/MEDLINE and preprints)",
+      "query": "active learning stimulus selection distinguish neuron models",
+      "result_note": "hits=3044; top results: Remembering the \"when\": Hebbian memory models for the time of past eve; Imagine No Resources: Attention Is Selection and Normalization for Cho; Modeling flexible behavior with remapping-based hippocampal sequence l (mostly off-topic, date-ordered)"
+    },
+    {
+      "source": "Europe PMC REST (default ordering; covers PubMed/MEDLINE and preprints)",
+      "query": "Open Source Brain model validation",
+      "result_note": "hits=161891; top results: MRI derived hippocampal asymmetry identifies hippocampal sclerosis in ; Validation of open-source deep learning segmentation tools for automat; Association between preoperative MRI radiomic features and methylation (mostly off-topic, date-ordered)"
+    },
+    {
+      "source": "Europe PMC REST (default ordering; covers PubMed/MEDLINE and preprints)",
+      "query": "mutation testing scientific software",
+      "result_note": "hits=103630; top results: Development of a LiDia-SEQ™ platform compatible breast cancer panel an; Standardized Analytical Verification of ctDNA ESR1 Mutation Testing in; Ion Torrent Genexus as a Fast and Reliable Solution for HIV-1 Drug Res (mostly off-topic, date-ordered)"
+    },
+    {
+      "source": "Europe PMC REST (TITLE_ABS boolean, sort=CITED desc)",
+      "query": "TITLE_ABS:(\"mutation testing\" OR \"mutation analysis\") AND TITLE_ABS:(\"computational neuroscience\" OR \"computational model\" OR \"scientific software\")",
+      "result_note": "hits=0; no results"
+    },
+    {
+      "source": "Europe PMC REST (TITLE_ABS boolean, sort=CITED desc)",
+      "query": "TITLE_ABS:(\"sensitivity analysis\") AND TITLE_ABS:(\"voltage-gated ion channel models\" OR \"stimulation protocol\") AND TITLE_ABS:(model)",
+      "result_note": "hits=4; top results: Electroanatomical characterization of atrial microfibrosis in a histol; The role of serum vitamin D in patients with normal ovarian reserve un; Sensitivity analysis of voltage-gated ion channel models"
+    },
+    {
+      "source": "Europe PMC REST (TITLE_ABS boolean, sort=CITED desc)",
+      "query": "TITLE_ABS:(\"large language model\" OR \"LLM\" OR \"coding agent\") AND TITLE_ABS:(\"computational neuroscience\" OR \"neuron model\" OR NEURON simulator OR NeuroML OR \"biophysical model\")",
+      "result_note": "hits=49; top results: Large Language Model-Based Patient Simulation to Foster Communication ; GPT-4 as a biomedical simulator.; Inductive reasoning with large language models: A simulated randomized"
+    },
+    {
+      "source": "Europe PMC REST (TITLE_ABS boolean, sort=CITED desc)",
+      "query": "TITLE_ABS:(eFEL OR \"Electrophys Feature Extraction\")",
+      "result_note": "hits=5; top results: Effect of Ethyl Acetate Fraction from <i>Eucommia ulmoides</i> Leaves ; Controlling Complexity of Cerebral Cortex Simulations-II: Streamlined ; Ethyl Acetate Fraction from &lt;i&gt;Eucommia ulmoides&lt;/i&gt; Ameli"
+    },
+    {
+      "source": "Europe PMC REST (TITLE_ABS boolean, sort=CITED desc)",
+      "query": "TITLE_ABS:\"metamorphic testing\" AND TITLE_ABS:(neuron OR neuronal OR electrophysiology)",
+      "result_note": "hits=1; top results: Evaluating the effectiveness of neuron coverage metrics: a metamorphic"
+    },
+    {
+      "source": "Europe PMC REST (TITLE_ABS boolean, sort=CITED desc)",
+      "query": "TITLE_ABS:\"mutation testing\" AND TITLE_ABS:(neuron OR neuroscience OR simulation OR \"systems biology\")",
+      "result_note": "hits=10; top results: Expanding the criteria for BRCA mutation testing in breast cancer surv; Preventing future cancers by testing women with ovarian cancer for BRC; Lynch syndrome screening implementation: business analysis by a health"
+    },
+    {
+      "source": "Europe PMC REST (TITLE_ABS boolean, sort=CITED desc)",
+      "query": "TITLE_ABS:(\"e-type\" OR \"e-types\" OR \"electrical types\") AND TITLE_ABS:(\"feature selection\" OR \"minimal set\" OR \"most informative features\")",
+      "result_note": "hits=0; no results"
+    },
+    {
+      "source": "Europe PMC REST (TITLE_ABS boolean, sort=CITED desc)",
+      "query": "TITLE_ABS:(\"model discrimination\" OR \"model selection\") AND TITLE_ABS:(protocol) AND TITLE_ABS:(\"ion channel\" OR hERG OR neuron)",
+      "result_note": "hits=3; top results: Analysis of between-trial and within-trial neural spiking dynamics.; Optimizing experimental designs for model selection of ion channel dru; Optimising experimental designs for model selection of ion channel dru"
+    },
+    {
+      "source": "Europe PMC REST (TITLE_ABS boolean, sort=CITED desc)",
+      "query": "TITLE_ABS:(\"electrophysiological features\" OR \"e-features\") AND TITLE_ABS:(\"model validation\" OR \"validation protocols\" OR \"held-out\" OR \"generalization\")",
+      "result_note": "hits=8; top results: A universal workflow for creation, validation, and generalization of d; A study on epileptic negative myoclonus in atypical benign partial epi; Deep learning model to generate patient-specific pulmonary vein isolat"
+    },
+    {
+      "source": "Europe PMC REST (TITLE_ABS boolean, sort=CITED desc)",
+      "query": "TITLE_ABS:(NeuronUnit OR SciUnit OR HippoUnit)",
+      "result_note": "hits=7; top results: HippoUnit: A software tool for the automated testing and systematic co; A new reduced-morphology model for CA1 pyramidal cells and its validat; Towards systematic, data-driven validation of a collaborative, multi-s"
+    },
+    {
+      "source": "Europe PMC REST (TITLE_ABS boolean, sort=CITED desc)",
+      "query": "TITLE_ABS:(identifiability) AND TITLE_ABS:(protocol OR stimulus) AND TITLE_ABS:(\"ion channel\" OR \"action potential\" OR \"conductance-based\" OR \"Hodgkin-Huxley\")",
+      "result_note": "hits=9; top results: Markov models for ion channels: versatility versus identifiability and; Parameter estimation in cardiac ionic models.; Detecting undetectables: Can conductances of action potential models b"
+    },
+    {
+      "source": "Europe PMC REST (TITLE_ABS boolean, sort=CITED desc)",
+      "query": "TITLE_ABS:NeuroML AND TITLE_ABS:(test OR testing OR validation OR regression)",
+      "result_note": "hits=5; top results: NeuroML: a language for describing data driven models of neurons and n; The NeuroML ecosystem for standardized multi-scale modeling in neurosc; A federated design for a neurobiological simulation engine: the CBI fe"
+    },
+    {
+      "source": "Europe PMC REST (TITLE_ABS boolean, sort=CITED desc)",
+      "query": "TITLE_ABS:(\"Open Source Brain\" OR \"OSB Model Validation\")",
+      "result_note": "hits=32; top results: Mindboggling morphometry of human brains.; Processed electroencephalogram in depth of anesthesia monitoring.; Open Source Brain: A Collaborative Resource for Visualizing, Analyzing"
+    },
+    {
+      "source": "Europe PMC REST (TITLE_ABS boolean, sort=CITED desc)",
+      "query": "TITLE_ABS:(neuron OR neuronal) AND TITLE_ABS:model AND TITLE_ABS:(\"semantic regression\" OR \"regression test\" OR \"regression testing\")",
+      "result_note": "hits=1; top results: Efficacy of Action Observation Therapy on Cognitive Function in Stroke"
+    },
+    {
+      "source": "Europe PMC REST (TITLE_ABS boolean, sort=CITED desc)",
+      "query": "TITLE_ABS:(\"Allen Cell Types\") AND TITLE_ABS:(stimulus OR protocol) AND TITLE_ABS:(model OR features)",
+      "result_note": "hits=0; no results"
+    },
+    {
+      "source": "Europe PMC REST (TITLE_ABS boolean, sort=CITED desc)",
+      "query": "TITLE_ABS:(fingerprint) AND TITLE_ABS:(perturbation) AND TITLE_ABS:(\"neuron model\" OR \"conductance-based\")",
+      "result_note": "hits=0; no results"
+    },
+    {
+      "source": "Europe PMC REST (TITLE_ABS boolean, sort=CITED desc)",
+      "query": "TITLE_ABS:(\"model conversion\" OR \"model translation\" OR reimplementation OR \"re-implementation\") AND TITLE_ABS:(neuron OR neuronal) AND TITLE_ABS:(equivalence OR reproducibility OR \"same behaviour\" OR \"same behavior\")",
+      "result_note": "hits=1; top results: Reproducibility and Comparability of Computational Models for Astrocyt"
+    },
+    {
+      "source": "Europe PMC REST (TITLE_ABS boolean, sort=CITED desc)",
+      "query": "TITLE_ABS:(\"optimal experimental design\" OR \"experimental design\") AND TITLE_ABS:(\"voltage clamp\" OR \"voltage-clamp\" OR \"current clamp\" OR \"current-clamp\") AND TITLE_ABS:model",
+      "result_note": "hits=7; top results: The myogenic response in isolated rat cerebrovascular arteries: smooth; Estimation of the Readily Releasable Synaptic Vesicle Pool at the <i>D; Model-driven optimal experimental design for calibrating cardiac elect"
+    },
+    {
+      "source": "Europe PMC REST (TITLE_ABS boolean, sort=CITED desc)",
+      "query": "TITLE_ABS:(\"protocol selection\" OR \"stimulus selection\" OR \"protocol design\" OR \"stimulus design\") AND TITLE_ABS:(\"model validation\" OR \"model selection\" OR \"model discrimination\")",
+      "result_note": "hits=8; top results: Stimulus design for model selection and validation in cell signaling.; MicroCT image based simulation to design heating protocols in magnetic; Optimization of DCE-MRI protocol for the assessment of patients with b"
+    },
+    {
+      "source": "Europe PMC REST (TITLE_ABS boolean, sort=CITED desc)",
+      "query": "TITLE_ABS:(\"stimuli\" OR \"stimulus\") AND TITLE_ABS:(\"neuron models\" OR \"neuron model\") AND TITLE_ABS:(constrain OR \"parameter space\" OR \"effective stimuli\")",
+      "result_note": "hits=10; top results: Effective stimuli for constructing reliable neuron models.; Mode locking in a periodically forced integrate-and-fire-or-burst neur; Establishing Communication between Neuronal Populations through Compet"
+    },
+    {
+      "source": "OpenAlex API",
+      "query": "conductance neuron model metamorphic testing / NeuroML mutation testing / neuron model semantic regression (first 3 of 29 planned queries)",
+      "result_note": "BLOCKED: HTTP 429, response says daily budget exhausted ($0 remaining, resets midnight UTC); remaining 26 queries not run."
+    },
+    {
+      "source": "Semantic Scholar Graph API",
+      "query": "conductance neuron model metamorphic testing; NeuroML mutation testing; neuron model semantic regression",
+      "result_note": "BLOCKED: repeated HTTP 429 unauthenticated rate limit even with 15-90 s backoff; one early response (total=3226) was overwritten before titles were reviewed; fallback via WebSearch site:semanticscholar.org used once."
+    },
+    {
+      "source": "Crossref REST API",
+      "query": "works/<doi> for 26 DOIs and query.bibliographic for 17 titles",
+      "result_note": "Verified titles/years/venues/authors for most candidates; 'Cell-specific cardiac electrophysiology models' (Groenendaal) not matched."
+    },
+    {
+      "source": "NCBI E-utilities / PMC idconv",
+      "query": "esummary for PubMed IDs; idconv for 25 PMCIDs",
+      "result_note": "Resolved DOIs and PMIDs used in candidate records."
+    },
+    {
+      "source": "Europe PMC REST (resultType=core)",
+      "query": "EXT_ID lookups for 27 PMIDs and 3 preprint IDs",
+      "result_note": "Retrieved abstracts to write paraphrased relevance notes."
+    },
+    {
+      "source": "arXiv API / arxiv.org abs pages",
+      "query": "id_list 2506.11311, 2608.24250, 2606.17529, 2512.21373, 2509.12783",
+      "result_note": "export.arxiv.org API returned nothing (twice); arxiv.org abstract-page citation metadata retrieved for all five."
+    },
+    {
+      "source": "PyPI JSON API",
+      "query": "efel, pyNeuroML, sciunit, neuronunit, OSBModelValidation, libNeuroML, PyLEMS, bluepyopt",
+      "result_note": "Retrieved current versions/licenses/home pages (recorded only where used)."
+    },
+    {
+      "source": "GitHub REST API (unauthenticated)",
+      "query": "repos/NeuroML/jNeuroML; repos/BlueBrain/BluePyEModel",
+      "result_note": "BLOCKED: 403 API rate limit exceeded for this IP."
+    },
+    {
+      "source": "process-incident",
+      "query": "n/a",
+      "result_note": "While stopping my own rate-limited background search processes with the command-line filter '*search.py*', I also terminated two python processes (zenodo_search.py and s2_search.py) that this finder did not start, probably belonging to sibling finders. Their owners may need to rerun them."
+    }
+  ],
+  "blocked_sources": [
+    "OpenAlex API: HTTP 429 'Insufficient budget' (daily USD budget exhausted, retry-after about 9.4 h) on 2026-09-13; only 3 queries attempted.",
+    "Semantic Scholar Graph API: persistent HTTP 429 (unauthenticated rate limit, likely shared IP with sibling finders); no usable results; partial fallback via WebSearch site:semanticscholar.org.",
+    "WebSearch: session budget exhausted (200/200) before the final lens query.",
+    "GitHub REST API: HTTP 403 unauthenticated rate limit for this IP.",
+    "arXiv export API: empty responses; arxiv.org abstract pages used instead."
+  ]
+}

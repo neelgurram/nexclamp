@@ -1,0 +1,275 @@
+{
+  "meta": {
+    "milestone": "M0 (audit only)",
+    "assignment": "Independent adversarial verification of fixture_candidates.json (recommended pair + backups)",
+    "verified_on": "2026-09-13",
+    "input_checked": "C:/Users/gurra/NeuroSem/docs/m0_evidence/fixtures/fixture_candidates.json (recommendation as passed in the task prompt)",
+    "handoff_read": "C:/Users/gurra/NeuroSem/docs/handoff/NEUROSEM_CLAUDE_HANDOFF.extracted.md (PDF authoritative)",
+    "scratch_dir": "C:/Users/gurra/AppData/Local/Temp/claude/C--Users-gurra-Continuum/d876c622-d308-4d4a-bbf3-2b2374480647/scratchpad/m0/fixtures-verify/",
+    "procedure_order": [
+      "1. GitHub REST API (authenticated gh api, read-only; the unauthenticated quota was already exhausted, X-RateLimit-Remaining 0): repos/<repo>, repos/<repo>/commits/<sha>, repos/<repo>/license?ref=<sha> (LICENSE text decoded and read), repos/<repo>/git/trees/<sha>?recursive=1.",
+      "2. Only after license text at the pinned SHA was read: raw.githubusercontent.com/<repo>/<sha>/<path> downloads into scratch dl/, SHA-256 recomputed locally.",
+      "3. Scratch venv (Python 3.12): libNeuroML 0.6.7 neuroml.utils.validate_neuroml2 on each .nml; lxml parse of cell/net/LEMS files.",
+      "4. Citations: Crossref works/<doi>, PubMed (NCBI via PubMed MCP tool: metadata for PMIDs and citation lookup), ModelDB pages.",
+      "5. CI claims: GitHub Actions runs/jobs/logs via gh api.",
+      "6. Extra (not requested, exploratory, not a NeuroSem result): PyLEMS 0.6.9 runs of Ex5, LEMS_LTS.xml and LEMS_RS.xml using NeuroML2CoreTypes downloaded from NeuroML/NeuroML2 at the pinned SHA a5f5dad."
+    ],
+    "tool_versions_verified": {
+      "libNeuroML": "0.6.7 installed; PyPI JSON latest 0.6.7, license BSD-2-Clause, 0.6.7 upload 2025-06-10 (https://pypi.org/pypi/libneuroml/json)",
+      "PyLEMS": "0.6.9 installed; PyPI JSON latest 0.6.9, license_expression LGPL-3.0-only (https://pypi.org/pypi/pylems/json)",
+      "pyNeuroML": "not installed; PyPI JSON latest 1.3.22, license_expression LGPL-3.0-only (https://pypi.org/pypi/pyneuroml/json)",
+      "java/jNeuroML": "absent; not run locally"
+    },
+    "caveats": [
+      "No held-out evaluation created or accessed.",
+      "No NeuroSem results claimed. Spike-time comparisons below are fixture sanity checks against the repositories' own OMV expected values.",
+      "Passing OMV/CI tests or schema validation is finite testing, not proof of equivalence or correctness.",
+      "Mechanistic readings (adaptation via IM, LTS rebound) remain expectations to confirm by simulation in M1."
+    ]
+  },
+  "overall_verdict": {
+    "hashes": "All 38 reported SHA-256 values recomputed from pinned-SHA raw downloads: 38/38 MATCH, 0 mismatches.",
+    "files_exist": "All listed paths exist in the recursive git tree at each pinned SHA (Pospischil 26/26, NeuroML2 5/5, WangBuzsaki 7/7). Trees were not truncated.",
+    "licenses": "License texts at the pinned SHAs match the reported terms, but the SPDX labels are simplifications (see discrepancies D1, D2, D9).",
+    "citations": "All three DOIs resolve in Crossref with matching title, authors, journal, volume, issue and pages; PubMed PMIDs confirmed; ModelDB 123623 and 26997 pages list the same PMIDs and DOIs.",
+    "ci": "Run IDs, head SHAs, dates and job conclusions match the claims; one additional failing run at the Pospischil SHA was not reported (D4).",
+    "most_important_new_findings": [
+      "D3: LEMS_LTS.xml does not run in PyLEMS 0.6.9 (ZeroDivisionError on the first step). LTS has no pure-Python execution path; it depends on jNeuroML (Java) or a NEURON export. Java is absent locally.",
+      "D6: The Pospischil2008_IB file list omits NeuroML2/channels/Ca/Ca.nml, which IB.cell.nml and LEMS_IB.xml include; the IB fixture as listed is incomplete.",
+      "D1: The .mep reference files for RS/LTS/FS/IB sit in NEURON_MODIFIED, which the LICENSE excludes from MIT (citation condition only), so labelling those file lists 'MIT' is inaccurate."
+    ]
+  },
+  "discrepancies": [
+    {
+      "id": "D1",
+      "severity": "medium",
+      "models": [
+        "Pospischil2008_RS",
+        "Pospischil2008_LTS",
+        "Pospischil2008_FS",
+        "Pospischil2008_IB"
+      ],
+      "claim": "license_spdx MIT for the listed files",
+      "finding": "GitHub license API at the pinned SHA returns key 'other' / spdx NOASSERTION. The LICENSE text applies MIT to everything except directories NEURON_ORIG and NEURON_MODIFIED, whose code is provided on condition of citing the ModelDB entry and original publication (CITATION.md). Every listed .mep file (NEURON_MODIFIED/.test.*.spikes.mep) is inside the carve-out, so it is not MIT-licensed; no open license is stated for it. The candidate 'concerns' mention the carve-out, but the rationale line 'All NeuroML2 files sit outside those folders' does not cover the .mep files that are in the file list.",
+      "recommendation": "Record the per-file license: NeuroML2/* = MIT; NEURON_MODIFIED/*.mep = citation-condition only. Either do not vendor the .mep files (regenerate NeuroSem's own reference traces in M2) or vendor them with the required citation and a note that no redistribution license is granted.",
+      "evidence": "https://api.github.com/repos/OpenSourceBrain/PospischilEtAl2008/license?ref=049081c39357d9e7c478b63ef7b10f374d1c50f4"
+    },
+    {
+      "id": "D2",
+      "severity": "low",
+      "models": [
+        "WangBuzsaki1996_wb1"
+      ],
+      "claim": "license_spdx MIT",
+      "finding": "GitHub license API returns NOASSERTION. LICENSE text: MIT for all software except ModelDB_NEURON and NEURON (citation condition) and Brian (own license.txt). All listed files (NeuroML2/LEMS/*, CITATION.md, root .test.wb.mep) are outside the carve-outs, so MIT does apply to the listed files.",
+      "recommendation": "Label as 'MIT (repo LICENSE with directory carve-outs; GitHub NOASSERTION)'.",
+      "evidence": "https://api.github.com/repos/OpenSourceBrain/WangBuzsaki1996/license?ref=c532284492c3e421a7f8e88b3090af8ffee8cf6a"
+    },
+    {
+      "id": "D3",
+      "severity": "high (for a pure-Python or Java-free path); informational if jNeuroML is the frozen simulator",
+      "models": [
+        "Pospischil2008_LTS"
+      ],
+      "claim": "LTS executes; only XSD validity is at issue",
+      "finding": "PyLEMS 0.6.9 (pylems -nogui -I <NeuroML2CoreTypes at NeuroML2 a5f5dad> LEMS_LTS.xml) parses and builds the model, then raises ZeroDivisionError in a generated update_state_variables function within about 1 s of starting the run, and writes no output. Inferred cause (unverified): IT_s_gate extends gateHHtauInf, whose Dynamics include TimeDerivative q' = (inf - q)/tau; the IT s gate sets tau to 0 (fixedTimeCourse tau='0ms' and DerivedVariable tau=0), and PyLEMS appears to keep the parent's TimeDerivative. jNeuroML runs it (CI py3.12 jNeuroML log: LTS spike and Ca-spike observables passed).",
+      "recommendation": "If LTS is kept, NeuroSem must name jNeuroML (Java) as both the validity oracle (jnml -validate) and the execution oracle, and M1 must install Java in the frozen environment. The strict libNeuroML XSD check and PyLEMS cannot serve as fallbacks for LTS or its mutants.",
+      "evidence": "C:/Users/gurra/AppData/Local/Temp/claude/C--Users-gurra-Continuum/d876c622-d308-4d4a-bbf3-2b2374480647/scratchpad/m0/fixtures-verify/runs/lts/NeuroML2/cells/LTS/pylems_lts.log; coretypes/Channels.xml lines 270-300"
+    },
+    {
+      "id": "D4",
+      "severity": "low",
+      "models": [
+        "Pospischil2008_*"
+      ],
+      "claim": "Actions run 30447139603 (2026-07-29) at the pinned SHA: only jNeuroML_Moose py3.10 failed; runs on 2025-11-25 fully green",
+      "finding": "Confirmed (12 jobs; the failure is build (3.10, jNeuroML_Moose), and the log shows AttributeError: 'NML2Reader' object has no attribute 'paths_to_chan_elements' in the RS and FS MOOSE tests, i.e. a MOOSE reader/tooling error, not a model error). Unreported: a fourth run at the same SHA, 26042274142 (pull_request, 2026-05-18), also concluded failure with the same single failing job. The two 2025-11-25 runs (19683390438, 19683226292) concluded success.",
+      "recommendation": "Mention that the MOOSE failure recurs across 2026 runs; it does not affect a jNeuroML-only pilot.",
+      "evidence": "https://api.github.com/repos/OpenSourceBrain/PospischilEtAl2008/actions/runs?head_sha=049081c39357d9e7c478b63ef7b10f374d1c50f4"
+    },
+    {
+      "id": "D5",
+      "severity": "low",
+      "models": [
+        "Pospischil2008_LTS",
+        "Pospischil2008_IB"
+      ],
+      "claim": "Custom LEMS ComponentTypes are in IT (LTS) and IL (IB)",
+      "finding": "Ca.nml, which both LTS and IB include, also defines a custom ComponentType (decayingPoolConcentrationModelPosp). libNeuroML still reports Ca.nml VALID, but mutation and transformation tooling must parse LEMS Dynamics in Ca.nml as well as IT/IL. IL.channel.nml defines four custom rate ComponentTypes (IL_q_alpha_rate, IL_q_beta_rate, IL_r_alpha_rate, IL_r_beta_rate).",
+      "recommendation": "List Ca.nml's custom ComponentType in the LTS concerns.",
+      "evidence": "C:/Users/gurra/AppData/Local/Temp/claude/C--Users-gurra-Continuum/d876c622-d308-4d4a-bbf3-2b2374480647/scratchpad/m0/fixtures-verify/dl/PospischilEtAl2008/NeuroML2/channels/Ca/Ca.nml"
+    },
+    {
+      "id": "D6",
+      "severity": "medium",
+      "models": [
+        "Pospischil2008_IB"
+      ],
+      "claim": "file_paths for IB",
+      "finding": "IB.cell.nml includes ../../channels/Ca/Ca.nml, and LEMS_IB.xml includes it too, but NeuroML2/channels/Ca/Ca.nml is missing from the IB file_paths and file_sha256 lists. The NeuroML2/cells/IB/.test.IB.spikes.LEMS.omt that OMV runs is also not listed. As listed, the IB fixture would not load.",
+      "recommendation": "Add NeuroML2/channels/Ca/Ca.nml (sha256 2bd89c887c3f4183253a560100dec2cca9dcf61379df5522e2d5ef9e9e1d44e3, same blob as in the LTS list) and the IB omt.",
+      "evidence": "C:/Users/gurra/AppData/Local/Temp/claude/C--Users-gurra-Continuum/d876c622-d308-4d4a-bbf3-2b2374480647/scratchpad/m0/fixtures-verify/dl/PospischilEtAl2008/NeuroML2/cells/IB/IB.cell.nml"
+    },
+    {
+      "id": "D7",
+      "severity": "low",
+      "models": [
+        "Pospischil2008_FS"
+      ],
+      "claim": "file_paths for FS",
+      "finding": "The FS list omits NeuroML2/cells/FS/.test.FS.spikes.LEMS.omt (present in the tree; the CI log shows it ran and passed), although RS and LTS list their omt files. The FS soma diameter is 67 um (the RS/LTS/IB soma is 96 um), which the candidate does not state.",
+      "recommendation": "Add the omt for consistency.",
+      "evidence": "CI job 90560178137 log"
+    },
+    {
+      "id": "D8",
+      "severity": "low",
+      "models": [
+        "Pospischil2008_LTS"
+      ],
+      "claim": "IT.channel.nml is ISO-8859-1 encoded",
+      "finding": "IT.channel.nml, Ca.nml and IL.channel.nml declare encoding ISO-8859-1 in the XML prolog, but contain zero non-ASCII bytes, so the content is plain ASCII and is byte-identical under UTF-8. This is a declaration quirk, not a practical encoding hazard. The 'K channels' isVersionOf annotation on the Ca channel IT is confirmed.",
+      "recommendation": "Reword to 'declares ISO-8859-1; content is ASCII'. Tools that rewrite XML should preserve or normalise the declaration deliberately (a valid-transformation candidate).",
+      "evidence": "C:/Users/gurra/AppData/Local/Temp/claude/C--Users-gurra-Continuum/d876c622-d308-4d4a-bbf3-2b2374480647/scratchpad/m0/fixtures-verify/dl/PospischilEtAl2008/NeuroML2/channels/IT/IT.channel.nml"
+    },
+    {
+      "id": "D9",
+      "severity": "low",
+      "models": [
+        "NeuroML2_SingleCompHHCell"
+      ],
+      "claim": "LGPL-3.0 via LICENSE.lesser",
+      "finding": "Confirmed: GitHub license API at the SHA returns LICENSE.lesser, spdx LGPL-3.0. The recursive tree contains no GPL-3.0 text (LICENSE.lesser is the only license-like file), although LGPLv3 incorporates GPLv3 terms by reference. NeuroSem would need to ship the GPL text itself if it redistributes these files.",
+      "recommendation": "Record this in LICENSE_AUDIT.md if the HH backup is used.",
+      "evidence": "https://api.github.com/repos/NeuroML/NeuroML2/license?ref=a5f5dadccd23606e683eaa0dd58dd2c3b2a7ed58"
+    },
+    {
+      "id": "D10",
+      "severity": "low",
+      "models": [
+        "NeuroML2_SingleCompHHCell"
+      ],
+      "claim": "The docs.neuroml.org single-compartment HH page attributes the model to Hodgkin & Huxley 1952",
+      "finding": "The page (HTTP 200) cites [HH52] for the HH neuron it builds with a pyNeuroML script. It does not mention NML2_SingleCompHHCell.nml or LEMS_NML2_Ex5_DetCell.xml, so applying that attribution to this specific file is an inference. The HH 1952 citation itself is confirmed by Crossref (DOI 10.1113/jphysiol.1952.sp004764) and PubMed 12991237. The candidate's citation_url is a Crossref query URL rather than a works/<doi> URL.",
+      "recommendation": "Use https://api.crossref.org/works/10.1113/jphysiol.1952.sp004764 and describe the file as a textbook HH implementation in the NeuroML2 spec repo.",
+      "evidence": "https://docs.neuroml.org/Userdocs/SingleCompartmentHHExample.html"
+    },
+    {
+      "id": "D11",
+      "severity": "low",
+      "models": [
+        "NeuroML2_SingleCompHHCell"
+      ],
+      "claim": "PyLEMS_NeuroML2 log shows the ex5 pylems test passed",
+      "finding": "Confirmed. The PyLEMS OMV test uses a separate file, LEMSexamples/test/.test.ex5.pylems.omt (same .test.ex5.mep, tighter tolerances), which is not in the candidate file list.",
+      "recommendation": "Add .test.ex5.pylems.omt if PyLEMS is used as a secondary engine.",
+      "evidence": "CI job 100417583881 log"
+    },
+    {
+      "id": "D12",
+      "severity": "low",
+      "models": [
+        "WangBuzsaki1996_wb1"
+      ],
+      "claim": "Na with instantaneous m3 and h (q10Fixed 5)",
+      "finding": "Ambiguous wording. In the XML only m (instances 3) uses the inline custom gateHHratesInstantaneous type. h (instances 1) is a standard gateHHrates with q10Fixed 5, and K n (instances 4) also has q10Fixed 5. Other WB claims are confirmed: one segment (d 10 um, distal z 3.1831 um), leak 0.1 mS/cm2 at -65 mV, Vinit -70 mV, 37 degC, 2 pA from 0 ms for 100 ms, a 100 ms simulation at dt 0.001 ms, 10 mep spikes about 9.82 ms apart. Also: the CI logs for run 17154830381 have expired (HTTP 410), so only job conclusions (7/7 success) can be verified now. ModelDB 26997 (fetched here) lists PubMed 8815919 and DOI 10.1523/JNEUROSCI.16-20-06402.1996.",
+      "recommendation": "Reword the channel description.",
+      "evidence": "C:/Users/gurra/AppData/Local/Temp/claude/C--Users-gurra-Continuum/d876c622-d308-4d4a-bbf3-2b2374480647/scratchpad/m0/fixtures-verify/dl/WangBuzsaki1996/NeuroML2/LEMS/WangBuzsaki.cell.nml"
+    },
+    {
+      "id": "D13",
+      "severity": "info",
+      "models": [
+        "Pospischil2008_*"
+      ],
+      "claim": "pin by commit SHA",
+      "finding": "The pinned commit 049081c3 (2025-11-25) is a merge of branch test22.04. On 2026-09-13 the GitHub compare API reports master 'identical' to it (ahead 0, behind 0). DataCite 10.5281/zenodo.1936638 is 'OpenSourceBrain/PospischilEtAl2008: v0.1', publicationYear 2018, IsSupplementTo tree/v0.1, so it predates the pin, as reported.",
+      "recommendation": "Keep the SHA pin.",
+      "evidence": "https://api.github.com/repos/OpenSourceBrain/PospischilEtAl2008/compare/049081c39357d9e7c478b63ef7b10f374d1c50f4...master ; https://api.datacite.org/dois/10.5281/zenodo.1936638"
+    }
+  ],
+  "checks": [
+    {
+      "model_name": "Pospischil2008_RS (rank 1, recommended)",
+      "license_confirmed": "PARTIAL. The LICENSE blob 25de49e8 at the SHA was read via the API before download: MIT (Copyright 2018 Open Source Brain developers) for all software except NEURON_ORIG and NEURON_MODIFIED (citation condition). The 8 NeuroML2/* files are MIT. NEURON_MODIFIED/.test.RS.spikes.mep falls under the citation-condition carve-out, not MIT (D1). The GitHub API spdx is NOASSERTION.",
+      "license_evidence_url": "https://api.github.com/repos/OpenSourceBrain/PospischilEtAl2008/license?ref=049081c39357d9e7c478b63ef7b10f374d1c50f4 ; https://github.com/OpenSourceBrain/PospischilEtAl2008/blob/049081c39357d9e7c478b63ef7b10f374d1c50f4/LICENSE",
+      "commit_sha_confirmed": "YES. The commit 049081c39357d9e7c478b63ef7b10f374d1c50f4 exists (committer date 2025-11-25T20:29:46Z, a merge of test22.04). Master is identical to it as of 2026-09-13.",
+      "files_exist_at_sha": "YES, 9/9 in the recursive tree (truncated=false). Also present but unlisted: .test.validate.omt, .test.RS.spikes.neuron.omt, .test.RS.spikes.moose.omt, .test.RS.spikes.netpyne.omt.",
+      "sha256_match": "YES, 9/9 MATCH. NeuroML2/cells/RS/RS.cell.nml=MATCH; NeuroML2/cells/RS/RS.net.nml=MATCH; NeuroML2/cells/RS/LEMS_RS.xml=MATCH; NeuroML2/cells/RS/.test.RS.spikes.LEMS.omt=MATCH; NeuroML2/channels/Na/Na.channel.nml=MATCH; NeuroML2/channels/Kd/Kd.channel.nml=MATCH; NeuroML2/channels/IM/IM.channel.nml=MATCH; NeuroML2/channels/Leak/Leak.channel.nml=MATCH; NEURON_MODIFIED/.test.RS.spikes.mep=MATCH",
+      "schema_validation": "CONFIRMED. libNeuroML 0.6.7 validate_neuroml2 gives VALID for RS.cell.nml, RS.net.nml, Na/Kd/IM/Leak channel files. schemaLocation is NeuroML_v2beta4.xsd (development branch URL). CI run 30447139603 job 'build (3.12, jNeuroML_validate)' log: jnml -validate on cells/RS/*.nml completed successfully. Extra check, a sanity check rather than a NeuroSem result: a single PyLEMS 0.6.9 run of LEMS_RS.xml (NeuroML2CoreTypes from NeuroML2 @ a5f5dad) exited 0 after 263 s wall time. RS.dat has 1,000,000 rows, SHA-256 8c5fa8b2cedc6df9da85c76f139f1626a608a77945c8c14e0a5364573d084703. Threshold-0 mV crossings fell at 320.555, 348.557, 388.043, 456.987 and 592.694 ms. That is 5 spikes, matching the mep count, with a maximum absolute difference of 0.589 ms (on the last spike) from the NEURON-derived mep. Whether this is within OMV's tolerance semantics was not assessed. The run was not repeated, so determinism is unverified. RS therefore has a working pure-Python execution path; LTS does not (D3).",
+      "single_compartment_confirmed": "YES. The lxml parse finds one segment id 0 'Soma' (proximal and distal diameter 96.0 um at the same point). Densities: LeakConductance 0.1 mS/cm2 at -70 mV; Kd 5.0 mS/cm2 at -100 mV; IM 0.07 mS/cm2 at -100 mV; Na channelDensityVShift 50 mS/cm2 at +50 mV with vShift 0mV. Cm 1 uF/cm2, Vinit -70 mV, spikeThresh 0 mV. Net: networkWithTemperature 36 degC; pulseGenerator delay 0.3 s, duration 0.4 s, amplitude 7.5e-10 A. LEMS: 1000 ms at step 0.001 ms. mep spikes 320.554, 348.522, 387.944, 456.69, 592.105 give ISIs 27.968, 39.422, 68.746, 135.415 ms. OMV tolerance 0.00218. All match the candidate.",
+      "citation_confirmed": "Crossref https://api.crossref.org/works/10.1007/s00422-008-0263-8: 'Minimal Hodgkin-Huxley type models for different classes of cortical and thalamic neurons', Pospischil M, Toledo-Rodriguez M, Monier C, Piwkowska Z, Bal T, Fregnac Y, Markram H, Destexhe A; Biological Cybernetics 99(4-5):427-441, issued 2008-11. PubMed 19011929 (same DOI, same authors, 99(4-5):427-41). ModelDB https://modeldb.science/123623 lists PubMed 19011929 and the DOI; implementer Destexhe A. CONFIRMED.",
+      "concerns": "D1 (the mep is not MIT). D4 (the Moose job also failed on 2026-05-18). Java/jNeuroML runtime and determinism remain unmeasured locally. The cell shares channel files with LTS/FS/IB (correlated fixtures). The adaptation mechanism (IM) is an expectation, not verified."
+    },
+    {
+      "model_name": "Pospischil2008_LTS (rank 2, recommended)",
+      "license_confirmed": "PARTIAL. It is the same LICENSE as RS: the 11 NeuroML2/* files are MIT, while NEURON_MODIFIED/.test.LTS.spikes.mep carries the citation condition only (D1).",
+      "license_evidence_url": "https://api.github.com/repos/OpenSourceBrain/PospischilEtAl2008/license?ref=049081c39357d9e7c478b63ef7b10f374d1c50f4 ; https://github.com/OpenSourceBrain/PospischilEtAl2008/blob/049081c39357d9e7c478b63ef7b10f374d1c50f4/LICENSE",
+      "commit_sha_confirmed": "YES (same commit as RS).",
+      "files_exist_at_sha": "YES, 12/12. No .test.validate.omt exists under channels/IT or channels/Ca (the repo has validate omts for Kd, Na, Leak, IL, IM and the cells), confirming that IT.channel.nml has no standalone jnml validate test.",
+      "sha256_match": "YES, 12/12 MATCH. NeuroML2/cells/LTS/LTS.cell.nml=MATCH; NeuroML2/cells/LTS/LTS.net.nml=MATCH; NeuroML2/cells/LTS/LEMS_LTS.xml=MATCH; NeuroML2/cells/LTS/.test.LTS.spikes.LEMS.omt=MATCH; NeuroML2/cells/LTS/.test.validate.omt=MATCH; NeuroML2/channels/IT/IT.channel.nml=MATCH; NeuroML2/channels/Ca/Ca.nml=MATCH; NEURON_MODIFIED/.test.LTS.spikes.mep=MATCH; shared channel files as RS=MATCH",
+      "schema_validation": "CONFIRMED AS REPORTED, plus a new execution finding. libNeuroML 0.6.7 strict validation is INVALID for IT.channel.nml, LTS.cell.nml and LTS.net.nml, with the message that GateHHUndetermined value 'IT_s_gate' (line 52) does not match the xsd gateTypes enumeration. Ca.nml is VALID. CI run 30447139603 job 'build (3.12, jNeuroML_validate)' log: .test.validate.omt expanded *.nml to LTS.net.nml and LTS.cell.nml, jnml -validate completed successfully, and the test passed. CI py3.12 jNeuroML log: the LTS spikes test passed both observables, and IT.nonernst passed. NEW (D3): PyLEMS 0.6.9 cannot simulate LEMS_LTS.xml (ZeroDivisionError on the first step, inferred to come from the tau=0 IT_s gate inheriting gateHHtauInf's TimeDerivative; the cause is unverified).",
+      "single_compartment_confirmed": "YES. One segment 'Soma', diameter 96 um. Densities: Leak 1e-5 S/cm2 at -85 mV; Na 0.05 S/cm2 at +50 mV (plain channelDensity here, unlike RS); Kd 0.005 S/cm2 at -100 mV; IM 3e-5 S/cm2 at -100 mV; IT channelDensityNernst 4e-4 S/cm2, ion ca. Species ca uses CaPoolModel with initial 2.4e-4 mM and ext 2.0 mM. Cm 1 uF/cm2, Vinit -84 mV. IT: gate s is instances 2, type IT_s_gate, steadyState IT_s_inf_inf, fixedTimeCourse tau 0ms. Gate u is gateHHtauInf, instances 1, q10ExpTemp factor 3 at 24 degC, custom tau/inf; both use a +2 mV shift. Ca.nml: custom decayingPoolConcentrationModelPosp, decay 5 ms, depth 1 um (D5). Net: 36 degC; pulse delay 400 ms, duration 400 ms, 1.5e-10 A. LEMS: 1000 ms at 0.001 ms, outputs LTS.dat, LTS.cai.dat, LTS.eca.dat. mep: voltage spikes 431.423, 445.189, 517.237, 720.422 (ISIs 13.766, 72.048, 203.185); Ca crossings 430.315, 443.502 at threshold 0.0009. The IT notes cite Huguenard & McCormick 1992 and Huguenard & Prince 1992, as stated in the file (not independently verified). The 'K channels' annotation is present, as reported.",
+      "citation_confirmed": "Crossref https://api.crossref.org/works/10.1007/s00422-008-0263-8: 'Minimal Hodgkin-Huxley type models for different classes of cortical and thalamic neurons', Pospischil M, Toledo-Rodriguez M, Monier C, Piwkowska Z, Bal T, Fregnac Y, Markram H, Destexhe A; Biological Cybernetics 99(4-5):427-441, issued 2008-11. PubMed 19011929 (same DOI, same authors, 99(4-5):427-41). ModelDB https://modeldb.science/123623 lists PubMed 19011929 and the DOI; implementer Destexhe A. CONFIRMED.",
+      "concerns": "D3 (not runnable in PyLEMS, so jNeuroML/Java is the only verified-in-CI execution path; Java is absent locally). The strict XSD failure is confirmed. Custom LEMS ComponentTypes appear in both IT and Ca.nml (D5). D1 (the mep is not MIT). D8 (encoding declaration only). No repository test covers a hyperpolarising or rebound protocol (LTS.net.nml has only a +0.15 nA step), so rebound remains unverified. The cell is correlated with RS through shared Na/Kd/IM/Leak files. The instantaneous s gate and the Ca pool may raise dt sensitivity (to check in M1 calibration)."
+    },
+    {
+      "model_name": "Pospischil2008_FS (rank 3, backup)",
+      "license_confirmed": "PARTIAL. NeuroML2/* files are MIT; NEURON_MODIFIED/.test.FS.spikes.mep is citation-condition only (D1).",
+      "license_evidence_url": "https://api.github.com/repos/OpenSourceBrain/PospischilEtAl2008/license?ref=049081c39357d9e7c478b63ef7b10f374d1c50f4",
+      "commit_sha_confirmed": "YES (same commit).",
+      "files_exist_at_sha": "YES, 8/8. The FS omt is present but unlisted (D7).",
+      "sha256_match": "YES, 8/8 MATCH.",
+      "schema_validation": "CONFIRMED. libNeuroML 0.6.7 reports FS.cell.nml and FS.net.nml VALID. The CI py3.12 jNeuroML_validate log shows cells/FS validate passed, and the jNeuroML log shows the FS spikes test passed. Not simulated locally.",
+      "single_compartment_confirmed": "YES. One segment 'Soma', diameter 67 um (not stated in the candidate). Densities: Leak 0.15 mS/cm2 at -70 mV; Na 50 mS/cm2 at +50 mV; Kd 10 mS/cm2 at -100 mV. IM.channel.nml is included, but no IM density is assigned (confirmed). Vinit -70 mV, 36 degC. Pulse delay 0.3 s, duration 0.41 s, 5e-10 A. Simulation 1000 ms at 0.001 ms. mep: 20 spikes from 317.023 to 700.299 ms, ISIs 20.171 to 20.184 ms.",
+      "citation_confirmed": "Crossref https://api.crossref.org/works/10.1007/s00422-008-0263-8: 'Minimal Hodgkin-Huxley type models for different classes of cortical and thalamic neurons', Pospischil M, Toledo-Rodriguez M, Monier C, Piwkowska Z, Bal T, Fregnac Y, Markram H, Destexhe A; Biological Cybernetics 99(4-5):427-441, issued 2008-11. PubMed 19011929 (same DOI, same authors, 99(4-5):427-41). ModelDB https://modeldb.science/123623 lists PubMed 19011929 and the DOI; implementer Destexhe A. CONFIRMED.",
+      "concerns": "D1, D7. The cell is correlated with RS and LTS, and it adds little to hyperpolarisation protocols."
+    },
+    {
+      "model_name": "NeuroML2_SingleCompHHCell + LEMS_NML2_Ex5_DetCell (rank 4, backup)",
+      "license_confirmed": "YES: LGPL-3.0. The license API at the SHA returns path LICENSE.lesser, spdx LGPL-3.0, blob 341c30bd; the text is 'GNU LESSER GENERAL PUBLIC LICENSE Version 3, 29 June 2007'. The downloaded LICENSE.lesser hash matches. No GPL-3.0 text is in the tree (D9).",
+      "license_evidence_url": "https://api.github.com/repos/NeuroML/NeuroML2/license?ref=a5f5dadccd23606e683eaa0dd58dd2c3b2a7ed58 ; https://github.com/NeuroML/NeuroML2/blob/a5f5dadccd23606e683eaa0dd58dd2c3b2a7ed58/LICENSE.lesser",
+      "commit_sha_confirmed": "YES. Commit a5f5dadccd23606e683eaa0dd58dd2c3b2a7ed58 exists, committer date 2026-09-02T20:44:35Z (merge of PR #242). Latest release is NMLv2.3.1, published 2024-08-20T15:05:22Z (releases/latest API).",
+      "files_exist_at_sha": "YES, 5/5. .test.ex5.pylems.omt is present and unlisted (D11).",
+      "sha256_match": "YES, 5/5 MATCH.",
+      "schema_validation": "CONFIRMED. libNeuroML 0.6.7 reports NML2_SingleCompHHCell.nml VALID; schemaLocation is the relative ../Schemas/NeuroML2/NeuroML_v2beta4.xsd. examples/README.md states that NML2_ files are valid against the latest schema. CI run 33681093913 (head SHA matches, 2026-09-02): 13/13 jobs success. The py3.12 jNeuroML log shows ex5 v and m spike-time observables passed; the py3.12 PyLEMS_NeuroML2 log shows ex5 pylems passed. Reproduced locally: PyLEMS 0.6.9 ran Ex5 twice (exit 0, 7 s and 6 s), and both ex5_v.dat files have SHA-256 1b405c135eba976130ccaf01de5175480591543e5dadd6983e425de877660d17, identical to the candidate's reported hash. Threshold-0 spikes fell at 102.197, 118.384, 134.365, 150.339, 166.312, 182.284 and 198.257 ms, at most 0.343 ms from the mep, as reported.",
+      "single_compartment_confirmed": "YES. One segment 'soma', diameter 17.841242 um. Densities: leak 3.0 S/m2 at -54.3 mV; naChan 120 mS/cm2 at +50 mV, gates m x3 and h x1; kChan 360 S/m2 at -77 mV, n x4. Cm 1 uF/cm2, Vinit -65 mV, spikeThresh -20 mV. pulseGen1 delay 100 ms, duration 100 ms, 0.08 nA. Simulation 300 ms at 0.01 ms. mep v: 102.22 to 198.6 ms, ISIs about 16.0 to 16.2 ms.",
+      "citation_confirmed": "CONFIRMED for the paper: Crossref https://api.crossref.org/works/10.1113/jphysiol.1952.sp004764 gives 'A quantitative description of membrane current and its application to conduction and excitation in nerve', Hodgkin A. L., Huxley A. F., J Physiol 117(4):500-544, 1952-08-28. PubMed 12991237 agrees. Attributing this specific file to the paper via docs.neuroml.org is an inference (D10).",
+      "concerns": "LGPL-3.0 (weak copyleft) needs a decision on redistribution of mutants; no GPL text is in the tree (D9). It is a textbook model rather than a paper conversion, with no adaptation, sag or rebound. It depends on the relative include and the results/ directory layout."
+    },
+    {
+      "model_name": "WangBuzsaki1996 wb1 (rank 5, backup)",
+      "license_confirmed": "YES for the listed files. LICENSE blob 75715111 at the SHA: MIT, except ModelDB_NEURON and NEURON (citation condition) and Brian (own license.txt). All listed files are outside the carve-outs. GitHub spdx is NOASSERTION (D2).",
+      "license_evidence_url": "https://api.github.com/repos/OpenSourceBrain/WangBuzsaki1996/license?ref=c532284492c3e421a7f8e88b3090af8ffee8cf6a ; https://github.com/OpenSourceBrain/WangBuzsaki1996/blob/c532284492c3e421a7f8e88b3090af8ffee8cf6a/LICENSE",
+      "commit_sha_confirmed": "YES. Commit c532284492c3e421a7f8e88b3090af8ffee8cf6a exists, 2025-08-22T12:07:48Z, 'Update Python version and CI workflow actions'.",
+      "files_exist_at_sha": "YES, 7/7.",
+      "sha256_match": "YES, 7/7 MATCH.",
+      "schema_validation": "CONFIRMED. libNeuroML 0.6.7 reports WangBuzsaki.cell.nml (declares v2beta5) and WangBuzsaki.net.nml (declares v2beta4) VALID, despite the inline ComponentType gateHHratesInstantaneous. CI run 17154830381 (head SHA matches): 7/7 jobs success. Job logs have expired (HTTP 410), so per-test detail cannot be re-verified.",
+      "single_compartment_confirmed": "YES. One segment 'Soma': diameter 10 um, proximal z 0, distal z 3.1831 um. Densities: na_chan 35 mS/cm2 at +55 mV; k_chan 9 mS/cm2 at -90 mV; leak 0.1 mS/cm2 at -65 mV. Vinit -70 mV, 37 degC. Stim 2 pA from 0 ms for 100 ms; simulation 100 ms at 0.001 ms. mep: 10 spikes from 8.901 to 97.311 ms, ISIs about 9.82 ms. Gate wording is clarified in D12.",
+      "citation_confirmed": "CONFIRMED. Crossref https://api.crossref.org/works/10.1523/jneurosci.16-20-06402.1996 gives 'Gamma Oscillation by Synaptic Inhibition in a Hippocampal Interneuronal Network Model', Wang Xiao-Jing and Buzsaki Gyorgy, J Neurosci 16(20):6402-6413, 1996-10-15. PubMed 8815919 agrees (PMC6578902). ModelDB https://modeldb.science/26997, fetched in this session, lists PubMed 8815919 and the DOI.",
+      "concerns": "D2, D12. The firing regime (tonic) is similar to FS and HH. The inline custom ComponentType complicates mutation tooling. The stimulus starts at t=0, leaving no baseline window. CI logs have expired. The Zenodo badge DOI is unverified."
+    },
+    {
+      "model_name": "Pospischil2008_IB (rank 6, backup)",
+      "license_confirmed": "PARTIAL: NeuroML2/* files are MIT; NEURON_MODIFIED/.test.IB.spikes.mep is citation-condition only (D1).",
+      "license_evidence_url": "https://api.github.com/repos/OpenSourceBrain/PospischilEtAl2008/license?ref=049081c39357d9e7c478b63ef7b10f374d1c50f4",
+      "commit_sha_confirmed": "YES (same commit).",
+      "files_exist_at_sha": "YES, 9/9 for the listed paths. The list is INCOMPLETE: the required include NeuroML2/channels/Ca/Ca.nml is missing, and so is the IB omt (D6).",
+      "sha256_match": "YES, 9/9 MATCH for the listed files.",
+      "schema_validation": "CONFIRMED. libNeuroML 0.6.7 reports IB.cell.nml, IB.net.nml and IL.channel.nml VALID. The CI py3.12 jNeuroML log shows the IB spikes and IL nonernst tests passed; the validate log shows cells/IB and channels/IL passed.",
+      "single_compartment_confirmed": "YES. One segment 'Soma', diameter 96 um. Densities: Leak 0.01 mS/cm2 at -85 mV; Na 50 mS/cm2; Kd 5 mS/cm2; IM 0.03 mS/cm2; IL 1.7e-4 S/cm2 with fixed erev 120.2547 mV. Species ca uses CaPoolModel (from Ca.nml). Vinit -84 mV. The stimulus (delay 500 ms, duration 2000 ms, 1.5e-10 A) runs past the end of the 1000 ms simulation, as reported. mep: 8 active spikes from 617.725 to 672.085 ms; a commented 13-spike list runs to 2432.682 ms.",
+      "citation_confirmed": "Crossref https://api.crossref.org/works/10.1007/s00422-008-0263-8: 'Minimal Hodgkin-Huxley type models for different classes of cortical and thalamic neurons', Pospischil M, Toledo-Rodriguez M, Monier C, Piwkowska Z, Bal T, Fregnac Y, Markram H, Destexhe A; Biological Cybernetics 99(4-5):427-441, issued 2008-11. PubMed 19011929 (same DOI, same authors, 99(4-5):427-41). ModelDB https://modeldb.science/123623 lists PubMed 19011929 and the DOI; implementer Destexhe A. CONFIRMED.",
+      "concerns": "D6 (missing Ca.nml include in the list), D5 (custom ComponentTypes in both IL and Ca.nml), D1. The truncated stimulus, the unverified bursting label, and correlation with RS/LTS/FS also count against it."
+    }
+  ],
+  "final_recommended_pair": [
+    "Pospischil2008_RS: OpenSourceBrain/PospischilEtAl2008 @ 049081c39357d9e7c478b63ef7b10f374d1c50f4, NeuroML2/cells/RS plus channels Na/Kd/IM/Leak (all checks pass; vendor only the NeuroML2/* files under MIT, and treat the NEURON_MODIFIED .mep as citation-condition reference data)",
+    "Pospischil2008_LTS: same repo and SHA, NeuroML2/cells/LTS plus channels Leak/Na/Kd/IM/IT/Ca. This is CONDITIONAL on Neel approving jNeuroML (Java) as both validity oracle (jnml -validate) and execution oracle, because strict libNeuroML XSD validation rejects it and PyLEMS 0.6.9 cannot simulate it (D3). If that approval is not given, swap in NeuroML2_SingleCompHHCell + Ex5."
+  ],
+  "backups": [
+    "NeuroML2_SingleCompHHCell + LEMS_NML2_Ex5_DetCell (NeuroML/NeuroML2 @ a5f5dadccd23606e683eaa0dd58dd2c3b2a7ed58; LGPL-3.0). Promoted to first backup: independent provenance, strict-XSD VALID, OMV-passing in both jNeuroML and PyLEMS, reproduced locally in PyLEMS with byte-identical output. It is the replacement for LTS if a Java-free or strict-XSD path is required, at the cost of losing T-type/rebound behaviour.",
+    "Pospischil2008_FS (same repo/SHA; strict-XSD VALID; tonic firing; correlated with RS). Add its omt to the file list.",
+    "WangBuzsaki1996 wb1 (OpenSourceBrain/WangBuzsaki1996 @ c532284492c3e421a7f8e88b3090af8ffee8cf6a; MIT for the listed files; strict-XSD VALID; CI logs expired).",
+    "Pospischil2008_IB (same repo/SHA). Usable only after adding NeuroML2/channels/Ca/Ca.nml to its file list (D6). Its bursting label is unverified."
+  ]
+}

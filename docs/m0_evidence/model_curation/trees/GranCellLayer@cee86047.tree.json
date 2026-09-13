@@ -1,0 +1,925 @@
+{
+ "repo": "OpenSourceBrain/GranCellLayer",
+ "sha": "cee8604721c8654c24d3c69cedc07edb9679d935",
+ "api": "repos/OpenSourceBrain/GranCellLayer/git/trees/cee8604721c8654c24d3c69cedc07edb9679d935?recursive=1",
+ "truncated": false,
+ "note": "blobs under */Exported/* omitted for size",
+ "blobs": {
+  ".github/workflows/omv-ci.yml": {
+   "blob_sha1": "cbeac8856cdffa7b64fcc45312649034b3ad82b7",
+   "size": 1048
+  },
+  ".gitignore": {
+   "blob_sha1": "2a68313b708b6e9217b092db2a3900c5bca1f250",
+   "size": 960
+  },
+  ".travis.yml": {
+   "blob_sha1": "6abf1c00246f9839a2a33712ee69a52248a1cb5c",
+   "size": 874
+  },
+  "CITATION.md": {
+   "blob_sha1": "34e32b15ff5380e8a9d9716f5a304b0167cf1c50",
+   "size": 764
+  },
+  "LICENSE": {
+   "blob_sha1": "d385f9d884e150098978b47c146fb28fcbc8ea0b",
+   "size": 1408
+  },
+  "NeuroML2/.test.1d.jnmlnrn.omt": {
+   "blob_sha1": "ecca112aa961d02600398687b6da73b25e0d0a95",
+   "size": 511
+  },
+  "NeuroML2/.test.validate.omt": {
+   "blob_sha1": "3f0f9e9582b1df455373d2fb427276d647c2fea0",
+   "size": 271
+  },
+  "NeuroML2/AMPA_GranGol.synapse.nml": {
+   "blob_sha1": "9cbd17eb673a873d5e8a4221edab6cb3cbc6d557",
+   "size": 605
+  },
+  "NeuroML2/GABAA.synapse.nml": {
+   "blob_sha1": "09122d60caa560b23942f78cf696b91c71fa0a2a",
+   "size": 597
+  },
+  "NeuroML2/GenerateNetwork.py": {
+   "blob_sha1": "34367bb9a1bc8112023dc7e2cdb8d28853e60bd7",
+   "size": 12292
+  },
+  "NeuroML2/GolgiPassiveCond.channel.nml": {
+   "blob_sha1": "1a246ba6da8d109a3ad0ef9d92422a092bb0c6e2",
+   "size": 1518
+  },
+  "NeuroML2/Golgi_98.cell.nml": {
+   "blob_sha1": "e70caeb4c6c9e6e0ee01eee942f60d2e3d1a7cb5",
+   "size": 3933
+  },
+  "NeuroML2/Golgi_98_3D.cell.nml": {
+   "blob_sha1": "9e9e5fd30514ee1f6ce3a843a57c47961f98c536",
+   "size": 6454
+  },
+  "NeuroML2/Golgi_CaHVA_CML.channel.nml": {
+   "blob_sha1": "a71499c7f7f411ca4d2252b89e0d6f96c6d1bdb3",
+   "size": 4022
+  },
+  "NeuroML2/Golgi_CaPool_CML.nml": {
+   "blob_sha1": "53c764e463f5f5f21f7020a01201e69f9ba3a353",
+   "size": 659
+  },
+  "NeuroML2/Golgi_H_CML.channel.nml": {
+   "blob_sha1": "8ed237702402dddf01a3bcfe33bc79b83cbffc7d",
+   "size": 2000
+  },
+  "NeuroML2/Golgi_KA_CML.channel.nml": {
+   "blob_sha1": "ac8997e73a04de4e028d1758c8acf7bb2d4c45b3",
+   "size": 3761
+  },
+  "NeuroML2/Golgi_KCa_CML.channel.nml": {
+   "blob_sha1": "500aa27a0b0e6b84bc45a85479731b4b461093b3",
+   "size": 3667
+  },
+  "NeuroML2/Golgi_KDr_CML.channel.nml": {
+   "blob_sha1": "f86228c6291469d572fe3f2494af13f7fa9b9803",
+   "size": 4749
+  },
+  "NeuroML2/Golgi_NaF_CML.channel.nml": {
+   "blob_sha1": "ec113869035d970073c65433212dbfdbcfc28462",
+   "size": 4924
+  },
+  "NeuroML2/GranCellLayer.net.nml": {
+   "blob_sha1": "cdd0c0377a5bf6a2aa83289055149c54c8dc718c",
+   "size": 232668
+  },
+  "NeuroML2/GranPassiveCond.channel.nml": {
+   "blob_sha1": "356c50860b2dc321d30b70aeef73b444860b87db",
+   "size": 1452
+  },
+  "NeuroML2/Gran_CaHVA_98.channel.nml": {
+   "blob_sha1": "71fdf33c53385a282871eafa1761b61612511ea9",
+   "size": 4300
+  },
+  "NeuroML2/Gran_CaPool_98.nml": {
+   "blob_sha1": "4aed32134660a96b7f079109151eb129238a9d44",
+   "size": 654
+  },
+  "NeuroML2/Gran_H_98.channel.nml": {
+   "blob_sha1": "0220e754e3d878f45eb77c076cddfaca257c5f7f",
+   "size": 2015
+  },
+  "NeuroML2/Gran_KA_98.channel.nml": {
+   "blob_sha1": "a4ae7f8d9a017f325c150263ec6bd0572875d37a",
+   "size": 4029
+  },
+  "NeuroML2/Gran_KCa_98.channel.nml": {
+   "blob_sha1": "e73cf62d1152bcec9dda344a35b05c41fdc38378",
+   "size": 3832
+  },
+  "NeuroML2/Gran_KDr_98.channel.nml": {
+   "blob_sha1": "a8e63712cee2f77ccf6a0020cd5752becdae3c8e",
+   "size": 5160
+  },
+  "NeuroML2/Gran_NaF_98.channel.nml": {
+   "blob_sha1": "1befedadb1d864080c5df3db3da773e4aa269f76",
+   "size": 5213
+  },
+  "NeuroML2/Granule_98.cell.nml": {
+   "blob_sha1": "7380df10ca80d5c53cffb45a925a5cfe2cb4455b",
+   "size": 3768
+  },
+  "NeuroML2/Granule_98_3D.cell.nml": {
+   "blob_sha1": "fef70907871c4e6a17059a6d17d5e761d90d9832",
+   "size": 6526
+  },
+  "NeuroML2/LEMS_GranCellLayer.xml": {
+   "blob_sha1": "313924ca8e0ed4dd4d88fa709c35853919c2af8d",
+   "size": 21851
+  },
+  "NeuroML2/LEMS_SimMaexDeSchutter1998.xml": {
+   "blob_sha1": "5f113e1bef37a82331a26ab31c80e939072348ac",
+   "size": 10774
+  },
+  "NeuroML2/MFFastLeakCond.channel.nml": {
+   "blob_sha1": "110b2d271f8848408d4c80945ea291e9a1fc434a",
+   "size": 741
+  },
+  "NeuroML2/MFSpikeSyn.synapse.nml": {
+   "blob_sha1": "f355b80d15134d07c6d3b82b40030decd77717dd",
+   "size": 595
+  },
+  "NeuroML2/MF_AMPA.synapse.nml": {
+   "blob_sha1": "3854029330bb8b43c91c7a06efb93a8d3e9e37bb",
+   "size": 578
+  },
+  "NeuroML2/MaexDeSchutter1998.json": {
+   "blob_sha1": "62d2479b2c5de89dda6509d9a16af6c5e6f1ff35",
+   "size": 4857
+  },
+  "NeuroML2/MaexDeSchutter1998.net.nml": {
+   "blob_sha1": "bbf3089387a660765769f198fc7867e0251a83c3",
+   "size": 135571
+  },
+  "NeuroML2/MossyFiber.cell.nml": {
+   "blob_sha1": "dd7195c7b7dcf42dea06f5ea707ec7c336406579",
+   "size": 2227
+  },
+  "NeuroML2/NMDA.synapse.nml": {
+   "blob_sha1": "247517d38d3cc09a1d3bf765f8a5351f99ffc562",
+   "size": 2689
+  },
+  "NeuroML2/SimMaexDeSchutter1998.json": {
+   "blob_sha1": "f4161d65db903841a279e62c7e35d7b02d2a0aba",
+   "size": 440
+  },
+  "README.md": {
+   "blob_sha1": "02badcdbc75a03d8f9a76931f2751cac32d3b055",
+   "size": 1005
+  },
+  "_osb.yml": {
+   "blob_sha1": "950c57b736daa928fe6b79d5552392a05fd8ced6",
+   "size": 70
+  },
+  "neuroConstruct/GranCellLayer.ncx": {
+   "blob_sha1": "04420acf6c5ce5cdadfef242563df6f560535a88",
+   "size": 130031
+  },
+  "neuroConstruct/cellMechanisms/AMPA_GranGol/ChannelML_v1.8.1_GENESIStab.xsl": {
+   "blob_sha1": "dd6ea88c6359d3b7fb4c9b9f2e94217683f57242",
+   "size": 77748
+  },
+  "neuroConstruct/cellMechanisms/AMPA_GranGol/ChannelML_v1.8.1_NEURONmod.xsl": {
+   "blob_sha1": "04a6a65ad9711b5f9c40912d6d47b2573963017f",
+   "size": 94391
+  },
+  "neuroConstruct/cellMechanisms/AMPA_GranGol/DoubExpSyn.xml": {
+   "blob_sha1": "0231a2f7160ff08c1d91b84d80cf2e35a823a0cd",
+   "size": 2130
+  },
+  "neuroConstruct/cellMechanisms/AMPA_GranGol/properties.xml": {
+   "blob_sha1": "dfc054c6ac62dae69c511071fc29b7fe3d4644d4",
+   "size": 1375
+  },
+  "neuroConstruct/cellMechanisms/GABAA/ChannelML_v1.8.1_GENESIStab.xsl": {
+   "blob_sha1": "dd6ea88c6359d3b7fb4c9b9f2e94217683f57242",
+   "size": 77748
+  },
+  "neuroConstruct/cellMechanisms/GABAA/ChannelML_v1.8.1_NEURONmod.xsl": {
+   "blob_sha1": "04a6a65ad9711b5f9c40912d6d47b2573963017f",
+   "size": 94391
+  },
+  "neuroConstruct/cellMechanisms/GABAA/DoubExpSyn.xml": {
+   "blob_sha1": "50755b0d549d1d2a829a3bf018bd458450bb8b65",
+   "size": 1183
+  },
+  "neuroConstruct/cellMechanisms/GABAA/properties.xml": {
+   "blob_sha1": "34190eb7f103f4c527ee3afea90ca262c78245f5",
+   "size": 1365
+  },
+  "neuroConstruct/cellMechanisms/GolgiPassiveCond/ChannelML_v1.8.1_GENESIStab.xsl": {
+   "blob_sha1": "dd6ea88c6359d3b7fb4c9b9f2e94217683f57242",
+   "size": 77748
+  },
+  "neuroConstruct/cellMechanisms/GolgiPassiveCond/ChannelML_v1.8.1_NEURONmod.xsl": {
+   "blob_sha1": "04a6a65ad9711b5f9c40912d6d47b2573963017f",
+   "size": 94391
+  },
+  "neuroConstruct/cellMechanisms/GolgiPassiveCond/LeakConductance.xml": {
+   "blob_sha1": "6dbf8093de16d664df28c65898a778d839209daf",
+   "size": 1406
+  },
+  "neuroConstruct/cellMechanisms/GolgiPassiveCond/properties.xml": {
+   "blob_sha1": "812e7e050dbc49b4c3f237db20f0e21a2d7f9330",
+   "size": 1359
+  },
+  "neuroConstruct/cellMechanisms/Golgi_CaHVA_CML/CaHVA_Chan.xml": {
+   "blob_sha1": "8dff3c367dc1342869f79838fc2ccc921744266b",
+   "size": 3892
+  },
+  "neuroConstruct/cellMechanisms/Golgi_CaHVA_CML/ChannelML_v1.8.1_GENESIStab.xsl": {
+   "blob_sha1": "dd6ea88c6359d3b7fb4c9b9f2e94217683f57242",
+   "size": 77748
+  },
+  "neuroConstruct/cellMechanisms/Golgi_CaHVA_CML/ChannelML_v1.8.1_NEURONmod.xsl": {
+   "blob_sha1": "04a6a65ad9711b5f9c40912d6d47b2573963017f",
+   "size": 94391
+  },
+  "neuroConstruct/cellMechanisms/Golgi_CaHVA_CML/properties.xml": {
+   "blob_sha1": "1b8d96c49c80745bcd5131aa88697001427b5715",
+   "size": 1354
+  },
+  "neuroConstruct/cellMechanisms/Golgi_CaPool_CML/CaPool.xml": {
+   "blob_sha1": "4a653bcb5049270566b4f17b598432b9a99a493e",
+   "size": 2009
+  },
+  "neuroConstruct/cellMechanisms/Golgi_CaPool_CML/ChannelML_v1.8.1_GENESIStab.xsl": {
+   "blob_sha1": "dd6ea88c6359d3b7fb4c9b9f2e94217683f57242",
+   "size": 77748
+  },
+  "neuroConstruct/cellMechanisms/Golgi_CaPool_CML/ChannelML_v1.8.1_NEURONmod.xsl": {
+   "blob_sha1": "04a6a65ad9711b5f9c40912d6d47b2573963017f",
+   "size": 94391
+  },
+  "neuroConstruct/cellMechanisms/Golgi_CaPool_CML/properties.xml": {
+   "blob_sha1": "071a44228ad01974c60af68e2d8c6cbebfe6aa3c",
+   "size": 1355
+  },
+  "neuroConstruct/cellMechanisms/Golgi_H_CML/ChannelML_v1.8.1_GENESIStab.xsl": {
+   "blob_sha1": "dd6ea88c6359d3b7fb4c9b9f2e94217683f57242",
+   "size": 77748
+  },
+  "neuroConstruct/cellMechanisms/Golgi_H_CML/ChannelML_v1.8.1_NEURONmod.xsl": {
+   "blob_sha1": "04a6a65ad9711b5f9c40912d6d47b2573963017f",
+   "size": 94391
+  },
+  "neuroConstruct/cellMechanisms/Golgi_H_CML/H_Chan.xml": {
+   "blob_sha1": "4e70939e46956be08fa754576ac7a1bdd5d2323e",
+   "size": 3214
+  },
+  "neuroConstruct/cellMechanisms/Golgi_H_CML/properties.xml": {
+   "blob_sha1": "4b74e3581750ba5072ba912a400901a06f26e0fb",
+   "size": 1352
+  },
+  "neuroConstruct/cellMechanisms/Golgi_KA_CML/ChannelML_v1.8.1_GENESIStab.xsl": {
+   "blob_sha1": "dd6ea88c6359d3b7fb4c9b9f2e94217683f57242",
+   "size": 77748
+  },
+  "neuroConstruct/cellMechanisms/Golgi_KA_CML/ChannelML_v1.8.1_NEURONmod.xsl": {
+   "blob_sha1": "04a6a65ad9711b5f9c40912d6d47b2573963017f",
+   "size": 94391
+  },
+  "neuroConstruct/cellMechanisms/Golgi_KA_CML/KA_Chan.xml": {
+   "blob_sha1": "aaeb46ac4d41477ecbcf886b4f76ee8cc6f20b3c",
+   "size": 3785
+  },
+  "neuroConstruct/cellMechanisms/Golgi_KA_CML/properties.xml": {
+   "blob_sha1": "30bac8382956713627f4c0c122c9ae919152b80e",
+   "size": 1380
+  },
+  "neuroConstruct/cellMechanisms/Golgi_KCa_CML/ChannelML_v1.8.1_GENESIStab.xsl": {
+   "blob_sha1": "dd6ea88c6359d3b7fb4c9b9f2e94217683f57242",
+   "size": 77748
+  },
+  "neuroConstruct/cellMechanisms/Golgi_KCa_CML/ChannelML_v1.8.1_NEURONmod.xsl": {
+   "blob_sha1": "04a6a65ad9711b5f9c40912d6d47b2573963017f",
+   "size": 94391
+  },
+  "neuroConstruct/cellMechanisms/Golgi_KCa_CML/KCa_Chan.xml": {
+   "blob_sha1": "9303ea91423286534e8bdfd7a78d1db85b25e156",
+   "size": 3477
+  },
+  "neuroConstruct/cellMechanisms/Golgi_KCa_CML/properties.xml": {
+   "blob_sha1": "502ef2b7454a6a758ccc8d634f98a26ac6536866",
+   "size": 1343
+  },
+  "neuroConstruct/cellMechanisms/Golgi_KDr_CML/ChannelML_v1.8.1_GENESIStab.xsl": {
+   "blob_sha1": "dd6ea88c6359d3b7fb4c9b9f2e94217683f57242",
+   "size": 77748
+  },
+  "neuroConstruct/cellMechanisms/Golgi_KDr_CML/ChannelML_v1.8.1_NEURONmod.xsl": {
+   "blob_sha1": "04a6a65ad9711b5f9c40912d6d47b2573963017f",
+   "size": 94391
+  },
+  "neuroConstruct/cellMechanisms/Golgi_KDr_CML/KDr_Chan.xml": {
+   "blob_sha1": "d7d321f2c5f451f729048d05f48d553c1e9bb2fd",
+   "size": 3646
+  },
+  "neuroConstruct/cellMechanisms/Golgi_KDr_CML/properties.xml": {
+   "blob_sha1": "fe4fa2583dce67c97a49a0e515c9af754994620a",
+   "size": 1342
+  },
+  "neuroConstruct/cellMechanisms/Golgi_NaF_CML/ChannelML_v1.8.1_GENESIStab.xsl": {
+   "blob_sha1": "dd6ea88c6359d3b7fb4c9b9f2e94217683f57242",
+   "size": 77748
+  },
+  "neuroConstruct/cellMechanisms/Golgi_NaF_CML/ChannelML_v1.8.1_NEURONmod.xsl": {
+   "blob_sha1": "04a6a65ad9711b5f9c40912d6d47b2573963017f",
+   "size": 94391
+  },
+  "neuroConstruct/cellMechanisms/Golgi_NaF_CML/NaF_Chan.xml": {
+   "blob_sha1": "4cceec7a94751fdc1f8fddd0522d7e5c89876d7f",
+   "size": 4129
+  },
+  "neuroConstruct/cellMechanisms/Golgi_NaF_CML/properties.xml": {
+   "blob_sha1": "f83aa5c963f416b675b9e52ed347c577b21526dc",
+   "size": 1344
+  },
+  "neuroConstruct/cellMechanisms/GranPassiveCond/ChannelML_v1.8.1_GENESIStab.xsl": {
+   "blob_sha1": "dd6ea88c6359d3b7fb4c9b9f2e94217683f57242",
+   "size": 77748
+  },
+  "neuroConstruct/cellMechanisms/GranPassiveCond/ChannelML_v1.8.1_NEURONmod.xsl": {
+   "blob_sha1": "04a6a65ad9711b5f9c40912d6d47b2573963017f",
+   "size": 94391
+  },
+  "neuroConstruct/cellMechanisms/GranPassiveCond/LeakConductance.xml": {
+   "blob_sha1": "608958265eda34481358c80a5b793701bd96b26c",
+   "size": 1349
+  },
+  "neuroConstruct/cellMechanisms/GranPassiveCond/properties.xml": {
+   "blob_sha1": "472a10fc3806f7db4bb77be8d37b3d19c251a125",
+   "size": 1365
+  },
+  "neuroConstruct/cellMechanisms/Gran_CaHVA_98/CaHVA_Chan.xml": {
+   "blob_sha1": "3e282d92a7a981c41a2caf8f0e02df479c0604cb",
+   "size": 3801
+  },
+  "neuroConstruct/cellMechanisms/Gran_CaHVA_98/ChannelML_v1.8.1_GENESIStab.xsl": {
+   "blob_sha1": "dd6ea88c6359d3b7fb4c9b9f2e94217683f57242",
+   "size": 77748
+  },
+  "neuroConstruct/cellMechanisms/Gran_CaHVA_98/ChannelML_v1.8.1_NEURONmod.xsl": {
+   "blob_sha1": "04a6a65ad9711b5f9c40912d6d47b2573963017f",
+   "size": 94391
+  },
+  "neuroConstruct/cellMechanisms/Gran_CaHVA_98/properties.xml": {
+   "blob_sha1": "960fcdf61a64d35453c0f28ee757d7338cfa967d",
+   "size": 1354
+  },
+  "neuroConstruct/cellMechanisms/Gran_CaPool_98/CaPool.xml": {
+   "blob_sha1": "44ff2ae35176b15d91123324ef4b4e4ea82370d0",
+   "size": 1929
+  },
+  "neuroConstruct/cellMechanisms/Gran_CaPool_98/ChannelML_v1.8.1_GENESIStab.xsl": {
+   "blob_sha1": "dd6ea88c6359d3b7fb4c9b9f2e94217683f57242",
+   "size": 77748
+  },
+  "neuroConstruct/cellMechanisms/Gran_CaPool_98/ChannelML_v1.8.1_NEURONmod.xsl": {
+   "blob_sha1": "04a6a65ad9711b5f9c40912d6d47b2573963017f",
+   "size": 94391
+  },
+  "neuroConstruct/cellMechanisms/Gran_CaPool_98/properties.xml": {
+   "blob_sha1": "2beed4f25ed1bc41be33073e828d4fd8af817c15",
+   "size": 1353
+  },
+  "neuroConstruct/cellMechanisms/Gran_H_98/ChannelML_v1.8.1_GENESIStab.xsl": {
+   "blob_sha1": "dd6ea88c6359d3b7fb4c9b9f2e94217683f57242",
+   "size": 77748
+  },
+  "neuroConstruct/cellMechanisms/Gran_H_98/ChannelML_v1.8.1_NEURONmod.xsl": {
+   "blob_sha1": "04a6a65ad9711b5f9c40912d6d47b2573963017f",
+   "size": 94391
+  },
+  "neuroConstruct/cellMechanisms/Gran_H_98/H_Chan.xml": {
+   "blob_sha1": "1a5b1f08f2d699c841936c33790fc4aeb05a9168",
+   "size": 2919
+  },
+  "neuroConstruct/cellMechanisms/Gran_H_98/properties.xml": {
+   "blob_sha1": "1a0a2aeda8602a3cc23ecc63f043e2636c13257e",
+   "size": 1350
+  },
+  "neuroConstruct/cellMechanisms/Gran_KA_98/ChannelML_v1.8.1_GENESIStab.xsl": {
+   "blob_sha1": "dd6ea88c6359d3b7fb4c9b9f2e94217683f57242",
+   "size": 77748
+  },
+  "neuroConstruct/cellMechanisms/Gran_KA_98/ChannelML_v1.8.1_NEURONmod.xsl": {
+   "blob_sha1": "04a6a65ad9711b5f9c40912d6d47b2573963017f",
+   "size": 94391
+  },
+  "neuroConstruct/cellMechanisms/Gran_KA_98/KA_Chan.xml": {
+   "blob_sha1": "1eb8a4cad2c14bcc3c92bef10d184e91148e3e24",
+   "size": 3582
+  },
+  "neuroConstruct/cellMechanisms/Gran_KA_98/properties.xml": {
+   "blob_sha1": "aa8a7db1d79c028c7a471ef55ba9065796b6531e",
+   "size": 1378
+  },
+  "neuroConstruct/cellMechanisms/Gran_KCa_98/ChannelML_v1.8.1_GENESIStab.xsl": {
+   "blob_sha1": "dd6ea88c6359d3b7fb4c9b9f2e94217683f57242",
+   "size": 77748
+  },
+  "neuroConstruct/cellMechanisms/Gran_KCa_98/ChannelML_v1.8.1_NEURONmod.xsl": {
+   "blob_sha1": "04a6a65ad9711b5f9c40912d6d47b2573963017f",
+   "size": 94391
+  },
+  "neuroConstruct/cellMechanisms/Gran_KCa_98/KCa_Chan.xml": {
+   "blob_sha1": "669d679abc2cd45d63aadcaa11a9d9dff42acbc2",
+   "size": 3322
+  },
+  "neuroConstruct/cellMechanisms/Gran_KCa_98/properties.xml": {
+   "blob_sha1": "b9686d5043a250489502f7fb56ec91790ee1d121",
+   "size": 1341
+  },
+  "neuroConstruct/cellMechanisms/Gran_KDr_98/ChannelML_v1.8.1_GENESIStab.xsl": {
+   "blob_sha1": "dd6ea88c6359d3b7fb4c9b9f2e94217683f57242",
+   "size": 77748
+  },
+  "neuroConstruct/cellMechanisms/Gran_KDr_98/ChannelML_v1.8.1_NEURONmod.xsl": {
+   "blob_sha1": "04a6a65ad9711b5f9c40912d6d47b2573963017f",
+   "size": 94391
+  },
+  "neuroConstruct/cellMechanisms/Gran_KDr_98/KDr_Chan.xml": {
+   "blob_sha1": "ae3ee738227be5475c3dab0d035b95eb7cd0cd38",
+   "size": 3588
+  },
+  "neuroConstruct/cellMechanisms/Gran_KDr_98/properties.xml": {
+   "blob_sha1": "f58b0a87b095202eaadac28ab46f915f67d371a2",
+   "size": 1340
+  },
+  "neuroConstruct/cellMechanisms/Gran_NaF_98/ChannelML_v1.8.1_GENESIStab.xsl": {
+   "blob_sha1": "dd6ea88c6359d3b7fb4c9b9f2e94217683f57242",
+   "size": 77748
+  },
+  "neuroConstruct/cellMechanisms/Gran_NaF_98/ChannelML_v1.8.1_NEURONmod.xsl": {
+   "blob_sha1": "04a6a65ad9711b5f9c40912d6d47b2573963017f",
+   "size": 94391
+  },
+  "neuroConstruct/cellMechanisms/Gran_NaF_98/NaF_Chan.xml": {
+   "blob_sha1": "d1a0580560482f8440cce8b2fb51fdff52bcc981",
+   "size": 4281
+  },
+  "neuroConstruct/cellMechanisms/Gran_NaF_98/properties.xml": {
+   "blob_sha1": "4426278ba97eecd6bdef345687666abbe7485589",
+   "size": 1342
+  },
+  "neuroConstruct/cellMechanisms/MFFastLeakCond/ChannelML_v1.8.1_GENESIStab.xsl": {
+   "blob_sha1": "dd6ea88c6359d3b7fb4c9b9f2e94217683f57242",
+   "size": 77748
+  },
+  "neuroConstruct/cellMechanisms/MFFastLeakCond/ChannelML_v1.8.1_NEURONmod.xsl": {
+   "blob_sha1": "04a6a65ad9711b5f9c40912d6d47b2573963017f",
+   "size": 94391
+  },
+  "neuroConstruct/cellMechanisms/MFFastLeakCond/LeakConductance.xml": {
+   "blob_sha1": "bcaff8b3ed4f292a29c4e4889e6ade34c82fa04e",
+   "size": 1053
+  },
+  "neuroConstruct/cellMechanisms/MFFastLeakCond/properties.xml": {
+   "blob_sha1": "f04cf2285b716f475fe36b830fa1b491b99ec132",
+   "size": 1500
+  },
+  "neuroConstruct/cellMechanisms/MFSpikeSyn/ChannelML_v1.8.1_GENESIStab.xsl": {
+   "blob_sha1": "dd6ea88c6359d3b7fb4c9b9f2e94217683f57242",
+   "size": 77748
+  },
+  "neuroConstruct/cellMechanisms/MFSpikeSyn/ChannelML_v1.8.1_NEURONmod.xsl": {
+   "blob_sha1": "04a6a65ad9711b5f9c40912d6d47b2573963017f",
+   "size": 94391
+  },
+  "neuroConstruct/cellMechanisms/MFSpikeSyn/DoubExpSyn.xml": {
+   "blob_sha1": "abde8f875cf261120bd0d58599ec129767d8b6a2",
+   "size": 907
+  },
+  "neuroConstruct/cellMechanisms/MFSpikeSyn/properties.xml": {
+   "blob_sha1": "6a6d8edad8511552b6100545ddf4a5251217dc23",
+   "size": 1368
+  },
+  "neuroConstruct/cellMechanisms/MF_AMPA/ChannelML_v1.8.1_GENESIStab.xsl": {
+   "blob_sha1": "dd6ea88c6359d3b7fb4c9b9f2e94217683f57242",
+   "size": 77748
+  },
+  "neuroConstruct/cellMechanisms/MF_AMPA/ChannelML_v1.8.1_NEURONmod.xsl": {
+   "blob_sha1": "04a6a65ad9711b5f9c40912d6d47b2573963017f",
+   "size": 94391
+  },
+  "neuroConstruct/cellMechanisms/MF_AMPA/DoubExpSyn.xml": {
+   "blob_sha1": "41a1a881f54bfbf2f1eaa49d6f663cbc60feaf6c",
+   "size": 1560
+  },
+  "neuroConstruct/cellMechanisms/MF_AMPA/properties.xml": {
+   "blob_sha1": "1f9d8746ff78b8176a0a735c648bd2b32b2650b7",
+   "size": 1353
+  },
+  "neuroConstruct/cellMechanisms/NMDA/ChannelML_v1.8.1_GENESIStab.xsl": {
+   "blob_sha1": "dd6ea88c6359d3b7fb4c9b9f2e94217683f57242",
+   "size": 77748
+  },
+  "neuroConstruct/cellMechanisms/NMDA/ChannelML_v1.8.1_NEURONmod.xsl": {
+   "blob_sha1": "04a6a65ad9711b5f9c40912d6d47b2573963017f",
+   "size": 94391
+  },
+  "neuroConstruct/cellMechanisms/NMDA/NMDA.xml": {
+   "blob_sha1": "433e6e95c35c2a2a6dcfced12ef6df4dff5acbe6",
+   "size": 2116
+  },
+  "neuroConstruct/cellMechanisms/NMDA/properties.xml": {
+   "blob_sha1": "bd66a71efc05f8de50a5dd323bf1a0335fe5ad06",
+   "size": 1403
+  },
+  "neuroConstruct/cellMechanisms/README": {
+   "blob_sha1": "d91962e98667812729806110e3bf8c7da714f883",
+   "size": 346
+  },
+  "neuroConstruct/dataSets/F_I_curve_Single_Golgi_Cell.dat": {
+   "blob_sha1": "e10cea65dea9ba66492081b3a47b2739333bfb26",
+   "size": 557
+  },
+  "neuroConstruct/dataSets/F_I_curve_Single_Granule_cell.dat": {
+   "blob_sha1": "661a083af32ffde3e7296fc494bff18ec3358f7b",
+   "size": 156
+  },
+  "neuroConstruct/dataSets/README": {
+   "blob_sha1": "967c36d0b85420a7e69f105739be00d6c3e2cc80",
+   "size": 183
+  },
+  "neuroConstruct/generatedNeuroML/.test.validate.omt": {
+   "blob_sha1": "88a72a5f96a27e2e84b5463062fed981f3f5c850",
+   "size": 339
+  },
+  "neuroConstruct/generatedNeuroML/AMPA_GranGol.xml": {
+   "blob_sha1": "0231a2f7160ff08c1d91b84d80cf2e35a823a0cd",
+   "size": 2130
+  },
+  "neuroConstruct/generatedNeuroML/GABAA.xml": {
+   "blob_sha1": "50755b0d549d1d2a829a3bf018bd458450bb8b65",
+   "size": 1183
+  },
+  "neuroConstruct/generatedNeuroML/Generated.net.xml": {
+   "blob_sha1": "f69faaebf510f74a3a5834f9d160ba2cb96102e2",
+   "size": 176977
+  },
+  "neuroConstruct/generatedNeuroML/GolgiPassiveCond.xml": {
+   "blob_sha1": "6dbf8093de16d664df28c65898a778d839209daf",
+   "size": 1406
+  },
+  "neuroConstruct/generatedNeuroML/Golgi_98.morph.xml": {
+   "blob_sha1": "354ecfd0b721879ffcd49e24dc594be757c4ac3f",
+   "size": 6361
+  },
+  "neuroConstruct/generatedNeuroML/Golgi_CaHVA_CML.xml": {
+   "blob_sha1": "8dff3c367dc1342869f79838fc2ccc921744266b",
+   "size": 3892
+  },
+  "neuroConstruct/generatedNeuroML/Golgi_CaPool_CML.xml": {
+   "blob_sha1": "4a653bcb5049270566b4f17b598432b9a99a493e",
+   "size": 2009
+  },
+  "neuroConstruct/generatedNeuroML/Golgi_H_CML.xml": {
+   "blob_sha1": "4e70939e46956be08fa754576ac7a1bdd5d2323e",
+   "size": 3214
+  },
+  "neuroConstruct/generatedNeuroML/Golgi_KA_CML.xml": {
+   "blob_sha1": "aaeb46ac4d41477ecbcf886b4f76ee8cc6f20b3c",
+   "size": 3785
+  },
+  "neuroConstruct/generatedNeuroML/Golgi_KCa_CML.xml": {
+   "blob_sha1": "9303ea91423286534e8bdfd7a78d1db85b25e156",
+   "size": 3477
+  },
+  "neuroConstruct/generatedNeuroML/Golgi_KDr_CML.xml": {
+   "blob_sha1": "d7d321f2c5f451f729048d05f48d553c1e9bb2fd",
+   "size": 3646
+  },
+  "neuroConstruct/generatedNeuroML/Golgi_NaF_CML.xml": {
+   "blob_sha1": "4cceec7a94751fdc1f8fddd0522d7e5c89876d7f",
+   "size": 4129
+  },
+  "neuroConstruct/generatedNeuroML/GranPassiveCond.xml": {
+   "blob_sha1": "7f244feeab03a32fef7ec4e2373adc6ba4d30176",
+   "size": 1376
+  },
+  "neuroConstruct/generatedNeuroML/Gran_CaHVA_98.xml": {
+   "blob_sha1": "bd8393045d44dc4bc47bc5aaece25f4f9d110350",
+   "size": 3879
+  },
+  "neuroConstruct/generatedNeuroML/Gran_CaPool_98.xml": {
+   "blob_sha1": "c091b34c7c3f8ac23e884169bdbfe6c02ab4b591",
+   "size": 1999
+  },
+  "neuroConstruct/generatedNeuroML/Gran_H_98.xml": {
+   "blob_sha1": "54029c80c6827a34db7e2b4e5bcafbc08cb143b0",
+   "size": 2988
+  },
+  "neuroConstruct/generatedNeuroML/Gran_KA_98.xml": {
+   "blob_sha1": "8adfcff6c0d95de0ee071a1993187607c858eb01",
+   "size": 3660
+  },
+  "neuroConstruct/generatedNeuroML/Gran_KCa_98.xml": {
+   "blob_sha1": "13e002a4fda94f9fb4acdb45c020158a96e864b0",
+   "size": 3400
+  },
+  "neuroConstruct/generatedNeuroML/Gran_KDr_98.xml": {
+   "blob_sha1": "49fc297c850941bd4d084f404ef989486fc0d14d",
+   "size": 3666
+  },
+  "neuroConstruct/generatedNeuroML/Gran_NaF_98.xml": {
+   "blob_sha1": "39a24bf8c291f141bfbaba6df3c06140665d4c02",
+   "size": 4359
+  },
+  "neuroConstruct/generatedNeuroML/Granule_98.morph.xml": {
+   "blob_sha1": "0112148a300b19b9ec427d55782696d27cdff061",
+   "size": 6597
+  },
+  "neuroConstruct/generatedNeuroML/MFFastLeakCond.xml": {
+   "blob_sha1": "bcaff8b3ed4f292a29c4e4889e6ade34c82fa04e",
+   "size": 1053
+  },
+  "neuroConstruct/generatedNeuroML/MF_AMPA.xml": {
+   "blob_sha1": "41a1a881f54bfbf2f1eaa49d6f663cbc60feaf6c",
+   "size": 1560
+  },
+  "neuroConstruct/generatedNeuroML/MossyFiber.morph.xml": {
+   "blob_sha1": "367ab6b0629224440eafe255859da0529f57fd3b",
+   "size": 2863
+  },
+  "neuroConstruct/generatedNeuroML/NMDA.xml": {
+   "blob_sha1": "433e6e95c35c2a2a6dcfced12ef6df4dff5acbe6",
+   "size": 2116
+  },
+  "neuroConstruct/generatedNeuroML/README": {
+   "blob_sha1": "bb86102907c502d6702c097ae3106c834fd92544",
+   "size": 90
+  },
+  "neuroConstruct/generatedNeuroML/README--GENERATED-FILES": {
+   "blob_sha1": "0f37b2643627a56c5adb2bb9de2bcac23b61f4b9",
+   "size": 278
+  },
+  "neuroConstruct/generatedNeuroML2/.test.1d.jnmlnrn.omt": {
+   "blob_sha1": "0cdb943037d80d1ed09c562bb989819ae91bb420",
+   "size": 475
+  },
+  "neuroConstruct/generatedNeuroML2/.test.1d.mep": {
+   "blob_sha1": "d5a4e4c40cf15a31091514b706e2ad1402437199",
+   "size": 160
+  },
+  "neuroConstruct/generatedNeuroML2/.test.jnml.omt": {
+   "blob_sha1": "23b10ec641288a30e9435c9b11d3557efe7b1b40",
+   "size": 466
+  },
+  "neuroConstruct/generatedNeuroML2/.test.jnmlnetpyne.omt": {
+   "blob_sha1": "acdef34e48035c77ef380fee861173976c231516",
+   "size": 459
+  },
+  "neuroConstruct/generatedNeuroML2/.test.jnmlnrn.omt": {
+   "blob_sha1": "d2c61a057ebbdd8fe9f396114a222b802f1cb028",
+   "size": 458
+  },
+  "neuroConstruct/generatedNeuroML2/.test.mep": {
+   "blob_sha1": "2921ae1b3d3e7232d51781cee9e1fb58d726ff0f",
+   "size": 110
+  },
+  "neuroConstruct/generatedNeuroML2/.test.validate.omt": {
+   "blob_sha1": "3f0f9e9582b1df455373d2fb427276d647c2fea0",
+   "size": 271
+  },
+  "neuroConstruct/generatedNeuroML2/AMPA_GranGol.synapse.nml": {
+   "blob_sha1": "9cbd17eb673a873d5e8a4221edab6cb3cbc6d557",
+   "size": 605
+  },
+  "neuroConstruct/generatedNeuroML2/GABAA.synapse.nml": {
+   "blob_sha1": "09122d60caa560b23942f78cf696b91c71fa0a2a",
+   "size": 597
+  },
+  "neuroConstruct/generatedNeuroML2/GolgiPassiveCond.channel.nml": {
+   "blob_sha1": "1a246ba6da8d109a3ad0ef9d92422a092bb0c6e2",
+   "size": 1518
+  },
+  "neuroConstruct/generatedNeuroML2/Golgi_98.cell.nml": {
+   "blob_sha1": "e70caeb4c6c9e6e0ee01eee942f60d2e3d1a7cb5",
+   "size": 3933
+  },
+  "neuroConstruct/generatedNeuroML2/Golgi_98_3D.cell.nml": {
+   "blob_sha1": "9e9e5fd30514ee1f6ce3a843a57c47961f98c536",
+   "size": 6454
+  },
+  "neuroConstruct/generatedNeuroML2/Golgi_CaHVA_CML.channel.nml": {
+   "blob_sha1": "a71499c7f7f411ca4d2252b89e0d6f96c6d1bdb3",
+   "size": 4022
+  },
+  "neuroConstruct/generatedNeuroML2/Golgi_CaPool_CML.nml": {
+   "blob_sha1": "53c764e463f5f5f21f7020a01201e69f9ba3a353",
+   "size": 659
+  },
+  "neuroConstruct/generatedNeuroML2/Golgi_H_CML.channel.nml": {
+   "blob_sha1": "8ed237702402dddf01a3bcfe33bc79b83cbffc7d",
+   "size": 2000
+  },
+  "neuroConstruct/generatedNeuroML2/Golgi_KA_CML.channel.nml": {
+   "blob_sha1": "ac8997e73a04de4e028d1758c8acf7bb2d4c45b3",
+   "size": 3761
+  },
+  "neuroConstruct/generatedNeuroML2/Golgi_KCa_CML.channel.nml": {
+   "blob_sha1": "500aa27a0b0e6b84bc45a85479731b4b461093b3",
+   "size": 3667
+  },
+  "neuroConstruct/generatedNeuroML2/Golgi_KDr_CML.channel.nml": {
+   "blob_sha1": "f86228c6291469d572fe3f2494af13f7fa9b9803",
+   "size": 4749
+  },
+  "neuroConstruct/generatedNeuroML2/Golgi_NaF_CML.channel.nml": {
+   "blob_sha1": "ec113869035d970073c65433212dbfdbcfc28462",
+   "size": 4924
+  },
+  "neuroConstruct/generatedNeuroML2/GranCellLayer.net.nml": {
+   "blob_sha1": "cdd0c0377a5bf6a2aa83289055149c54c8dc718c",
+   "size": 232668
+  },
+  "neuroConstruct/generatedNeuroML2/GranPassiveCond.channel.nml": {
+   "blob_sha1": "356c50860b2dc321d30b70aeef73b444860b87db",
+   "size": 1452
+  },
+  "neuroConstruct/generatedNeuroML2/Gran_CaHVA_98.channel.nml": {
+   "blob_sha1": "71fdf33c53385a282871eafa1761b61612511ea9",
+   "size": 4300
+  },
+  "neuroConstruct/generatedNeuroML2/Gran_CaPool_98.nml": {
+   "blob_sha1": "4aed32134660a96b7f079109151eb129238a9d44",
+   "size": 654
+  },
+  "neuroConstruct/generatedNeuroML2/Gran_H_98.channel.nml": {
+   "blob_sha1": "0220e754e3d878f45eb77c076cddfaca257c5f7f",
+   "size": 2015
+  },
+  "neuroConstruct/generatedNeuroML2/Gran_KA_98.channel.nml": {
+   "blob_sha1": "a4ae7f8d9a017f325c150263ec6bd0572875d37a",
+   "size": 4029
+  },
+  "neuroConstruct/generatedNeuroML2/Gran_KCa_98.channel.nml": {
+   "blob_sha1": "e73cf62d1152bcec9dda344a35b05c41fdc38378",
+   "size": 3832
+  },
+  "neuroConstruct/generatedNeuroML2/Gran_KDr_98.channel.nml": {
+   "blob_sha1": "a8e63712cee2f77ccf6a0020cd5752becdae3c8e",
+   "size": 5160
+  },
+  "neuroConstruct/generatedNeuroML2/Gran_NaF_98.channel.nml": {
+   "blob_sha1": "1befedadb1d864080c5df3db3da773e4aa269f76",
+   "size": 5213
+  },
+  "neuroConstruct/generatedNeuroML2/Granule_98.cell.nml": {
+   "blob_sha1": "7380df10ca80d5c53cffb45a925a5cfe2cb4455b",
+   "size": 3768
+  },
+  "neuroConstruct/generatedNeuroML2/Granule_98_3D.cell.nml": {
+   "blob_sha1": "fef70907871c4e6a17059a6d17d5e761d90d9832",
+   "size": 6526
+  },
+  "neuroConstruct/generatedNeuroML2/LEMS_GranCellLayer.xml": {
+   "blob_sha1": "313924ca8e0ed4dd4d88fa709c35853919c2af8d",
+   "size": 21851
+  },
+  "neuroConstruct/generatedNeuroML2/LEMS_TestNet.xml": {
+   "blob_sha1": "ed509fb299e53f0cbfb7c6b5b176aa4290525e1c",
+   "size": 5926
+  },
+  "neuroConstruct/generatedNeuroML2/Large3DNetwork.net.nml": {
+   "blob_sha1": "b3d180d3db90fac6581e958f5ed0898b1f57cea2",
+   "size": 1194503
+  },
+  "neuroConstruct/generatedNeuroML2/MFFastLeakCond.channel.nml": {
+   "blob_sha1": "110b2d271f8848408d4c80945ea291e9a1fc434a",
+   "size": 741
+  },
+  "neuroConstruct/generatedNeuroML2/MFSpikeSyn.synapse.nml": {
+   "blob_sha1": "f355b80d15134d07c6d3b82b40030decd77717dd",
+   "size": 595
+  },
+  "neuroConstruct/generatedNeuroML2/MF_AMPA.synapse.nml": {
+   "blob_sha1": "3854029330bb8b43c91c7a06efb93a8d3e9e37bb",
+   "size": 578
+  },
+  "neuroConstruct/generatedNeuroML2/MossyFiber.cell.nml": {
+   "blob_sha1": "dd7195c7b7dcf42dea06f5ea707ec7c336406579",
+   "size": 2227
+  },
+  "neuroConstruct/generatedNeuroML2/NMDA.synapse.nml": {
+   "blob_sha1": "247517d38d3cc09a1d3bf765f8a5351f99ffc562",
+   "size": 2689
+  },
+  "neuroConstruct/generatedNeuroML2/README--GENERATED-FILES": {
+   "blob_sha1": "0f37b2643627a56c5adb2bb9de2bcac23b61f4b9",
+   "size": 278
+  },
+  "neuroConstruct/generatedNeuroML2/TestNet.net.nml": {
+   "blob_sha1": "3be01e6652c7a4b8edf0f5cf930ad2eff878e9b1",
+   "size": 10948
+  },
+  "neuroConstruct/images/large.png": {
+   "blob_sha1": "e8367487596fd02ee86a0007185f81bfc601169a",
+   "size": 630041
+  },
+  "neuroConstruct/images/small.png": {
+   "blob_sha1": "e56972a7dae5c442b53b984976ab34b23793546b",
+   "size": 29917
+  },
+  "neuroConstruct/morphologies/Golgi_98.java.xml": {
+   "blob_sha1": "8aaf6f309f8082b64e5fa6e2529492fb012b0d9d",
+   "size": 7978
+  },
+  "neuroConstruct/morphologies/Golgi_98_3D.java.xml": {
+   "blob_sha1": "ea184c55de37029dd557dc491f106003765feb20",
+   "size": 12272
+  },
+  "neuroConstruct/morphologies/Golgi_98_fixedInitPot.java.xml": {
+   "blob_sha1": "93fb0fa3cf360e994def7807d943ed918db1ab07",
+   "size": 7446
+  },
+  "neuroConstruct/morphologies/Granule_98.java.xml": {
+   "blob_sha1": "4f7d157303bc4892c99536ef96f2cd4a1ed208e4",
+   "size": 7820
+  },
+  "neuroConstruct/morphologies/Granule_98_3D.java.xml": {
+   "blob_sha1": "bb1c569b11e7c650ed96a93cbf1edf2de6466725",
+   "size": 12968
+  },
+  "neuroConstruct/morphologies/MossyFiber.java.xml": {
+   "blob_sha1": "583e5f3cca0a838431dc665c5b1cacb2c10c5f3c",
+   "size": 3036
+  },
+  "neuroConstruct/morphologies/README": {
+   "blob_sha1": "120622916ec3bfb4488c53ed576b435db5214009",
+   "size": 75
+  },
+  "neuroConstruct/pythonScripts/Big.py": {
+   "blob_sha1": "4d14420b27e04510ca0d909c9120c706a8cc0429",
+   "size": 8519
+  },
+  "neuroConstruct/pythonScripts/BigData.py": {
+   "blob_sha1": "44d8becbe79279ed4215e8f6820e2cc59569cf3a",
+   "size": 8361
+  },
+  "neuroConstruct/pythonScripts/BigN.py": {
+   "blob_sha1": "24e815e780ab4c335d6097098602a01a3d04d56a",
+   "size": 8696
+  },
+  "neuroConstruct/pythonScripts/ConvergenceSpikeTimes.py": {
+   "blob_sha1": "a1c049292eb7b29bf1b95d8c73bf9a1f213ce58f",
+   "size": 6588
+  },
+  "neuroConstruct/pythonScripts/GolgiF_I.py": {
+   "blob_sha1": "e2051f54510652ef8cf0109b15f902e21b0f2e60",
+   "size": 3217
+  },
+  "neuroConstruct/pythonScripts/GranGolgiF_I.py": {
+   "blob_sha1": "13787d163023766cc731a55f51d13f122c69c571",
+   "size": 3219
+  },
+  "neuroConstruct/pythonScripts/NetSize.py": {
+   "blob_sha1": "ff5e9aa4010d30cffe81ab8805b975e19d4b62eb",
+   "size": 6845
+  },
+  "neuroConstruct/pythonScripts/NoNrnguiGenerate.py": {
+   "blob_sha1": "56bc0edd1000e752feea71fdaf9e680b941a1d9c",
+   "size": 5388
+  },
+  "neuroConstruct/pythonScripts/README": {
+   "blob_sha1": "97a647db5b6f1f246b2427300cc668b22e612a6d",
+   "size": 158
+  },
+  "neuroConstruct/pythonScripts/RegenerateNml2.py": {
+   "blob_sha1": "1da2f1749134b3cf23312f8754e3cfb4431729bb",
+   "size": 1526
+  },
+  "neuroConstruct/pythonScripts/RunGolgiTests.py": {
+   "blob_sha1": "e56f8146cd050cff6349a5e85e4f620127e1070f",
+   "size": 3152
+  },
+  "neuroConstruct/pythonScripts/RunGolgiTestsLEMS.py": {
+   "blob_sha1": "51703cff5bb4738dc5a18af3b877a9ea4b986b10",
+   "size": 3143
+  },
+  "neuroConstruct/pythonScripts/RunGranTests.py": {
+   "blob_sha1": "2cf6d7ff9f748a8f156c73e6de721cf7f5c2e07f",
+   "size": 3785
+  },
+  "neuroConstruct/pythonScripts/SaveNetworkML.py": {
+   "blob_sha1": "ac1dffe0099521e92e4fa28dd7adb64edc526f89",
+   "size": 2869
+  },
+  "neuroConstruct/pythonScripts/createPages.py": {
+   "blob_sha1": "0841417e3f53cc94e93e5af0b11ec559b4923da2",
+   "size": 5107
+  },
+  "neuroConstruct/pythonScripts/uclTests/GenNetworkParallel.py": {
+   "blob_sha1": "c569f77a51d431b37bad683cfba033df03be6577",
+   "size": 6668
+  }
+ }
+}

@@ -1,0 +1,503 @@
+{
+  "subject": "Adversarial fact-check of venues-policy.research.json (IEEE venues, IEEE AI/authorship/originality/preprint policies, preregistration and archiving services, non-IEEE alternatives)",
+  "checked_on": "2026-09-13",
+  "report_checked": "C:/Users/gurra/NeuroSem/docs/m0_evidence/tools/venues-policy.research.json",
+  "checks": [
+    {
+      "claim": "Crossref title/publisher/DOI counts for e-ISSN 2998-4165",
+      "reported_value": "IEEE Transactions on Computational Biology and Bioinformatics; IEEE; 537 DOIs (2025: 320, 2026: 217)",
+      "verified_value": "IEEE Transactions on Computational Biology and Bioinformatics; Institute of Electrical and Electronics Engineers; electronic ISSN 2998-4165 only; total-dois 537; dois-by-issued-year 2025: 320, 2026: 217",
+      "status": "confirmed",
+      "source_url": "https://api.crossref.org/journals/2998-4165",
+      "method": "curl Crossref journals API, JSON parsed with python"
+    },
+    {
+      "claim": "Former TCBB title and ISSNs, latest issue 2024-11",
+      "reported_value": "IEEE/ACM Transactions on Computational Biology and Bioinformatics; 1545-5963, 1557-9964, 2374-0043; latest issued 2024-11",
+      "verified_value": "Same title and three ISSNs; newest works by issued date are vol 21 issue 6, 2024-11 (e.g. 10.1109/tcbb.2024.3422152)",
+      "status": "confirmed",
+      "source_url": "https://api.crossref.org/journals/1545-5963/works?sort=issued&order=desc&rows=3",
+      "method": "curl Crossref journals and works API"
+    },
+    {
+      "claim": "Renamed journal uses 'DOI prefix 10.1109/tcbbio'; vol 22 issue 1 (2025-01) carries tcbbio DOIs",
+      "reported_value": "DOI prefix 10.1109/tcbbio; e.g. 10.1109/tcbbio.2024.3504652",
+      "verified_value": "The DOI prefix is 10.1109; 'tcbbio' is a suffix pattern. Vol 22 issue 1 (2025-01) under ISSN 2998-4165 mixes new-style suffixes (10.1109/tcbbio.2024.3504652) with legacy ones (10.1109/tcbb.2024.3492384, 10.1109/tcbb.2024.3492708). 2026 items (vol 23 issue 4, 2026-07) use tcbbio. Do not match TCBB papers on the 'tcbbio' string alone.",
+      "status": "corrected",
+      "source_url": "https://api.crossref.org/journals/2998-4165/works?sort=issued&order=asc&rows=4",
+      "method": "curl Crossref works API, ascending and descending by issued date"
+    },
+    {
+      "claim": "TCBB now publishes under the IEEE-only title since 2025",
+      "reported_value": "Since 2025 (vol 22) 'IEEE Transactions on Computational Biology and Bioinformatics'",
+      "verified_value": "Supported by Crossref (new title and ISSN from vol 22, 2025) and the 2026 IEEE APC list row 'Computational Biology and Bioinformatics, IEEE Trans. TCBB'. The IEEE Xplore about-journal page (punumber 8857) still has the old IEEE/ACM title in its HTML title and meta description on 2026-09-13, so IEEE's own pages are inconsistent.",
+      "status": "confirmed",
+      "source_url": "https://ieeexplore.ieee.org/xpl/aboutJournal.jsp?punumber=8857",
+      "method": "Crossref API; curl of the Xplore page (HTTP 200 with browser user agent; body is a JS app, title/meta tags read)"
+    },
+    {
+      "claim": "TCBB 2026 OA model and fees",
+      "reported_value": "Hybrid; OA fee $2,800; overlength $220/page; repository licensing fee $1,275; 12 regular pages; list updated 6/11/2026",
+      "verified_value": "Row: TCBB, Hybrid, OA Fee $2,800, Per Page Overlength $220, Repository Licensing Fee $1,275, Regular 12 pages. Footer on every page: '2026 IEEE Publications APC List - Updated 6/11/2026'.",
+      "status": "confirmed",
+      "source_url": "https://journals.ieeeauthorcenter.ieee.org/wp-content/uploads/sites/7/IEEE-Article-Processing-Charges-List.pdf",
+      "method": "curl download (557 KB, 14 pages); pypdf text and pdfplumber table extraction including header row"
+    },
+    {
+      "claim": "OpenAlex TCBB APC",
+      "reported_value": "2645 USD (appears outdated)",
+      "verified_value": "OpenAlex source for issn:2998-4165: apc_usd 2645, is_oa false, is_in_doaj false. The record merges old and new ISSNs (1545-5963, 1557-9964, 2374-0043, 2998-4165). 2645 differs from IEEE's 2026 list ($2,800).",
+      "status": "confirmed",
+      "source_url": "https://api.openalex.org/sources/issn:2998-4165",
+      "method": "curl OpenAlex API"
+    },
+    {
+      "claim": "TCBB official scope statement",
+      "reported_value": "Not retrieved from an IEEE primary page; secondary description only",
+      "verified_value": "Still unverified. computer.org CSDL returns only a JavaScript shell to WebFetch; the Xplore about page is a JavaScript app whose meta description is cut off before the scope text.",
+      "status": "unverifiable",
+      "source_url": "https://www.computer.org/csdl/journal/tb/about/",
+      "method": "WebFetch (JS-only) and curl of the Xplore about page"
+    },
+    {
+      "claim": "TCBB sponsoring societies after renaming",
+      "reported_value": "unverified",
+      "verified_value": "unverified (no IEEE primary page retrieved)",
+      "status": "unverifiable",
+      "source_url": "https://ieeexplore.ieee.org/xpl/aboutJournal.jsp?punumber=8857",
+      "method": "Attempted; JS-only pages"
+    },
+    {
+      "claim": "CIBCB 2026 dates, location and format",
+      "reported_value": "31 Aug - 2 Sep 2026, Athens, Greece; in person only",
+      "verified_value": "Home page: 31 August - 2 September, Athens, Greece; the 2026 edition is held exclusively in person.",
+      "status": "confirmed",
+      "source_url": "https://cibcb2026.dib.uth.gr/",
+      "method": "curl raw HTML, tags stripped and read directly (not model-summarised)"
+    },
+    {
+      "claim": "CIBCB 2026 important dates",
+      "reported_value": "Submission 30 Apr 2026; notification 31 May; camera-ready 15 Jul (final 18 Jul); author registration 17 Aug 2026",
+      "verified_value": "All four confirmed. Also listed: short/late-breaking papers 6 Jul 2026 via CMT; early registration 30 Jun 2026. The registration page instead gives 3 Jul 2026 as the early-bird cutoff, so the site contradicts itself.",
+      "status": "confirmed",
+      "source_url": "https://cibcb2026.dib.uth.gr/important-dates/",
+      "method": "curl raw HTML read directly"
+    },
+    {
+      "claim": "CIBCB 2026 page limits and proceedings",
+      "reported_value": "Regular up to 8 pages (10 with EUR 150/extra page); accepted papers in IEEE Xplore; 2-page short/late-breaking papers not in Xplore; Microsoft CMT",
+      "verified_value": "Confirmed: at most 8 pages; longer papers pay an extra-page charge; nothing over 10 pages accepted; all accepted papers go to IEEE Xplore; short/late-breaking papers (at most 2 pages) are on the website only, not in Xplore; CMT used.",
+      "status": "confirmed",
+      "source_url": "https://cibcb2026.dib.uth.gr/submissions/",
+      "method": "curl raw HTML read directly"
+    },
+    {
+      "claim": "CIBCB 2026 registration fees and conditions",
+      "reported_value": "IEEE member EUR 700/800; non-member EUR 800/930; student IEEE member EUR 300/370; student non-member EUR 400/500; extra paper EUR 300; extra page EUR 150; 24% VAT on invoices; full non-student registration per paper",
+      "verified_value": "All figures confirmed (plus IEEE Life Member 300/370, spouse/guest 150/200). Nuance: 24% VAT is added only when an invoice is requested; the default plain receipt has no VAT. Early/late split is before/after 3 Jul 2026.",
+      "status": "confirmed",
+      "source_url": "https://cibcb2026.dib.uth.gr/registration/",
+      "method": "curl raw HTML read directly"
+    },
+    {
+      "claim": "CIBCB 2026 no-show policy",
+      "reported_value": "Papers not presented are archived at IEEE but not indexed in or shown on IEEE Xplore",
+      "verified_value": "Confirmed; one author must register and present (talk or poster); exceptions need written approval from the Program Chair.",
+      "status": "confirmed",
+      "source_url": "https://cibcb2026.dib.uth.gr/no-show-policy/",
+      "method": "curl raw HTML read directly"
+    },
+    {
+      "claim": "CIBCB 2026 AI-generated text instruction",
+      "reported_value": "Disclose AI-generated text in the acknowledgments, citing the AI system",
+      "verified_value": "Confirmed: disclosure goes in the acknowledgments, and sections using AI-generated text must cite the AI system.",
+      "status": "confirmed",
+      "source_url": "https://cibcb2026.dib.uth.gr/submissions/",
+      "method": "curl raw HTML read directly"
+    },
+    {
+      "claim": "CIBCB 2026 call-for-papers tracks",
+      "reported_value": "Four tracks: biomedical engineering/healthcare; computational biology (incl. modelling, simulation and optimisation of biological systems, surrogate modelling); bioinformatics; medical ethics and legal (incl. explainability)",
+      "verified_value": "Confirmed: AI/CI in Biomedical Engineering and Healthcare Informatics; AI/CI in Computational Biology (includes 'Modelling, Simulation, and Optimization of Biological Systems' and 'Surrogate Modeling and Representation'); AI/CI in Bioinformatics; AI/CI in Medical Ethics and Legal Aspects. Neither neuroscience nor software testing is named.",
+      "status": "confirmed",
+      "source_url": "https://cibcb2026.dib.uth.gr/call-for-papers/",
+      "method": "curl raw HTML read directly"
+    },
+    {
+      "claim": "CIBCB 2025 proceedings in Crossref",
+      "reported_value": "Tainan, Taiwan; DOI prefix 10.1109/cibcb66090.2025; ISBN 9798331502669; issued 2025-08-20",
+      "verified_value": "Confirmed: proceedings DOI 10.1109/cibcb66090.2025 (event location Tainan, Taiwan; ISBN 9798331502669); articles issued 2025-08-20 (e.g. 10.1109/cibcb66090.2025.11177097); Crossref records created 2025-09-30.",
+      "status": "confirmed",
+      "source_url": "https://api.crossref.org/works?query.bibliographic=IEEE+Conference+on+Computational+Intelligence+in+Bioinformatics+and+Computational+Biology+CIBCB+2025&rows=5",
+      "method": "curl Crossref works API"
+    },
+    {
+      "claim": "CIBCB 2026 proceedings not yet in Crossref on 2026-09-13",
+      "reported_value": "Not found",
+      "verified_value": "Not found: a bibliographic query filtered from 2026-01-01 returned unrelated records (e.g. ICBCB 2026 Kitakyushu), and a container-title query found no CIBCB 2026 items. Absence from a search is not proof of non-registration.",
+      "status": "confirmed",
+      "source_url": "https://api.crossref.org/works?query.bibliographic=Computational%20Intelligence%20in%20Bioinformatics%20and%20Computational%20Biology%20CIBCB%202026&filter=from-pub-date:2026-01-01&rows=5",
+      "method": "curl Crossref works API (URL-encoded retry; the report's URL form returned non-JSON for me)"
+    },
+    {
+      "claim": "CIBCB 2027 details unverified; no official CIBCB 2027 page found; IEEE CIS calendar returned HTTP 418",
+      "reported_value": "unverified (aggregators only; CIS calendar 418)",
+      "verified_value": "False. The IEEE CIS conference calendar loads (HTTP 200 with a browser user agent; WebFetch alone gets 418) and lists '2027 IEEE Conference on Computational Intelligence in Bioinformatics and Computational Biology (CIBCB)', Milan, Italy, 31 Aug - 3 Sep 2027, full paper submission 2 Apr 2027, Society Sponsor, linked to attend.ieee.org/cibcb-2027. That official site gives: 24th CIBCB, Bocconi University, Milan; pre-conference PhD competition/hackathon 31 Aug 2027; main conference 1-3 Sep 2027; special sessions 29 Jan 2027; tutorials/workshops 19 Feb 2027; full papers 2 Apr 2027 (up to 8 pages, IEEE two-column template, PDF, A4 or US Letter); notification 21 May 2027; short papers 11 Jun 2027 (up to 2 pages); camera-ready and early registration 25 Jun 2027; all deadlines 23:59 AoE; submission via EasyChair (link marked TBC); at least one author expected to register and present on site in Milan; accepted and presented papers submitted for IEEE Xplore inclusion. Topic list is essentially the 2026 one, with the computational biology track renamed 'AI/CI in Computational Systems Biology' (still includes modelling, simulation and optimisation of biological systems). 2027 registration fees were not found.",
+      "status": "rejected",
+      "source_url": "https://cis.ieee.org/conferences/conference-calendar",
+      "method": "curl raw HTML of the CIS calendar and of https://attend.ieee.org/cibcb-2027/, /important-dates/, /call-for-papers/, /scope-topics/; tags stripped and read directly"
+    },
+    {
+      "claim": "JBHI 2026 OA model and fees",
+      "reported_value": "Hybrid; OA fee $2,800; overlength $250/$350; repository licensing fee $1,275",
+      "verified_value": "Row: JBHI, Hybrid, $2,800, $250/$350, $1,275; page allowances 8 / 10 / 2 / 10-12 across manuscript-type columns",
+      "status": "confirmed",
+      "source_url": "https://journals.ieeeauthorcenter.ieee.org/wp-content/uploads/sites/7/IEEE-Article-Processing-Charges-List.pdf",
+      "method": "pdfplumber table extraction"
+    },
+    {
+      "claim": "JBHI scope and Editor-in-Chief",
+      "reported_value": "Biomedical and health informatics where ICT intersects with health, healthcare, life sciences and biomedicine; EIC Peter Elkin",
+      "verified_value": "Confirmed: scope as reported; EIC Dr. Peter Elkin (University at Buffalo)",
+      "status": "confirmed",
+      "source_url": "https://www.embs.org/jbhi/",
+      "method": "WebFetch (model-summarised; curl gets HTTP 403)"
+    },
+    {
+      "claim": "JBHI uses ScholarOne for submission",
+      "reported_value": "Active; ScholarOne submission",
+      "verified_value": "The 'Submit Your Manuscript' link goes to https://ieee.atyponrex.com/journal/jbhi-embs (Atypon ReX). ScholarOne appears only in a menu item for an editor guide.",
+      "status": "corrected",
+      "source_url": "https://www.embs.org/jbhi/",
+      "method": "WebFetch asked to list submission links with URLs (model-summarised)"
+    },
+    {
+      "claim": "TNSRE OA model and APC",
+      "reported_value": "Gold fully OA; APC US$2,160 for 2026 submissions; 5% IEEE member and 20% society member discounts; low-income-country discounts",
+      "verified_value": "Confirmed on the EMBS for-authors page: gold, fully open access; US$2,160 for articles submitted in 2026; 5% / 20% discounts, not combinable; World Bank low-income-country discounts. APC list row: TNSRE Full $2,160 (no overlength column).",
+      "status": "confirmed",
+      "source_url": "https://www.embs.org/tnsre/for-authors/",
+      "method": "WebFetch (model-summarised; curl gets 403) plus APC list PDF table row"
+    },
+    {
+      "claim": "TNSRE scope and Editor-in-Chief",
+      "reported_value": "Neuroscience and physical medicine, assistive devices; EIC He (Helen) Huang",
+      "verified_value": "Confirmed on the TNSRE home page. The EIC is not named on the for-authors page the report cites for this venue.",
+      "status": "confirmed",
+      "source_url": "https://www.embs.org/tnsre/",
+      "method": "WebFetch (model-summarised)"
+    },
+    {
+      "claim": "TNSRE full OA since 1 July 2020",
+      "reported_value": "1 July 2020 (partially verified; search snippet of Xplore document 9134916)",
+      "verified_value": "Crossref confirms editorial 'TNSRE Is Flipping to Full Open Access' by Daniel P. Ferris and Kara McArthur, vol 28 issue 7, July 2020, p. 1510, DOI 10.1109/tnsre.2020.3004668, Xplore document 9134916. No abstract in Crossref, so the exact start date (1 July) is still unverified.",
+      "status": "unverifiable",
+      "source_url": "https://api.crossref.org/works/10.1109/tnsre.2020.3004668",
+      "method": "curl Crossref journal works query (ISSN 1534-4320, 2020, 'open access') and works/DOI API"
+    },
+    {
+      "claim": "IEEE Access APC and discounts",
+      "reported_value": "$2,160 plus local taxes; no page limit or overlength charge (<20 pages recommended); 5% IEEE member, 20% society member (students excluded); low-income discounts",
+      "verified_value": "Confirmed: gold fully OA; $2,160 per article plus local taxes; no page limit or overlength charge, under 20 pages strongly recommended; 5% for IEEE members, 20% for IEEE Society members (5% + 15%), not for Student or Graduate Student Members; discounts not combinable; low-income discounts only if all authors are in eligible countries. APC list: ACCESS Full $2,160.",
+      "status": "confirmed",
+      "source_url": "https://ieeeaccess.ieee.org/about/article-processing-charges/",
+      "method": "curl raw HTML read directly; APC list PDF row"
+    },
+    {
+      "claim": "IEEE Access duplicate-submission and conference-extension rules",
+      "reported_value": "Not under review at another journal; expanded conference papers allowed below 35% similarity with disclosure",
+      "verified_value": "Confirmed: submissions must not be under peer review at any other journal; expanded versions of the authors' own referenced conference articles are accepted if similarity is under 35%, with the link described in the manuscript and disclosed in the cover letter.",
+      "status": "confirmed",
+      "source_url": "https://ieeeaccess.ieee.org/authors/preparing-your-article/",
+      "method": "curl raw HTML read directly"
+    },
+    {
+      "claim": "IEEE Access AI disclosure",
+      "reported_value": "AI-generated content disclosed in acknowledgments; grammar editing generally exempt",
+      "verified_value": "Confirmed; the Access page repeats the IEEE-wide text and says only that disclosure is 'recommended' for grammar/editing use. It also warns that articles found to contain fabricated content, including nonexistent references, are promptly rejected.",
+      "status": "confirmed",
+      "source_url": "https://ieeeaccess.ieee.org/authors/preparing-your-article/",
+      "method": "curl raw HTML read directly"
+    },
+    {
+      "claim": "IEEE journal AI-content disclosure policy",
+      "reported_value": "Disclose AI-generated content (text, figures, images, code, not limited to these) in acknowledgments; identify the AI system, the sections, and level of use; editing/grammar generally outside the policy, disclosure not required but recommended",
+      "verified_value": "Confirmed on the journal Author Center page, the conference Author Center page, and PSPB Operations Manual 8.2.1.B.10 (amended 25 June 2026).",
+      "status": "confirmed",
+      "source_url": "https://journals.ieeeauthorcenter.ieee.org/become-an-ieee-journal-author/publishing-ethics/guidelines-and-policies/submission-and-peer-review-policies/",
+      "method": "WebFetch asked for exact sentences; cross-checked against curl text of the conference page and pypdf text of the PSPB manual"
+    },
+    {
+      "claim": "Reviewers may not run manuscripts through public AI platforms",
+      "reported_value": "Confirmed",
+      "verified_value": "Confirmed on the journal policy page. PSPB manual AI principles: referees and editors should not use AI tools that break peer-review confidentiality.",
+      "status": "confirmed",
+      "source_url": "https://journals.ieeeauthorcenter.ieee.org/become-an-ieee-journal-author/publishing-ethics/guidelines-and-policies/submission-and-peer-review-policies/",
+      "method": "WebFetch; PSPB manual PDF text"
+    },
+    {
+      "claim": "IEEE Open AI guideline date",
+      "reported_value": "16 April 2024",
+      "verified_value": "16 April 2024 (per WebFetch of the page)",
+      "status": "confirmed",
+      "source_url": "https://open.ieee.org/author-guidelines-for-artificial-intelligence-ai-generated-text/",
+      "method": "WebFetch (model-summarised; not cross-checked in raw HTML)"
+    },
+    {
+      "claim": "Consistency with conference, magazine and book policy pages; IEEE Books page warns authors to double-check AI output",
+      "reported_value": "Consistent across conference, magazine, book and IEEE Open pages; Books page warns to double-check AI output",
+      "verified_value": "Conference Author Center page: confirmed. It has the same disclosure text and advises excluding the reference section when using AI for grammar and always double-checking AI results. Magazine and book Author Center pages were not retrieved, so those parts are unverified.",
+      "status": "unverifiable",
+      "source_url": "https://conferences.ieeeauthorcenter.ieee.org/author-ethics/guidelines-and-policies/submission-policies/",
+      "method": "curl raw HTML of the conference page read directly; magazine/book pages not fetched"
+    },
+    {
+      "claim": "No retrieved IEEE primary page explicitly says an AI cannot be an author",
+      "reported_value": "Not stated on the five IEEE policy pages fetched; only secondary sources",
+      "verified_value": "Confirmed, and extended to the full PSPB Operations Manual (amended 25 June 2026): neither its AI principles section nor 8.2.1.A contains an explicit ban on AI authorship. 8.2.1.A.1 reserves authorship credit for 'individuals' who meet all three conditions, and the AI principles make authors responsible for all article content. The handoff's 'only humans can be authors' is an inference from these texts, not a quoted IEEE rule.",
+      "status": "confirmed",
+      "source_url": "https://pspb.ieee.org/images/files/files/opsmanual.pdf",
+      "method": "curl download (1.08 MB, 154 pages); pypdf full text; regex search for AI/author co-occurrence; read AI principles section and 8.2.1.A in full"
+    },
+    {
+      "claim": "PSPB Operations Manual 8.2.1 unreadable (empty body); an explicit IEEE AI clause might exist on an unretrieved page",
+      "reported_value": "PSPB Operations Manual 8.2.1 page returned an empty body (listed as an uncertainty)",
+      "verified_value": "The manual PDF is retrievable (amended 25 June 2026). It has an Introduction section, 'IEEE Principles of Ethical Use of Artificial Intelligence in Publishing' (pp. 5-6, amendments require Board of Directors approval), which is stricter and broader than the Author Center text the report relied on. Paraphrased: authors must check any AI-produced material for accuracy and plagiarism before submission; an AI tool may be cited as a source only if the author has independently verified the content; authors must acknowledge AI-generated intellectual content, including text, images, videos, audio, graphics and computer code; language polishing of human text needs no acknowledgment only if it changes no meaning and adds no intellectual content; AI-generated data that simulates or emulates a process must be clearly labelled as AI-generated; when an AI tool is the subject of the article, releasing source code and curated data is recommended; editors and referees must not use AI tools that breach review confidentiality. The Conference Author Center page links to these principles.",
+      "status": "corrected",
+      "source_url": "https://pspb.ieee.org/images/files/files/opsmanual.pdf",
+      "method": "curl download; pypdf text of the Introduction and Section 8.2.1"
+    },
+    {
+      "claim": "IEEE authorship criteria and corresponding-author duties",
+      "reported_value": "All three: significant intellectual contribution; drafting/revising; approval of final version. Corresponding author ensures the correct author list, obtains assent and approval, keeps co-authors informed",
+      "verified_value": "Confirmed on the Author Center Ethical Requirements page and in PSPB manual 8.2.1.A.1 and 8.2.1.A.5. The manual adds: every part of an article essential to its main conclusions must be the responsibility of at least one author (8.2.1.A.4); co-authors are responsible for work submitted under their names (8.2.1.A.6).",
+      "status": "confirmed",
+      "source_url": "https://journals.ieeeauthorcenter.ieee.org/become-an-ieee-journal-author/publishing-ethics/ethical-requirements/",
+      "method": "WebFetch exact-quote request; PSPB manual PDF text"
+    },
+    {
+      "claim": "IEEE originality and multiple-submission policy",
+      "reported_value": "Original, not under review elsewhere; disclose prior and current submissions; multiple submission = concurrent active consideration at two or more publications; IEEE units decide, with disclosure",
+      "verified_value": "Confirmed on the conference Submission Policies page (units decide whether to allow multiple submissions; authors must inform editors) and the journal policy page. PSPB 8.2.1.B.5 adds that authors must disclose prior publication or active consideration elsewhere, and must notify IEEE immediately if they submit to a non-IEEE publication while under IEEE review.",
+      "status": "confirmed",
+      "source_url": "https://conferences.ieeeauthorcenter.ieee.org/author-ethics/guidelines-and-policies/submission-policies/",
+      "method": "curl raw HTML read directly; PSPB manual PDF text"
+    },
+    {
+      "claim": "Conference-to-journal evolution allowed with citation and explanation of differences",
+      "reported_value": "Allowed if the earlier work is cited and differences explained",
+      "verified_value": "Confirmed; the Ethical Requirements page also requires the journal article to contain substantially more technical information than the conference article.",
+      "status": "confirmed",
+      "source_url": "https://journals.ieeeauthorcenter.ieee.org/become-an-ieee-journal-author/publishing-ethics/ethical-requirements/",
+      "method": "WebFetch exact-quote request"
+    },
+    {
+      "claim": "IEEE preprint servers and prior-publication status",
+      "reported_value": "arXiv, TechRxiv, or any not-for-profit server approved by IEEE PSPB; not prior publication; preprints elsewhere removed after publication where possible",
+      "verified_value": "Confirmed on the Post-Publication Policies page (named servers: arXiv.org and TechRxiv.org; plus PSPB-approved not-for-profit servers, personal and employer websites). PSPB manual 8.1.9: the IEEE Publishing Ethics Team keeps the list of approved not-for-profit third-party servers and PSPB approves hosts. That list was not retrieved.",
+      "status": "confirmed",
+      "source_url": "https://journals.ieeeauthorcenter.ieee.org/become-an-ieee-journal-author/publishing-ethics/guidelines-and-policies/post-publication-policies/",
+      "method": "WebFetch exact-quote request; PSPB manual PDF text"
+    },
+    {
+      "claim": "Attribution: the IEEE Article Sharing and Posting Policies PDF allows PSPB-approved not-for-profit preprint servers",
+      "reported_value": "Summary attributes the arXiv/TechRxiv/PSPB-approved-server list to the Post-Publication Policies page and the Sharing PDF together",
+      "verified_value": "The one-page PDF lists only the author's personal or employer website and TechRxiv or arXiv for preprints. The PSPB-approved not-for-profit server wording is on the web page and in PSPB manual 8.1.9, not in the PDF.",
+      "status": "corrected",
+      "source_url": "https://journals.ieeeauthorcenter.ieee.org/wp-content/uploads/sites/7/IEEE-Article-Sharing-and-Posting-Policies.pdf",
+      "method": "curl download; full pypdf text read"
+    },
+    {
+      "claim": "IEEE sharing policy after acceptance and publication",
+      "reported_value": "On acceptance, replace earlier versions with citation+DOI or accepted version+DOI; posted accepted articles need copyright notice; accepted version on personal/employer site, arXiv, TechRxiv, funder repository (24-month embargo unless funder requires less); non-OA VOR may not be posted; CC BY / CC BY-NC-ND gold OA may be posted",
+      "verified_value": "All confirmed from the PDF (it says 'appropriate copyright notice'). The PDF also lets submitted/accepted versions go to institutional repositories if required, classroom use, and STM-Sharing-Principles scholarly collaboration networks.",
+      "status": "confirmed",
+      "source_url": "https://journals.ieeeauthorcenter.ieee.org/wp-content/uploads/sites/7/IEEE-Article-Sharing-and-Posting-Policies.pdf",
+      "method": "Full pypdf text read"
+    },
+    {
+      "claim": "bioRxiv not named by IEEE",
+      "reported_value": "unverified (not named)",
+      "verified_value": "Not named in the Sharing PDF, the Post-Publication Policies page, or the PSPB manual text (no 'bioRxiv' match). Whether it is on the Publishing Ethics Team's approved list is unverified.",
+      "status": "confirmed",
+      "source_url": "https://pspb.ieee.org/images/files/files/opsmanual.pdf",
+      "method": "Text search of all three sources"
+    },
+    {
+      "claim": "bioRxiv accepts computational research",
+      "reported_value": "Full computational papers yes; bare software announcements no",
+      "verified_value": "Confirmed: computational papers are welcome if they are full research papers with methods and results; simple analyses and software announcements without detailed methods and resulting data generally are not. Methods/tools papers are acceptable as complete research articles.",
+      "status": "confirmed",
+      "source_url": "https://www.biorxiv.org/about/FAQ",
+      "method": "curl raw HTML read directly"
+    },
+    {
+      "claim": "OSF registration properties",
+      "reported_value": "Frozen, time-stamped, cannot be edited or deleted; withdrawal keeps metadata and justification; embargo up to 4 years; DOI when public; 48-hour admin approval; templates include Simulation Studies",
+      "verified_value": "All confirmed on the OSF help page. Simulation Studies template follows the ADEMP framework (OSF template DOI 10.17605/OSF.IO/MES3C). DOIs exist only for public registrations. Once public, a registration cannot be re-embargoed. Withdrawal is irreversible. Nuance on 'immutable': OSF has an 'Update' process that appends updates (48-hour admin approval) without changing the original, and submitted documents cannot be modified.",
+      "status": "confirmed",
+      "source_url": "https://help.osf.io/article/158-create-a-preregistration",
+      "method": "curl raw HTML (55 KB text) read via keyword contexts; articles 158 and 330 serve the same content"
+    },
+    {
+      "claim": "OSF help pages do not state a cost",
+      "reported_value": "Cost not stated",
+      "verified_value": "No fee statement found in the retrieved help text; actual cost still unverified.",
+      "status": "unverifiable",
+      "source_url": "https://help.osf.io/article/330-welcome-to-registrations",
+      "method": "curl text keyword search"
+    },
+    {
+      "claim": "Zenodo GitHub integration steps and archive trigger",
+      "reported_value": "Connect GitHub, Sync now, toggle repository; publishing a GitHub release triggers archiving; also archived in Software Heritage; failed releases show errors; validate CITATION.cff with cffconvert",
+      "verified_value": "Confirmed (GitHub in profile menu, Sync now, toggle; create a GitHub release and wait for processing; archival status shown under External resources; debug failed releases via Errors; cff-converter suggested).",
+      "status": "confirmed",
+      "source_url": "https://help.zenodo.org/docs/github/archive-software/github-upload/",
+      "method": "curl raw HTML read directly; enable-repository page via WebFetch"
+    },
+    {
+      "claim": "Zenodo metadata precedence and CFF subset",
+      "reported_value": ".zenodo.json present means CITATION.cff is ignored; subset supported: cff-version, title, version, license, type, abstract, message, authors (given-names, family-names, affiliation, orcid), keywords",
+      "verified_value": "Confirmed verbatim-equivalent. Zenodo still recommends keeping CITATION.cff because GitHub uses it, and says it hopes CFF will eventually make .zenodo.json unnecessary.",
+      "status": "confirmed",
+      "source_url": "https://help.zenodo.org/docs/github/describe-software/citation-file/",
+      "method": "curl raw HTML read directly"
+    },
+    {
+      "claim": "Zenodo per-version identifiers; concept-DOI behaviour",
+      "reported_value": "Each version is a new record with its own PID; concept DOI unverified",
+      "verified_value": "Per-version: confirmed (separate metadata, files and persistent identifier, linked to other versions). Concept DOI: still unverified. The Zenodo developer REST docs show a 'conceptrecid' field and an 'all_versions' parameter, but no 'concept DOI' statement was retrieved.",
+      "status": "confirmed",
+      "source_url": "https://help.zenodo.org/docs/deposit/manage-versions/",
+      "method": "curl raw HTML; curl https://developers.zenodo.org/ searched for conceptdoi/conceptrecid"
+    },
+    {
+      "claim": "Zenodo GitHub integration supports private repositories",
+      "reported_value": "unverified",
+      "verified_value": "unverified; the enable-repository page does not mention private or organisation repositories",
+      "status": "unverifiable",
+      "source_url": "https://help.zenodo.org/docs/github/enable-repository/",
+      "method": "WebFetch"
+    },
+    {
+      "claim": "Citation File Format latest spec release, licence, last push",
+      "reported_value": "1.2.0 published 2021-08-09T17:11:07Z; CC-BY-4.0; last push 2026-01-20",
+      "verified_value": "releases/latest tag 1.2.0 published 2021-08-09T17:11:07Z; releases list: 1.2.0, 1.1.0 (2021-05-12), v0.9-RC1 prerelease (2017-10-06); repository license spdx CC-BY-4.0; pushed_at 2026-01-20T13:06:54Z; default branch main",
+      "status": "confirmed",
+      "source_url": "https://api.github.com/repos/citation-file-format/citation-file-format/releases/latest",
+      "method": "curl GitHub REST API (repo, releases/latest, releases)"
+    },
+    {
+      "claim": "CFF schema.json identity and required keys",
+      "reported_value": "$id https://citation-file-format.github.io/1.2.0/schema.json; draft-07; required authors, cff-version, message, title",
+      "verified_value": "Confirmed from main-branch schema.json: $id .../1.2.0/schema.json; $schema http://json-schema.org/draft-07/schema; required [authors, cff-version, message, title]",
+      "status": "confirmed",
+      "source_url": "https://raw.githubusercontent.com/citation-file-format/citation-file-format/main/schema.json",
+      "method": "curl raw file, JSON parsed"
+    },
+    {
+      "claim": "cffconvert PyPI version",
+      "reported_value": "2.0.0",
+      "verified_value": "2.0.0 is latest on PyPI (files uploaded 2021-09-22); requires_python not set; licence field empty in PyPI info",
+      "status": "confirmed",
+      "source_url": "https://pypi.org/pypi/cffconvert/json",
+      "method": "curl PyPI JSON API"
+    },
+    {
+      "claim": "GitHub CITATION.cff behaviour",
+      "reported_value": "CITATION.cff at root of default branch adds 'Cite this repository' with APA and BibTeX; preferred-citation can point to a paper",
+      "verified_value": "Confirmed; GitHub supports only APA and BibTeX, and also links (without parsing) CITATION, CITATION.bib, CITATION.md and inst/CITATION files.",
+      "status": "confirmed",
+      "source_url": "https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-citation-files",
+      "method": "curl raw HTML read via keyword contexts"
+    },
+    {
+      "claim": "PLOS Computational Biology fee",
+      "reported_value": "$3,165 research article",
+      "verified_value": "$3,165 'Research Article' in the fee block under the PLOS Computational Biology logo; fees are set at the rate effective on the submission date",
+      "status": "confirmed",
+      "source_url": "https://www.plos.org/publication-fees",
+      "method": "curl raw HTML; fee cell read next to the ploscompbiol logo link"
+    },
+    {
+      "claim": "PLOS Computational Biology article types and OA",
+      "reported_value": "Methods and Software article types, both requiring code/data; fully OA",
+      "verified_value": "Confirmed: three research article types (Research, Methods, Software); Methods/Software papers must be of exceptional importance and likely to be widely adopted; data and code availability policies apply to all research articles; CC BY licence.",
+      "status": "confirmed",
+      "source_url": "https://journals.plos.org/ploscompbiol/s/journal-information",
+      "method": "curl raw HTML read via keyword contexts"
+    },
+    {
+      "claim": "JOSS fees and eligibility",
+      "reported_value": "No fees; OSI licence; research impact; feature-complete; at least 6 months public development history; Crossref DOI; Portico; AI usage disclosure required",
+      "verified_value": "All confirmed (diamond OA; OSI-approved licence; at least six months of public history with releases and public issues/PRs; Crossref DOI on acceptance; Portico archiving). The AI disclosure must name tools, where and how they were used, and confirm humans reviewed all AI-assisted output and made the core design decisions. Criteria were updated in 2026 to weight human design thinking and demonstrated research impact.",
+      "status": "confirmed",
+      "source_url": "https://joss.theoj.org/about",
+      "method": "curl raw HTML read via keyword contexts"
+    },
+    {
+      "claim": "ReScience C publishes only replications",
+      "reported_value": "Only replications of published computational research; platinum OA; GitHub open review; not a venue for original methods/software",
+      "verified_value": "Partly corrected. Reproductions are also accepted (title prefix 'Rp', alongside 'Re' for replication, both negatable for failures), and negative results are accepted. Authors may not replicate their own or close collaborators' work. No publication fees; platinum OA. The conclusion stands: not a venue for original NeuroSem methods.",
+      "status": "corrected",
+      "source_url": "https://rescience.github.io/faq/",
+      "method": "curl raw HTML of home, /faq/ and /write/ pages"
+    },
+    {
+      "claim": "eLife model and fee",
+      "reported_value": "Reviewed Preprint with eLife Assessment and public reviews, optional VOR; $3,750, waived for those who cannot pay",
+      "verified_value": "Confirmed; no accept/reject decision after review; fee is paid at the peer-review stage",
+      "status": "confirmed",
+      "source_url": "https://elifesciences.org/about/peer-review",
+      "method": "curl raw HTML read directly"
+    },
+    {
+      "claim": "Frontiers in Neuroinformatics APC tiers; article-type mapping unverified",
+      "reported_value": "A-type CHF 3,150; B-type CHF 2,500; C-type free; tier mapping unverified",
+      "verified_value": "Fees confirmed. Mapping is on the same page: A-type = Original Research, Systematic Review, Methods, Review, Hypothesis and Theory, Technology and Code; B-type = Mini Review, Perspective, Data Report, Brief Research Report, General Commentary, Opinion; C-type = Correction, Editorial. A NeuroSem methods or software paper would be A-type (CHF 3,150). Fee support for low and lower-middle income countries.",
+      "status": "confirmed",
+      "source_url": "https://www.frontiersin.org/journals/neuroinformatics/for-authors/publishing-fees",
+      "method": "curl raw HTML read directly"
+    },
+    {
+      "claim": "Neuroinformatics (Springer) identity and OpenAlex APC",
+      "reported_value": "Springer-Verlag; ISSN 1539-2791/1559-0089; OpenAlex not fully OA, APC 4,890 USD",
+      "verified_value": "Crossref: Neuroinformatics, Springer-Verlag, ISSN 1539-2791 and 1559-0089. OpenAlex: host Springer Science+Business Media, is_oa false, apc 4890 USD / 3790 EUR / 3090 GBP. Publisher-page OA model and article types still unverified.",
+      "status": "confirmed",
+      "source_url": "https://api.openalex.org/sources/issn:1539-2791",
+      "method": "curl Crossref and OpenAlex APIs"
+    },
+    {
+      "claim": "Handoff issue: 'future IEEE CIBCB' is 2027 at earliest and 2027 is unverified",
+      "reported_value": "TIMING: CIBCB 2027 unverified",
+      "verified_value": "CIBCB 2027 is officially announced (Milan, 31 Aug - 3 Sep 2027; full papers due 2 Apr 2027, 8 pages; on-site presentation expected). Any NeuroSem conference plan needs a complete paper by 2 Apr 2027, plus registration and travel to Milan, which conflicts with zero budget. 2027 fees not published on retrieved pages.",
+      "status": "corrected",
+      "source_url": "https://attend.ieee.org/cibcb-2027/important-dates/",
+      "method": "curl raw HTML read directly"
+    }
+  ],
+  "introspection_log": "Method: re-derived every checkable claim independently rather than trusting the report's URLs. Structured sources (Crossref, OpenAlex, GitHub REST, PyPI JSON) were parsed as JSON with python. IEEE PDFs (2026 APC list, Article Sharing and Posting Policies, PSPB Operations Manual amended 25 June 2026) were downloaded with curl and parsed with pypdf/pdfplumber. HTML pages (CIBCB 2026 and 2027 sites, IEEE CIS calendar, IEEE Access, IEEE conference Author Center, OSF help, Zenodo help and developer docs, PLOS, JOSS, ReScience, eLife, Frontiers, bioRxiv FAQ, GitHub docs) were fetched raw with curl and a browser user agent, tags stripped, and read directly, avoiding model summarisation. WebFetch (model-summarised, exact-sentence prompts) was used only where curl was blocked or pages are JS-rendered: embs.org JBHI/TNSRE (curl 403), IEEE journal Author Center policy pages, IEEE Open AI guideline, Zenodo enable-repository/about-records, computer.org CSDL (JS-only, no content). WebSearch was not usable (session search budget exhausted), so no secondary aggregators were consulted. Key adversarial results: (1) the report's claim that no official CIBCB 2027 page exists and that the CIS calendar is blocked is false; the calendar returns 200 to curl with a browser UA (only WebFetch gets 418) and links to an official 2027 site. (2) The report never read the PSPB Operations Manual, whose AI principles section has several obligations missing from the report. (3) JBHI submits via Atypon ReX, not ScholarOne. (4) The TCBB 'tcbbio' DOI pattern is not universal for vol 22. (5) ReScience also accepts reproductions. (6) The Sharing PDF itself names only arXiv/TechRxiv for preprints. Limits: TCBB scope and sponsors, magazine/book AI pages, Zenodo concept DOI and private-repo support, OSF cost, the IEEE approved not-for-profit server list, CIBCB 2027 fees, and the exact TNSRE OA start date remain unverified. WebFetch-derived details (JBHI, TNSRE, IEEE Open date, journal Author Center pages) are model-summarised and were cross-checked only where the same text appears in curl-read or PDF sources. No result claims were written; no held-out data was accessed.",
+  "corrections_summary": "Most of the report holds: APCs, CIBCB 2026 facts, IEEE disclosure/originality/authorship text, OSF, Zenodo CFF precedence, CFF 1.2.0, cffconvert 2.0.0, PLOS/eLife/JOSS/Frontiers fees. Corrections: (1) REJECTED: CIBCB 2027 is not unverified. The IEEE CIS calendar and attend.ieee.org/cibcb-2027 announce the 24th CIBCB at Bocconi University, Milan, 31 Aug - 3 Sep 2027 (main conference 1-3 Sep). Full papers due 2 Apr 2027 (8 pages), notification 21 May, camera-ready 25 Jun 2027, on-site presentation expected, presented papers submitted to IEEE Xplore, EasyChair (TBC). (2) CORRECTED: the PSPB Operations Manual is retrievable, and its 'IEEE Principles of Ethical Use of Artificial Intelligence in Publishing' add obligations beyond the Author Center text: authors check AI output for accuracy and plagiarism; AI tools usable as sources only if independently verified; acknowledgment covers text, images, video, audio, graphics and code; AI-generated simulation data must be labelled; code and data release recommended when AI is the subject; no confidentiality-breaching AI use by referees. No explicit ban on AI authorship exists there either; 8.2.1.A reserves authorship for 'individuals'. (3) CORRECTED: JBHI submission link is Atypon ReX (ieee.atyponrex.com), not ScholarOne. (4) CORRECTED: 10.1109 is the DOI prefix; vol 22 of the renamed TCBB includes legacy 10.1109/tcbb.* DOIs as well as tcbbio. (5) CORRECTED: the IEEE Sharing PDF names only personal/employer sites and arXiv/TechRxiv for preprints; the PSPB-approved server clause is on the web page and in PSPB manual 8.1.9. (6) CORRECTED: ReScience C accepts reproductions as well as replications (still unsuitable for the main paper). (7) Resolved uncertainty: Frontiers A-type tier includes Methods and Technology and Code (CHF 3,150).",
+  "additional_findings": [
+    "IEEE PSPB Operations Manual (amended 25 June 2026), Introduction, 'IEEE Principles of Ethical Use of Artificial Intelligence in Publishing', pp. 5-6: authors are responsible for all content; AI output must be checked for accuracy and plagiarism before submission; AI tools may be cited as sources only if independently verified; acknowledgment covers AI-generated text, images, videos, audio signals, graphics and computer code; language polishing needs no acknowledgment only if meaning and intellectual content are unchanged; AI-generated data simulating a process must be labelled; code and curated data release recommended when an AI tool is the subject. For NeuroSem's agent case study (AI tool as subject), this recommends releasing agent-task code and curated data. https://pspb.ieee.org/images/files/files/opsmanual.pdf",
+    "PSPB manual 8.2.1.B.5: when submitting, authors must disclose prior publication or active consideration elsewhere, and must notify IEEE immediately if they submit to a non-IEEE publication while under IEEE review. 8.2.1.A.4: each part essential to the main conclusions must be the responsibility of at least one author. https://pspb.ieee.org/images/files/files/opsmanual.pdf",
+    "PSPB manual 8.1.9: preprints may be posted on personal sites, employer servers, or approved not-for-profit third-party servers; the IEEE Publishing Ethics Team maintains the approved list and PSPB approves hosts. The list itself was not retrieved, so bioRxiv's status remains unknown. https://pspb.ieee.org/images/files/files/opsmanual.pdf",
+    "CIBCB 2027 (official): 24th IEEE CIBCB, Bocconi University, Milan, Italy; PhD competition/hackathon 31 Aug 2027; main conference 1-3 Sep 2027; special sessions 29 Jan 2027; tutorials 19 Feb 2027; full papers 2 Apr 2027 (at most 8 pages); notification 21 May 2027; short papers 11 Jun 2027 (at most 2 pages); camera-ready and early registration 25 Jun 2027; deadlines 23:59 AoE; EasyChair (TBC); at least one author expected to present on site; accepted and presented papers submitted to IEEE Xplore. https://attend.ieee.org/cibcb-2027/important-dates/ ; https://attend.ieee.org/cibcb-2027/call-for-papers/ ; https://cis.ieee.org/conferences/conference-calendar",
+    "CIBCB 2027 scope keeps 'Modelling, Simulation, and Optimization of Biological Systems' and 'Surrogate Modeling and Representation', now under 'AI/CI in Computational Systems Biology'; a new 'Ethics, Fairness, and Biases' topic appears; neuroscience and software testing are still not named. https://attend.ieee.org/cibcb-2027/scope-topics/",
+    "Tool note: the IEEE CIS calendar returns HTTP 418 to WebFetch but 200 to curl with a browser user agent. Other IEEE 418 'blocks' in the evidence base may also be WebFetch-specific and worth retrying with curl. https://cis.ieee.org/conferences/conference-calendar",
+    "CIBCB 2026 site inconsistency: Important Dates gives early registration 30 Jun 2026, the Registration page uses 3 Jul 2026 as the early-bird cutoff; the 24% VAT applies only when an invoice is requested. https://cibcb2026.dib.uth.gr/important-dates/ ; https://cibcb2026.dib.uth.gr/registration/",
+    "IEEE Xplore about-journal page for TCBB (punumber 8857) still carries the old 'IEEE/ACM' title in its HTML title and meta description on 2026-09-13, while Crossref and the 2026 APC list use the IEEE-only title. Cite the title printed on each article's own metadata. https://ieeexplore.ieee.org/xpl/aboutJournal.jsp?punumber=8857",
+    "OpenAlex merges old and new TCBB ISSNs into one source record (1545-5963, 1557-9964, 2374-0043, 2998-4165). OpenAlex bibliometrics for 'TCBB' therefore span both titles. https://api.openalex.org/sources/issn:2998-4165",
+    "TNSRE OA switch editorial: 'TNSRE Is Flipping to Full Open Access', D. P. Ferris and K. McArthur, IEEE TNSRE vol 28 no 7, July 2020, p. 1510, DOI 10.1109/tnsre.2020.3004668. https://api.crossref.org/works/10.1109/tnsre.2020.3004668",
+    "2026 IEEE APC list page allowances: TNSRE has no overlength charge and allows 30 pages in its first manuscript-type column; JBHI allows 8 regular pages with $250/$350 overlength. Relevant if a long methods paper is planned. https://journals.ieeeauthorcenter.ieee.org/wp-content/uploads/sites/7/IEEE-Article-Processing-Charges-List.pdf",
+    "IEEE Access warns that articles found to contain fabricated content, including nonexistent references, are promptly rejected. This reinforces the handoff's no-fabricated-citations rule for any AI-assisted drafting. https://ieeeaccess.ieee.org/authors/preparing-your-article/",
+    "IEEE conference Author Center: when AI is used for grammar editing, leave the reference section out of the tool's input and always double-check AI results. https://conferences.ieeeauthorcenter.ieee.org/author-ethics/guidelines-and-policies/submission-policies/",
+    "OSF nuance for M8: a submitted registration and its documents cannot be modified, but OSF has a formal 'Update' process that appends updates (48-hour admin approval) without altering the original. Embargoed registrations can be shared for blinded review via anonymised view-only links. A public registration cannot be re-embargoed. https://help.osf.io/article/158-create-a-preregistration",
+    "JOSS AI disclosure must name the tools, say where and how they were used, and state that humans reviewed and validated all AI-assisted output and made the core design decisions. JOSS updated its criteria in 2026 to emphasise human design thinking and demonstrated research impact. https://joss.theoj.org/about",
+    "bioRxiv FAQ: generative-AI use should be detailed in the manuscript like other computational methods, and authors remain accountable for accuracy, integrity and originality. https://www.biorxiv.org/about/FAQ",
+    "ReScience C: authors may not submit replications of their own or close collaborators' research; reproductions (Rp) and failed replications/reproductions are accepted; no publication fees. https://rescience.github.io/faq/ ; https://rescience.github.io/write/",
+    "Frontiers in Neuroinformatics: 'Methods' and 'Technology and Code' are A-type articles (CHF 3,150); fee support for World Bank low and lower-middle income countries. https://www.frontiersin.org/journals/neuroinformatics/for-authors/publishing-fees",
+    "Zenodo developer REST docs expose a 'conceptrecid' field and an 'all_versions' query parameter, indicating a concept-record grouping of versions. An explicit concept-DOI statement was not retrieved. https://developers.zenodo.org/",
+    "JBHI manuscript submission is through Atypon ReX: https://ieee.atyponrex.com/journal/jbhi-embs (link found on https://www.embs.org/jbhi/)."
+  ]
+}

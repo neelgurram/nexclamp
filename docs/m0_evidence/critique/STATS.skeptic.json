@@ -1,0 +1,170 @@
+{
+  "subject": "Adversarial review of statistics and study-design critique issues (STATS.json) against NEUROSEM_CLAUDE_HANDOFF.extracted.md",
+  "checked_on": "2026-09-13",
+  "reviewer_role": "skeptic",
+  "verification_log": [
+    {
+      "claim": "All 24 cited DOIs resolve with matching first author, year and title",
+      "status": "confirmed",
+      "url": "https://api.crossref.org/works/<doi>"
+    },
+    {
+      "claim": "Canay, Santos, Shaikh 2021: the studentized wild bootstrap can over-reject with few clusters",
+      "status": "overstated",
+      "detail": "Abstract: the unstudentized version is valid under homogeneity-like conditions; the studentized version over-rejects only by a small amount that shrinks exponentially with cluster count",
+      "url": "https://api.crossref.org/works/10.1162/rest_a_00887"
+    },
+    {
+      "claim": "Obuchowski 1998: McNemar test size can greatly exceed nominal under intracluster correlation",
+      "status": "confirmed",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?format=json&resultType=core&query=DOI:%2210.1002/(SICI)1097-0258(19980715)17:13%3C1495::AID-SIM863%3E3.0.CO;2-I%22"
+    },
+    {
+      "claim": "Mancl and DeRouen 2001: test size inflated with few clusters; resampling breaks down for binary responses with sparse cells",
+      "status": "confirmed",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?format=json&resultType=core&query=DOI:%2210.1111/j.0006-341X.2001.00126.x%22"
+    },
+    {
+      "claim": "Papadakis et al. 2016: Type I errors from subsumed mutants",
+      "status": "confirmed",
+      "url": "https://api.openalex.org/works/doi:10.1145/2931037.2931040"
+    },
+    {
+      "claim": "OSF registrations cannot be edited, only withdrawn; a Simulation Studies template exists",
+      "status": "partly wrong",
+      "detail": "Frozen/not editable and the Simulation Studies template are confirmed, but the same page documents an 'Update a registration' process",
+      "url": "https://help.osf.io/article/158-create-a-preregistration"
+    },
+    {
+      "claim": "eFEL interp_step default is 0.1",
+      "status": "confirmed",
+      "url": "https://raw.githubusercontent.com/openbraininstitute/eFEL/master/efel/settings.py"
+    },
+    {
+      "claim": "LEMS Meta method settings may be no-ops in jLEMS",
+      "status": "partly wrong (per M0 source reading, not executed)",
+      "detail": "'eulertree' selects the unflattened path; see SWT.skeptic.json",
+      "url": "https://raw.githubusercontent.com/LEMS/jLEMS/development/src/main/java/org/lemsml/jlems/core/sim/Sim.java"
+    },
+    {
+      "claim": "OMV canonical tests are spike-time checks with hand-set tolerances",
+      "status": "confirmed; 'fails on any spike-count change' not checked (unverified)",
+      "url": "https://raw.githubusercontent.com/OpenSourceBrain/osb-model-validation/master/utilities/tests/.test.ex9.pylems.omt"
+    },
+    {
+      "claim": "Pospischil RS, LTS and IB share the Na, Kd, IM and Leak channel files at one commit",
+      "status": "confirmed from M0 fixture verification (docs/m0_evidence/fixtures/fixture_verify.json)",
+      "url": "https://github.com/OpenSourceBrain/PospischilEtAl2008/tree/049081c39357d9e7c478b63ef7b10f374d1c50f4/NeuroML2/channels"
+    },
+    {
+      "claim": "Arithmetic in STATS-03, 04, 05, 07, 09 and 11",
+      "status": "all recomputed and confirmed (Python; scipy beta quantiles for Clopper-Pearson)"
+    }
+  ],
+  "handoff_readings": [
+    "The Statistics section already requires a CI that resamples base models and says to account for clustering, which partly addresses STATS-02.",
+    "Reproducibility is made operational by the h, h/2, h/4 refinement steps and the M2 rerun tests, which contradicts STATS-01(c).",
+    "Leakage prevention says held-out models cannot influence protocol selection or thresholds, which conflicts with a full nested leave-one-group-out in STATS-03.",
+    "The Solo-scope pilot (2 models, 5-10 mutants per model) and M6 (2-6 models, 20-60 mutants) are genuinely inconsistent."
+  ],
+  "verdicts": [
+    {
+      "id": "STATS-01",
+      "verdict": "softened",
+      "revised_severity": "high",
+      "reason": "Correct that admissibility is labelled by the same battery, features and frozen tolerances, so the exhaustive battery scores 100% by definition. Absolute rates (RQ1, per-strategy detection rates) are recall relative to the candidate pool, shift with pool size (pilot 4 vs full 10-16 protocols), and shift with tolerance in sensitivity analyses. Consequences (a), (b), (d) and (e) are real. Critical overstates it. The primary paired contrasts (selected vs canonical, selected vs random) are not biased by this conditioning: every strategy misses the mutants no candidate protocol detects, so dropping them changes only the denominator, not the count of discordant pairs. The Kriegeskorte double-dipping analogy therefore fits the absolute rates but is a stretch for the contrast. Consequence (c) misreads the handoff: 'reproducible' is made operational by its h/h/2(/h/4) refinement rule and the M2 rerun tests, so it is not meaningless for a deterministic simulator, though it should be written down. Recommendation (3) is impractical as a mandatory oracle: any frozen oracle set is also finite, and trace-level metrics at h/4 tend to flag numerical noise. Citations verified via Crossref: Kriegeskorte 2009; Papadakis et al. ISSTA 2016 (the OpenAlex abstract reports Type I errors from mixing subsuming and subsumed mutants); Madeyski et al. TSE 2014.",
+      "revised_recommendation": "(1) Label the endpoint as detection relative to the full candidate battery, and present that battery as the labelling ceiling, not a competitor. (2) Report each primary contrast as a paired count difference as well as a rate, and report the full validation cascade: all generated -> invalid -> non-executable -> unstable -> equivalent-within-pool -> admissible. (4) Define reproducible divergence operationally as a same-sign tolerance exceedance at h and h/2 (h/4 when practical), plus a byte-identical rerun check. (5) In tolerance sensitivity, report both a fixed denominator (classified at the primary tolerance) and a re-derived one. (6) State whether canonical is a candidate column and whether it is forced into the selected set. (3) An independent frozen oracle protocol set, excluded from selection, is optional and exploratory. If used, score it with the same feature and tolerance rule, not raw trace metrics."
+    },
+    {
+      "id": "STATS-02",
+      "verdict": "softened",
+      "revised_severity": "high",
+      "reason": "The lineage point is verified and project-specific. The M0 fixture verification shows that RS, LTS and IB, at one PospischilEtAl2008 commit, share the Na, Kd, IM and Leak channel files, so a channel-level mutant is nearly the same experiment in sibling cells. The estimand ambiguity (pooled mutant-level vs equal-weight per-model) is also real, because the number of admissible mutants per model depends on the outcome. Critical overstates it: the handoff already requires a CI that resamples base models and says to account for clustering, and no held-out split exists yet, so a grouping rule in the manifest fixes it cheaply before M7. Lineage grouping also reduces the number of independent held-out units, which makes STATS-03 worse. Roberts et al. 2017 (Ecography) and Kapoor and Narayanan 2023 (Patterns) resolve on Crossref.",
+      "revised_recommendation": "Adopt as written, with two additions: (a) define group_id before any split and hash it with the split files; (b) if grouping leaves fewer than about 4 held-out groups, say so explicitly and treat held-out results as descriptive (see STATS-03). Keep pilot fixtures discovery-only."
+    },
+    {
+      "id": "STATS-03",
+      "verdict": "softened",
+      "revised_severity": "high",
+      "reason": "Arithmetic verified in Python. Distinct cluster-bootstrap resamples, C(2n-1,n): 35, 126 and 462 for n=4, 5 and 6. Probability of one cluster repeated n times, n/n^n: 1.6% at n=4. Minimum exact sign-flip p, one-sided 1/2^n: 0.0625, 0.03125 and 0.0156, with two-sided values double that. A design effect of 1+9*0.3 = 3.7 gives an effective size of about 16 from 60 mutants. The conclusion that the held-out comparison is severely under-resourced is right. 'Infeasible' and critical overstate it: the primary hypothesis is directional, so a preregistered one-sided exact sign-flip test can reach p<0.05 at n=5 or n=6 if all units agree. Only n=4 (or fewer groups after lineage grouping) cannot. One citation is characterised too strongly. The Canay, Santos and Shaikh (2021) abstract says an unstudentized version can be valid with few clusters under homogeneity-like conditions, and that the studentized version over-rejects only by a small amount that shrinks exponentially with the number of clusters. The recommended nested leave-one-group-out over all 12-16 models conflicts with the handoff's leakage rule that held-out models cannot influence protocol selection or thresholds, because lockbox models would be used for selection in other folds.",
+      "revised_recommendation": "Treat the lockbox held-out comparison as estimation plus a preregistered one-sided exact sign-flip test on per-unit paired differences, with the minimum attainable p stated in advance. Always show every unit's difference and the k-of-n sign count. Prefer at least 6 held-out groups. Run leave-one-group-out selection only within discovery groups, before the lockbox is opened, as an estimate of optimism and stability. A full 12-16-model leave-one-group-out may run only after the frozen primary lockbox analysis is complete, and is reported as secondary. Wild cluster bootstrap and mixed models are sensitivity analyses only. After the pilot, run a simulation-based precision analysis over plausible per-unit effects and ICCs, not a power calculation from pilot effect sizes."
+    },
+    {
+      "id": "STATS-04",
+      "verdict": "upheld",
+      "revised_severity": "high",
+      "reason": "Verified: the Obuchowski (Stat Med 1998) abstract on Europe PMC says McNemar's test size can greatly exceed nominal under intracluster correlation. Eliasziw and Donner 1991, Durkalski et al. 2003 and Fagerland et al. 2013 resolve on Crossref; the Fagerland title recommends mid-p over exact. The structural degeneracy is correct and project-specific. The handoff does not say whether canonical is in the selected battery. If it is, one discordant cell is zero and the two-sided exact p is 2*0.5^c (0.03125 for c=6, computed), which only restates RQ1. Augment vs replace is a genuine open choice for Neel.",
+      "revised_recommendation": ""
+    },
+    {
+      "id": "STATS-05",
+      "verdict": "upheld",
+      "revised_severity": "high",
+      "reason": "The handoff says each valid transformation is verified with structural inspection and a high-resolution exhaustive battery before inclusion. Transformations the battery flags are therefore filtered out, which biases the false-positive estimate towards zero and partly guarantees the 'low, transparent false positives' criterion. Clopper-Pearson upper bounds recomputed: 0/6 -> 0.459, 0/24 -> 0.142, 0/40 -> 0.088. The point that formatting and comment changes are likely bit-identical, and so uninformative, is sound and project-specific. Clopper and Pearson 1934 and Hanley 1983 resolve on Crossref. The recommendation keeps a legitimate role for adjudication (a transformer bug is not a false positive), so it is practical.",
+      "revised_recommendation": ""
+    },
+    {
+      "id": "STATS-06",
+      "verdict": "softened",
+      "revised_severity": "high",
+      "reason": "Upheld in substance. The primary comparison must keep the feature set, tolerance rule, undefined-feature rule and aggregation fixed, so the protocol set is the only difference, and the handoff does not define the canonical baseline. Verified that existing OMV tests are per-observable spike-time checks with hand-set tolerances: .test.ex9.pylems.omt uses derivative spike detection with tolerance 0.004099, and analyzer.py compares arrays against the tolerance (default 0.1 when none is given). The claim that OMV tests fail on any spike-count change was not checked in compare_arrays here (unverified). The multiplicity framing is partly misapplied. jNeuroML runs are deterministic, so tolerance exceedances are not independent random draws, and a Bonferroni-like widening of tolerances with cell count has no sampling-error justification. The real risk is more chances for deterministic numerical artefacts, which false-positive probes measure directly.",
+      "revised_recommendation": "Keep the identical-oracle rule. Keep a preregistered canonical-protocol rule as primary, for example the source repository's reference current step scored with NeuroSem features and tolerances. Keep each model's existing OMV test run as-is as a secondary 'conventional practice' baseline. For every strategy, report detection alongside false positives on valid transformations and numerical null pairs (a detection vs false-positive plot), plus the number of protocol-feature cells. Drop the Bonferroni-like tolerance widening. If a multiplicity-style check is wanted, add a sensitivity analysis that restricts every strategy to the same fixed feature subset per protocol."
+    },
+    {
+      "id": "STATS-07",
+      "verdict": "softened",
+      "revised_severity": "medium",
+      "reason": "Arithmetic verified: C(10,4)=210, C(12,4)=495, C(16,4)=1820 and C(15,3)=455, so exact enumeration is cheap and better than Monte Carlo sampling. The unspecified items are real gaps: canonical inclusion, treatment of the baseline and rheobase-search prerequisites, cost unit, runtime band, tie handling, and how protocol-choice and model-sampling variability are combined. Phipson and Smyth 2010 and Yoo and Harman 2012 resolve on Crossref. Severity lowered: these are specification details for M7, not design flaws, and they do not threaten validity if written down before held-out access.",
+      "revised_recommendation": ""
+    },
+    {
+      "id": "STATS-08",
+      "verdict": "upheld",
+      "revised_severity": "high",
+      "reason": "Gaps verified in the handoff. No mutation magnitudes are given. 'Carefully curated admissible mutants' leaves room for outcome-informed curation. Coverage counts are small integers, but the greedy rule has no tie-break. The objective counts mutants, so models with more admissible mutants dominate. Nemhauser, Wolsey and Fisher 1978 and Varma and Simon 2006 resolve on Crossref. The handoff also says to reduce mutant count before sacrificing curation, so curation stays important. The recommendation is compatible with that: scientific judgment goes into designing the grid, not into selection after results are seen.",
+      "revised_recommendation": ""
+    },
+    {
+      "id": "STATS-09",
+      "verdict": "upheld",
+      "revised_severity": "high",
+      "reason": "Arithmetic verified: with an even spread, about 3.1 to 13.3 held-out-family mutants land on held-out models. Clopper-Pearson intervals: 6/8 -> 0.35-0.97 and 3/4 -> 0.19-0.99. The handoff only says to hold out at least one entire family. It does not say which family, when it is chosen, or whether its mutants are also evaluated on discovery models, so RQ5 is underpowered and depends on that choice.",
+      "revised_recommendation": ""
+    },
+    {
+      "id": "STATS-10",
+      "verdict": "softened",
+      "revised_severity": "medium",
+      "reason": "The main argument holds for integration-step mutants: the tolerance includes c|f_h - f_h/2|, so whether a dt mutant is detected is governed by c and the dt multiplier. The eFEL interp_step default of 0.1 is verified in efel/api.py and efel/settings.py (openbraininstitute/eFEL master), so output-sampling mutants interact with extraction settings. One supporting claim leans the wrong way. The M0 source reading (recorded in SWT.skeptic.json) found that a LEMS Meta method of 'eulertree' switches jLEMS to the unflattened tree and a different advance path, so solver-configuration mutants are not all no-ops (source reading only, not executed). The circularity also does not apply to spatial-discretization mutants, which the tolerance rule does not calibrate.",
+      "revised_recommendation": "Report integration-step and output-sampling mutants as a separate numerical-configuration sensitivity analysis, excluded from the primary pooled denominator and not eligible as the held-out family. Preregister dt multipliers outside the calibration span, and output-sampling intervals fixed in advance rather than defined by feature corruption. In M1, verify by execution which Meta method values change jLEMS output (for example eulertree vs the default) before generating solver-configuration mutants. Treat spatial-discretization mutants (multicompartment models only) separately."
+    },
+    {
+      "id": "STATS-11",
+      "verdict": "upheld",
+      "revised_severity": "high",
+      "reason": "Verified against the handoff. Pilot success needs only 'at least one' canonical-silent mutant detected elsewhere, and 'acceptable false positives' has no threshold. Solo scope says 2 models with 5-10 mutants per model, while M6 says 2-6 models and 20-60 mutants, a genuine inconsistency. Clopper-Pearson upper bounds computed: 0/4 -> 0.602, 0/6 -> 0.459. The trivial-pass examples are plausible: a stimulus mutation on a non-canonical protocol is silent under canonical by construction. Leon, Davis and Kraemer 2011, Kraemer et al. 2006 and Avery et al. 2017 resolve on Crossref. The recommended progression criteria are practical for a solo project.",
+      "revised_recommendation": ""
+    },
+    {
+      "id": "STATS-12",
+      "verdict": "upheld",
+      "revised_severity": "high",
+      "reason": "Verified. The handoff names a primary outcome but gives no primary k (only the example '--budget 4'), no primary tolerance setting and no multiplicity strategy. Success is judged by 'most of' nine criteria, and the pivot conditions are qualitative. The detection-versus-cost curve is a real forking path for choosing k. Bretz et al. (Stat Med, graphical approach) and Nosek et al. 2018 (PNAS) resolve on Crossref. The fixed-sequence hierarchy is simple and appropriate.",
+      "revised_recommendation": ""
+    },
+    {
+      "id": "STATS-13",
+      "verdict": "softened",
+      "revised_severity": "high",
+      "reason": "The timing problem is real and project-specific. Classifying held-out mutants requires the full candidate battery, which exposes every strategy's held-out outcome, and several decisive items are missing from the handoff's preregistration list. One platform claim is inaccurate. The OSF help page (https://help.osf.io/article/158-create-a-preregistration) does describe a registration as a frozen version that cannot be edited or deleted, only withdrawn, and lists a Simulation Studies template. It also documents an 'Update a registration' process for transparently recording necessary design changes. So the content need not be perfect at registration, although updates are visible and should be rare. Morris, White and Crowther 2019 resolves on Crossref. The two-stage plan fits the handoff's M7/M8 order and OSF's update mechanism.",
+      "revised_recommendation": "Keep the two-stage plan. (1) Design registration at the M6/M7 boundary, before any held-out mutant is generated, containing every listed item. (2) Before held-out classification, a time-stamped OSF update or addendum with the frozen tolerance constants, the selected battery and its hash, and the enumerated random baselines. Run held-out classification and all strategy evaluations in one automated, logged pass. Record any later deviation as an OSF registration update and as a dated DECISIONS.md entry."
+    },
+    {
+      "id": "STATS-14",
+      "verdict": "upheld",
+      "revised_severity": "medium",
+      "reason": "The handoff says to normalise principal depolarising tests to model-specific rheobase, but not whether a mutant uses its own rheobase or the reference's. Using the mutant's own rheobase would give the reference and mutant different stimuli and partly mask excitability faults. Search resolution, cost accounting and the no-spike case are unspecified. The handoff lists rheobase as a feature, but per the M0 eFEL audit it is not an eFEL trace feature. The M0 SciUnit/NeuronUnit audit records NeuronUnit's RheobaseTest as prior art. Medium severity is appropriate.",
+      "revised_recommendation": ""
+    }
+  ]
+}

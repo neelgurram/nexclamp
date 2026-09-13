@@ -1,0 +1,25 @@
+schema: neurosem-agent-task/1
+task_id: t09_behaviour_diagnosis
+type: diagnose_behaviour_change
+base_model: pospischil2008_rs
+title: Diagnose why the schema-valid RS cell changed its firing
+# Seeded fault: delayed-rectifier reversal potential shifted by +10 mV (-100 mV -> -90 mV).
+# Pre-check on this machine (jNeuroML 0.14.0, direct XML edit): the cell validates, the shipped
+# simulation runs and still fires 5 spikes, but the 5th spike moves from about 593 ms to about
+# 617 ms.
+seeded_fault:
+  description: Kd_all erev shifted by +10 mV (-100 mV -> -90 mV)
+  steps:
+    - registry: mutations
+      operator: shift_reversal
+      site: {file: NeuroML2/cells/RS/RS.cell.nml, locator_contains: Kd_all}
+      params: {shift_mV: 10.0}
+  expected_after:
+    - file: NeuroML2/cells/RS/RS.cell.nml
+      xpath: "//channelDensity[@id='Kd_all']"
+      attribute: erev
+      si_value: -0.09
+allowed_files: []
+answer_files:
+  - diagnosis.yaml
+budget: {max_turns: 80, max_wall_clock_minutes: 60, max_cost_usd: 15.0}

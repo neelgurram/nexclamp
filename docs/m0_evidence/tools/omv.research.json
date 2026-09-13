@@ -1,0 +1,350 @@
+{
+  "tool": "Open Source Brain Model Validation (OMV); PyPI distribution OSBModelValidation; GitHub OpenSourceBrain/osb-model-validation; CLI command 'omv'",
+  "summary": "OMV is an LGPL-3.0-only Python CLI framework (latest 0.4.0, released 2026-06-05) that runs a NeuroML/LEMS (or native simulator) target file on a named engine and compares a few observables from the saved output against expected values stored in a YAML .mep file, with a per-observable tolerance given in a YAML .omt file. Observables are spike times, spike rate, resting potential, input resistance, whole timeseries, total morphology area, temperature, activation-variable checks and a dry run. The tolerance is passed straight into numpy.allclose as rtol, so it is relative to the expected values, with numpy's default atol of 1e-8; arrays of different lengths always fail. There are 38 registered engines, including jNeuroML, jNeuroML_NEURON, NEURON, PyNEURON, Brian2, jNeuroML_Brian2, NEST, PyNEST, NetPyNE, EDEN, Arbor, MOOSE, PyLEMS and PyNN variants. OSB model repositories run 'omv all -V --engine=<engine>' in a GitHub Actions matrix (omv-ci.yml). OMV already gives NeuroSem saved-output spike-time and spike-rate regression with tolerance, an executability dry run, engine version pinning and install, and an established CI pattern; NeuroSem should reuse these rather than rebuild them. OMV does not provide stimulus protocol generation, rheobase search, eFEL-style features, multi-protocol perturbation fingerprints, tolerance calibration by numerical refinement, mutation operators or classification, valid-transformation controls, detection matrices, protocol selection, random baselines, held-out splits or run-level provenance. On Windows 11 in this session, OMV installed and a PyLEMS_NeuroML2 test passed, but only from PowerShell with HOME set, the venv Scripts folder on PATH and PYTHONIOENCODING=utf-8. 'omv validate-mep' is broken in the 0.4.0 wheel (schema type files are not packaged) and 'omv validate-omt' is not implemented. Side effect: OMV's automatic engine install cloned the NeuroML2 repository into C:/Users/gurra/NeuroML2, outside the scratch folder; it was not deleted.",
+  "latest_version": "0.4.0",
+  "latest_release_date": "2026-06-05",
+  "license_spdx": "LGPL-3.0-only",
+  "license_source_url": "https://github.com/OpenSourceBrain/osb-model-validation/blob/master/LICENSE.lesser",
+  "python_requires": "Not declared: PyPI info.requires_python is null and the 0.4.0 wheel METADATA has no Requires-Python line. Trove classifiers list Python 3.9, 3.10, 3.11, 3.12 and 3.13; the OMV repository CI tests Python 3.12 only. v0.4.0 removed the remaining Python 2 compatibility branches.",
+  "other_runtime_requirements": "install_requires: PyYAML, numpy, pyrx, docopt (plus pathlib for Python <3.4 and importlib-metadata for Python <3.8). Simulators are external and installed per engine. The jNeuroML engine runs the 'jnml' executable found via JNML_HOME or PATH; jNeuroML needs Java, which is not installed on this machine, so that engine was not exercised. Its install path installs pyNeuroML, and getjnml.py downloads jNeuroML.zip with wget and unzip, defaulting to v0.14.0 in that code. PyLEMS_NeuroML2 needs pylems plus a git clone of NeuroML/NeuroML2 into $HOME/NeuroML2. NEURON, Brian2, NEST, NetPyNE, EDEN, Arbor, MOOSE and similar engines need their own packages. If an engine is missing when a test runs, OMV tries to install it automatically (pip, git clone, downloads into home directories); open issue #74 asks it to stop doing this silently. OMV's own CI also pip-installs scipy, sympy, matplotlib, cython<3.1.0, pandas and tables, and pins setuptools==80 for EDEN on Python 3.12.",
+  "maintenance_status": "Actively maintained. PyPI releases 0.3.2 through 0.3.10 span 2024-06 to 2025-07, 0.3.11 is 2026-03-20 and 0.4.0 is 2026-06-05. Last commit on master is 2026-07-21 (a dependabot merge); repository pushed_at is 2026-08-17; not archived; created 2014-04-16. CI runs on push, on pull requests and on a monthly cron. There are 14 open issues, most from 2014-2015, including #3 add unit parsing, #28 document mep/omt elements, #41 serialize the tally, #42 implement omt validation, #74 no silent downloads and #119 update autogen. The maintainer-listed authors are Boris Marin and Padraig Gleeson.",
+  "windows_support": "Not officially tested on Windows. The package classifier says 'Operating System :: OS Independent', but OMV's CI matrix runs only on ubuntu-22.04, and the example OSB workflow (ACnet2) runs on ubuntu-22.04 and macos-latest. Observed in this session on Windows 11 with Python 3.12 in a venv: 'pip install OSBModelValidation==0.4.0', 'omv --version' and 'omv list' all worked. 'omv test .test.ex9.pylems.omt' (engine PyLEMS_NeuroML2) failed in three ways, each with a different fix: (a) under PowerShell without HOME set, OMV crashed at import with KeyError 'HOME', raised in omv/engines/getnml2.py; (b) under Git Bash, the engine subprocess raised WinError 2 (file not found) even though pylems.exe ran fine directly (root cause not isolated); (c) printing the pass/fail check mark raised UnicodeEncodeError on a cp1252 console unless PYTHONIOENCODING=utf-8. With HOME set, the venv Scripts folder on PATH and UTF-8 output, under PowerShell, both experiments (V and W spike times) passed with exit code 0. The jNeuroML auto-installer uses wget and unzip, which Windows does not ship by default. Recommendation: run OMV in Linux CI or a Linux container, not natively on Windows.",
+  "facts": [
+    {
+      "claim": "PyPI distribution name and latest version",
+      "value": "OSBModelValidation 0.4.0; wheel osbmodelvalidation-0.4.0-py3-none-any.whl uploaded 2026-06-05T09:08:03Z; sdist uploaded 2026-06-05T09:08:04Z",
+      "source_url": "https://pypi.org/pypi/OSBModelValidation/json",
+      "primary_source": true,
+      "how_verified": "curl of the PyPI JSON API; parsed info.version, the urls list and upload times for every release; also installed 0.4.0 into a scratch venv and ran 'omv --version', which printed 'OpenSourceBrain Model Validation 0.4.0'"
+    },
+    {
+      "claim": "Release history (most recent 10 PyPI releases)",
+      "value": "0.2.22 (2024-06-11), 0.3.2 (2024-06-18), 0.3.3 (2024-08-19), 0.3.5 (2025-02-12), 0.3.7 (2025-06-10), 0.3.8 (2025-06-13), 0.3.9 (2025-07-17), 0.3.10 (2025-07-19), 0.3.11 (2026-03-20), 0.4.0 (2026-06-05)",
+      "source_url": "https://pypi.org/pypi/OSBModelValidation/json",
+      "primary_source": true,
+      "how_verified": "Sorted the earliest upload_time_iso_8601 per release from the PyPI JSON; matched against GitHub release tags and published_at dates from the releases API"
+    },
+    {
+      "claim": "GitHub release v0.4.0 publication date and contents",
+      "value": "Published 2026-06-05T09:07:29Z. Release notes list: removed Python 2 compatibility branches (PR #154), added dependabot (#155), removed brian1 features, updated README and added the --exit-zero option (#158)",
+      "source_url": "https://api.github.com/repos/OpenSourceBrain/osb-model-validation/releases",
+      "primary_source": true,
+      "how_verified": "curl of the GitHub REST releases endpoint; read tag_name, published_at and body (paraphrased)"
+    },
+    {
+      "claim": "License declared in package metadata",
+      "value": "LGPL-3.0-only (setup.cfg license field and PyPI info.license); classifier 'License :: OSI Approved :: GNU Lesser General Public License v3 (LGPLv3)'; the wheel METADATA also says License: LGPL-3.0-only with License-File LICENSE.lesser",
+      "source_url": "https://raw.githubusercontent.com/OpenSourceBrain/osb-model-validation/master/setup.cfg",
+      "primary_source": true,
+      "how_verified": "Downloaded setup.cfg from GitHub raw; cross-checked the PyPI JSON info.license and grepped the installed wheel's dist-info METADATA"
+    },
+    {
+      "claim": "Repository license file and GitHub license detection",
+      "value": "LICENSE.lesser holds the GNU LGPL version 3 (29 June 2007) text; the GitHub license API detects lgpl-3.0 (spdx_id 'LGPL-3.0'). No separate GPL-3.0 text file appears in the repository tree.",
+      "source_url": "https://api.github.com/repos/OpenSourceBrain/osb-model-validation/license",
+      "primary_source": true,
+      "how_verified": "curl of the GitHub license endpoint and the recursive git tree; read the header of LICENSE.lesser via raw.githubusercontent.com"
+    },
+    {
+      "claim": "Python version requirement",
+      "value": "requires_python is null; no Requires-Python in the wheel METADATA; classifiers list 3.9-3.13",
+      "source_url": "https://pypi.org/pypi/OSBModelValidation/json",
+      "primary_source": true,
+      "how_verified": "PyPI JSON info.requires_python and info.classifiers; grep of the installed dist-info METADATA"
+    },
+    {
+      "claim": "Runtime Python dependencies",
+      "value": "PyYAML, numpy, pyrx, docopt; pathlib for python_version<3.4; importlib-metadata for python_version<3.8",
+      "source_url": "https://pypi.org/pypi/OSBModelValidation/json",
+      "primary_source": true,
+      "how_verified": "PyPI JSON info.requires_dist; matched setup.cfg install_requires"
+    },
+    {
+      "claim": "Repository activity status",
+      "value": "default_branch master; created 2014-04-16; pushed_at 2026-08-17T13:41:07Z; last commit on master 363fc3c on 2026-07-21 (merge of the dependabot bump of actions/setup-python to v7); archived false; 14 open issues",
+      "source_url": "https://api.github.com/repos/OpenSourceBrain/osb-model-validation",
+      "primary_source": true,
+      "how_verified": "curl of the GitHub repository and commits endpoints"
+    },
+    {
+      "claim": "Open issues relevant to NeuroSem",
+      "value": "#3 add unit parsing (2014); #6 bound checks for activation variables and concentrations (2014); #28 document mep/omt elements (2014); #41 serialize the tallyman (2014); #42 update schemas and implement omt validation (2014); #74 do not silently download missing bits into hard-coded default locations (2021); #119 update autogen (2024)",
+      "source_url": "https://api.github.com/repos/OpenSourceBrain/osb-model-validation/issues?state=open&per_page=20",
+      "primary_source": true,
+      "how_verified": "curl of the GitHub issues endpoint (state=open); read numbers, dates and titles"
+    },
+    {
+      "claim": "What OMV is, according to its README",
+      "value": "Tools for automated model validation in Open Source Brain projects; tests model behaviour on many simulation engines, both locally and on GitHub Actions on every commit. Two files are needed: a Model Emergent Properties (.mep) file and an OSB Model Test (.omt) file.",
+      "source_url": "https://github.com/OpenSourceBrain/osb-model-validation/blob/master/README.md",
+      "primary_source": true,
+      "how_verified": "Downloaded README.md from GitHub raw and read it in full (paraphrased)"
+    },
+    {
+      "claim": ".mep file format",
+      "value": "YAML with a top-level 'system' string and an 'experiments' map. Each named experiment has an 'expected' map of observable name to expected value: a literal number, a list of numbers, or a data-file reference. Example: fhn.mep has one experiment, 'experiment 1, free run', listing 11 expected spike times. The Rx schema (omv/schemata/types/experiment.yaml) also defines a 'protocol' entry (a map or a string), but the example MEPs omit it and OMV never uses it to generate stimuli.",
+      "source_url": "https://raw.githubusercontent.com/OpenSourceBrain/osb-model-validation/master/omv/schemata/mep.yaml",
+      "primary_source": true,
+      "how_verified": "Read mep.yaml and the types/*.yaml schema files; read the example MEPs utilities/tests/.test.ex5.mep and .test.ex9.mep, and fhn.mep from the OpenSourceBrain/FitzHugh-Nagumo repository"
+    },
+    {
+      "claim": ".omt file format",
+      "value": "YAML with target (the LEMS or simulator file to run; several space-separated files allowed), engine (an OMV engine name), mep (relative path to the .mep) and experiments. Each experiment name must match one in the .mep and holds observables. A spike-times observable takes file: {path, columns, scaling, header} or 'spiketimes file': {path, format ID_TIME | TIME_ID | ID_TIME_NEST_DAT, ids, scaling}, an optional 'spike detection': {method threshold | derivative, threshold}, and tolerance. A spike-rate observable adds method 'isi based' | 'duration based' with start_time and end_time. An .omt with no mep key becomes a dry run that only checks the engine executes.",
+      "source_url": "https://raw.githubusercontent.com/OpenSourceBrain/osb-model-validation/master/omv/omt_mep_parser.py",
+      "primary_source": true,
+      "how_verified": "Read omt_mep_parser.py, spikes.py and filenode.py; read the example OMTs utilities/tests/.test.ex5.jnml.omt, .test.ex9.jnmlnrn.omt, .test.ex9.pylems.omt and spikes/.test.tests.jnml.omt, and the README's FitzHugh-Nagumo examples"
+    },
+    {
+      "claim": "Observables OMV can test (analyzer registry)",
+      "value": "spike times, spike rate, dry, resting, morphology, temperature, activation variables, input resistance, timeseries",
+      "source_url": "https://raw.githubusercontent.com/OpenSourceBrain/osb-model-validation/master/omv/analyzers/__init__.py",
+      "primary_source": true,
+      "how_verified": "Read the OMVAnalyzers dictionary in omv/analyzers/__init__.py; the base-observables schema lists resting, morphology (total area, number of cells), temperature, spike times, dry and activation variables"
+    },
+    {
+      "claim": "Tolerance semantics",
+      "value": "OMVAnalyzer reads float(observable['tolerance']) and defaults to 0.1 if it is missing. compare_arrays calls numpy.allclose(observed, expected, tolerance), so the tolerance is rtol relative to |expected| with numpy's default atol=1e-8. Arrays of different lengths (for example one extra spike) return False regardless of tolerance. On failure, or on a pass, OMV prints a suggested 'better tolerance' equal to max(|obs-exp|/|exp|).",
+      "source_url": "https://raw.githubusercontent.com/OpenSourceBrain/osb-model-validation/master/omv/analyzers/utils/timeseries.py",
+      "primary_source": true,
+      "how_verified": "Read analyzer.py and utils/timeseries.py; confirmed the numpy.allclose signature on numpy docs; ran compare_arrays in the 0.4.0 venv with numpy 2.5.3: [105,210] vs [100,200] passes at tol 0.05 and fails at 0.01; a 3-spike vs 2-spike train fails even at tol 1.0; observed 1e-3 vs expected 0.0 fails at tol 0.5 (suggested tolerance inf); scalar 21 vs 20 passes at tol 0.1"
+    },
+    {
+      "claim": "numpy.allclose signature and asymmetry",
+      "value": "allclose(a, b, rtol=1e-05, atol=1e-08, equal_nan=False); the test is absolute(a - b) <= atol + rtol * absolute(b), which the docs state is not symmetric in a and b",
+      "source_url": "https://numpy.org/doc/stable/reference/generated/numpy.allclose.html",
+      "primary_source": true,
+      "how_verified": "WebFetch of the official NumPy docs page (v2.5 docs); behaviour matched the local probe with numpy 2.5.3"
+    },
+    {
+      "claim": "Spike detection methods",
+      "value": "'threshold': indices where v[i] <= threshold and v[i+1] > threshold, reported as the sample time at i+1 with no interpolation; default threshold 0. 'derivative': local maxima found from sign changes of the discrete derivative; a source comment says this is only reliable for noiseless traces. Any other method prints a not-implemented message and returns no spikes.",
+      "source_url": "https://raw.githubusercontent.com/OpenSourceBrain/osb-model-validation/master/omv/analyzers/utils/timeseries.py",
+      "primary_source": true,
+      "how_verified": "Read the detect_spikes and spikes_from_timeseries source"
+    },
+    {
+      "claim": "Output-file freshness check",
+      "value": "Analyzers record the output file's modification time before the engine runs. If the file does not exist, or its mtime has not changed after the run, OMV reports an error and the observable fails. A stale saved trace therefore cannot silently pass.",
+      "source_url": "https://raw.githubusercontent.com/OpenSourceBrain/osb-model-validation/master/omv/analyzers/utils/filenode.py",
+      "primary_source": true,
+      "how_verified": "Read filenode.py (has_changed compares getmtime with the timestamp stored at construction) and spikes.py; observed 'ERROR! Datafile ex9.dat does not exist' in a Windows run where the engine failed"
+    },
+    {
+      "claim": "Other analyzers: resting and timeseries",
+      "value": "resting: an explicit number, or the mean of the last N samples of a file column ('average last'). timeseries: loads observed columns from the OMT file and expected columns from a file relative to the MEP, then compares whole arrays elementwise with compare_arrays, so both need identical shape and sampling grid.",
+      "source_url": "https://raw.githubusercontent.com/OpenSourceBrain/osb-model-validation/master/omv/analyzers/timeseries.py",
+      "primary_source": true,
+      "how_verified": "Read resting.py, timeseries.py and utils/timeseries.py (average_resting, compare_arrays)"
+    },
+    {
+      "claim": "CLI commands",
+      "value": "omv all [-V] [--engine=engine] [--ignore-non-py3] [--exit-zero]; omv test <file.omt> [-V] [--exit-zero]; omv autogen [options]; omv install <engine>; omv find; omv list | list-engines [-V]; omv validate-mep <mepfile>; omv validate-omt <omtfile>; omv --version",
+      "source_url": "https://raw.githubusercontent.com/OpenSourceBrain/osb-model-validation/master/omv/omv_util.py",
+      "primary_source": true,
+      "how_verified": "Read the docopt usage docstring in omv_util.py; ran 'omv --version' and 'omv list' in the scratch venv"
+    },
+    {
+      "claim": "omv all behaviour and engine version pinning",
+      "value": "'omv all' globs **/*.omt under the current directory. --engine=NAME keeps only OMT files whose engine field matches, case-insensitively. --engine=NAME:VERSION first installs that engine version (for example jNeuroML:v0.12.3 or jNeuroML_NEURON:8.2.7 in OMV's own CI). Any failure raises AssertionError and exits with code 1 unless --exit-zero is given.",
+      "source_url": "https://raw.githubusercontent.com/OpenSourceBrain/osb-model-validation/master/omv/find_tests.py",
+      "primary_source": true,
+      "how_verified": "Read find_tests.py and the main() and _install_engine code in omv_util.py; engine:version examples come from .github/workflows/ci.yml"
+    },
+    {
+      "claim": "validate-omt is not implemented",
+      "value": "The 'validate-omt' branch prints that OMT validation is not implemented yet and exits with code 1",
+      "source_url": "https://raw.githubusercontent.com/OpenSourceBrain/osb-model-validation/master/omv/omv_util.py",
+      "primary_source": true,
+      "how_verified": "Read the installed omv_util.py source (grep for validate-omt)"
+    },
+    {
+      "claim": "validate-mep fails when OMV is installed from the 0.4.0 wheel",
+      "value": "'omv validate-mep .test.ex9.mep' raised pyrx.RxError for the unknown type tag:opensourcebrain.org,2014:schemata/omv/experiment. The wheel's RECORD contains only omv/schemata/mep.yaml; the sdist contains omv/schemata/types/*.yaml. The setup.cfg package_data pattern 'schemata/*' does not recurse into types/. 'omv test' does not validate against the schema; it only loads the YAML.",
+      "source_url": "https://pypi.org/project/OSBModelValidation/0.4.0/#files",
+      "primary_source": true,
+      "how_verified": "Ran the command in the Windows venv; grepped the dist-info RECORD; downloaded the sdist tarball (URL from the PyPI JSON) and listed it with tar -tzf; read validate.py, which looks for types under omv/schemata/types/"
+    },
+    {
+      "claim": "Supported engine names in v0.4.0",
+      "value": "Arbor, Brian2, EDEN, Moose, NEST, NEURON, NetPyNE, NetPyNE_NP2, NetPyNE_NP4, Octave, PyLEMS, PyLEMS_NeuroML2, PyNEST, PyNEURON, PyNN, PyNN_Brian2, PyNN_NEURON, PyNN_Nest, PyNN_NeuroML, Py_neuroConstruct, XPP, genesis, jLEMS, jNeuroML, jNeuroML_Brian2, jNeuroML_EDEN, jNeuroML_Moose, jNeuroML_NEURON, jNeuroML_NetPyNE, jNeuroML_NetPyNE_NP2, jNeuroML_NetPyNE_NP4, jNeuroML_PyNN_NEURON, jNeuroML_XPP, jNeuroML_validate, jNeuroML_validatev1, pyNEURON_XPP_LEMS, pyNeuroML, pyNeuroML_validate_sbml (38 total)",
+      "source_url": "https://github.com/OpenSourceBrain/osb-model-validation/tree/master/omv/engines",
+      "primary_source": true,
+      "how_verified": "Ran 'omv list' on the installed 0.4.0 package, which printed this list; cross-checked against the name attributes in omv/engines/*.py and the OMVEngines registry in engines/__init__.py"
+    },
+    {
+      "claim": "jNeuroML engine execution",
+      "value": "Runs [jnml, <LEMS file>, '-nogui'] with the LEMS file's directory as cwd. jnml is located via JNML_HOME or shutil.which('jnml'). The installed version is read from 'jnml -v'. Install calls install_pynml (pyNeuroML).",
+      "source_url": "https://raw.githubusercontent.com/OpenSourceBrain/osb-model-validation/master/omv/engines/jneuroml.py",
+      "primary_source": true,
+      "how_verified": "Read jneuroml.py and getjnml.py source; not executed because Java is not available on this machine"
+    },
+    {
+      "claim": "OMV's own CI matrix",
+      "value": "Workflow 'Continuous builds' runs on ubuntu-22.04 with Python 3.12, on push, on pull requests and on a monthly cron. It covers about 34 engine entries, including Arbor, Brian2:2.9.0, EDEN, NEST:3.3, PyNEST, NEURON, PyNEURON:8.2.6, PyNN variants, NetPyNE, PyLEMS, jLEMS, jNeuroML, jNeuroML:v0.12.3, jNeuroML_Brian2, jNeuroML_EDEN, jNeuroML_NEURON:8.2.7, jNeuroML_NetPyNE, jNeuroML_validate, jNeuroML_XPP, pyNeuroML, MOOSE:3.1.5 and XPP. Each job runs 'omv all -V --engine=<engine>' then 'omv list -V'. jNeuroML_Moose is commented out as not working on Python 3.12.",
+      "source_url": "https://raw.githubusercontent.com/OpenSourceBrain/osb-model-validation/master/.github/workflows/ci.yml",
+      "primary_source": true,
+      "how_verified": "Downloaded and read ci.yml from GitHub raw"
+    },
+    {
+      "claim": "How OSB model repositories use OMV in GitHub Actions",
+      "value": "ACnet2's .github/workflows/omv-ci.yml runs a matrix over engines [jNeuroML, jNeuroML_NEURON, jNeuroML_NetPyNE, jNeuroML_validate, jNeuroML_validatev1, jNeuroML_EDEN], OS [ubuntu-22.04, macos-latest] and Python 3.12. It installs OMV unpinned from git master, runs 'omv all -V --engine=${{ matrix.engine }}', then 'omv list -V'. The FitzHugh-Nagumo repo uses the same pattern with engines [jNeuroML, jNeuroML_NEURON, jNeuroML_validate, PyLEMS_NeuroML2, jNeuroML_Brian2] on ubuntu-latest. The OMV README tells projects to copy the ACnet2 omv-ci.yml.",
+      "source_url": "https://raw.githubusercontent.com/OpenSourceBrain/ACnet2/master/.github/workflows/omv-ci.yml",
+      "primary_source": true,
+      "how_verified": "Downloaded and read omv-ci.yml from OpenSourceBrain/ACnet2 and OpenSourceBrain/FitzHugh-Nagumo (https://raw.githubusercontent.com/OpenSourceBrain/FitzHugh-Nagumo/master/.github/workflows/omv-ci.yml); read the README instruction"
+    },
+    {
+      "claim": "OSB test sheet of repositories with OMV CI",
+      "value": "The OpenSourceBrain .github testsheet README lists OSB model repositories (for example AllenInstituteNeuroML, Brunel2000, L5bPyrCellHayEtAl2011, IzhikevichModel, PospischilEtAl2008, SmithEtAl2013-L23DendriticSpikes, BahlEtAl2012_ReducedL5PyrCell) with omv-ci.yml badges plus separate non-omv.yml workflows. The OMV README says not all listed projects use OMV yet.",
+      "source_url": "https://github.com/OpenSourceBrain/.github/blob/main/testsheet/README.md",
+      "primary_source": true,
+      "how_verified": "Downloaded the raw testsheet README and read its neocortex section; did not count all rows"
+    },
+    {
+      "claim": "Peer-reviewed description of OMV",
+      "value": "Gleeson P, Cantarelli M, Marin B, et al. (27 authors; last author Silver). 'Open Source Brain: A Collaborative Resource for Visualizing, Analyzing, Simulating, and Developing Standardized Models of Neurons and Circuits', Neuron 103(3):395-411.e5, 2019, DOI 10.1016/j.neuron.2019.05.019. Its STAR Methods describe OMV: mep files hold expected behaviours such as spike times and resting potential, plus consistency checks on total membrane area and temperature; omt files are written per engine and set the allowed tolerance; at that time tests ran on Travis-CI at each commit.",
+      "source_url": "https://api.crossref.org/works?query.bibliographic=Gleeson+Open+Source+Brain+Neuron+2019",
+      "primary_source": true,
+      "how_verified": "Crossref API returned the DOI, title, journal, volume, issue, pages and author family names. The PMC page (https://pmc.ncbi.nlm.nih.gov/articles/PMC6693896/) was blocked by reCAPTCHA, so the full text came from the Europe PMC REST API (https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6693896/fullTextXML) and was grepped for OMV passages (paraphrased)"
+    },
+    {
+      "claim": "NeuroML documentation's recommended OMV use for converted models",
+      "value": "The NeuroML user docs on converting models recommend first writing OMV tests for the original simulator scripts, then reusing the same .mep for the NeuroML version, to check both give the same behaviour (for example spike times) within a tolerance on every commit via GitHub Actions",
+      "source_url": "https://docs.neuroml.org/Userdocs/ConvertingModels.html",
+      "primary_source": true,
+      "how_verified": "WebFetch of the official NeuroML documentation page (paraphrased summary)"
+    },
+    {
+      "claim": "Hands-on Windows 11 execution of an OMV test (PyLEMS_NeuroML2 engine)",
+      "value": "In a Python 3.12 scratch venv with pylems 0.6.9, 'omv test .test.ex9.pylems.omt -V' passed both experiments (V and W spike times, exit 0) only under PowerShell with HOME set, the venv Scripts folder on PATH and PYTHONIOENCODING=utf-8. Without HOME under PowerShell: KeyError 'HOME' at import in getnml2.py. Under Git Bash: WinError 2 when spawning pylems, plus a cp1252 UnicodeEncodeError when printing the result mark. OMV also printed suggested 'better' tolerances slightly below the configured ones (0.0040984 vs 0.004099; 0.000615 vs 0.000616).",
+      "source_url": "https://raw.githubusercontent.com/OpenSourceBrain/osb-model-validation/master/utilities/tests/.test.ex9.pylems.omt",
+      "primary_source": true,
+      "how_verified": "Downloaded .test.ex9.pylems.omt, .test.ex9.mep and LEMS_NML2_Ex9_FN.xml from the OMV repo into scratch and ran OMV in Git Bash and in PowerShell; logs are in scratchpad/m0/omv/run/"
+    },
+    {
+      "claim": "OMV automatic engine install writes outside the working directory",
+      "value": "The first PyLEMS_NeuroML2 test run cloned https://github.com/NeuroML/NeuroML2.git (development branch, HEAD e6547bb) into C:/Users/gurra/NeuroML2 (created 2026-09-13 10:21:57 local time), because getnml2.py installs under $HOME. The directory was left in place.",
+      "source_url": "https://github.com/OpenSourceBrain/osb-model-validation/issues/74",
+      "primary_source": true,
+      "how_verified": "Observed the OMV log line 'Successfully cloned NeuroML2'; checked the directory timestamp and ran git log/remote on it; open issue #74 (from the issues API) asks OMV not to download silently into default locations"
+    }
+  ],
+  "relevant_apis": [
+    {
+      "name": "CLI: omv all -V --engine=<Engine>[:<version>] [--exit-zero]",
+      "purpose_for_neurosem": "Run the conventional OMV regression tests of fixture models in CI, with engine version pinning; reuse as the existing 'canonical test passes' check and for cross-simulator smoke tests",
+      "source_url": "https://raw.githubusercontent.com/OpenSourceBrain/osb-model-validation/master/omv/omv_util.py",
+      "how_verified": "Read the docopt usage, main() and find_tests.test_all source; the flag is used in OMV and OSB CI workflows"
+    },
+    {
+      "name": "CLI: omv test <file.omt> -V",
+      "purpose_for_neurosem": "Run one OMT against a single model or mutant variant; exit code gives pass/fail for a canonical-baseline classification step",
+      "source_url": "https://raw.githubusercontent.com/OpenSourceBrain/osb-model-validation/master/omv/omv_util.py",
+      "how_verified": "Read the source and executed it on Windows 11 in the scratch venv (passed under PowerShell with HOME set, PATH including the venv and UTF-8 output)"
+    },
+    {
+      "name": "CLI: omv list -V / omv install <engine>",
+      "purpose_for_neurosem": "Record installed engine versions for run provenance; install pinned engines in CI",
+      "source_url": "https://raw.githubusercontent.com/OpenSourceBrain/osb-model-validation/master/omv/omv_util.py",
+      "how_verified": "Executed 'omv list' (38 engines, none installed); read the _install_engine source"
+    },
+    {
+      "name": ".mep (Model Emergent Properties) YAML format",
+      "purpose_for_neurosem": "Community-standard store of expected canonical outputs (spike times, spike rate, resting, timeseries); NeuroSem can read existing .mep files of candidate OSB models as the documented canonical baseline",
+      "source_url": "https://github.com/OpenSourceBrain/osb-model-validation/blob/master/README.md",
+      "how_verified": "Read the README, schema files and example .mep files"
+    },
+    {
+      "name": ".omt (OSB Model Test) YAML format: target, engine, mep, experiments/observables/{file, spiketimes file, spike detection, tolerance}",
+      "purpose_for_neurosem": "Declarative binding of LEMS target + engine + observable extraction + relative tolerance; NeuroSem can generate or consume OMTs for the canonical protocol instead of writing its own spike-time regression file format",
+      "source_url": "https://raw.githubusercontent.com/OpenSourceBrain/osb-model-validation/master/omv/omt_mep_parser.py",
+      "how_verified": "Read the parser source and example .omt files; ran an example .omt"
+    },
+    {
+      "name": "Python (internal, undocumented): omv.omt_mep_parser.OMVTestParser, omv.experiment.OMVExperiment.check_all, omv.analyzers.OMVAnalyzers, omv.engines.OMVEngines",
+      "purpose_for_neurosem": "Possible programmatic invocation of OMV checks and engine registry from NeuroSem; these are internals with no documented stability guarantee, so wrap them behind an adapter or prefer the CLI",
+      "source_url": "https://github.com/OpenSourceBrain/osb-model-validation/tree/master/omv",
+      "how_verified": "Read the source; no API documentation exists (open issue #28 asks for mep/omt element docs)"
+    },
+    {
+      "name": "omv.analyzers.utils.timeseries: compare_arrays, detect_spikes, spikes_from_timeseries, get_spike_rate, load_spike_file, average_resting",
+      "purpose_for_neurosem": "Reference implementation of OMV's spike detection and relative-tolerance comparison, so NeuroSem can report exactly what an OMV-style canonical test would decide; NeuroSem's own features should come from eFEL",
+      "source_url": "https://raw.githubusercontent.com/OpenSourceBrain/osb-model-validation/master/omv/analyzers/utils/timeseries.py",
+      "how_verified": "Read the source; ran compare_arrays in a local probe"
+    },
+    {
+      "name": "OMV dry run (an .omt without a mep key)",
+      "purpose_for_neurosem": "Existing executability check: does the target run on the engine; maps to NeuroSem's 'non-executable' mutant class",
+      "source_url": "https://raw.githubusercontent.com/OpenSourceBrain/osb-model-validation/master/omv/omt_mep_parser.py",
+      "how_verified": "Read generate_exps: with no mep it yields a 'Dry run' experiment with the dry observable"
+    },
+    {
+      "name": "Engines jNeuroML_validate / jNeuroML_validatev1 / pyNeuroML_validate_sbml",
+      "purpose_for_neurosem": "Existing structural-validation engines runnable through OMV; possible reuse for NeuroSem's 'structurally invalid' classification, alongside pyNeuroML validation",
+      "source_url": "https://github.com/OpenSourceBrain/osb-model-validation/tree/master/omv/engines",
+      "how_verified": "Engine names appear in 'omv list' output and the engines directory; jNeuroML_validate is used in ACnet2 CI; internal behaviour of these engines not read"
+    },
+    {
+      "name": "GitHub Actions template omv-ci.yml",
+      "purpose_for_neurosem": "Copy the established matrix pattern (engine x OS, 'omv all -V --engine=...', 'omv list -V') for NeuroSem fixture CI instead of designing a new one",
+      "source_url": "https://raw.githubusercontent.com/OpenSourceBrain/ACnet2/master/.github/workflows/omv-ci.yml",
+      "how_verified": "Downloaded and read the workflow"
+    },
+    {
+      "name": "CLI: omv autogen",
+      "purpose_for_neurosem": "Might scaffold OMT/MEP files for fixtures; behaviour not inspected, and open issue #119 asks for it to be updated",
+      "source_url": "https://raw.githubusercontent.com/OpenSourceBrain/osb-model-validation/master/omv/omv_util.py",
+      "how_verified": "Only confirmed the command exists in the docopt usage; autogen.py source not read"
+    }
+  ],
+  "reuse_for_neurosem": [
+    "Canonical-regression baseline: use OMV's .omt/.mep spike-times (or spike-rate) test, run with 'omv test', as the existing conventional reference test for OSB-hosted fixtures, instead of reimplementing a saved-output spike-time regression with tolerance. Record the exact OMT/MEP files and hashes. Which OMV test counts as 'the canonical protocol' for each model is a decision for Neel.",
+    "Model selection evidence: prefer candidate fixtures whose OSB repositories already have passing OMV tests on jNeuroML (and ideally jNeuroML_NEURON) in omv-ci.yml. That is existing public evidence of executability and cross-engine consistency, which NeuroSem should still re-verify in its frozen environment.",
+    "Executability classification: reuse OMV's dry-run semantics (an .omt without a mep) and its output-file freshness check (the file must be regenerated during the run) as the 'executes' step of mutant classification.",
+    "Structural-validation classification: jNeuroML_validate (via OMV) or pyNeuroML validation can supply the 'structurally invalid' label; do not rebuild schema validation.",
+    "Engine management and provenance: use OMV engine names and NAME:VERSION pinning (for example jNeuroML_NEURON:8.2.7) in CI, and capture 'omv list -V' output as part of the environment record.",
+    "CI pattern: copy the omv-ci.yml GitHub Actions matrix (engine x OS, Python 3.12, 'omv all -V --engine=...') for fixture regression in .github/workflows/ci.yml, run on Linux runners.",
+    "Cross-simulator checks (optional 4-6 models): reuse OMV's shared-.mep / per-engine-.omt pattern, as the NeuroML docs recommend, instead of building a new cross-simulator harness.",
+    "Reporting consistency: when NeuroSem says a mutant 'passes canonical testing', it can compute that decision by literally running OMV (or calling compare_arrays with the recorded tolerance), so the baseline matches community practice rather than a NeuroSem re-implementation."
+  ],
+  "not_provided_new_for_neurosem": [
+    "Stimulus protocol generation and parameterisation: OMV runs whatever stimulus the LEMS target defines. It has no step, weak-step, long-step, ramp, hyperpolarising, rebound, paired-pulse or chirp generator; every extra protocol would need a hand-written LEMS file plus OMT. The MEP schema's 'protocol' field is not used to drive simulations.",
+    "Rheobase search and normalising stimulus amplitude to model-specific rheobase.",
+    "Rich electrophysiology features: OMV checks only spike times, spike rate, resting (mean of last N samples), input resistance, whole timeseries, morphology area, temperature and activation variables. No AP amplitude, half-width, AHP depth, first/last ISI, adaptation index, first-spike latency, sag ratio, burst count or firing-regime label; those need eFEL plus NeuroSem's undefined-feature handling.",
+    "Perturbation fingerprints: no multi-protocol feature vector F(m) and no protocol x feature difference matrix per model or mutant.",
+    "Tolerance calibration: an OMV tolerance is one hand-set relative tolerance per observable (numpy rtol against the expected value, atol fixed at 1e-8). There is no calibration from h, h/2, h/4 refinement, no feature-specific absolute/relative floors, and no max(tau_abs, r|f|, c|f_h - f_h/2|) rule. Expected values near zero are handled badly (expected 0 gives an infinite relative error). OMV's 'better tolerance' hint fits the tolerance to the observed output, which NeuroSem must not use.",
+    "Graded spike-train comparison: a different spike count fails immediately regardless of tolerance, with no alignment or distance measure, and threshold crossings are taken at sample resolution without interpolation.",
+    "Common time-grid alignment and trace-difference metrics across time steps: the timeseries comparison needs identical array shapes.",
+    "Mutation engine: no mutation operators (stimulus, biophysical, reference, numerical), no one-fault-per-mutant enforcement, no mutation provenance, and no classification into structurally invalid / non-executable / numerically unstable / behaviourally equivalent / non-equivalent / silent under canonical testing.",
+    "Valid-transformation generation and false-positive estimation.",
+    "Detection matrix (mutants x protocols), greedy maximum-coverage protocol selection, random count-matched and runtime-matched baselines, the exhaustive-battery comparison and detection-versus-cost curves.",
+    "Discovery/held-out split management, leakage barriers, held-out access logging and statistical analysis (paired tests, cluster bootstrap by base model).",
+    "Run-level provenance records (run ID, model/file hashes, seeds, time step, environment digest, trace/feature hashes, git commit) and machine-readable result serialization: OMV prints a text tally, and open issue #41 asks for tally serialization.",
+    "Working structured validation of test files: validate-omt is not implemented and validate-mep is broken in the 0.4.0 wheel. NeuroSem must validate its own manifests and configs.",
+    "Unit handling: OMV has no unit parsing (open issue #3); units are handled with manual 'scaling' factors in OMT files."
+  ],
+  "handoff_assumption_issues": [
+    "Correct: the handoff lists OMV under 'reuse rather than rebuild' for model tests and continuous validation. OMV is an active LGPL-3.0-only tool (0.4.0, 2026-06-05) that does exactly this via .omt/.mep files and GitHub Actions.",
+    "Correct and important for the novelty claims: the handoff forbids claiming novelty for saved-trace comparison. OMV already provides spike-time, spike-rate, resting and whole-timeseries regression against stored expected values with tolerance, across 38 engines, and the NeuroML docs already recommend a shared .mep to check that converted models behave the same within tolerance. Behavioural regression checking of NeuroML model conversions is therefore established practice, not new.",
+    "Outdated if cited carelessly: the OSB paper (Neuron 2019, DOI 10.1016/j.neuron.2019.05.019) describes OMV running on Travis-CI, but current OMV and OSB repositories use GitHub Actions (omv-ci.yml). Cite the 2019 paper for the concept and the current repository for the CI mechanism.",
+    "Terminology mismatch: an OMV 'tolerance' is a single relative tolerance per observable (numpy.allclose rtol against the expected value, atol 1e-8), not the handoff's calibrated tau with absolute/relative floors and a numerical-refinement term. The handoff's tolerance rule cannot be imported from OMV and must be implemented and described as a NeuroSem component. Documents should not conflate the two meanings.",
+    "Leakage risk not mentioned in the handoff: OMV prints a suggested 'better tolerance' fitted to the current output. Using that suggestion (or hand-tuning OMT tolerances) on held-out models or mutants would be threshold tuning on outcomes, so NeuroSem should forbid it.",
+    "Uncertain: the handoff assumes a single 'canonical protocol' baseline. Existing OMV tests on OSB models are not always current-clamp steps (the FitzHugh-Nagumo MEP is a free run; OMV's own spike tests use spike generators and IaF cells), and their tolerances vary from 0 to about 3e-3 relative. The canonical baseline therefore needs an explicit per-model definition. Whether to use each model's existing OMV test or a NeuroSem-defined standard step is an approval decision.",
+    "Pivot risk the handoff already names ('existing tests catch nearly everything') should be measured, not assumed: many OMV spike-time tests use strict relative tolerances and fail on any spike-count change, so canonical OMV tests may detect many mutants. No result is claimed here.",
+    "API assumption: the handoff asks to verify 'OMV APIs'. OMV documents only a CLI and two YAML formats; its Python internals are undocumented (open issue #28 since 2014) and could change. NeuroSem should call the CLI or wrap internals behind a thin adapter with version pinning.",
+    "Tooling gap relevant to M1 'one command validates and simulates both models': OMV's validate-mep is broken in the 0.4.0 wheel (schema type files not packaged) and validate-omt is unimplemented. OMV cannot be relied on to validate test-file structure, so NeuroSem needs its own manifest/config validation.",
+    "Environment feasibility: the pilot is 'jNeuroML only' and this development machine is Windows 11. OMV is CI-tested only on Linux (and macOS in OSB repos). On Windows it needed HOME, PATH and UTF-8 workarounds to pass a PyLEMS test. jNeuroML needs Java (not installed here), and the OMV jNeuroML auto-installer uses wget/unzip. OMV auto-installs engines into home directories (it cloned NeuroML2 into C:/Users/gurra/NeuroML2 during this audit). Plan to run OMV and simulations in the Linux Docker/CI environment from M1, with engine installs pinned explicitly, not auto-installed.",
+    "Licensing note for LICENSE_AUDIT.md: OMV is LGPL-3.0-only. Using it as an unmodified pip dependency is the simple case; vendoring or modifying OMV code inside NeuroSem would bring LGPL obligations, which is a decision for the license audit. The repository ships only LICENSE.lesser, not a separate GPL-3.0 text."
+  ],
+  "uncertainties": [
+    "Root cause of the Git Bash WinError 2 when OMV spawned 'pylems' was not isolated (pylems.exe ran directly from the same shell); the PowerShell run with HOME set passed.",
+    "jNeuroML, jNeuroML_NEURON and jNeuroML_validate engines were not executed: Java and NEURON are not installed, and system-wide installs were out of scope. Their behaviour is described from source code only.",
+    "Whether validate-mep also fails on Linux was not executed. The wheel is platform-independent (py3-none-any) and lacks schemata/types, so failure is expected wherever the wheel is used. Installs from git (as OSB CI does) use the same package_data pattern and were not tested.",
+    "The behaviour of 'omv autogen', the tally/summary code (tally.py) and the internals of the input resistance, morphology, temperature and activation-variable analyzers were not read in detail.",
+    "Only two OSB repositories' workflows (ACnet2, FitzHugh-Nagumo) were read. The number of OSB repositories actually using OMV, and whether any pin an OMV version, were not counted; both examples install OMV unpinned from git master.",
+    "The PMC article page was blocked by reCAPTCHA; OSB-paper content was taken from Europe PMC full-text XML for the same PMCID, and bibliographic metadata from Crossref.",
+    "SPDX identifier: the maintainer metadata says LGPL-3.0-only, while the GitHub license API reports the deprecated generic id LGPL-3.0; the LICENSE.lesser text itself does not state 'or later'. LGPL-3.0-only is recorded per the maintainer metadata.",
+    "No OMV-specific DOI, Zenodo record or CITATION.cff was found in the repository tree listing; a dedicated software citation was not searched further, so the Neuron 2019 OSB paper is the only verified citation.",
+    "The NeuroML docs page summary came through WebFetch's summariser, so its wording is paraphrased second-hand from the official page.",
+    "Side effect to review: C:/Users/gurra/NeuroML2 (a git clone of NeuroML/NeuroML2 created by OMV's auto-install at 2026-09-13 10:21:57) was left in place and not deleted; Neel may remove it. The scratch venv and logs are under scratchpad/m0/omv/."
+  ]
+}

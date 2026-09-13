@@ -1,0 +1,12 @@
+schema: neurosem-agent-task/1
+task_id: t05_unit_conversion
+type: equivalent_unit_conversion
+base_model: nml2_hh_example
+title: Express every conductance density of the HH example cell in mS_per_cm2
+# No seeded fault. The file mixes S_per_m2 and mS_per_cm2; 1 S_per_m2 = 0.1 mS_per_cm2, so a
+# decimal-place slip is the characteristic silent error.
+seeded_fault: null
+allowed_files:
+  - model/examples/NML2_SingleCompHHCell.nml
+answer_files: []
+budget: {max_turns: 80, max_wall_clock_minutes: 60, max_cost_usd: 15.0}

@@ -35,6 +35,8 @@ class ProtocolTemplate:
     def instantiate(self, rheobase_nA: float, settle_ms: float) -> ConcreteProtocol:
         if not self.implemented:
             raise NotImplementedError(f"{self.protocol_id}: {self.not_implemented_reason}")
+        if not float(settle_ms).is_integer():
+            raise ValueError("settle_ms must be a whole number of ms so stimulus edges stay on every refinement grid")
         p, s, rh = self.params, float(settle_ms), float(rheobase_nA)
         comps: list[StimulusComponent]
         if self.kind == "baseline":

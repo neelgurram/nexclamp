@@ -139,9 +139,12 @@ def test_classification_cascade():
     # reproducible battery detection, canonical silent -> SILENT
     k = classify(True, ok1, ok2, [_det("P1", "latency")], [_det("P1", "latency", 2)])
     assert k is MutantClass.SILENT and k.admissible
-    # canonical also detects -> NON_EQUIVALENT
+    # canonical also detects reproducibly -> NON_EQUIVALENT
     assert classify(True, ok1, ok2, [_det("P1", "latency"), _det(CANONICAL_ID, "count")],
-                    [_det("P1", "latency", 2)]) is MutantClass.NON_EQUIVALENT
+                    [_det("P1", "latency", 2), _det(CANONICAL_ID, "count", 2)]) is MutantClass.NON_EQUIVALENT
+    # canonical detection at h that vanishes at h/2 is solver noise, as for every protocol -> SILENT
+    assert classify(True, ok1, ok2, [_det("P1", "latency"), _det(CANONICAL_ID, "count")],
+                    [_det("P1", "latency", 2)]) is MutantClass.SILENT
     # only canonical reproducible -> NON_EQUIVALENT, not silent
     assert classify(True, ok1, ok2, [_det(CANONICAL_ID, "count")], [_det(CANONICAL_ID, "count", 2)]) is MutantClass.NON_EQUIVALENT
     # different feature at each level is not reproducible

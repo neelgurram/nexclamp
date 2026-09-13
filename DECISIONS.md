@@ -106,6 +106,30 @@ Integration check, 2026-09-13:
 
 Such variants are class 2 (structurally valid, non-executable) and are flagged `canonical_runs_but_battery_failed`. Reporting the validator gap upstream to NeuroML is Neel's decision (N-11).
 
+**D-021 Rule changes after the module build reviews** (provisional; each came from a builder note in `docs/build_notes/`)
+- **One detection rule for every protocol, including the canonical one.** A protocol detects a mutant only if the same feature is detected at h and at h/2. SILENT (class 6) now uses the reproducible canonical rule, which is the same rule as the detection matrix and the primary endpoint. Previously class 6 used detection at h only, so `1 - DR_canonical` could exceed the silent-survival rate.
+- **Canonical analysis window.** The window is the union of the pulses that target the population the harness records. It is no longer "the earliest pulse generator", which picked non-targeting or hyperpolarising pre-pulses in three curated candidates.
+- **`scale_gate_time_constant` uses the q10Fixed mechanism.** In NeuroML2CoreTypes every core HH gate computes `tau = tau_base / rateScale`, with `rateScale = product(q10)`, and `inf = alpha/(alpha+beta)` is unchanged. Inserting `q10Fixed=k`, or scaling an existing one, therefore scales the time constant exactly.
+  - Without this mechanism the operator has no sites in any Pospischil cell (custom rate ComponentTypes), so the specification's "scale a channel time constant" would never be tested in the pilot.
+  - `q10ExpTemp` gates remain inapplicable.
+- **`increase_dt` factor grid is x4, x10, x20.** A x2 mutant at the h/2 level reruns the reference at h and could never be admissible.
+- **Numerical-blow-up bound raised from 250 mV to 10 V.** A harness recording a gate variable or a concentration is compared behaviourally, not called unstable. Genuine divergence in jLEMS appears as non-finite values or an aborted run (D-020).
+- **`ahp_depth` needs at least 1 spike, not 2.** eFEL 5.7.34 defines it after a single spike, and P09 is designed to evoke one.
+- **Depolarisation-block voltage is a config key.** It is now an explicit, frozen key: `depolarization_block_v_mV: -40.0`.
+- **Validator warnings are not validity failures.** jnml exits 0 when a file passes with warnings. A jNeuroML crash while loading an existing file is a model defect (`valid=False`), not a tool failure.
+- **Rheobase search retries a failing initial grid.** It retries with a smaller upper amplitude, up to three times, so small high-input-resistance cells can be included.
+- **Core defects fixed.** Found by the core-tests builder, each with its reproduction:
+  - schema-invalid element order when a ramp precedes a pulse;
+  - inverted rheobase bracket on a non-reproducible response;
+  - `K` accepted although NeuroML temperatures allow only `degC`;
+  - missing molar unit `M`;
+  - manifest duplicate and column checks.
+
+**D-022 Hidden agent-study evaluators are kept out of Git** (provisional; see N-12)
+- **What.** `agent_study/hidden/` (hidden checks and answer-key specs) and `results/agent_study/private/` (baselines) are Git-ignored. Only `agent_study/HIDDEN_MANIFEST.sha256` is committed.
+- **Why.** Trials run on exported directories without Git history, but hidden files that enter history are hard to remove and would leak if the repository is pushed before the trials finish.
+- **Conflict of interest.** The same assistant that built NeuroSem wrote these evaluator specs. Neel should review them, and ideally revise them independently, before any trial.
+
 ## Models and licensing
 
 **D-017 Pilot fixtures: Pospischil 2008 RS and LTS** (provisional)
@@ -131,4 +155,5 @@ Model files keep their own licenses: MIT, or LGPL-3.0 for the NeuroML2 HH exampl
 | N-08 | Whether to add NEURON as a cross-simulator (optional in the spec) | deferred |
 | N-09 | Accept correlated Pospischil cells in the full study, and which curated candidates to add | see `docs/model_curation_candidates.md` when available |
 | N-11 | Report the jNeuroML validator gap (`channelDensityVShift` references are not checked by test 10025) to the NeuroML maintainers? | not reported; outward-facing, needs Neel |
+| N-12 | Where the hidden agent-study evaluators live permanently (separate private repository, encrypted archive, or offline), and whether Neel revises them independently, given they were written by the assistant that built NeuroSem | local only, Git-ignored, hashes committed |
 | N-10 | Project name. The audit (`docs/m0_evidence/names/`, independently re-checked) found: no PyPI, conda-forge or GitHub-account conflict, but a 2025 CMAME article with an arXiv preprint and code named "NeuroSEM" (a computational simulation framework); an active GPL-3.0 GitHub project spelled "NeuroSem" in neuroscience and language models; the neuromarketing company NeuroSEM holding neurosem.com since 2013; and heavy overloading of "SEM" in neuroscience | **Recommend renaming before any public release.** Preferred: **PerturbPrint** (package/CLI `perturbprint`); it matches the defined term "perturbation fingerprint" and had zero hits in every source checked. Runner-up: DriftClamp. Not legal clearance; re-check registries before release. Code keeps the working name `neurosem` until Neel decides (a rename is a mechanical refactor). |

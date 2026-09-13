@@ -1,0 +1,1440 @@
+{
+  "candidates": [
+    {
+      "title": "Poster: NeuroCERT: Executable Testing for Oracle-Limited Biophysical Network Simulation",
+      "authors": "Seungyoun Lee, Hyun Jae Jang, Jae-Ho Han",
+      "year": "2026",
+      "venue": "2026 IEEE International Conference on Software Testing, Verification and Validation (ICST)",
+      "url": "https://doi.org/10.1109/icst69053.2026.00050",
+      "doi": "10.1109/icst69053.2026.00050",
+      "kind": "paper",
+      "found_via": "Semantic Scholar API forward citations of SciUnit ICSE 2014 (DOI:10.1145/2591062.2591129); metadata verified via Crossref API; abstract from Semantic Scholar paper API (IEEE Xplore page returned no content)",
+      "why_relevant": "Short ICST 2026 poster paper proposing an executable regression-testing layer for biophysical network simulations where no single expected output exists: run provenance, pre-run structural constraints and stochastic batch-level regression criteria. Closest software-testing framing of neural-simulation regression found, but per its abstract it targets network models with stochastic outputs and does not describe controlled mutants, multi-protocol current-clamp batteries, feature fingerprints, numerical-refinement tolerances or protocol selection.",
+      "estimated_closeness": 3
+    },
+    {
+      "title": "A universal workflow for creation, validation, and generalization of detailed neuronal models",
+      "authors": "Maria Reva, Christian Rössert, Alexis Arnaudon, Tanguy Damart, Darshan Mandge, Anıl Tuncel, Srikanth Ramaswamy, Henry Markram, Werner Van Geit",
+      "year": "2023",
+      "venue": "Patterns",
+      "url": "https://doi.org/10.1016/j.patter.2023.100855",
+      "doi": "10.1016/j.patter.2023.100855",
+      "kind": "paper",
+      "found_via": "Europe PMC citations of BluePyOpt (MED 27375471); also Semantic Scholar citations of BluePyOpt; Crossref-verified",
+      "why_relevant": "BluePyEModel-style workflow: models optimized on eFEL features, then validated on additional stimuli not used for fitting and tested for generalization across a population of similar morphologies. Shares multi-protocol features plus held-out-stimulus and held-out-morphology evaluation, but its goal is fitting data, not detecting behaviour changes introduced by edits or mutations.",
+      "estimated_closeness": 3
+    },
+    {
+      "title": "HippoUnit: A software tool for the automated testing and systematic comparison of detailed models of hippocampal neurons based on electrophysiological data",
+      "authors": "Sára Sáray, Christian A. Rössert, Shailesh Appukuttan, Rosanna Migliore, Paola Vitale, Carmen A. Lupascu, Luca L. Bologna, Werner Van Geit, Armando Romani, Andrew P. Davison, Eilif Muller, Tamás F. Freund, Szabolcs Káli",
+      "year": "2021",
+      "venue": "PLOS Computational Biology",
+      "url": "https://doi.org/10.1371/journal.pcbi.1008114",
+      "doi": "10.1371/journal.pcbi.1008114",
+      "kind": "paper",
+      "found_via": "Anchor located via OpenAlex search; forward citations via Europe PMC (20), Semantic Scholar (21) and OpenCitations (28)",
+      "why_relevant": "HippoUnit: SciUnit-based Python test suite that automatically runs many electrophysiological tests (somatic behaviour, dendritic propagation) on several ModelDB CA1 models and scores them against data. Covers automated multi-test characterization of many neuron models; no mutation, tolerance calibration by refinement, protocol-battery optimization or held-out evaluation described in the abstract.",
+      "estimated_closeness": 3
+    },
+    {
+      "title": "NeuronUnit: A package for data-driven validation of neuron models using SciUnit",
+      "authors": "Richard C. Gerkin, Justas Birgiolas, Russell J. Jarvis, Cyrus Omar, Sharon M. Crook",
+      "year": "2019",
+      "venue": "openRxiv",
+      "url": "https://doi.org/10.1101/665331",
+      "doi": "10.1101/665331",
+      "kind": "preprint",
+      "found_via": "Anchor located via OpenAlex search; citations via Semantic Scholar (8), OpenCitations (11), Europe PMC (2)",
+      "why_relevant": "NeuronUnit: SciUnit library of data-driven validation tests for single-neuron models, integrated with NeuroML, NeuroElectro and Allen data. Canonical neuron-model testing framework NeuroSem would build beside; tests compare model to experimental features rather than model versions to each other, and no mutation-based evaluation or protocol selection is described. PyPI package neuronunit 0.1.8.2 (MIT) retrieved from https://pypi.org/pypi/neuronunit/json.",
+      "estimated_closeness": 3
+    },
+    {
+      "title": "Collaborative infrastructure for test-driven scientific model validation",
+      "authors": "Cyrus Omar, Jonathan Aldrich, Richard C. Gerkin",
+      "year": "2014",
+      "venue": "Companion Proceedings of the 36th International Conference on Software Engineering",
+      "url": "https://doi.org/10.1145/2591062.2591129",
+      "doi": "10.1145/2591062.2591129",
+      "kind": "paper",
+      "found_via": "OpenAlex search; Semantic Scholar citations (45) and OpenCitations citations (29) used as snowball seed",
+      "why_relevant": "SciUnit origin paper (ICSE 2014 companion): test-driven, collaborative validation of scientific models using executable unit-test-like validation tests. Establishes the model-testing paradigm; not neuron-edit regression, mutation-calibrated, or protocol-optimized.",
+      "estimated_closeness": 3
+    },
+    {
+      "title": "Unit testing, model validation, and biological simulation",
+      "authors": "Gopal P. Sarma, Travis W. Jacobs, Mark D. Watts, S. Vahid Ghayoomie, Stephen D. Larson, Richard C. Gerkin",
+      "year": "2016",
+      "venue": "F1000Research",
+      "url": "https://doi.org/10.12688/f1000research.9315.1",
+      "doi": "10.12688/f1000research.9315.1",
+      "kind": "paper",
+      "found_via": "OpenAlex search; forward citations via Semantic Scholar (28), OpenCitations (28), Europe PMC (11)",
+      "why_relevant": "OpenWorm case study on unit testing and test-driven development for biological simulation, distinguishing model validation tests from ordinary unit tests. Directly on software-testing practice for neural models during continuous development; no mutation analysis or protocol optimization.",
+      "estimated_closeness": 3
+    },
+    {
+      "title": "Reproducing and quantitatively validating a biologically-constrained point-neuron model of CA1 pyramidal cells",
+      "authors": "Shailesh Appukuttan, Andrew P. Davison",
+      "year": "2022",
+      "venue": "Frontiers in Integrative Neuroscience",
+      "url": "https://doi.org/10.3389/fnint.2022.1041423",
+      "doi": "10.3389/fnint.2022.1041423",
+      "kind": "paper",
+      "found_via": "Europe PMC citations of ModelDB 2004; Semantic Scholar citations of 'A Software Framework for Validating Neuroscience Models'; Europe PMC lens search",
+      "why_relevant": "Reimplements a published CA1 point-neuron model in Brian2 and NEURON from the paper alone and uses a SciUnit test suite to quantitatively check that each port reproduces the original behaviour, reporting residual discrepancies. Closest found example of behaviour-preservation checking after model translation between simulators; manual, single model, no mutants or protocol selection.",
+      "estimated_closeness": 3
+    },
+    {
+      "title": "A new reduced-morphology model for CA1 pyramidal cells and its validation and comparison with other models using HippoUnit",
+      "authors": "Matus Tomko, Lubica Benuskova, Peter Jedlicka",
+      "year": "2021",
+      "venue": "Scientific Reports",
+      "url": "https://doi.org/10.1038/s41598-021-87002-7",
+      "doi": "10.1038/s41598-021-87002-7",
+      "kind": "paper",
+      "found_via": "Europe PMC citations of HippoUnit and ModelDB 20 years; OpenCitations citations of NeuronUnit",
+      "why_relevant": "Builds a reduced-morphology CA1 model and uses the HippoUnit battery to check it against data and other models. A model simplification (a transformation) evaluated with a multi-test electrophysiology battery; not framed as regression detection or mutation testing.",
+      "estimated_closeness": 3
+    },
+    {
+      "title": "Reproducible Neural Network Simulations: Statistical Methods for Model Validation on the Level of Network Activity Data",
+      "authors": "Robin Gutzen, Michael von Papen, Guido Trensch, Pietro Quaglio, Sonja Grün, Michael Denker",
+      "year": "2018",
+      "venue": "Frontiers in Neuroinformatics",
+      "url": "https://doi.org/10.3389/fninf.2018.00090",
+      "doi": "10.3389/fninf.2018.00090",
+      "kind": "paper",
+      "found_via": "Europe PMC citations of NeuroML 2010, BluePyOpt and 'Unit testing, model validation, and biological simulation'",
+      "why_relevant": "Statistical workflow for validating network simulations against reference activity data, including comparisons between simulator implementations and levels of description. Partial overlap on cross-implementation equivalence testing with statistical tolerances, at network rather than single-cell current-clamp level.",
+      "estimated_closeness": 3
+    },
+    {
+      "title": "Towards systematic, data-driven validation of a collaborative, multi-scale model of Caenorhabditis elegans",
+      "authors": "Richard C. Gerkin, Russell J. Jarvis, Sharon M. Crook",
+      "year": "2018",
+      "venue": "Philosophical Transactions of the Royal Society B: Biological Sciences",
+      "url": "https://doi.org/10.1098/rstb.2017.0381",
+      "doi": "10.1098/rstb.2017.0381",
+      "kind": "paper",
+      "found_via": "Europe PMC citations of NeuroML 2010; OpenAlex search result",
+      "why_relevant": "OpenWorm uses SciUnit so each model is continuously re-tested against data as it is refined, with results public on GitHub. Continuous validation during model evolution (regression-like), without mutants, perturbation fingerprints or optimized protocols.",
+      "estimated_closeness": 3
+    },
+    {
+      "title": "osb-model-validation (OMV): tools for automated model validation in Open Source Brain projects",
+      "authors": "unverified (GitHub organisation OpenSourceBrain)",
+      "year": "2014 (repository created per GitHub API); PyPI OSBModelValidation 0.4.0",
+      "venue": "GitHub / PyPI",
+      "url": "https://github.com/OpenSourceBrain/osb-model-validation",
+      "doi": "",
+      "kind": "software",
+      "found_via": "PyPI JSON API https://pypi.org/pypi/OSBModelValidation/json (license LGPL-3.0-only) and GitHub REST API repos/OpenSourceBrain/osb-model-validation (LGPL-3.0); no standalone OMV paper located in OpenAlex or Europe PMC searches",
+      "why_relevant": "Continuous-integration model validation used by Open Source Brain/NeuroML repositories. Directly the regression-testing baseline NeuroSem proposes to extend (canonical, usually single-simulation checks); exact checking semantics not verified from the API description alone.",
+      "estimated_closeness": 3
+    },
+    {
+      "title": "Optimizing experimental designs for model selection of ion channel drug-binding mechanisms",
+      "authors": "Frankie Patten-Elliott, Chon Lok Lei, Simon P. Preston, Richard D. Wilkinson, Gary R. Mirams",
+      "year": "2025",
+      "venue": "Philosophical Transactions of the Royal Society A: Mathematical, Physical and Engineering Sciences",
+      "url": "https://doi.org/10.1098/rsta.2024.0227",
+      "doi": "10.1098/rsta.2024.0227",
+      "kind": "paper",
+      "found_via": "Europe PMC lens search (optimal experimental design / protocol design for ion channel models)",
+      "why_relevant": "Optimizes voltage-clamp protocols so that candidate hERG drug-binding models can be discriminated, compared with a simple standard protocol, and notes loss of benefit under model discrepancy. Shows optimized stimulation protocols beating a conventional protocol for discrimination; cardiac ion-channel model selection, not neuron edit regression, and no mutants or held-out mutation families.",
+      "estimated_closeness": 3
+    },
+    {
+      "title": "pyRMV: Reusable, Cross-model Validation for Computational Science",
+      "authors": "Hugo Dictus, Eduard Subert, Armando Romani, Henry Markram",
+      "year": "2026",
+      "venue": "arXiv (cs.CE)",
+      "url": "https://arxiv.org/abs/2608.09956",
+      "doi": "",
+      "kind": "preprint",
+      "found_via": "Semantic Scholar API forward citations of SciUnit ICSE 2014, NeuronUnit and HippoUnit; arXiv abs page fetched (arXiv API rate-limited)",
+      "why_relevant": "Model-agnostic validation library (mouse V1 models) that treats models as generators of predicted properties so the same validations apply across many models. Recent cross-model validation framework in the SciUnit lineage; validation against data, not detection of edit-induced behavioural drift.",
+      "estimated_closeness": 3
+    },
+    {
+      "title": "NeuroML-DB: Sharing and characterizing data-driven neuroscience models described in NeuroML",
+      "authors": "Justas Birgiolas, Vergil Haynes, Padraig Gleeson, Richard C. Gerkin, Suzanne W. Dietrich, Sharon Crook",
+      "year": "2023",
+      "venue": "PLOS Computational Biology",
+      "url": "https://doi.org/10.1371/journal.pcbi.1010941",
+      "doi": "10.1371/journal.pcbi.1010941",
+      "kind": "paper",
+      "found_via": "Anchor via OpenAlex search; citations via Europe PMC (10), Semantic Scholar (12), OpenCitations (20)",
+      "why_relevant": "NeuroML-DB stores more than 1,500 models translated to NeuroML and exposes computed electrophysiology properties for database-scale analysis of model features. Relevant as a source of NeuroML models with standardized electrophysiology characterization and as prior multi-model feature analysis; no mutation or protocol selection.",
+      "estimated_closeness": 3
+    },
+    {
+      "title": "eFEL (efel Python package)",
+      "authors": "unverified (see eFEL 2026 paper for authors)",
+      "year": "PyPI version 5.7.34 at retrieval",
+      "venue": "PyPI / GitHub",
+      "url": "https://github.com/openbraininstitute/eFEL",
+      "doi": "",
+      "kind": "software",
+      "found_via": "PyPI JSON API https://pypi.org/pypi/efel/json (license field LGPLv3; homepage github.com/openbraininstitute/eFEL); earlier Zenodo versions surfaced in OpenAlex search (e.g. doi 10.5281/zenodo.30074, 'eFEL 2.6')",
+      "why_relevant": "Feature-extraction component NeuroSem plans to reuse; must be cited and version-frozen. No novelty claim possible for feature extraction.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "eFEL: electrophysiology feature extraction library",
+      "authors": "Darshan Mandge, Anıl Tuncel, Aurélien Jaquier, Ilkan Kilic, Tanguy Damart, Henry Markram, Werner Van Geit, Rajnish Ranjan",
+      "year": "2026",
+      "venue": "Bioinformatics",
+      "url": "https://doi.org/10.1093/bioinformatics/btag328",
+      "doi": "10.1093/bioinformatics/btag328",
+      "kind": "paper",
+      "found_via": "Europe PMC citations of BluePyOpt and NeuroFeatureExtract; Crossref-verified",
+      "why_relevant": "Canonical eFEL paper (2026): standardized definitions for over 90 electrophysiological features, C++ core with Python interface, integration with NWB and simulators. Tool citation for NeuroSem's feature layer.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "NeuroML: A Language for Describing Data Driven Models of Neurons and Networks with a High Degree of Biological Detail",
+      "authors": "Padraig Gleeson, Sharon Crook, Robert C. Cannon, Michael L. Hines, Guy O. Billings, Matteo Farinella, Thomas M. Morse, Andrew P. Davison, Subhasis Ray, Upinder S. Bhalla, Simon R. Barnes, Yoana D. Dimitrova, R. Angus Silver",
+      "year": "2010",
+      "venue": "PLoS Computational Biology",
+      "url": "https://doi.org/10.1371/journal.pcbi.1000815",
+      "doi": "10.1371/journal.pcbi.1000815",
+      "kind": "paper",
+      "found_via": "OpenAlex search (anchor); Europe PMC (191) and Semantic Scholar (335) forward citations",
+      "why_relevant": "Canonical NeuroML (v1-era) language paper for simulator-independent description of detailed neuron and network models; tool citation.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "LEMS: a language for expressing complex biological models in concise and hierarchical form and its use in underpinning NeuroML 2",
+      "authors": "Robert C. Cannon, Padraig Gleeson, Sharon Crook, Gautham Ganapathy, Boris Marin, Eugenio Piasini, R. Angus Silver",
+      "year": "2014",
+      "venue": "Frontiers in Neuroinformatics",
+      "url": "https://doi.org/10.3389/fninf.2014.00079",
+      "doi": "10.3389/fninf.2014.00079",
+      "kind": "paper",
+      "found_via": "OpenAlex search (anchor); Europe PMC (76) and Semantic Scholar (115) forward citations",
+      "why_relevant": "Canonical LEMS paper underpinning NeuroML 2; defines the semantics that NeuroSem mutations and valid transformations operate on.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "The NeuroML ecosystem for standardized multi-scale modeling in neuroscience",
+      "authors": "Ankur Sinha, Padraig Gleeson, Bóris Marin, Salvador Dura-Bernal, Sotirios Panagiotou, Sharon Crook, Matteo Cantarelli, Robert C Cannon, Andrew P Davison, Harsha Gurnani, Robin Angus Silver",
+      "year": "2025",
+      "venue": "eLife",
+      "url": "https://doi.org/10.7554/elife.95135",
+      "doi": "10.7554/elife.95135",
+      "kind": "paper",
+      "found_via": "OpenAlex search (anchor; several eLife version records); Europe PMC citations; Semantic Scholar DOI lookup returned 404",
+      "why_relevant": "Current NeuroML ecosystem paper describing tooling for creation, validation, simulation and testing of standardized models; likely the citable overview for pyNeuroML/jNeuroML (no standalone pyNeuroML paper located). Tool citation; validation here is schema/tool level.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "NeuroML/pyNeuroML: v1.3.22",
+      "authors": "unverified",
+      "year": "2026",
+      "venue": "Zenodo (software release record surfaced by OpenAlex) / PyPI",
+      "url": "https://doi.org/10.5281/zenodo.20513275",
+      "doi": "10.5281/zenodo.20513275",
+      "kind": "software",
+      "found_via": "OpenAlex search 'pyNeuroML' (work W7163174990); PyPI JSON API https://pypi.org/pypi/pyNeuroML/json (version 1.3.22, license LGPL-3.0-only, homepage github.com/NeuroML/pyNeuroML); Zenodo API timed out",
+      "why_relevant": "Software citation for the parsing/validation/simulation toolchain NeuroSem reuses.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Open Source Brain: A Collaborative Resource for Visualizing, Analyzing, Simulating, and Developing Standardized Models of Neurons and Circuits",
+      "authors": "Padraig Gleeson, Matteo Cantarelli, Boris Marin, Adrian Quintana, Matt Earnshaw, Sadra Sadeh, Eugenio Piasini, Justas Birgiolas, Robert C. Cannon, N. Alex Cayco-Gajic, Sharon Crook, Andrew P. Davison, Salvador Dura-Bernal, András Ecker, Michael L. Hines, Giovanni Idili, Frederic Lanore, Stephen D. Larson, William W. Lytton, Amitava Majumdar, Robert A. McDougal, Subhashini Sivagnanam, Sergio Solinas, Rokas Stanislovas, Sacha J. van Albada, Werner van Geit, R. Angus Silver",
+      "year": "2019",
+      "venue": "Neuron",
+      "url": "https://doi.org/10.1016/j.neuron.2019.05.019",
+      "doi": "10.1016/j.neuron.2019.05.019",
+      "kind": "paper",
+      "found_via": "OpenAlex search (anchor, plus bioRxiv preprint 10.1101/229484); Europe PMC (59), Semantic Scholar (79) citations",
+      "why_relevant": "Open Source Brain platform paper: sharing, visualizing and simulating standardized models with infrastructure for collaborative development and testing. Canonical citation for OSB/OMV context.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "sciunit: a Python framework for test-driven validation of scientific models",
+      "authors": "unverified",
+      "year": "repository created 2011 per GitHub API; PyPI version 0.2.8",
+      "venue": "GitHub / PyPI",
+      "url": "https://github.com/scidash/sciunit",
+      "doi": "",
+      "kind": "software",
+      "found_via": "GitHub REST API repos/scidash/sciunit (MIT) and PyPI JSON API https://pypi.org/pypi/sciunit/json (MIT)",
+      "why_relevant": "Software citation for the scientific-model testing framework NeuroSem could interoperate with.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "BluePyOpt: Leveraging Open Source Software and Cloud Infrastructure to Optimise Model Parameters in Neuroscience",
+      "authors": "Werner Van Geit, Michael Gevaert, Giuseppe Chindemi, Christian Rössert, Jean-Denis Courcol, Eilif B. Muller, Felix Schürmann, Idan Segev, Henry Markram",
+      "year": "2016",
+      "venue": "Frontiers in Neuroinformatics",
+      "url": "https://doi.org/10.3389/fninf.2016.00017",
+      "doi": "10.3389/fninf.2016.00017",
+      "kind": "paper",
+      "found_via": "OpenAlex search (anchor); Europe PMC (137) and Semantic Scholar (188) forward citations",
+      "why_relevant": "BluePyOpt: feature-based multi-objective optimization of neuron model parameters, typically using eFEL features across several stimulus protocols. Overlaps on multi-protocol feature objectives; purpose is fitting, not change detection.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "ModelDB: A Database to Support Computational Neuroscience",
+      "authors": "Michael L. Hines, Thomas Morse, Michele Migliore, Nicholas T. Carnevale, Gordon M. Shepherd",
+      "year": "2004",
+      "venue": "Journal of Computational Neuroscience",
+      "url": "https://doi.org/10.1023/b:jcns.0000023869.22017.2e",
+      "doi": "10.1023/b:jcns.0000023869.22017.2e",
+      "kind": "paper",
+      "found_via": "OpenAlex search (anchor); Europe PMC citations (248)",
+      "why_relevant": "ModelDB database paper; canonical source of published model code that NeuroSem fixtures or reproducibility comparisons may draw on.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Twenty years of ModelDB and beyond: building essential modeling tools for the future of neuroscience",
+      "authors": "Robert A. McDougal, Thomas M. Morse, Ted Carnevale, Luis Marenco, Rixin Wang, Michele Migliore, Perry L. Miller, Gordon M. Shepherd, Michael L. Hines",
+      "year": "2016",
+      "venue": "Journal of Computational Neuroscience",
+      "url": "https://doi.org/10.1007/s10827-016-0623-7",
+      "doi": "10.1007/s10827-016-0623-7",
+      "kind": "paper",
+      "found_via": "OpenAlex search (anchor); Europe PMC citations (170)",
+      "why_relevant": "Twenty-year ModelDB review covering model sharing, running and curation tools; context for reproducibility and model provenance.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Sustainable computational science: the ReScience initiative",
+      "authors": "Nicolas P. Rougier, Konrad Hinsen, Frédéric Alexandre, Thomas Arildsen, Lorena A. Barba, Fabien C.Y. Benureau, C. Titus Brown, Pierre de Buyl, Ozan Caglayan, Andrew P. Davison, Marc-André Delsuc, Georgios Detorakis, Alexandra K. Diem, Damien Drix, Pierre Enel, Benoît Girard, Olivia Guest, Matt G. Hall, Rafael N. Henriques, Xavier Hinaut, Kamil S. Jaron, Mehdi Khamassi, Almar Klein, Tiina Manninen, Pietro Marchesi, Daniel McGlinn, Christoph Metzner, Owen Petchey, Hans Ekkehard Plesser, Timothée Poisot, Karthik Ram, Yoav Ram, Etienne Roesch, Cyrille Rossant, Vahid Rostami, Aaron Shifman, Jemma Stachelek, Marcel Stimberg, Frank Stollmeier, Federico Vaggi, Guillaume Viejo, Julien Vitay, Anya E. Vostinar, Roman Yurchak, Tiziano Zito",
+      "year": "2017",
+      "venue": "PeerJ Computer Science",
+      "url": "https://doi.org/10.7717/peerj-cs.142",
+      "doi": "10.7717/peerj-cs.142",
+      "kind": "paper",
+      "found_via": "OpenAlex search (anchor)",
+      "why_relevant": "ReScience initiative: peer-reviewed replication of computational studies, including neuroscience models. Context for independent reimplementation as a source of behavioural divergence.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Replicability or reproducibility? On the replication crisis in computational neuroscience and sharing only relevant detail",
+      "authors": "Marcin Miłkowski, Witold M. Hensel, Mateusz Hohol",
+      "year": "2018",
+      "venue": "Journal of Computational Neuroscience",
+      "url": "https://doi.org/10.1007/s10827-018-0702-z",
+      "doi": "10.1007/s10827-018-0702-z",
+      "kind": "paper",
+      "found_via": "OpenAlex search; Europe PMC citations of NeuroML 2010 and LEMS 2014",
+      "why_relevant": "Conceptual analysis of replication versus reproduction of computational neuroscience models; supports definitions of what counts as preserved behaviour after reimplementation.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Modules for Automated Validation and Comparison of Models of Neurophysiological and Neurocognitive Biomarkers of Psychiatric Disorders: ASSRUnit—A Case Study",
+      "authors": "Christoph Metzner, Tuomo Mäki-Marttunen, Bartosz Zurowski, Volker Steuber",
+      "year": "2018",
+      "venue": "Computational Psychiatry",
+      "url": "https://doi.org/10.1162/cpsy_a_00015",
+      "doi": "10.1162/cpsy_a_00015",
+      "kind": "paper",
+      "found_via": "Semantic Scholar API forward citations of SciUnit ICSE 2014, LEMS 2014 and 'Unit testing, model validation, and biological simulation'; Crossref-verified (abstract not retrieved)",
+      "why_relevant": "Title indicates SciUnit-style modules for automated validation and comparison of models of psychiatric biomarkers (neurophysiological/neurocognitive). Likely another automated neural-model test suite; content beyond title/metadata not verified.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "A Software Framework for Validating Neuroscience Models",
+      "authors": "Shailesh Appukuttan, Lungsi Sharma, Pedro E. García-Rodríguez, Andrew P. Davison",
+      "year": "2022",
+      "venue": "unverified",
+      "url": "https://www.semanticscholar.org/paper/94d847c535aaf2b63d29c992637430e3c5360c84",
+      "doi": "",
+      "kind": "other",
+      "found_via": "Semantic Scholar API: forward citations of SciUnit ICSE 2014, BluePyOpt and F1000 unit-testing paper; detail record has no venue or abstract",
+      "why_relevant": "Record titled 'A Software Framework for Validating Neuroscience Models' (2022), cited by pyRMV and the CA1 reproduction study; plausibly documentation of a SciUnit-based validation framework. Venue and content unverified.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Mitigating Computer Limitations in Replicating Numerical Simulations of a Neural Network Model With Hodgkin-Huxley-Type Neurons",
+      "authors": "Paulo H. Lopes, Bruno Cruz Oliveira, Anderson Abner de S. Souza, Wilfredo Blanco",
+      "year": "2022",
+      "venue": "Frontiers in Neuroinformatics",
+      "url": "https://doi.org/10.3389/fninf.2022.874234",
+      "doi": "10.3389/fninf.2022.874234",
+      "kind": "paper",
+      "found_via": "Europe PMC citations of ReScience",
+      "why_relevant": "Refactors and reimplements a Hodgkin-Huxley-type network model across languages and operating systems; 72 runs that should agree only matched with high floating-point precision. Evidence that translation and numerical configuration silently change outputs; no test-battery design.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "The EBRAINS NeuroFeatureExtract: An Online Resource for the Extraction of Neural Activity Features From Electrophysiological Data",
+      "authors": "Luca L. Bologna, Roberto Smiriglia, Dario Curreri, Michele Migliore",
+      "year": "2021",
+      "venue": "Frontiers in Neuroinformatics",
+      "url": "https://doi.org/10.3389/fninf.2021.713899",
+      "doi": "10.3389/fninf.2021.713899",
+      "kind": "paper",
+      "found_via": "OpenAlex search; Europe PMC citations of NeuroML 2010, LEMS, OSB, BluePyOpt",
+      "why_relevant": "EBRAINS NeuroFeatureExtract online resource for extracting electrophysiological features from traces (eFEL-based) for model building; feature-extraction context.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Uncertainpy: A Python Toolbox for Uncertainty Quantification and Sensitivity Analysis in Computational Neuroscience",
+      "authors": "Simen Tennøe, Geir Halnes, Gaute T. Einevoll",
+      "year": "2018",
+      "venue": "Frontiers in Neuroinformatics",
+      "url": "https://doi.org/10.3389/fninf.2018.00049",
+      "doi": "10.3389/fninf.2018.00049",
+      "kind": "paper",
+      "found_via": "Semantic Scholar API forward citations of BluePyOpt; Crossref-verified",
+      "why_relevant": "Uncertainpy: uncertainty quantification and sensitivity analysis of neuron models on output features. Related to perturbation-to-feature mapping, but for parameter uncertainty, not regression detection.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Property-based Sensitivity Analysis: An approach to identify model implementation and integration errors",
+      "authors": "Takuya Iwanaga, Xifu Sun, Qian Wang, Joseph H.A. Guillaume, Barry F.W. Croke, Joel Rahman, Anthony J. Jakeman",
+      "year": "2021",
+      "venue": "Environmental Modelling & Software",
+      "url": "https://doi.org/10.1016/j.envsoft.2021.105013",
+      "doi": "10.1016/j.envsoft.2021.105013",
+      "kind": "paper",
+      "found_via": "Semantic Scholar API forward citations of 'Unit testing, model validation, and biological simulation'; Crossref-verified (abstract not retrieved)",
+      "why_relevant": "Environmental-modelling paper using property-based sensitivity analysis to identify model implementation and integration errors; cross-domain analogue of perturbation-based fault detection in scientific models.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Scientific Software Testing Goes Serverless: Creating and Invoking Metamorphic Functions",
+      "authors": "Xuanyi Lin, Michelle Simon, Nan Niu",
+      "year": "2021",
+      "venue": "IEEE Software",
+      "url": "https://doi.org/10.1109/ms.2020.3029468",
+      "doi": "10.1109/ms.2020.3029468",
+      "kind": "paper",
+      "found_via": "Europe PMC search '\"metamorphic testing\" AND (simulation OR model)'",
+      "why_relevant": "Metamorphic testing of scientific software delivered as functions, evaluated on real-world defect detection. Shows metamorphic testing already applied to scientific software (non-neuroscience).",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Measuring Effectiveness of Metamorphic Relations for Image Processing Using Mutation Testing",
+      "authors": "Fakeeha Jafari, Aamer Nadeem",
+      "year": "2024",
+      "venue": "Journal of Imaging",
+      "url": "https://doi.org/10.3390/jimaging10040087",
+      "doi": "10.3390/jimaging10040087",
+      "kind": "paper",
+      "found_via": "Europe PMC search '\"metamorphic testing\" AND (simulation OR model)'",
+      "why_relevant": "Uses mutation testing to measure fault-detection effectiveness of metamorphic relations for image-processing software. Same evaluation logic as NeuroSem (mutants to rank test sets) in a different domain.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Countering reproducibility issues in mathematical models with software engineering techniques: A case study using a one-dimensional mathematical model of the atrioventricular node",
+      "authors": "Christopher Schölzel, Valeria Blesius, Gernot Ernst, Alexander Goesmann, Andreas Dominik",
+      "year": "2021",
+      "venue": "PLOS ONE",
+      "url": "https://doi.org/10.1371/journal.pone.0254749",
+      "doi": "10.1371/journal.pone.0254749",
+      "kind": "paper",
+      "found_via": "Europe PMC citations of 'Unit testing, model validation, and biological simulation'",
+      "why_relevant": "Applies software-engineering techniques (testing etc.) to counter reproducibility problems in a published systems-biology model case study; generic SE practice for mechanistic models.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "VeVaPy, a Python Platform for Efficient Verification and Validation of Systems Biology Models with Demonstrations Using Hypothalamic-Pituitary-Adrenal Axis Models",
+      "authors": "Christopher Parker, Erik Nelson, Tongli Zhang",
+      "year": "2022",
+      "venue": "Entropy",
+      "url": "https://doi.org/10.3390/e24121747",
+      "doi": "10.3390/e24121747",
+      "kind": "paper",
+      "found_via": "Europe PMC citations of 'Replicability or reproducibility?' (JCNS 2018)",
+      "why_relevant": "VeVaPy: Python platform to speed verification and validation of systems-biology ODE models; V&V tooling analogue outside neuroscience.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Current Practice in Software Development for Computational Neuroscience and How to Improve It",
+      "authors": "Marc-Oliver Gewaltig, Robert Cannon",
+      "year": "2014",
+      "venue": "PLoS Computational Biology",
+      "url": "https://doi.org/10.1371/journal.pcbi.1003376",
+      "doi": "10.1371/journal.pcbi.1003376",
+      "kind": "paper",
+      "found_via": "Europe PMC citations of NeuroML 2010",
+      "why_relevant": "Survey and recommendations on software development and testing practice in computational neuroscience; background for the gap NeuroSem addresses.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Improving the reuse of computational models through version control",
+      "authors": "Dagmar Waltemath, Ron Henkel, Robert Hälke, Martin Scharm, Olaf Wolkenhauer",
+      "year": "2013",
+      "venue": "Bioinformatics",
+      "url": "https://doi.org/10.1093/bioinformatics/btt018",
+      "doi": "10.1093/bioinformatics/btt018",
+      "kind": "paper",
+      "found_via": "Europe PMC citations of ModelDB 2004",
+      "why_relevant": "Model version control for XML model formats (e.g. SBML/CellML) and detecting differences between model versions. Structural change detection between versions, complementary to NeuroSem's behavioural detection.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Automated code generation from LEMS, the general purpose model specification language underpinning NeuroML2",
+      "authors": "Boris Marin, Padraig Gleeson, Matteo Cantarelli, Robert Charles Cannon, Robin Angus Silver",
+      "year": "2014",
+      "venue": "BMC Neuroscience",
+      "url": "https://doi.org/10.1186/1471-2202-15-s1-p45",
+      "doi": "10.1186/1471-2202-15-s1-p45",
+      "kind": "paper",
+      "found_via": "Europe PMC citations of NeuroML 2010 (PMC4126487); Crossref-verified",
+      "why_relevant": "Conference abstract on automated code generation from LEMS to simulator code; the translation path whose behavioural fidelity NeuroSem would test.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "EDEN: A High-Performance, General-Purpose, NeuroML-Based Neural Simulator",
+      "authors": "Sotirios Panagiotou, Harry Sidiropoulos, Dimitrios Soudris, Mario Negrello, Christos Strydis",
+      "year": "2022",
+      "venue": "Frontiers in Neuroinformatics",
+      "url": "https://doi.org/10.3389/fninf.2022.724336",
+      "doi": "10.3389/fninf.2022.724336",
+      "kind": "paper",
+      "found_via": "OpenAlex search; Europe PMC citations of LEMS, OSB, NeuroML-DB",
+      "why_relevant": "EDEN, a NeuroML-based neural simulator; an alternative execution backend for NeuroML models relevant to cross-simulator consistency checks.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Software for Brain Network Simulations: A Comparative Study",
+      "authors": "Ruben A. Tikidji-Hamburyan, Vikram Narayana, Zeki Bozkus, Tarek A. El-Ghazawi",
+      "year": "2017",
+      "venue": "Frontiers in Neuroinformatics",
+      "url": "https://doi.org/10.3389/fninf.2017.00046",
+      "doi": "10.3389/fninf.2017.00046",
+      "kind": "paper",
+      "found_via": "Europe PMC citations of NeuroML 2010 and ModelDB 2004",
+      "why_relevant": "Compares popular simulators on the same brain network models; cross-simulator behavioural comparison without mutants or protocol optimization.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Cross-comparison of state of the art neuromorphological simulators on modern CPUs and GPUs using the Brain Scaffold Builder",
+      "authors": "R. De Schepper, N. Abi Akar, T. Hater, B. F. B. Huisman, E. D’Angelo, A. Morrison, C. Casellato",
+      "year": "2022",
+      "venue": "openRxiv",
+      "url": "https://doi.org/10.1101/2022.03.02.482285",
+      "doi": "10.1101/2022.03.02.482285",
+      "kind": "preprint",
+      "found_via": "Semantic Scholar API forward citations of LEMS 2014; Crossref-verified",
+      "why_relevant": "Cross-comparison of detailed-morphology simulators on CPUs/GPUs; simulator-equivalence evidence relevant to execution-configuration transformations.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Reproducibility and Comparability of Computational Models for Astrocyte Calcium Excitability",
+      "authors": "Tiina Manninen, Riikka Havela, Marja-Leena Linne",
+      "year": "2017",
+      "venue": "Frontiers in Neuroinformatics",
+      "url": "https://doi.org/10.3389/fninf.2017.00011",
+      "doi": "10.3389/fninf.2017.00011",
+      "kind": "paper",
+      "found_via": "Europe PMC citations of NeuroML 2010, LEMS 2014, ModelDB 2004",
+      "why_relevant": "Reimplements and compares astrocyte calcium models, reporting reproducibility and comparability problems; illustrates silent divergence among implementations.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Challenges in Reproducibility, Replicability, and Comparability of Computational Models and Tools for Neuronal and Glial Networks, Cells, and Subcellular Structures",
+      "authors": "Tiina Manninen, Jugoslava Aćimović, Riikka Havela, Heidi Teppola, Marja-Leena Linne",
+      "year": "2018",
+      "venue": "Frontiers in Neuroinformatics",
+      "url": "https://doi.org/10.3389/fninf.2018.00020",
+      "doi": "10.3389/fninf.2018.00020",
+      "kind": "paper",
+      "found_via": "Europe PMC citations of NeuroML 2010, LEMS 2014, ModelDB 2004, ReScience",
+      "why_relevant": "Review of reproducibility, replicability and comparability challenges for neuronal and glial models and tools; motivation context.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Reproducibility in Computational Neuroscience Models and Simulations",
+      "authors": "Robert A. McDougal, Anna S. Bulanova, William W. Lytton",
+      "year": "2016",
+      "venue": "IEEE Transactions on Biomedical Engineering",
+      "url": "https://doi.org/10.1109/tbme.2016.2539602",
+      "doi": "10.1109/tbme.2016.2539602",
+      "kind": "paper",
+      "found_via": "Europe PMC citations of NeuroML 2010, LEMS, libNeuroML, ModelDB 2004",
+      "why_relevant": "IEEE TBME perspective on reproducibility practices (version control, testing, standards) for computational neuroscience simulations; venue-relevant background.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Credibility, Replicability, and Reproducibility in Simulation for Biomedicine and Clinical Applications in Neuroscience",
+      "authors": "Lealem Mulugeta, Andrew Drach, Ahmet Erdemir, C. A. Hunt, Marc Horner, Joy P. Ku, Jerry G. Myers Jr., Rajanikanth Vadigepalli, William W. Lytton",
+      "year": "2018",
+      "venue": "Frontiers in Neuroinformatics",
+      "url": "https://doi.org/10.3389/fninf.2018.00018",
+      "doi": "10.3389/fninf.2018.00018",
+      "kind": "paper",
+      "found_via": "Europe PMC citations of NeuroML 2010, LEMS 2014, ModelDB 20 years",
+      "why_relevant": "Credibility, replicability and verification/validation practice for neuroscience simulation aimed at clinical use; frames V&V terminology NeuroSem should align with.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Reproducing Polychronization: A Guide to Maximizing the Reproducibility of Spiking Network Models",
+      "authors": "Robin Pauli, Philipp Weidel, Susanne Kunkel, Abigail Morrison",
+      "year": "2018",
+      "venue": "Frontiers in Neuroinformatics",
+      "url": "https://doi.org/10.3389/fninf.2018.00046",
+      "doi": "10.3389/fninf.2018.00046",
+      "kind": "paper",
+      "found_via": "Europe PMC citations of OSB 2019 and ReScience; OpenCitations citations of OSB preprint",
+      "why_relevant": "Guide to reproducing a spiking network model, cataloguing hidden parameters and implementation details that change results; evidence of silent drift under reimplementation.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Building on models—a perspective for computational neuroscience",
+      "authors": "Hans Ekkehard Plesser, Andrew P Davison, Markus Diesmann, Tomoki Fukai, Tobias Gemmeke, Padraig Gleeson, James C Knight, Thomas Nowotny, Alexandre René, Oliver Rhodes, Antonio C Roque, Johanna Senk, Tilo Schwalger, Tim Stadtmann, Gianmarco Tiddia, Sacha J van Albada",
+      "year": "2025",
+      "venue": "Cerebral Cortex",
+      "url": "https://doi.org/10.1093/cercor/bhaf295",
+      "doi": "10.1093/cercor/bhaf295",
+      "kind": "paper",
+      "found_via": "OpenCitations citations of SciUnit ICSE 2014; Europe PMC citations; Europe PMC lens search",
+      "why_relevant": "Perspective on re-use and replication of a cortical microcircuit model across simulators and projects; context for behaviour preservation as models are evolved.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "BioSimulators: a central registry of simulation engines and services for recommending specific tools",
+      "authors": "Bilal Shaikh, Lucian P Smith, Dan Vasilescu, Gnaneswara Marupilla, Michael Wilson, Eran Agmon, Henry Agnew, Steven S Andrews, Azraf Anwar, Moritz E Beber, Frank T Bergmann, David Brooks, Lutz Brusch, Laurence Calzone, Kiri Choi, Joshua Cooper, John Detloff, Brian Drawert, Michel Dumontier, G Bard Ermentrout, James R Faeder, Andrew P Freiburger, Fabian Fröhlich, Akira Funahashi, Alan Garny, John H Gennari, Padraig Gleeson, Anne Goelzer, Zachary Haiman, Jan Hasenauer, Joseph L Hellerstein, Henning Hermjakob, Stefan Hoops, Jon C Ison, Diego Jahn, Henry V Jakubowski, Ryann Jordan, Matúš Kalaš, Matthias König, Wolfram Liebermeister, Rahuman S Malik Sheriff, Synchon Mandal, Robert McDougal, J Kyle Medley, Pedro Mendes, Robert Müller, Chris J Myers, Aurelien Naldi, Tung V N Nguyen, David P Nickerson, Brett G Olivier, Drashti Patoliya, Loïc Paulevé, Linda R Petzold, Ankita Priya, Anand K Rampadarath, Johann M Rohwer, Ali S Saglam, Dilawar Singh, Ankur Sinha, Jacky Snoep, Hugh Sorby, Ryan Spangler, Jörn Starruß, Payton J Thomas, David van Niekerk, Daniel Weindl, Fengkai Zhang, Anna Zhukova, Arthur P Goldberg, James C Schaff, Michael L Blinov, Herbert M Sauro, Ion I Moraru, Jonathan R Karr",
+      "year": "2022",
+      "venue": "Nucleic Acids Research",
+      "url": "https://doi.org/10.1093/nar/gkac331",
+      "doi": "10.1093/nar/gkac331",
+      "kind": "paper",
+      "found_via": "OpenAlex search 'pyNeuroML'; Europe PMC citations of ModelDB 20 years",
+      "why_relevant": "BioSimulators registry of simulation engines with standardized interfaces for executing models across tools; relevant to cross-simulator execution of standardized models.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Modeling sources of interlaboratory variability in electrophysiological properties of mammalian neurons",
+      "authors": "Dmitry Tebaykin, Shreejoy J. Tripathy, Nathalie Binnion, Brenna Li, Richard C. Gerkin, Paul Pavlidis",
+      "year": "2018",
+      "venue": "Journal of Neurophysiology",
+      "url": "https://doi.org/10.1152/jn.00604.2017",
+      "doi": "10.1152/jn.00604.2017",
+      "kind": "paper",
+      "found_via": "Europe PMC citations of NeuroML 2010 and ModelDB 2004",
+      "why_relevant": "Uses neuron models to show how experimental condition differences shift measured electrophysiological features; supports protocol sensitivity of features.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Empirical Quantification of Predictive Uncertainty Due to Model Discrepancy by Training with an Ensemble of Experimental Designs: An Application to Ion Channel Kinetics",
+      "authors": "Joseph G. Shuttleworth, Chon Lok Lei, Dominic G. Whittaker, Monique J. Windley, Adam P. Hill, Simon P. Preston, Gary R. Mirams",
+      "year": "2023",
+      "venue": "Bulletin of Mathematical Biology",
+      "url": "https://doi.org/10.1007/s11538-023-01224-6",
+      "doi": "10.1007/s11538-023-01224-6",
+      "kind": "paper",
+      "found_via": "Europe PMC lens search (optimal experimental design / protocol design)",
+      "why_relevant": "Trains models on an ensemble of experimental designs (protocols) to quantify predictive uncertainty from model discrepancy; multi-protocol reasoning for electrophysiology models.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Large-scale synthetic data enable digital twins of human excitable cells",
+      "authors": "Pei-Chi Yang, Mao-Tsuen Jeng, Deborah K Lieu, Regan L Smithers, Gonzalo Hernandez-Hernandez, L Fernando Santana, Colleen E Clancy",
+      "year": "2026",
+      "venue": "eLife",
+      "url": "https://doi.org/10.7554/elife.110013",
+      "doi": "10.7554/elife.110013",
+      "kind": "paper",
+      "found_via": "Europe PMC lens search (perturbation / electrophysiological features)",
+      "why_relevant": "Builds digital twins of iPSC cardiomyocytes from a single optimized voltage-clamp protocol using large synthetic data; example of an optimized, highly informative stimulation protocol (cardiac).",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Neuronal excitability and parameter variability in the Hodgkin-Huxley model",
+      "authors": "Alon Korngreen",
+      "year": "2026",
+      "venue": "PLOS Computational Biology",
+      "url": "https://doi.org/10.1371/journal.pcbi.1014458",
+      "doi": "10.1371/journal.pcbi.1014458",
+      "kind": "paper",
+      "found_via": "Europe PMC citations of NeuroML-DB (2023)",
+      "why_relevant": "Propagates fitted-parameter variability through Hodgkin-Huxley models to study excitability robustness and degeneracy; relevant to distinguishing harmless parameter changes from behaviour-changing ones.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Benchmarking biochemical networks generated by large language models",
+      "authors": "Jeevan Tewari, Benjamin W Dahl, B Adam Bates, Jason A Papin, Jeffrey J Saucerman",
+      "year": "2026",
+      "venue": "eLife",
+      "url": "https://doi.org/10.7554/elife.109709",
+      "doi": "10.7554/elife.109709",
+      "kind": "paper",
+      "found_via": "Europe PMC search '(\"large language model\" OR LLM) AND (\"NEURON simulator\" OR NeuroML OR ...)'",
+      "why_relevant": "Benchmarks LLM-generated biochemical network models against curated models via reaction recovery and perturbation-response accuracy. Adjacent to NeuroSem's optional AI-transformation study (systems biology, generation rather than editing).",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Intelligent tool orchestration for rapid mechanistic model prototyping: MCP servers as AI-biology interfaces",
+      "authors": "Marco Ruscone, Miguel Vazquez, Alfonso Valencia",
+      "year": "2026",
+      "venue": "npj Systems Biology and Applications",
+      "url": "https://doi.org/10.1038/s41540-026-00767-3",
+      "doi": "10.1038/s41540-026-00767-3",
+      "kind": "paper",
+      "found_via": "Europe PMC lens search (LLM AND computational model AND generation)",
+      "why_relevant": "LLM agents orchestrating modelling tools through MCP servers to prototype multiscale mechanistic models; context for AI-assisted model construction/transformation needing behavioural checks.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "A Judge Agent Closes the Reliability Gap in AI-Generated Scientific Simulation",
+      "authors": "Chengshuai Yang",
+      "year": "2026",
+      "venue": "arXiv (cs.SE)",
+      "url": "https://arxiv.org/abs/2603.25780",
+      "doi": "10.48550/arXiv.2603.25780",
+      "kind": "preprint",
+      "found_via": "Semantic Scholar API search 'AI coding agent neuron simulation'; arXiv abs page fetched via WebFetch",
+      "why_relevant": "Targets silent failures in AI-generated simulation code using an automated judge with mathematical checks (well-posedness, convergence, error certification) across many scientific domains. Overlaps on AI-assisted simulation plus convergence-based checking; not neuroscience-specific, no mutants or stimulus batteries.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Provenance and Reproducibility in the Automation of a Standard Computational Neuroscience Pipeline",
+      "authors": "David Bruce Stockton, Astrid A. Prinz, Fidel Santamaria",
+      "year": "2019",
+      "venue": "Proceedings of the 2nd International Workshop on Practical Reproducible Evaluation of Computer Systems",
+      "url": "https://doi.org/10.1145/3322790.3330592",
+      "doi": "10.1145/3322790.3330592",
+      "kind": "paper",
+      "found_via": "Semantic Scholar API forward citations of NeuroML 2010; Crossref-verified",
+      "why_relevant": "Provenance capture and reproducibility when automating a standard computational neuroscience pipeline; relevant to NeuroSem's run-provenance requirements.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Automatic Reuse, Adaption, and Execution of Simulation Experiments via Provenance Patterns",
+      "authors": "Pia Wilsdorf, Anja Wolpers, Jason Hilton, Fiete Haack, Adelinde Uhrmacher",
+      "year": "2023",
+      "venue": "ACM Transactions on Modeling and Computer Simulation",
+      "url": "https://doi.org/10.1145/3564928",
+      "doi": "10.1145/3564928",
+      "kind": "paper",
+      "found_via": "Semantic Scholar API forward citations of SciUnit ICSE 2014; Crossref-verified",
+      "why_relevant": "Uses provenance patterns to automatically reuse, adapt and re-execute simulation experiments; related to automated re-running of experiment batteries after model change.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Reuse of process-based models: automatic transformation into many programming languages and simulation platforms",
+      "authors": "Cyrille Ahmed Midingoyi, Christophe Pradal, Ioannis N Athanasiadis, Marcello Donatelli, Andreas Enders, Davide Fumagalli, Frédérick Garcia, Dean Holzworth, Gerrit Hoogenboom, Cheryl Porter, Hélène Raynal, Peter Thorburn, Pierre Martre",
+      "year": "2020",
+      "venue": "in silico Plants",
+      "url": "https://doi.org/10.1093/insilicoplants/diaa007",
+      "doi": "10.1093/insilicoplants/diaa007",
+      "kind": "paper",
+      "found_via": "Semantic Scholar API forward citations of NeuroML 2010; Crossref-verified",
+      "why_relevant": "Automatic transformation of process-based (crop) models into many languages and platforms; cross-domain analogue of model translation whose behavioural equivalence must be checked.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Software engineering practices for scientific software development: A systematic mapping study",
+      "authors": "Elvira-Maria Arvanitou, Apostolos Ampatzoglou, Alexander Chatzigeorgiou, Jeffrey C. Carver",
+      "year": "2021",
+      "venue": "Journal of Systems and Software",
+      "url": "https://doi.org/10.1016/j.jss.2020.110848",
+      "doi": "10.1016/j.jss.2020.110848",
+      "kind": "paper",
+      "found_via": "Semantic Scholar API forward citations of SciUnit ICSE 2014; Crossref-verified",
+      "why_relevant": "Systematic mapping of software-engineering practices (including testing) in scientific software development; background for positioning against generic scientific-software testing.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "libNeuroML and PyLEMS: using Python to combine procedural and declarative modeling approaches in computational neuroscience",
+      "authors": "Michael Vella, Robert C. Cannon, Sharon Crook, Andrew P. Davison, Gautham Ganapathy, Hugh P. C. Robinson, R. Angus Silver, Padraig Gleeson",
+      "year": "2014",
+      "venue": "Frontiers in Neuroinformatics",
+      "url": "https://doi.org/10.3389/fninf.2014.00038",
+      "doi": "10.3389/fninf.2014.00038",
+      "kind": "paper",
+      "found_via": "OpenAlex search; Europe PMC citations (18)",
+      "why_relevant": "libNeuroML and PyLEMS paper; Python APIs NeuroSem may use to read and rewrite NeuroML/LEMS when generating mutants. Tool citation only.",
+      "estimated_closeness": 1
+    },
+    {
+      "title": "Online interoperable resources for building hippocampal neuron models via the Hippocampus Hub",
+      "authors": "Luca Leonardo Bologna, Antonino Tocco, Roberto Smiriglia, Armando Romani, Felix Schürmann, Michele Migliore",
+      "year": "2023",
+      "venue": "Frontiers in Neuroinformatics",
+      "url": "https://doi.org/10.3389/fninf.2023.1271059",
+      "doi": "10.3389/fninf.2023.1271059",
+      "kind": "paper",
+      "found_via": "Europe PMC citations of HippoUnit, NeuroML-DB, OSB, NeuroFeatureExtract",
+      "why_relevant": "Hippocampus Hub online resources that combine feature extraction, model optimization and validation services for hippocampal neurons; ecosystem context.",
+      "estimated_closeness": 1
+    },
+    {
+      "title": "Combining hypothesis- and data-driven neuroscience modeling in FAIR workflows",
+      "authors": "Olivia Eriksson, Upinder Singh Bhalla, Kim T Blackwell, Sharon M Crook, Daniel Keller, Andrei Kramer, Marja-Leena Linne, Ausra Saudargienė, Rebecca C Wade, Jeanette Hellgren Kotaleski",
+      "year": "2022",
+      "venue": "eLife",
+      "url": "https://doi.org/10.7554/elife.69013",
+      "doi": "10.7554/elife.69013",
+      "kind": "paper",
+      "found_via": "OpenAlex search; Europe PMC citations of HippoUnit, NeuroML, OSB, BluePyOpt, ModelDB",
+      "why_relevant": "FAIR workflows combining hypothesis- and data-driven neuron modelling, including validation steps; ecosystem context.",
+      "estimated_closeness": 1
+    }
+  ],
+  "queries_run": [
+    {
+      "source": "OpenAlex",
+      "query": "LEMS NeuroML version 2 language",
+      "result_note": "hits=105; top: LEMS: a language for expressing complex biological models in concise a; NeuroML-DB: Sharing and characterizing data-driven neuroscience models; Development of NeuroML version 2.0: greater extensibility, support for"
+    },
+    {
+      "source": "OpenAlex",
+      "query": "pyNeuroML",
+      "result_note": "hits=25; top: NeuroML/pyNeuroML: v1.3.22; The SONATA data format for efficient description of large-scale networ; BioSimulators : a central registry of simulation engines and services "
+    },
+    {
+      "source": "OpenAlex",
+      "query": "Open Source Brain platform collaborative development testing models",
+      "result_note": "hits=99467; top: FieldTrip: Open Source Software for Advanced Analysis of MEG, EEG, and; 3D Slicer as an image computing platform for the Quantitative Imaging ; The Multimodal Brain Tumor Image Segmentation Benchmark (BRATS)"
+    },
+    {
+      "source": "OpenAlex",
+      "query": "SciUnit validation framework scientific models",
+      "result_note": "hits=58; top: NeuronUnit: A package for data-driven validation of neuron models usin; Sciunits: Reusable Research Objects; Unit testing, model validation, and biological simulation"
+    },
+    {
+      "source": "OpenAlex",
+      "query": "NeuronUnit",
+      "result_note": "hits=29; top: NeuronUnit: A package for data-driven validation of neuron models usin; neuronunit; Intermediate files used in NeuronUnit Optimization."
+    },
+    {
+      "source": "OpenAlex",
+      "query": "eFEL electrophys feature extraction library",
+      "result_note": "hits=54; top: eFEL; eFEL 2.6; The EBRAINS NeuroFeatureExtract: An Online Resource for the Extraction"
+    },
+    {
+      "source": "OpenAlex",
+      "query": "NeuroML language describing data driven models neurons networks",
+      "result_note": "hits=317; top: NeuroML: A Language for Describing Data Driven Models of Neurons and N; LEMS: a language for expressing complex biological models in concise a; A framework for modeling the growth and development of neurons and net"
+    },
+    {
+      "source": "OpenAlex",
+      "query": "ModelDB reproducibility computational neuroscience models replication",
+      "result_note": "hits=344; top: Journal of Computational Neuroscience; Replicability or reproducibility? On the replication crisis in computa; Credibility, Replicability, and Reproducibility in Simulation for Biom"
+    },
+    {
+      "source": "OpenAlex search",
+      "query": "eFEL electrophys feature extraction library",
+      "result_note": "hits=54; top: eFEL; eFEL 2.6; The EBRAINS NeuroFeatureExtract: An Online Resource for the Extraction"
+    },
+    {
+      "source": "OpenAlex search",
+      "query": "ReScience reproducible computational neuroscience",
+      "result_note": "hits=101; top: Sustainable computational science: the ReScience initiative; Journal of Computational Neuroscience; Replicability or reproducibility? On the replication crisis in computa"
+    },
+    {
+      "source": "OpenAlex search",
+      "query": "conductance neuron model metamorphic testing",
+      "result_note": "hits=2324; top: Is neuron coverage a meaningful measure for testing deep neural networ; Delineating metamorphic pathways in the ascidian Ciona intestinalis; 3D standard brain of the red flour beetle Tribolium castaneum: a tool "
+    },
+    {
+      "source": "OpenAlex search",
+      "query": "NeuroML mutation testing",
+      "result_note": "hits=47; top: SBML Level 3: an extensible format for the exchange and reuse of biolo; BluePyOpt: Leveraging Open Source Software and Cloud Infrastructure to; Is realistic neuronal modeling realistic?"
+    },
+    {
+      "source": "OpenAlex search",
+      "query": "neuron model semantic regression",
+      "result_note": "hits=55076; top: ImageNet classification with deep convolutional neural networks; Optimizing Semantic Coherence in Topic Models; Semantic memory: A review of methods, models, and current challenges"
+    },
+    {
+      "source": "OpenAlex search",
+      "query": "behavioral preservation neuronal model conversion",
+      "result_note": "hits=10297; top: Inhibition of Calpains Prevents Neuronal and Behavioral Deficits in an; Regulation of Neuronal Glutathione Synthesis; Participation of Autophagy in Storage of Lysosomes in Neurons from Mou"
+    },
+    {
+      "source": "OpenAlex search",
+      "query": "perturbation fingerprint neuron model",
+      "result_note": "hits=7066; top: The Kuramoto model: A simple paradigm for synchronization phenomena; Automated Website Fingerprinting through Deep Learning; Nuclear envelope dystrophies show a transcriptional fingerprint sugges"
+    },
+    {
+      "source": "OpenAlex search",
+      "query": "automatic stimulation protocol selection model validation",
+      "result_note": "hits=87327; top: 3D tumor spheroid models for in vitro therapeutic screening: a systema; Ocean Optics Protocols for Satellite Ocean Color Sensor Validation; Creation and analysis of biochemical constraint-based models using the"
+    },
+    {
+      "source": "OpenAlex search",
+      "query": "mutation testing computational neuroscience",
+      "result_note": "hits=38262; top: The mutational constraint spectrum quantified from variation in 141,45; A polygenic burden of rare disruptive mutations in schizophrenia; Deep learning for computational biology"
+    },
+    {
+      "source": "OpenAlex search",
+      "query": "AI coding agent neuron simulation",
+      "result_note": "hits=17447; top: AI-Assisted Pipeline for Dynamic Generation of Trustworthy Health Supp; Explainable Artificial Intelligence (XAI): Concepts, taxonomies, oppor; Whatever next? Predictive brains, situated agents, and the future of c"
+    },
+    {
+      "source": "OpenAlex search",
+      "query": "collaborative infrastructure test-driven scientific model validation",
+      "result_note": "hits=134172; top: Collaborative infrastructure for test-driven scientific model validati; Features and development of Coot; ImageJ2: ImageJ for the next generation of scientific image data"
+    },
+    {
+      "source": "OpenAlex search",
+      "query": "Twenty years of ModelDB",
+      "result_note": "hits=228; top: Twenty years of ModelDB and beyond: building essential modeling tools ; BioModels—15 years of sharing computational models in life science; The first 10 years of the international coordination network for stand"
+    },
+    {
+      "source": "OpenAlex search",
+      "query": "ModelDB database computational neuroscience models",
+      "result_note": "hits=656; top: ModelDB: A Database to Support Computational Neuroscience; Twenty years of ModelDB and beyond: building essential modeling tools ; BioModels Database: a free, centralized database of curated, published"
+    },
+    {
+      "source": "OpenAlex search",
+      "query": "Open Source Brain model validation OMV continuous integration",
+      "result_note": "hits=293; top: Microbiota in health and diseases; Open Source Brain: a collaborative resource for visualizing, analyzing; Applying extracellular vesicles based therapeutics in clinical trials "
+    },
+    {
+      "source": "OpenAlex search",
+      "query": "reproducing published computational neuron models ModelDB re-implementation",
+      "result_note": "hits=369; top: BioModels—15 years of sharing computational models in life science; NeuroML: A Language for Describing Data Driven Models of Neurons and N; Towards Reproducible Descriptions of Neuronal Network Models"
+    },
+    {
+      "source": "OpenAlex search",
+      "query": "BluePyEModel electrical model building",
+      "result_note": "hits=12; top: BluePyEModel; BluePyEModel; BluePyEModel"
+    },
+    {
+      "source": "OpenAlex search",
+      "query": "eFEL electrophysiology feature extraction Blue Brain",
+      "result_note": "hits=41; top: Electrophysiology prediction of single neurons based on their morpholo; Computational Concepts for Reconstructing and Simulating Brain Tissue; HippoUnit: A software tool for the automated testing and systematic co"
+    },
+    {
+      "source": "OpenAlex filter",
+      "query": "title_and_abstract.search:optimal%20stimulation%20protocol%20design%20ion%20channel%20model%20parameter%20identifiability &sort=relevance_score:desc",
+      "result_note": "ERROR HTTP Error 429: Too Many Requests; hits=None; top: "
+    },
+    {
+      "source": "OpenAlex filter",
+      "query": "title_and_abstract.search:current%20clamp%20protocol%20optimization%20neuron%20model%20fitting%20informative%20stimuli &sort=relevance_score:desc",
+      "result_note": "ERROR HTTP Error 429: Too Many Requests; hits=None; top: "
+    },
+    {
+      "source": "OpenAlex filter",
+      "query": "title_and_abstract.search:multiple%20stimulus%20protocols%20electrophysiological%20features%20validation%20neuron%20models &sort=relevance_score:desc",
+      "result_note": "ERROR HTTP Error 429: Too Many Requests; hits=None; top: "
+    },
+    {
+      "source": "OpenAlex filter",
+      "query": "title_and_abstract.search:numerical%20time%20step%20convergence%20neuron%20simulation%20spike%20features%20accuracy &sort=relevance_score:desc",
+      "result_note": "ERROR HTTP Error 429: Too Many Requests; hits=None; top: "
+    },
+    {
+      "source": "OpenAlex filter",
+      "query": "title_and_abstract.search:comparison%20of%20neuron%20simulators%20same%20model%20different%20results &sort=relevance_score:desc",
+      "result_note": "ERROR HTTP Error 429: Too Many Requests; hits=None; top: "
+    },
+    {
+      "source": "OpenAlex filter",
+      "query": "title_and_abstract.search:single%20neuron%20model%20comparison%20electrophysiological%20features%20test%20suite &sort=relevance_score:desc",
+      "result_note": "ERROR HTTP Error 429: Too Many Requests; hits=None; top: "
+    },
+    {
+      "source": "OpenAlex filter",
+      "query": "title_and_abstract.search:sensitivity%20analysis%20conductance%20based%20neuron%20model%20features%20uncertainty &sort=relevance_score:desc",
+      "result_note": "ERROR HTTP Error 429: Too Many Requests; hits=None; top: "
+    },
+    {
+      "source": "OpenAlex filter",
+      "query": "title_and_abstract.search:degeneracy%20conductance%20neuron%20models%20similar%20output%20different%20parameters &sort=relevance_score:desc",
+      "result_note": "ERROR HTTP Error 429: Too Many Requests; hits=None; top: "
+    },
+    {
+      "source": "OpenAlex filter",
+      "query": "title_and_abstract.search:metamorphic%20testing%20scientific%20simulation%20software &sort=relevance_score:desc",
+      "result_note": "ERROR HTTP Error 429: Too Many Requests; hits=None; top: "
+    },
+    {
+      "source": "OpenAlex filter",
+      "query": "title_and_abstract.search:mutation%20testing%20scientific%20software%20models &sort=relevance_score:desc",
+      "result_note": "ERROR HTTP Error 429: Too Many Requests; hits=None; top: "
+    },
+    {
+      "source": "OpenAlex filter",
+      "query": "title_and_abstract.search:metamorphic%20testing%20bioinformatics%20systems%20biology%20simulation &sort=relevance_score:desc",
+      "result_note": "ERROR HTTP Error 429: Too Many Requests; hits=None; top: "
+    },
+    {
+      "source": "OpenAlex filter",
+      "query": "title_and_abstract.search:verification%20of%20model%20conversion%20SBML%20simulators%20equivalence &sort=relevance_score:desc",
+      "result_note": "ERROR HTTP Error 429: Too Many Requests; hits=None; top: "
+    },
+    {
+      "source": "OpenAlex filter",
+      "query": "title_and_abstract.search:regression%20testing%20computational%20models%20simulation%20outputs%20tolerance &sort=relevance_score:desc",
+      "result_note": "ERROR HTTP Error 429: Too Many Requests; hits=None; top: "
+    },
+    {
+      "source": "OpenAlex filter",
+      "query": "title_and_abstract.search:large%20language%20models%20generate%20computational%20neuroscience%20models &sort=relevance_score:desc",
+      "result_note": "ERROR HTTP Error 429: Too Many Requests; hits=None; top: "
+    },
+    {
+      "source": "OpenAlex filter",
+      "query": "title_and_abstract.search:LLM%20agent%20NEURON%20simulation%20code &sort=relevance_score:desc",
+      "result_note": "ERROR HTTP Error 429: Too Many Requests; hits=None; top: "
+    },
+    {
+      "source": "OpenAlex filter",
+      "query": "title_and_abstract.search:translation%20of%20neuron%20models%20between%20simulators%20validation%20NEST%20NEURON%20Brian &sort=relevance_score:desc",
+      "result_note": "ERROR HTTP Error 429: Too Many Requests; hits=None; top: "
+    },
+    {
+      "source": "SemanticScholar",
+      "query": "conductance neuron model metamorphic testing",
+      "result_note": "ERROR HTTP Error 429: ; hits=None; top: "
+    },
+    {
+      "source": "SemanticScholar",
+      "query": "NeuroML mutation testing",
+      "result_note": "ERROR HTTP Error 429: ; hits=None; top: "
+    },
+    {
+      "source": "SemanticScholar",
+      "query": "neuron model semantic regression",
+      "result_note": "hits=10729; top: Sparsity constrained model for the semantic features selection; Probing Neural Topology of Large Language Models; Knowledge Trees: Gradient Boosting Decision Trees on Knowledge Neurons"
+    },
+    {
+      "source": "SemanticScholar",
+      "query": "behavioral preservation neuronal model conversion",
+      "result_note": "ERROR HTTP Error 429: ; hits=None; top: "
+    },
+    {
+      "source": "SemanticScholar",
+      "query": "perturbation fingerprint neuron model",
+      "result_note": "ERROR HTTP Error 429: ; hits=None; top: "
+    },
+    {
+      "source": "SemanticScholar",
+      "query": "automatic stimulation protocol selection model validation",
+      "result_note": "ERROR HTTP Error 429: ; hits=None; top: "
+    },
+    {
+      "source": "SemanticScholar",
+      "query": "mutation testing computational neuroscience",
+      "result_note": "hits=7145; top: Mutation-Based Harmony Search Algorithm for Hybrid Testing of Web Serv; Sequence Fusion Algorithm of Tumor Gene Sequencing and Alignment Based; Tempus: An Evolutionary Mutation Testing System on Event‐Based Systems"
+    },
+    {
+      "source": "SemanticScholar",
+      "query": "AI coding agent neuron simulation",
+      "result_note": "hits=446; top: AgenticFlict: A Large-Scale Dataset of Merge Conflicts in AI Coding Ag; Symbio Coding: An Educational Testbed for AI Agent Simulation as Softw; PARC: An Autonomous Self-Reflective Coding Agent for Robust Execution "
+    },
+    {
+      "source": "SemanticScholar",
+      "query": "conductance neuron model metamorphic testing",
+      "result_note": "hits=3226; top: Boosting the Cost-Effectiveness of Metamorphic Test Case Pair Selectio; Metamorphic testing of deep neural network-based autonomous driving sy; Metamorphic testing of large language model question answering systems"
+    },
+    {
+      "source": "SemanticScholar",
+      "query": "NeuroML mutation testing",
+      "result_note": "ERROR HTTP Error 429: ; hits=None; top: "
+    },
+    {
+      "source": "SemanticScholar",
+      "query": "behavioral preservation neuronal model conversion",
+      "result_note": "ERROR HTTP Error 429: ; hits=None; top: "
+    },
+    {
+      "source": "SemanticScholar",
+      "query": "perturbation fingerprint neuron model",
+      "result_note": "ERROR HTTP Error 429: ; hits=None; top: "
+    },
+    {
+      "source": "SemanticScholar",
+      "query": "NeuroML mutation testing",
+      "result_note": "ERROR HTTP Error 429: ; hits=None; top: "
+    },
+    {
+      "source": "SemanticScholar",
+      "query": "behavioral preservation neuronal model conversion",
+      "result_note": "hits=398; top: A small molecule p38α MAPK inhibitor, MW150, attenuates behavioral def; Preservation of an Aging-Associated Mitochondrial Signature in Advance; PROTECTIVE EFFECTS OF CURCUMA LONGA IN A ROTENONE-INDUCED RAT MODEL OF"
+    },
+    {
+      "source": "SemanticScholar",
+      "query": "perturbation fingerprint neuron model",
+      "result_note": "ERROR HTTP Error 429: ; hits=None; top: "
+    },
+    {
+      "source": "SemanticScholar",
+      "query": "automatic stimulation protocol selection model validation",
+      "result_note": "hits=11936; top: Development and validation of a gonadotropin dose selection model for ; Development and validation of machine-learning models for predicting t; Evaluation of a BERT Natural Language Processing Model for Automating "
+    },
+    {
+      "source": "SemanticScholar",
+      "query": "mutation analysis neuron model simulation",
+      "result_note": "ERROR HTTP Error 429: ; hits=None; top: "
+    },
+    {
+      "source": "Europe PMC search",
+      "query": "conductance neuron model metamorphic testing",
+      "result_note": "hits=27; top: Computer simulations of a dynamic sodium pump-mediated hyperpolarizati; Navigating the landscape of protein folding and proteostasis: from mol; Zinc in eye health, retinal biology and disease."
+    },
+    {
+      "source": "Europe PMC search",
+      "query": "NeuroML mutation testing",
+      "result_note": "hits=10; top: Web-Based Interfaces for Virtual <i>C. elegans</i> Neuron Model Defini; When &lt;i&gt;in vitro&lt;/i&gt; is not enough: &lt;i&gt;In silico&lt;; Computational modeling to study the impact of changes in Nav1.8 sodium"
+    },
+    {
+      "source": "Europe PMC search",
+      "query": "neuron model semantic regression",
+      "result_note": "hits=3876; top: Shared neural geometries for bilingual semantic representations in hum; Mapping the neuronal building blocks of human language with language m; A shared code for perceiving and imagining objects in human ventral te"
+    },
+    {
+      "source": "Europe PMC search",
+      "query": "behavioral preservation neuronal model conversion",
+      "result_note": "hits=3330; top: Therapeutic Potential of 2-(2-Benzofuranyl)-2-Imidazoline in Preclinic; Redox-exercise crosstalk in neurodegenerative diseases: mechanistic pe; Nicotinamide Mononucleotide Adenylyltransferase 1 and NAD&lt;sup&gt;+&"
+    },
+    {
+      "source": "Europe PMC search",
+      "query": "perturbation fingerprint neuron model",
+      "result_note": "hits=543; top: Bilateral Neuron Pairs Share Redundant Network Roles Despite Incomplet; A Hierarchical Multimodal Knowledge Graph for Neural Cell-Type-Specifi; Risk-Aware Computational Prioritization and Validation Route Design fo"
+    },
+    {
+      "source": "Europe PMC search",
+      "query": "automatic stimulation protocol selection model validation",
+      "result_note": "hits=6668; top: A Dataset of Microelectrode Recordings from Deep Brain Stimulation Pro; Physiological Monitoring of Sound-Based Relaxation Using Binaural Audi; Resting State Functional Connectivity Among Cortical and Subcortical G"
+    },
+    {
+      "source": "Europe PMC search",
+      "query": "mutation testing computational neuroscience",
+      "result_note": "hits=6721; top: Aging ADNP syndrome mice exhibit mutation/sex-dependent disruption of ; The role of \"red flags\" in the diagnostic work-up of hereditary transt; Neural-network-inspired federated coordination for noise-tolerant dist"
+    },
+    {
+      "source": "Europe PMC search",
+      "query": "AI coding agent neuron simulation",
+      "result_note": "hits=855; top: A hierarchical neuromorphic multi agent framework for energy aware and; Bio-Inspired Neural Network Dynamics-Aware Reinforcement Learning for ; Evolving spiking neural networks: the role of neuron models and encodi"
+    },
+    {
+      "source": "Europe PMC search",
+      "query": "\"metamorphic testing\" AND (simulation OR model)",
+      "result_note": "hits=51; top: Persona Routing Associated With Fewer Safety and Monotonicity Violatio; From Principles to Practice: Engineering Responsible AI for Geospatial; Class-adaptive oracle-free metamorphic test case prioritization framew"
+    },
+    {
+      "source": "Europe PMC search",
+      "query": "\"mutation testing\" AND (neuron OR neuroscience OR \"systems biology\" OR simulation)",
+      "result_note": "hits=743; top: An empirical study of defect clustering in deep neural networks and it; New candidate reference measurement procedure for NRAS p.Q61R quantifi; Pediatric Primary Diffuse Leptomeningeal Melanomatosis: A Case Report "
+    },
+    {
+      "source": "Europe PMC search",
+      "query": "(neuron model) AND (\"stimulus protocol\" OR \"stimulation protocols\") AND (selection OR optimal OR optimization) AND (validation OR discriminat*)",
+      "result_note": "hits=1119; top: Modelling the memory of unmyelinated axons: Integration of a data-driv; The optimization of neuroprosthetic interfaces relying on biophysical ; Predict neuromuscular performance in human epidural electrical stimula"
+    },
+    {
+      "source": "Europe PMC search",
+      "query": "\"NeuroML\" AND (validation OR testing OR conversion OR regression)",
+      "result_note": "hits=196; top: The NeuroML ecosystem for standardized multi-scale modeling in neurosc; Decoupling model descriptions from execution: a modular paradigm for e; NESTML: a generic modeling language and code generation tool for the s"
+    },
+    {
+      "source": "Europe PMC search",
+      "query": "(\"large language model\" OR LLM) AND (\"NEURON simulator\" OR NeuroML OR \"biophysical neuron model\" OR \"Hodgkin-Huxley\")",
+      "result_note": "hits=16; top: Benchmarking biochemical networks generated by large language models.; Neuromorphic Devices and Computing for Sensing, Memory, and Control.; The promise of cardiomyocyte computational models for drug safety."
+    },
+    {
+      "source": "Europe PMC search",
+      "query": "\"model validation\" AND \"electrophysiological features\" AND \"neuron models\"",
+      "result_note": "hits=16; top: A multiscale electro-metabolic model of a rat neocortical circuit reve; Multi-modal characterization and simulation of human epileptic circuit; A universal workflow for creation, validation, and generalization of d"
+    },
+    {
+      "source": "Europe PMC search",
+      "query": "(\"optimal experimental design\" OR \"protocol design\" OR \"optimised protocol\" OR \"optimized protocol\") AND (\"ion channel model\" OR \"cardiac model\" OR \"neuron model\") AND (voltage OR current) AND (identifiab* OR discriminat* OR \"model selection\")",
+      "result_note": "hits=33; top: Optimising experimental designs for model selection of ion channel dru; Optimizing experimental designs for model selection of ion channel dru; IonBench: A benchmark of optimisation strategies for mathematical mode"
+    },
+    {
+      "source": "Europe PMC search",
+      "query": "(\"NEURON\" AND \"NEST\") AND (\"same model\" OR \"cross-simulator\" OR \"simulator comparison\" OR \"simulator-independent\") AND (validation OR agreement OR discrepanc*)",
+      "result_note": "hits=173; top: NEURONpyxl: fast, flexible, Python-integrated simulation of biophysica; Building on models-a perspective for computational neuroscience.; A brain-constrained neural model of cognition and language with NEST: "
+    },
+    {
+      "source": "Europe PMC search",
+      "query": "(\"time step\" OR \"integration step\" OR \"numerical accuracy\") AND (\"neuron model\" OR \"Hodgkin-Huxley\") AND (spike OR \"action potential\") AND (convergence OR error)",
+      "result_note": "hits=1374; top: Modeling and classifying neuronal activity with a fusion of mathematic; Neuromorphic Devices and Computing for Sensing, Memory, and Control.; Exploring the spiking neural autoencoder: from hyperexcitability to no"
+    },
+    {
+      "source": "Europe PMC search",
+      "query": "(\"large language model\" OR LLM OR \"GPT-4\") AND (\"computational model\" OR \"simulation code\" OR \"mechanistic model\") AND (neuroscience OR neuron OR \"systems biology\") AND (generat* OR translat*)",
+      "result_note": "hits=150; top: Intelligent tool orchestration for rapid mechanistic model prototyping; From knowledge to judgment: A three-year longitudinal analysis of arti; Unifying the structures of language in a neural population code."
+    },
+    {
+      "source": "Europe PMC search",
+      "query": "(\"regression test\" OR \"regression testing\" OR \"continuous integration\") AND (simulation OR simulator) AND (neuroscience OR neuron OR \"systems biology\")",
+      "result_note": "hits=520; top: NESTML: a generic modeling language and code generation tool for the s; An in silico framework for dissecting the mechanistic origins of in vi; Which digital education approaches most effectively enhance clinical r"
+    },
+    {
+      "source": "Europe PMC search",
+      "query": "(\"perturbation\" OR \"parameter sensitivity\") AND (\"electrophysiological features\" OR \"firing features\") AND (\"conductance-based\" OR \"biophysical\") AND model",
+      "result_note": "hits=77; top: Higher-order interactions in neuronal function: From genes to ionic cu; In vivo neural activity of electrosensory pyramidal cells: Biophysical; Neuronal excitability and parameter variability in the Hodgkin-Huxley "
+    },
+    {
+      "source": "Europe PMC search",
+      "query": "(ion channel mutation OR channelopathy) AND (\"conductance-based model\" OR \"neuron model\") AND (\"current clamp\" OR \"firing\") AND (protocol* OR features)",
+      "result_note": "hits=1303; top: Compensatory coupling between leak and HCN conductances defines a low ; Inward rectifier potassium channels interact with calcium channels to ; The impact of dynamic reversal potential on the evolution of action po"
+    },
+    {
+      "source": "Europe PMC citations endpoint (forward citation graph)",
+      "query": "https://www.ebi.ac.uk/europepmc/webservices/rest/MED/20585541/citations (anchor NeuroML2010, DOI 10.1371/journal.pcbi.1000815)",
+      "result_note": "191 citing records retrieved; titles keyword-filtered for testing/validation/regression/reproducibility/protocol/conversion/mutation/LLM terms"
+    },
+    {
+      "source": "Europe PMC citations endpoint (forward citation graph)",
+      "query": "https://www.ebi.ac.uk/europepmc/webservices/rest/MED/25309419/citations (anchor LEMS2014, DOI 10.3389/fninf.2014.00079)",
+      "result_note": "76 citing records retrieved; titles keyword-filtered for testing/validation/regression/reproducibility/protocol/conversion/mutation/LLM terms"
+    },
+    {
+      "source": "Europe PMC citations endpoint (forward citation graph)",
+      "query": "https://www.ebi.ac.uk/europepmc/webservices/rest/MED/39792574/citations (anchor NeuroMLecosystem_eLife2024, DOI 10.7554/elife.95135)",
+      "result_note": "4 citing records retrieved; titles keyword-filtered for testing/validation/regression/reproducibility/protocol/conversion/mutation/LLM terms"
+    },
+    {
+      "source": "Europe PMC citations endpoint (forward citation graph)",
+      "query": "https://www.ebi.ac.uk/europepmc/webservices/rest/MED/24795618/citations (anchor libNeuroML_PyLEMS, DOI 10.3389/fninf.2014.00038)",
+      "result_note": "18 citing records retrieved; titles keyword-filtered for testing/validation/regression/reproducibility/protocol/conversion/mutation/LLM terms"
+    },
+    {
+      "source": "Europe PMC citations endpoint (forward citation graph)",
+      "query": "https://www.ebi.ac.uk/europepmc/webservices/rest/MED/31201122/citations (anchor OSB_Neuron2019, DOI 10.1016/j.neuron.2019.05.019)",
+      "result_note": "59 citing records retrieved; titles keyword-filtered for testing/validation/regression/reproducibility/protocol/conversion/mutation/LLM terms"
+    },
+    {
+      "source": "Europe PMC citations endpoint (forward citation graph)",
+      "query": "https://www.ebi.ac.uk/europepmc/webservices/rest/PPR/PPR19977/citations (anchor OSB_preprint, DOI 10.1101/229484)",
+      "result_note": "3 citing records retrieved; titles keyword-filtered for testing/validation/regression/reproducibility/protocol/conversion/mutation/LLM terms"
+    },
+    {
+      "source": "Europe PMC citations endpoint (forward citation graph)",
+      "query": "https://www.ebi.ac.uk/europepmc/webservices/rest/PPR/PPR81422/citations (anchor NeuronUnit_preprint, DOI 10.1101/665331)",
+      "result_note": "2 citing records retrieved; titles keyword-filtered for testing/validation/regression/reproducibility/protocol/conversion/mutation/LLM terms"
+    },
+    {
+      "source": "Europe PMC citations endpoint (forward citation graph)",
+      "query": "https://www.ebi.ac.uk/europepmc/webservices/rest/MED/27635225/citations (anchor UnitTesting_F1000, DOI 10.12688/f1000research.9315.1)",
+      "result_note": "11 citing records retrieved; titles keyword-filtered for testing/validation/regression/reproducibility/protocol/conversion/mutation/LLM terms"
+    },
+    {
+      "source": "Europe PMC citations endpoint (forward citation graph)",
+      "query": "https://www.ebi.ac.uk/europepmc/webservices/rest/MED/33513130/citations (anchor HippoUnit_PCB2021, DOI 10.1371/journal.pcbi.1008114)",
+      "result_note": "20 citing records retrieved; titles keyword-filtered for testing/validation/regression/reproducibility/protocol/conversion/mutation/LLM terms"
+    },
+    {
+      "source": "Europe PMC citations endpoint (forward citation graph)",
+      "query": "https://www.ebi.ac.uk/europepmc/webservices/rest/MED/27375471/citations (anchor BluePyOpt, DOI 10.3389/fninf.2016.00017)",
+      "result_note": "137 citing records retrieved; titles keyword-filtered for testing/validation/regression/reproducibility/protocol/conversion/mutation/LLM terms"
+    },
+    {
+      "source": "Europe PMC citations endpoint (forward citation graph)",
+      "query": "https://www.ebi.ac.uk/europepmc/webservices/rest/MED/36867658/citations (anchor NeuroMLDB_PCB2023, DOI 10.1371/journal.pcbi.1010941)",
+      "result_note": "10 citing records retrieved; titles keyword-filtered for testing/validation/regression/reproducibility/protocol/conversion/mutation/LLM terms"
+    },
+    {
+      "source": "Europe PMC citations endpoint (forward citation graph)",
+      "query": "https://www.ebi.ac.uk/europepmc/webservices/rest/MED/15218350/citations (anchor ModelDB2004, DOI 10.1023/b:jcns.0000023869.22017.2e)",
+      "result_note": "248 citing records retrieved; titles keyword-filtered for testing/validation/regression/reproducibility/protocol/conversion/mutation/LLM terms"
+    },
+    {
+      "source": "Europe PMC citations endpoint (forward citation graph)",
+      "query": "https://www.ebi.ac.uk/europepmc/webservices/rest/MED/27629590/citations (anchor ModelDB20yrs, DOI 10.1007/s10827-016-0623-7)",
+      "result_note": "170 citing records retrieved; titles keyword-filtered for testing/validation/regression/reproducibility/protocol/conversion/mutation/LLM terms"
+    },
+    {
+      "source": "Europe PMC citations endpoint (forward citation graph)",
+      "query": "https://www.ebi.ac.uk/europepmc/webservices/rest/MED/34722870/citations (anchor ReScience, DOI 10.7717/peerj-cs.142)",
+      "result_note": "42 citing records retrieved; titles keyword-filtered for testing/validation/regression/reproducibility/protocol/conversion/mutation/LLM terms"
+    },
+    {
+      "source": "Europe PMC citations endpoint (forward citation graph)",
+      "query": "https://www.ebi.ac.uk/europepmc/webservices/rest/MED/30377880/citations (anchor ReplicabilityCompNeuro, DOI 10.1007/s10827-018-0702-z)",
+      "result_note": "56 citing records retrieved; titles keyword-filtered for testing/validation/regression/reproducibility/protocol/conversion/mutation/LLM terms"
+    },
+    {
+      "source": "Europe PMC citations endpoint (forward citation graph)",
+      "query": "https://www.ebi.ac.uk/europepmc/webservices/rest/MED/34512300/citations (anchor NeuroFeatureExtract, DOI 10.3389/fninf.2021.713899)",
+      "result_note": "7 citing records retrieved; titles keyword-filtered for testing/validation/regression/reproducibility/protocol/conversion/mutation/LLM terms"
+    },
+    {
+      "source": "Europe PMC citations endpoint (forward citation graph)",
+      "query": "https://www.ebi.ac.uk/europepmc/webservices/rest/MED/30201844/citations (anchor CelegansValidation, DOI 10.1098/rstb.2017.0381)",
+      "result_note": "5 citing records retrieved; titles keyword-filtered for testing/validation/regression/reproducibility/protocol/conversion/mutation/LLM terms"
+    },
+    {
+      "source": "Europe PMC search",
+      "query": "DOI lookups for SciUnit ICSE 2014 (10.1145/2591062.2591129) and eFEL Zenodo (10.5281/zenodo.30074)",
+      "result_note": "not indexed in Europe PMC; covered via Semantic Scholar/OpenCitations"
+    },
+    {
+      "source": "Semantic Scholar citations endpoint (forward citation graph)",
+      "query": "https://api.semanticscholar.org/graph/v1/paper/DOI:10.1145/2591062.2591129/citations",
+      "result_note": "45 citing papers retrieved and keyword-filtered"
+    },
+    {
+      "source": "Semantic Scholar citations endpoint (forward citation graph)",
+      "query": "https://api.semanticscholar.org/graph/v1/paper/DOI:10.1101/665331/citations",
+      "result_note": "8 citing papers retrieved and keyword-filtered"
+    },
+    {
+      "source": "Semantic Scholar citations endpoint (forward citation graph)",
+      "query": "https://api.semanticscholar.org/graph/v1/paper/DOI:10.1371/journal.pcbi.1008114/citations",
+      "result_note": "21 citing papers retrieved and keyword-filtered"
+    },
+    {
+      "source": "Semantic Scholar citations endpoint (forward citation graph)",
+      "query": "https://api.semanticscholar.org/graph/v1/paper/DOI:10.1371/journal.pcbi.1010941/citations",
+      "result_note": "12 citing papers retrieved and keyword-filtered"
+    },
+    {
+      "source": "Semantic Scholar citations endpoint (forward citation graph)",
+      "query": "https://api.semanticscholar.org/graph/v1/paper/DOI:10.1016/j.neuron.2019.05.019/citations",
+      "result_note": "79 citing papers retrieved and keyword-filtered"
+    },
+    {
+      "source": "Semantic Scholar citations endpoint (forward citation graph)",
+      "query": "https://api.semanticscholar.org/graph/v1/paper/DOI:10.12688/f1000research.9315.1/citations",
+      "result_note": "28 citing papers retrieved and keyword-filtered"
+    },
+    {
+      "source": "Semantic Scholar citations endpoint (forward citation graph)",
+      "query": "https://api.semanticscholar.org/graph/v1/paper/DOI:10.7554/elife.95135/citations",
+      "result_note": "ERROR HTTP Error 404: Not Found; 0 citing papers retrieved and keyword-filtered"
+    },
+    {
+      "source": "Semantic Scholar citations endpoint (forward citation graph)",
+      "query": "https://api.semanticscholar.org/graph/v1/paper/DOI:10.3389/fninf.2014.00079/citations",
+      "result_note": "115 citing papers retrieved and keyword-filtered"
+    },
+    {
+      "source": "Semantic Scholar citations endpoint (forward citation graph)",
+      "query": "https://api.semanticscholar.org/graph/v1/paper/DOI:10.3389/fninf.2016.00017/citations",
+      "result_note": "188 citing papers retrieved and keyword-filtered"
+    },
+    {
+      "source": "Semantic Scholar citations endpoint (forward citation graph)",
+      "query": "https://api.semanticscholar.org/graph/v1/paper/DOI:10.1371/journal.pcbi.1000815/citations",
+      "result_note": "335 citing papers retrieved and keyword-filtered"
+    },
+    {
+      "source": "Semantic Scholar citations endpoint (second-level snowball)",
+      "query": "https://api.semanticscholar.org/graph/v1/paper/DOI:10.1016/j.patter.2023.100855/citations",
+      "result_note": "18 citing papers; only 2 keyword matches (Auto ANT; dentate gyrus ion-channel degeneracy) judged marginal"
+    },
+    {
+      "source": "Semantic Scholar citations endpoint (second-level snowball)",
+      "query": "https://api.semanticscholar.org/graph/v1/paper/DOI:10.1093/bioinformatics/btag328/citations",
+      "result_note": "1 citing papers; only 2 keyword matches (Auto ANT; dentate gyrus ion-channel degeneracy) judged marginal"
+    },
+    {
+      "source": "Semantic Scholar citations endpoint (second-level snowball)",
+      "query": "https://api.semanticscholar.org/graph/v1/paper/DOI:10.3389/fninf.2021.713899/citations",
+      "result_note": "8 citing papers; only 2 keyword matches (Auto ANT; dentate gyrus ion-channel degeneracy) judged marginal"
+    },
+    {
+      "source": "Semantic Scholar citations endpoint (second-level snowball)",
+      "query": "https://api.semanticscholar.org/graph/v1/paper/DOI:10.3389/fnint.2022.1041423/citations",
+      "result_note": "0 citing papers; only 2 keyword matches (Auto ANT; dentate gyrus ion-channel degeneracy) judged marginal"
+    },
+    {
+      "source": "Semantic Scholar citations endpoint (second-level snowball)",
+      "query": "https://api.semanticscholar.org/graph/v1/paper/DOI:10.1371/journal.pcbi.1012039/citations",
+      "result_note": "1 citing papers; only 2 keyword matches (Auto ANT; dentate gyrus ion-channel degeneracy) judged marginal"
+    },
+    {
+      "source": "Semantic Scholar citations endpoint (second-level snowball)",
+      "query": "https://api.semanticscholar.org/graph/v1/paper/DOI:10.3389/fninf.2023.1271059/citations",
+      "result_note": "1 citing papers; only 2 keyword matches (Auto ANT; dentate gyrus ion-channel degeneracy) judged marginal"
+    },
+    {
+      "source": "OpenCitations Index v2 citations",
+      "query": "https://api.opencitations.net/index/v2/citations/doi:10.1145/2591062.2591129",
+      "result_note": "29 citing DOIs; titles resolved via OpenCitations Meta API and screened"
+    },
+    {
+      "source": "OpenCitations Index v2 citations",
+      "query": "https://api.opencitations.net/index/v2/citations/doi:10.1101/665331",
+      "result_note": "11 citing DOIs; titles resolved via OpenCitations Meta API and screened"
+    },
+    {
+      "source": "OpenCitations Index v2 citations",
+      "query": "https://api.opencitations.net/index/v2/citations/doi:10.5281/zenodo.30074",
+      "result_note": "2 citing DOIs; titles resolved via OpenCitations Meta API and screened"
+    },
+    {
+      "source": "OpenCitations Index v2 citations",
+      "query": "https://api.opencitations.net/index/v2/citations/doi:10.1101/229484",
+      "result_note": "6 citing DOIs; titles resolved via OpenCitations Meta API and screened"
+    },
+    {
+      "source": "OpenCitations Index v2 citations",
+      "query": "https://api.opencitations.net/index/v2/citations/doi:10.7554/elife.95135",
+      "result_note": "1 citing DOIs; titles resolved via OpenCitations Meta API and screened"
+    },
+    {
+      "source": "OpenCitations Index v2 citations",
+      "query": "https://api.opencitations.net/index/v2/citations/doi:10.1371/journal.pcbi.1008114",
+      "result_note": "28 citing DOIs; titles resolved via OpenCitations Meta API and screened"
+    },
+    {
+      "source": "OpenCitations Index v2 citations",
+      "query": "https://api.opencitations.net/index/v2/citations/doi:10.1371/journal.pcbi.1010941",
+      "result_note": "20 citing DOIs; titles resolved via OpenCitations Meta API and screened"
+    },
+    {
+      "source": "OpenCitations Index v2 citations",
+      "query": "https://api.opencitations.net/index/v2/citations/doi:10.12688/f1000research.9315.1",
+      "result_note": "28 citing DOIs; titles resolved via OpenCitations Meta API and screened"
+    },
+    {
+      "source": "OpenAlex forward citations (filter=cites:W...&search=kw)",
+      "query": "19 anchors x 15 keywords (testing, validation, regression, reproducibility, protocol, conversion, mutation, benchmark, verification, sensitivity, robustness, equivalence, stimulus protocols, feature extraction, large language model)",
+      "result_note": "FAILED: HTTP 429 budget exhausted on first anchor (NeuroML 2010); job stopped"
+    },
+    {
+      "source": "Semantic Scholar paper/references/citations endpoints",
+      "query": "DOI:10.1109/ICST69053.2026.00050 (NeuroCERT); ARXIV:2608.09956 (pyRMV); S2 94d847c535aaf2b63d29c992637430e3c5360c84; 956a7ede...; bddee41f...; DOI:10.1162/cpsy_a_00015; DOI:10.1016/j.envsoft.2021.105013; ARXIV:2603.25780; ARXIV:2607.04395",
+      "result_note": "NeuroCERT abstract retrieved (0 refs/cites indexed); pyRMV 52 references (include SciUnit, NeuronUnit, HippoUnit, OpenWorm validation); 'A Software Framework for Validating Neuroscience Models' cited by 4; remaining items hit 429"
+    },
+    {
+      "source": "Crossref REST API",
+      "query": "https://api.crossref.org/works/<doi> for 32 anchor and candidate DOIs; query.bibliographic=NeuroCERT executable testing biophysical simulation",
+      "result_note": "metadata verified for all 32; no fuller NeuroCERT paper found beyond the ICST 2026 poster"
+    },
+    {
+      "source": "arXiv abs pages (WebFetch)",
+      "query": "https://arxiv.org/abs/2608.09956; https://arxiv.org/abs/2603.25780; https://arxiv.org/abs/2607.04395",
+      "result_note": "pyRMV and Judge Agent verified; NKI-Agent is AWS Neuron accelerator kernel generation, unrelated to neuron models (excluded)"
+    },
+    {
+      "source": "PyPI JSON API",
+      "query": "https://pypi.org/pypi/{efel,pyNeuroML,sciunit,neuronunit,OSBModelValidation,hippounit}/json",
+      "result_note": "efel 5.7.34 (LGPLv3); pyNeuroML 1.3.22 (LGPL-3.0-only); sciunit 0.2.8 (MIT); neuronunit 0.1.8.2 (MIT); OSBModelValidation 0.4.0 (LGPL-3.0-only); hippounit 1.4.1 (MIT)"
+    },
+    {
+      "source": "GitHub REST API",
+      "query": "repos/OpenSourceBrain/osb-model-validation; scidash/sciunit; scidash/neuronunit; KaliLab/hippounit; BlueBrain/eFEL; openbraininstitute/eFEL; NeuroML/pyNeuroML",
+      "result_note": "first 3 retrieved (OMV LGPL-3.0; sciunit MIT; neuronunit no license field); rest rate-limited"
+    },
+    {
+      "source": "Zenodo REST API",
+      "query": "doi:10.5281/zenodo.30074; doi:10.5281/zenodo.20513275; title:eFEL; title:sciunit; title:neuronunit; osb-model-validation; title:pyNeuroML; title:jNeuroML; title:NeuroML; title:HippoUnit",
+      "result_note": "FAILED: HTTP 504 on all"
+    },
+    {
+      "source": "WebSearch (Semantic Scholar site filter fallback)",
+      "query": "site:semanticscholar.org NeuroML mutation testing neuron model",
+      "result_note": "returned NESTML, PyMOOSE, HippoUnit, NineML, NSDF pages and unrelated DNN mutation-analysis papers; no neuron-model mutation testing work"
+    },
+    {
+      "source": "WebSearch (Semantic Scholar site filter fallback)",
+      "query": "site:semanticscholar.org metamorphic testing conductance-based neuron model simulation; site:semanticscholar.org stimulation protocol selection neuron model validation electrophysiology features",
+      "result_note": "not executed: session WebSearch budget exhausted"
+    },
+    {
+      "source": "Semantic Scholar paper search (not executed)",
+      "query": "metamorphic testing neuron simulation; stimulus protocol design neuron model discrimination; optimal experimental design current clamp protocol ion channel model; model conversion NEURON NeuroML validation (spike features); regression testing scientific simulation software tolerance / biophysical neuron simulation; large language model agent computational neuroscience / NEURON NeuroML; validation of neuron models multiple stimulus protocols electrophysiological features; mutation testing scientific software; numerical accuracy time step neuron simulation spike timing; stimulus protocol selection neuron model validation",
+      "result_note": "Queued lens/synonym queries were stopped before running because of persistent unauthenticated HTTP 429; equivalent concepts were covered with Europe PMC boolean searches and the citation graphs. 'NeuroML mutation testing' and 'perturbation fingerprint neuron model' failed on Semantic Scholar in every attempt (they did run on OpenAlex and Europe PMC)."
+    }
+  ],
+  "blocked_sources": [
+    "OpenAlex API (https://api.openalex.org): after about 27 search calls, all requests returned HTTP 429 'Insufficient budget' (daily free credit exhausted; Retry-After about 33,600 s, resets midnight UTC). The planned OpenAlex forward-citation snowball (filter=cites:<anchor>&search=<keyword>) and 16 title_and_abstract lens searches therefore failed; Europe PMC, Semantic Scholar and OpenCitations citation graphs were used instead.",
+    "Semantic Scholar Graph API (unauthenticated): frequent HTTP 429. Several handoff-term searches failed on first attempt and were re-queued; the DOI lookup for the eLife NeuroML ecosystem paper (10.7554/elife.95135) returned 404.",
+    "WebSearch tool: session budget exhausted (200/200) after one site:semanticscholar.org query, so no further web-search fallbacks were possible.",
+    "Europe PMC references endpoint (/{src}/{id}/references): 'temporarily unavailable due to maintenance'; backward reference lists of anchors were not retrieved (citations endpoint worked).",
+    "arXiv API (export.arxiv.org/api/query): repeated 'Rate exceeded'; arXiv records were verified via arxiv.org/abs pages with WebFetch.",
+    "IEEE Xplore document page (https://ieeexplore.ieee.org/document/11600512/): WebFetch returned no content; NeuroCERT metadata taken from Crossref and abstract from Semantic Scholar.",
+    "Zenodo REST API (https://zenodo.org/api/records): HTTP 504 Gateway Time-out on every query; software versions taken from PyPI JSON API instead.",
+    "GitHub REST API (unauthenticated): rate limit exceeded after 3 repository calls (KaliLab/hippounit, eFEL, NeuroML/pyNeuroML not retrieved from GitHub; PyPI used instead).",
+    "Google Scholar, IEEE Xplore search, ACM DL: not assigned to this finder and not queried."
+  ]
+}

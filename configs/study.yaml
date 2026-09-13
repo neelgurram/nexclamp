@@ -62,6 +62,11 @@ pilot:
   mutants_per_operator: 2            # sites sampled per operator per model (spec pilot: 5-10 mutants per model)
   transforms_per_operator: 1         # spec pilot: 4-6 valid transformations
 
+analysis:
+  n_boot: 10000                      # cluster bootstrap resamples (primary endpoint CI)
+  n_perm: 10000                      # cluster sign-flip permutations
+  seed: 20260913
+
 selection:
   budget_k: 4
   random_draws: 10000

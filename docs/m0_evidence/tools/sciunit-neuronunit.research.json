@@ -1,0 +1,366 @@
+{
+  "tool": "SciUnit (sciunit) and NeuronUnit (neuronunit)",
+  "summary": "Checked 2026-09-13 against primary sources (PyPI JSON API, GitHub REST API and raw source, Crossref, bioRxiv API, readthedocs) plus real pip installs in scratch venvs on CPython 3.12.10 / Windows 11. SciUnit: latest version is 0.2.8 (GitHub release 2023-12-19; PyPI sdist uploaded 2024-01-03), MIT license (LICENSE file), requires_python >=3.7. Last commit to master was 2023-12-26. CI only tests Python 3.7-3.10 on ubuntu-latest. It installs on Python 3.12 (sdist only) and a small Test/Capability/Model/ZScore/TestSuite test ran correctly, so it is usable but low-activity. An open PR from 2026-02-19 proposes modernising packaging and the CI matrix. NeuronUnit is effectively unmaintained and not usable on Python 3.12 as a dependency. PyPI's latest is 0.1.8.2 (2016-07-04): it installs, but neuronunit.models fails to import because pyneuroml is not declared as a dependency. The GitHub default branch (dev, last commit 2021-04-22; newest branch activity 2021-07-18) declares version 0.19 and pins old packages (pandas==1.1.0, scikit_learn==0.23.2, allensdk==0.16.3, lxml==4.4.1, neo==0.5.2). It also pulls a git+ssh BluePyOpt fork, so pip install from git fails. Its requirements.txt and tests/fi.py contain unresolved git merge-conflict markers (SyntaxError on import). Its models/backends import TemporaryDirectory from sciunit.utils, which does not exist in sciunit 0.2.8. The repo has no LICENSE file; the GitHub license API returns 404 and only setup.cfg/PyPI metadata declare MIT. NeuronUnit does contain relevant prior art: a jNeuroML backend that runs LEMS files through pyNeuroML, square-pulse and arbitrary-waveform current capabilities, and tests for rheobase (binary search), input resistance, membrane time constant, capacitance, resting potential, AP width/amplitude/threshold, ISI/CV/local variation, FI/firing-rate type, burstiness and Druckmann-2013 AP features. Both tools score a model's predictions against experimental observations (Z, ratio, boolean scores). Neither provides mutation generation, numerically calibrated tolerances for reference-vs-transformed differences, a perturbation-fingerprint detection matrix, protocol-battery selection or held-out evaluation. Recommendation: do not depend on NeuronUnit. Do not make SciUnit a core dependency; borrow its design concepts and cite both. At most, offer SciUnit as an optional export adapter, subject to Neel's decision.",
+  "latest_version": "sciunit 0.2.8 (PyPI and GitHub release v0.2.8); neuronunit 0.1.8.2 on PyPI (GitHub dev branch setup.cfg declares 0.19, never published to PyPI; only GitHub release is tag 4.0.0 named 'Scidash UI v4.0.0 release')",
+  "latest_release_date": "sciunit: GitHub release v0.2.8 published 2023-12-19; PyPI sciunit-0.2.8.tar.gz uploaded 2024-01-03. neuronunit: PyPI 0.1.8.2 uploaded 2016-07-04; GitHub release 4.0.0 published 2020-02-17",
+  "license_spdx": "sciunit: MIT (GitHub license API spdx_id MIT from LICENSE file). neuronunit: MIT declared in metadata only (PyPI license field, setup.cfg); no LICENSE file in repository (GitHub /license endpoint returns Not Found; repo license null) - treat as unverified/ambiguous for redistribution",
+  "license_source_url": "https://api.github.com/repos/scidash/sciunit/license ; https://api.github.com/repos/scidash/neuronunit/license ; https://pypi.org/pypi/neuronunit/json ; https://raw.githubusercontent.com/scidash/neuronunit/dev/setup.cfg",
+  "python_requires": "sciunit 0.2.8: >=3.7 (classifiers list 3.7, 3.8, 3.9; CI matrix 3.7-3.10). neuronunit 0.1.8.2 on PyPI: none declared. neuronunit dev (0.19, unreleased): >=3.5 with classifiers 3.5-3.8",
+  "other_runtime_requirements": "sciunit 0.2.8 install_requires: bs4, cerberus>=1.2, deepdiff, gitpython, importlib-metadata, ipykernel, ipython, jsonpickle, lxml, matplotlib, nbconvert, nbformat, pandas>=0.18, quantities>=0.13.0 (heavy Jupyter stack for a core dependency). Importing sciunit writes a config file to ~/.sciunit/config.json. neuronunit 0.1.8.2 requires neo, elephant, sciunit>=0.1.5.2 but imports pyneuroml (undeclared) for its models. neuronunit dev declares pinned legacy deps (lxml==4.4.1, elephant==0.4.1, neo==0.5.2, pandas==1.1.0, scikit_learn==0.23.2, allensdk==0.16.3, quantities==0.12.4, Jinja2==2.10.3, plotly==4.5.2, etc.), numba, dask, efel, pyneuroml, streamlit, and 'BluePyOpt @ git+ssh://git@github.com/russelljjarvis/BluePyOpt.git@neuronunit_reduced_cells'; its backend registry imports modules from the external package 'jithub'. Its jNeuroML backend calls pyneuroml.pynml.run_lems_with_jneuroml, which needs jNeuroML and therefore a Java runtime (Java is not on PATH on this machine; LEMS execution through NeuronUnit was not tested).",
+  "maintenance_status": "SciUnit: low activity, not archived. Last master commit 2023-12-26 (merge of PR #223); last release v0.2.8 (2023-12-19). Open PRs #225 (2025-01-25) and #226 (2026-02-19, packaging/CI modernisation) are unmerged as of retrieval; 24 open issues. NeuronUnit: dormant, not archived. Default branch dev last commit 2021-04-22; master 2021-06-13; prime 2021-07-18 (repo pushed_at 2021-07-18); 62 open issues. Open issue #265 (2024-05-01) reports the unresolved merge conflict in requirements.txt; issue #264 (2022-04-24) asks to relax install requirements. No PyPI release since 2016. The fork russelljjarvis/neuronunit was last pushed 2021-12-18. The project homepages sciunit.scidash.org and neuronunit.scidash.org did not resolve (DNS timeout); readthedocs sites are reachable.",
+  "windows_support": "Neither project claims Windows support. SciUnit CI runs only on ubuntu-latest. Observed on Windows 11 + CPython 3.12.10: (1) pip install sciunit==0.2.8 succeeds in a short-path venv (pip check clean; resolved numpy 2.5.3, pandas 3.0.5, quantities 0.16.4, ipykernel 7.3.0, ipython 9.17.1), and a Test/Model/Capability/ZScore judge plus TestSuite judge ran. (2) In a venv under a deep path, the install failed with an OSError on a vendored debugpy file because Windows long-path support is not enabled; this is environment-specific, not a sciunit defect, but it matters for NeuroSem setup instructions. (3) pip install neuronunit==0.1.8.2 succeeds; neuronunit.tests imports, neuronunit.models fails (no pyneuroml). (4) pip install from GitHub dev fails (git+ssh BluePyOpt: host key verification failed). Installed with --no-deps plus unpinned modern deps, only neuronunit.capabilities, tests.passive and tests.waveform import; tests package, fi, dynamics, druckmann2013, channel fail with SyntaxError (merge-conflict marker in fi.py line 199); models, backends and lems fail with ImportError (TemporaryDirectory missing from sciunit.utils 0.2.8).",
+  "facts": [
+    {
+      "claim": "Latest sciunit version on PyPI and its upload date",
+      "value": "0.2.8; only file sciunit-0.2.8.tar.gz (sdist, no wheel), uploaded 2024-01-03T17:24:37, not yanked",
+      "source_url": "https://pypi.org/pypi/sciunit/json",
+      "primary_source": true,
+      "how_verified": "curl of PyPI JSON API; parsed info.version, urls[] and releases{} upload_time"
+    },
+    {
+      "claim": "sciunit declared license, requires_python and classifiers on PyPI",
+      "value": "license MIT; requires_python >=3.7; classifiers: MIT License, Python 3, 3.7, 3.8, 3.9; author Rick Gerkin; summary describes a test-driven framework for validating scientific models against data",
+      "source_url": "https://pypi.org/pypi/sciunit/json",
+      "primary_source": true,
+      "how_verified": "curl of PyPI JSON API; parsed info fields"
+    },
+    {
+      "claim": "sciunit GitHub license file",
+      "value": "LICENSE at repo root detected as MIT (spdx_id MIT)",
+      "source_url": "https://api.github.com/repos/scidash/sciunit/license",
+      "primary_source": true,
+      "how_verified": "GitHub REST API /license endpoint via curl"
+    },
+    {
+      "claim": "sciunit GitHub latest release",
+      "value": "v0.2.8 published 2023-12-19T20:49:43Z; previous v0.2.7 2022-05-14, v0.2.6 2022-02-23",
+      "source_url": "https://api.github.com/repos/scidash/sciunit/releases?per_page=10",
+      "primary_source": true,
+      "how_verified": "GitHub REST API releases endpoint via curl"
+    },
+    {
+      "claim": "sciunit last commit and repository state",
+      "value": "default branch master; last commit 1a2ca47851 at 2023-12-26T21:51:13Z (merge PR #223, removes importlib-metadata version constraint); archived false; open_issues_count 24; created 2011-12-05",
+      "source_url": "https://api.github.com/repos/scidash/sciunit/commits?per_page=5",
+      "primary_source": true,
+      "how_verified": "GitHub REST API repo and commits endpoints via curl (https://api.github.com/repos/scidash/sciunit)"
+    },
+    {
+      "claim": "sciunit recent open pull requests",
+      "value": "PR #226 (open, created 2026-02-19) 'Update packaging configuration to modern norms, and update CI test matrix'; PR #225 (open, created 2025-01-25) adjusting fix_display() when tkinter is absent",
+      "source_url": "https://api.github.com/repos/scidash/sciunit/issues?state=all&sort=updated&direction=desc&per_page=6",
+      "primary_source": true,
+      "how_verified": "GitHub REST API issues endpoint via curl; state and pull_request fields"
+    },
+    {
+      "claim": "sciunit CI test matrix",
+      "value": "python-version 3.7, 3.8, 3.9, 3.10 on ubuntu-latest only (no 3.11/3.12, no Windows)",
+      "source_url": "https://raw.githubusercontent.com/scidash/sciunit/master/.github/workflows/python-package.yml",
+      "primary_source": true,
+      "how_verified": "curl of raw workflow file; grep for python-version and runs-on"
+    },
+    {
+      "claim": "sciunit 0.2.8 install_requires",
+      "value": "bs4, cerberus>=1.2, deepdiff, gitpython, importlib-metadata, ipykernel, ipython, jsonpickle, lxml, matplotlib, nbconvert, nbformat, pandas>=0.18, quantities>=0.13.0; console script 'sciunit'",
+      "source_url": "https://raw.githubusercontent.com/scidash/sciunit/master/setup.cfg",
+      "primary_source": true,
+      "how_verified": "curl of raw setup.cfg on master (version field 0.2.8)"
+    },
+    {
+      "claim": "sciunit installability on Python 3.12 today",
+      "value": "pip install sciunit==0.2.8 into a fresh CPython 3.12.10 venv (Windows 11) exited 0, pip check reported no broken requirements; import OK; custom Capability/Model/Test with ZScore judged (score 0.6) and TestSuite.judge returned ScoreMatrix. Warnings seen: cerberus DeprecationWarning, capability source-inspection UserWarning. First attempt in a deeper directory failed only because of Windows MAX_PATH (debugpy vendored file).",
+      "source_url": "https://pypi.org/project/sciunit/0.2.8/",
+      "primary_source": true,
+      "how_verified": "Executed pip install and a Python smoke script in scratch venv m0/snu/v1; logs pip_sciunit.log in scratch folder"
+    },
+    {
+      "claim": "sciunit core classes present in 0.2.8",
+      "value": "sciunit.tests: Test, TestM2M, RangeTest, ProtocolToFeaturesTest; sciunit.suites: TestSuite; sciunit.models: Model, RunnableModel, backends.Backend (+register_backends, available_backends); sciunit.capabilities: Capability, ProducesNumber, Runnable; sciunit.scores: BooleanScore, ZScore, CohenDScore, RatioScore, RelativeDifferenceScore, PercentScore, FloatScore, RandomScore, CorrelationScore, ErrorScore, NoneScore, TBDScore, NAScore, InsufficientDataScore, ScoreArray, ScoreMatrix, ScoreArrayM2M, ScoreMatrixM2M; sciunit.converters: Converter, NoConversion, LambdaConversion, AtMostToBoolean, AtLeastToBoolean, RangeToBoolean",
+      "source_url": "https://github.com/scidash/sciunit/tree/v0.2.8/sciunit",
+      "primary_source": true,
+      "how_verified": "grep '^class ' over the installed sciunit 0.2.8 package files in scratch venv"
+    },
+    {
+      "claim": "sciunit ProtocolToFeaturesTest design",
+      "value": "Its generate_prediction requires a model with run(), then calls setup_protocol(model), get_result(model) and extract_features(model, result); the docstring says the protocol may include a perturbation",
+      "source_url": "https://github.com/scidash/sciunit/blob/v0.2.8/sciunit/tests.py",
+      "primary_source": true,
+      "how_verified": "Read installed sciunit/tests.py lines 1022-1075"
+    },
+    {
+      "claim": "sciunit TestM2M supports model-to-model comparison",
+      "value": "Docstring: abstract class for tests involving multiple models, comparing model predictions with each other and optionally with reference data; observation is optional; compute_score takes two predictions",
+      "source_url": "https://github.com/scidash/sciunit/blob/v0.2.8/sciunit/tests.py",
+      "primary_source": true,
+      "how_verified": "Read installed sciunit/tests.py lines 675-700"
+    },
+    {
+      "claim": "sciunit Backend caching",
+      "value": "Backend.init_backend reads use_memory_cache (default True) and use_disk_cache (default False); backend_run consults get_memory_cache/get_disk_cache before calling _backend_run and stores results via set_cache",
+      "source_url": "https://github.com/scidash/sciunit/blob/v0.2.8/sciunit/models/backends.py",
+      "primary_source": true,
+      "how_verified": "grep of installed sciunit/models/backends.py"
+    },
+    {
+      "claim": "sciunit documentation license statement and citation pointers",
+      "value": "readthedocs landing page states the MIT license, links an ICSE 2014 paper PDF and RRID SCR_014528",
+      "source_url": "https://sciunit.readthedocs.io/",
+      "primary_source": true,
+      "how_verified": "WebFetch of readthedocs page (summary by fetch model)"
+    },
+    {
+      "claim": "SciUnit paper bibliographic record",
+      "value": "Omar C, Aldrich J, Gerkin RC. 'Collaborative infrastructure for test-driven scientific model validation'. Companion Proceedings of the 36th International Conference on Software Engineering (ACM), pp. 524-527, issued 2014-05-31. DOI 10.1145/2591062.2591129",
+      "source_url": "https://api.crossref.org/works/10.1145/2591062.2591129",
+      "primary_source": true,
+      "how_verified": "Crossref works API via curl (DOI first seen in WebSearch result pointing to dl.acm.org, then confirmed in Crossref)"
+    },
+    {
+      "claim": "Latest neuronunit version on PyPI",
+      "value": "0.1.8.2; only file neuronunit-0.1.8.2.tar.gz (sdist) uploaded 2016-07-04T03:33:47; license MIT; requires_python null; no classifiers; homepage github.com/scidash/neuronunit",
+      "source_url": "https://pypi.org/pypi/neuronunit/json",
+      "primary_source": true,
+      "how_verified": "curl of PyPI JSON API"
+    },
+    {
+      "claim": "neuronunit repository license file",
+      "value": "No LICENSE detected: GitHub /license endpoint returns 'Not Found'; repo license field null; no LICENSE file at root of dev or master trees",
+      "source_url": "https://api.github.com/repos/scidash/neuronunit/license",
+      "primary_source": true,
+      "how_verified": "GitHub REST API license, repo, and git/trees endpoints (dev recursive, master root) via curl"
+    },
+    {
+      "claim": "neuronunit repository maintenance state",
+      "value": "default branch dev; dev last commit 835235e4ca 2021-04-22 ('Fix merge conflicts in models.backends'); master last commit 2021-06-13; prime 2021-07-18; optimization 2021-03-10; neuromldb 2019-06-18; pushed_at 2021-07-18; archived false; open_issues_count 62; only GitHub release tag 4.0.0 (2020-02-17, 'Scidash UI v4.0.0 release')",
+      "source_url": "https://api.github.com/repos/scidash/neuronunit",
+      "primary_source": true,
+      "how_verified": "GitHub REST API repo, commits?sha=<branch>, branches, releases, tags endpoints via curl"
+    },
+    {
+      "claim": "neuronunit open install-related issues",
+      "value": "#265 open (2024-05-01) reports an unresolved merge conflict in requirements.txt; #264 open (2022-04-24) asks to relax install requirements; #260 open (2021-04-21) reports a merge error in backend __init__.py",
+      "source_url": "https://api.github.com/repos/scidash/neuronunit/issues?state=all&sort=updated&direction=desc&per_page=6",
+      "primary_source": true,
+      "how_verified": "GitHub REST API issues endpoint via curl"
+    },
+    {
+      "claim": "neuronunit dev branch packaging metadata",
+      "value": "setup.cfg: name neuronunit, version 0.19, url github.com/russelljjarvis/neuronunit, author Russell Jarvis, license MIT, python_requires >=3.5, classifiers 3.5-3.8, pinned install_requires (e.g. lxml==4.4.1, elephant==0.4.1, neo==0.5.2, pandas==1.1.0, scikit_learn==0.23.2, allensdk==0.16.3, quantities==0.12.4) plus numba, dask, efel, pyneuroml, streamlit and a git+ssh BluePyOpt fork; requirements.txt contains literal merge-conflict markers",
+      "source_url": "https://raw.githubusercontent.com/scidash/neuronunit/dev/setup.cfg",
+      "primary_source": true,
+      "how_verified": "curl of raw setup.cfg and requirements.txt (https://raw.githubusercontent.com/scidash/neuronunit/dev/requirements.txt) on dev"
+    },
+    {
+      "claim": "neuronunit 0.1.8.2 (PyPI) installability on Python 3.12",
+      "value": "pip install neuronunit==0.1.8.2 exited 0 (pulls sciunit 0.2.8, neo, elephant 1.2.1). neuronunit.tests imports and exposes 16 classes (APAmplitudeTest, APThresholdTest, APWidthTest, CapacitanceTest, IVCurvePeakTest, IVCurveSSTest, IVCurveTest, InjectedCurrentAPAmplitudeTest, InjectedCurrentAPThresholdTest, InjectedCurrentAPWidthTest, InputResistanceTest, RestingPotentialTest, RheobaseTest, TestPulseTest, TimeConstantTest, VmTest); neuronunit.models import FAILS with ModuleNotFoundError: pyneuroml",
+      "source_url": "https://pypi.org/project/neuronunit/0.1.8.2/",
+      "primary_source": true,
+      "how_verified": "Executed pip install and import script in scratch venv m0/snu/v2 (CPython 3.12.10, Windows 11)"
+    },
+    {
+      "claim": "neuronunit GitHub dev installability on Python 3.12",
+      "value": "pip install --dry-run 'neuronunit @ git+https://github.com/scidash/neuronunit@dev' fails: git+ssh clone of russelljjarvis/BluePyOpt fails (Host key verification failed). With --no-deps plus unpinned sciunit 0.2.8, efel 5.7.34, pyneuroml 1.3.22, neo 0.14.5, elephant 1.2.1, numpy 2.5.3, numba 0.67.0, scikit-learn 1.9.1: imports OK for neuronunit.capabilities, neuronunit.tests.passive, neuronunit.tests.waveform; SyntaxError (merge-conflict marker at tests/fi.py line 199) for neuronunit.tests, tests.fi, tests.dynamics, tests.druckmann2013, tests.channel; ImportError 'cannot import name TemporaryDirectory from sciunit.utils' for neuronunit.models, models.backends, models.lems",
+      "source_url": "https://github.com/scidash/neuronunit/tree/dev",
+      "primary_source": true,
+      "how_verified": "Executed pip installs and import script in scratch venv m0/snu/v3; inspected fi.py lines 195-202 and grepped sciunit 0.2.8 utils.py (no TemporaryDirectory)"
+    },
+    {
+      "claim": "NeuronUnit backend for NeuroML/LEMS models",
+      "value": "neuronunit.models.lems.LEMSModel(RunnableModel) takes a LEMS file path or URL, defaults backend to 'jNeuroML' and uses pynml.DEFAULTS run params. jNeuroMLBackend copies the LEMS file, runs it with pyneuroml.pynml.run_lems_with_jneuroml (load_saved_data=True, nogui) and reads results['vm']. inject_square_current stores the current in run_params and reruns (the source comments that set_run_params does not work yet). It also has set_stop_time, set_time_step, and get_spike_count via elephant threshold_detection.",
+      "source_url": "https://raw.githubusercontent.com/scidash/neuronunit/dev/neuronunit/models/backends/jNeuroML.py",
+      "primary_source": true,
+      "how_verified": "curl of raw jNeuroML.py and lems.py (https://raw.githubusercontent.com/scidash/neuronunit/dev/neuronunit/models/lems.py); read class bodies"
+    },
+    {
+      "claim": "NeuronUnit dev backend registry depends on external package",
+      "value": "backend_paths lists static.StaticBackend, geppetto.GeppettoBackend, jNeuroML.jNeuroMLBackend, adexp.JIT_ADEXPBackend, izhikevich.JIT_IZHIBackend (NEURON commented out), and check_backend imports them from 'jithub.models.backends.<path>'. jithub 0.1.0 exists on PyPI, uploaded 2021-03-25, summary 'A example Python package', homepage github.com/russelljjarvis/jit-hub",
+      "source_url": "https://raw.githubusercontent.com/scidash/neuronunit/dev/neuronunit/models/backends/__init__.py",
+      "primary_source": true,
+      "how_verified": "curl of raw backends/__init__.py; curl of https://pypi.org/pypi/jithub/json"
+    },
+    {
+      "claim": "NeuronUnit 0.1.8.2 LEMS execution path",
+      "value": "0.1.8.2 neuronunit/models/__init__.py defines LEMSModel(sciunit.Model, cap.Runnable) that calls pynml.run_lems_with_jneuroml_neuron; it also has ReducedModel(LEMSModel) and ChannelModel",
+      "source_url": "https://pypi.org/project/neuronunit/0.1.8.2/",
+      "primary_source": true,
+      "how_verified": "grep of installed neuronunit 0.1.8.2 package files in scratch venv m0/snu/v2"
+    },
+    {
+      "claim": "NeuronUnit stimulus capabilities",
+      "value": "neuronunit.capabilities defines ProducesMembranePotential, ProducesSpikes, ProducesActionPotentials, ReceivesSquareCurrent (inject_square_current with amplitude/delay/duration dict), and ReceivesCurrent (inject_current with a neo AnalogSignal arbitrary waveform)",
+      "source_url": "https://raw.githubusercontent.com/scidash/neuronunit/dev/neuronunit/capabilities/__init__.py",
+      "primary_source": true,
+      "how_verified": "curl of raw file; grep '^class ' and read lines 121-160"
+    },
+    {
+      "claim": "NeuronUnit passive-property tests (dev branch)",
+      "value": "passive.py: TestPulseTest (base, ReceivesSquareCurrent, ZScore), InputResistanceTest (units megaohm), TimeConstantTest (ms), CapacitanceTest (pF), RestingPotentialTest (mV)",
+      "source_url": "https://raw.githubusercontent.com/scidash/neuronunit/dev/neuronunit/tests/passive.py",
+      "primary_source": true,
+      "how_verified": "curl of raw file; grep class/name/units/score_type lines"
+    },
+    {
+      "claim": "NeuronUnit spike-waveform tests (dev branch)",
+      "value": "waveform.py: APWidthTest (ms, RatioScore), InjectedCurrentAPWidthTest (ZScore), APAmplitudeTest (mV), InjectedCurrentAPAmplitudeTest, APThresholdTest (mV), InjectedCurrentAPThresholdTest",
+      "source_url": "https://raw.githubusercontent.com/scidash/neuronunit/dev/neuronunit/tests/waveform.py",
+      "primary_source": true,
+      "how_verified": "curl of raw file; grep class/name/units/score_type lines"
+    },
+    {
+      "claim": "NeuronUnit rheobase test (dev branch)",
+      "value": "fi.py: RheobaseTest(VmTest) described as a serial binary search for the minimum injected current evoking at least one spike; units pA; defaults high=900 pA, tolerance 1 pA; requires ReceivesSquareCurrent and ProducesSpikes; a parallel RheobaseTestP variant also exists. The file currently contains merge-conflict markers.",
+      "source_url": "https://raw.githubusercontent.com/scidash/neuronunit/dev/neuronunit/tests/fi.py",
+      "primary_source": true,
+      "how_verified": "curl of raw file; read lines 33-100 and 195-202"
+    },
+    {
+      "claim": "NeuronUnit firing-dynamics and feature-battery tests (dev branch)",
+      "value": "dynamics.py: TFRTypeTest, BurstinessTest, ISICVTest, ISITest, FITest, FiringRateTest, LocalVariationTest. druckmann2013.py: Druckmann2013Test subclasses including AP12AmplitudeDropTest, AP1SSAmplitudeChangeTest, AP1AmplitudeTest, AP1WidthHalfHeightTest, AP1WidthPeakToTroughTest, AP1RateOfChangePeakToTroughTest, AP1AHPDepthTest and AP2 variants (uses numba). target_spike_current.py: SpikeCountSearch, SpikeCountRangeSearch. channel.py: IVCurveSSTest, IVCurvePeakTest (via pyneuroml NML2ChannelAnalysis). morphology.py: pylmeasure-based morphology tests",
+      "source_url": "https://github.com/scidash/neuronunit/tree/dev/neuronunit/tests",
+      "primary_source": true,
+      "how_verified": "curl of raw test module files from dev; grep class/name/units lines; file list from GitHub git/trees API (https://api.github.com/repos/scidash/neuronunit/git/trees/dev?recursive=1)"
+    },
+    {
+      "claim": "NeuronUnit preprint bibliographic record and publication status",
+      "value": "Gerkin RC, Birgiolas J, Jarvis RJ, Omar C, Crook SM. 'NeuronUnit: A package for data-driven validation of neuron models using SciUnit'. bioRxiv preprint posted 2019-06-09, DOI 10.1101/665331, version 1, license cc_by_nc_nd; bioRxiv API published_doi 'NA' (no journal version recorded)",
+      "source_url": "https://api.crossref.org/works/10.1101/665331",
+      "primary_source": true,
+      "how_verified": "Crossref works API via curl, and the bioRxiv API via the bioRxiv MCP get_preprint tool (https://www.biorxiv.org/content/10.1101/665331v1)"
+    },
+    {
+      "claim": "Related SciUnit/NeuronUnit-team validation paper returned by OpenAlex search for 'sciunit'",
+      "value": "Gerkin RC, Jarvis RJ, Crook SM. 'Towards systematic, data-driven validation of a collaborative, multi-scale model of Caenorhabditis elegans'. Phil Trans R Soc B 373:20170381, issued 2018-09-10, DOI 10.1098/rstb.2017.0381 (content not read; relevance to SciUnit not confirmed)",
+      "source_url": "https://api.crossref.org/works/10.1098/rstb.2017.0381",
+      "primary_source": true,
+      "how_verified": "Surfaced by OpenAlex search https://api.openalex.org/works?search=sciunit; metadata confirmed with Crossref works API"
+    },
+    {
+      "claim": "Name collision: 'Sciunit' in reproducibility literature is a different project",
+      "value": "Crossref/OpenAlex searches for 'SciUnit' also return 'Sciunits: Reusable Research Objects' (Ton That, Fils, Yuan, Malik; DOI 10.1109/escience.2017.51) and HydroShare/EarthCube reproducibility container papers (e.g. DOI 10.1130/2022.2558(07)); these are unrelated to scidash/sciunit",
+      "source_url": "https://api.openalex.org/works?search=sciunit&per-page=8",
+      "primary_source": true,
+      "how_verified": "OpenAlex and Crossref (https://api.crossref.org/works?query=SciUnit&rows=8) search APIs via curl"
+    },
+    {
+      "claim": "NeuronUnit documentation pointers",
+      "value": "neuronunit.readthedocs.io mentions example tests (IVCurvePeakTest, RestingPotentialTest, InjectedCurrentAPWidthTest) and RRID SCR_015634, and links a frontiers paper PDF in rgerkin/papers; no version or license shown on the landing page",
+      "source_url": "https://neuronunit.readthedocs.io/",
+      "primary_source": true,
+      "how_verified": "WebFetch of readthedocs page (summary by fetch model)"
+    },
+    {
+      "claim": "Project homepages declared in package metadata are unreachable",
+      "value": "http://sciunit.scidash.org and http://neuronunit.scidash.org failed with getaddrinfo ETIMEOUT on 2026-09-13",
+      "source_url": "http://sciunit.scidash.org",
+      "primary_source": true,
+      "how_verified": "WebFetch attempts on both hosts returned DNS timeout errors"
+    }
+  ],
+  "relevant_apis": [
+    {
+      "name": "sciunit.tests.ProtocolToFeaturesTest (setup_protocol / get_result / extract_features)",
+      "purpose_for_neurosem": "Established precedent for the protocol -> run -> feature-extraction pattern that a NeuroSem protocol implements. Borrow the separation of concerns and cite it; do not subclass it as a core dependency.",
+      "source_url": "https://github.com/scidash/sciunit/blob/v0.2.8/sciunit/tests.py",
+      "how_verified": "Read installed sciunit 0.2.8 source"
+    },
+    {
+      "name": "sciunit.tests.TestM2M and sciunit.scores.collections_m2m.ScoreMatrixM2M",
+      "purpose_for_neurosem": "Closest SciUnit construct to reference-vs-transformed model comparison (compute_score over two predictions, observation optional). Useful as prior art and as a possible optional export format.",
+      "source_url": "https://github.com/scidash/sciunit/blob/v0.2.8/sciunit/tests.py",
+      "how_verified": "Read installed sciunit 0.2.8 source (docstring lines 675-700)"
+    },
+    {
+      "name": "sciunit.Capability / sciunit.Model / sciunit.models.RunnableModel",
+      "purpose_for_neurosem": "Capability-declaration pattern: a protocol declares which model interfaces it needs (e.g. square current vs arbitrary waveform) and is skipped with an explicit NoneScore-like status when absent. Borrow as a design concept for the simulator adapter interface.",
+      "source_url": "https://github.com/scidash/sciunit/blob/v0.2.8/sciunit/capabilities.py",
+      "how_verified": "grep of installed sciunit 0.2.8 source; smoke test in Python 3.12 venv"
+    },
+    {
+      "name": "sciunit.models.backends.Backend (use_memory_cache, use_disk_cache, backend_run, _backend_run)",
+      "purpose_for_neurosem": "Pattern for keyed caching of simulation results. NeuroSem needs content-hash keyed, immutable raw results with provenance, which goes beyond this cache.",
+      "source_url": "https://github.com/scidash/sciunit/blob/v0.2.8/sciunit/models/backends.py",
+      "how_verified": "grep of installed sciunit 0.2.8 source"
+    },
+    {
+      "name": "sciunit.scores (ZScore, RatioScore, RelativeDifferenceScore, BooleanScore, ErrorScore, NoneScore, InsufficientDataScore) and sciunit.converters (AtMostToBoolean, RangeToBoolean)",
+      "purpose_for_neurosem": "Vocabulary for distinguishing a numeric difference, a boolean detection decision, an error and an undefined/insufficient result, which maps onto the handoff rule of never replacing missing features with zero. RelativeDifferenceScore's per-test reference scale resembles a tolerance floor but is not calibrated by numerical refinement.",
+      "source_url": "https://github.com/scidash/sciunit/blob/v0.2.8/sciunit/scores/complete.py",
+      "how_verified": "Read installed sciunit 0.2.8 source"
+    },
+    {
+      "name": "neuronunit.models.lems.LEMSModel + neuronunit.models.backends.jNeuroML.jNeuroMLBackend",
+      "purpose_for_neurosem": "Prior art for driving LEMS simulations through pyneuroml.pynml.run_lems_with_jneuroml and injecting square currents by rewriting a LEMS copy. NeuroSem should call pyNeuroML directly instead; this code does not import on Python 3.12 with sciunit 0.2.8.",
+      "source_url": "https://raw.githubusercontent.com/scidash/neuronunit/dev/neuronunit/models/backends/jNeuroML.py",
+      "how_verified": "Read raw source from GitHub dev; import attempt failed (ImportError TemporaryDirectory)"
+    },
+    {
+      "name": "neuronunit.capabilities.ReceivesSquareCurrent / ReceivesCurrent / ProducesMembranePotential / ProducesSpikes / ProducesActionPotentials",
+      "purpose_for_neurosem": "Reference interface vocabulary for stimulus types (square pulse dict with amplitude/delay/duration; arbitrary neo AnalogSignal waveform) and outputs. Informs NeuroSem's protocol/stimulus schema.",
+      "source_url": "https://raw.githubusercontent.com/scidash/neuronunit/dev/neuronunit/capabilities/__init__.py",
+      "how_verified": "Read raw source; module imported successfully in Python 3.12 venv (dev, --no-deps)"
+    },
+    {
+      "name": "neuronunit.tests.fi.RheobaseTest (serial binary search) and RheobaseTestP",
+      "purpose_for_neurosem": "Prior art for the rheobase-search protocol (handoff protocol 3); cite it and avoid claiming novelty. NeuroSem needs its own deterministic, provenance-logged, refinement-checked implementation because this module fails to import.",
+      "source_url": "https://raw.githubusercontent.com/scidash/neuronunit/dev/neuronunit/tests/fi.py",
+      "how_verified": "Read raw source lines 33-100; import fails with SyntaxError (merge-conflict marker line 199)"
+    },
+    {
+      "name": "neuronunit.tests.passive (InputResistanceTest, TimeConstantTest, CapacitanceTest, RestingPotentialTest) and neuronunit.tests.waveform (APWidthTest, APAmplitudeTest, APThresholdTest, InjectedCurrent* variants)",
+      "purpose_for_neurosem": "Prior art for passive and spike-shape features. They can serve as cross-check definitions against eFEL feature outputs during M5 development; the modules import on Python 3.12, but running them needs a working model backend.",
+      "source_url": "https://raw.githubusercontent.com/scidash/neuronunit/dev/neuronunit/tests/passive.py",
+      "how_verified": "Read raw source; modules imported successfully in Python 3.12 venv (dev, --no-deps)"
+    },
+    {
+      "name": "neuronunit.tests.dynamics and neuronunit.tests.druckmann2013",
+      "purpose_for_neurosem": "Prior art for ISI, CV, local variation, burstiness, firing-rate type and Druckmann 2013 AP feature batteries; relevant for the novelty matrix (multi-feature characterisation already exists).",
+      "source_url": "https://raw.githubusercontent.com/scidash/neuronunit/dev/neuronunit/tests/dynamics.py",
+      "how_verified": "Read raw source (class/name grep); imports fail on Python 3.12 because they import fi.py"
+    }
+  ],
+  "reuse_for_neurosem": [
+    "Cite SciUnit (Omar, Aldrich, Gerkin 2014, ICSE Companion, DOI 10.1145/2591062.2591129) and NeuronUnit (Gerkin et al. 2019 bioRxiv preprint, DOI 10.1101/665331, no journal version recorded by bioRxiv) as the closest prior frameworks for executable, data-driven neuron-model validation tests.",
+    "Borrow SciUnit's capability-based test/model contract: protocols declare required model capabilities and unsupported combinations produce an explicit 'not applicable' status, never a silent pass.",
+    "Borrow the ProtocolToFeaturesTest decomposition (setup_protocol -> run -> extract_features) as the internal structure of a NeuroSem protocol, implemented natively.",
+    "Borrow SciUnit's explicit incomplete/error score vocabulary (ErrorScore, NoneScore, InsufficientDataScore) to encode undefined eFEL features and simulation failures distinctly, consistent with the handoff rule never to substitute zero.",
+    "Use TestM2M/ScoreMatrixM2M as the prior-art comparison point for reference-vs-transformed comparisons, and optionally as an export format.",
+    "Use NeuronUnit's stimulus capability vocabulary (square pulse with amplitude/delay/duration; arbitrary waveform via neo AnalogSignal) as a reference when designing NeuroSem's protocol manifest schema.",
+    "Use NeuronUnit's rheobase binary search, passive-property (input resistance, time constant, capacitance, resting potential) and AP waveform test definitions as independent cross-checks for NeuroSem/eFEL feature definitions during development. Do not import them.",
+    "Record NeuronUnit's existing rheobase, FI, ISI, burstiness and Druckmann-2013 feature tests in docs/novelty_matrix.csv so NeuroSem does not claim novelty for rheobase search, multi-feature characterisation or feature-based model scoring.",
+    "If Neel wants interoperability, add an optional (non-core, extras) adapter exporting NeuroSem fingerprints as SciUnit scores, pinned to sciunit==0.2.8 after a Python 3.12 CI check. Decision required."
+  ],
+  "not_provided_new_for_neurosem": [
+    "Controlled single-fault mutation operators for NeuroML/LEMS (stimulus, biophysical, reference, numerical families), one-change enforcement and mutant provenance: not found in SciUnit or NeuronUnit.",
+    "Classification of mutants as structurally invalid, non-executable, numerically unstable, behaviourally equivalent, non-equivalent or silent under canonical testing.",
+    "Differential reference-vs-transformed regression with feature-specific tolerances calibrated by numerical refinement (h, h/2, h/4) and frozen before held-out testing. SciUnit scores compare predictions to observations (Z, ratio, relative difference with a user-set scale), with no convergence-based calibration.",
+    "Perturbation fingerprint (feature vector across a protocol battery) and binary mutant-by-protocol detection matrix with per-detection evidence (protocol, feature, threshold, trace).",
+    "Greedy maximum-coverage protocol-battery selection, plus count-matched and runtime-matched random baselines and detection-versus-cost curves.",
+    "Held-out model and held-out mutation-family splits, leakage barriers, hashed split manifests and held-out access logging.",
+    "Valid-transformation false-positive control (unit conversion, renames, reordering, formatting) and the no-change control.",
+    "Rheobase-normalised protocol battery beyond square pulses: ramp, hyperpolarisation-release rebound, paired pulses and deterministic chirp. NeuronUnit only exposes square-current and generic arbitrary-waveform capabilities; no such protocol classes were found in the test modules examined.",
+    "Run-level provenance (model/file hashes, simulator version, dt, seed, environment digest, Git commit) with immutable raw results; SciUnit's backend cache is not a provenance system.",
+    "A maintained, Python 3.12-compatible jNeuroML/LEMS execution adapter: NeuronUnit's does not import today, so NeuroSem must build its own thin adapter on pyNeuroML.",
+    "Integration of eFEL as the frozen feature extractor with recorded settings (NeuronUnit dev lists efel in install_requires, but no efel usage was found in the modules downloaded here)."
+  ],
+  "handoff_assumption_issues": [
+    "OUTDATED: the handoff's 'Reuse rather than rebuild' list includes 'SciUnit/NeuronUnit: scientific model testing'. NeuronUnit cannot be reused as a dependency today. Its last PyPI release is from 2016 (models import fails without undeclared pyneuroml). Its GitHub dev branch (last commit 2021) has merge-conflict markers in fi.py and requirements.txt, a git+ssh-only BluePyOpt dependency, legacy pins incompatible with Python 3.12, and an API mismatch with sciunit 0.2.8 (TemporaryDirectory). NeuronUnit should move from 'reuse' to 'cite / borrow concepts'.",
+    "UNCERTAIN LICENSE: the neuronunit repository has no LICENSE file (GitHub license API 404); MIT appears only in setup.cfg and PyPI metadata. Copying NeuronUnit code into NeuroSem would need license clarification; citing and reimplementing does not.",
+    "SCIENTIFICALLY DIFFERENT PURPOSE: SciUnit/NeuronUnit validate a model's predictions against experimental observations (Z, ratio, boolean scores against observation mean/std). NeuroSem needs behavioural-preservation testing between a reference model and a transformed model, with numerically calibrated tolerances. Reuse is conceptual rather than functional; TestM2M is the closest built-in construct.",
+    "MAINTENANCE RISK FOR SCIUNIT: sciunit is installable on Python 3.12 but its last release is v0.2.8 (Dec 2023), its CI tests only Python 3.7-3.10 on Linux, and it pulls a heavy Jupyter stack (ipykernel, nbconvert, ipython). A core dependency would add fragility to a frozen, Dockerised research environment. The PR modernising packaging (#226, 2026-02-19) is unmerged.",
+    "NOVELTY BOUNDARY CONFIRMED: NeuronUnit already implements rheobase search, input resistance, membrane time constant, capacitance, resting potential, AP width/amplitude/threshold, ISI/CV, burstiness, FI and Druckmann-2013 features. This supports the handoff's instruction not to claim novelty for feature extraction or multi-protocol characterisation. Rheobase search must be listed as existing prior art.",
+    "SETUP RISK (Windows): sciunit's dependency tree includes files whose install paths exceed Windows MAX_PATH in deep directories; pip failed until a shorter venv path was used. Setup commands should use short paths, Docker, or note long-path support.",
+    "EXECUTION DEPENDENCY: NeuronUnit's (and generally pyNeuroML's) jNeuroML route requires a Java runtime; Java was absent on this machine. The pyNeuroML/jNeuroML audit must confirm how Java is provided for the 'jNeuroML only' pilot.",
+    "STALE DOCUMENTATION HOSTS: the metadata homepages sciunit.scidash.org and neuronunit.scidash.org did not resolve; the readthedocs sites should be cited as documentation URLs instead."
+  ],
+  "uncertainties": [
+    "Whether a maintained fork or successor of NeuronUnit exists outside scidash/neuronunit and russelljjarvis/neuronunit (last pushed 2021-12-18) was not exhaustively searched; GitHub code/repo search was not used to save API quota.",
+    "NeuronUnit tests were checked for importability only; no NeuronUnit test was executed against a real LEMS model (no Java runtime; models/backends fail to import).",
+    "Whether sciunit 0.2.8 behaves correctly beyond the smoke test (notebook utilities, disk cache, TestM2M scoring) on Python 3.12, NumPy 2.5 and pandas 3.0 was not tested.",
+    "The status of NeuronUnit's master and prime branches (e.g. whether prime installs more cleanly than dev) was not install-tested; only dev (default branch) and PyPI 0.1.8.2 were.",
+    "How NeuronUnit uses efel (listed in dev install_requires) was not determined; only a subset of modules was downloaded and none referenced efel.",
+    "The content of the 2014 ICSE Companion paper, the 2019 NeuronUnit preprint and the 2018 Phil Trans B paper was not read in full; only bibliographic metadata and the bioRxiv abstract were retrieved.",
+    "DBLP blocked automated API access (bot-check page) and OpenAlex returned 'Rate limit exceeded' on a second query; bibliographic facts rely on Crossref and the bioRxiv API.",
+    "Documentation landing-page facts (readthedocs) came from a fetch-model summary rather than raw HTML inspection.",
+    "Side effect noted: importing sciunit created C:/Users/gurra/.sciunit/config.json; it was removed after the test (it did not exist before)."
+  ]
+}

@@ -1,0 +1,13 @@
+schema: neurosem-agent-task/1
+task_id: t03_channel_rename
+type: rename_channel_safely
+base_model: pospischil2008_rs
+title: Rename the Kd channel to Kdr across the Pospischil 2008 models
+# No seeded fault: the agent starts from the reference snapshot. The channel file is shared
+# by the RS, FS, LTS and IB cells, and the shipped LEMS simulations name the channel inside
+# Display quantity paths, so a rename that touches only the channel file breaks other files.
+seeded_fault: null
+allowed_files:
+  - model/NeuroML2/**
+answer_files: []
+budget: {max_turns: 80, max_wall_clock_minutes: 60, max_cost_usd: 15.0}

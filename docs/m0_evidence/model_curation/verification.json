@@ -1,0 +1,3829 @@
+{
+ "generated_utc": "2026-09-13T16:16:16+00:00",
+ "method": "Verification stage for model-curation candidates (runs after ``curate_candidates.py fetch``).",
+ "caveat": "Screening metrics from single deterministic runs; not eFEL features, not calibrated, and finite testing is not evidence of equivalence.",
+ "provenance_rule": "each model record names its run_id and code_state_id; records from a different code state are never merged into this file",
+ "runs": {
+  "2026-09-13T16:00:56+00:00_aa8fa6a0": {
+   "started_utc": "2026-09-13T16:00:56+00:00",
+   "finished_utc": "2026-09-13T16:16:16+00:00",
+   "models": [
+    "maex1998_golgi",
+    "maex1998_granule",
+    "migliore2014_gc_soma",
+    "migliore2014_mt_soma",
+    "pinskyrinzel1994",
+    "prinz2004_abpd",
+    "prinz2004_lp",
+    "smith2013_singlecomp",
+    "solinas2007_soma_helper",
+    "solinas2007_testsoma"
+   ],
+   "probes": true,
+   "code_state": {
+    "state_id": "cae767f83aa15e88",
+    "files_sha256": {
+     "src/neurosem/simulators/jneuroml.py": "2d034f8cfbdb6956ba500b5d9da128d8b721ed81810d1ecfd42fa95e9240a064",
+     "src/neurosem/simulators/base.py": "83221d08e40d88f4dadd6aada662a3cd7b4ff0ac13e96483997d1c69ccb75cd4",
+     "src/neurosem/protocols/generate.py": "ee239e7f4bd34cd2fd593c8233ac5cac5d49c5ee706d9a1158ab9ace72c2c2f2",
+     "src/neurosem/protocols/rheobase.py": "873c9ee43ece4bc4728b6e1796d31aa8272ac4a031e7c2cfd3d21579a1db81ef",
+     "src/neurosem/protocols/definitions.py": "8c4d554d735a4d4017f8b3b8b52389e38f74de725331ddcf948b087f140f6e35",
+     "src/neurosem/models.py": "5d38286cbe32bd606ec613405ff40e48953af693a635a470082f53bab77b0bba",
+     "src/neurosem/schemas.py": "812e44a8fc9d6b2fc0936aeec3bc37983d01c4a43d86e672207facedd7c64893",
+     "docs/m0_evidence/model_curation/verify_candidates.py": "7044bf5be710b50053bb29e621b245bc9c86e74cea886ba83c10c89a9c6d7dd7"
+    },
+    "simulator": {
+     "simulator": "jNeuroML",
+     "jneuroml_version": "0.14.0",
+     "jlems_version": "0.12.0",
+     "org_neuroml_export_version": "1.11.0",
+     "java_version": "openjdk version \"21.0.12.1\" 2026-08-18 LTS | OpenJDK Runtime Environment Temurin-21.0.12.1+1 (build 21.0.12.1+1-LTS) | OpenJDK 64-Bit Server VM Temurin-21.0.12.1+1 (build 21.0.12.1+1-LTS, mixed mode, sharing)",
+     "jar_path": "jNeuroML-0.14.0-jar-with-dependencies.jar",
+     "jar_sha256": "45ee565a65a66008a3b41935358d11b7c19cb6b5a67bbec22481d519f53db931"
+    },
+    "git_head": "5184ce9c36cf2fc9bedbbf51307f50c56c6d1c28"
+   },
+   "code_state_changed_during_run": false
+  }
+ },
+ "models": {
+  "maex1998_golgi": {
+   "model_id": "maex1998_golgi",
+   "role": "candidate",
+   "run_id": "2026-09-13T16:00:56+00:00_aa8fa6a0",
+   "code_state_id": "cae767f83aa15e88",
+   "candidate": {
+    "model_id": "maex1998_golgi",
+    "snapshot": "GranCellLayer@cee86047",
+    "cell_file": "NeuroML2/Golgi_98.cell.nml",
+    "cell_id": "Golgi_98",
+    "harness_lems": "",
+    "harness_output_file": "",
+    "harness_v_column": 1,
+    "temperature": "32.0 degC",
+    "net_file": "",
+    "mep": "",
+    "mep_experiment": "",
+    "mep_time_unit": "ms",
+    "mep_threshold_mV": 0.0,
+    "probe_cell_file": "",
+    "probe_cell_id": "",
+    "role": "candidate"
+   },
+   "started_utc": "2026-09-13T16:00:56+00:00",
+   "validate_cell": {
+    "valid": true,
+    "returncode": 0,
+    "messages": []
+   },
+   "structure": {
+    "custom_component_types": [],
+    "standard_cell_element": true,
+    "cell_element": "cell",
+    "n_segments": 1,
+    "single_compartment": true,
+    "biophysical_container": "biophysicalProperties",
+    "channels": [
+     {
+      "element": "channelDensity",
+      "id": "Golgi_H_CML_all",
+      "ionChannel": "Golgi_H_CML",
+      "ion": "h",
+      "condDensity": "0.171496 mS_per_cm2",
+      "erev": "-42.0 mV"
+     },
+     {
+      "element": "channelDensity",
+      "id": "Golgi_KA_CML_all",
+      "ionChannel": "Golgi_KA_CML",
+      "ion": "k",
+      "condDensity": "0.524928 mS_per_cm2",
+      "erev": "-90.0 mV"
+     },
+     {
+      "element": "channelDensity",
+      "id": "Golgi_KCa_CML_all",
+      "ionChannel": "Golgi_KCa_CML",
+      "ion": "k",
+      "condDensity": "0.571654 mS_per_cm2",
+      "erev": "-90.0 mV"
+     },
+     {
+      "element": "channelDensity",
+      "id": "Golgi_KDr_CML_all",
+      "ionChannel": "Golgi_KDr_CML",
+      "ion": "k",
+      "condDensity": "6.78839 mS_per_cm2",
+      "erev": "-90.0 mV"
+     },
+     {
+      "element": "channelDensity",
+      "id": "Golgi_NaF_CML_all",
+      "ionChannel": "Golgi_NaF_CML",
+      "ion": "na",
+      "condDensity": "40.0158 mS_per_cm2",
+      "erev": "55.0 mV"
+     },
+     {
+      "element": "channelDensity",
+      "id": "GolgiPassiveCond_all",
+      "ionChannel": "GolgiPassiveCond",
+      "ion": "non_specific",
+      "condDensity": "0.033 mS_per_cm2",
+      "erev": "-55.0 mV"
+     },
+     {
+      "element": "channelDensityNernst",
+      "id": "Golgi_CaHVA_CML_all",
+      "ionChannel": "Golgi_CaHVA_CML",
+      "ion": "ca",
+      "condDensity": "0.831757 mS_per_cm2",
+      "erev": null
+     }
+    ],
+    "non_core_elements": []
+   },
+   "harness": {
+    "status": "not_shipped",
+    "note": "no single-cell LEMS harness in the repository"
+   },
+   "probes": {
+    "dt_ms": 0.01,
+    "spike_threshold_mV": -20.0,
+    "cost": [
+     {
+      "tag": "inject_0",
+      "cell_steps": 300000,
+      "runtime_s": 43.07,
+      "status": "ok"
+     },
+     {
+      "tag": "rheo_1",
+      "cell_steps": 640000,
+      "runtime_s": 104.9985544999945,
+      "status": "ok"
+     },
+     {
+      "tag": "battery_0",
+      "cell_steps": 300000,
+      "runtime_s": 39.57,
+      "status": "ok"
+     },
+     {
+      "tag": "battery_1",
+      "cell_steps": 110000,
+      "runtime_s": 22.63,
+      "status": "ok"
+     },
+     {
+      "tag": "battery_2",
+      "cell_steps": 160000,
+      "runtime_s": 26.55,
+      "status": "ok"
+     },
+     {
+      "tag": "battery_3",
+      "cell_steps": 250000,
+      "runtime_s": 34.62,
+      "status": "ok"
+     },
+     {
+      "tag": "ihblock_0",
+      "cell_steps": 200000,
+      "runtime_s": 28.06,
+      "status": "ok"
+     },
+     {
+      "tag": "ihblock_1",
+      "cell_steps": 110000,
+      "runtime_s": 9.87,
+      "status": "build_error"
+     },
+     {
+      "tag": "ihblock_2",
+      "cell_steps": 160000,
+      "runtime_s": 6.52,
+      "status": "build_error"
+     }
+    ],
+    "injection_attempts": [
+     {
+      "amplitude_nA": 0.05,
+      "status": "ok",
+      "message": ""
+     }
+    ],
+    "injection_check": {
+     "status": "ok",
+     "amplitudes_nA": [
+      0.0,
+      0.05,
+      -0.05
+     ],
+     "max_abs_dv_plus_mV": 78.1674,
+     "max_abs_dv_minus_mV": 82.5265,
+     "responds_to_current": true,
+     "zero_current_spikes_in_window": 3
+    },
+    "rheobase": {
+     "rheobase_nA": 0.0,
+     "status": "spontaneous",
+     "resolution_nA": 0.0,
+     "n_simulations": 1
+    },
+    "protocol_scale_nA": 0.1,
+    "protocol_scale_source": "fallback (spontaneous)",
+    "battery": {
+     "P01_baseline": {
+      "status": "ok",
+      "spike_count": 5,
+      "first_spike_latency_ms": 125.7338,
+      "mean_rate_hz": 7.1429,
+      "first_isi_ms": 137.6498,
+      "last_isi_ms": 138.261,
+      "isi_last_over_first": 1.0044,
+      "isi_cv": 0.0016,
+      "burst_gaps": 0,
+      "spikes_per_burst": 5.0,
+      "mean_v_mV": -61.8834
+     },
+     "P04_step_2x": {
+      "status": "ok",
+      "amplitude_nA": 0.2,
+      "spike_count": 45,
+      "first_spike_latency_ms": 2.7213,
+      "mean_rate_hz": 90.0,
+      "first_isi_ms": 4.0607,
+      "last_isi_ms": 13.5084,
+      "isi_last_over_first": 3.3266,
+      "isi_cv": 0.2926,
+      "burst_gaps": 0,
+      "spikes_per_burst": 45.0
+     },
+     "P07_hyperpolarizing_step": {
+      "status": "ok",
+      "amplitude_nA": -0.1,
+      "baseline_mV": -60.1945,
+      "pre_window_min_mV": -70.4814,
+      "pre_window_max_mV": 12.2417,
+      "pre_window_spikes": 1,
+      "min_mV": -95.5435,
+      "t_min_ms": 16.92,
+      "min_late_mV": -87.6538,
+      "t_min_late_ms": 30.0,
+      "steady_mV": -75.1966,
+      "sag_ratio": null,
+      "sag_ratio_undefined_reasons": [
+       "spike in pre-step baseline window (baseline depends on spike phase)"
+      ],
+      "sag_ratio_late": null,
+      "sag_ratio_late_undefined_reasons": [
+       "spike in pre-step baseline window (baseline depends on spike phase)",
+       "late-window minimum on the window edge (onset transient)"
+      ],
+      "recovery_late_mV": 12.4572,
+      "spikes_during_step": 0,
+      "rebound_spikes": 3,
+      "post_release_max_mV": 13.8269
+     },
+     "P08_rebound": {
+      "status": "ok",
+      "amplitude_nA": -0.2,
+      "baseline_mV": -60.1945,
+      "pre_window_min_mV": -70.4814,
+      "pre_window_max_mV": 12.2417,
+      "pre_window_spikes": 1,
+      "min_mV": -112.3296,
+      "t_min_ms": 10.91,
+      "min_late_mV": -90.4545,
+      "t_min_late_ms": 30.0,
+      "steady_mV": -84.2636,
+      "sag_ratio": null,
+      "sag_ratio_undefined_reasons": [
+       "spike in pre-step baseline window (baseline depends on spike phase)"
+      ],
+      "sag_ratio_late": null,
+      "sag_ratio_late_undefined_reasons": [
+       "spike in pre-step baseline window (baseline depends on spike phase)",
+       "late-window minimum on the window edge (onset transient)"
+      ],
+      "recovery_late_mV": 6.1909,
+      "spikes_during_step": 0,
+      "rebound_spikes": 4,
+      "post_release_max_mV": 13.8059
+     },
+     "S01_hyper_long": {
+      "status": "ok",
+      "amplitude_nA": -0.3,
+      "baseline_mV": -60.1945,
+      "pre_window_min_mV": -70.4814,
+      "pre_window_max_mV": 12.2417,
+      "pre_window_spikes": 1,
+      "min_mV": -122.6646,
+      "t_min_ms": 8.27,
+      "min_late_mV": -99.4081,
+      "t_min_late_ms": 30.0,
+      "steady_mV": -96.8289,
+      "sag_ratio": null,
+      "sag_ratio_undefined_reasons": [
+       "spike in pre-step baseline window (baseline depends on spike phase)"
+      ],
+      "sag_ratio_late": null,
+      "sag_ratio_late_undefined_reasons": [
+       "spike in pre-step baseline window (baseline depends on spike phase)",
+       "late-window minimum on the window edge (onset transient)"
+      ],
+      "recovery_late_mV": 2.5792,
+      "spikes_during_step": 0,
+      "rebound_spikes": 4,
+      "post_release_max_mV": 13.9172
+     },
+     "P05_long_step": {
+      "status": "ok",
+      "amplitude_nA": 0.15,
+      "spike_count": 117,
+      "first_spike_latency_ms": 3.4704,
+      "mean_rate_hz": 58.5,
+      "first_isi_ms": 5.1212,
+      "last_isi_ms": 18.049,
+      "isi_last_over_first": 3.5244,
+      "isi_cv": 0.1617,
+      "burst_gaps": 0,
+      "spikes_per_burst": 117.0
+     }
+    },
+    "ih_block": {
+     "method": "work copy of the snapshot with every channelDensity ion='h' of the cell set to 0; same protocols, same absolute currents (control protocol scale), same dt",
+     "blocked_densities": [
+      {
+       "element": "channelDensity",
+       "id": "Golgi_H_CML_all",
+       "ionChannel": "Golgi_H_CML",
+       "condDensity_original": "0.171496 mS_per_cm2",
+       "condDensity_blocked": "0 mS_per_cm2"
+      }
+     ],
+     "validate_blocked_cell": {
+      "valid": true,
+      "returncode": 0,
+      "messages": []
+     },
+     "battery": {
+      "P01_baseline": {
+       "status": "ok",
+       "spike_count": 3,
+       "first_spike_latency_ms": 88.5609,
+       "mean_rate_hz": 4.2857,
+       "first_isi_ms": 226.4131,
+       "last_isi_ms": 227.2385,
+       "isi_last_over_first": 1.0036,
+       "isi_cv": null,
+       "burst_gaps": null,
+       "spikes_per_burst": null,
+       "mean_v_mV": -63.0438
+      },
+      "P07_hyperpolarizing_step": {
+       "status": "ok",
+       "amplitude_nA": -0.1,
+       "baseline_mV": -63.2796,
+       "pre_window_min_mV": -63.8922,
+       "pre_window_max_mV": -62.6456,
+       "pre_window_spikes": 0,
+       "min_mV": -162.1745,
+       "t_min_ms": 496.83,
+       "min_late_mV": -162.1745,
+       "t_min_late_ms": 496.83,
+       "steady_mV": -162.1744,
+       "sag_ratio": 0.0,
+       "sag_ratio_undefined_reasons": [],
+       "sag_ratio_late": 0.0,
+       "sag_ratio_late_undefined_reasons": [],
+       "recovery_late_mV": 0.0001,
+       "spikes_during_step": 0,
+       "rebound_spikes": 1,
+       "post_release_max_mV": 13.559
+      },
+      "P08_rebound": {
+       "status": "build_error",
+       "message": "SEVERE:  (ERROR) org.lemsml.jlems.core.run.RuntimeError: Error at PathDerivedVariable eval(): tgt: null; sin: Golgi_H_CML[ionChannelHH]; tgtvar: fcond; path: gates[*]/fcond"
+      },
+      "S01_hyper_long": {
+       "status": "build_error",
+       "message": "SEVERE:  (ERROR) org.lemsml.jlems.core.run.RuntimeError: Error at PathDerivedVariable eval(): tgt: null; sin: Golgi_H_CML[ionChannelHH]; tgtvar: fcond; path: gates[*]/fcond"
+      }
+     },
+     "comparison": {
+      "P01_baseline": {
+       "mean_v_mV": {
+        "control": -61.8834,
+        "ih_block": -63.0438,
+        "block_minus_control": -1.1604
+       },
+       "spike_count": {
+        "control": 5,
+        "ih_block": 3,
+        "block_minus_control": -2.0
+       }
+      },
+      "P07_hyperpolarizing_step": {
+       "baseline_mV": {
+        "control": -60.1945,
+        "ih_block": -63.2796,
+        "block_minus_control": -3.0851
+       },
+       "min_mV": {
+        "control": -95.5435,
+        "ih_block": -162.1745,
+        "block_minus_control": -66.631
+       },
+       "min_late_mV": {
+        "control": -87.6538,
+        "ih_block": -162.1745,
+        "block_minus_control": -74.5207
+       },
+       "steady_mV": {
+        "control": -75.1966,
+        "ih_block": -162.1744,
+        "block_minus_control": -86.9778
+       },
+       "recovery_late_mV": {
+        "control": 12.4572,
+        "ih_block": 0.0001,
+        "block_minus_control": -12.4571
+       },
+       "sag_ratio": {
+        "control": null,
+        "ih_block": 0.0,
+        "block_minus_control": null
+       },
+       "sag_ratio_late": {
+        "control": null,
+        "ih_block": 0.0,
+        "block_minus_control": null
+       },
+       "spikes_during_step": {
+        "control": 0,
+        "ih_block": 0,
+        "block_minus_control": 0.0
+       },
+       "rebound_spikes": {
+        "control": 3,
+        "ih_block": 1,
+        "block_minus_control": -2.0
+       }
+      },
+      "P08_rebound": {
+       "baseline_mV": {
+        "control": -60.1945,
+        "ih_block": null,
+        "block_minus_control": null
+       },
+       "min_mV": {
+        "control": -112.3296,
+        "ih_block": null,
+        "block_minus_control": null
+       },
+       "min_late_mV": {
+        "control": -90.4545,
+        "ih_block": null,
+        "block_minus_control": null
+       },
+       "steady_mV": {
+        "control": -84.2636,
+        "ih_block": null,
+        "block_minus_control": null
+       },
+       "recovery_late_mV": {
+        "control": 6.1909,
+        "ih_block": null,
+        "block_minus_control": null
+       },
+       "sag_ratio": {
+        "control": null,
+        "ih_block": null,
+        "block_minus_control": null
+       },
+       "sag_ratio_late": {
+        "control": null,
+        "ih_block": null,
+        "block_minus_control": null
+       },
+       "spikes_during_step": {
+        "control": 0,
+        "ih_block": null,
+        "block_minus_control": null
+       },
+       "rebound_spikes": {
+        "control": 4,
+        "ih_block": null,
+        "block_minus_control": null
+       }
+      },
+      "S01_hyper_long": {
+       "baseline_mV": {
+        "control": -60.1945,
+        "ih_block": null,
+        "block_minus_control": null
+       },
+       "min_mV": {
+        "control": -122.6646,
+        "ih_block": null,
+        "block_minus_control": null
+       },
+       "min_late_mV": {
+        "control": -99.4081,
+        "ih_block": null,
+        "block_minus_control": null
+       },
+       "steady_mV": {
+        "control": -96.8289,
+        "ih_block": null,
+        "block_minus_control": null
+       },
+       "recovery_late_mV": {
+        "control": 2.5792,
+        "ih_block": null,
+        "block_minus_control": null
+       },
+       "sag_ratio": {
+        "control": null,
+        "ih_block": null,
+        "block_minus_control": null
+       },
+       "sag_ratio_late": {
+        "control": null,
+        "ih_block": null,
+        "block_minus_control": null
+       },
+       "spikes_during_step": {
+        "control": 0,
+        "ih_block": null,
+        "block_minus_control": null
+       },
+       "rebound_spikes": {
+        "control": 4,
+        "ih_block": null,
+        "block_minus_control": null
+       }
+      }
+     },
+     "caveat": "Blocking Ih also shifts the resting potential and so recruits other voltage-dependent currents differently; the difference is Ih's net effect in this model, not an isolated current."
+    }
+   },
+   "figure": "docs/m0_evidence/model_curation/figures/maex1998_golgi.png",
+   "wall_time_s": 339.6
+  },
+  "maex1998_granule": {
+   "model_id": "maex1998_granule",
+   "role": "candidate",
+   "run_id": "2026-09-13T16:00:56+00:00_aa8fa6a0",
+   "code_state_id": "cae767f83aa15e88",
+   "candidate": {
+    "model_id": "maex1998_granule",
+    "snapshot": "GranCellLayer@cee86047",
+    "cell_file": "NeuroML2/Granule_98.cell.nml",
+    "cell_id": "Granule_98",
+    "harness_lems": "",
+    "harness_output_file": "",
+    "harness_v_column": 1,
+    "temperature": "32.0 degC",
+    "net_file": "",
+    "mep": "",
+    "mep_experiment": "",
+    "mep_time_unit": "ms",
+    "mep_threshold_mV": 0.0,
+    "probe_cell_file": "",
+    "probe_cell_id": "",
+    "role": "candidate"
+   },
+   "started_utc": "2026-09-13T16:00:56+00:00",
+   "validate_cell": {
+    "valid": true,
+    "returncode": 0,
+    "messages": []
+   },
+   "structure": {
+    "custom_component_types": [],
+    "standard_cell_element": true,
+    "cell_element": "cell",
+    "n_segments": 1,
+    "single_compartment": true,
+    "biophysical_container": "biophysicalProperties",
+    "channels": [
+     {
+      "element": "channelDensity",
+      "id": "Gran_CaHVA_98_all",
+      "ionChannel": "Gran_CaHVA_98",
+      "ion": "ca",
+      "condDensity": "0.9084216 mS_per_cm2",
+      "erev": "80.0 mV"
+     },
+     {
+      "element": "channelDensity",
+      "id": "Gran_H_98_all",
+      "ionChannel": "Gran_H_98",
+      "ion": "h",
+      "condDensity": "0.03090506 mS_per_cm2",
+      "erev": "-42.0 mV"
+     },
+     {
+      "element": "channelDensity",
+      "id": "Gran_KA_98_all",
+      "ionChannel": "Gran_KA_98",
+      "ion": "k",
+      "condDensity": "1.14567 mS_per_cm2",
+      "erev": "-90.0 mV"
+     },
+     {
+      "element": "channelDensity",
+      "id": "Gran_KCa_98_all",
+      "ionChannel": "Gran_KCa_98",
+      "ion": "k",
+      "condDensity": "17.9811 mS_per_cm2",
+      "erev": "-90.0 mV"
+     },
+     {
+      "element": "channelDensity",
+      "id": "Gran_KDr_98_all",
+      "ionChannel": "Gran_KDr_98",
+      "ion": "k",
+      "condDensity": "8.89691 mS_per_cm2",
+      "erev": "-90.0 mV"
+     },
+     {
+      "element": "channelDensity",
+      "id": "Gran_NaF_98_all",
+      "ionChannel": "Gran_NaF_98",
+      "ion": "na",
+      "condDensity": "55.7227 mS_per_cm2",
+      "erev": "55.0 mV"
+     },
+     {
+      "element": "channelDensity",
+      "id": "GranPassiveCond_all",
+      "ionChannel": "GranPassiveCond",
+      "ion": "non_specific",
+      "condDensity": "0.0330033 mS_per_cm2",
+      "erev": "-65.0 mV"
+     }
+    ],
+    "non_core_elements": []
+   },
+   "harness": {
+    "status": "not_shipped",
+    "note": "no single-cell LEMS harness in the repository"
+   },
+   "probes": {
+    "dt_ms": 0.01,
+    "spike_threshold_mV": -20.0,
+    "cost": [
+     {
+      "tag": "inject_0",
+      "cell_steps": 300000,
+      "runtime_s": 18.67,
+      "status": "build_error"
+     },
+     {
+      "tag": "inject_1",
+      "cell_steps": 300000,
+      "runtime_s": 41.62,
+      "status": "ok"
+     },
+     {
+      "tag": "rheo_1",
+      "cell_steps": 640000,
+      "runtime_s": 94.78770769998664,
+      "status": "ok"
+     },
+     {
+      "tag": "rheo_2",
+      "cell_steps": 640000,
+      "runtime_s": 90.3413554999861,
+      "status": "ok"
+     },
+     {
+      "tag": "rheo_3",
+      "cell_steps": 640000,
+      "runtime_s": 91.96478330000537,
+      "status": "ok"
+     },
+     {
+      "tag": "battery_0",
+      "cell_steps": 300000,
+      "runtime_s": 30.95,
+      "status": "ok"
+     },
+     {
+      "tag": "battery_1",
+      "cell_steps": 110000,
+      "runtime_s": 21.85,
+      "status": "ok"
+     },
+     {
+      "tag": "battery_2",
+      "cell_steps": 160000,
+      "runtime_s": 22.91,
+      "status": "ok"
+     },
+     {
+      "tag": "battery_3",
+      "cell_steps": 250000,
+      "runtime_s": 29.18,
+      "status": "ok"
+     },
+     {
+      "tag": "ihblock_0",
+      "cell_steps": 200000,
+      "runtime_s": 28.81,
+      "status": "ok"
+     },
+     {
+      "tag": "ihblock_1",
+      "cell_steps": 110000,
+      "runtime_s": 19.43,
+      "status": "ok"
+     },
+     {
+      "tag": "ihblock_2",
+      "cell_steps": 160000,
+      "runtime_s": 15.37,
+      "status": "build_error"
+     }
+    ],
+    "injection_attempts": [
+     {
+      "amplitude_nA": 0.05,
+      "status": "build_error",
+      "message": "SEVERE:  (ERROR) org.lemsml.jlems.core.run.RuntimeError: Error at PathDerivedVariable eval(): tgt: null[HHExpRate]; sin: n[gateHHrates]; tgtvar: r; path: forwardRate/r"
+     },
+     {
+      "amplitude_nA": 0.005,
+      "status": "ok",
+      "message": ""
+     }
+    ],
+    "injection_check": {
+     "status": "ok",
+     "amplitudes_nA": [
+      0.0,
+      0.005,
+      -0.005
+     ],
+     "max_abs_dv_plus_mV": 15.4927,
+     "max_abs_dv_minus_mV": 22.4395,
+     "responds_to_current": true,
+     "zero_current_spikes_in_window": 0
+    },
+    "rheobase": {
+     "rheobase_nA": 0.0051,
+     "status": "ok",
+     "resolution_nA": 0.0001,
+     "n_simulations": 3
+    },
+    "protocol_scale_nA": 0.005102040816326531,
+    "protocol_scale_source": "rheobase",
+    "battery": {
+     "P01_baseline": {
+      "status": "ok",
+      "spike_count": 0,
+      "first_spike_latency_ms": null,
+      "mean_rate_hz": 0.0,
+      "first_isi_ms": null,
+      "last_isi_ms": null,
+      "isi_last_over_first": null,
+      "isi_cv": null,
+      "burst_gaps": null,
+      "spikes_per_burst": null,
+      "mean_v_mV": -62.9027
+     },
+     "P04_step_2x": {
+      "status": "ok",
+      "amplitude_nA": 0.0102,
+      "spike_count": 18,
+      "first_spike_latency_ms": 8.161,
+      "mean_rate_hz": 36.0,
+      "first_isi_ms": 30.5044,
+      "last_isi_ms": 28.2448,
+      "isi_last_over_first": 0.9259,
+      "isi_cv": 0.0193,
+      "burst_gaps": 0,
+      "spikes_per_burst": 18.0
+     },
+     "P07_hyperpolarizing_step": {
+      "status": "ok",
+      "amplitude_nA": -0.0051,
+      "baseline_mV": -62.8532,
+      "pre_window_min_mV": -62.8666,
+      "pre_window_max_mV": -62.8375,
+      "pre_window_spikes": 0,
+      "min_mV": -85.7556,
+      "t_min_ms": 41.74,
+      "min_late_mV": -85.7556,
+      "t_min_late_ms": 41.74,
+      "steady_mV": -80.5596,
+      "sag_ratio": 0.2269,
+      "sag_ratio_undefined_reasons": [],
+      "sag_ratio_late": 0.2269,
+      "sag_ratio_late_undefined_reasons": [],
+      "recovery_late_mV": 5.196,
+      "spikes_during_step": 0,
+      "rebound_spikes": 0,
+      "post_release_max_mV": -61.2664
+     },
+     "P08_rebound": {
+      "status": "ok",
+      "amplitude_nA": -0.0102,
+      "baseline_mV": -62.8532,
+      "pre_window_min_mV": -62.8666,
+      "pre_window_max_mV": -62.8375,
+      "pre_window_spikes": 0,
+      "min_mV": -105.1576,
+      "t_min_ms": 40.73,
+      "min_late_mV": -105.1576,
+      "t_min_late_ms": 40.73,
+      "steady_mV": -104.6953,
+      "sag_ratio": 0.0109,
+      "sag_ratio_undefined_reasons": [],
+      "sag_ratio_late": 0.0109,
+      "sag_ratio_late_undefined_reasons": [],
+      "recovery_late_mV": 0.4622,
+      "spikes_during_step": 0,
+      "rebound_spikes": 0,
+      "post_release_max_mV": -61.3574
+     },
+     "S01_hyper_long": {
+      "status": "ok",
+      "amplitude_nA": -0.0153,
+      "baseline_mV": -62.8532,
+      "pre_window_min_mV": -62.8666,
+      "pre_window_max_mV": -62.8375,
+      "pre_window_spikes": 0,
+      "min_mV": -130.1066,
+      "t_min_ms": 236.52,
+      "min_late_mV": -130.1066,
+      "t_min_late_ms": 236.52,
+      "steady_mV": -130.1066,
+      "sag_ratio": 0.0,
+      "sag_ratio_undefined_reasons": [],
+      "sag_ratio_late": 0.0,
+      "sag_ratio_late_undefined_reasons": [],
+      "recovery_late_mV": 0.0,
+      "spikes_during_step": 0,
+      "rebound_spikes": 0,
+      "post_release_max_mV": -61.3686
+     },
+     "P05_long_step": {
+      "status": "ok",
+      "amplitude_nA": 0.0077,
+      "spike_count": 55,
+      "first_spike_latency_ms": 12.0949,
+      "mean_rate_hz": 27.5,
+      "first_isi_ms": 39.5553,
+      "last_isi_ms": 36.5946,
+      "isi_last_over_first": 0.9251,
+      "isi_cv": 0.0113,
+      "burst_gaps": 0,
+      "spikes_per_burst": 55.0
+     }
+    },
+    "ih_block": {
+     "method": "work copy of the snapshot with every channelDensity ion='h' of the cell set to 0; same protocols, same absolute currents (control protocol scale), same dt",
+     "blocked_densities": [
+      {
+       "element": "channelDensity",
+       "id": "Gran_H_98_all",
+       "ionChannel": "Gran_H_98",
+       "condDensity_original": "0.03090506 mS_per_cm2",
+       "condDensity_blocked": "0 mS_per_cm2"
+      }
+     ],
+     "validate_blocked_cell": {
+      "valid": true,
+      "returncode": 0,
+      "messages": []
+     },
+     "battery": {
+      "P01_baseline": {
+       "status": "ok",
+       "spike_count": 0,
+       "first_spike_latency_ms": null,
+       "mean_rate_hz": 0.0,
+       "first_isi_ms": null,
+       "last_isi_ms": null,
+       "isi_last_over_first": null,
+       "isi_cv": null,
+       "burst_gaps": null,
+       "spikes_per_burst": null,
+       "mean_v_mV": -68.16
+      },
+      "P07_hyperpolarizing_step": {
+       "status": "ok",
+       "amplitude_nA": -0.0051,
+       "baseline_mV": -68.1489,
+       "pre_window_min_mV": -68.1524,
+       "pre_window_max_mV": -68.1445,
+       "pre_window_spikes": 0,
+       "min_mV": -114.173,
+       "t_min_ms": 471.7,
+       "min_late_mV": -114.173,
+       "t_min_late_ms": 471.7,
+       "steady_mV": -114.173,
+       "sag_ratio": 0.0,
+       "sag_ratio_undefined_reasons": [],
+       "sag_ratio_late": 0.0,
+       "sag_ratio_late_undefined_reasons": [],
+       "recovery_late_mV": 0.0,
+       "spikes_during_step": 0,
+       "rebound_spikes": 0,
+       "post_release_max_mV": -68.3608
+      },
+      "P08_rebound": {
+       "status": "ok",
+       "amplitude_nA": -0.0102,
+       "baseline_mV": -68.1489,
+       "pre_window_min_mV": -68.1524,
+       "pre_window_max_mV": -68.1445,
+       "pre_window_spikes": 0,
+       "min_mV": -163.4149,
+       "t_min_ms": 465.48,
+       "min_late_mV": -163.4149,
+       "t_min_late_ms": 465.48,
+       "steady_mV": -163.4149,
+       "sag_ratio": 0.0,
+       "sag_ratio_undefined_reasons": [],
+       "sag_ratio_late": 0.0,
+       "sag_ratio_late_undefined_reasons": [],
+       "recovery_late_mV": 0.0,
+       "spikes_during_step": 0,
+       "rebound_spikes": 0,
+       "post_release_max_mV": -68.2336
+      },
+      "S01_hyper_long": {
+       "status": "build_error",
+       "message": "SEVERE:  (ERROR) org.lemsml.jlems.core.run.RuntimeError: Error at PathDerivedVariable eval(): tgt: null; sin: Gran_H_98[ionChannelHH]; tgtvar: fcond; path: gates[*]/fcond"
+      }
+     },
+     "comparison": {
+      "P01_baseline": {
+       "mean_v_mV": {
+        "control": -62.9027,
+        "ih_block": -68.16,
+        "block_minus_control": -5.2573
+       },
+       "spike_count": {
+        "control": 0,
+        "ih_block": 0,
+        "block_minus_control": 0.0
+       }
+      },
+      "P07_hyperpolarizing_step": {
+       "baseline_mV": {
+        "control": -62.8532,
+        "ih_block": -68.1489,
+        "block_minus_control": -5.2957
+       },
+       "min_mV": {
+        "control": -85.7556,
+        "ih_block": -114.173,
+        "block_minus_control": -28.4174
+       },
+       "min_late_mV": {
+        "control": -85.7556,
+        "ih_block": -114.173,
+        "block_minus_control": -28.4174
+       },
+       "steady_mV": {
+        "control": -80.5596,
+        "ih_block": -114.173,
+        "block_minus_control": -33.6134
+       },
+       "recovery_late_mV": {
+        "control": 5.196,
+        "ih_block": 0.0,
+        "block_minus_control": -5.196
+       },
+       "sag_ratio": {
+        "control": 0.2269,
+        "ih_block": 0.0,
+        "block_minus_control": -0.2269
+       },
+       "sag_ratio_late": {
+        "control": 0.2269,
+        "ih_block": 0.0,
+        "block_minus_control": -0.2269
+       },
+       "spikes_during_step": {
+        "control": 0,
+        "ih_block": 0,
+        "block_minus_control": 0.0
+       },
+       "rebound_spikes": {
+        "control": 0,
+        "ih_block": 0,
+        "block_minus_control": 0.0
+       }
+      },
+      "P08_rebound": {
+       "baseline_mV": {
+        "control": -62.8532,
+        "ih_block": -68.1489,
+        "block_minus_control": -5.2957
+       },
+       "min_mV": {
+        "control": -105.1576,
+        "ih_block": -163.4149,
+        "block_minus_control": -58.2573
+       },
+       "min_late_mV": {
+        "control": -105.1576,
+        "ih_block": -163.4149,
+        "block_minus_control": -58.2573
+       },
+       "steady_mV": {
+        "control": -104.6953,
+        "ih_block": -163.4149,
+        "block_minus_control": -58.7196
+       },
+       "recovery_late_mV": {
+        "control": 0.4622,
+        "ih_block": 0.0,
+        "block_minus_control": -0.4622
+       },
+       "sag_ratio": {
+        "control": 0.0109,
+        "ih_block": 0.0,
+        "block_minus_control": -0.0109
+       },
+       "sag_ratio_late": {
+        "control": 0.0109,
+        "ih_block": 0.0,
+        "block_minus_control": -0.0109
+       },
+       "spikes_during_step": {
+        "control": 0,
+        "ih_block": 0,
+        "block_minus_control": 0.0
+       },
+       "rebound_spikes": {
+        "control": 0,
+        "ih_block": 0,
+        "block_minus_control": 0.0
+       }
+      },
+      "S01_hyper_long": {
+       "baseline_mV": {
+        "control": -62.8532,
+        "ih_block": null,
+        "block_minus_control": null
+       },
+       "min_mV": {
+        "control": -130.1066,
+        "ih_block": null,
+        "block_minus_control": null
+       },
+       "min_late_mV": {
+        "control": -130.1066,
+        "ih_block": null,
+        "block_minus_control": null
+       },
+       "steady_mV": {
+        "control": -130.1066,
+        "ih_block": null,
+        "block_minus_control": null
+       },
+       "recovery_late_mV": {
+        "control": 0.0,
+        "ih_block": null,
+        "block_minus_control": null
+       },
+       "sag_ratio": {
+        "control": 0.0,
+        "ih_block": null,
+        "block_minus_control": null
+       },
+       "sag_ratio_late": {
+        "control": 0.0,
+        "ih_block": null,
+        "block_minus_control": null
+       },
+       "spikes_during_step": {
+        "control": 0,
+        "ih_block": null,
+        "block_minus_control": null
+       },
+       "rebound_spikes": {
+        "control": 0,
+        "ih_block": null,
+        "block_minus_control": null
+       }
+      }
+     },
+     "caveat": "Blocking Ih also shifts the resting potential and so recruits other voltage-dependent currents differently; the difference is Ih's net effect in this model, not an isolated current."
+    }
+   },
+   "figure": "docs/m0_evidence/model_curation/figures/maex1998_granule.png",
+   "wall_time_s": 526.4
+  },
+  "migliore2014_gc_soma": {
+   "model_id": "migliore2014_gc_soma",
+   "role": "candidate",
+   "run_id": "2026-09-13T16:00:56+00:00_aa8fa6a0",
+   "code_state_id": "cae767f83aa15e88",
+   "candidate": {
+    "model_id": "migliore2014_gc_soma",
+    "snapshot": "MiglioreEtAl14_OlfactoryBulb3D@eaad1c8f",
+    "cell_file": "NeuroML2/Channels/test/GC_soma.cell.nml",
+    "cell_id": "GC_soma",
+    "harness_lems": "NeuroML2/Channels/test/LEMS_OlfactoryTest_12.xml",
+    "harness_output_file": "CG_GC_soma_0.0.dat",
+    "harness_v_column": 1,
+    "temperature": "12.0 degC",
+    "net_file": "NeuroML2/Channels/test/OlfactoryTest_12.net.nml",
+    "mep": "NeuroML2/Channels/test/.test.12.mep",
+    "mep_experiment": "gc",
+    "mep_time_unit": "ms",
+    "mep_threshold_mV": 0.0,
+    "probe_cell_file": "",
+    "probe_cell_id": "",
+    "role": "candidate"
+   },
+   "started_utc": "2026-09-13T16:08:34+00:00",
+   "validate_cell": {
+    "valid": true,
+    "returncode": 0,
+    "messages": []
+   },
+   "validate_network": {
+    "file": "NeuroML2/Channels/test/OlfactoryTest_12.net.nml",
+    "valid": true,
+    "returncode": 0,
+    "messages": []
+   },
+   "structure": {
+    "custom_component_types": [],
+    "standard_cell_element": true,
+    "cell_element": "cell",
+    "n_segments": 1,
+    "single_compartment": true,
+    "biophysical_container": "biophysicalProperties",
+    "channels": [
+     {
+      "element": "channelDensity",
+      "id": "kamt_OneSecGrp_SectionRef_1",
+      "ionChannel": "kamt",
+      "ion": "k",
+      "condDensity": "4.0 mS_per_cm2",
+      "erev": "-90.0 mV"
+     },
+     {
+      "element": "channelDensity",
+      "id": "kdrmt_OneSecGrp_SectionRef_1",
+      "ionChannel": "kdrmt",
+      "ion": "k",
+      "condDensity": "6.0 mS_per_cm2",
+      "erev": "-90.0 mV"
+     },
+     {
+      "element": "channelDensity",
+      "id": "nax_OneSecGrp_SectionRef_1",
+      "ionChannel": "nax",
+      "ion": "na",
+      "condDensity": "40.0 mS_per_cm2",
+      "erev": "50.0 mV"
+     },
+     {
+      "element": "channelDensity",
+      "id": "pas_ModelViewParmSubset_3",
+      "ionChannel": "pas",
+      "ion": "non_specific",
+      "condDensity": "0.133333 mS_per_cm2",
+      "erev": "-61.7723 mV"
+     }
+    ],
+    "non_core_elements": []
+   },
+   "harness": {
+    "status": "ok",
+    "returncode": 0,
+    "runtime_s": 8.38,
+    "harness_step": "0.01ms",
+    "harness_length": "100.0ms",
+    "message": "",
+    "n_samples": 10001,
+    "t_end_ms": 100.0,
+    "v_min_mV": -82.2045,
+    "v_max_mV": 48.5895,
+    "spike_count_thr_minus20mV": 2,
+    "spike_times_ms_first20": [
+     24.101,
+     60.423
+    ],
+    "mep_comparison": {
+     "mep": "NeuroML2/Channels/test/.test.12.mep",
+     "experiment": "gc",
+     "threshold_mV": 0.0,
+     "n_expected": 2,
+     "n_observed": 2,
+     "max_abs_dev_ms_paired": 0.1516,
+     "median_abs_dev_ms_paired": 0.092,
+     "expected_first": [
+      24.29,
+      60.57
+     ],
+     "observed_first": [
+      24.322,
+      60.722
+     ]
+    }
+   },
+   "probes": {
+    "dt_ms": 0.01,
+    "spike_threshold_mV": -20.0,
+    "cost": [
+     {
+      "tag": "inject_0",
+      "cell_steps": 300000,
+      "runtime_s": 15.95,
+      "status": "build_error"
+     },
+     {
+      "tag": "inject_1",
+      "cell_steps": 300000,
+      "runtime_s": 26.89,
+      "status": "ok"
+     },
+     {
+      "tag": "rheo_1",
+      "cell_steps": 640000,
+      "runtime_s": 51.40099349996308,
+      "status": "ok"
+     },
+     {
+      "tag": "rheo_2",
+      "cell_steps": 640000,
+      "runtime_s": 48.23655869998038,
+      "status": "ok"
+     },
+     {
+      "tag": "rheo_3",
+      "cell_steps": 640000,
+      "runtime_s": 52.08312869997462,
+      "status": "ok"
+     },
+     {
+      "tag": "battery_0",
+      "cell_steps": 300000,
+      "runtime_s": 25.88,
+      "status": "ok"
+     },
+     {
+      "tag": "battery_1",
+      "cell_steps": 110000,
+      "runtime_s": 15.34,
+      "status": "ok"
+     },
+     {
+      "tag": "battery_2",
+      "cell_steps": 160000,
+      "runtime_s": 17.77,
+      "status": "ok"
+     },
+     {
+      "tag": "battery_3",
+      "cell_steps": 250000,
+      "runtime_s": 26.29,
+      "status": "ok"
+     }
+    ],
+    "injection_attempts": [
+     {
+      "amplitude_nA": 0.05,
+      "status": "build_error",
+      "message": "SEVERE:  (ERROR) org.lemsml.jlems.core.run.RuntimeError: Error at PathDerivedVariable eval(): tgt: null[HHExpRate]; sin: m[gateHHratesTauInf]; tgtvar: r; path: forwardRate/r"
+     },
+     {
+      "amplitude_nA": 0.005,
+      "status": "ok",
+      "message": ""
+     }
+    ],
+    "injection_check": {
+     "status": "ok",
+     "amplitudes_nA": [
+      0.0,
+      0.005,
+      -0.005
+     ],
+     "max_abs_dv_plus_mV": 110.7932,
+     "max_abs_dv_minus_mV": 16.5962,
+     "responds_to_current": true,
+     "zero_current_spikes_in_window": 0
+    },
+    "rheobase": {
+     "rheobase_nA": 0.0026,
+     "status": "ok",
+     "resolution_nA": 0.0001,
+     "n_simulations": 3
+    },
+    "protocol_scale_nA": 0.0026239067055393588,
+    "protocol_scale_source": "rheobase",
+    "battery": {
+     "P01_baseline": {
+      "status": "ok",
+      "spike_count": 0,
+      "first_spike_latency_ms": null,
+      "mean_rate_hz": 0.0,
+      "first_isi_ms": null,
+      "last_isi_ms": null,
+      "isi_last_over_first": null,
+      "isi_cv": null,
+      "burst_gaps": null,
+      "spikes_per_burst": null,
+      "mean_v_mV": -64.1288
+     },
+     "P04_step_2x": {
+      "status": "ok",
+      "amplitude_nA": 0.0052,
+      "spike_count": 1,
+      "first_spike_latency_ms": 36.0416,
+      "mean_rate_hz": 2.0,
+      "first_isi_ms": null,
+      "last_isi_ms": null,
+      "isi_last_over_first": null,
+      "isi_cv": null,
+      "burst_gaps": null,
+      "spikes_per_burst": null
+     },
+     "P07_hyperpolarizing_step": {
+      "status": "ok",
+      "amplitude_nA": -0.0026,
+      "baseline_mV": -64.1249,
+      "pre_window_min_mV": -64.1252,
+      "pre_window_max_mV": -64.1246,
+      "pre_window_spikes": 0,
+      "min_mV": -72.5176,
+      "t_min_ms": 208.13,
+      "min_late_mV": -72.5176,
+      "t_min_late_ms": 208.13,
+      "steady_mV": -72.4986,
+      "sag_ratio": 0.0023,
+      "sag_ratio_undefined_reasons": [],
+      "sag_ratio_late": 0.0023,
+      "sag_ratio_late_undefined_reasons": [],
+      "recovery_late_mV": 0.0189,
+      "spikes_during_step": 0,
+      "rebound_spikes": 0,
+      "post_release_max_mV": -64.0866
+     },
+     "P08_rebound": {
+      "status": "ok",
+      "amplitude_nA": -0.0052,
+      "baseline_mV": -64.1249,
+      "pre_window_min_mV": -64.1252,
+      "pre_window_max_mV": -64.1246,
+      "pre_window_spikes": 0,
+      "min_mV": -81.6052,
+      "t_min_ms": 248.63,
+      "min_late_mV": -81.6052,
+      "t_min_late_ms": 248.63,
+      "steady_mV": -81.5927,
+      "sag_ratio": 0.0007,
+      "sag_ratio_undefined_reasons": [],
+      "sag_ratio_late": 0.0007,
+      "sag_ratio_late_undefined_reasons": [],
+      "recovery_late_mV": 0.0125,
+      "spikes_during_step": 0,
+      "rebound_spikes": 0,
+      "post_release_max_mV": -64.0572
+     },
+     "S01_hyper_long": {
+      "status": "ok",
+      "amplitude_nA": -0.0079,
+      "baseline_mV": -64.1249,
+      "pre_window_min_mV": -64.1252,
+      "pre_window_max_mV": -64.1246,
+      "pre_window_spikes": 0,
+      "min_mV": -91.12,
+      "t_min_ms": 997.15,
+      "min_late_mV": -91.12,
+      "t_min_late_ms": 997.15,
+      "steady_mV": -91.1199,
+      "sag_ratio": 0.0,
+      "sag_ratio_undefined_reasons": [],
+      "sag_ratio_late": 0.0,
+      "sag_ratio_late_undefined_reasons": [],
+      "recovery_late_mV": 0.0001,
+      "spikes_during_step": 0,
+      "rebound_spikes": 0,
+      "post_release_max_mV": -64.0163
+     },
+     "P05_long_step": {
+      "status": "ok",
+      "amplitude_nA": 0.0039,
+      "spike_count": 2,
+      "first_spike_latency_ms": 54.1963,
+      "mean_rate_hz": 1.0,
+      "first_isi_ms": 1238.3979,
+      "last_isi_ms": 1238.3979,
+      "isi_last_over_first": null,
+      "isi_cv": null,
+      "burst_gaps": null,
+      "spikes_per_burst": null
+     }
+    },
+    "ih_block": null
+   },
+   "figure": "docs/m0_evidence/model_curation/figures/migliore2014_gc_soma.png",
+   "wall_time_s": 306.7
+  },
+  "migliore2014_mt_soma": {
+   "model_id": "migliore2014_mt_soma",
+   "role": "candidate",
+   "run_id": "2026-09-13T16:00:56+00:00_aa8fa6a0",
+   "code_state_id": "cae767f83aa15e88",
+   "candidate": {
+    "model_id": "migliore2014_mt_soma",
+    "snapshot": "MiglioreEtAl14_OlfactoryBulb3D@eaad1c8f",
+    "cell_file": "NeuroML2/Channels/test/MT_soma.cell.nml",
+    "cell_id": "MT_soma",
+    "harness_lems": "NeuroML2/Channels/test/LEMS_OlfactoryTest_12.xml",
+    "harness_output_file": "CG_MT_soma_0.0.dat",
+    "harness_v_column": 1,
+    "temperature": "12.0 degC",
+    "net_file": "NeuroML2/Channels/test/OlfactoryTest_12.net.nml",
+    "mep": "NeuroML2/Channels/test/.test.12.mep",
+    "mep_experiment": "mt",
+    "mep_time_unit": "ms",
+    "mep_threshold_mV": 0.0,
+    "probe_cell_file": "",
+    "probe_cell_id": "",
+    "role": "candidate"
+   },
+   "started_utc": "2026-09-13T16:08:24+00:00",
+   "validate_cell": {
+    "valid": true,
+    "returncode": 0,
+    "messages": []
+   },
+   "validate_network": {
+    "file": "NeuroML2/Channels/test/OlfactoryTest_12.net.nml",
+    "valid": true,
+    "returncode": 0,
+    "messages": []
+   },
+   "structure": {
+    "custom_component_types": [],
+    "standard_cell_element": true,
+    "cell_element": "cell",
+    "n_segments": 1,
+    "single_compartment": true,
+    "biophysical_container": "biophysicalProperties",
+    "channels": [
+     {
+      "element": "channelDensity",
+      "id": "kamt_ModelViewParmSubset_1",
+      "ionChannel": "kamt",
+      "ion": "k",
+      "condDensity": "4.0 mS_per_cm2",
+      "erev": "-90.0 mV"
+     },
+     {
+      "element": "channelDensity",
+      "id": "kdrmt_all",
+      "ionChannel": "kdrmt",
+      "ion": "k",
+      "condDensity": "0.1 mS_per_cm2",
+      "erev": "-90.0 mV"
+     },
+     {
+      "element": "channelDensity",
+      "id": "nax_ModelViewParmSubset_1",
+      "ionChannel": "nax__sh10",
+      "ion": "na",
+      "condDensity": "40.0 mS_per_cm2",
+      "erev": "50.0 mV"
+     },
+     {
+      "element": "channelDensity",
+      "id": "pas_ModelViewParmSubset_1",
+      "ionChannel": "pas",
+      "ion": "non_specific",
+      "condDensity": "0.0833333 mS_per_cm2",
+      "erev": "-61.7723 mV"
+     }
+    ],
+    "non_core_elements": []
+   },
+   "harness": {
+    "status": "ok",
+    "returncode": 0,
+    "runtime_s": 12.4,
+    "harness_step": "0.01ms",
+    "harness_length": "100.0ms",
+    "message": "",
+    "n_samples": 10001,
+    "t_end_ms": 100.0,
+    "v_min_mV": -77.3907,
+    "v_max_mV": 48.8866,
+    "spike_count_thr_minus20mV": 1,
+    "spike_times_ms_first20": [
+     34.858
+    ],
+    "mep_comparison": {
+     "mep": "NeuroML2/Channels/test/.test.12.mep",
+     "experiment": "mt",
+     "threshold_mV": 0.0,
+     "n_expected": 1,
+     "n_observed": 1,
+     "max_abs_dev_ms_paired": 0.0605,
+     "median_abs_dev_ms_paired": 0.0605,
+     "expected_first": [
+      35.01
+     ],
+     "observed_first": [
+      35.07
+     ]
+    }
+   },
+   "probes": {
+    "dt_ms": 0.01,
+    "spike_threshold_mV": -20.0,
+    "cost": [
+     {
+      "tag": "inject_0",
+      "cell_steps": 300000,
+      "runtime_s": 27.21,
+      "status": "ok"
+     },
+     {
+      "tag": "rheo_1",
+      "cell_steps": 640000,
+      "runtime_s": 49.93653850001283,
+      "status": "ok"
+     },
+     {
+      "tag": "rheo_2",
+      "cell_steps": 640000,
+      "runtime_s": 52.71567290002713,
+      "status": "ok"
+     },
+     {
+      "tag": "rheo_3",
+      "cell_steps": 640000,
+      "runtime_s": 50.03516490000766,
+      "status": "ok"
+     },
+     {
+      "tag": "battery_0",
+      "cell_steps": 300000,
+      "runtime_s": 24.98,
+      "status": "ok"
+     },
+     {
+      "tag": "battery_1",
+      "cell_steps": 110000,
+      "runtime_s": 22.09,
+      "status": "ok"
+     },
+     {
+      "tag": "battery_2",
+      "cell_steps": 160000,
+      "runtime_s": 18.26,
+      "status": "ok"
+     },
+     {
+      "tag": "battery_3",
+      "cell_steps": 250000,
+      "runtime_s": 22.88,
+      "status": "ok"
+     }
+    ],
+    "injection_attempts": [
+     {
+      "amplitude_nA": 0.05,
+      "status": "ok",
+      "message": ""
+     }
+    ],
+    "injection_check": {
+     "status": "ok",
+     "amplitudes_nA": [
+      0.0,
+      0.05,
+      -0.05
+     ],
+     "max_abs_dv_plus_mV": 113.8392,
+     "max_abs_dv_minus_mV": 34.8609,
+     "responds_to_current": true,
+     "zero_current_spikes_in_window": 0
+    },
+    "rheobase": {
+     "rheobase_nA": 0.0248,
+     "status": "ok",
+     "resolution_nA": 0.0015,
+     "n_simulations": 3
+    },
+    "protocol_scale_nA": 0.024781341107871717,
+    "protocol_scale_source": "rheobase",
+    "battery": {
+     "P01_baseline": {
+      "status": "ok",
+      "spike_count": 0,
+      "first_spike_latency_ms": null,
+      "mean_rate_hz": 0.0,
+      "first_isi_ms": null,
+      "last_isi_ms": null,
+      "isi_last_over_first": null,
+      "isi_cv": null,
+      "burst_gaps": null,
+      "spikes_per_burst": null,
+      "mean_v_mV": -65.0
+     },
+     "P04_step_2x": {
+      "status": "ok",
+      "amplitude_nA": 0.0496,
+      "spike_count": 7,
+      "first_spike_latency_ms": 18.4422,
+      "mean_rate_hz": 14.0,
+      "first_isi_ms": 72.9655,
+      "last_isi_ms": 79.3358,
+      "isi_last_over_first": 1.0873,
+      "isi_cv": 0.0286,
+      "burst_gaps": 0,
+      "spikes_per_burst": 7.0
+     },
+     "P07_hyperpolarizing_step": {
+      "status": "ok",
+      "amplitude_nA": -0.0248,
+      "baseline_mV": -65.0,
+      "pre_window_min_mV": -65.0,
+      "pre_window_max_mV": -65.0,
+      "pre_window_spikes": 0,
+      "min_mV": -81.0789,
+      "t_min_ms": 243.59,
+      "min_late_mV": -81.0789,
+      "t_min_late_ms": 243.59,
+      "steady_mV": -81.0786,
+      "sag_ratio": 0.0,
+      "sag_ratio_undefined_reasons": [],
+      "sag_ratio_late": 0.0,
+      "sag_ratio_late_undefined_reasons": [],
+      "recovery_late_mV": 0.0003,
+      "spikes_during_step": 0,
+      "rebound_spikes": 0,
+      "post_release_max_mV": -64.9682
+     },
+     "P08_rebound": {
+      "status": "ok",
+      "amplitude_nA": -0.0496,
+      "baseline_mV": -65.0,
+      "pre_window_min_mV": -65.0,
+      "pre_window_max_mV": -65.0,
+      "pre_window_spikes": 0,
+      "min_mV": -99.5279,
+      "t_min_ms": 497.63,
+      "min_late_mV": -99.5279,
+      "t_min_late_ms": 497.63,
+      "steady_mV": -99.5279,
+      "sag_ratio": 0.0,
+      "sag_ratio_undefined_reasons": [],
+      "sag_ratio_late": 0.0,
+      "sag_ratio_late_undefined_reasons": [],
+      "recovery_late_mV": 0.0,
+      "spikes_during_step": 0,
+      "rebound_spikes": 0,
+      "post_release_max_mV": -64.9668
+     },
+     "S01_hyper_long": {
+      "status": "ok",
+      "amplitude_nA": -0.0743,
+      "baseline_mV": -65.0,
+      "pre_window_min_mV": -65.0,
+      "pre_window_max_mV": -65.0,
+      "pre_window_spikes": 0,
+      "min_mV": -118.4842,
+      "t_min_ms": 945.87,
+      "min_late_mV": -118.4842,
+      "t_min_late_ms": 945.87,
+      "steady_mV": -118.4842,
+      "sag_ratio": 0.0,
+      "sag_ratio_undefined_reasons": [],
+      "sag_ratio_late": 0.0,
+      "sag_ratio_late_undefined_reasons": [],
+      "recovery_late_mV": 0.0,
+      "spikes_during_step": 0,
+      "rebound_spikes": 0,
+      "post_release_max_mV": -64.9663
+     },
+     "P05_long_step": {
+      "status": "ok",
+      "amplitude_nA": 0.0372,
+      "spike_count": 19,
+      "first_spike_latency_ms": 26.9805,
+      "mean_rate_hz": 9.5,
+      "first_isi_ms": 90.6941,
+      "last_isi_ms": 112.0783,
+      "isi_last_over_first": 1.2358,
+      "isi_cv": 0.0608,
+      "burst_gaps": 0,
+      "spikes_per_burst": 19.0
+     }
+    },
+    "ih_block": null
+   },
+   "figure": "docs/m0_evidence/model_curation/figures/migliore2014_mt_soma.png",
+   "wall_time_s": 296.5
+  },
+  "pinskyrinzel1994": {
+   "model_id": "pinskyrinzel1994",
+   "role": "screen",
+   "run_id": "2026-09-13T16:00:56+00:00_aa8fa6a0",
+   "code_state_id": "cae767f83aa15e88",
+   "candidate": {
+    "model_id": "pinskyrinzel1994",
+    "snapshot": "PinskyRinzelModel@a9aa9c90",
+    "cell_file": "NeuroML2/twoCompartment/twoCompartmentCell.cell.nml",
+    "cell_id": "pr2A",
+    "harness_lems": "NeuroML2/twoCompartment/LEMS_Figure2.xml",
+    "harness_output_file": "Fig2A_Vs.dat",
+    "harness_v_column": 1,
+    "temperature": "",
+    "net_file": "",
+    "mep": "NeuroML2/twoCompartment/.test.fig2.mep",
+    "mep_experiment": "Fig2A_Vs",
+    "mep_time_unit": "ms",
+    "mep_threshold_mV": -25.0,
+    "probe_cell_file": "NeuroML2/twoCompartment/Figure2Aand3.parameters.nml",
+    "probe_cell_id": "pr2A",
+    "role": "screen"
+   },
+   "started_utc": "2026-09-13T16:13:20+00:00",
+   "validate_cell": {
+    "valid": false,
+    "returncode": 1,
+    "messages": [
+     "File: C:\\Users\\gurra\\NeuroSem\\models\\candidates\\PinskyRinzelModel@a9aa9c90\\NeuroML2\\twoCompartment\\twoCompartmentCell.cell.nml is not valid against the schema: /Schemas/NeuroML2/NeuroML_v2.3.1.xsd!!",
+     "Error when parsing against Schema (class org.xml.sax.SAXParseException):",
+     "cvc-complex-type.4: Attribute 'id' must appear on element 'neuroml'.",
+     "Validated 1 files: 0 passed, 1 failed"
+    ]
+   },
+   "structure": {
+    "custom_component_types": [
+     "twoCompartmentCell"
+    ],
+    "standard_cell_element": false,
+    "cell_element": null
+   },
+   "harness": {
+    "status": "ok",
+    "returncode": 0,
+    "runtime_s": 71.69,
+    "harness_step": "0.005ms",
+    "harness_length": "1500ms",
+    "message": "",
+    "n_samples": 300001,
+    "t_end_ms": 1500.0,
+    "v_min_mV": -64.3562,
+    "v_max_mV": 26.5149,
+    "spike_count_thr_minus20mV": 10,
+    "spike_times_ms_first20": [
+     13.843,
+     16.968,
+     92.395,
+     95.957,
+     434.928,
+     438.576,
+     937.376,
+     941.024,
+     1439.843,
+     1443.49
+    ],
+    "mep_comparison": {
+     "mep": "NeuroML2/twoCompartment/.test.fig2.mep",
+     "experiment": "Fig2A_Vs",
+     "threshold_mV": -25.0,
+     "n_expected": 15,
+     "n_observed": 15,
+     "max_abs_dev_ms_paired": 0.005,
+     "median_abs_dev_ms_paired": 0.0034,
+     "expected_first": [
+      13.825,
+      16.88,
+      22.345,
+      92.38,
+      95.895,
+      101.845,
+      434.91,
+      438.515,
+      444.59,
+      937.36
+     ],
+     "observed_first": [
+      13.829,
+      16.881,
+      22.346,
+      92.382,
+      95.897,
+      101.849,
+      434.915,
+      438.519,
+      444.59,
+      937.363
+     ]
+    }
+   },
+   "probes": {
+    "dt_ms": 0.01,
+    "spike_threshold_mV": -20.0,
+    "cost": [
+     {
+      "tag": "inject_0",
+      "cell_steps": 300000,
+      "runtime_s": 4.04,
+      "status": "build_error"
+     },
+     {
+      "tag": "inject_1",
+      "cell_steps": 300000,
+      "runtime_s": 3.79,
+      "status": "build_error"
+     },
+     {
+      "tag": "inject_2",
+      "cell_steps": 300000,
+      "runtime_s": 4.67,
+      "status": "build_error"
+     }
+    ],
+    "injection_attempts": [
+     {
+      "amplitude_nA": 0.05,
+      "status": "build_error",
+      "message": "org.lemsml.jlems.core.sim.ContentError: No such type twoCompartmentCell, 256 existing types:"
+     },
+     {
+      "amplitude_nA": 0.005,
+      "status": "build_error",
+      "message": "org.lemsml.jlems.core.sim.ContentError: No such type twoCompartmentCell, 256 existing types:"
+     },
+     {
+      "amplitude_nA": 0.0005,
+      "status": "build_error",
+      "message": "org.lemsml.jlems.core.sim.ContentError: No such type twoCompartmentCell, 256 existing types:"
+     }
+    ],
+    "injection_check": {
+     "status": "build_error",
+     "message": "org.lemsml.jlems.core.sim.ContentError: No such type twoCompartmentCell, 256 existing types:"
+    }
+   },
+   "figure": "docs/m0_evidence/model_curation/figures/pinskyrinzel1994.png",
+   "wall_time_s": 87.7
+  },
+  "prinz2004_abpd": {
+   "model_id": "prinz2004_abpd",
+   "role": "candidate",
+   "run_id": "2026-09-13T16:00:56+00:00_aa8fa6a0",
+   "code_state_id": "cae767f83aa15e88",
+   "candidate": {
+    "model_id": "prinz2004_abpd",
+    "snapshot": "PyloricNetwork@e97696fc",
+    "cell_file": "NeuroML2/AB_PD_3.cell.nml",
+    "cell_id": "AB_PD",
+    "harness_lems": "NeuroML2/LEMS_Fig2a.xml",
+    "harness_output_file": "AB_PD.dat",
+    "harness_v_column": 1,
+    "temperature": "10.0 degC",
+    "net_file": "NeuroML2/Fig2a.net.nml",
+    "mep": "",
+    "mep_experiment": "",
+    "mep_time_unit": "ms",
+    "mep_threshold_mV": 0.0,
+    "probe_cell_file": "",
+    "probe_cell_id": "",
+    "role": "candidate"
+   },
+   "started_utc": "2026-09-13T16:00:56+00:00",
+   "validate_cell": {
+    "valid": true,
+    "returncode": 0,
+    "messages": []
+   },
+   "validate_network": {
+    "file": "NeuroML2/Fig2a.net.nml",
+    "valid": true,
+    "returncode": 0,
+    "messages": []
+   },
+   "structure": {
+    "custom_component_types": [],
+    "standard_cell_element": true,
+    "cell_element": "cell",
+    "n_segments": 1,
+    "single_compartment": true,
+    "biophysical_container": "biophysicalProperties",
+    "channels": [
+     {
+      "element": "channelDensity",
+      "id": "H_STG_all",
+      "ionChannel": "H_STG",
+      "ion": "h",
+      "condDensity": "0.01 mS_per_cm2",
+      "erev": "-20.0 mV"
+     },
+     {
+      "element": "channelDensity",
+      "id": "KA_STG_all",
+      "ionChannel": "KA_STG",
+      "ion": "k",
+      "condDensity": "50 mS_per_cm2",
+      "erev": "-80.0 mV"
+     },
+     {
+      "element": "channelDensity",
+      "id": "KCa_STG_all",
+      "ionChannel": "KCa_STG",
+      "ion": "k",
+      "condDensity": "5 mS_per_cm2",
+      "erev": "-80.0 mV"
+     },
+     {
+      "element": "channelDensity",
+      "id": "Kd_STG_all",
+      "ionChannel": "Kd_STG",
+      "ion": "k",
+      "condDensity": "50 mS_per_cm2",
+      "erev": "-80.0 mV"
+     },
+     {
+      "element": "channelDensity",
+      "id": "LeakConductance_all",
+      "ionChannel": "LeakConductance",
+      "ion": "non_specific",
+      "condDensity": "0.0 mS_per_cm2",
+      "erev": "-50.0 mV"
+     },
+     {
+      "element": "channelDensity",
+      "id": "Na_STG_all",
+      "ionChannel": "Na_STG",
+      "ion": "na",
+      "condDensity": "200 mS_per_cm2",
+      "erev": "50.0 mV"
+     },
+     {
+      "element": "channelDensityNernst",
+      "id": "CaS_STG_all",
+      "ionChannel": "CaS_STG",
+      "ion": "ca",
+      "condDensity": "4 mS_per_cm2",
+      "erev": null
+     },
+     {
+      "element": "channelDensityNernst",
+      "id": "CaT_STG_all",
+      "ionChannel": "CaT_STG",
+      "ion": "ca",
+      "condDensity": "2.5 mS_per_cm2",
+      "erev": null
+     }
+    ],
+    "non_core_elements": []
+   },
+   "harness": {
+    "status": "ok",
+    "returncode": 0,
+    "runtime_s": 145.04,
+    "harness_step": "0.025ms",
+    "harness_length": "5000.0ms",
+    "message": "",
+    "n_samples": 200001,
+    "t_end_ms": 5000.0,
+    "v_min_mV": -113.4299,
+    "v_max_mV": 48.6413,
+    "spike_count_thr_minus20mV": 40,
+    "spike_times_ms_first20": [
+     1119.361,
+     1131.887,
+     1143.251,
+     1154.84,
+     1167.145,
+     1180.578,
+     1195.531,
+     1212.39,
+     1231.505,
+     1253.116,
+     1277.254,
+     1303.685,
+     1331.976,
+     1361.724,
+     1392.755,
+     1425.12,
+     1458.994,
+     1494.595,
+     1532.171,
+     1572.056
+    ],
+    "mep_comparison": null
+   },
+   "probes": {
+    "dt_ms": 0.01,
+    "spike_threshold_mV": -20.0,
+    "cost": [
+     {
+      "tag": "inject_0",
+      "cell_steps": 300000,
+      "runtime_s": 37.81,
+      "status": "ok"
+     },
+     {
+      "tag": "rheo_1",
+      "cell_steps": 640000,
+      "runtime_s": 88.51494749996345,
+      "status": "ok"
+     },
+     {
+      "tag": "battery_0",
+      "cell_steps": 300000,
+      "runtime_s": 32.03,
+      "status": "ok"
+     },
+     {
+      "tag": "battery_1",
+      "cell_steps": 110000,
+      "runtime_s": 17.34,
+      "status": "ok"
+     },
+     {
+      "tag": "battery_2",
+      "cell_steps": 160000,
+      "runtime_s": 21.45,
+      "status": "ok"
+     },
+     {
+      "tag": "battery_3",
+      "cell_steps": 250000,
+      "runtime_s": 31.3,
+      "status": "ok"
+     },
+     {
+      "tag": "ihblock_0",
+      "cell_steps": 200000,
+      "runtime_s": 21.65,
+      "status": "ok"
+     },
+     {
+      "tag": "ihblock_1",
+      "cell_steps": 110000,
+      "runtime_s": 10.9,
+      "status": "build_error"
+     },
+     {
+      "tag": "ihblock_2",
+      "cell_steps": 160000,
+      "runtime_s": 14.52,
+      "status": "build_error"
+     }
+    ],
+    "injection_attempts": [
+     {
+      "amplitude_nA": 0.05,
+      "status": "ok",
+      "message": ""
+     }
+    ],
+    "injection_check": {
+     "status": "ok",
+     "amplitudes_nA": [
+      0.0,
+      0.05,
+      -0.05
+     ],
+     "max_abs_dv_plus_mV": 103.9171,
+     "max_abs_dv_minus_mV": 103.8329,
+     "responds_to_current": true,
+     "zero_current_spikes_in_window": 4
+    },
+    "rheobase": {
+     "rheobase_nA": 0.0,
+     "status": "spontaneous",
+     "resolution_nA": 0.0,
+     "n_simulations": 1
+    },
+    "protocol_scale_nA": 0.1,
+    "protocol_scale_source": "fallback (spontaneous)",
+    "battery": {
+     "P01_baseline": {
+      "status": "ok",
+      "spike_count": 4,
+      "first_spike_latency_ms": 32.4329,
+      "mean_rate_hz": 5.7143,
+      "first_isi_ms": 42.6092,
+      "last_isi_ms": 50.8141,
+      "isi_last_over_first": 1.1926,
+      "isi_cv": 0.0742,
+      "burst_gaps": 0,
+      "spikes_per_burst": 4.0,
+      "mean_v_mV": -55.918
+     },
+     "P04_step_2x": {
+      "status": "ok",
+      "amplitude_nA": 0.2,
+      "spike_count": 12,
+      "first_spike_latency_ms": 25.3346,
+      "mean_rate_hz": 24.0,
+      "first_isi_ms": 37.7357,
+      "last_isi_ms": 46.885,
+      "isi_last_over_first": 1.2425,
+      "isi_cv": 0.0606,
+      "burst_gaps": 0,
+      "spikes_per_burst": 12.0
+     },
+     "P07_hyperpolarizing_step": {
+      "status": "ok",
+      "amplitude_nA": -0.1,
+      "baseline_mV": -43.6887,
+      "pre_window_min_mV": -59.7171,
+      "pre_window_max_mV": 46.2223,
+      "pre_window_spikes": 2,
+      "min_mV": -96.6987,
+      "t_min_ms": 499.99,
+      "min_late_mV": -96.6987,
+      "t_min_late_ms": 499.99,
+      "steady_mV": -94.5451,
+      "sag_ratio": null,
+      "sag_ratio_undefined_reasons": [
+       "spike in pre-step baseline window (baseline depends on spike phase)",
+       "spike during step (minimum may be an AHP)"
+      ],
+      "sag_ratio_late": null,
+      "sag_ratio_late_undefined_reasons": [
+       "spike in pre-step baseline window (baseline depends on spike phase)",
+       "spike during step (minimum may be an AHP)"
+      ],
+      "recovery_late_mV": null,
+      "spikes_during_step": 3,
+      "rebound_spikes": 0,
+      "post_release_max_mV": -75.1141
+     },
+     "P08_rebound": {
+      "status": "ok",
+      "amplitude_nA": -0.2,
+      "baseline_mV": -43.6887,
+      "pre_window_min_mV": -59.7171,
+      "pre_window_max_mV": 46.2223,
+      "pre_window_spikes": 2,
+      "min_mV": -115.671,
+      "t_min_ms": 326.28,
+      "min_late_mV": -115.671,
+      "t_min_late_ms": 326.28,
+      "steady_mV": -99.3982,
+      "sag_ratio": null,
+      "sag_ratio_undefined_reasons": [
+       "spike in pre-step baseline window (baseline depends on spike phase)"
+      ],
+      "sag_ratio_late": null,
+      "sag_ratio_late_undefined_reasons": [
+       "spike in pre-step baseline window (baseline depends on spike phase)"
+      ],
+      "recovery_late_mV": 16.2728,
+      "spikes_during_step": 0,
+      "rebound_spikes": 8,
+      "post_release_max_mV": 47.5502
+     },
+     "S01_hyper_long": {
+      "status": "ok",
+      "amplitude_nA": -0.3,
+      "baseline_mV": -43.6887,
+      "pre_window_min_mV": -59.7171,
+      "pre_window_max_mV": 46.2223,
+      "pre_window_spikes": 2,
+      "min_mV": -124.5252,
+      "t_min_ms": 263.85,
+      "min_late_mV": -124.5252,
+      "t_min_late_ms": 263.85,
+      "steady_mV": -81.323,
+      "sag_ratio": null,
+      "sag_ratio_undefined_reasons": [
+       "spike in pre-step baseline window (baseline depends on spike phase)"
+      ],
+      "sag_ratio_late": null,
+      "sag_ratio_late_undefined_reasons": [
+       "spike in pre-step baseline window (baseline depends on spike phase)"
+      ],
+      "recovery_late_mV": 43.2022,
+      "spikes_during_step": 0,
+      "rebound_spikes": 13,
+      "post_release_max_mV": 47.3393
+     },
+     "P05_long_step": {
+      "status": "ok",
+      "amplitude_nA": 0.15,
+      "spike_count": 35,
+      "first_spike_latency_ms": 26.5703,
+      "mean_rate_hz": 17.5,
+      "first_isi_ms": 38.6891,
+      "last_isi_ms": 57.0661,
+      "isi_last_over_first": 1.475,
+      "isi_cv": 0.7657,
+      "burst_gaps": 1,
+      "spikes_per_burst": 17.5
+     }
+    },
+    "ih_block": {
+     "method": "work copy of the snapshot with every channelDensity ion='h' of the cell set to 0; same protocols, same absolute currents (control protocol scale), same dt",
+     "blocked_densities": [
+      {
+       "element": "channelDensity",
+       "id": "H_STG_all",
+       "ionChannel": "H_STG",
+       "condDensity_original": "0.01 mS_per_cm2",
+       "condDensity_blocked": "0 mS_per_cm2"
+      }
+     ],
+     "validate_blocked_cell": {
+      "valid": true,
+      "returncode": 0,
+      "messages": []
+     },
+     "battery": {
+      "P01_baseline": {
+       "status": "ok",
+       "spike_count": 4,
+       "first_spike_latency_ms": 33.8272,
+       "mean_rate_hz": 5.7143,
+       "first_isi_ms": 42.6313,
+       "last_isi_ms": 50.9244,
+       "isi_last_over_first": 1.1945,
+       "isi_cv": 0.0749,
+       "burst_gaps": 0,
+       "spikes_per_burst": 4.0,
+       "mean_v_mV": -56.7294
+      },
+      "P07_hyperpolarizing_step": {
+       "status": "ok",
+       "amplitude_nA": -0.1,
+       "baseline_mV": -41.5602,
+       "pre_window_min_mV": -59.7112,
+       "pre_window_max_mV": 46.3569,
+       "pre_window_spikes": 2,
+       "min_mV": -110.799,
+       "t_min_ms": 499.99,
+       "min_late_mV": -110.799,
+       "t_min_late_ms": 499.99,
+       "steady_mV": -106.8425,
+       "sag_ratio": null,
+       "sag_ratio_undefined_reasons": [
+        "spike in pre-step baseline window (baseline depends on spike phase)",
+        "spike during step (minimum may be an AHP)"
+       ],
+       "sag_ratio_late": null,
+       "sag_ratio_late_undefined_reasons": [
+        "spike in pre-step baseline window (baseline depends on spike phase)",
+        "spike during step (minimum may be an AHP)"
+       ],
+       "recovery_late_mV": null,
+       "spikes_during_step": 2,
+       "rebound_spikes": 0,
+       "post_release_max_mV": -110.77
+      },
+      "P08_rebound": {
+       "status": "build_error",
+       "message": "SEVERE:  (ERROR) org.lemsml.jlems.core.run.RuntimeError: Error at PathDerivedVariable eval(): tgt: null; sin: H_STG[ionChannelHH]; tgtvar: fcond; path: gates[*]/fcond"
+      },
+      "S01_hyper_long": {
+       "status": "build_error",
+       "message": "SEVERE:  (ERROR) org.lemsml.jlems.core.run.RuntimeError: Error at PathDerivedVariable eval(): tgt: null; sin: H_STG[ionChannelHH]; tgtvar: fcond; path: gates[*]/fcond"
+      }
+     },
+     "comparison": {
+      "P01_baseline": {
+       "mean_v_mV": {
+        "control": -55.918,
+        "ih_block": -56.7294,
+        "block_minus_control": -0.8114
+       },
+       "spike_count": {
+        "control": 4,
+        "ih_block": 4,
+        "block_minus_control": 0.0
+       }
+      },
+      "P07_hyperpolarizing_step": {
+       "baseline_mV": {
+        "control": -43.6887,
+        "ih_block": -41.5602,
+        "block_minus_control": 2.1285
+       },
+       "min_mV": {
+        "control": -96.6987,
+        "ih_block": -110.799,
+        "block_minus_control": -14.1003
+       },
+       "min_late_mV": {
+        "control": -96.6987,
+        "ih_block": -110.799,
+        "block_minus_control": -14.1003
+       },
+       "steady_mV": {
+        "control": -94.5451,
+        "ih_block": -106.8425,
+        "block_minus_control": -12.2974
+       },
+       "recovery_late_mV": {
+        "control": null,
+        "ih_block": null,
+        "block_minus_control": null
+       },
+       "sag_ratio": {
+        "control": null,
+        "ih_block": null,
+        "block_minus_control": null
+       },
+       "sag_ratio_late": {
+        "control": null,
+        "ih_block": null,
+        "block_minus_control": null
+       },
+       "spikes_during_step": {
+        "control": 3,
+        "ih_block": 2,
+        "block_minus_control": -1.0
+       },
+       "rebound_spikes": {
+        "control": 0,
+        "ih_block": 0,
+        "block_minus_control": 0.0
+       }
+      },
+      "P08_rebound": {
+       "baseline_mV": {
+        "control": -43.6887,
+        "ih_block": null,
+        "block_minus_control": null
+       },
+       "min_mV": {
+        "control": -115.671,
+        "ih_block": null,
+        "block_minus_control": null
+       },
+       "min_late_mV": {
+        "control": -115.671,
+        "ih_block": null,
+        "block_minus_control": null
+       },
+       "steady_mV": {
+        "control": -99.3982,
+        "ih_block": null,
+        "block_minus_control": null
+       },
+       "recovery_late_mV": {
+        "control": 16.2728,
+        "ih_block": null,
+        "block_minus_control": null
+       },
+       "sag_ratio": {
+        "control": null,
+        "ih_block": null,
+        "block_minus_control": null
+       },
+       "sag_ratio_late": {
+        "control": null,
+        "ih_block": null,
+        "block_minus_control": null
+       },
+       "spikes_during_step": {
+        "control": 0,
+        "ih_block": null,
+        "block_minus_control": null
+       },
+       "rebound_spikes": {
+        "control": 8,
+        "ih_block": null,
+        "block_minus_control": null
+       }
+      },
+      "S01_hyper_long": {
+       "baseline_mV": {
+        "control": -43.6887,
+        "ih_block": null,
+        "block_minus_control": null
+       },
+       "min_mV": {
+        "control": -124.5252,
+        "ih_block": null,
+        "block_minus_control": null
+       },
+       "min_late_mV": {
+        "control": -124.5252,
+        "ih_block": null,
+        "block_minus_control": null
+       },
+       "steady_mV": {
+        "control": -81.323,
+        "ih_block": null,
+        "block_minus_control": null
+       },
+       "recovery_late_mV": {
+        "control": 43.2022,
+        "ih_block": null,
+        "block_minus_control": null
+       },
+       "sag_ratio": {
+        "control": null,
+        "ih_block": null,
+        "block_minus_control": null
+       },
+       "sag_ratio_late": {
+        "control": null,
+        "ih_block": null,
+        "block_minus_control": null
+       },
+       "spikes_during_step": {
+        "control": 0,
+        "ih_block": null,
+        "block_minus_control": null
+       },
+       "rebound_spikes": {
+        "control": 13,
+        "ih_block": null,
+        "block_minus_control": null
+       }
+      }
+     },
+     "caveat": "Blocking Ih also shifts the resting potential and so recruits other voltage-dependent currents differently; the difference is Ih's net effect in this model, not an isolated current."
+    }
+   },
+   "figure": "docs/m0_evidence/model_curation/figures/prinz2004_abpd.png",
+   "wall_time_s": 447.7
+  },
+  "prinz2004_lp": {
+   "model_id": "prinz2004_lp",
+   "role": "candidate",
+   "run_id": "2026-09-13T16:00:56+00:00_aa8fa6a0",
+   "code_state_id": "cae767f83aa15e88",
+   "candidate": {
+    "model_id": "prinz2004_lp",
+    "snapshot": "PyloricNetwork@e97696fc",
+    "cell_file": "NeuroML2/LP_2.cell.nml",
+    "cell_id": "LP",
+    "harness_lems": "NeuroML2/LEMS_Fig2a.xml",
+    "harness_output_file": "LP.dat",
+    "harness_v_column": 1,
+    "temperature": "10.0 degC",
+    "net_file": "NeuroML2/Fig2a.net.nml",
+    "mep": "",
+    "mep_experiment": "",
+    "mep_time_unit": "ms",
+    "mep_threshold_mV": 0.0,
+    "probe_cell_file": "",
+    "probe_cell_id": "",
+    "role": "candidate"
+   },
+   "started_utc": "2026-09-13T16:00:56+00:00",
+   "validate_cell": {
+    "valid": true,
+    "returncode": 0,
+    "messages": []
+   },
+   "validate_network": {
+    "file": "NeuroML2/Fig2a.net.nml",
+    "valid": true,
+    "returncode": 0,
+    "messages": []
+   },
+   "structure": {
+    "custom_component_types": [],
+    "standard_cell_element": true,
+    "cell_element": "cell",
+    "n_segments": 1,
+    "single_compartment": true,
+    "biophysical_container": "biophysicalProperties",
+    "channels": [
+     {
+      "element": "channelDensity",
+      "id": "H_STG_all",
+      "ionChannel": "H_STG",
+      "ion": "h",
+      "condDensity": "0.05 mS_per_cm2",
+      "erev": "-20.0 mV"
+     },
+     {
+      "element": "channelDensity",
+      "id": "KA_STG_all",
+      "ionChannel": "KA_STG",
+      "ion": "k",
+      "condDensity": "30 mS_per_cm2",
+      "erev": "-80.0 mV"
+     },
+     {
+      "element": "channelDensity",
+      "id": "KCa_STG_all",
+      "ionChannel": "KCa_STG",
+      "ion": "k",
+      "condDensity": "5 mS_per_cm2",
+      "erev": "-80.0 mV"
+     },
+     {
+      "element": "channelDensity",
+      "id": "Kd_STG_all",
+      "ionChannel": "Kd_STG",
+      "ion": "k",
+      "condDensity": "50 mS_per_cm2",
+      "erev": "-80.0 mV"
+     },
+     {
+      "element": "channelDensity",
+      "id": "LeakConductance_all",
+      "ionChannel": "LeakConductance",
+      "ion": "non_specific",
+      "condDensity": "0.02 mS_per_cm2",
+      "erev": "-50.0 mV"
+     },
+     {
+      "element": "channelDensity",
+      "id": "Na_STG_all",
+      "ionChannel": "Na_STG",
+      "ion": "na",
+      "condDensity": "100 mS_per_cm2",
+      "erev": "50.0 mV"
+     },
+     {
+      "element": "channelDensityNernst",
+      "id": "CaS_STG_all",
+      "ionChannel": "CaS_STG",
+      "ion": "ca",
+      "condDensity": "6 mS_per_cm2",
+      "erev": null
+     },
+     {
+      "element": "channelDensityNernst",
+      "id": "CaT_STG_all",
+      "ionChannel": "CaT_STG",
+      "ion": "ca",
+      "condDensity": "0.0 mS_per_cm2",
+      "erev": null
+     }
+    ],
+    "non_core_elements": []
+   },
+   "harness": {
+    "status": "ok",
+    "returncode": 0,
+    "runtime_s": 142.78,
+    "harness_step": "0.025ms",
+    "harness_length": "5000.0ms",
+    "message": "",
+    "n_samples": 200001,
+    "t_end_ms": 5000.0,
+    "v_min_mV": -69.8267,
+    "v_max_mV": 40.808,
+    "spike_count_thr_minus20mV": 25,
+    "spike_times_ms_first20": [
+     69.299,
+     213.962,
+     359.903,
+     548.06,
+     786.238,
+     982.611,
+     1206.563,
+     1405.408,
+     1625.89,
+     1828.468,
+     2046.4,
+     2251.277,
+     2467.393,
+     2673.918,
+     2888.713,
+     3096.425,
+     3310.247,
+     3518.826,
+     3731.928,
+     3941.143
+    ],
+    "mep_comparison": null
+   },
+   "probes": {
+    "dt_ms": 0.01,
+    "spike_threshold_mV": -20.0,
+    "cost": [
+     {
+      "tag": "inject_0",
+      "cell_steps": 300000,
+      "runtime_s": 35.03,
+      "status": "ok"
+     },
+     {
+      "tag": "rheo_1",
+      "cell_steps": 640000,
+      "runtime_s": 86.96777160000056,
+      "status": "ok"
+     },
+     {
+      "tag": "battery_0",
+      "cell_steps": 300000,
+      "runtime_s": 34.34,
+      "status": "ok"
+     },
+     {
+      "tag": "battery_1",
+      "cell_steps": 110000,
+      "runtime_s": 17.34,
+      "status": "ok"
+     },
+     {
+      "tag": "battery_2",
+      "cell_steps": 160000,
+      "runtime_s": 18.5,
+      "status": "ok"
+     },
+     {
+      "tag": "battery_3",
+      "cell_steps": 250000,
+      "runtime_s": 32.68,
+      "status": "ok"
+     },
+     {
+      "tag": "ihblock_0",
+      "cell_steps": 200000,
+      "runtime_s": 23.68,
+      "status": "ok"
+     },
+     {
+      "tag": "ihblock_1",
+      "cell_steps": 110000,
+      "runtime_s": 15.11,
+      "status": "ok"
+     },
+     {
+      "tag": "ihblock_2",
+      "cell_steps": 160000,
+      "runtime_s": 22.3,
+      "status": "ok"
+     }
+    ],
+    "injection_attempts": [
+     {
+      "amplitude_nA": 0.05,
+      "status": "ok",
+      "message": ""
+     }
+    ],
+    "injection_check": {
+     "status": "ok",
+     "amplitudes_nA": [
+      0.0,
+      0.05,
+      -0.05
+     ],
+     "max_abs_dv_plus_mV": 104.6431,
+     "max_abs_dv_minus_mV": 106.9141,
+     "responds_to_current": true,
+     "zero_current_spikes_in_window": 3
+    },
+    "rheobase": {
+     "rheobase_nA": 0.0,
+     "status": "spontaneous",
+     "resolution_nA": 0.0,
+     "n_simulations": 1
+    },
+    "protocol_scale_nA": 0.1,
+    "protocol_scale_source": "fallback (spontaneous)",
+    "battery": {
+     "P01_baseline": {
+      "status": "ok",
+      "spike_count": 4,
+      "first_spike_latency_ms": 14.1929,
+      "mean_rate_hz": 5.7143,
+      "first_isi_ms": 158.2972,
+      "last_isi_ms": 209.0677,
+      "isi_last_over_first": 1.3207,
+      "isi_cv": 0.1679,
+      "burst_gaps": 0,
+      "spikes_per_burst": 4.0,
+      "mean_v_mV": -49.2582
+     },
+     "P04_step_2x": {
+      "status": "ok",
+      "amplitude_nA": 0.2,
+      "spike_count": 7,
+      "first_spike_latency_ms": 8.1516,
+      "mean_rate_hz": 14.0,
+      "first_isi_ms": 78.4626,
+      "last_isi_ms": 112.6386,
+      "isi_last_over_first": 1.4356,
+      "isi_cv": 0.3221,
+      "burst_gaps": 0,
+      "spikes_per_burst": 7.0
+     },
+     "P07_hyperpolarizing_step": {
+      "status": "ok",
+      "amplitude_nA": -0.1,
+      "baseline_mV": -43.6902,
+      "pre_window_min_mV": -46.8097,
+      "pre_window_max_mV": -40.614,
+      "pre_window_spikes": 0,
+      "min_mV": -68.9873,
+      "t_min_ms": 27.65,
+      "min_late_mV": -67.7749,
+      "t_min_late_ms": 30.0,
+      "steady_mV": -55.501,
+      "sag_ratio": null,
+      "sag_ratio_undefined_reasons": [
+       "spike during step (minimum may be an AHP)"
+      ],
+      "sag_ratio_late": null,
+      "sag_ratio_late_undefined_reasons": [
+       "spike during step (minimum may be an AHP)",
+       "late-window minimum on the window edge (onset transient)"
+      ],
+      "recovery_late_mV": null,
+      "spikes_during_step": 1,
+      "rebound_spikes": 3,
+      "post_release_max_mV": 45.6977
+     },
+     "P08_rebound": {
+      "status": "ok",
+      "amplitude_nA": -0.2,
+      "baseline_mV": -43.6902,
+      "pre_window_min_mV": -46.8097,
+      "pre_window_max_mV": -40.614,
+      "pre_window_spikes": 0,
+      "min_mV": -69.4922,
+      "t_min_ms": 48.39,
+      "min_late_mV": -69.4922,
+      "t_min_late_ms": 48.39,
+      "steady_mV": -62.0118,
+      "sag_ratio": null,
+      "sag_ratio_undefined_reasons": [
+       "spike during step (minimum may be an AHP)"
+      ],
+      "sag_ratio_late": null,
+      "sag_ratio_late_undefined_reasons": [
+       "spike during step (minimum may be an AHP)"
+      ],
+      "recovery_late_mV": null,
+      "spikes_during_step": 1,
+      "rebound_spikes": 10,
+      "post_release_max_mV": 44.625
+     },
+     "S01_hyper_long": {
+      "status": "ok",
+      "amplitude_nA": -0.3,
+      "baseline_mV": -43.6902,
+      "pre_window_min_mV": -46.8097,
+      "pre_window_max_mV": -40.614,
+      "pre_window_spikes": 0,
+      "min_mV": -70.5659,
+      "t_min_ms": 253.07,
+      "min_late_mV": -70.5659,
+      "t_min_late_ms": 253.07,
+      "steady_mV": -64.0517,
+      "sag_ratio": 0.2424,
+      "sag_ratio_undefined_reasons": [],
+      "sag_ratio_late": 0.2424,
+      "sag_ratio_late_undefined_reasons": [],
+      "recovery_late_mV": 6.5142,
+      "spikes_during_step": 0,
+      "rebound_spikes": 16,
+      "post_release_max_mV": 41.8467
+     },
+     "P05_long_step": {
+      "status": "ok",
+      "amplitude_nA": 0.15,
+      "spike_count": 22,
+      "first_spike_latency_ms": 9.0448,
+      "mean_rate_hz": 11.0,
+      "first_isi_ms": 92.0012,
+      "last_isi_ms": 94.9077,
+      "isi_last_over_first": 1.0316,
+      "isi_cv": 0.2556,
+      "burst_gaps": 0,
+      "spikes_per_burst": 22.0
+     }
+    },
+    "ih_block": {
+     "method": "work copy of the snapshot with every channelDensity ion='h' of the cell set to 0; same protocols, same absolute currents (control protocol scale), same dt",
+     "blocked_densities": [
+      {
+       "element": "channelDensity",
+       "id": "H_STG_all",
+       "ionChannel": "H_STG",
+       "condDensity_original": "0.05 mS_per_cm2",
+       "condDensity_blocked": "0 mS_per_cm2"
+      }
+     ],
+     "validate_blocked_cell": {
+      "valid": true,
+      "returncode": 0,
+      "messages": []
+     },
+     "battery": {
+      "P01_baseline": {
+       "status": "ok",
+       "spike_count": 4,
+       "first_spike_latency_ms": 37.4771,
+       "mean_rate_hz": 5.7143,
+       "first_isi_ms": 180.0342,
+       "last_isi_ms": 190.4901,
+       "isi_last_over_first": 1.0581,
+       "isi_cv": 0.1632,
+       "burst_gaps": 0,
+       "spikes_per_burst": 4.0,
+       "mean_v_mV": -48.9034
+      },
+      "P07_hyperpolarizing_step": {
+       "status": "ok",
+       "amplitude_nA": -0.1,
+       "baseline_mV": -46.2119,
+       "pre_window_min_mV": -50.1564,
+       "pre_window_max_mV": -43.7044,
+       "pre_window_spikes": 0,
+       "min_mV": -69.7482,
+       "t_min_ms": 77.51,
+       "min_late_mV": -69.7482,
+       "t_min_late_ms": 77.51,
+       "steady_mV": -57.2218,
+       "sag_ratio": null,
+       "sag_ratio_undefined_reasons": [
+        "spike during step (minimum may be an AHP)"
+       ],
+       "sag_ratio_late": null,
+       "sag_ratio_late_undefined_reasons": [
+        "spike during step (minimum may be an AHP)"
+       ],
+       "recovery_late_mV": null,
+       "spikes_during_step": 1,
+       "rebound_spikes": 3,
+       "post_release_max_mV": 45.8334
+      },
+      "P08_rebound": {
+       "status": "ok",
+       "amplitude_nA": -0.2,
+       "baseline_mV": -46.2119,
+       "pre_window_min_mV": -50.1564,
+       "pre_window_max_mV": -43.7044,
+       "pre_window_spikes": 0,
+       "min_mV": -65.8418,
+       "t_min_ms": 445.4,
+       "min_late_mV": -65.8418,
+       "t_min_late_ms": 445.4,
+       "steady_mV": -65.8399,
+       "sag_ratio": 0.0001,
+       "sag_ratio_undefined_reasons": [],
+       "sag_ratio_late": 0.0001,
+       "sag_ratio_late_undefined_reasons": [],
+       "recovery_late_mV": 0.0019,
+       "spikes_during_step": 0,
+       "rebound_spikes": 9,
+       "post_release_max_mV": 44.3794
+      },
+      "S01_hyper_long": {
+       "status": "ok",
+       "amplitude_nA": -0.3,
+       "baseline_mV": -46.2119,
+       "pre_window_min_mV": -50.1564,
+       "pre_window_max_mV": -43.7044,
+       "pre_window_spikes": 0,
+       "min_mV": -73.8759,
+       "t_min_ms": 564.59,
+       "min_late_mV": -73.8759,
+       "t_min_late_ms": 564.59,
+       "steady_mV": -73.8734,
+       "sag_ratio": 0.0001,
+       "sag_ratio_undefined_reasons": [],
+       "sag_ratio_late": 0.0001,
+       "sag_ratio_late_undefined_reasons": [],
+       "recovery_late_mV": 0.0025,
+       "spikes_during_step": 0,
+       "rebound_spikes": 10,
+       "post_release_max_mV": 41.775
+      }
+     },
+     "comparison": {
+      "P01_baseline": {
+       "mean_v_mV": {
+        "control": -49.2582,
+        "ih_block": -48.9034,
+        "block_minus_control": 0.3548
+       },
+       "spike_count": {
+        "control": 4,
+        "ih_block": 4,
+        "block_minus_control": 0.0
+       }
+      },
+      "P07_hyperpolarizing_step": {
+       "baseline_mV": {
+        "control": -43.6902,
+        "ih_block": -46.2119,
+        "block_minus_control": -2.5217
+       },
+       "min_mV": {
+        "control": -68.9873,
+        "ih_block": -69.7482,
+        "block_minus_control": -0.7609
+       },
+       "min_late_mV": {
+        "control": -67.7749,
+        "ih_block": -69.7482,
+        "block_minus_control": -1.9733
+       },
+       "steady_mV": {
+        "control": -55.501,
+        "ih_block": -57.2218,
+        "block_minus_control": -1.7208
+       },
+       "recovery_late_mV": {
+        "control": null,
+        "ih_block": null,
+        "block_minus_control": null
+       },
+       "sag_ratio": {
+        "control": null,
+        "ih_block": null,
+        "block_minus_control": null
+       },
+       "sag_ratio_late": {
+        "control": null,
+        "ih_block": null,
+        "block_minus_control": null
+       },
+       "spikes_during_step": {
+        "control": 1,
+        "ih_block": 1,
+        "block_minus_control": 0.0
+       },
+       "rebound_spikes": {
+        "control": 3,
+        "ih_block": 3,
+        "block_minus_control": 0.0
+       }
+      },
+      "P08_rebound": {
+       "baseline_mV": {
+        "control": -43.6902,
+        "ih_block": -46.2119,
+        "block_minus_control": -2.5217
+       },
+       "min_mV": {
+        "control": -69.4922,
+        "ih_block": -65.8418,
+        "block_minus_control": 3.6504
+       },
+       "min_late_mV": {
+        "control": -69.4922,
+        "ih_block": -65.8418,
+        "block_minus_control": 3.6504
+       },
+       "steady_mV": {
+        "control": -62.0118,
+        "ih_block": -65.8399,
+        "block_minus_control": -3.8281
+       },
+       "recovery_late_mV": {
+        "control": null,
+        "ih_block": 0.0019,
+        "block_minus_control": null
+       },
+       "sag_ratio": {
+        "control": null,
+        "ih_block": 0.0001,
+        "block_minus_control": null
+       },
+       "sag_ratio_late": {
+        "control": null,
+        "ih_block": 0.0001,
+        "block_minus_control": null
+       },
+       "spikes_during_step": {
+        "control": 1,
+        "ih_block": 0,
+        "block_minus_control": -1.0
+       },
+       "rebound_spikes": {
+        "control": 10,
+        "ih_block": 9,
+        "block_minus_control": -1.0
+       }
+      },
+      "S01_hyper_long": {
+       "baseline_mV": {
+        "control": -43.6902,
+        "ih_block": -46.2119,
+        "block_minus_control": -2.5217
+       },
+       "min_mV": {
+        "control": -70.5659,
+        "ih_block": -73.8759,
+        "block_minus_control": -3.31
+       },
+       "min_late_mV": {
+        "control": -70.5659,
+        "ih_block": -73.8759,
+        "block_minus_control": -3.31
+       },
+       "steady_mV": {
+        "control": -64.0517,
+        "ih_block": -73.8734,
+        "block_minus_control": -9.8217
+       },
+       "recovery_late_mV": {
+        "control": 6.5142,
+        "ih_block": 0.0025,
+        "block_minus_control": -6.5117
+       },
+       "sag_ratio": {
+        "control": 0.2424,
+        "ih_block": 0.0001,
+        "block_minus_control": -0.2423
+       },
+       "sag_ratio_late": {
+        "control": 0.2424,
+        "ih_block": 0.0001,
+        "block_minus_control": -0.2423
+       },
+       "spikes_during_step": {
+        "control": 0,
+        "ih_block": 0,
+        "block_minus_control": 0.0
+       },
+       "rebound_spikes": {
+        "control": 16,
+        "ih_block": 10,
+        "block_minus_control": -6.0
+       }
+      }
+     },
+     "caveat": "Blocking Ih also shifts the resting potential and so recruits other voltage-dependent currents differently; the difference is Ih's net effect in this model, not an isolated current."
+    }
+   },
+   "figure": "docs/m0_evidence/model_curation/figures/prinz2004_lp.png",
+   "wall_time_s": 458.2
+  },
+  "smith2013_singlecomp": {
+   "model_id": "smith2013_singlecomp",
+   "role": "candidate",
+   "run_id": "2026-09-13T16:00:56+00:00_aa8fa6a0",
+   "code_state_id": "cae767f83aa15e88",
+   "candidate": {
+    "model_id": "smith2013_singlecomp",
+    "snapshot": "SmithEtAl2013-L23DendriticSpikes@179c596e",
+    "cell_file": "NeuroML2/singleCompAllChans.cell.nml",
+    "cell_id": "cell",
+    "harness_lems": "NeuroML2/LEMS_singleCompAllChans.xml",
+    "harness_output_file": "jlems_sccct.dat",
+    "harness_v_column": 1,
+    "temperature": "35 degC",
+    "net_file": "NeuroML2/singleCompAllChans.net.nml",
+    "mep": "NEURON/test/.test.mep",
+    "mep_experiment": "spiking",
+    "mep_time_unit": "ms",
+    "mep_threshold_mV": 0.0,
+    "probe_cell_file": "",
+    "probe_cell_id": "",
+    "role": "candidate"
+   },
+   "started_utc": "2026-09-13T16:06:36+00:00",
+   "validate_cell": {
+    "valid": true,
+    "returncode": 0,
+    "messages": []
+   },
+   "validate_network": {
+    "file": "NeuroML2/singleCompAllChans.net.nml",
+    "valid": true,
+    "returncode": 0,
+    "messages": []
+   },
+   "structure": {
+    "custom_component_types": [],
+    "standard_cell_element": true,
+    "cell_element": "cell",
+    "n_segments": 1,
+    "single_compartment": true,
+    "biophysical_container": "biophysicalProperties",
+    "channels": [
+     {
+      "element": "channelDensity",
+      "id": "na_all",
+      "ionChannel": "na",
+      "ion": "na",
+      "condDensity": "1000.0e-4 S_per_cm2",
+      "erev": "60 mV"
+     },
+     {
+      "element": "channelDensity",
+      "id": "kv_all",
+      "ionChannel": "kv",
+      "ion": "k",
+      "condDensity": "100.0e-4 S_per_cm2",
+      "erev": "-90 mV"
+     },
+     {
+      "element": "channelDensity",
+      "id": "km_all",
+      "ionChannel": "km",
+      "ion": "k",
+      "condDensity": "2.2e-4 S_per_cm2",
+      "erev": "-90 mV"
+     },
+     {
+      "element": "channelDensity",
+      "id": "ca_all",
+      "ionChannel": "ca",
+      "ion": "ca",
+      "condDensity": "0.5e-4 S_per_cm2",
+      "erev": "140.0 mV"
+     },
+     {
+      "element": "channelDensity",
+      "id": "kca_all",
+      "ionChannel": "kca",
+      "ion": "k",
+      "condDensity": "3.0e-4 S_per_cm2",
+      "erev": "-90 mV"
+     },
+     {
+      "element": "channelDensity",
+      "id": "it_all",
+      "ionChannel": "it",
+      "ion": "ca",
+      "condDensity": "0.0003 S_per_cm2",
+      "erev": "140.0 mV"
+     },
+     {
+      "element": "channelDensity",
+      "id": "pas_all",
+      "ionChannel": "pas",
+      "ion": "non_specific",
+      "condDensity": "0.00014285 S_per_cm2",
+      "erev": "-75 mV"
+     }
+    ],
+    "non_core_elements": []
+   },
+   "harness": {
+    "status": "ok",
+    "returncode": 0,
+    "runtime_s": 46.52,
+    "harness_step": "0.001 ms",
+    "harness_length": "600ms",
+    "message": "",
+    "n_samples": 600001,
+    "t_end_ms": 600.0,
+    "v_min_mV": -89.3148,
+    "v_max_mV": 57.404,
+    "spike_count_thr_minus20mV": 7,
+    "spike_times_ms_first20": [
+     305.775,
+     321.173,
+     336.651,
+     352.151,
+     367.66,
+     383.177,
+     398.7
+    ],
+    "mep_comparison": {
+     "mep": "NEURON/test/.test.mep",
+     "experiment": "spiking",
+     "threshold_mV": 0.0,
+     "n_expected": 7,
+     "n_observed": 7,
+     "max_abs_dev_ms_paired": 0.1093,
+     "median_abs_dev_ms_paired": 0.0613,
+     "expected_first": [
+      305.792,
+      321.174,
+      336.636,
+      352.12,
+      367.614,
+      383.114,
+      398.621
+     ],
+     "observed_first": [
+      305.805,
+      321.204,
+      336.681,
+      352.181,
+      367.691,
+      383.207,
+      398.73
+     ]
+    }
+   },
+   "probes": {
+    "dt_ms": 0.01,
+    "spike_threshold_mV": -20.0,
+    "cost": [
+     {
+      "tag": "inject_0",
+      "cell_steps": 300000,
+      "runtime_s": 32.0,
+      "status": "ok"
+     },
+     {
+      "tag": "rheo_1",
+      "cell_steps": 640000,
+      "runtime_s": 69.27863800001796,
+      "status": "ok"
+     },
+     {
+      "tag": "rheo_2",
+      "cell_steps": 640000,
+      "runtime_s": 71.51490589999594,
+      "status": "ok"
+     },
+     {
+      "tag": "rheo_3",
+      "cell_steps": 640000,
+      "runtime_s": 61.84009700000752,
+      "status": "ok"
+     },
+     {
+      "tag": "battery_0",
+      "cell_steps": 300000,
+      "runtime_s": 33.45,
+      "status": "ok"
+     },
+     {
+      "tag": "battery_1",
+      "cell_steps": 110000,
+      "runtime_s": 14.16,
+      "status": "ok"
+     },
+     {
+      "tag": "battery_2",
+      "cell_steps": 160000,
+      "runtime_s": 21.87,
+      "status": "ok"
+     },
+     {
+      "tag": "battery_3",
+      "cell_steps": 250000,
+      "runtime_s": 28.17,
+      "status": "ok"
+     }
+    ],
+    "injection_attempts": [
+     {
+      "amplitude_nA": 0.05,
+      "status": "ok",
+      "message": ""
+     }
+    ],
+    "injection_check": {
+     "status": "ok",
+     "amplitudes_nA": [
+      0.0,
+      0.05,
+      -0.05
+     ],
+     "max_abs_dv_plus_mV": 134.425,
+     "max_abs_dv_minus_mV": 39.7572,
+     "responds_to_current": true,
+     "zero_current_spikes_in_window": 0
+    },
+    "rheobase": {
+     "rheobase_nA": 0.0219,
+     "status": "ok",
+     "resolution_nA": 0.0015,
+     "n_simulations": 3
+    },
+    "protocol_scale_nA": 0.021865889212827987,
+    "protocol_scale_source": "rheobase",
+    "battery": {
+     "P01_baseline": {
+      "status": "ok",
+      "spike_count": 0,
+      "first_spike_latency_ms": null,
+      "mean_rate_hz": 0.0,
+      "first_isi_ms": null,
+      "last_isi_ms": null,
+      "isi_last_over_first": null,
+      "isi_cv": null,
+      "burst_gaps": null,
+      "spikes_per_burst": null,
+      "mean_v_mV": -75.6087
+     },
+     "P04_step_2x": {
+      "status": "ok",
+      "amplitude_nA": 0.0437,
+      "spike_count": 29,
+      "first_spike_latency_ms": 6.91,
+      "mean_rate_hz": 58.0,
+      "first_isi_ms": 17.0264,
+      "last_isi_ms": 17.2242,
+      "isi_last_over_first": 1.0116,
+      "isi_cv": 0.0024,
+      "burst_gaps": 0,
+      "spikes_per_burst": 29.0
+     },
+     "P07_hyperpolarizing_step": {
+      "status": "ok",
+      "amplitude_nA": -0.0219,
+      "baseline_mV": -75.6422,
+      "pre_window_min_mV": -75.6454,
+      "pre_window_max_mV": -75.639,
+      "pre_window_spikes": 0,
+      "min_mV": -92.6322,
+      "t_min_ms": 87.26,
+      "min_late_mV": -92.6322,
+      "t_min_late_ms": 87.26,
+      "steady_mV": -92.6308,
+      "sag_ratio": 0.0001,
+      "sag_ratio_undefined_reasons": [],
+      "sag_ratio_late": 0.0001,
+      "sag_ratio_late_undefined_reasons": [],
+      "recovery_late_mV": 0.0015,
+      "spikes_during_step": 0,
+      "rebound_spikes": 0,
+      "post_release_max_mV": -75.4775
+     },
+     "P08_rebound": {
+      "status": "ok",
+      "amplitude_nA": -0.0437,
+      "baseline_mV": -75.6422,
+      "pre_window_min_mV": -75.6454,
+      "pre_window_max_mV": -75.639,
+      "pre_window_spikes": 0,
+      "min_mV": -110.2868,
+      "t_min_ms": 114.54,
+      "min_late_mV": -110.2868,
+      "t_min_late_ms": 114.54,
+      "steady_mV": -110.2868,
+      "sag_ratio": 0.0,
+      "sag_ratio_undefined_reasons": [],
+      "sag_ratio_late": 0.0,
+      "sag_ratio_late_undefined_reasons": [],
+      "recovery_late_mV": 0.0,
+      "spikes_during_step": 0,
+      "rebound_spikes": 0,
+      "post_release_max_mV": -75.4343
+     },
+     "S01_hyper_long": {
+      "status": "ok",
+      "amplitude_nA": -0.0656,
+      "baseline_mV": -75.6422,
+      "pre_window_min_mV": -75.6454,
+      "pre_window_max_mV": -75.639,
+      "pre_window_spikes": 0,
+      "min_mV": -127.9584,
+      "t_min_ms": 116.61,
+      "min_late_mV": -127.9584,
+      "t_min_late_ms": 116.61,
+      "steady_mV": -127.9584,
+      "sag_ratio": 0.0,
+      "sag_ratio_undefined_reasons": [],
+      "sag_ratio_late": 0.0,
+      "sag_ratio_late_undefined_reasons": [],
+      "recovery_late_mV": 0.0,
+      "spikes_during_step": 0,
+      "rebound_spikes": 0,
+      "post_release_max_mV": -75.3488
+     },
+     "P05_long_step": {
+      "status": "ok",
+      "amplitude_nA": 0.0328,
+      "spike_count": 90,
+      "first_spike_latency_ms": 10.4452,
+      "mean_rate_hz": 45.0,
+      "first_isi_ms": 21.7805,
+      "last_isi_ms": 22.2491,
+      "isi_last_over_first": 1.0215,
+      "isi_cv": 0.0036,
+      "burst_gaps": 0,
+      "spikes_per_burst": 90.0
+     }
+    },
+    "ih_block": null
+   },
+   "figure": "docs/m0_evidence/model_curation/figures/smith2013_singlecomp.png",
+   "wall_time_s": 393.1
+  },
+  "solinas2007_soma_helper": {
+   "model_id": "solinas2007_soma_helper",
+   "role": "screen",
+   "run_id": "2026-09-13T16:00:56+00:00_aa8fa6a0",
+   "code_state_id": "cae767f83aa15e88",
+   "candidate": {
+    "model_id": "solinas2007_soma_helper",
+    "snapshot": "SolinasEtAl-GolgiCell@ab450696",
+    "cell_file": "NeuroML2/TestSoma_HELPER.cell.nml",
+    "cell_id": "TestSoma",
+    "harness_lems": "NeuroML2/LEMS_Soma_Test_HELPER.xml",
+    "harness_output_file": "Soma.v.dat",
+    "harness_v_column": 1,
+    "temperature": "23 degC",
+    "net_file": "NeuroML2/TestSoma_HELPER.net.nml",
+    "mep": "NEURON/test/.test.soma.mep",
+    "mep_experiment": "pacemaking",
+    "mep_time_unit": "s",
+    "mep_threshold_mV": 0.0,
+    "probe_cell_file": "",
+    "probe_cell_id": "",
+    "role": "screen"
+   },
+   "started_utc": "2026-09-13T16:09:43+00:00",
+   "validate_cell": {
+    "valid": false,
+    "returncode": 1,
+    "messages": [
+     "File: C:\\Users\\gurra\\NeuroSem\\models\\candidates\\SolinasEtAl-GolgiCell@ab450696\\NeuroML2\\TestSoma_HELPER.cell.nml is not valid against the schema: /Schemas/NeuroML2/NeuroML_v2.3.1.xsd!!",
+     "Error when parsing against Schema (class org.xml.sax.SAXParseException):",
+     "cvc-complex-type.3.2.2: Attribute 'file' is not allowed to appear in element 'include'.",
+     "Validated 1 files: 0 passed, 1 failed"
+    ]
+   },
+   "validate_network": {
+    "file": "NeuroML2/TestSoma_HELPER.net.nml",
+    "valid": null,
+    "returncode": 1,
+    "messages": [
+     "unrecognised validator output"
+    ]
+   },
+   "structure": {
+    "custom_component_types": [],
+    "standard_cell_element": true,
+    "cell_element": "cell2CaPools",
+    "n_segments": 1,
+    "single_compartment": true,
+    "biophysical_container": "biophysicalProperties2CaPools",
+    "channels": [
+     {
+      "element": "channelDensity",
+      "id": "LeakCond_all",
+      "ionChannel": "LeakCond",
+      "ion": "non_specific",
+      "condDensity": "0.021 mS_per_cm2",
+      "erev": "-55.0 mV"
+     },
+     {
+      "element": "channelDensity",
+      "id": "NaT_all",
+      "ionChannel": "Golgi_NaT",
+      "ion": "na",
+      "condDensity": "48.0 mS_per_cm2",
+      "erev": "87.39 mV"
+     },
+     {
+      "element": "channelDensity",
+      "id": "KV_all",
+      "ionChannel": "Golgi_KV",
+      "ion": "k",
+      "condDensity": "32.0 mS_per_cm2",
+      "erev": "-84.69 mV"
+     },
+     {
+      "element": "channelDensityNernst",
+      "id": "CaHVA_all",
+      "ionChannel": "Golgi_Ca_HVA",
+      "ion": "ca",
+      "condDensity": "0.460 mS_per_cm2",
+      "erev": null
+     },
+     {
+      "element": "channelDensityNernstCa2",
+      "id": "CaLVA_all",
+      "ionChannel": "Golgi_Ca_LVA",
+      "ion": "ca2",
+      "condDensity": "0.25 mS_per_cm2",
+      "erev": null
+     }
+    ],
+    "non_core_elements": [
+     "channelDensityNernstCa2",
+     "intracellularProperties2CaPools",
+     "membraneProperties2CaPools"
+    ]
+   },
+   "harness": {
+    "status": "ok",
+    "returncode": 0,
+    "runtime_s": 370.94,
+    "harness_step": "0.0005ms",
+    "harness_length": "1500.0ms",
+    "message": "",
+    "n_samples": 3000001,
+    "t_end_ms": 1500.0,
+    "v_min_mV": -69.8616,
+    "v_max_mV": 64.6868,
+    "spike_count_thr_minus20mV": 52,
+    "spike_times_ms_first20": [
+     57.65,
+     71.973,
+     86.727,
+     102.981,
+     121.406,
+     142.587,
+     167.083,
+     195.374,
+     458.454,
+     488.822,
+     522.373,
+     559.811,
+     600.808,
+     644.709,
+     690.803,
+     738.462,
+     787.2,
+     806.16,
+     813.944,
+     821.665
+    ],
+    "mep_comparison": {
+     "mep": "NEURON/test/.test.soma.mep",
+     "experiment": "pacemaking",
+     "threshold_mV": 0.0,
+     "n_expected": 52,
+     "n_observed": 52,
+     "max_abs_dev_ms_paired": 3.5388,
+     "median_abs_dev_ms_paired": 0.3273,
+     "expected_first": [
+      57.707,
+      72.137,
+      86.924,
+      103.21,
+      121.67,
+      142.889,
+      167.422,
+      195.745,
+      458.496,
+      488.716
+     ],
+     "observed_first": [
+      57.709,
+      72.032,
+      86.787,
+      103.04,
+      121.465,
+      142.647,
+      167.142,
+      195.434,
+      458.513,
+      488.882
+     ]
+    }
+   },
+   "probes": {
+    "dt_ms": 0.01,
+    "spike_threshold_mV": -20.0,
+    "cost": [
+     {
+      "tag": "inject_0",
+      "cell_steps": 300000,
+      "runtime_s": 2.91,
+      "status": "build_error"
+     },
+     {
+      "tag": "inject_1",
+      "cell_steps": 300000,
+      "runtime_s": 2.95,
+      "status": "build_error"
+     },
+     {
+      "tag": "inject_2",
+      "cell_steps": 300000,
+      "runtime_s": 3.03,
+      "status": "build_error"
+     }
+    ],
+    "injection_attempts": [
+     {
+      "amplitude_nA": 0.05,
+      "status": "build_error",
+      "message": "org.lemsml.jlems.core.sim.ContentError: No component found: LeakCond. Existing components:"
+     },
+     {
+      "amplitude_nA": 0.005,
+      "status": "build_error",
+      "message": "org.lemsml.jlems.core.sim.ContentError: No component found: LeakCond. Existing components:"
+     },
+     {
+      "amplitude_nA": 0.0005,
+      "status": "build_error",
+      "message": "org.lemsml.jlems.core.sim.ContentError: No component found: LeakCond. Existing components:"
+     }
+    ],
+    "injection_check": {
+     "status": "build_error",
+     "message": "org.lemsml.jlems.core.sim.ContentError: No component found: LeakCond. Existing components:"
+    }
+   },
+   "figure": "docs/m0_evidence/model_curation/figures/solinas2007_soma_helper.png",
+   "wall_time_s": 393.7
+  },
+  "solinas2007_testsoma": {
+   "model_id": "solinas2007_testsoma",
+   "role": "screen",
+   "run_id": "2026-09-13T16:00:56+00:00_aa8fa6a0",
+   "code_state_id": "cae767f83aa15e88",
+   "candidate": {
+    "model_id": "solinas2007_testsoma",
+    "snapshot": "SolinasEtAl-GolgiCell@ab450696",
+    "cell_file": "NeuroML2/TestSoma.cell.nml",
+    "cell_id": "TestSoma",
+    "harness_lems": "NeuroML2/LEMS_Soma_Test.xml",
+    "harness_output_file": "Soma.v.dat",
+    "harness_v_column": 1,
+    "temperature": "23 degC",
+    "net_file": "NeuroML2/TestSoma.net.nml",
+    "mep": "",
+    "mep_experiment": "",
+    "mep_time_unit": "ms",
+    "mep_threshold_mV": 0.0,
+    "probe_cell_file": "",
+    "probe_cell_id": "",
+    "role": "screen"
+   },
+   "started_utc": "2026-09-13T16:13:09+00:00",
+   "validate_cell": {
+    "valid": true,
+    "returncode": 0,
+    "messages": []
+   },
+   "validate_network": {
+    "file": "NeuroML2/TestSoma.net.nml",
+    "valid": true,
+    "returncode": 0,
+    "messages": []
+   },
+   "structure": {
+    "custom_component_types": [],
+    "standard_cell_element": true,
+    "cell_element": "cell",
+    "n_segments": 1,
+    "single_compartment": true,
+    "biophysical_container": "biophysicalProperties",
+    "channels": [
+     {
+      "element": "channelDensity",
+      "id": "LeakCond_all",
+      "ionChannel": "LeakCond",
+      "ion": "non_specific",
+      "condDensity": "0.021 mS_per_cm2",
+      "erev": "-55.0 mV"
+     },
+     {
+      "element": "channelDensityNernst",
+      "id": "CaHVA_all",
+      "ionChannel": "Golgi_Ca_HVA",
+      "ion": "ca",
+      "condDensity": "0.460 mS_per_cm2",
+      "erev": null
+     }
+    ],
+    "non_core_elements": []
+   },
+   "harness": {
+    "status": "ok",
+    "returncode": 0,
+    "runtime_s": 25.65,
+    "harness_step": "0.005ms",
+    "harness_length": "1500.0ms",
+    "message": "",
+    "n_samples": 300001,
+    "t_end_ms": 1500.0,
+    "v_min_mV": -65.0,
+    "v_max_mV": 101.5943,
+    "spike_count_thr_minus20mV": 1,
+    "spike_times_ms_first20": [
+     815.206
+    ],
+    "mep_comparison": null
+   },
+   "probes": {
+    "dt_ms": 0.01,
+    "spike_threshold_mV": -20.0,
+    "cost": [
+     {
+      "tag": "inject_0",
+      "cell_steps": 300000,
+      "runtime_s": 11.54,
+      "status": "build_error"
+     },
+     {
+      "tag": "inject_1",
+      "cell_steps": 300000,
+      "runtime_s": 17.83,
+      "status": "ok"
+     },
+     {
+      "tag": "rheo_1",
+      "cell_steps": 640000,
+      "runtime_s": 17.740246500005014,
+      "status": "build_error"
+     },
+     {
+      "tag": "battery_0",
+      "cell_steps": 300000,
+      "runtime_s": 11.29,
+      "status": "build_error"
+     },
+     {
+      "tag": "battery_1",
+      "cell_steps": 110000,
+      "runtime_s": 9.09,
+      "status": "ok"
+     },
+     {
+      "tag": "battery_2",
+      "cell_steps": 160000,
+      "runtime_s": 7.62,
+      "status": "build_error"
+     },
+     {
+      "tag": "battery_3",
+      "cell_steps": 250000,
+      "runtime_s": 10.1,
+      "status": "build_error"
+     }
+    ],
+    "injection_attempts": [
+     {
+      "amplitude_nA": 0.05,
+      "status": "build_error",
+      "message": "SEVERE:  (ERROR) org.lemsml.jlems.core.run.RuntimeError: Error at PathDerivedVariable eval(): tgt: null; sin: null[membraneProperties]; tgtvar: iDensity; path: channelDensities[*]/iDensity"
+     },
+     {
+      "amplitude_nA": 0.005,
+      "status": "ok",
+      "message": ""
+     }
+    ],
+    "injection_check": {
+     "status": "ok",
+     "amplitudes_nA": [
+      0.0,
+      0.005,
+      -0.005
+     ],
+     "max_abs_dv_plus_mV": 140.6314,
+     "max_abs_dv_minus_mV": 13.8433,
+     "responds_to_current": true,
+     "zero_current_spikes_in_window": 0
+    },
+    "rheobase": {
+     "rheobase_nA": null,
+     "status": "error",
+     "resolution_nA": null,
+     "n_simulations": 1
+    },
+    "protocol_scale_nA": 0.1,
+    "protocol_scale_source": "fallback (error)",
+    "battery": {
+     "P01_baseline": {
+      "status": "build_error",
+      "message": "SEVERE:  (ERROR) org.lemsml.jlems.core.run.RuntimeError: Error at PathDerivedVariable eval(): tgt: null; sin: null[membraneProperties]; tgtvar: iDensity; path: channelDensities[*]/iDensity"
+     },
+     "P04_step_2x": {
+      "status": "build_error",
+      "message": "SEVERE:  (ERROR) org.lemsml.jlems.core.run.RuntimeError: Error at PathDerivedVariable eval(): tgt: null; sin: null[membraneProperties]; tgtvar: iDensity; path: channelDensities[*]/iDensity"
+     },
+     "P07_hyperpolarizing_step": {
+      "status": "build_error",
+      "message": "SEVERE:  (ERROR) org.lemsml.jlems.core.run.RuntimeError: Error at PathDerivedVariable eval(): tgt: null; sin: null[membraneProperties]; tgtvar: iDensity; path: channelDensities[*]/iDensity"
+     },
+     "P08_rebound": {
+      "status": "ok",
+      "amplitude_nA": -0.2,
+      "baseline_mV": -51.3676,
+      "pre_window_min_mV": -51.5636,
+      "pre_window_max_mV": -51.2051,
+      "pre_window_spikes": 0,
+      "min_mV": -218.7016,
+      "t_min_ms": 24.27,
+      "min_late_mV": -218.6907,
+      "t_min_late_ms": 323.75,
+      "steady_mV": 33.3182,
+      "sag_ratio": null,
+      "sag_ratio_undefined_reasons": [
+       "spike during step (minimum may be an AHP)"
+      ],
+      "sag_ratio_late": null,
+      "sag_ratio_late_undefined_reasons": [
+       "spike during step (minimum may be an AHP)"
+      ],
+      "recovery_late_mV": null,
+      "spikes_during_step": 2,
+      "rebound_spikes": 0,
+      "post_release_max_mV": 81.6561
+     },
+     "S01_hyper_long": {
+      "status": "build_error",
+      "message": "SEVERE:  (ERROR) org.lemsml.jlems.core.run.RuntimeError: Error at PathDerivedVariable eval(): tgt: null; sin: null[membraneProperties]; tgtvar: iDensity; path: channelDensities[*]/iDensity"
+     },
+     "P05_long_step": {
+      "status": "build_error",
+      "message": "SEVERE:  (ERROR) org.lemsml.jlems.core.run.RuntimeError: Error at PathDerivedVariable eval(): tgt: null; sin: null[membraneProperties]; tgtvar: iDensity; path: channelDensities[*]/iDensity"
+     }
+    },
+    "ih_block": null
+   },
+   "figure": "docs/m0_evidence/model_curation/figures/solinas2007_testsoma.png",
+   "wall_time_s": 127.3
+  }
+ }
+}

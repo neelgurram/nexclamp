@@ -22,10 +22,16 @@ MANIFEST_COLUMNS = [f.name for f in dc.fields(ModelRecord)]
 
 def load_models(path: Path = MODEL_MANIFEST, include_only: bool = False) -> dict[str, ModelRecord]:
     with open(path, newline="", encoding="utf-8") as f:
-        rows = list(csv.DictReader(f))
-    missing = set(MANIFEST_COLUMNS) - set(rows[0].keys() if rows else MANIFEST_COLUMNS)
+        reader = csv.DictReader(f)
+        rows = list(reader)
+        header = reader.fieldnames or []
+    missing = set(MANIFEST_COLUMNS) - set(header)
     if missing:
         raise ValueError(f"model manifest missing columns: {sorted(missing)}")
+    ids = [r["model_id"] for r in rows]
+    dup = sorted({i for i in ids if ids.count(i) > 1})
+    if dup:
+        raise ValueError(f"duplicate model_id in manifest: {dup}")
     models = {r["model_id"]: ModelRecord(**{k: r[k] for k in MANIFEST_COLUMNS}) for r in rows}
     if include_only:
         models = {k: m for k, m in models.items() if m.inclusion == "include"}

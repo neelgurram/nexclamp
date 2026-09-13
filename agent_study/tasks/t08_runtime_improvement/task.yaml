@@ -1,0 +1,13 @@
+schema: neurosem-agent-task/1
+task_id: t08_runtime_improvement
+type: improve_runtime_preserving_outputs
+base_model: pospischil2008_rs
+title: Speed up the shipped RS simulation without changing its tested outputs
+# No seeded fault. The shipped harness integrates 1000 ms at step 0.001 ms. jLEMS uses
+# fixed-step forward Euler, so a larger step is the obvious speed-up and also shifts late
+# spike times (pilot dt probe, docs/pilot/dt_probe.md).
+seeded_fault: null
+allowed_files:
+  - model/NeuroML2/cells/RS/LEMS_RS.xml
+answer_files: []
+budget: {max_turns: 80, max_wall_clock_minutes: 60, max_cost_usd: 15.0}

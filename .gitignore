@@ -23,6 +23,13 @@ x86_64/
 # Local toolchain (portable JDK etc.), fetched by scripts/bootstrap
 .tools/
 
+# Agent-study answer keys, baselines and trial scratch: must never be committed or pushed while
+# trials may run (an agent with repository access could read them).
+results/agent_study/private/
+# Hidden evaluator specs (answer keys) stay out of Git history; agent_study/HIDDEN_MANIFEST.sha256 records
+# their hashes so integrity can be verified after the trials (DECISIONS D-022).
+agent_study/hidden/
+
 # Regenerable workspaces and bulky raw traces (hashes are tracked in results/index/)
 work/
 results/raw/**/*.npz

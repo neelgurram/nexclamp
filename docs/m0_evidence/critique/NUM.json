@@ -1,0 +1,237 @@
+{
+  "lens": "Simulation numerics and tooling feasibility (jLEMS/jNeuroML integration, refinement, trace alignment, determinism, runtime/storage, Docker/Java/CI on Windows 11 Home, NEURON export)",
+  "retrieved": "2026-09-13",
+  "method_note": "Source-level reading of jLEMS (development branch, commit 35bafd32e451267cb02e1a4e63fa1dd4ae8a6dc1, the lineage of the jlems 0.12.0 bundled in pyNeuroML 1.3.22), org.neuroml.export (development, commit 90f7ad42324379592457c619dd26cf6233b41bd5) and NeuroML2 core types (local clone at e6547bb2b477a429564e82d0648df057477ac74c). No Java is installed, so no jLEMS simulation was executed; all jLEMS behaviour is source-read. A Python emulation of the jLEMS time loop (IEEE double arithmetic) was run locally. Runtime and storage figures are planning estimates with stated assumptions, not results. Scratch clones: C:/Users/gurra/AppData/Local/Temp/claude/C--Users-gurra-Continuum/d876c622-d308-4d4a-bbf3-2b2374480647/scratchpad/m0/num/.",
+  "issues": [
+    {
+      "id": "NUM-01",
+      "handoff_section": "Solo scope (jNeuroML only); Tolerances; Pilot success criterion 'stable feature extraction under numerical refinement'",
+      "assumption": "jNeuroML is a suitable reference simulator whose h, h/2, h/4 refinement yields small, well-behaved differences for calibrating tolerances; the integration method is implicitly treated as a non-issue.",
+      "category": "uncertain",
+      "severity": "high",
+      "analysis": "The two earlier M0 audits disagree: one inferred forward Euler, the other's verification said RK4 is the default. Source reading resolves it in favour of fixed-step explicit (forward) Euler for standard NeuroML models.\n- RUN.method does default to RK4.\n- StateInstance.advance calls rk4Advance only when stateType.flattened is true; otherwise it calls eulerAdvance.\n- flattened is set only in StateType.makeFlattened. That is reached through makeConsolidatedStateType only when Dynamics carry simultaneous=true; otherwise it takes makeChildConsolidated, a shallow copy, which stays unflattened.\n- Sim.run() and Meta method='rk4' both set mflat=true, which requests consolidation, not flattening.\n- No file in NeuroML2CoreTypes, and none of the Pospischil fixture files, contains 'simultaneous'.\n- eulerAdvance evaluates derived variables, computes all rates, applies x += dt*rate, then evaluates OnConditions.\n\nConsequences:\n- Global error is first order in dt, so h vs h/2 differences shrink only about 2x per halving.\n- Fast Na gating in HH-type cells needs small dt. The Pospischil fixtures already run at 0.001 ms.\n- Stiffness-increasing biophysical mutants can blow up at h but not at h/2.\n- Refinement is meaningful with jLEMS precisely because the step is fixed, but reference-vs-refinement gaps will be larger than under a higher-order or implicit method.\n\nStill unconfirmed: whether the bundled jar behaves exactly as this source reads.",
+      "evidence_urls": [
+        "https://github.com/LEMS/jLEMS/blob/35bafd32e451267cb02e1a4e63fa1dd4ae8a6dc1/src/main/java/org/lemsml/jlems/core/run/RUN.java",
+        "https://github.com/LEMS/jLEMS/blob/35bafd32e451267cb02e1a4e63fa1dd4ae8a6dc1/src/main/java/org/lemsml/jlems/core/run/StateInstance.java",
+        "https://github.com/LEMS/jLEMS/blob/35bafd32e451267cb02e1a4e63fa1dd4ae8a6dc1/src/main/java/org/lemsml/jlems/core/run/StateType.java",
+        "https://github.com/LEMS/jLEMS/blob/35bafd32e451267cb02e1a4e63fa1dd4ae8a6dc1/src/main/java/org/lemsml/jlems/core/sim/Sim.java",
+        "https://github.com/NeuroML/NeuroML2/tree/e6547bb2b477a429564e82d0648df057477ac74c/NeuroML2CoreTypes"
+      ],
+      "recommendation": "Make the integrator an explicit, recorded design fact.\n(1) Add an M1 exit test that runs a passive single compartment with an analytically solvable step response through the pinned jnml at h, h/2 and h/4. Assert an observed convergence order near 1, which confirms Euler; RK4 would give an error ratio near 16.\n(2) Record 'jLEMS fixed-step forward Euler, dt=...' in every run manifest.\n(3) Choose each model's reference dt from a pre-battery convergence study on the canonical protocol, not by copying the OSB LEMS file's dt.\n(4) Budget smaller dt than NEURON users would expect (see NUM-06).",
+      "needs_neel_decision": false,
+      "decision_question": ""
+    },
+    {
+      "id": "NUM-02",
+      "handoff_section": "Mutations (Numerical: integration step, solver configuration, spatial discretization, output sampling); Leakage prevention (hold out an entire mutation family); Tolerances",
+      "assumption": "Numerical mutations form a legitimate fault family that can sit in the detection-rate denominator and could serve as a held-out mutation family.",
+      "category": "scientifically_weak",
+      "severity": "high",
+      "analysis": "Of the four Numerical operators, only the time step is actually a distinct, expressible fault in a jNeuroML-only pipeline.\n- Output sampling: the core LEMS OutputFile/OutputColumn has no interval attribute. The jLEMS loop writes every recorder at every step, and the NEURON exporter records at every dt (vectors sized tstop*steps_per_ms+1). Output sampling therefore equals the integration step and cannot be mutated independently.\n- Solver configuration: Meta method='rk4' is a no-op for standard NeuroML (NUM-01). 'eulertree' switches to the unconsolidated tree, still Euler, and may only reorder updates (inference).\n- Spatial discretisation: numberInternalDivisions is a Property the XSD calls the equivalent of NEURON nseg. Only the NEURON exporter's JSONCellSerializer consumes it; jLEMS source never references it, and jLEMS is single-compartment.\n\nThe dt operator is circular with the tolerance rule tau = max(abs floor, r|f|, c|f_h - f_h/2|). For a first-order method the refinement term is about c*C*h/2. A mutant run at k*h differs from the reference by about (k-1)*C*h. Once floors are exceeded, whether a dt mutant is detected is fixed by c and k, not by how informative a protocol is. Classifying it as equivalent or non-equivalent is tautological. Its detections would push greedy selection toward protocols with the largest discretisation sensitivity, such as late spike times in long steps, which is numerical error rather than semantic drift. If Numerical were the held-out family, the h/2 runs would already have shaped the tolerances, breaking the leakage barrier.",
+      "evidence_urls": [
+        "https://github.com/NeuroML/NeuroML2/blob/e6547bb2b477a429564e82d0648df057477ac74c/NeuroML2CoreTypes/Simulation.xml",
+        "https://github.com/LEMS/jLEMS/blob/35bafd32e451267cb02e1a4e63fa1dd4ae8a6dc1/src/main/java/org/lemsml/jlems/core/sim/Sim.java",
+        "https://github.com/NeuroML/org.neuroml.export/blob/90f7ad42324379592457c619dd26cf6233b41bd5/src/main/java/org/neuroml/export/neuron/NeuronWriter.java",
+        "https://github.com/NeuroML/org.neuroml.export/blob/90f7ad42324379592457c619dd26cf6233b41bd5/src/main/java/org/neuroml/export/neuron/JSONCellSerializer.java",
+        "https://github.com/NeuroML/NeuroML2/blob/e6547bb2b477a429564e82d0648df057477ac74c/Schemas/NeuroML2/NeuroML_v2.3.1.xsd"
+      ],
+      "recommendation": "Remove the Numerical family from the primary mutation families, the detection matrix and the held-out-family candidates. Report dt, output-sampling and solver changes as a separate numerical-robustness control:\n- dt halving is a transformation expected to stay within tolerance by construction;\n- dt coarsening is reported as a sensitivity curve.\nIf Numerical is kept, never use it as the held-out family, exclude it from greedy selection, and restrict its operators to dt (jLEMS). Leave spatial discretisation to the NEURON cross-simulator extension.",
+      "needs_neel_decision": true,
+      "decision_question": "Do you approve moving the 'Numerical' family (integration step, solver configuration, spatial discretisation, output sampling) out of the primary detection-rate denominator and held-out-family candidates into a separate numerical-robustness control? Primary families would then be Stimulus, Biophysical and Reference plus any new non-numerical families."
+    },
+    {
+      "id": "NUM-03",
+      "handoff_section": "Tolerances (steps 1-7, conceptual rule); Success criteria (stop if conclusions vanish after numerical refinement); Controls (Numerical refinement)",
+      "assumption": "Two refinement levels (h, h/2), with h/4 'when practical', are enough to calibrate feature tolerances, and 'stable under refinement' needs no operational definition.",
+      "category": "underspecified",
+      "severity": "high",
+      "analysis": "One difference |f_h - f_h/2| cannot show that a feature is in its asymptotic convergence range. Three levels are the minimum to estimate an observed order p = log2(|f_h - f_h/2| / |f_h/2 - f_h/4|). Without p, a non-monotone or pre-asymptotic feature can give a misleadingly small refinement term. Grid-refinement reporting practice from computational engineering (Roache 1994) is built on three-level studies.\n\nMany planned features are discrete or event-based: spike count, burst count, firing regime, ISIs, latency. For those, |f_h - f_h/2| is often exactly 0, collapsing tau to the floors, or it jumps when a spike appears or disappears. The c-term then either vanishes or explodes. The handoff also calibrates tolerances only on reference models. A mutant whose detection holds at h but vanishes at h/2 would count as a detection, even though the stop criterion is about exactly that case.\n\nWith forward Euler (NUM-01), refinement terms for spike-timing features will be comparatively large, so the choice of c strongly drives false-negative rates.",
+      "evidence_urls": [
+        "https://api.crossref.org/works/10.1115/1.2910291",
+        "https://api.crossref.org/works/10.1162/089976698300017845",
+        "https://github.com/LEMS/jLEMS/blob/35bafd32e451267cb02e1a4e63fa1dd4ae8a6dc1/src/main/java/org/lemsml/jlems/core/run/StateType.java"
+      ],
+      "recommendation": "(1) Make h, h/2 and h/4 mandatory for every discovery reference model/protocol used for calibration.\n(2) Compute and report the observed order p per feature; flag features with p far from 1 or non-monotone differences as non-converged and exclude them or use a larger floor.\n(3) Write separate rules for continuous features (refinement term), event/integer features (exact-match or count-difference rules with floors), and categorical regime labels.\n(4) Operationalise 'stable under refinement' and the stop rule before M5. For example, every counted detection must persist when the reference and mutant are both rerun at h/2.\n(5) Pre-specify a grid of c values for the sensitivity analysis.",
+      "needs_neel_decision": true,
+      "decision_question": "Do you approve (a) making h/4 mandatory for tolerance calibration, and (b) requiring every counted detection to be confirmed at h/2, reference and mutant both rerun? This roughly doubles mutant simulation cost."
+    },
+    {
+      "id": "NUM-04",
+      "handoff_section": "Tolerances (run at h, h/2, h/4); Mutations (Stimulus: onset, duration); Protocols; M3 'independent timing/amplitude tests'",
+      "assumption": "Refinement runs and stimulus-timing mutants share an identical stimulus, so differences reflect model numerics or the mutation only.",
+      "category": "uncertain",
+      "severity": "medium",
+      "analysis": "How jLEMS applies a pulse in time:\n- NeuroML pulseGenerator and rampGenerator switch current through OnConditions (t >= delay, t < delay + duration). These are evaluated once per step, after the Euler state update, using start-of-step t.\n- The jLEMS loop advances time by accumulation (t += dt), not as istep*dt.\n\nI emulated this loop in IEEE double arithmetic, which Java shares for + and *, assuming unit conversion value*0.001. Onsets and offsets land on the nominal grid index or one step late, and the error changes inconsistently across refinement levels:\n- delay 300 ms at dt 0.001 ms: onset 1 step late;\n- delay 400 ms at dt 0.0005 ms: exact;\n- delay 400 ms at 0.00025 ms: 1 step late;\n- a 700 ms offset at 0.001 ms: 1 step late.\n\nEach refinement level therefore carries a different O(dt) stimulus-timing error. This contaminates the refinement term for latency, first-ISI and rebound timing, and it confounds onset/duration mutants whose shift is only a few steps. Not executed in jLEMS itself (no Java).",
+      "evidence_urls": [
+        "https://github.com/NeuroML/NeuroML2/blob/e6547bb2b477a429564e82d0648df057477ac74c/NeuroML2CoreTypes/Inputs.xml",
+        "https://github.com/LEMS/jLEMS/blob/35bafd32e451267cb02e1a4e63fa1dd4ae8a6dc1/src/main/java/org/lemsml/jlems/core/sim/Sim.java",
+        "https://github.com/LEMS/jLEMS/blob/35bafd32e451267cb02e1a4e63fa1dd4ae8a6dc1/src/main/java/org/lemsml/jlems/core/run/StateType.java",
+        "https://github.com/LEMS/jLEMS/blob/35bafd32e451267cb02e1a4e63fa1dd4ae8a6dc1/src/main/java/org/lemsml/jlems/core/type/Unit.java"
+      ],
+      "recommendation": "(1) Add an M1/M3 test that records the pulseGenerator current (OutputColumn on the input's i) at h, h/2 and h/4 and asserts the realised onset/offset index.\n(2) Choose stimulus times that are unambiguous at every level, such as delay = n*h + h/8, so no rounding can move the switch step; or take stim_start/stim_end for eFEL from the realised switch index, not the nominal value.\n(3) Require onset/duration mutation magnitudes to be many steps at the coarsest h.\n(4) Record realised stimulus windows in the run manifest.",
+      "needs_neel_decision": false,
+      "decision_question": ""
+    },
+    {
+      "id": "NUM-05",
+      "handoff_section": "Tolerances (step 4: align traces on a common time grid; step 5: trace differences); Features (eFEL interpolation); Repository (trace hashes)",
+      "assumption": "Recorded traces are precise enough to align across h, h/2 and h/4 and to measure small trace and feature differences directly.",
+      "category": "technically_infeasible",
+      "severity": "medium",
+      "analysis": "Output precision:\n- jLEMS FileResultWriter casts every column, time included, to 32-bit float before writing (flushing every ~1000 rows), in SI units.\n- FileEventResultWriter likewise writes event times as float32.\n- PyLEMS output is written at double precision: the local RS.dat run shows 17-digit values, 46,259,248 bytes for 1,000,000 rows.\n\nComputed locally with numpy:\n- float32 spacing near t = 1 s is 1.19e-7 s and near 2-4 s is 2.38e-7 s.\n- A 1 s trace at h/4 = 2.5e-7 s has recorded time steps of 2.38e-7 to 2.98e-7 s.\n- A 3 s trace at h/4 has 2.38e-7 to 4.77e-7 s, jitter comparable to the step itself.\n- Voltage resolution (~7.5e-9 V near -70 mV) is adequate.\n\nConsequences for alignment and features:\n- Aligning or interpolating on the file's time column injects artificial timing jitter.\n- eFEL resamples T/V onto interp_step (default 0.1 ms per the verified eFEL audit), which is 100-400x coarser than the dt levels. Refinement differences in AP shape features then reflect eFEL interpolation rather than integration error.\n- Pointwise voltage differences around a spike shifted by one step are huge, so a raw trace difference is not a meaningful trace metric for spiking segments.",
+      "evidence_urls": [
+        "https://github.com/LEMS/jLEMS/blob/35bafd32e451267cb02e1a4e63fa1dd4ae8a6dc1/src/main/java/org/lemsml/jlems/io/out/FileResultWriter.java",
+        "https://github.com/LEMS/jLEMS/blob/35bafd32e451267cb02e1a4e63fa1dd4ae8a6dc1/src/main/java/org/lemsml/jlems/io/out/FileEventResultWriter.java",
+        "https://github.com/NeuroML/NeuroML2/blob/e6547bb2b477a429564e82d0648df057477ac74c/NeuroML2CoreTypes/Simulation.xml",
+        "https://raw.githubusercontent.com/openbraininstitute/eFEL/master/efel/api.py",
+        "https://api.crossref.org/works/10.1162/089976601300014321"
+      ],
+      "recommendation": "(1) Reconstruct time as t_i = i*dt from the Simulation length/step (nstep+1 rows) and ignore the float32 time column. Check that the row count matches.\n(2) Align refinement levels by index subsampling on the nested grids (h/2 and h/4 contain the h grid); do not interpolate.\n(3) Freeze eFEL interp_step at or below the coarsest h used for features, and run a sensitivity check on it.\n(4) Split trace metrics into subthreshold-window voltage differences and spike-train distances (e.g., a van Rossum-type distance) rather than whole-trace pointwise norms.\n(5) Treat differences below float32 resolution as zero, and never compare jLEMS float32 output bitwise with PyLEMS double output.",
+      "needs_neel_decision": false,
+      "decision_question": ""
+    },
+    {
+      "id": "NUM-06",
+      "handoff_section": "Solo scope (Full study sizes); Model selection ('Practical runtime'); Controls (Exhaustive empirical battery); Repository ('Raw results are immutable'); Tolerances",
+      "assumption": "The exhaustive battery (models x protocols x mutants/transforms x refinement levels, plus rheobase searches and repeats) is practical on a single Windows laptop, and all raw traces can be kept immutably.",
+      "category": "infeasible",
+      "severity": "high",
+      "analysis": "Measured anchors:\n- This laptop: AMD Ryzen 7 5700G, 8 cores / 16 threads, ~31 GiB RAM, C: 477 GB with 71 GB free.\n- A local PyLEMS run of the Pospischil RS fixture (1000 ms at 0.001 ms, 1e6 steps) took 263 s.\n- The OSB PospischilEtAl2008 CI job (run 30447139603, job 90560178137, ubuntu-22.04) ran 14 LEMS files through jNeuroML in a 205 s OMV step. They include RS and LTS at 1000 ms / 0.001 ms and IB at 1000 ms.\n- Inference: a single-compartment 1e6-step jLEMS run costs at most roughly 70 s including JVM start-up; a local jLEMS benchmark was impossible without Java.\n\nPlanning estimate at handoff midpoints, as a budget check only:\n- Sizes: 14 models, 13 protocols, 1 s per protocol at 0.001 ms. Assumed ~260 generated mutants classified to reach ~130 admissible, each run twice for reproducibility. 32 valid transforms at h and h/2. References at h + h/2 + h/4 (7 cost units). About 12-sim bisection rheobase searches per variant.\n- Total: about 13,000 1e6-step-equivalent runs, about 1.3e10 Euler steps.\n- CPU time: up to ~250 CPU-hours for jLEMS and ~950 CPU-hours for PyLEMS, before cross-simulator and agent work.\n- Storage: jLEMS text is about 20-25 bytes per t,V row (inferred from the float32 writer); PyLEMS double text measured 46 bytes per row. Raw text would be roughly 0.3-0.6 TB against 71 GB free.\n\nAlso relevant:\n- pyNeuroML launches a new 'java -jar' per run with a default 400M heap, so JVM start-up is repeated ~1e4 times.\n- Handoff dt and duration are unconstrained. The HH/Ex5 fixture runs 300 ms at 0.01 ms, i.e. 30,000 steps, 33x cheaper than Pospischil RS.",
+      "evidence_urls": [
+        "https://api.github.com/repos/OpenSourceBrain/PospischilEtAl2008/actions/runs/30447139603/jobs",
+        "https://github.com/LEMS/jLEMS/blob/35bafd32e451267cb02e1a4e63fa1dd4ae8a6dc1/src/main/java/org/lemsml/jlems/io/out/FileResultWriter.java",
+        "https://raw.githubusercontent.com/NeuroML/pyNeuroML/v1.3.22/pyneuroml/runners.py",
+        "https://raw.githubusercontent.com/NeuroML/pyNeuroML/v1.3.22/pyneuroml/__init__.py"
+      ],
+      "recommendation": "(1) M1 exit test: benchmark jLEMS steps per second for each fixture inside the frozen container, including JVM start-up, at 1, 8 and 14 parallel workers.\n(2) Put an explicit cost formula in PLAN.md with a budget cap, and set per-model dt and the shortest adequate protocol durations from convergence and benchmark data before M6.\n(3) Keep the full-resolution raw traces for references and the h level only. Convert .dat to compressed binary (e.g., HDF5 or npz) after hashing the original bytes. For refinement reruns and repeats, keep features plus hashes, or move raw data to external storage.\n(4) Rewrite 'raw results are immutable' as 'hashed at creation, never modified; compressed archival allowed'.\n(5) Pool JVM launches where jnml allows it (unverified) or accept the start-up overhead in the budget.",
+      "needs_neel_decision": true,
+      "decision_question": "Given a planning estimate of ~250+ CPU-hours and ~0.3-0.6 TB of raw text for the full study versus 71 GB free disk, which do you approve: (a) reduced full-study sizes; (b) a storage policy keeping full raw traces only for references and h-level runs, with refinement and repeat runs kept as features plus hashes; (c) external storage or compute; or a combination?"
+    },
+    {
+      "id": "NUM-07",
+      "handoff_section": "Milestones (M1: jNeuroML integration, Docker, CI; one command validates and simulates both models); Repository (Dockerfile, environment.yml)",
+      "assumption": "Docker and a Java-based jNeuroML toolchain are readily available on the development machine, a Windows 11 Home laptop.",
+      "category": "uncertain",
+      "severity": "high",
+      "analysis": "Java:\n- pyNeuroML ships the jNeuroML jar but no Java runtime. Java is absent on this machine and M0 rules forbid installing it.\n- Every jnml path (XSD validation, jLEMS runs, NEURON export) is blocked until a runtime is provided.\n- The recommended LTS fixture cannot be simulated by PyLEMS (ZeroDivisionError per the fixture verification), so Java is mandatory for the pilot.\n\nDocker Desktop on Windows:\n- The docs say Home or Education editions can run only Linux containers, through the WSL 2 backend (WSL 2.1.5 or later, hardware virtualisation enabled, 8 GB RAM).\n- The WSL 2 edition list names Windows 11 Enterprise, Pro or Education 23H2 (build 22631) or later; Home is not listed. This machine is Windows 11 Home, build 22631, exactly at the minimum.\n- 'wsl --status' printed only usage text, which suggests WSL is not installed (unconfirmed).\n- Enabling WSL 2 and virtualisation is an administrator-level system change for Neel.\n- Docker Desktop is free for personal use, education, non-commercial open source and small businesses.\n\nWindows-native Java is a fallback with known defects, per the verified pyNeuroML audit:\n- jNeuroML splits -I include paths on ':', which breaks drive letters.\n- pyNeuroML does not capture stderr on Windows.\n- A user-level Temurin 21 JRE zip for Windows x64 exists (48,999,141 bytes, Adoptium API) and needs no admin rights.\n\nNEURON has no Windows wheels on PyPI (neuron 9.0.2: manylinux and macOS only). Its docs recommend the binary installer on Windows, with WSL as the alternative.",
+      "evidence_urls": [
+        "https://docs.docker.com/desktop/setup/install/windows-install/",
+        "https://api.adoptium.net/v3/assets/latest/21/hotspot?architecture=x64&image_type=jre&os=windows&vendor=eclipse",
+        "https://raw.githubusercontent.com/NeuroML/jNeuroML/v0.14.0/src/main/java/org/neuroml/JNeuroML.java",
+        "https://raw.githubusercontent.com/NeuroML/pyNeuroML/v1.3.22/pyneuroml/runners.py",
+        "https://pypi.org/pypi/NEURON/json",
+        "https://www.neuronsimulator.org/en/latest/install/install_instructions.html"
+      ],
+      "recommendation": "Declare one reference execution platform for everything that produces study data: a Linux container with a pinned eclipse-temurin JRE (Java 17 or later, see NUM-08), pinned by image digest, run through WSL 2/Docker Desktop on this laptop and on GitHub Linux runners. Use Windows-native Python only for pure-Python development and unit tests.\n\nM1 needs a go/no-go step: Neel enables WSL 2 and virtualisation, then verifies 'docker run' works on this Home build. Fallback: WSL 2 Ubuntu without Docker, with a user-level JRE inside it. A Windows-native portable JRE is a last resort and must pass the include-path and stderr tests.",
+      "needs_neel_decision": true,
+      "decision_question": "Will you enable WSL 2 and hardware virtualisation and install Docker Desktop on this Windows 11 Home laptop (a system-level change you must perform), so that a Linux container with a pinned Java runtime becomes the single reference platform? If not, which fallback do you approve: WSL 2 Ubuntu without Docker, or a portable Windows JRE?"
+    },
+    {
+      "id": "NUM-08",
+      "handoff_section": "Model selection ('Deterministic execution in the frozen environment'); Repository (environment digest, trace hashes); M2 (rerun tests)",
+      "assumption": "Deterministic execution is a single, testable property that holds across machines, operating systems and JVMs once the environment is frozen.",
+      "category": "underspecified",
+      "severity": "medium",
+      "analysis": "jLEMS evaluates LEMS expressions with java.lang.Math.exp, Math.log and Math.pow; StrictMath appears nowhere in the source. The Math javadoc says Math implementations are not required to give bit-for-bit identical results and encourages platform-specific intrinsics.\n\nJEP 306 (delivered in Java SE 17) restored always-strict semantics for basic floating-point operations. It does not make Math intrinsics identical across CPUs or JVM builds. jNeuroML's jar is compiled for a Java 8 target, so the JVM chosen at runtime decides the arithmetic semantics.\n\nRepeated runs in the same container on the same host should be bitwise identical (deterministic models, fixed dt; unverified without Java). Bitwise identity across laptop, CI runner, OS or JVM version is not guaranteed. The float32 output (NUM-05) may hide some differences but not all. Hash-based 'rerun' checks will therefore give false alarms across hosts, and sub-tolerance cross-host differences cannot be distinguished from nondeterminism.",
+      "evidence_urls": [
+        "https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Math.html",
+        "https://openjdk.org/jeps/306",
+        "https://github.com/LEMS/jLEMS/blob/35bafd32e451267cb02e1a4e63fa1dd4ae8a6dc1/src/main/java/org/lemsml/jlems/core/expression/FunctionNode.java",
+        "https://github.com/LEMS/jLEMS/blob/35bafd32e451267cb02e1a4e63fa1dd4ae8a6dc1/src/main/java/org/lemsml/jlems/core/expression/PowerNode.java"
+      ],
+      "recommendation": "Define determinism at two levels in REQUIREMENTS.md:\n(1) Same image digest, same host: repeated runs must produce bitwise-identical trace and feature hashes. This is an M2 exit test.\n(2) Across hosts or OS: features must agree within the frozen tolerances, and any bitwise difference is logged, not treated as failure.\n\nPin the JRE vendor and exact version (Java 17 or later) and the container digest, and record CPU model/flags and 'java -version' in each run manifest. Run all frozen-study data on one platform class, and treat CI results as regression evidence, not as study data.",
+      "needs_neel_decision": false,
+      "decision_question": ""
+    },
+    {
+      "id": "NUM-09",
+      "handoff_section": "Repository (.github/workflows/ci.yml); M1 (CI); M8 (frozen study); Leakage prevention; Claude Code case study (hide selected protocols and answer keys)",
+      "assumption": "GitHub Actions free-tier CI can run the validation/simulation pipeline and support reproduction, without conflicting with held-out secrecy.",
+      "category": "underspecified",
+      "severity": "medium",
+      "analysis": "GitHub Actions on standard GitHub-hosted runners:\n- Free for public repositories: Linux x64 runners have 4 CPUs, 16 GB RAM and 14 GB SSD.\n- Private repositories on GitHub Free: 2,000 minutes per month and 500 MB artifact storage, on 2-CPU / 8 GB Linux runners.\n- Limits for all: each job is capped at 6 hours, and a matrix at 256 jobs per run.\n\nFit to the study:\n- The full battery (NUM-06, hundreds of CPU-hours) cannot fit a private repo's monthly minutes.\n- In a public repo it would need heavy sharding, and its traces could not be kept as artifacts (14 GB runner disk, small artifact quotas).\n- A public repo during development would expose held-out manifests, split files and the agent study's hidden protocols and answer keys, which the handoff requires to be separate or hidden.\n- The current runner page lists windows-latest, windows-2025, windows-2025-vs2026 and windows-2022, not windows-2019. The jNeuroML v0.14.0 CI evidence from windows-2019 is therefore historical, not current Windows coverage.\n- The OSB CI jobs used here (ubuntu-22.04) show the jNeuroML OMV pattern runs comfortably within limits for fixture-scale regression.",
+      "evidence_urls": [
+        "https://docs.github.com/en/actions/concepts/billing-and-usage",
+        "https://docs.github.com/en/actions/reference/limits",
+        "https://docs.github.com/en/actions/reference/runners/github-hosted-runners",
+        "https://api.github.com/repos/OpenSourceBrain/PospischilEtAl2008/actions/runs/30447139603/jobs"
+      ],
+      "recommendation": "Scope CI to:\n- unit tests;\n- XSD/jnml validation of fixtures;\n- short smoke simulations (reduced length, coarse dt) with hashed expected features;\n- an OMV-style fixture regression, run in the same pinned container image on ubuntu runners.\n\nRun the calibration, pilot and frozen study locally in the container, and make 'reproduce-paper' a local command with a documented CPU-hour budget. Keep held-out manifests, answer keys and agent hidden tests out of any public repository until the frozen evaluation is complete (for example encrypted, or in separate private storage, with hashes committed).",
+      "needs_neel_decision": true,
+      "decision_question": "Should the NeuroSem repository be private during development (CI limited to 2,000 minutes per month on 2-CPU runners) or public (free CI, but held-out manifests and agent answer keys must live outside the repository until release)?"
+    },
+    {
+      "id": "NUM-10",
+      "handoff_section": "Solo scope (4-6 optional cross-simulator models); Model selection (add multicompartment models later); Mutations (spatial discretization, wrong segment group)",
+      "assumption": "Exporting NeuroML models to NEURON through jNeuroML gives comparable traces that reuse the jLEMS-calibrated tolerances and trace alignment.",
+      "category": "scientifically_weak",
+      "severity": "medium",
+      "analysis": "What org.neuroml.export's NeuronWriter emits:\n- Fixed-step NEURON by default: h.dt = dt and h.steps_per_ms = 1/dt, with recording vectors sized to every dt.\n- CVODE only when a LEMS Meta sets method='cvode' with abs_tolerance/rel_tolerance.\n- A source comment says the local variable time-step method is not supported.\n\nNEURON's default fixed-step method (secondorder=0) is fully implicit backward Euler, with errors proportional to dt. jLEMS uses explicit forward Euler (NUM-01). At the same dt the two simulators therefore have first-order errors of different character, and cross-simulator differences at practical dt can exceed the jLEMS-calibrated tolerances with no model difference at all.\n\nOther caveats:\n- CVODE output has irregular time points, so the nested-grid alignment of NUM-05 no longer applies.\n- numberInternalDivisions (spatial discretisation) only matters in the NEURON export.\n- Custom LEMS ComponentTypes, such as the LTS fixture's IT channel and Ca pool, must go through the exporter to NMODL and a compiled mechanism build. The OSB CI jNeuroML_NEURON job passed for that repository, but local compiler needs were not verified.\n- NEURON is not pip-installable on Windows.",
+      "evidence_urls": [
+        "https://github.com/NeuroML/org.neuroml.export/blob/90f7ad42324379592457c619dd26cf6233b41bd5/src/main/java/org/neuroml/export/neuron/NeuronWriter.java",
+        "https://github.com/NeuroML/org.neuroml.export/blob/90f7ad42324379592457c619dd26cf6233b41bd5/src/main/java/org/neuroml/export/neuron/JSONCellSerializer.java",
+        "https://raw.githubusercontent.com/neuronsimulator/nrn/master/docs/progref/simctrl/programmatic.rst",
+        "https://pypi.org/pypi/NEURON/json",
+        "https://api.github.com/repos/OpenSourceBrain/PospischilEtAl2008/actions/runs/30447139603/jobs"
+      ],
+      "recommendation": "Treat simulator translation as its own transformation class with its own refinement study:\n- calibrate NEURON tolerances from NEURON h, h/2, h/4 runs;\n- compare simulators on features at each simulator's converged dt, not on raw traces at a shared dt;\n- record secondorder/CVODE settings and nseg (numberInternalDivisions) in manifests;\n- run NEURON only in the Linux container.\n\nKeep spatial-discretisation and segment-group mutations out of the jNeuroML-only pilot, and introduce them only with the NEURON extension.",
+      "needs_neel_decision": false,
+      "decision_question": ""
+    },
+    {
+      "id": "NUM-11",
+      "handoff_section": "Mutations (classify as structurally invalid, non-executable, numerically unstable, behaviorally equivalent, non-equivalent, or silent under canonical testing)",
+      "assumption": "'Non-executable' and 'numerically unstable' are distinct, observable, dt-independent mutant categories.",
+      "category": "underspecified",
+      "severity": "medium",
+      "analysis": "In jLEMS, a RuntimeError during stepping is caught in Sim.run. It prints a message suggesting the time step may be too large, reports the failure time, and calls System.exit(1). Build or parse failures also end in a non-zero exit, and per the verified pyNeuroML audit, the wrapper collapses both into a bare False, while on Windows stderr is not captured. A forward-Euler blow-up can also finish 'successfully' with NaN or huge values.\n\nWith fixed-step explicit Euler, stability depends on dt. Biophysical mutants that shrink capacitance, speed up gating time constants or raise conductances increase stiffness. The same mutant can then be unstable at h, stable at h/2, and differently classified at each level. As written, the cascade has no dt reference and no observable criterion for 'numerically unstable', so denominators could shift with the choice of h.",
+      "evidence_urls": [
+        "https://github.com/LEMS/jLEMS/blob/35bafd32e451267cb02e1a4e63fa1dd4ae8a6dc1/src/main/java/org/lemsml/jlems/core/sim/Sim.java",
+        "https://github.com/LEMS/jLEMS/blob/35bafd32e451267cb02e1a4e63fa1dd4ae8a6dc1/src/main/java/org/lemsml/jlems/core/run/StateType.java",
+        "https://raw.githubusercontent.com/NeuroML/pyNeuroML/v1.3.22/pyneuroml/runners.py"
+      ],
+      "recommendation": "Define the cascade operationally, and relative to the frozen reference dt:\n- structurally invalid: jnml -validate fails;\n- non-executable: the build fails before t > 0, detected by capturing jnml stdout/stderr and exit code in the container;\n- numerically unstable: a runtime error after t > 0, any NaN/Inf, or |V| beyond a physiological bound, at the reference dt;\n- non-converged: the detection outcome changes between h and h/2.\n\nRecord every category with the dt ladder used, and report how many mutants change category under refinement.",
+      "needs_neel_decision": false,
+      "decision_question": ""
+    },
+    {
+      "id": "NUM-12",
+      "handoff_section": "Protocols (3. Rheobase search; 4. step at a multiple of rheobase; normalise principal depolarising tests to model-specific rheobase); Features (Rheobase)",
+      "assumption": "Rheobase is a cheap, well-defined quantity that can normalise protocol amplitudes for both reference models and mutants.",
+      "category": "underspecified",
+      "severity": "medium",
+      "analysis": "NeuroML/LEMS inputs have fixed amplitudes only (pulseGenerator amplitude), so rheobase is a NeuroSem search loop of repeated full simulations. Its value carries two numerical errors: the fixed-step Euler discretisation error, which depends on dt, and the bisection resolution. Normalised protocol amplitudes inherit both, and so do the rheobase feature's tolerance and refinement term.\n\nThe handoff does not say whether mutants are driven at the reference's rheobase or their own:\n- Re-searching per mutant multiplies cost (NUM-06). It also re-normalises away exactly the excitability shifts that conductance or reversal mutants cause, which could manufacture 'silent' drift on the principal protocols.\n- Using the reference-derived absolute amplitude keeps protocols fixed but requires rheobase to be reported separately as a feature.",
+      "evidence_urls": [
+        "https://github.com/NeuroML/NeuroML2/blob/e6547bb2b477a429564e82d0648df057477ac74c/NeuroML2CoreTypes/Inputs.xml",
+        "https://github.com/LEMS/jLEMS/blob/35bafd32e451267cb02e1a4e63fa1dd4ae8a6dc1/src/main/java/org/lemsml/jlems/core/sim/Sim.java"
+      ],
+      "recommendation": "(1) Compute reference rheobase at the finest calibrated dt (h/4) with a pre-specified bracket, bisection resolution and spike criterion, and freeze it with the protocol manifest.\n(2) Drive mutants and valid transforms with the reference-derived absolute amplitudes.\n(3) Compute mutant rheobase only as a separate feature, with a floor at least the bisection resolution plus the refinement term.\n(4) Count search simulations in protocol cost.",
+      "needs_neel_decision": true,
+      "decision_question": "For mutants and valid transformations, should rheobase-normalised protocols use the frozen reference model's rheobase (fixed absolute amplitudes; rheobase reported as its own feature) or each mutant's own re-searched rheobase? The two change what counts as silent drift, and the second multiplies cost."
+    },
+    {
+      "id": "NUM-13",
+      "handoff_section": "Protocol selection (random runtime-matched sets; detection-versus-cost curve); Research question 3",
+      "assumption": "Protocol runtime is a stable, measurable cost for runtime-matched random baselines.",
+      "category": "underspecified",
+      "severity": "low",
+      "analysis": "Wall-clock time per protocol run through pyNeuroML includes a fresh 'java -jar' JVM start-up per simulation. It varies with parallel load on a shared 16-thread laptop, and differs between the laptop, the container and CI runners. jLEMS does log 'Finished N steps in X seconds', which separates stepping time from start-up.\n\nFor short protocols (short pulse, paired pulses) start-up can dominate wall time. Wall-clock runtime-matched baselines would then be noisy and platform-specific, so their outcome could change on a rerun elsewhere. That weakens RQ3 and the detection-versus-cost curve.",
+      "evidence_urls": [
+        "https://github.com/LEMS/jLEMS/blob/35bafd32e451267cb02e1a4e63fa1dd4ae8a6dc1/src/main/java/org/lemsml/jlems/core/sim/Sim.java",
+        "https://raw.githubusercontent.com/NeuroML/pyNeuroML/v1.3.22/pyneuroml/runners.py"
+      ],
+      "recommendation": "Define protocol cost deterministically before discovery analysis, e.g., simulated integration steps (length/dt) summed over the protocol, including rheobase-search simulations. Report measured median jLEMS stepping time (from its log, over repeats, in the frozen container) only as a secondary check. Freeze the cost table with the protocol manifest.",
+      "needs_neel_decision": true,
+      "decision_question": "Should 'runtime-matched' random baselines use a deterministic cost measure (total simulated integration steps per protocol, including rheobase searches) instead of measured wall-clock time?"
+    }
+  ],
+  "uncertainties": [
+    "No jLEMS/jNeuroML execution was possible: Java is not installed and installing it was out of scope. The integrator (NUM-01), onset quantisation (NUM-04), float32 output (NUM-05) and same-host determinism (NUM-08) come from source reading and a Python emulation, and must be confirmed in M1.",
+    "The onset emulation assumes jLEMS converts '0.001ms' as value*0.001 (Unit.getMultiplier = scale*Math.pow(10, power)) and that t accumulates exactly as t += dt in double arithmetic.",
+    "The ~70 s upper bound per 1e6-step jLEMS run is inferred from one CI step total (205 s for 14 LEMS files); per-file timings were not in the log. Throughput on this laptop and parallel scaling are unmeasured.",
+    "The Docker Desktop page's WSL 2 edition list does not name Windows 11 Home, although it says Home can run Linux containers; whether this Home build (22631) works was not tested. The 'wsl --status' output (usage text only) suggests WSL is not installed but was not investigated further.",
+    "The GitHub Actions runner hardware and label lists came from a WebFetch summary. Limits (6 h job, 256 matrix jobs, Free plan 2,000 minutes, 500 MB artifacts) were checked against the raw page HTML.",
+    "The Roache 1994, Hansel et al. 1998 and van Rossum 2001 references were verified only as bibliographic records (Crossref); their full text was not read, so they are cited as methodological pointers, not for specific claims.",
+    "The claim that Meta method='eulertree' may only reorder updates is an inference; it was not compared numerically."
+  ]
+}

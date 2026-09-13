@@ -13,8 +13,11 @@ from typing import Protocol
 
 from neurosem.schemas import SimResult, ValidationResult
 
-# Voltages outside this band (mV) are treated as numerical blow-up, not physiology.
-PHYSICAL_V_BOUND_MV = 250.0
+# Recorded values beyond this magnitude (after conversion to "mV") are treated as numerical blow-up.
+# Deliberately far outside physiology (10 V): a harness that records a non-voltage state (a gate in
+# [0, 1] or a concentration, e.g. the record_wrong_variable mutant) must be judged behaviourally, not
+# labelled unstable. Real divergence in jLEMS shows up as non-finite values or an aborted run.
+PHYSICAL_V_BOUND_MV = 10_000.0
 
 
 @dataclass(frozen=True)

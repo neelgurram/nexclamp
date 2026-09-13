@@ -1,0 +1,45 @@
+{
+  "batch": "r1_b44",
+  "retrieved_on": "2026-09-13",
+  "rows": [
+    {
+      "citation": "Cohen, I., Yu, H., McDougal, R. A. (2026). All Models are Wrong, Some are Annotated: Automating Metadata in Biomedical Repositories. bioRxiv (openRxiv) preprint.",
+      "year": "2026",
+      "url": "https://doi.org/10.64898/2026.04.23.720371",
+      "doi": "10.64898/2026.04.23.720371",
+      "kind": "preprint",
+      "model_type": "ModelDB NEURON ion-channel/receptor mechanism source files (MOD files); LLM metadata classification",
+      "controlled_mutations": "no - existing ModelDB files are only classified; no edits, mutants or translations are generated.",
+      "multiple_stimuli": "no - baseline features come from one standardized three-step voltage-clamp protocol, not a battery of stimuli.",
+      "electrophysiology_features": "partial - XGBoost baseline uses summary statistics of simulated voltage-clamp traces (extrema, initial/final values, time-to-90% activation/recovery); not eFEL current-clamp features.",
+      "protocol_optimization": "no - single fixed protocol; no protocol selection or search.",
+      "heldout_evaluation": "yes - 253 of 1,100 annotated files held out for testing (stratified by subtype); held-out annotation labels, not held-out models for behavioural testing.",
+      "ai_transformations": "no - LLMs (GPT-5.2, GPT-mini) annotate mechanism labels from source code; they do not edit or transform models.",
+      "software": "mod-annotation https://github.com/innacohen/mod-annotation",
+      "distinction_from_neurosem": "Uses simulation only as features for metadata classification of unmodified mechanisms. NeuroSem instead detects behavioural drift after transformations via mutants, calibrated tolerances and optimized current-clamp protocol batteries.",
+      "closeness": 2,
+      "verification_method": "Crossref API (api.crossref.org/works/10.64898/2026.04.23.720371: title, authors, openRxiv posted-content, 2026-04-27); Europe PMC REST (PPR1213161, abstract); bioRxiv full text page (biorxiv.org/content/10.64898/2026.04.23.720371v1.full) for methods and code link; GitHub API via gh (repo exists, created 2025-02-23, no license field).",
+      "found_via": "Europe PMC LLM AND (NeuroML OR Open Source Brain OR ModelDB); verified via Crossref + abstract"
+    },
+    {
+      "citation": "White, A. D., Hocky, G. M., Gandhi, H. A., et al. (2023). Assessment of chemistry knowledge in large language models that generate code. Digital Discovery, 2(2), 368-376.",
+      "year": "2023",
+      "url": "https://doi.org/10.1039/d2dd00087c",
+      "doi": "10.1039/d2dd00087c",
+      "kind": "paper",
+      "model_type": "general chemistry / computational chemistry coding tasks (incl. MD analysis and simulation-method prompts); not neuron models",
+      "controlled_mutations": "no - no mutation of code or models; only prompt contexts (e.g. copyright header) and sampling temperature are varied.",
+      "multiple_stimuli": "no - not applicable; each prompt checked by its own unit tests, no stimulation protocols.",
+      "electrophysiology_features": "no - no electrophysiology; correctness judged by unit tests or expert evaluation of generated code.",
+      "protocol_optimization": "no - no test or protocol selection; partial analogue only in comparing prompt-engineering contexts.",
+      "heldout_evaluation": "no - benchmark of 84 author-written prompts across topics; no discovery/held-out split reported.",
+      "ai_transformations": "partial - LLMs (Codex davinci variants, CodeGen, InCoder) generate code from prompts; generation from scratch, not edits of existing models.",
+      "software": "nlcc https://github.com/whitead/nlcc ; data repo https://github.com/ur-whitelab/nlcc-data (cited, not separately checked); completions on Zenodo https://doi.org/10.5281/zenodo.6800475 (cited, not separately checked)",
+      "distinction_from_neurosem": "Benchmarks LLM code-writing correctness with unit tests in chemistry. NeuroSem targets behavioural preservation of edited neuron models using electrophysiology fingerprints, mutants and optimized held-out-evaluated protocol batteries; AI is only a possible case study.",
+      "closeness": 1,
+      "verification_method": "Crossref API (api.crossref.org/works/10.1039/d2dd00087c: title, 11 authors, Digital Discovery 2(2) 368-376, 2023); Europe PMC REST (PMID 37065678, PMC10087057) abstract and fullTextXML for methods; OpenAlex (W4319996831) confirming venue/year; GitHub API via gh for whitead/nlcc (exists, no license field).",
+      "found_via": "Europe PMC LLM simulation code validation/benchmark query; verified via Crossref"
+    }
+  ],
+  "rejected": []
+}

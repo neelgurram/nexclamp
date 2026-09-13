@@ -66,12 +66,16 @@ def network_xml(model: ModelRecord, cell_include: str, protocols: Sequence[Concr
         f"    <include href={quoteattr(cell_include)}/>",
     ]
     inputs: list[tuple[str, str, str]] = []
+    pulse_lines: list[str] = []
+    ramp_lines: list[str] = []
     for p in protocols:
         pop = population_id(p.protocol_id)
         for i, comp in enumerate(p.components):
             cid = f"{pop}_c{i}"
-            lines.append(_component_xml(cid, comp))
+            xml = _component_xml(cid, comp)
+            (pulse_lines if comp.kind == "pulse" else ramp_lines).append(xml)
             inputs.append((cid, pop, p.protocol_id))
+    lines += pulse_lines + ramp_lines   # NeuroML v2.3.1 InputTypes sequence: pulseGenerator* before rampGenerator*
     if model.temperature.strip():
         lines.append(f'    <network id="{PROBE_NET_ID}" type="networkWithTemperature" temperature={quoteattr(model.temperature)}>')
     else:

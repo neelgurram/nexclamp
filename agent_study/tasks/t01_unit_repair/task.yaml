@@ -1,0 +1,31 @@
+schema: neurosem-agent-task/1
+task_id: t01_unit_repair
+type: repair_seeded_unit_error
+base_model: nml2_hh_example
+title: Repair a seeded unit error in the Hodgkin-Huxley example cell
+# Seeded fault: the sodium conductance density keeps its number but gets the wrong unit
+# ("120 mS_per_cm2" becomes "120 S_per_m2", a tenfold reduction). Built from two registry
+# operators so that the file shows a unit typo rather than a rescaled number:
+# an exact unit conversion to S_per_m2 (1200 S_per_m2) followed by a x0.1 conductance scaling.
+seeded_fault:
+  description: naChans condDensity written as 120 S_per_m2 instead of 120 mS_per_cm2 (unit typo, x0.1)
+  steps:
+    - registry: transforms
+      operator: unit_conversion
+      site: {file: examples/NML2_SingleCompHHCell.nml, locator_contains: naChans}
+      params: {attribute: condDensity, to_unit: S_per_m2}
+    - registry: mutations
+      operator: scale_conductance
+      site: {file: examples/NML2_SingleCompHHCell.nml, locator_contains: naChans}
+      operator_args: {factors: [0.1]}   # the registry default factors contain no power of ten
+      params: {factor: 0.1}
+  expected_after:
+    - file: examples/NML2_SingleCompHHCell.nml
+      xpath: "//channelDensity[@id='naChans']"
+      attribute: condDensity
+      si_value: 120.0
+      unit: S_per_m2
+allowed_files:
+  - model/examples/NML2_SingleCompHHCell.nml
+answer_files: []
+budget: {max_turns: 80, max_wall_clock_minutes: 60, max_cost_usd: 15.0}

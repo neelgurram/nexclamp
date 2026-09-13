@@ -58,7 +58,9 @@ def git_state(repo: Path = REPO_ROOT) -> tuple[str, bool]:
                                     capture_output=True, text=True, check=True).stdout.strip())
         return commit, dirty
     except (OSError, subprocess.CalledProcessError):
-        return "unknown", True
+        # Inside the container there is no .git; the image records the commit it was built from.
+        # The tree cannot be checked for local changes, so it is reported as dirty.
+        return os.environ.get("NEUROSEM_GIT_COMMIT", "unknown"), True
 
 
 @functools.lru_cache(maxsize=1)
@@ -77,6 +79,8 @@ def python_environment() -> dict[str, Any]:
 def environment_digest(extra: dict[str, Any] | None = None) -> tuple[str, dict[str, Any]]:
     """Digest of the Python environment plus simulator facts (Java version, jar hash)."""
     env = dict(python_environment())
+    if image := os.environ.get("NEUROSEM_CONTAINER_IMAGE"):   # e.g. repo@sha256:..., set with docker run -e
+        env["container_image"] = image
     if extra:
         env.update(extra)
     return sha256_json(env), env

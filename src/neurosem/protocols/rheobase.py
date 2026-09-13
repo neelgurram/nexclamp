@@ -80,7 +80,13 @@ def make_step_counter(sim, ws, exec_cfg, *, settle_ms: float, step_ms: float, th
 
 
 def search(count_spikes: SpikeCounter, *, hi_nA: float = 0.5, grid: int = 12, rounds: int = 4,
-           expand: float = 4.0, max_hi_nA: float = 32.0) -> RheobaseResult:
+           expand: float = 4.0, max_hi_nA: float = 32.0, max_shrink: int = 3) -> RheobaseResult:
+    """Bracketing grid search.
+
+    If the very first grid fails to simulate (small, high-input-resistance cells can drive
+    jLEMS's rate expressions to overflow at the default upper amplitude), the upper amplitude
+    is divided by ``expand`` and the grid retried, up to ``max_shrink`` times.
+    """
     if grid < 3 or rounds < 1:
         raise ValueError("grid must be >= 3 and rounds >= 1")
     history: list[dict] = []
@@ -98,17 +104,26 @@ def search(count_spikes: SpikeCounter, *, hi_nA: float = 0.5, grid: int = 12, ro
         return counts
 
     lo, hi = 0.0, float(hi_nA)
+    shrinks = 0
     # Bracketing phase: find an upper amplitude that spikes.
     while True:
         amps = np.linspace(lo, hi, grid)
         counts = run(amps)
         if counts is None:
+            if lo == 0.0 and shrinks < max_shrink:
+                shrinks += 1
+                history[-1]["note"] = "initial grid failed to simulate; retrying with a smaller upper amplitude"
+                hi = hi / expand
+                continue
             return RheobaseResult(None, "error", None, None, n_sims, history)
         if lo == 0.0 and counts[0] > 0:
             return RheobaseResult(0.0, "spontaneous", 0.0, 0.0, n_sims, history)
         idx = np.flatnonzero(counts > 0)
         if idx.size:
             i = int(idx[0])
+            if i == 0:   # lo (> 0) was silent in the previous grid and now spikes: the response is not reproducible
+                history[-1]["note"] = "previously silent amplitude spiked; response not reproducible"
+                return RheobaseResult(None, "error", None, None, n_sims, history)
             lo, hi = float(amps[i - 1]), float(amps[i])
             break
         if hi >= max_hi_nA:

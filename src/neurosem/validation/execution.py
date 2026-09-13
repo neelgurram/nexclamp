@@ -248,7 +248,7 @@ class RunRecorder:
         n_warnings = 0
         status = result.status
         if result.traces and status in (RunStatus.OK, RunStatus.UNSTABLE):
-            packed = trace_metrics.pack_traces(result.traces)
+            packed = trace_metrics.pack_traces(result.traces, finite_only=status is RunStatus.OK)
             trace_sha = sha256_bytes(packed)
             if prior_rec is not None and prior_rec.trace_sha256 and prior_rec.trace_sha256 != trace_sha:
                 raise ReproducibilityError(f"{run_id}: re-simulation changed the trace hash "

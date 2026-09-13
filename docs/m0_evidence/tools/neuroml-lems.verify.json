@@ -1,0 +1,445 @@
+{
+  "subject": "Adversarial fact-check of the NeuroML v2 schema / LEMS / libNeuroML / jLEMS verification report (neuroml-lems.research.json), 2026-09-13",
+  "checks": [
+    {
+      "claim": "Newest numbered NeuroML v2 XSD; same file list on master and development; no v2.4",
+      "reported_value": "NeuroML_v2.0, v2.1, v2.2, v2.3, v2.3.1 (+ v2alpha, v2beta..v2beta5); newest v2.3.1; no v2.4",
+      "verified_value": "Schemas/NeuroML2 on master (commit a5f5dad, 2026-09-02) and origin/development list the same 12 XSDs: v2.0, v2.1, v2.2, v2.3, v2.3.1, v2alpha, v2beta, v2beta1-5. No v2.4 and no v2.3.2 XSD. git diff master..development on Schemas/NeuroML2 and NeuroML2CoreTypes is empty. HISTORY.md does differ between the branches (see additional findings).",
+      "status": "confirmed",
+      "source_url": "https://github.com/NeuroML/NeuroML2/tree/master/Schemas/NeuroML2",
+      "method": "git clone --depth 1 --no-single-branch https://github.com/NeuroML/NeuroML2.git; ls Schemas/NeuroML2/*.xsd; git ls-tree origin/development Schemas/NeuroML2/; git diff --stat origin/master origin/development -- Schemas/NeuroML2 NeuroML2CoreTypes"
+    },
+    {
+      "claim": "Raw v2.3.1 XSD location, size and targetNamespace",
+      "reported_value": "raw URL, 182554 bytes, targetNamespace http://www.neuroml.org/schema/neuroml2",
+      "verified_value": "The raw download is 182554 bytes with targetNamespace http://www.neuroml.org/schema/neuroml2. The Windows clone copy is 186517 bytes only because core.autocrlf=true converts line endings. Hash the raw download, not a checkout.",
+      "status": "confirmed",
+      "source_url": "https://raw.githubusercontent.com/NeuroML/NeuroML2/master/Schemas/NeuroML2/NeuroML_v2.3.1.xsd",
+      "method": "curl -s <raw url> -o api/NeuroML_v2.3.1.xsd; wc -c; grep -o targetNamespace"
+    },
+    {
+      "claim": "HISTORY.md top release entry and schema rename",
+      "reported_value": "v2.3.1 / 2024-08-25; main schema renamed NeuroML_v2.3.xsd -> NeuroML_v2.3.1.xsd",
+      "verified_value": "On master the top entry is v2.3.1 / 2024-08-25, and its first bullet records the rename. On development an empty placeholder entry 'v2.3.2 / 2025-x-x' sits above it.",
+      "status": "confirmed",
+      "source_url": "https://raw.githubusercontent.com/NeuroML/NeuroML2/master/HISTORY.md",
+      "method": "head -20 HISTORY.md in clone; git show origin/development:HISTORY.md | grep '^v[0-9]'"
+    },
+    {
+      "claim": "Latest NeuroML2 GitHub release",
+      "reported_value": "NMLv2.3.1 published 2024-08-20T15:05:22Z",
+      "verified_value": "NMLv2.3.1 published 2024-08-20T15:05:22Z, returned by /releases/latest. The releases list also contains non-schema tags, e.g. v1.9.1 (2023-09-20) and jNeuroML_v0.11.0 (2021-12-15).",
+      "status": "confirmed",
+      "source_url": "https://api.github.com/repos/NeuroML/NeuroML2/releases",
+      "method": "gh api repos/NeuroML/NeuroML2/releases?per_page=4; gh api repos/NeuroML/NeuroML2/releases/latest"
+    },
+    {
+      "claim": "NeuroML2 repository license",
+      "reported_value": "LGPL-3.0 (LICENSE.lesser)",
+      "verified_value": "GitHub license spdx_id LGPL-3.0. The only license file at root is LICENSE.lesser, headed GNU LESSER GENERAL PUBLIC LICENSE Version 3.",
+      "status": "confirmed",
+      "source_url": "https://api.github.com/repos/NeuroML/NeuroML2",
+      "method": "gh api repos/NeuroML/NeuroML2 --jq .license.spdx_id; head -3 LICENSE.lesser"
+    },
+    {
+      "claim": "LEMS specification version",
+      "reported_value": "0.7.6 (LEMS_v0.7.6.xsd)",
+      "verified_value": "Docs source says the current LEMS specification is 0.7.6. LEMS_v0.7.6.xsd is the highest-numbered XSD in LEMS/LEMS Schemas/LEMS (master e92d070).",
+      "status": "confirmed",
+      "source_url": "https://github.com/NeuroML/Documentation/blob/main/source/Userdocs/LEMSSchema.md",
+      "method": "grep 0.7.6 in Documentation clone (main aec7c08); ls LEMS/Schemas/LEMS"
+    },
+    {
+      "claim": "LEMS spec repo license and releases",
+      "reported_value": "GPL-3.0; releases v0.7.6 (2021-12-17) and NeuroMLv2.3.1 (2024-08-20)",
+      "verified_value": "GPL-3.0. Releases: NeuroMLv2.3.1 published 2024-08-20T14:18:29Z (this is /releases/latest) and v0.7.6 published 2021-12-17T12:27:29Z.",
+      "status": "confirmed",
+      "source_url": "https://api.github.com/repos/LEMS/LEMS/releases",
+      "method": "gh api repos/LEMS/LEMS; gh api repos/LEMS/LEMS/releases; releases/latest"
+    },
+    {
+      "claim": "Docs schema pages generated from v2.3 and link NeuroML_v2.3.xsd",
+      "reported_value": "Inputs and Simulation pages generated 14/08/24 from commit 352244c, link NeuroML_v2.3.xsd",
+      "verified_value": "Both pages say 'Generated on 14/08/24' from commit 352244cff605cb1ba24fa7c11757dc818fe90fd2 and link NeuroML_v2.3.xsd. Checked on the live Inputs.html page and in the source of both Inputs.md and Simulation.md.",
+      "status": "confirmed",
+      "source_url": "https://docs.neuroml.org/Userdocs/Schemas/Inputs.html",
+      "method": "WebFetch live Inputs.html; grep 'Generated on|NeuroML_v2.3' source/Userdocs/Schemas/{Inputs,Simulation}.md"
+    },
+    {
+      "claim": "Core input ComponentTypes in NeuroML2CoreTypes/Inputs.xml",
+      "reported_value": "6 base types + spikeGenerator..voltageClampTriple (25 names)",
+      "verified_value": "Exactly the 25 names reported, identical on master and development. Parent types: pulse/ramp/sine/compoundInput extend basePointCurrent; their DL variants extend basePointCurrentDL; voltageClamp and voltageClampTriple extend baseVoltageDepPointCurrent.",
+      "status": "confirmed",
+      "source_url": "https://raw.githubusercontent.com/NeuroML/NeuroML2/master/NeuroML2CoreTypes/Inputs.xml",
+      "method": "grep -o '<ComponentType name=...extends=...' Inputs.xml"
+    },
+    {
+      "claim": "pulseGenerator parameters and semantics",
+      "reported_value": "delay, duration, amplitude; weight default 1; i=weight*amplitude for delay<=t<delay+duration else 0",
+      "verified_value": "Matches the source: Parameters delay, duration, amplitude; Property weight defaultValue 1. Three OnCondition blocks set i to 0 before delay, weight*amplitude inside the window and 0 after it.",
+      "status": "confirmed",
+      "source_url": "https://raw.githubusercontent.com/NeuroML/NeuroML2/master/NeuroML2CoreTypes/Inputs.xml",
+      "method": "python regex extraction of the ComponentType block"
+    },
+    {
+      "claim": "rampGenerator parameters and semantics",
+      "reported_value": "delay, duration, start/finish/baselineAmplitude; baseline outside window, linear inside; scaled by weight",
+      "verified_value": "Matches, with one detail. OnStart sets i = baselineAmplitude without the weight factor. The OnConditions then use weight*baselineAmplitude outside the window and weight*(start + (finish-start)*(t-delay)/duration) inside it.",
+      "status": "confirmed",
+      "source_url": "https://raw.githubusercontent.com/NeuroML/NeuroML2/master/NeuroML2CoreTypes/Inputs.xml",
+      "method": "python regex extraction of the ComponentType block"
+    },
+    {
+      "claim": "sineGenerator parameters and semantics",
+      "reported_value": "delay, duration, amplitude, period, phase; weight*amplitude*sin(phase+2*pi*(t-delay)/period) with 3.14159265; no sweep",
+      "verified_value": "Matches exactly: pi is written as 3.14159265 and the period is a fixed Parameter.",
+      "status": "confirmed",
+      "source_url": "https://raw.githubusercontent.com/NeuroML/NeuroML2/master/NeuroML2CoreTypes/Inputs.xml",
+      "method": "python regex extraction of the ComponentType block"
+    },
+    {
+      "claim": "compoundInput semantics",
+      "reported_value": "Children currents of basePointCurrent; i = weight * sum",
+      "verified_value": "Matches: DerivedVariable i_total selects currents[*]/i with reduce=add, and i = weight * i_total.",
+      "status": "confirmed",
+      "source_url": "https://raw.githubusercontent.com/NeuroML/NeuroML2/master/NeuroML2CoreTypes/Inputs.xml",
+      "method": "python regex extraction of the ComponentType block"
+    },
+    {
+      "claim": "No core chirp, noise-current or arbitrary waveform input; issue search 0",
+      "reported_value": "absent; issue search 'waveform' 0 issues",
+      "verified_value": "Core types: no such ComponentType. The only 'waveform' hits are the waveformFactor derived parameters in Synapses.xml. Issue search, now authenticated: 'waveform' 0 and 'chirp' 0. But 'noise current' returns 2 OPEN feature requests: #99 'Add new noisy current sources' and #97 'Add NeuroML implementation of PyNN's NoisyCurrentSource'. So noise inputs are requested but not implemented; the report's negative issue evidence was incomplete.",
+      "status": "confirmed",
+      "source_url": "https://github.com/NeuroML/NeuroML2/issues/97",
+      "method": "grep -il chirp|waveform|timeseries|noise NeuroML2CoreTypes/*.xml; gh api search/issues q='repo:NeuroML/NeuroML2 waveform' / 'chirp' / 'noise current'"
+    },
+    {
+      "claim": "Users may define their own ComponentTypes",
+      "reported_value": "Docs: core types curated, users free to define new ComponentTypes",
+      "verified_value": "Documentation source NeuroMLv2AndLEMS.md line 28 says this.",
+      "status": "confirmed",
+      "source_url": "https://github.com/NeuroML/Documentation/blob/main/source/Userdocs/NeuroMLv2AndLEMS.md",
+      "method": "grep -n 'free to|curated' in clone"
+    },
+    {
+      "claim": "XSD Nml2Quantity_current lexical pattern",
+      "reported_value": "optional minus, units A, uA, nA, pA only",
+      "verified_value": "XSD line 102 pattern: -?([0-9]*(\\.[0-9]+)?)([eE]-?[0-9]+)?[\\s]*(A|uA|nA|pA). Exercised through libNeuroML 0.6.7 component_factory('PulseGenerator', ...): '-0.1nA' and '0.2 pA' are accepted; '1mA' and '5 microA' raise ValueError (does not match xsd pattern).",
+      "status": "confirmed",
+      "source_url": "https://raw.githubusercontent.com/NeuroML/NeuroML2/master/Schemas/NeuroML2/NeuroML_v2.3.1.xsd",
+      "method": "grep -n -A4 Nml2Quantity_current; venv python component_factory test"
+    },
+    {
+      "claim": "How inputs attach to cells (XSD)",
+      "reported_value": "explicitInput(target,input,destination); inputList(population,component; input target,destination,segmentId,fractionAlong; inputW weight)",
+      "verified_value": "Confirmed. InputW extends Input with a required attribute weight (xs:float). libNeuroML exposes ExplicitInput, InputList, Input and InputW classes.",
+      "status": "confirmed",
+      "source_url": "https://raw.githubusercontent.com/NeuroML/NeuroML2/master/Schemas/NeuroML2/NeuroML_v2.3.1.xsd",
+      "method": "grep complexType ExplicitInput/InputList/Input/InputW; hasattr(neuroml, ...)"
+    },
+    {
+      "claim": "LEMS Simulation ComponentType and time step",
+      "reported_value": "Parameters length, step; Text seed; target; Children displays, outputs, events, metas; OutputColumn SI",
+      "verified_value": "Simulation.xml: Parameter length (time), Parameter step (time, dt), ComponentReference target, Text seed; Children metas(Meta), displays(Display), outputs(OutputFile), events(EventOutputFile). EventOutputFile format is TIME_ID or ID_TIME. The OutputColumn description says quantities are saved in SI units.",
+      "status": "confirmed",
+      "source_url": "https://raw.githubusercontent.com/NeuroML/NeuroML2/master/NeuroML2CoreTypes/Simulation.xml",
+      "method": "grep ComponentType/Parameter/Text/Children in Simulation.xml"
+    },
+    {
+      "claim": "Meta ComponentType fields",
+      "reported_value": "for, method, abs_tolerance, rel_tolerance",
+      "verified_value": "Text for (simulator name), method, abs_tolerance and rel_tolerance (both described as NEURON cvode tolerances), at lines 106-110.",
+      "status": "confirmed",
+      "source_url": "https://raw.githubusercontent.com/NeuroML/NeuroML2/master/NeuroML2CoreTypes/Simulation.xml",
+      "method": "grep -n Simulation.xml"
+    },
+    {
+      "claim": "NEURON exporter honours Meta method=cvode and tolerances",
+      "reported_value": "NeuronWriter reads method==cvode and abs_tolerance (lines ~344-362)",
+      "verified_value": "Master 91016a2, lines 359-363: if method equals 'cvode', it sets nrn_cvode and reads abs_tolerance and rel_tolerance. Caveat: this is org.neuroml.export master (1.10.1), while the jar bundled in pyNeuroML 1.3.22 contains org.neuroml.export 1.11.0 (development). The development copy of NeuronWriter was not diffed.",
+      "status": "confirmed",
+      "source_url": "https://github.com/NeuroML/org.neuroml.export/blob/master/src/main/java/org/neuroml/export/neuron/NeuronWriter.java",
+      "method": "grep -n cvode|abs_tolerance|rel_tolerance NeuronWriter.java"
+    },
+    {
+      "claim": "jLEMS RUN.java integration constants and default",
+      "reported_value": "EULER=1, RK4=2, static method=RK4",
+      "verified_value": "RUN.java lines 6-9: EULER = 1, RK4 = 2, method = RK4. No assignment to RUN.method exists anywhere else in jLEMS, org.neuroml.export or jNeuroML sources. The bundled RUN.class (jlems 0.12.0) has an iconst_2/putstatic byte pair and no iconst_1/putstatic pair, consistent with the default RK4 (weak byte-level check, not a decompilation).",
+      "status": "confirmed",
+      "source_url": "https://github.com/LEMS/jLEMS/blob/master/src/main/java/org/lemsml/jlems/core/run/RUN.java",
+      "method": "grep -n in clone 1ae9e8b; grep -rn 'RUN.method\\s*='; python zipfile scan of bundled jar"
+    },
+    {
+      "claim": "StateInstance.advance: RK4 only for flattened state types, else Euler",
+      "reported_value": "if stateType.flattened && RK4 -> rk4Advance else eulerAdvance; comment on consolidated instances",
+      "verified_value": "Lines 283-289 match. The StateType.java comment above rk4Advance (lines 512-519) says it works only on consolidated or flattened instances.",
+      "status": "confirmed",
+      "source_url": "https://github.com/LEMS/jLEMS/blob/master/src/main/java/org/lemsml/jlems/core/run/StateInstance.java",
+      "method": "sed -n 280,292p StateInstance.java; sed -n 510,520p StateType.java"
+    },
+    {
+      "claim": "Flattening requires Dynamics simultaneous=true",
+      "reported_value": "makeConsolidatedStateType flattens only if simultaneous; flattened=true only in makeFlattened; Dynamics.simultaneous default false; hhcell.xml uses it",
+      "verified_value": "Confirmed. makeConsolidatedStateType (line 970) calls getFlattenedStateType if simultaneous, otherwise makeChildConsolidated. ret.flattened = true only at line 1085 in makeFlattened. Dynamics.java line 46 sets simultaneous = false. simultaneous=\"true\" appears in src/test/resources/hhcell.xml and hhchannel.xml.",
+      "status": "confirmed",
+      "source_url": "https://github.com/LEMS/jLEMS/blob/master/src/main/java/org/lemsml/jlems/core/run/StateType.java",
+      "method": "grep/sed in clone; grep -rln 'simultaneous=\"true\"' src/test/resources"
+    },
+    {
+      "claim": "No NeuroML2 core ComponentType uses simultaneous; LEMS_v0.7.6.xsd does not define it",
+      "reported_value": "0 matches in core XML files; 0 in LEMS_v0.7.6.xsd",
+      "verified_value": "0 matches across NeuroML2CoreTypes (master) and 0 in LEMS_v0.7.6.xsd. The 10 NeuroML2CoreTypes XML files bundled inside the pyNeuroML 1.3.22 jar also contain no 'simultaneous'.",
+      "status": "confirmed",
+      "source_url": "https://raw.githubusercontent.com/LEMS/LEMS/master/Schemas/LEMS/LEMS_v0.7.6.xsd",
+      "method": "grep -ril simultaneous NeuroML2CoreTypes; grep -ic LEMS_v0.7.6.xsd; zipfile scan of jar"
+    },
+    {
+      "claim": "Sim.run defaults and Meta method values",
+      "reported_value": "run() -> run(true); runTree() -> run(false); Meta rk4 sets flatten, eulertree unsets, else warn",
+      "verified_value": "Sim.java lines 144-218 match. Because run() already passes flatten=true, Meta method='rk4' changes nothing under jnml's sim.run(). Meta method='eulertree' does change the path: it skips getConsolidatedStateType and runs the raw tree (still Euler). The bundled Sim.class contains the strings rk4, eulertree, 'unrecognized method ' and 'checking metas'.",
+      "status": "confirmed",
+      "source_url": "https://github.com/LEMS/jLEMS/blob/master/src/main/java/org/lemsml/jlems/core/sim/Sim.java",
+      "method": "sed -n 140,232p Sim.java; zipfile string scan of bundled Sim.class"
+    },
+    {
+      "claim": "jnml runs LEMS via Utils.runLemsFile -> loadLemsFile -> sim.run() after a feature check",
+      "reported_value": "JNeuroML.java -> Utils.runLemsFile -> loadLemsFile -> sim.run()",
+      "verified_value": "Confirmed in source. JNeuroML.java lines 387/622 call Utils.runLemsFile. Utils.loadLemsFile runs SupportLevelInfo.checkConversionSupported(Format.LEMS, ...) and then sim.run() (line 568). Read from org.neuroml.export master (1.10.1), not the bundled 1.11.0.",
+      "status": "confirmed",
+      "source_url": "https://github.com/NeuroML/org.neuroml.export/blob/master/src/main/java/org/neuroml/export/utils/Utils.java",
+      "method": "sed -n 529,570p Utils.java; grep JNeuroML.java"
+    },
+    {
+      "claim": "Inference: jnml integrates standard NeuroML models with fixed-step forward Euler",
+      "reported_value": "Source-reading inference, not executed",
+      "verified_value": "Every source premise checks out: code at jLEMS master 1ae9e8b and tag v0.11.1, and the integrator files are unchanged on development (0.12.0, the version actually bundled). Byte-level string checks of the bundled classes agree. The conclusion itself could not be executed: Java is not installed (bash: 'java: command not found'), and installing it was not permitted. Keep it as an M1 test.",
+      "status": "unverifiable",
+      "source_url": "https://github.com/LEMS/jLEMS/blob/development/src/main/java/org/lemsml/jlems/core/run/StateInstance.java",
+      "method": "git diff --stat v0.11.1 HEAD and HEAD origin/development on RUN/StateInstance/StateType/Sim/Dynamics (empty); java -version"
+    },
+    {
+      "claim": "jLEMS own docs describe forward Euler interpreter; LEMSExample1 Euler instability",
+      "reported_value": "interpreter.xml forward Euler; LEMSExample1 lines 220-221",
+      "verified_value": "interpreter.xml line 15 mentions a forward Euler scheme. LEMSExample1.md lines 220-221 say the HH gate definition needs smarter numerics than forward Euler and is unstable with it.",
+      "status": "confirmed",
+      "source_url": "https://github.com/LEMS/jLEMS/blob/master/src/site/docsrc/interpreter.xml",
+      "method": "grep -n -i euler in both clones"
+    },
+    {
+      "claim": "jLEMS is the reference implementation and simulates single-compartment models; single-segment note",
+      "reported_value": "reference implementation; single compartment; multicompartment needs NEURON etc.; single-segment note",
+      "verified_value": "The live SimulatingNeuroMLModels page calls jLEMS the reference implementation of LEMS and says it can simulate single-compartment models; more complex (e.g. multicompartmental) models need NEURON etc. jLEMS.md has the admonition 'jLEMS is the reference implementation of LEMS'. SingleCompartmentHHExample.md line 100 has the single-segment note.",
+      "status": "confirmed",
+      "source_url": "https://docs.neuroml.org/Userdocs/SimulatingNeuroMLModels.html",
+      "method": "WebFetch live page; grep Documentation source"
+    },
+    {
+      "claim": "jLEMS license, latest version, Java target, launchers",
+      "reported_value": "MIT; latest release v0.11.1 (2024-08-20); pom 0.11.1; source/target 1.8; lems and lems.bat",
+      "verified_value": "The master facts are right: MIT, release v0.11.1 published 2024-08-20T14:36:22Z, master pom 0.11.1, source/target 1.8, lems and lems.bat present. But 0.11.1 is not the newest jLEMS. The development branch pom is 0.12.0 (head 35bafd3, 2026-03-17), and the jNeuroML 0.14.0 jar in pyNeuroML 1.3.22 contains META-INF/maven/org.lemsml/jlems version 0.12.0. There is no GitHub tag or release for 0.12.0 (newest tag v0.11.1), and repo1.maven.org/maven2/org/lemsml/jlems/ returns 404.",
+      "status": "corrected",
+      "source_url": "https://github.com/LEMS/jLEMS/blob/development/pom.xml",
+      "method": "gh api repos/LEMS/jLEMS/releases, /tags; git show origin/development:pom.xml; python zipfile read of pom.properties in bundled jar; curl maven-metadata"
+    },
+    {
+      "claim": "Java dependency chain: org.neuroml.export 1.10.1 master pom pins jLEMS 0.11.1",
+      "reported_value": "org.neuroml.export 1.10.1 master pom pins jLEMS 0.11.1 (used to link pyNeuroML 1.3.22 runtime to jLEMS 0.11.1)",
+      "verified_value": "True for the export master branch only. The released runtime differs. jNeuroML development pom 0.14.0 depends on org.neuroml.import and org.neuroml1.model 1.11.0. Export development pom 1.11.0 pins jlems 0.12.0 and org.neuroml.model 1.11.0. The bundled jar confirms org.neuroml.export, import and model 1.11.0 plus jlems 0.12.0. Jar SHA-256 45ee565a65a66008a3b41935358d11b7c19cb6b5a67bbec22481d519f53db931, 28904516 bytes.",
+      "status": "corrected",
+      "source_url": "https://github.com/NeuroML/org.neuroml.export/blob/development/pom.xml",
+      "method": "grep export pom (master and origin/development); curl jNeuroML development pom; zipfile pom.properties + sha256 of installed jar"
+    },
+    {
+      "claim": "jLEMS/jNeuroML pom compile target and docs Java version",
+      "reported_value": "Both pom.xml compile with source/target 1.8; docs jLEMS page gives no Java version; jLEMS bundled inside jNeuroML",
+      "verified_value": "jLEMS pom (master and development) and jNeuroML pom compiler use source/target 1.8. jLEMS.md gives no Java version; line 13 says jLEMS is included in jNeuroML. pyNeuroML README line 38 has an apt example installing openjdk-11-jdk, which is an example, not a stated minimum.",
+      "status": "confirmed",
+      "source_url": "https://github.com/NeuroML/Documentation/blob/main/source/Userdocs/Software/jLEMS.md",
+      "method": "grep <source>/<target> poms; grep java in jLEMS.md and READMEs"
+    },
+    {
+      "claim": "libNeuroML PyPI metadata",
+      "reported_value": "0.6.7, upload 2025-06-10T16:11:18Z, license BSD-2-Clause, requires_python null, Production/Stable",
+      "verified_value": "Exact match: wheel uploaded 2025-06-10T16:11:18.937686Z, sdist 16:11:20Z; license 'BSD-2-Clause'; license_expression null; requires_python null for the project, wheel and sdist; 'Development Status :: 5 - Production/Stable'. pip install libNeuroML inside a Windows venv (Python 3.12.10) succeeded and neuroml.__version__ is 0.6.7.",
+      "status": "confirmed",
+      "source_url": "https://pypi.org/pypi/libNeuroML/json",
+      "method": "curl -s https://pypi.org/pypi/libNeuroML/json; venv pip install libNeuroML pylems pyNeuroML"
+    },
+    {
+      "claim": "libNeuroML repo location and license text",
+      "reported_value": "NeuralEnsemble/libNeuroML; NeuroML/libNeuroML 404; GitHub BSD-3-Clause; 3 conditions",
+      "verified_value": "Confirmed. github.com/NeuroML/libNeuroML returns HTTP 404 and the API returns Not Found. GitHub spdx_id for NeuralEnsemble/libNeuroML is BSD-3-Clause. LICENSE (Copyright 2012 libNeuroML authors and contributors) has two bulleted conditions plus a third non-endorsement clause at line 8.",
+      "status": "confirmed",
+      "source_url": "https://github.com/NeuralEnsemble/libNeuroML/blob/master/LICENSE",
+      "method": "curl -w http_code; gh api repos/...; cat LICENSE in clone 29e74c3"
+    },
+    {
+      "claim": "libNeuroML release date, supported NeuroML version, bundled XSDs",
+      "reported_value": "release v0.6.7 2025-06-10; current_neuroml_version v2.3.1; bundles NeuroML_v2.3.1.xsd and older",
+      "verified_value": "Release v0.6.7 published 2025-06-10T16:10:59Z. In the installed 0.6.7 package neuroml.current_neuroml_version is 'v2.3.1'. neuroml/nml contains the v2.0, v2.1, v2.2, v2.3, v2.3.1 and v2beta1-5 XSDs, but not v2alpha or v2beta.",
+      "status": "confirmed",
+      "source_url": "https://github.com/NeuralEnsemble/libNeuroML/blob/master/neuroml/__version__.py",
+      "method": "gh api releases; venv python introspection; os.listdir(neuroml/nml)"
+    },
+    {
+      "claim": "libNeuroML classifiers at tag vs stale master setup.cfg",
+      "reported_value": "tag v0.6.7: 0.6.7, Python 3.9-3.13, OS Independent; master: 0.6.3, Python 3.8-3.12",
+      "verified_value": "Exact match, and neither file has python_requires.",
+      "status": "confirmed",
+      "source_url": "https://raw.githubusercontent.com/NeuralEnsemble/libNeuroML/v0.6.7/setup.cfg",
+      "method": "curl raw setup.cfg at tag; grep master setup.cfg in clone"
+    },
+    {
+      "claim": "libNeuroML runtime requirements",
+      "reported_value": "lxml, networkx, numpy (<2.0 on Python <3.10), tables (>3.10 on Python >=3.10), natsort",
+      "verified_value": "requires_dist: lxml; networkx; numpy<2.0 and tables (unpinned) for python<3.10; numpy (unpinned) and tables>3.10 for python>=3.10; natsort. On Python 3.12 pip resolved numpy 2.5.3, tables 3.11.1, lxml 6.1.3, networkx 3.6.1 and natsort 8.4.0.",
+      "status": "confirmed",
+      "source_url": "https://pypi.org/pypi/libNeuroML/json",
+      "method": "PyPI JSON requires_dist; pip install log"
+    },
+    {
+      "claim": "pyLEMS PyPI metadata and Euler state update",
+      "reported_value": "0.6.9 2025-11-26, LGPL-3.0-only, requires_python null; build.py x += dt*(expr); master setup.cfg 0.6.7",
+      "verified_value": "Confirmed: wheel uploaded 2025-11-26T11:07:07Z, license LGPL-3.0-only, requires_python null. build.py line 500 generates 'self.<var> += dt * (<expr>)'. The installed 0.6.9 build.py contains the same pattern, so the release matches master on this point. Master setup.cfg says version 0.6.7. GitHub license LGPL-3.0.",
+      "status": "confirmed",
+      "source_url": "https://pypi.org/pypi/pylems/json",
+      "method": "curl PyPI JSON; grep build.py in clone and installed package; lems.__version__ == 0.6.9"
+    },
+    {
+      "claim": "pyNeuroML version and bundled jNeuroML across refs",
+      "reported_value": "PyPI 1.3.22 (2026-06-02, LGPL-3.0-only); tag bundles jNeuroML 0.14.0 jar; master 0.13.3; jNeuroML master pom 0.13.3, development 0.14.0",
+      "verified_value": "Exact match. PyPI wheel uploaded 2026-06-02T16:36:21Z; requires_python null; classifiers Python 3.10-3.14. lib at v1.3.22 and development is jNeuroML-0.14.0-jar-with-dependencies.jar, and at master it is the 0.13.3 jar. The installed package contains the 0.14.0 jar. jNeuroML release v0.14.0 published 2025-02-12T10:59:45Z; license LGPL-3.0.",
+      "status": "confirmed",
+      "source_url": "https://api.github.com/repos/NeuroML/pyNeuroML/contents/pyneuroml/lib?ref=v1.3.22",
+      "method": "gh api contents at 3 refs; curl jNeuroML poms; pyneuroml.__version__; os.listdir(pyneuroml/lib)"
+    },
+    {
+      "claim": "NeuroML Editorial Board composition and terms",
+      "reported_value": "5 volunteer elected editors (Gleeson, Panagiotou, Ray, Sinha, Zhu); staggered 3-year terms; elections 2024 and 2026",
+      "verified_value": "Confirmed from the live page and from Board.md source. Gleeson, Panagiotou and Zhu were elected in 2026 for 2026-2028. Sinha and Ray were elected in 2024, but the page gives their term as 2025-2027, an inconsistency in the source. Participation is volunteer with no central funding.",
+      "status": "confirmed",
+      "source_url": "https://docs.neuroml.org/NeuroMLOrg/Board.html",
+      "method": "WebFetch live page; grep and sed Board.md in Documentation clone"
+    },
+    {
+      "claim": "Editorial Board remit",
+      "reported_value": "manages spec, docs, LEMS spec and reference implementations with the Scientific Committee",
+      "verified_value": "The listed duties are to define the specification process (agreed with the Scientific Committee), prepare the NeuroML core spec, test reference implementations of NeuroML-compliant applications, prepare a LEMS spec (a subset supported by jLEMS/pyLEMS), answer community queries, and set a major-change procedure. The editors also maintain the official documentation. They 'test' reference implementations; the page does not say they manage them.",
+      "status": "corrected",
+      "source_url": "https://github.com/NeuroML/Documentation/blob/main/source/NeuroMLOrg/Board.md",
+      "method": "sed -n 1,10p and 126,142p Board.md"
+    },
+    {
+      "claim": "NeuroML Scientific Committee role and size",
+      "reported_value": "advisory body; fetch summary reported 11 members",
+      "verified_value": "12 current members, counting bold name entries in the ScientificCommittee.md source; the live page fetch also lists 12: Bhalla, Blackwell, Cornells, Crook, Davison, Dura-Bernal, Marin, McDougal, Graham, Gunay, Hines, Silver. Listed roles: advise on scientific focus, agree technical implementation with the Board, promote NeuroML, define governance, engage other standards initiatives, review and agree extensions.",
+      "status": "corrected",
+      "source_url": "https://docs.neuroml.org/NeuroMLOrg/ScientificCommittee.html",
+      "method": "grep -c '^\\*\\*[A-Z]' ScientificCommittee.md; WebFetch live page"
+    },
+    {
+      "claim": "Documentation site source and license; INCF mentions",
+      "reported_value": "README states CC-BY 4.0; GitHub detects no license; INCF on Funding page and as returning officer in BoardHistory",
+      "verified_value": "README line 20: documentation licensed under the CC-By License, linking creativecommons.org/licenses/by/4.0. GitHub license is null. INCF appears on Funding.md (line 101) and as returning officer in BoardHistory.md (lines 41, 50).",
+      "status": "confirmed",
+      "source_url": "https://github.com/NeuroML/Documentation/blob/main/README.md",
+      "method": "grep in clone main aec7c08; gh api repos/NeuroML/Documentation"
+    },
+    {
+      "claim": "NeuroML ecosystem paper (Crossref)",
+      "reported_value": "eLife vol 13, issued 2025-01-10, 11 authors, first author Sinha; DOI 10.7554/eLife.95135",
+      "verified_value": "Crossref: title 'The NeuroML ecosystem for standardized multi-scale modeling in neuroscience', eLife, volume 13, issued 2025-01-10, 11 authors, first author Sinha, Ankur. The docs Landing page links the version DOI 10.7554/eLife.95135.3, which Crossref also resolves (journal-article, issued 2025-01-10).",
+      "status": "confirmed",
+      "source_url": "https://api.crossref.org/works/10.7554/eLife.95135",
+      "method": "curl Crossref works API for both DOIs"
+    },
+    {
+      "claim": "LEMS paper (Crossref)",
+      "reported_value": "Frontiers in Neuroinformatics vol 8, 2014-09-25, 7 authors, first author Cannon; DOI 10.3389/fninf.2014.00079",
+      "verified_value": "Exact match (first author Cannon, Robert C.).",
+      "status": "confirmed",
+      "source_url": "https://api.crossref.org/works/10.3389/fninf.2014.00079",
+      "method": "curl Crossref works API"
+    },
+    {
+      "claim": "Original NeuroML paper (Crossref)",
+      "reported_value": "PLoS Computational Biology vol 6, 2010-06-17, 13 authors, first author Gleeson; DOI 10.1371/journal.pcbi.1000815",
+      "verified_value": "Exact match (first author Gleeson, Padraig).",
+      "status": "confirmed",
+      "source_url": "https://api.crossref.org/works/10.1371/journal.pcbi.1000815",
+      "method": "curl Crossref works API"
+    },
+    {
+      "claim": "Official LEMSexamples do not use Meta; examples reference beta schemas",
+      "reported_value": "32 LEMSexamples files contain <Simulation, none contain <Meta; examples/*.nml schemaLocation beta4/beta5",
+      "verified_value": "32 files recursively (31 at top level) contain <Simulation and 0 contain <Meta; no XML file anywhere in the NeuroML2 repo contains <Meta. In examples/*.nml, 14 references are to NeuroML_v2beta4.xsd and 3 to NeuroML_v2beta5.xsd.",
+      "status": "confirmed",
+      "source_url": "https://github.com/NeuroML/NeuroML2/tree/master/LEMSexamples",
+      "method": "grep -rl '<Simulation' / '<Meta' LEMSexamples; grep -ho schemaLocation examples/*.nml | uniq -c"
+    },
+    {
+      "claim": "Maintenance: pushed_at and archived flags",
+      "reported_value": "NeuroML2 2026-09-02, jLEMS 2026-08-31 (1ae9e8b), LEMS 2026-09-01, libNeuroML 2026-07-31, Documentation 2026-09-12, pyNeuroML 2026-07-31; none archived",
+      "verified_value": "All dates and archived=false confirmed. Documentation's pushed_at reflects the gh-pages branch (head 2026-09-12); main's head is aec7c08 (2026-06-20). jNeuroML pushed_at is 2026-05-19 while its master head b435277 dates from 2024-08-20, so master is stale.",
+      "status": "confirmed",
+      "source_url": "https://api.github.com/repos/NeuroML/Documentation",
+      "method": "gh api repos/<r> --jq pushed_at,archived; git log -1 per branch in clones"
+    },
+    {
+      "claim": "libNeuroML API names read_neuroml2_file, NeuroMLWriter, component_factory",
+      "reported_value": "exist (grep only); signatures not exercised",
+      "verified_value": "Introspected in the installed 0.6.7 package. read_neuroml2_file(nml2_file_name, include_includes=False, verbose=False, already_included=None, print_method=..., optimized=False) -> NeuroMLDocument. NeuroMLWriter.write(nmldoc, file, close=True). component_factory(component_type, validate=True, **kwargs). GeneratedsSuperSuper.validate(self, recursive=False) and add(self, obj=None, hint=None, force=False, validate=True, **kwargs).",
+      "status": "confirmed",
+      "source_url": "https://pypi.org/project/libNeuroML/0.6.7/",
+      "method": "venv python inspect.signature"
+    },
+    {
+      "claim": "neuroml.utils.validate_neuroml2 / is_valid_neuroml2 as Python-side schema validation",
+      "reported_value": "Python-side schema validation for mutants",
+      "verified_value": "These are not XSD validation. Both load the file with read_neuroml2_file(include_includes=True, optimized=True) and call the generateDS object validate(recursive=True), which checks XSD-derived pattern and required-attribute constraints. No lxml XMLSchema call exists anywhere in libNeuroML. validate_neuroml2 raises ValueError and returns None. is_valid_neuroml2 returns True/False despite a '-> None' annotation. Real XSD validation goes through pyneuroml.pynml.validate_neuroml2(nml2_file_name, verbose_validate=True, max_memory=None, return_string=False), which calls jnml -validate and so needs Java.",
+      "status": "corrected",
+      "source_url": "https://github.com/NeuralEnsemble/libNeuroML/blob/master/neuroml/utils.py",
+      "method": "inspect.getsource in venv; grep -rn 'XMLSchema(' libNeuroML/neuroml"
+    },
+    {
+      "claim": "pyneuroml.lems.LEMSSimulation signature",
+      "reported_value": "LEMSSimulation(duration, dt, target=None, simulation_seed=12345, meta=None) (read from master)",
+      "verified_value": "Installed 1.3.22: LEMSSimulation(sim_id: str, duration, dt, target=None, comment=<auto text>, lems_file_generate_seed=None, simulation_seed=12345, meta=None). The report left out the required first positional argument sim_id plus comment and lems_file_generate_seed. Methods exist: include_neuroml2_file(nml2_file_name, include_included=True, relative_to_dir='.'), add_column_to_output_file(output_file_id, column_id, quantity), add_selection_to_event_output_file(event_output_file_id, event_id, select, event_port), save_to_file(file_name=None), create_output_file(id, file_name), create_event_output_file(id, file_name, format='ID_TIME').",
+      "status": "corrected",
+      "source_url": "https://github.com/NeuroML/pyNeuroML/blob/v1.3.22/pyneuroml/lems/LEMSSimulation.py",
+      "method": "venv python inspect.signature(LEMSSimulation.__init__) and methods"
+    },
+    {
+      "claim": "pyneuroml.runners functions",
+      "reported_value": "run_lems_with_jneuroml, _neuron, _netpyne, _brian2, run_lems_with_eden",
+      "verified_value": "All five exist in 1.3.22. run_lems_with_jneuroml(lems_file_name, paths_to_include=[], max_memory='400M', skip_run=False, nogui=False, load_saved_data=False, reload_events=False, plot=False, show_plot_already=True, exec_in_dir='.', verbose=False, exit_on_fail=True, cleanup=False). run_jneuroml's source invokes java.",
+      "status": "confirmed",
+      "source_url": "https://github.com/NeuroML/pyNeuroML/blob/v1.3.22/pyneuroml/runners.py",
+      "method": "venv python hasattr/inspect"
+    },
+    {
+      "claim": "Windows support evidence",
+      "reported_value": "libNeuroML OS Independent; lems.bat in jLEMS; jnml.bat in jNeuroML; pyNeuroML bundles jar; untested",
+      "verified_value": "All the evidence items are confirmed: libNeuroML, pylems and pyNeuroML carry 'Operating System :: OS Independent'; lems.bat and jnml.bat exist; the jar is bundled. The pure-Python stack (libNeuroML 0.6.7, pylems 0.6.9, pyNeuroML 1.3.22) installed and imported on Windows 11 with Python 3.12.10. Java-dependent paths (jnml, jLEMS, pynml validation, NEURON export) could not be executed: no Java on PATH, install not permitted.",
+      "status": "confirmed",
+      "source_url": "https://github.com/NeuroML/jNeuroML/blob/master/jnml.bat",
+      "method": "ls lems.bat jnml.bat; PyPI classifiers; venv install; java -version (not found)"
+    }
+  ],
+  "introspection_log": "Scratch: C:/Users/gurra/AppData/Local/Temp/claude/C--Users-gurra-Continuum/d876c622-d308-4d4a-bbf3-2b2374480647/scratchpad/m0/verify-neuroml-lems\n$ python -m venv venv && ./venv/Scripts/python -m pip install --upgrade pip && ./venv/Scripts/python -m pip install libNeuroML pylems pyNeuroML\n  -> Successfully installed ... libNeuroML-0.6.7 ... pyNeuroML-1.3.22 ... pylems-0.6.9 ... numpy-2.5.3 tables-3.11.1 lxml-6.1.3 neuromllite-0.6.1 (exit 0; Windows 11, Python 3.12.10)\n$ ./venv/Scripts/python -c \"import neuroml; print(neuroml.__version__, neuroml.current_neuroml_version)\"\n  -> 0.6.7 v2.3.1\n$ inspect.signature(neuroml.loaders.read_neuroml2_file)\n  -> (nml2_file_name: str, include_includes: bool = False, verbose: bool = False, already_included: list = None, print_method=<print_>, optimized: bool = False) -> NeuroMLDocument\n$ inspect.signature(neuroml.writers.NeuroMLWriter.write) -> (nmldoc, file: str, close: bool = True)\n$ inspect.signature(neuroml.utils.component_factory) -> (component_type: Union[str, type], validate: bool = True, **kwargs)\n$ inspect.signature(neuroml.utils.validate_neuroml2) -> (file_name: str) -> None ; is_valid_neuroml2 -> (file_name: str) -> None\n$ inspect.getsource(validate_neuroml2) -> read_neuroml2_file(..., include_includes=True, optimized=True); nml_doc.validate(recursive=True)\n$ grep -rn 'XMLSchema(' libNeuroML/neuroml -> (no matches)\n$ GeneratedsSuperSuper.validate(self, recursive=False); add(self, obj=None, hint=None, force=False, validate=True, **kwargs)\n$ component_factory(\"PulseGenerator\", id=\"pg\", delay=\"100ms\", duration=\"500ms\", amplitude=X)\n  -> \"-0.1nA\" accepted; \"0.2 pA\" accepted; \"1mA\" ValueError: does not match xsd pattern restrictions; \"5 microA\" ValueError (same)\n$ import lems; lems.__version__ -> 0.6.9 ; installed lems/sim/build.py contains \"+= dt * (\"\n$ import pyneuroml; pyneuroml.__version__ -> 1.3.22 ; os.listdir(pyneuroml/lib) -> ['jNeuroML-0.14.0-jar-with-dependencies.jar']\n$ inspect.signature(pyneuroml.lems.LEMSSimulation.__init__)\n  -> (self, sim_id: str, duration, dt, target=None, comment='...generated using PyNeuroML v1.3.22 (libNeuroML v0.6.7)...', lems_file_generate_seed=None, simulation_seed: int = 12345, meta: Optional[Dict[str,str]] = None)\n$ LEMSSimulation methods: include_neuroml2_file(nml2_file_name, include_included=True, relative_to_dir='.'); add_column_to_output_file(output_file_id, column_id, quantity); add_selection_to_event_output_file(event_output_file_id, event_id, select, event_port); save_to_file(file_name=None); create_output_file(id, file_name); create_event_output_file(id, file_name, format='ID_TIME')\n$ pyneuroml.runners: run_lems_with_jneuroml/_neuron/_netpyne/_brian2, run_lems_with_eden -> all True\n  run_lems_with_jneuroml(lems_file_name, paths_to_include=[], max_memory='400M', skip_run=False, nogui=False, load_saved_data=False, reload_events=False, plot=False, show_plot_already=True, exec_in_dir='.', verbose=False, exit_on_fail=True, cleanup=False)\n$ inspect.signature(pyneuroml.pynml.validate_neuroml2) -> (nml2_file_name, verbose_validate=True, max_memory=None, return_string=False); source uses jnml -validate (Java)\n$ python zipfile scan of jNeuroML-0.14.0-jar-with-dependencies.jar (pom.properties)\n  -> org.lemsml:jlems 0.12.0; org.neuroml:jNeuroML 0.14.0; org.neuroml.export 1.11.0; org.neuroml.import 1.11.0; org.neuroml.model 1.11.0; org.neuroml1.model 1.11.0; neuroml2-base-definitions 1.11.0\n  -> sha256 45ee565a65a66008a3b41935358d11b7c19cb6b5a67bbec22481d519f53db931, 28904516 bytes\n  -> Sim.class contains 'rk4','eulertree','unrecognized method ','checking metas'; StateType.class contains '********* Flattening ' ; RUN.class has bytes 05 b3 (iconst_2 putstatic), no 04 b3; bundled NeuroML2CoreTypes/*.xml (10) contain no 'simultaneous'\n$ java -version -> bash: java: command not found (not installed; per rules not installed). jnml/jLEMS/pynml validation/NEURON export NOT executed.\nSource clones (git clone --depth 1 --no-single-branch): NeuroML2 a5f5dad (2026-09-02), jLEMS 1ae9e8b (2026-08-31; development 35bafd3 2026-03-17 pom 0.12.0), LEMS e92d070, libNeuroML 29e74c3, pyNeuroML a332f46, org.neuroml.export 91016a2 (development pom 1.11.0 -> jlems 0.12.0), jNeuroML b435277 (development 5802c8f), Documentation aec7c08 (gh-pages 09151f3 2026-09-12), pylems 3801fb3.\n$ git -C jLEMS fetch --depth 1 origin tag v0.11.1; git diff --stat v0.11.1 HEAD -- RUN/StateInstance/StateType/Sim/Dynamics -> empty; git diff --stat HEAD origin/development -- same files -> empty\nGitHub REST via authenticated gh api (repos, releases, releases/latest, tags, contents at refs, search/issues); PyPI JSON via curl; Crossref via curl; WebFetch: docs.neuroml.org Inputs.html, SimulatingNeuroMLModels.html, NeuroMLOrg/Board.html, NeuroMLOrg/ScientificCommittee.html.",
+  "corrections_summary": "Most of the report holds up against primary sources: schema and LEMS versions, release dates, licenses, input ComponentType semantics, the XSD unit pattern, the jLEMS Euler/RK4 source logic, PyPI metadata and citations. Corrections: (1) jLEMS 0.11.1 is only the newest GitHub release. The jNeuroML 0.14.0 jar in pyNeuroML 1.3.22 contains jlems 0.12.0, an untagged development-branch version, and org.neuroml.export/model 1.11.0, not export 1.10.1 with jLEMS 0.11.1. (2) The Scientific Committee has 12 members, not 11. (3) The LEMSSimulation signature omitted the required sim_id argument plus comment and lems_file_generate_seed. (4) libNeuroML validate_neuroml2/is_valid_neuroml2 are generateDS object validation, not XSD validation; XSD validation through pynml needs Java. (5) The Board 'tests' reference implementations; it is not described as managing them. Unverifiable: the forward-Euler conclusion. Its source premises hold for 0.11.1, master and 0.12.0, but it could not be run without Java. The report also missed: two open noise-current feature requests (#97, #99), the v2.3.2 placeholder in development HISTORY, the eulertree Meta nuance and CRLF effects on XSD hashes.",
+  "additional_findings": [
+    "The Java runtime inside pyNeuroML 1.3.22 does not match the GitHub release tags. Its jNeuroML-0.14.0-jar-with-dependencies.jar (SHA-256 45ee565a65a66008a3b41935358d11b7c19cb6b5a67bbec22481d519f53db931, 28904516 bytes) contains jlems 0.12.0 and org.neuroml.export, import and model 1.11.0. jLEMS 0.12.0 exists only as the jLEMS development-branch pom version: no GitHub tag or release, and no Maven Central path (HTTP 404). Record the jLEMS provenance as 'jlems 0.12.0 from the jNeuroML 0.14.0 jar', not 0.11.1. Sources: https://github.com/LEMS/jLEMS/blob/development/pom.xml ; https://github.com/NeuroML/org.neuroml.export/blob/development/pom.xml ; https://pypi.org/project/pyNeuroML/1.3.22/",
+    "The jLEMS integrator source files (RUN, StateInstance, StateType, Sim, Dynamics) are identical at tag v0.11.1, master 1ae9e8b and development 35bafd3 (0.12.0). The report's Euler/RK4 source analysis therefore carries over to the bundled 0.12.0, though it is still not executed. https://github.com/LEMS/jLEMS/compare/master...development",
+    "Mutation-design nuance: jnml calls Sim.run(), which already uses the consolidated (flatten=true) path. Meta method='rk4' should be a no-op. Meta method='eulertree' switches to the raw, unconsolidated state tree, so it may NOT be a no-op (evaluation order could change while staying Euler). Either way this is a source reading, to be tested in M1. https://github.com/LEMS/jLEMS/blob/master/src/main/java/org/lemsml/jlems/core/sim/Sim.java",
+    "libNeuroML validate_neuroml2 and is_valid_neuroml2 do not validate against the XSD with lxml; they run generateDS object validation. Full XSD validation goes through pyneuroml.pynml.validate_neuroml2, which shells out to jnml -validate and needs Java. Without Java only the generateDS check is available, and it does catch unit-pattern errors (e.g. '1mA' is rejected). https://github.com/NeuralEnsemble/libNeuroML/blob/master/neuroml/utils.py",
+    "The NeuroML2 development branch HISTORY.md has an empty placeholder entry 'v2.3.2 / 2025-x-x', so a v2.3.2 schema release is anticipated. No v2.3.2 XSD exists yet. Pin validity to NeuroML_v2.3.1.xsd and re-check before freezing. https://github.com/NeuroML/NeuroML2/blob/development/HISTORY.md",
+    "Two OPEN feature requests exist for noise current inputs in NeuroML2: #97 ('Add NeuroML implementation of PyNN's NoisyCurrentSource') and #99 ('Add new noisy current sources'). This matters for handoff protocol 12 (frozen pseudo-random waveform): no core type exists today. https://github.com/NeuroML/NeuroML2/issues/97 ; https://github.com/NeuroML/NeuroML2/issues/99",
+    "pyNeuroML 1.3.22 and pyLEMS 0.6.9 both declare requires_python null on PyPI. pyNeuroML classifiers list Python 3.10-3.14; pyLEMS lists 3.8-3.14; libNeuroML 0.6.7 lists 3.9-3.13. The intersection with classifier support for all three is Python 3.10-3.13. https://pypi.org/pypi/pyNeuroML/json ; https://pypi.org/pypi/pylems/json ; https://pypi.org/pypi/libNeuroML/json",
+    "The raw NeuroML_v2.3.1.xsd is 182554 bytes, but a Windows git checkout with core.autocrlf=true gives 186517 bytes. File hashes for provenance must come from raw downloads or checkouts with autocrlf disabled. https://raw.githubusercontent.com/NeuroML/NeuroML2/master/Schemas/NeuroML2/NeuroML_v2.3.1.xsd",
+    "The jNeuroML default branch (master, head b435277 from 2024-08-20) is behind the released v0.14.0 (development 5802c8f, 2025-02-12). The v0.14.0 release notes list moving CI to Temurin and changes for NeuroML v2.3.1. No explicit minimum Java version appears in the jLEMS docs; pyNeuroML README line 38 has an apt example installing openjdk-11-jdk. https://github.com/NeuroML/jNeuroML/releases/tag/v0.14.0 ; https://github.com/NeuroML/pyNeuroML/blob/master/README.md",
+    "The NeuroML Documentation site cites the eLife paper by its version DOI 10.7554/eLife.95135.3, which Crossref also registers (issued 2025-01-10). Cite the concept DOI 10.7554/eLife.95135 or the version DOI consistently. https://api.crossref.org/works/10.7554/eLife.95135.3",
+    "The Board page lists Sinha and Ray as elected in 2024 but with a '2025--2027' term, an internal inconsistency in the page. Quote it as written or ask the editors. https://docs.neuroml.org/NeuroMLOrg/Board.html",
+    "libNeuroML 0.6.7 bundles only v2.0-v2.3.1 and v2beta1-5 XSDs, not v2alpha or v2beta, in neuroml/nml. Validating old example files that reference those schemas would still be done against the current generated classes. Observed in the installed package at C:/Users/gurra/AppData/Local/Temp/claude/C--Users-gurra-Continuum/d876c622-d308-4d4a-bbf3-2b2374480647/scratchpad/m0/verify-neuroml-lems/venv/Lib/site-packages/neuroml/nml"
+  ]
+}

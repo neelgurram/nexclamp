@@ -1,0 +1,391 @@
+{
+  "meta": {
+    "milestone": "M0 (audit only)",
+    "assignment": "Recommend two minimal, openly usable NeuroML v2 fixture models for the NeuroSem pilot",
+    "generated_on": "2026-09-13",
+    "handoff_read": "C:/Users/gurra/NeuroSem/docs/handoff/NEUROSEM_CLAUDE_HANDOFF.extracted.md (section 'Model selection'; PDF is authoritative)",
+    "scratch_dir": "C:/Users/gurra/AppData/Local/Temp/claude/C--Users-gurra-Continuum/d876c622-d308-4d4a-bbf3-2b2374480647/scratchpad/m0/fixtures/",
+    "procedure_order": "For every repository whose files were downloaded, repository metadata and the LICENSE text were read via the GitHub REST API first; model files were fetched only afterwards, from raw.githubusercontent.com URLs pinned to a commit SHA, into the scratch folder (never into the NeuroSem repo).",
+    "local_tooling_used": {
+      "note": "Versions below are what pip resolved in the scratch venv on 2026-09-13 and match the PyPI JSON API responses retrieved the same day.",
+      "pyNeuroML": "1.3.22 (PyPI JSON: license LGPL-3.0-only, upload 2026-06-02) https://pypi.org/pypi/pyneuroml/json",
+      "libNeuroML": "0.6.7 (PyPI JSON: license BSD-2-Clause, upload 2025-06-10) https://pypi.org/pypi/libneuroml/json",
+      "PyLEMS": "0.6.9 (PyPI JSON: license LGPL-3.0-only, upload 2025-11-26) https://pypi.org/pypi/pylems/json",
+      "python": "3.12 (scratch venv)",
+      "java": "not installed; jnml / jNeuroML not run locally"
+    },
+    "validation_method_note": "Pure-Python structural check = neuroml.utils.validate_neuroml2 from libNeuroML 0.6.7 (source inspected in venv: loads the file with include_includes=True and runs recursive validation; bundled schemas NeuroML_v2beta1..v2beta5, v2.0..v2.3.1). pyneuroml.pynml.validate_neuroml2 was also inspected: it shells out to jnml (Java), so it was not usable here. jnml -validate evidence therefore comes only from the repositories' own GitHub Actions OMV logs.",
+    "important_caveats": [
+      "No held-out evaluation was created or accessed.",
+      "No NeuroSem results are claimed. Behaviour descriptions come from the repositories' own OMV expected-spike-time files (.mep) plus simple arithmetic on those numbers. Where a mechanism is named (for example adaptation or rebound), it is an expectation to confirm by simulation in M1, not a verified result.",
+      "Passing OMV/CI tests is finite testing and is not proof of equivalence or correctness.",
+      "Local runtime under jNeuroML is unmeasured because Java is absent."
+    ]
+  },
+  "recommended_pair": [
+    "Pospischil2008_RS: OpenSourceBrain/PospischilEtAl2008 @ 049081c39357d9e7c478b63ef7b10f374d1c50f4, NeuroML2/cells/RS (single-compartment regular-spiking cell with M-current; the reference spike train shows lengthening interspike intervals)",
+    "Pospischil2008_LTS: OpenSourceBrain/PospischilEtAl2008 @ 049081c39357d9e7c478b63ef7b10f374d1c50f4, NeuroML2/cells/LTS (single-compartment low-threshold-spiking cell with T-type Ca current and a Ca pool; suited to hyperpolarisation and rebound protocols)"
+  ],
+  "alternative_pair_if_strict_pure_python_xsd_validity_is_required_for_both": [
+    "Pospischil2008_RS (as above)",
+    "NeuroML2_SingleCompHHCell: NeuroML/NeuroML2 @ a5f5dadccd23606e683eaa0dd58dd2c3b2a7ed58, examples/NML2_SingleCompHHCell.nml + LEMSexamples/LEMS_NML2_Ex5_DetCell.xml"
+  ],
+  "backups": [
+    "Pospischil2008_FS (same repo/SHA; tonic non-adapting spiking; strict libNeuroML-valid)",
+    "NeuroML2_SingleCompHHCell / LEMS_NML2_Ex5_DetCell (NeuroML/NeuroML2 @ a5f5dad; LGPL-3.0; canonical HH 1952 teaching model)",
+    "WangBuzsaki1996 wb1 cell (OpenSourceBrain/WangBuzsaki1996 @ c532284; MIT for NeuroML2 dir; fast tonic interneuron)",
+    "Pospischil2008_IB (same repo/SHA; high-threshold Ca IL + IM; labelled intrinsically bursting)"
+  ],
+  "rationale": "The recommended pair is RS and LTS from the OpenSourceBrain conversion of Pospischil et al. 2008. Both cells come from one peer-reviewed paper with a Crossref-verified DOI and a ModelDB entry. The repository's LICENSE applies MIT to everything outside the NEURON_ORIG and NEURON_MODIFIED folders, and all NeuroML2 files sit outside those folders. Both cells are true single-compartment, conductance-based models (one soma segment each; confirmed by loading them with libNeuroML). Both have OMV tests that ran in GitHub Actions at the pinned commit (run 30447139603, 2026-07-29): the jNeuroML, jNeuroML_validate, jNeuroML_NEURON, NEURON and NetPyNE jobs succeeded, and only the jNeuroML_Moose job on Python 3.10 failed. The two cells behave differently, which the pilot protocols need. RS has the slow M-type K current, and its reference spike train shows interspike intervals lengthening from 28 to 135 ms. LTS adds a T-type Ca current and a Ca pool, and its reference shows an early spike pair aligned with Ca transients, so hyperpolarising-step and release-rebound protocols should be informative. The main caveat, which Neel must decide on, is that LTS's IT channel uses custom LEMS ComponentTypes. libNeuroML 0.6.7's strict XSD validation rejects IT.channel.nml, LTS.cell.nml and LTS.net.nml, while jnml -validate passed on LTS.net.nml and LTS.cell.nml in CI. NeuroSem therefore has to name jnml -validate as its structural-validity oracle, which fits the handoff's 'jNeuroML only' pilot. If Neel wants both fixtures to pass strict pure-Python validation, replace LTS with the NeuroML2 SingleCompHHCell/Ex5 example: it is LGPL-3.0, from an independent source, and passed strict validation plus jNeuroML and PyLEMS OMV checks. That swap loses the rebound/T-current behaviour. Both recommended cells share channel files from one repository, so they are correlated. That is acceptable for a two-model pilot but not as independent evidence for held-out-model generalisation. Allen Cell Types models were excluded: their NeuroML2 biophysical cells are large morphology files, the GLIF conversions are integrate-and-fire, and the Allen-derived content falls under Allen Institute terms of use with no named open license. The ModelDB mirror repositories for Ih and T-current models were excluded because they have no LICENSE and no NeuroML files.",
+  "candidates": [
+    {
+      "rank": 1,
+      "model_name": "Pospischil2008_RS (regular-spiking cortical cell, NeuroML2 conversion)",
+      "source_repo_url": "https://github.com/OpenSourceBrain/PospischilEtAl2008",
+      "file_paths": [
+        "NeuroML2/cells/RS/RS.cell.nml",
+        "NeuroML2/cells/RS/RS.net.nml",
+        "NeuroML2/cells/RS/LEMS_RS.xml",
+        "NeuroML2/cells/RS/.test.RS.spikes.LEMS.omt",
+        "NeuroML2/channels/Na/Na.channel.nml",
+        "NeuroML2/channels/Kd/Kd.channel.nml",
+        "NeuroML2/channels/IM/IM.channel.nml",
+        "NeuroML2/channels/Leak/Leak.channel.nml",
+        "NEURON_MODIFIED/.test.RS.spikes.mep"
+      ],
+      "pinned_commit_sha": "049081c39357d9e7c478b63ef7b10f374d1c50f4",
+      "pinned_commit_date": "2025-11-25T20:29:46Z (GitHub API commits/master, retrieved 2026-09-13)",
+      "pinned_raw_url_pattern": "https://raw.githubusercontent.com/OpenSourceBrain/PospischilEtAl2008/049081c39357d9e7c478b63ef7b10f374d1c50f4/<path>",
+      "license_spdx": "MIT",
+      "license_detail": "The GitHub API reports spdx NOASSERTION because LICENSE opens with a custom preamble. The full MIT text follows (Copyright 2018 Open Source Brain developers) and applies to all software except the NEURON_ORIG and NEURON_MODIFIED directories. Code in those two directories is provided on condition of citing the ModelDB entry and the original publication (CITATION.md). The NeuroML2/ files are therefore MIT. The .mep reference files under NEURON_MODIFIED carry the citation condition.",
+      "license_url": "https://github.com/OpenSourceBrain/PospischilEtAl2008/blob/049081c39357d9e7c478b63ef7b10f374d1c50f4/LICENSE",
+      "license_verified_before_download": true,
+      "license_evidence_urls": [
+        "https://api.github.com/repos/OpenSourceBrain/PospischilEtAl2008/license",
+        "https://api.github.com/repos/OpenSourceBrain/PospischilEtAl2008/contents/LICENSE"
+      ],
+      "original_citation": "Pospischil M, Toledo-Rodriguez M, Monier C, Piwkowska Z, Bal T, Fregnac Y, Markram H, Destexhe A. Minimal Hodgkin-Huxley type models for different classes of cortical and thalamic neurons. Biological Cybernetics 99(4-5):427-441, 2008 (issued 2008-11 per Crossref). doi:10.1007/s00422-008-0263-8. ModelDB accession 123623 (ModelDB page lists PubMed 19011929).",
+      "citation_url": "https://api.crossref.org/works/10.1007/s00422-008-0263-8",
+      "additional_provenance_urls": [
+        "https://modeldb.science/123623",
+        "https://github.com/OpenSourceBrain/PospischilEtAl2008/blob/049081c39357d9e7c478b63ef7b10f374d1c50f4/CITATION.md",
+        "https://api.datacite.org/dois/10.5281/zenodo.1936638 (Zenodo release 'OpenSourceBrain/PospischilEtAl2008: v0.1', 2018, IsSupplementTo tree/v0.1; zenodo.org/api returned HTTP 504 twice, so metadata came from DataCite)"
+      ],
+      "neuroml_version_or_schema": "Files declare xsi:schemaLocation NeuroML_v2beta4.xsd. libNeuroML 0.6.7 validate_neuroml2 reported RS.cell.nml and RS.net.nml VALID, and all included channel files (Na, Kd, IM, Leak) also VALID. CI jnml -validate passed for NeuroML2/cells/RS (.test.validate.omt) in run 30447139603.",
+      "single_compartment": "yes: one segment 'Soma' (diameter 96.0 um, zero length), segmentGroups Soma/all/soma_group; libNeuroML loader reports segments=1",
+      "channels": "LeakConductance 0.1 mS/cm2 (erev -70 mV, non_specific); Kd delayed-rectifier K 5.0 mS/cm2 (erev -100 mV); IM slow M-type K 0.07 mS/cm2 (erev -100 mV); Na 50.0 mS/cm2 via channelDensityVShift (vShift 0 mV, erev 50 mV). Cm 1.0 uF/cm2, initMembPotential -70 mV, spikeThresh 0 mV, network temperature 36 degC.",
+      "reference_protocol_in_repo": "pulseGenerator 0.75 nA (7.5E-10 A), delay 300 ms, duration 400 ms; LEMS simulation 1000 ms, step 0.001 ms; output RS.dat (v)",
+      "expected_behavior": "Expected spike times from the OMV reference (NEURON_MODIFIED/.test.RS.spikes.mep, generated with the modified NEURON scripts): 320.554, 348.522, 387.944, 456.69, 592.105 ms. The interspike intervals are about 28.0, 39.4, 68.7 and 135.4 ms and lengthen progressively, a pattern consistent with spike-frequency adaptation. Adaptation mediated by IM is the expected mechanism but is not verified here; NeuroSem M1/M2 simulation must confirm it. OMV compares jNeuroML output with these times at relative tolerance 0.00218373430388.",
+      "validation_evidence": "(1) libNeuroML 0.6.7 strict validation: VALID for RS.cell.nml, RS.net.nml, Na/Kd/IM/Leak channel files. (2) GitHub Actions 'Continuous build using OMV' run 30447139603 (2026-07-29) at the pinned SHA: jobs jNeuroML (py3.10, py3.12), jNeuroML_validate, jNeuroML_NEURON, NEURON, jNeuroML_NetPyNE and jNeuroML_Moose:4.0.0.dev20240411 succeeded; only 'build (3.10, jNeuroML_Moose)' failed, at its OMV step. The same pattern appears in run 26042274142 (2026-05-18). Runs 19683390438 and 19683226292 at the same SHA (2025-11-25) were fully successful. (3) The py3.12 jNeuroML job log shows the NeuroML2/cells/RS/.test.RS.spikes.LEMS.omt spike-times check passed. (4) OMV engine files in the repo also cover MOOSE, NetPyNE and NEURON for RS.",
+      "ci_urls": [
+        "https://github.com/OpenSourceBrain/PospischilEtAl2008/actions/runs/30447139603",
+        "https://github.com/OpenSourceBrain/PospischilEtAl2008/actions/runs/19683390438",
+        "https://github.com/OpenSourceBrain/PospischilEtAl2008/blob/049081c39357d9e7c478b63ef7b10f374d1c50f4/.github/workflows/omv-ci.yml"
+      ],
+      "file_sha256": [
+        "a01d50a9cfac89343407ac3f5d638a4468cbffa2d599f9ff5a3413447fcbdb46  NeuroML2/cells/RS/RS.cell.nml",
+        "2c8b333a0d2fa4e893fa6635a020956e09a86ea7dcbc95b5d1068d3f14ceb816  NeuroML2/cells/RS/RS.net.nml",
+        "095f40cd8db08ba8bd1d74200feeb6e9544f8c68e47d9a494fae70719d29d3ce  NeuroML2/cells/RS/LEMS_RS.xml",
+        "bc8247f46a9c3c32083c5481469ad4367d4baa10d922114de634362c0ea086b1  NeuroML2/cells/RS/.test.RS.spikes.LEMS.omt",
+        "7b019f4406eff251ffdbcdbd6dafd8c5f3731e1682ef5922b0eead6efe3a9eb6  NeuroML2/channels/Na/Na.channel.nml",
+        "6cc779cd5ad536e8e22631d89e62690be8954b1cfc85aaec06f479f528bdb4b9  NeuroML2/channels/Kd/Kd.channel.nml",
+        "9a1fbbc8756fcbbb2e92a62107eb72b8acd5bb95c5d77bb7f5ad09bb2213e8a9  NeuroML2/channels/IM/IM.channel.nml",
+        "41eb0263b1be315c429f64d040ca5eb34277da05031b01d94381859d01360f9d  NeuroML2/channels/Leak/Leak.channel.nml",
+        "be5f0ed4b631a831ddbdd26e09930f56098bd2d33735c4379602457de94fa903  NEURON_MODIFIED/.test.RS.spikes.mep"
+      ],
+      "runtime_notes": "Not measured locally (no Java). The reference LEMS run is 1000 ms at dt 0.001 ms, which is 1e6 steps, so the cost of a multi-protocol battery under jNeuroML must be measured in M1. The repo's NeuroML2/cells/summary folder contains Sweep.py, GenerateExamples.py and dt-comparison figures (dt_traces_RS.png, heatmap_dt_RS.png), which suggests a timestep-sensitivity sweep was done upstream; its contents were not inspected. Execution should be deterministic: the only input is a pulseGenerator, and no noise or random components were found in the inspected files. Run-to-run determinism was not tested locally for this model.",
+      "protocol_suitability": "Good for zero-current baseline, weak depolarising step, rheobase search, a fixed multiple of rheobase, a long suprathreshold step (ISI, adaptation-index features), a depolarising ramp, and short pulses and paired pulses. The hyperpolarising step should give a mainly passive deflection; the cell has no Ih, so no sag is expected, and hyperpolarisation-release rebound is likely uninformative. That is an expectation, not a result.",
+      "concerns": "License detection returns NOASSERTION, so record the exact LICENSE text and its directory exceptions. The latest archived release (Zenodo v0.1, 2018) predates the pinned commit, so the fixture pin is a commit SHA, not a release DOI. schemaLocation references an old beta schema, although validation passes. The Moose CI job is currently failing (not needed for a jNeuroML-only pilot). The .mep reference spike times come from the NEURON_MODIFIED scripts, which carry a citation condition. RS shares channel files with LTS/FS/IB, so these fixtures are correlated and cannot serve as independent held-out models. The OSB conversion used modified NEURON scripts (NEURON_MODIFIED/diffs_to_original.txt lists changes such as FARADAY constants and the solver METHOD), so the NeuroML model is matched to the modified scripts, not bit-identical to the original ModelDB code."
+    },
+    {
+      "rank": 2,
+      "model_name": "Pospischil2008_LTS (low-threshold-spiking cell with T-type Ca current, NeuroML2 conversion)",
+      "source_repo_url": "https://github.com/OpenSourceBrain/PospischilEtAl2008",
+      "file_paths": [
+        "NeuroML2/cells/LTS/LTS.cell.nml",
+        "NeuroML2/cells/LTS/LTS.net.nml",
+        "NeuroML2/cells/LTS/LEMS_LTS.xml",
+        "NeuroML2/cells/LTS/.test.LTS.spikes.LEMS.omt",
+        "NeuroML2/cells/LTS/.test.validate.omt",
+        "NeuroML2/channels/IT/IT.channel.nml",
+        "NeuroML2/channels/Ca/Ca.nml",
+        "NeuroML2/channels/Na/Na.channel.nml",
+        "NeuroML2/channels/Kd/Kd.channel.nml",
+        "NeuroML2/channels/IM/IM.channel.nml",
+        "NeuroML2/channels/Leak/Leak.channel.nml",
+        "NEURON_MODIFIED/.test.LTS.spikes.mep"
+      ],
+      "pinned_commit_sha": "049081c39357d9e7c478b63ef7b10f374d1c50f4",
+      "pinned_commit_date": "2025-11-25T20:29:46Z",
+      "pinned_raw_url_pattern": "https://raw.githubusercontent.com/OpenSourceBrain/PospischilEtAl2008/049081c39357d9e7c478b63ef7b10f374d1c50f4/<path>",
+      "license_spdx": "MIT",
+      "license_detail": "Same repository LICENSE as rank 1: MIT for NeuroML2/, with a citation condition on NEURON_ORIG and NEURON_MODIFIED (the .mep reference file lives in the latter).",
+      "license_url": "https://github.com/OpenSourceBrain/PospischilEtAl2008/blob/049081c39357d9e7c478b63ef7b10f374d1c50f4/LICENSE",
+      "license_verified_before_download": true,
+      "original_citation": "Pospischil M, Toledo-Rodriguez M, Monier C, Piwkowska Z, Bal T, Fregnac Y, Markram H, Destexhe A. Minimal Hodgkin-Huxley type models for different classes of cortical and thalamic neurons. Biological Cybernetics 99(4-5):427-441, 2008. doi:10.1007/s00422-008-0263-8. ModelDB 123623. The IT channel file's notes say its kinetics are based on data from Huguenard & McCormick 1992 and Huguenard & Prince 1992; that attribution is as stated in the file and was not independently verified.",
+      "citation_url": "https://api.crossref.org/works/10.1007/s00422-008-0263-8",
+      "neuroml_version_or_schema": "Files declare NeuroML_v2beta4.xsd. libNeuroML 0.6.7 strict validation FAILS for IT.channel.nml, LTS.cell.nml and LTS.net.nml with the same error: gate 's' has type 'IT_s_gate' (line 52 of IT.channel.nml), which is not in the XSD gateTypes enumeration. IT_s_gate is a custom LEMS ComponentType defined in the same file, extending gateHHtauInf; IT_s_inf_inf, IT_u_tau_tau and IT_u_inf_inf are also custom. By contrast, jnml -validate on LTS.net.nml and LTS.cell.nml completed successfully in CI run 30447139603 (NeuroML2/cells/LTS/.test.validate.omt). NeuroML2/channels/IT has no .test.validate.omt, so IT.channel.nml was not validated standalone in CI. Whether jnml -validate descends into included files is unverified. Ca.nml and the other channel files passed libNeuroML validation.",
+      "single_compartment": "yes: one segment 'Soma' (diameter 96.0 um), libNeuroML loader reports segments=1",
+      "channels": "LeakConductance 1e-5 S/cm2 (erev -85 mV); Na 0.05 S/cm2 (erev 50 mV); Kd 0.005 S/cm2 (erev -100 mV); IM 3e-5 S/cm2 (erev -100 mV); IT low-threshold (T-type) Ca, channelDensityNernst 4e-4 S/cm2, gates s^2 (instantaneous activation, custom ComponentType) and u (tau/inf custom ComponentTypes, q10ExpTemp q10Factor 3 at 24 degC); intracellular Ca species with CaPoolModel (Ca.nml), initial [Ca]in 2.4e-4 mM, [Ca]out 2.0 mM. Cm 1.0 uF/cm2, initMembPotential -84 mV, network temperature 36 degC.",
+      "reference_protocol_in_repo": "pulseGenerator 0.15 nA (1.5E-10 A), delay 400 ms, duration 400 ms; LEMS simulation 1000 ms, step 0.001 ms; outputs LTS.dat (v), LTS.cai.dat ([Ca]), LTS.eca.dat (Ca reversal)",
+      "expected_behavior": "OMV reference (NEURON_MODIFIED/.test.LTS.spikes.mep): voltage spike times 431.423, 445.189, 517.237, 720.422 ms, and [Ca] threshold crossings (0.0009 mM) at 430.315 and 443.502 ms. The first two spikes, 13.8 ms apart, coincide with Ca transients and are followed by sparse later spikes. That fits an initial low-threshold Ca-driven response, but the interpretation is unverified. The cell includes IT, so a post-inhibitory rebound response after release from hyperpolarisation is the scientific reason to pick it. No repository test exercises hyperpolarisation or rebound, so rebound behaviour is unverified and must be checked by simulation in M1/M3.",
+      "validation_evidence": "(1) CI run 30447139603 at the pinned SHA: the py3.12 jNeuroML job log shows NeuroML2/cells/LTS/.test.LTS.spikes.LEMS.omt passed both observables (voltage spike times and [Ca] 'ca spikes'), and NeuroML2/channels/IT/.test.IT.nonernst.LEMS.omt passed; the py3.12 jNeuroML_validate job log shows jnml -validate LTS.net.nml LTS.cell.nml completed successfully. The jNeuroML_NEURON and NEURON jobs in that run also succeeded. (2) libNeuroML 0.6.7 strict validation: INVALID (see neuroml_version_or_schema). (3) Only the jNeuroML_Moose py3.10 job failed in that run.",
+      "ci_urls": [
+        "https://github.com/OpenSourceBrain/PospischilEtAl2008/actions/runs/30447139603"
+      ],
+      "file_sha256": [
+        "d63981d49223580804c8514a66791388eb6c6adef4a4c03c40046a9b87abfbb3  NeuroML2/cells/LTS/LTS.cell.nml",
+        "4fa58713603da893fec1ad523a6b292922e167809b3a85fdf61a753122f8f771  NeuroML2/cells/LTS/LTS.net.nml",
+        "96c5294d5b1a5bbdb0be6904e4fe0d7d1173447017b095de729f1242fe32299f  NeuroML2/cells/LTS/LEMS_LTS.xml",
+        "9bc8d4ee151f8192e6f0c7bcf073e73a82c380b432a517e04090a024970836c0  NeuroML2/cells/LTS/.test.LTS.spikes.LEMS.omt",
+        "b25a7201f5aab3f120c0be158b21d5872be1bd31758b1a97f6d844ed6569b55a  NeuroML2/cells/LTS/.test.validate.omt",
+        "cc0afdc743130a38ee6736abecdb14384eae3fc57c74975740b1a38be3d3026f  NeuroML2/channels/IT/IT.channel.nml",
+        "2bd89c887c3f4183253a560100dec2cca9dcf61379df5522e2d5ef9e9e1d44e3  NeuroML2/channels/Ca/Ca.nml",
+        "7b019f4406eff251ffdbcdbd6dafd8c5f3731e1682ef5922b0eead6efe3a9eb6  NeuroML2/channels/Na/Na.channel.nml",
+        "6cc779cd5ad536e8e22631d89e62690be8954b1cfc85aaec06f479f528bdb4b9  NeuroML2/channels/Kd/Kd.channel.nml",
+        "9a1fbbc8756fcbbb2e92a62107eb72b8acd5bb95c5d77bb7f5ad09bb2213e8a9  NeuroML2/channels/IM/IM.channel.nml",
+        "41eb0263b1be315c429f64d040ca5eb34277da05031b01d94381859d01360f9d  NeuroML2/channels/Leak/Leak.channel.nml",
+        "e7613955d2f054d81295daeb0aac7f493ef3eea32c8f7cdee68b58e0de338c96  NEURON_MODIFIED/.test.LTS.spikes.mep"
+      ],
+      "runtime_notes": "Not measured locally (no Java). The reference run is 1000 ms at dt 0.001 ms (1e6 steps). The model carries extra state (Ca pool, Nernst reversal), and the IT gate uses an instantaneous (tau=0) activation, which may make it stiffer or more dt-sensitive; this needs checking in the h, h/2, h/4 tolerance calibration. Execution should be deterministic: the only input is a pulseGenerator, and no stochastic elements were found in the inspected files.",
+      "protocol_suitability": "Best candidate among those inspected for hyperpolarising-step and hyperpolarisation-release rebound protocols (T-type current present) and for first-spike latency and burst-count features. Also usable for depolarising steps and rheobase. No Ih, so a sag ratio is not expected to be meaningful.",
+      "concerns": "BLOCKER-LEVEL DECISION: validators disagree (libNeuroML strict XSD rejects the file; jnml -validate accepts it in CI). NeuroSem must fix jnml -validate, with its version recorded, as the structural-validity oracle; otherwise every LTS mutant would be classed 'structurally invalid' by the pure-Python checker. The custom LEMS ComponentTypes put kinetic expressions in LEMS strings, so mutation operators and valid transformations (unit conversion, renaming) must handle LEMS-level expressions and references, not just NeuroML attributes. The IT file's annotation labels the channel as 'K channels', an upstream metadata inconsistency (observed at line 43); the file is ISO-8859-1 encoded. Rebound behaviour is unverified. The cell shares channel files and provenance with RS, so the pair is correlated. Same Zenodo-release versus commit-pin and NEURON_MODIFIED citation-condition notes as rank 1."
+    },
+    {
+      "rank": 3,
+      "model_name": "Pospischil2008_FS (fast-spiking cell, NeuroML2 conversion)",
+      "source_repo_url": "https://github.com/OpenSourceBrain/PospischilEtAl2008",
+      "file_paths": [
+        "NeuroML2/cells/FS/FS.cell.nml",
+        "NeuroML2/cells/FS/FS.net.nml",
+        "NeuroML2/cells/FS/LEMS_FS.xml",
+        "NeuroML2/channels/Na/Na.channel.nml",
+        "NeuroML2/channels/Kd/Kd.channel.nml",
+        "NeuroML2/channels/IM/IM.channel.nml",
+        "NeuroML2/channels/Leak/Leak.channel.nml",
+        "NEURON_MODIFIED/.test.FS.spikes.mep"
+      ],
+      "pinned_commit_sha": "049081c39357d9e7c478b63ef7b10f374d1c50f4",
+      "license_spdx": "MIT",
+      "license_url": "https://github.com/OpenSourceBrain/PospischilEtAl2008/blob/049081c39357d9e7c478b63ef7b10f374d1c50f4/LICENSE",
+      "license_verified_before_download": true,
+      "original_citation": "Pospischil M et al. Minimal Hodgkin-Huxley type models for different classes of cortical and thalamic neurons. Biological Cybernetics 99(4-5):427-441, 2008. doi:10.1007/s00422-008-0263-8. ModelDB 123623.",
+      "citation_url": "https://api.crossref.org/works/10.1007/s00422-008-0263-8",
+      "neuroml_version_or_schema": "Declares NeuroML_v2beta4.xsd; libNeuroML 0.6.7 validate_neuroml2 VALID (FS.cell.nml); CI jnml -validate passed for NeuroML2/cells/FS in run 30447139603.",
+      "single_compartment": "yes: one segment (libNeuroML loader segments=1)",
+      "channels": "LeakConductance 0.15 mS/cm2 (erev -70 mV); Na 50.0 mS/cm2 (erev 50 mV); Kd 10.0 mS/cm2 (erev -100 mV). FS.cell.nml includes the IM channel file but assigns no IM density. initMembPotential -70 mV; temperature 36 degC.",
+      "reference_protocol_in_repo": "pulseGenerator 0.5 nA, delay 300 ms, duration 410 ms; simulation 1000 ms, dt 0.001 ms",
+      "expected_behavior": "OMV reference (.test.FS.spikes.mep): 20 spikes from 317.023 to 700.299 ms with near-constant interspike intervals of about 20.17 ms. Regular, non-adapting tonic firing is the expected regime (inferred from reference times; confirm by simulation).",
+      "validation_evidence": "libNeuroML strict validation VALID. CI run 30447139603 py3.12 jNeuroML job: NeuroML2/cells/FS/.test.FS.spikes.LEMS.omt spike-times check passed. The repo also has FS OMV files for MOOSE and NEURON.",
+      "file_sha256": [
+        "65a9c01beb6f2cf94ea0b35464e1b7206b8ecb219cefedca2c8b328847a1e4ae  NeuroML2/cells/FS/FS.cell.nml",
+        "57a01d939e8dc42775f822844a85fa50947cdfd00115763de04090c07aecdba9  NeuroML2/cells/FS/FS.net.nml",
+        "dc3cd1df9b8fd4046b62a13693ebd6a9ce53b831961ca9bd138024253a507154  NeuroML2/cells/FS/LEMS_FS.xml",
+        "7b019f4406eff251ffdbcdbd6dafd8c5f3731e1682ef5922b0eead6efe3a9eb6  NeuroML2/channels/Na/Na.channel.nml",
+        "6cc779cd5ad536e8e22631d89e62690be8954b1cfc85aaec06f479f528bdb4b9  NeuroML2/channels/Kd/Kd.channel.nml",
+        "9a1fbbc8756fcbbb2e92a62107eb72b8acd5bb95c5d77bb7f5ad09bb2213e8a9  NeuroML2/channels/IM/IM.channel.nml",
+        "41eb0263b1be315c429f64d040ca5eb34277da05031b01d94381859d01360f9d  NeuroML2/channels/Leak/Leak.channel.nml",
+        "b8380949af98d4fb596e4734bb1f88b0301897d5fc07827795f29f00572930f0  NEURON_MODIFIED/.test.FS.spikes.mep"
+      ],
+      "runtime_notes": "Not measured locally; 1000 ms at dt 0.001 ms reference. Deterministic inputs only.",
+      "protocol_suitability": "Clean tonic-spiking contrast to RS (same channel family without IM density). Good for step, rheobase, ramp and pulse protocols; weak for sag or rebound.",
+      "concerns": "Same repository and channel files as RS/LTS (correlated). Low behavioural diversity relative to RS for the rebound and hyperpolarisation protocols. Includes an unused IM channel file, which matters for 'missing include' or 'wrong channel' mutation operators."
+    },
+    {
+      "rank": 4,
+      "model_name": "NeuroML2_SingleCompHHCell (hhcell) run via LEMS_NML2_Ex5_DetCell",
+      "source_repo_url": "https://github.com/NeuroML/NeuroML2",
+      "file_paths": [
+        "examples/NML2_SingleCompHHCell.nml",
+        "LEMSexamples/LEMS_NML2_Ex5_DetCell.xml",
+        "LEMSexamples/test/.test.ex5.jnml.omt",
+        "LEMSexamples/test/.test.ex5.mep",
+        "LICENSE.lesser"
+      ],
+      "pinned_commit_sha": "a5f5dadccd23606e683eaa0dd58dd2c3b2a7ed58",
+      "pinned_commit_date": "2026-09-02T20:44:35Z (GitHub API commits/master). Latest GitHub release at retrieval: NMLv2.3.1, published 2024-08-20 (https://github.com/NeuroML/NeuroML2/releases/tag/NMLv2.3.1).",
+      "pinned_raw_url_pattern": "https://raw.githubusercontent.com/NeuroML/NeuroML2/a5f5dadccd23606e683eaa0dd58dd2c3b2a7ed58/<path>",
+      "license_spdx": "LGPL-3.0",
+      "license_detail": "GitHub API license: LGPL-3.0 (file LICENSE.lesser). The repository README states the code is distributed under the GNU Lesser General Public License.",
+      "license_url": "https://github.com/NeuroML/NeuroML2/blob/a5f5dadccd23606e683eaa0dd58dd2c3b2a7ed58/LICENSE.lesser",
+      "license_verified_before_download": true,
+      "original_citation": "Hodgkin AL, Huxley AF. A quantitative description of membrane current and its application to conduction and excitation in nerve. The Journal of Physiology 117(4):500-544, 1952. doi:10.1113/jphysiol.1952.sp004764. The NeuroML docs page for the single-compartment HH example attributes the model to this paper. The NeuroML2 file itself is a reference and teaching implementation (HH parameters on a 1000 um2 sphere), not a curated conversion of a specific published model file.",
+      "citation_url": "https://api.crossref.org/works?query.title=quantitative+description+of+membrane+current&query.author=Hodgkin&filter=until-pub-date:1953 (first item DOI 10.1113/jphysiol.1952.sp004764)",
+      "additional_provenance_urls": [
+        "https://docs.neuroml.org/Userdocs/SingleCompartmentHHExample.html"
+      ],
+      "neuroml_version_or_schema": "Declares ../Schemas/NeuroML2/NeuroML_v2beta4.xsd (relative). examples/README.md says files starting with NML2_ are valid against the latest schema in ../Schemas/NeuroML2/. libNeuroML 0.6.7 validate_neuroml2: VALID.",
+      "single_compartment": "yes: one segment 'soma' (diameter 17.841242 um, giving 1000 um2 area per file comment); libNeuroML loader segments=1",
+      "channels": "passiveChan leak 3.0 S/m2 (erev -54.3 mV); naChan HH Na m^3 h, 120.0 mS/cm2 (erev 50 mV); kChan HH K n^4, 360 S/m2 (erev -77 mV). Cm 1.0 uF/cm2, initMembPotential -65 mV, spikeThresh -20 mV. Conductance densities use mixed units (S_per_m2 and mS_per_cm2), which is convenient for equivalent-unit-conversion valid transformations.",
+      "reference_protocol_in_repo": "pulseGenerator 0.08 nA, delay 100 ms, duration 100 ms (explicitInput); LEMS Ex5 simulation 300 ms, step 0.01 ms; outputs results/ex5_v.dat and results/ex5_vars.dat",
+      "expected_behavior": "OMV expected spike times (.test.ex5.mep): 102.22, 118.46, 134.5, 150.52, 166.55, 182.58, 198.6 ms, i.e. 7 regular spikes about 16 ms apart during the step (tonic spiking). No adaptation or rebound currents are present.",
+      "validation_evidence": "(1) libNeuroML 0.6.7: VALID. (2) NeuroML2 'Run OMV tests' run 33681093913 (2026-09-02) at the pinned SHA: all 13 jobs succeeded (jNeuroML, jNeuroML_validate, jNeuroML_NEURON, jNeuroML_NetPyNE, jNeuroML_Brian2, jNeuroML_EDEN, PyLEMS_NeuroML2 on py3.10/3.12 as listed). The py3.12 jNeuroML job log shows .test.ex5.jnml.omt passed both the 'v' and 'm' spike-time observables; the py3.12 PyLEMS_NeuroML2 job log shows .test.ex5.pylems.omt passed. (3) Local check in the scratch venv: PyLEMS 0.6.9 ran LEMS_NML2_Ex5_DetCell.xml twice (NeuroML2CoreTypes fetched from the same pinned SHA). Each run took about 6 s wall time and wrote 30000 rows at dt 0.01 ms, and the two ex5_v.dat files were byte-identical (SHA-256 1b405c135eba976130ccaf01de5175480591543e5dadd6983e425de877660d17). Threshold-crossing spike times were 102.2, 118.39, 134.37, 150.34, 166.32, 182.29, 198.26 ms. These deviate from the jNeuroML-derived expected times by up to about 0.34 ms at the 7th spike, a simulator-dependent difference relevant to tolerance design. That is a PyLEMS observation, not a jNeuroML result.",
+      "ci_urls": [
+        "https://github.com/NeuroML/NeuroML2/actions/runs/33681093913",
+        "https://github.com/NeuroML/NeuroML2/blob/a5f5dadccd23606e683eaa0dd58dd2c3b2a7ed58/.github/workflows/omv-ci.yml"
+      ],
+      "file_sha256": [
+        "5bc68caece1b5a10c4b16d7ead4045b7add061aa3096f6a5dea8a54bd445d404  examples/NML2_SingleCompHHCell.nml",
+        "cad3c94fbc4f14b8aa1af457c1cbad33e76497c955890ad556d27c06104c3fac  LEMSexamples/LEMS_NML2_Ex5_DetCell.xml",
+        "f4cc2a00c2e376997bb47c2df0351498b2a370aa42f0c19e809beaa12dcceeef  LEMSexamples/test/.test.ex5.jnml.omt",
+        "ba6898adf96a636928b44119e29b957c71ef7d0019c422d43d0616614a0c0e63  LEMSexamples/test/.test.ex5.mep",
+        "97628afebc60f026f5c2b25d7491c46a5c4ee61f693e7cfa07fbd2c03605979b  LICENSE.lesser"
+      ],
+      "runtime_notes": "Fast: 300 ms at dt 0.01 ms (30,000 steps). About 6 s per run in pure-Python PyLEMS locally; jNeuroML runtime not measured (no Java). Deterministic per the byte-identical repeated PyLEMS runs on this machine. Determinism under jNeuroML is still to be confirmed in M1.",
+      "protocol_suitability": "Good for baseline, weak step, rheobase, fixed-multiple step, ramp, short and paired pulses. Adaptation, sag and T-type rebound features are not expected to be informative. The example is fast enough to serve as a smoke-test fixture for pipeline plumbing.",
+      "concerns": "LGPL-3.0 is weak copyleft: redistributing modified mutant files may carry LGPL obligations, and compatibility with NeuroSem's chosen license is a decision for Neel. The file lives in the language-specification repository, where examples can change between commits (pin the SHA). It is a textbook implementation rather than a paper-specific curated model. LEMS_NML2_Ex5_DetCell.xml includes the NML file by relative path (../examples/) and writes to results/, so fixture layout must preserve relative paths. Behaviour is similar to FS/WB (tonic), so it adds little firing-regime diversity."
+    },
+    {
+      "rank": 5,
+      "model_name": "WangBuzsaki1996 wb1 (hippocampal basket/interneuron cell, NeuroML2 LEMS version)",
+      "source_repo_url": "https://github.com/OpenSourceBrain/WangBuzsaki1996",
+      "file_paths": [
+        "NeuroML2/LEMS/WangBuzsaki.cell.nml",
+        "NeuroML2/LEMS/WangBuzsaki.net.nml",
+        "NeuroML2/LEMS/LEMS_WangBuzsaki.xml",
+        "NeuroML2/LEMS/.test.wb.jnml.omt",
+        "NeuroML2/LEMS/README.md",
+        "CITATION.md",
+        ".test.wb.mep"
+      ],
+      "pinned_commit_sha": "c532284492c3e421a7f8e88b3090af8ffee8cf6a",
+      "pinned_commit_date": "2025-08-22T12:07:48Z",
+      "pinned_raw_url_pattern": "https://raw.githubusercontent.com/OpenSourceBrain/WangBuzsaki1996/c532284492c3e421a7f8e88b3090af8ffee8cf6a/<path>",
+      "license_spdx": "MIT",
+      "license_detail": "The GitHub API reports NOASSERTION. LICENSE text: MIT (Copyright 2018 Open Source Brain developers) for all software except the ModelDB_NEURON and NEURON directories (provided on condition of citing the ModelDB entry and original publication) and the Brian directory (own license.txt). The NeuroML2/ files are MIT.",
+      "license_url": "https://github.com/OpenSourceBrain/WangBuzsaki1996/blob/c532284492c3e421a7f8e88b3090af8ffee8cf6a/LICENSE",
+      "license_verified_before_download": true,
+      "original_citation": "Wang X-J, Buzsaki G. Gamma oscillation by synaptic inhibition in a hippocampal interneuronal network model. The Journal of Neuroscience 16(20):6402-6413, 1996 (issued 1996-10-15 per Crossref). doi:10.1523/jneurosci.16-20-06402.1996. ModelDB accession 26997 per the repo CITATION.md (ModelDB page not fetched).",
+      "citation_url": "https://api.crossref.org/works/10.1523/jneurosci.16-20-06402.1996",
+      "neuroml_version_or_schema": "Cell file declares NeuroML_v2beta5.xsd; net file declares v2beta4. libNeuroML 0.6.7 validate_neuroml2: VALID for both, even though the cell file defines an inline LEMS ComponentType (gateHHratesInstantaneous) used via gateHHrates type=.",
+      "single_compartment": "yes: one segment (cylinder, diameter 10 um, length 3.1831 um); libNeuroML loader segments=1",
+      "channels": "na_chan 35 mS/cm2 (erev 55 mV), m^3 instantaneous (custom gateHHratesInstantaneous), h with q10Fixed 5; k_chan 9 mS/cm2 (erev -90 mV), n^4 with q10Fixed 5; leak 0.1 mS/cm2 (erev -65 mV). Cm 1.0 uF/cm2, initMembPotential -70 mV, network temperature 37 degC.",
+      "reference_protocol_in_repo": "pulseGenerator 2 pA, delay 0 ms, duration 100 ms; simulation 100 ms at dt 0.001 ms; output wangbuzsaki.dat",
+      "expected_behavior": "OMV reference (.test.wb.mep): 10 spikes at 8.901, 18.754, 28.575, 38.394, 48.214, 58.033, 67.852, 77.672, 87.491, 97.311 ms, i.e. regular firing about 9.8 ms apart (tonic, non-adapting per reference times).",
+      "validation_evidence": "libNeuroML strict validation VALID (cell and net). GitHub Actions 'Continuous build using OMV' run 17154830381 at the pinned SHA: success. The repo has jnml, jnml-NEURON and jnml-NetPyNE OMV files for the NeuroML2/LEMS version.",
+      "ci_urls": [
+        "https://github.com/OpenSourceBrain/WangBuzsaki1996/actions/runs/17154830381"
+      ],
+      "file_sha256": [
+        "1ef15bd09c3d7d2beb23954aa1b827a12306549bf6e2a08750355bb89fbf8760  NeuroML2/LEMS/WangBuzsaki.cell.nml",
+        "ecc8d8d7e195eba8d56bca02a55fda0ed44dbda898c5f726d9041a796ed5c1fb  NeuroML2/LEMS/WangBuzsaki.net.nml",
+        "62b506cb1223915dbc2d00dca902d8d80bfdbc489975c4e3d587b198fea5e621  NeuroML2/LEMS/LEMS_WangBuzsaki.xml",
+        "7df6d19469619afe3a776a4738a35dd2f5ed6bed6f24b36d63ead3d713c65ce8  NeuroML2/LEMS/.test.wb.jnml.omt",
+        "533f04ea67c6393a36bd2611eab5beee45ec064c59a0f802286dcd9b608912a0  NeuroML2/LEMS/README.md",
+        "2f9818345f33891a56a57110c3f21b73299cf389f0c3fc9fc3a6050e1cd99927  CITATION.md",
+        "e34069b36f9327e93b7e04a5f1457dc6efb3b60abf4489cbcdee97d5da16bf91  .test.wb.mep"
+      ],
+      "runtime_notes": "Short reference run (100 ms at dt 0.001 ms); jNeuroML runtime not measured locally. Deterministic input only.",
+      "protocol_suitability": "Tonic fast-spiking contrast; suitable for step, rheobase, ramp and pulse protocols. The reference stimulus starts at t=0, so a baseline window must be added by NeuroSem protocols.",
+      "concerns": "Independent source from Pospischil (good for diversity of provenance), but firing regime is similar to FS/HH. Inline custom ComponentType (instantaneous m gate) means mutation tooling must handle LEMS definitions. The 100-cell network file in the same folder is not needed. NeuroML2/LEMS/README.md was hashed but not reviewed in detail. The Zenodo 'latestdoi' badge only redirected (301) and its metadata was not retrieved (unverified)."
+    },
+    {
+      "rank": 6,
+      "model_name": "Pospischil2008_IB (cell labelled intrinsically bursting, with high-threshold Ca IL, NeuroML2 conversion)",
+      "source_repo_url": "https://github.com/OpenSourceBrain/PospischilEtAl2008",
+      "file_paths": [
+        "NeuroML2/cells/IB/IB.cell.nml",
+        "NeuroML2/cells/IB/IB.net.nml",
+        "NeuroML2/cells/IB/LEMS_IB.xml",
+        "NeuroML2/channels/IL/IL.channel.nml",
+        "NeuroML2/channels/Na/Na.channel.nml",
+        "NeuroML2/channels/Kd/Kd.channel.nml",
+        "NeuroML2/channels/IM/IM.channel.nml",
+        "NeuroML2/channels/Leak/Leak.channel.nml",
+        "NEURON_MODIFIED/.test.IB.spikes.mep"
+      ],
+      "pinned_commit_sha": "049081c39357d9e7c478b63ef7b10f374d1c50f4",
+      "license_spdx": "MIT",
+      "license_url": "https://github.com/OpenSourceBrain/PospischilEtAl2008/blob/049081c39357d9e7c478b63ef7b10f374d1c50f4/LICENSE",
+      "license_verified_before_download": true,
+      "original_citation": "Pospischil M et al. Minimal Hodgkin-Huxley type models for different classes of cortical and thalamic neurons. Biological Cybernetics 99(4-5):427-441, 2008. doi:10.1007/s00422-008-0263-8. ModelDB 123623.",
+      "citation_url": "https://api.crossref.org/works/10.1007/s00422-008-0263-8",
+      "neuroml_version_or_schema": "Declares NeuroML_v2beta4.xsd; libNeuroML 0.6.7 validate_neuroml2 VALID for IB.cell.nml (with includes); CI jnml -validate passed for NeuroML2/cells/IB and NeuroML2/channels/IL.",
+      "single_compartment": "yes: one segment (libNeuroML loader segments=1)",
+      "channels": "LeakConductance 0.01 mS/cm2 (erev -85 mV); Na 50.0 mS/cm2; Kd 5.0 mS/cm2; IM 0.03 mS/cm2; IL high-threshold Ca 1.7e-4 S/cm2 with fixed erev 120.2547 mV. initMembPotential -84 mV; temperature 36 degC. IL.channel.nml contains custom ComponentType definitions (8 ComponentType tag occurrences), yet validated.",
+      "reference_protocol_in_repo": "pulseGenerator 0.15 nA, delay 500 ms, duration 2000 ms, but LEMS simulation length is 1000 ms, so the step outlasts the simulation; dt 0.001 ms",
+      "expected_behavior": "OMV reference (.test.IB.spikes.mep): 8 spikes at 617.725, 624.632, 631.101, 637.786, 644.909, 652.671, 661.42, 672.085 ms (intervals lengthening from about 6.9 to 10.7 ms). A commented-out longer reference list in the same file continues with sparse spikes out to 2432.682 ms. The initial high-frequency group and the 'IB' label suggest a bursting-type onset; the firing regime is not verified here.",
+      "validation_evidence": "libNeuroML strict validation VALID. CI run 30447139603 py3.12 jNeuroML job: NeuroML2/cells/IB/.test.IB.spikes.LEMS.omt passed; IL channel LEMS test passed.",
+      "file_sha256": [
+        "99a3cc410042d45794f5e314e1060ff99e9718f6aac70d4725d7df9bab7ce59c  NeuroML2/cells/IB/IB.cell.nml",
+        "24c5b1c1c989a50378659b265cb8efd358659903015c1c59c49b2c88c4aa9363  NeuroML2/cells/IB/IB.net.nml",
+        "582ebefedd5b1b230d302ca71b8952f7ff866e49be94ff0e2bde852ced92fb8c  NeuroML2/cells/IB/LEMS_IB.xml",
+        "e13560db5f57abfb9ebc9cc44679d6248ba43b134d25a6fa730ad74f78b53b91  NeuroML2/channels/IL/IL.channel.nml",
+        "7b019f4406eff251ffdbcdbd6dafd8c5f3731e1682ef5922b0eead6efe3a9eb6  NeuroML2/channels/Na/Na.channel.nml",
+        "6cc779cd5ad536e8e22631d89e62690be8954b1cfc85aaec06f479f528bdb4b9  NeuroML2/channels/Kd/Kd.channel.nml",
+        "9a1fbbc8756fcbbb2e92a62107eb72b8acd5bb95c5d77bb7f5ad09bb2213e8a9  NeuroML2/channels/IM/IM.channel.nml",
+        "41eb0263b1be315c429f64d040ca5eb34277da05031b01d94381859d01360f9d  NeuroML2/channels/Leak/Leak.channel.nml",
+        "63265a0ef69e2cf860ded35c2df2a323bc4f2005a24ac4277ee96cd6f5775fdd  NEURON_MODIFIED/.test.IB.spikes.mep"
+      ],
+      "runtime_notes": "Not measured locally; 1000 ms at dt 0.001 ms reference; a slow firing phase in the commented reference suggests long simulations (over 2 s) may be needed to characterise it.",
+      "protocol_suitability": "Potentially useful later for burst-count and adaptation features; long-step protocols needed. Weaker than LTS for rebound.",
+      "concerns": "The reference stimulus is truncated by the simulation length. Its firing-regime interpretation is unverified. It shares provenance and channel files with RS/LTS/FS. The IL channel has a fixed Ca reversal (not Nernst), unlike IT in LTS."
+    }
+  ],
+  "excluded_or_not_selected": [
+    {
+      "item": "OpenSourceBrain/hodgkin_huxley_tutorial",
+      "finding": "GitHub API returned 404 Not Found for this name on 2026-09-13; not evaluated further.",
+      "url": "https://api.github.com/repos/OpenSourceBrain/hodgkin_huxley_tutorial"
+    },
+    {
+      "item": "OpenSourceBrain/hh-testing",
+      "finding": "No LICENSE (GitHub license endpoint 404), which is a blocker; last push 2017-04-05.",
+      "url": "https://api.github.com/repos/OpenSourceBrain/hh-testing"
+    },
+    {
+      "item": "OpenSourceBrain/3684 (Thalamic Relay Neuron: I-h, McCormick & Pape 1990, per repo description) and OpenSourceBrain/279 (Low Threshold Calcium Currents in TC cells, Destexhe et al 1998, per repo description)",
+      "finding": "Both would have fitted the Ih-sag and T-type-rebound brief, but neither repository has a detected LICENSE (blocker), and their recursive trees contain only readme files and no .nml files. Not usable as NeuroML fixtures.",
+      "url": "https://api.github.com/orgs/OpenSourceBrain/repos"
+    },
+    {
+      "item": "OpenSourceBrain/AllenInstituteNeuroML (Allen Cell Types models converted to NeuroML2)",
+      "finding": "The repo LICENSE applies MIT to OSB software but carves out content reused from the Allen Cell Types Database (copyright 2015 Allen Institute). The Allen Institute terms of use restrict redistribution for commercial purposes, require attribution per their citation policy, and name no open license. The NeuroML2 biophysical cell files (Cell_*.cell.nml) are 0.4 to 1.4 MB each per the Git tree sizes, consistent with detailed morphologies, so they are not minimal single-compartment fixtures; not downloaded. The GLIF conversions are generalized leaky integrate-and-fire variants per models/GLIF/README.md, not conductance-based HH-type models. CI at bd54a29 succeeded. Excluded for the pilot; license terms would need separate review before any use.",
+      "url": "https://github.com/OpenSourceBrain/AllenInstituteNeuroML ; https://alleninstitute.org/terms-of-use/"
+    },
+    {
+      "item": "NeuroML-DB (neuroml-db.org)",
+      "finding": "The about page (fetched with curl) states only an image-use policy (images CC Attribution); no model-level license statement was found, so each model's license must be traced to its original source. The search page is JavaScript-rendered (485-byte HTML via curl, no model IDs extractable); WebFetch failed with a certificate-chain error. No individual NeuroML-DB model records were evaluated; this remains unverified. Database paper verified via Crossref: Birgiolas J, Haynes V, Gleeson P, Gerkin RC, Dietrich SW, Crook S. NeuroML-DB: Sharing and characterizing data-driven neuroscience models described in NeuroML. PLOS Computational Biology 19(3):e1010941, 2023. doi:10.1371/journal.pcbi.1010941.",
+      "url": "https://neuroml-db.org/about ; https://api.crossref.org/works/10.1371/journal.pcbi.1010941"
+    },
+    {
+      "item": "OpenSourceBrain/IzhikevichModel",
+      "finding": "License BSD-3-Clause (LICENSE.txt, GitHub API). Not selected because the handoff prefers conductance-based models, and the repo description points to the Izhikevich simple-model publication page; files not inspected.",
+      "url": "https://api.github.com/repos/OpenSourceBrain/IzhikevichModel/license"
+    },
+    {
+      "item": "Single-compartment Ih (HCN) NeuroML2 models",
+      "finding": "GitHub code search (hcn, extension:nml, org:OpenSourceBrain) returned 103 hits, dominated by multi-compartment Blue Brain and Allen cells plus channel files in OpenCortex (examples/Balanced/Ih.channel.nml) and NetPyNEShowcase (NeuroML2/chanDens/HCN.channel.nml). No clearly licensed, minimal single-compartment cell with Ih was identified in the time available; this remains an open gap for a later sag-ratio fixture.",
+      "url": "https://api.github.com/search/code?q=hcn+extension:nml+org:OpenSourceBrain"
+    },
+    {
+      "item": "OpenSourceBrain/SolinasEtAl-GolgiCell",
+      "finding": "LICENSE present (GitHub spdx NOASSERTION); model files not inspected, and no single-compartment status was established. Not evaluated further.",
+      "url": "https://api.github.com/repos/OpenSourceBrain/SolinasEtAl-GolgiCell/license"
+    }
+  ],
+  "decisions_for_neel": [
+    "Accept jnml -validate (version to be frozen in M1) as the structural-validity oracle, which permits LTS despite libNeuroML strict-XSD rejection, or require strict pure-Python validity and swap LTS for the NeuroML2 HH Ex5 example.",
+    "Accept the MIT license with directory carve-outs (PospischilEtAl2008) and decide whether the .mep reference spike times from NEURON_MODIFIED (citation-conditioned) may be copied into NeuroSem fixtures or only referenced by URL and hash.",
+    "Decide LGPL-3.0 handling if the NeuroML2 HH example is used (redistribution of modified mutant files).",
+    "Accept that both pilot fixtures come from one paper and repository (correlated models); independent sources are needed for the full study's held-out models."
+  ],
+  "searched": [
+    "GitHub REST API repos/NeuroML/NeuroML2 (metadata, license, commits/master, git tree, README, releases/latest, actions runs/jobs/logs for run 33681093913)",
+    "GitHub REST API repos/OpenSourceBrain/PospischilEtAl2008 (metadata, license, LICENSE contents, CITATION.md, omv-ci.yml, git tree at 049081c, tags/releases, actions runs 30447139603, 26042274142, 19683390438, 19683226292 and job logs for jNeuroML and jNeuroML_validate)",
+    "GitHub REST API repos/OpenSourceBrain/hodgkin_huxley_tutorial (404)",
+    "GitHub REST API orgs/OpenSourceBrain/repos (paginated listing filtered by keywords)",
+    "GitHub REST API repos/OpenSourceBrain/hh-testing, WangBuzsaki1996, AllenInstituteNeuroML, IzhikevichModel, SolinasEtAl-GolgiCell, 3684, 279 (metadata, license, trees, CI runs where relevant)",
+    "GitHub code search: 'NML2_SingleCompHHCell repo:NeuroML/NeuroML2'; 'hcn extension:nml org:OpenSourceBrain'; '\"ionChannel\" Ih extension:nml org:NeuroML'",
+    "raw.githubusercontent.com pinned-SHA downloads (after license verification) for Pospischil RS/LTS/FS/IB, NeuroML2 HH example + Ex5 + NeuroML2CoreTypes, WangBuzsaki1996 NeuroML2/LEMS",
+    "PyPI JSON API: https://pypi.org/pypi/pyneuroml/json, https://pypi.org/pypi/libneuroml/json, https://pypi.org/pypi/pylems/json",
+    "Crossref: https://api.crossref.org/works/10.1007/s00422-008-0263-8 ; https://api.crossref.org/works/10.1523/jneurosci.16-20-06402.1996 ; https://api.crossref.org/works/10.1371/journal.pcbi.1010941 ; Crossref bibliographic queries for Pospischil 2008, Wang & Buzsaki 1996, Hodgkin & Huxley 1952 (one query returned non-JSON transiently; retried successfully)",
+    "ModelDB: https://modeldb.science/123623",
+    "Zenodo API https://zenodo.org/api/records/1936638 (HTTP 504, twice); doi.org redirect for 10.5281/zenodo.1936638; DataCite https://api.datacite.org/dois/10.5281/zenodo.1936638",
+    "docs.neuroml.org: https://docs.neuroml.org/Userdocs/SingleCompartmentHHExample.html",
+    "NeuroML-DB: https://neuroml-db.org/ (WebFetch certificate error), https://neuroml-db.org/about (curl), https://neuroml-db.org/search?q=Pospischil (JS-rendered shell)",
+    "Allen Institute terms of use: https://alleninstitute.org/terms-of-use/",
+    "WebSearch: 'NeuroML-DB neuroml-db.org single compartment models license terms of use'; 'NeuroML2 single compartment cell Ih HCN sag rebound Open Source Brain GitHub'",
+    "Local scratch venv: libNeuroML 0.6.7 validate_neuroml2 on 15 files; PyLEMS 0.6.9 double run of LEMS_NML2_Ex5_DetCell.xml"
+  ]
+}

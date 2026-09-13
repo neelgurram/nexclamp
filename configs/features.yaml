@@ -32,7 +32,7 @@ features:
   first_spike_latency:  {efel: time_to_first_spike,          agg: scalar, unit: ms,  min_spikes: 1}
   ap_amplitude:         {efel: AP_amplitude,                 agg: first,  unit: mV,  min_spikes: 1}
   ap_half_width:        {efel: AP_duration_half_width,       agg: first,  unit: ms,  min_spikes: 1}
-  ahp_depth:            {efel: AHP_depth,                    agg: first,  unit: mV,  min_spikes: 2}
+  ahp_depth:            {efel: AHP_depth,                    agg: first,  unit: mV,  min_spikes: 1}   # defined after one spike (eFEL 5.7.34); P09 evokes one
   first_isi:            {efel: all_ISI_values,               agg: first,  unit: ms,  min_spikes: 2}
   last_isi:             {efel: all_ISI_values,               agg: last,   unit: ms,  min_spikes: 2}
   adaptation_index:     {efel: adaptation_index2,            agg: scalar, unit: "1", min_spikes: 4}
@@ -43,6 +43,7 @@ features:
 # Qualitative firing regime (NeuroSem logic on top of eFEL outputs), evaluated in order.
 firing_regime:
   labels: [silent, single_spike, depolarization_block, bursting, adapting, tonic]
-  depolarization_block_min_gap_fraction: 0.5   # last spike before this fraction of the window with v held > -40 mV
+  depolarization_block_min_gap_fraction: 0.5   # last spike before this fraction of the window ...
+  depolarization_block_v_mV: -40.0             # ... with v held above this voltage afterwards (frozen with the config)
   bursting_min_bursts: 2
   adapting_min_index: 0.1                      # adaptation_index2 above this = adapting

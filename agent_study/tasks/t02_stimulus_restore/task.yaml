@@ -1,0 +1,22 @@
+schema: neurosem-agent-task/1
+task_id: t02_stimulus_restore
+type: restore_changed_stimulus
+base_model: pospischil2008_rs
+title: Restore the changed stimulus protocol of the RS cell simulation
+seeded_fault:
+  description: harness input Input_1 amplitude scaled by 0.9 (0.75 nA -> 0.675 nA)
+  steps:
+    - registry: mutations
+      operator: stim_amplitude
+      site: {file: NeuroML2/cells/RS/RS.net.nml, locator_contains: Input_1}
+      params: {factor: 0.9}
+  expected_after:
+    - file: NeuroML2/cells/RS/RS.net.nml
+      xpath: "//pulseGenerator[@id='Input_1']"
+      attribute: amplitude
+      si_value: 6.75e-10
+allowed_files:
+  - model/NeuroML2/cells/RS/RS.net.nml
+  - model/NeuroML2/cells/RS/LEMS_RS.xml
+answer_files: []
+budget: {max_turns: 80, max_wall_clock_minutes: 60, max_cost_usd: 15.0}

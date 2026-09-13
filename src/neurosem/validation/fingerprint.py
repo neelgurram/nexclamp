@@ -167,7 +167,12 @@ def reproducible_keys(det_h: Sequence[Detection], det_h2: Sequence[Detection] | 
 
 def classify(structural_valid: bool | None, fp_h: Fingerprint | None, fp_h2: Fingerprint | None,
              det_h: Sequence[Detection], det_h2: Sequence[Detection] | None) -> MutantClass:
-    """Spec "Mutant classification". Canonical silence is judged at the nominal level."""
+    """Spec "Mutant classification".
+
+    One detection rule everywhere: a protocol "detects" a mutant only if some feature is
+    detected at h AND at h/2. This applies to the canonical protocol too, so SILENT (class 6)
+    uses exactly the canonical rule of the detection matrix and the primary endpoint.
+    """
     if structural_valid is None:
         raise ToolFailure("structural validation could not be performed")
     if structural_valid is False:
@@ -184,7 +189,7 @@ def classify(structural_valid: bool | None, fp_h: Fingerprint | None, fp_h2: Fin
     keys = reproducible_keys(det_h, det_h2)
     if not keys:
         return MutantClass.EQUIVALENT
-    canonical_detects = any(d.protocol_id == CANONICAL_ID for d in det_h)
+    canonical_detects = any(pid == CANONICAL_ID for pid, _ in keys)
     battery_detects = any(pid != CANONICAL_ID for pid, _ in keys)
     if not canonical_detects and battery_detects:
         return MutantClass.SILENT

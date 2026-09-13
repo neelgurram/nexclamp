@@ -1,0 +1,122 @@
+{
+  "meta": {
+    "milestone": "M0 (audit only)",
+    "assignment": "Adversarial review of NEURO-01..12 (computational neuroscience validity lens)",
+    "date": "2026-09-13",
+    "handoff_read": "C:/Users/gurra/NeuroSem/docs/handoff/NEUROSEM_CLAUDE_HANDOFF.extracted.md",
+    "scratch_dir": "C:/Users/gurra/AppData/Local/Temp/claude/C--Users-gurra-Continuum/d876c622-d308-4d4a-bbf3-2b2374480647/scratchpad/m0/neuro-skeptic/",
+    "verified_in_session": [
+      {"claim": "RS.cell.nml: single segment id 0, diameter 96, groups Soma/all/soma_group all resolve to segment 0; channels Leak, Kd, IM, Na (channelDensityVShift) as densities; initMembPotential -70 mV; leak erev -70 mV; no Ca pool", "url": "https://raw.githubusercontent.com/OpenSourceBrain/PospischilEtAl2008/049081c39357d9e7c478b63ef7b10f374d1c50f4/NeuroML2/cells/RS/RS.cell.nml"},
+      {"claim": "RS.net.nml: pulseGenerator delay 0.3 s, duration 0.4 s, amplitude 7.5E-10 A; networkWithTemperature 36 degC", "url": "https://raw.githubusercontent.com/OpenSourceBrain/PospischilEtAl2008/049081c39357d9e7c478b63ef7b10f374d1c50f4/NeuroML2/cells/RS/RS.net.nml"},
+      {"claim": "LEMS_RS.xml: length 1000 ms, step 0.001 ms, output CG_RS/0/RS/v", "url": "https://raw.githubusercontent.com/OpenSourceBrain/PospischilEtAl2008/049081c39357d9e7c478b63ef7b10f374d1c50f4/NeuroML2/cells/RS/LEMS_RS.xml"},
+      {"claim": "LTS.cell.nml: Leak (erev -85 mV), Na, Kd, IM, IT (channelDensityNernst) and CaPoolModel, no Ih; initMembPotential -84 mV", "url": "https://raw.githubusercontent.com/OpenSourceBrain/PospischilEtAl2008/049081c39357d9e7c478b63ef7b10f374d1c50f4/NeuroML2/cells/LTS/LTS.cell.nml"},
+      {"claim": "LTS.net.nml: pulse delay 400 ms, duration 400 ms, 1.5E-10 A; 36 degC", "url": "https://raw.githubusercontent.com/OpenSourceBrain/PospischilEtAl2008/049081c39357d9e7c478b63ef7b10f374d1c50f4/NeuroML2/cells/LTS/LTS.net.nml"},
+      {"claim": "IB: pulse delay 500 ms + duration 2000 ms; simulation length 1000 ms, so the stimulus runs past the simulation end", "url": "https://raw.githubusercontent.com/OpenSourceBrain/PospischilEtAl2008/049081c39357d9e7c478b63ef7b10f374d1c50f4/NeuroML2/cells/IB/IB.net.nml and .../NeuroML2/cells/IB/LEMS_IB.xml"},
+      {"claim": "NeuroML v2.3.1 schema: channel-density segmentGroup attributes are use='optional' default='all'", "url": "https://raw.githubusercontent.com/NeuroML/NeuroML2/master/Schemas/NeuroML2/NeuroML_v2.3.1.xsd"},
+      {"claim": "NeuroML docs: jLEMS can simulate single compartment models; NEURON is used for models jLEMS cannot simulate, e.g. multicompartmental cells", "url": "https://docs.neuroml.org/Userdocs/SimulatingNeuroMLModels.html"},
+      {"claim": "Prescott et al. 2008 full text: rheobasic stimulation = minimum I eliciting >=1 spike; single short-latency spike in class 2/3 vs slow repetitive spiking in class 1; class 3 f-I undefined; in one model class depends on stimulus intensity; several parameters varied one at a time had functionally equivalent effects on excitability", "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC2551735/fullTextXML"},
+      {"claim": "NeuroML-DB paper full text: 1,222 cell models characterised (1,584 models overall); clusters Multi-Spikers, Rapidly Adapting, Abstract Spikers, Non-Positive Rheobase (spike without stimulation); the 1.5x/3.0x rheobase protocol did not effectively characterise models outside the multi-spiker criteria; Rapidly Adapting models do not spike at 1.5x rheobase", "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10016719/fullTextXML"},
+      {"claim": "Papadakis et al. 2016 abstract: Type I errors approx 62% of the time for experiments without countermeasures, caused by combined use of subsuming and subsumed mutants", "url": "https://api.semanticscholar.org/graph/v1/paper/DOI:10.1145/2931037.2931040?fields=title,year,abstract"},
+      {"claim": "Korngreen, PLoS Comput Biol 22(6), published 2026-06-29, title on excitability and parameter variability in the HH model (title-level only)", "url": "https://api.crossref.org/works/10.1371/journal.pcbi.1014458"},
+      {"claim": "Madeyski, Orzeszyna, Torkar, Jozala, IEEE TSE 40(1), equivalent mutant problem review (title-level only)", "url": "https://api.crossref.org/works/10.1109/TSE.2013.44"},
+      {"claim": "eFEL eFeatures.rst (HTTP 200, 97698 bytes) contains no entries matching pattern|regime|classif, i.e. no firing-regime classifier feature", "url": "https://raw.githubusercontent.com/openbraininstitute/eFEL/master/docs/source/eFeatures.rst"},
+      {"claim": "From M0 eFEL evidence (read, not re-run): default Threshold -20; POSTSTIM trace spike_count 6 vs spike_count_stimint 2, so post-stimulus spikes are countable; HYP trace sag_ratio1 0, sag_amplitude 0; burst_number 0 vs strict_burst_number 1 on an adapting train; depol_block_bool exists", "url": "C:/Users/gurra/NeuroSem/docs/m0_evidence/tools/efel.verify.json"}
+    ],
+    "not_verified": [
+      "Koch et al. 2023 (PMC10244640) depolarisation-block statement was not re-read in this review.",
+      "Degeneracy papers (Prinz 2004, Marder and Goaillard 2006, Marder and Taylor 2011, Goaillard and Marder 2021) and Petilla 2008 were not re-checked; the reviewer reports title-level evidence only.",
+      "Whether RS/LTS slow states settle before stimulus onset: unverified (no simulation run).",
+      "That greedy selection will favour near-threshold protocols: plausible expectation, not evidence."
+    ],
+    "caveats": [
+      "No held-out evaluation created or accessed.",
+      "No results claimed; finite testing is not proof of equivalence."
+    ]
+  },
+  "verdicts": [
+    {
+      "id": "NEURO-01",
+      "verdict": "softened",
+      "revised_severity": "high",
+      "reason": "Core technical point verified: RS is a single isopotential segment with density-specified conductances, no Ca pool, and an absolute pulse current (7.5E-10 A). Per-mutant re-normalisation would therefore absorb area or diameter faults and partly absorb threshold-moving faults, and the handoff's 'normalize to model-specific rheobase' does not say whose rheobase a mutant uses. The point that protocol 4 depends on protocol 3 in count- and runtime-matched random baselines is valid and project-specific. Severity lowered from critical for three reasons. The handoff's stated purpose (comparability across models) most naturally reads as anchoring to the reference. The ambiguity is resolved by one up-front decision. And area/diameter is not in the handoff's biophysical operator list (conductance, reversal potential, capacitance, gating tau, initial voltage, segment group), so full absorption mainly affects unit or morphology errors rather than the listed families.",
+      "revised_recommendation": "Keep recommendations 1, 2 and 4 as written: freeze reference-anchored absolute currents per reference model, measure mutant rheobase only as its own feature, and count rheobase search as a prerequisite in both count and runtime budgets. Keep 3 as an optional secondary analysis. For 5, add an area, diameter or unit-scaling mutant only as a pipeline positive control outside the main detection denominator, since it is not one of the handoff's listed mutation operators."
+    },
+    {
+      "id": "NEURO-02",
+      "verdict": "upheld",
+      "revised_severity": "high",
+      "reason": "Verified from primary full text. Prescott et al. 2008 define rheobasic stimulation as the minimum current giving at least one spike: it gives a single short-latency spike in class 2/3 versus repetitive firing in class 1, and class can depend on stimulus intensity. NeuroML-DB reports a Non-Positive Rheobase cluster that spikes without stimulation, and says its 1.5x/3.0x rheobase protocol did not characterise non-multi-spiker models well (Rapidly Adapting models do not spike at 1.5x). eFEL's default Threshold of -20 mV and depol_block_bool are confirmed in the M0 eFEL evidence. The handoff gives no rheobase search parameters. The Koch 2023 depolarisation-block citation was not re-checked here, but the point stands on general grounds. Hysteresis is correctly flagged as untested rather than asserted.",
+      "revised_recommendation": ""
+    },
+    {
+      "id": "NEURO-03",
+      "verdict": "softened",
+      "revised_severity": "medium",
+      "reason": "Verified: RS has only Leak/Kd/IM/Na, and LTS adds IT and a Ca pool but no Ih, so no pilot fixture can express Ih-type sag. The M0 eFEL evidence shows sag features return 0 or None depending on the trace. One technical claim is wrong: the M0 eFEL audit recorded spike_count 6 versus spike_count_stimint 2 on a trace with post-stimulus spikes. Post-stimulus (rebound) spikes can therefore be counted by that difference or by re-windowing stim_start/stim_end, contrary to the claim that eFEL cannot count them. The claim that rheobase cannot normalise hyperpolarising steps is not a flaw in the handoff, which normalises only depolarising tests. Severity reduced because the pilot uses only 4 protocols and 3-5 features and need not include sag, and 'seek diversity' is aspirational rather than a hard requirement. The applicability and definedness problem remains real for the full study.",
+      "revised_recommendation": "1. Before any mutant exists, freeze a per-reference applicability matrix (feature x protocol) from the reference's own responses at h, h/2 and h/4. 2. Scale hyperpolarising steps to a target steady-state deflection or via reference input resistance. 3. Measure rebound in a separate post-release window: set eFEL stim_start/stim_end to the release window, or use spike_count minus spike_count_stimint. 4. Use three-state outcomes. A defined-to-undefined (or reverse) transition counts as a detection only if the reference is defined at all refinement levels and the mutant's state is stable across its own refinement levels. Never compare 'not applicable' cells. 5. Drop 'sag' from the pilot diversity claim unless an Ih-containing model is added, and decide separately for the full study."
+    },
+    {
+      "id": "NEURO-04",
+      "verdict": "upheld",
+      "revised_severity": "medium",
+      "reason": "Verified: RS and LTS each have one segment, and all three groups resolve to it. The v2.3.1 schema gives channel-density segmentGroup a default of 'all'. The NeuroML docs say jLEMS simulates single compartment models and NEURON is needed for multicompartmental cells. Mutants that are equivalent by construction, or that have no discretisation to change, would distort cascade proportions and could falsely trigger the 'most faults merely crash' pivot rule. One nuance: a reference to a non-existent segment group is still a legitimate structurally invalid mutant for exercising the validation stage. It need not be banned, only kept from dominating the counts.",
+      "revised_recommendation": "As proposed, with one change to item 2. A non-existent segment-group reference may be kept as a deliberate structurally invalid control and reported in the cascade. Retargets that are equivalent by construction must be recorded as 'not applicable' and excluded from all denominators."
+    },
+    {
+      "id": "NEURO-05",
+      "verdict": "softened",
+      "revised_severity": "high",
+      "reason": "The core is valid. Admissibility is defined by divergence in the exhaustive candidate battery, so absolute detection rates and RQ1 silent-drift rates are conditional on that battery, and the exhaustive battery is a ceiling by construction. Subsumption among mutants of the same parameter at several magnitudes is a real threat (Papadakis et al. 2016 abstract verified: about 62% Type I errors without countermeasures). But the severity and part of the recommendation are overstated or misread the handoff. (a) Excluding equivalent mutants from mutation scores is standard practice, and the handoff requires it deliberately ('Why equivalent mutants must not count as missed errors'; empirical certificate is evidence, not proof). The primary comparisons (selected vs canonical vs random, all drawn from the same pool) are not invalidated by this conditioning. (b) Recommendation 1 treats every mutant as an unauthorised deviation, which contradicts the handoff's mandatory rule 'Do not treat every parameter change as a defect'. (c) Point 3 (almost any conductance change exceeds refinement noise) is asserted without evidence and ignores the absolute and relative floors in the tolerance rule. (d) The degeneracy citations were checked only at title level. Degeneracy means different parameter sets can give similar behaviour; it does not make a deviation from a specific frozen file acceptable in regression testing, so it offers weak support here.",
+      "revised_recommendation": "1. Keep the handoff's admissibility definition for the main denominator, but label all resulting rates explicitly as battery-conditional, and rename 'behaviourally equivalent' to 'not distinguished by battery B at tolerance tau'. 2. Report the full validation cascade (generated, valid, executable, distinguished) so unconditional proportions are visible, as Figure 2 already implies. 3. Fix mutation magnitudes a priori on a declared grid derived from discovery/reference analyses only, and report per-parameter dose-response. 4. Report per-parameter (subsumption-reduced) results alongside per-mutant results. 5. Optionally, if budget allows, add a small independent oracle battery (e.g. a dense amplitude grid). Use it only to label mutants, never for selection, to estimate how many mutants the candidate pool could not see. Do not adopt 'every specification deviation is a fault'."
+    },
+    {
+      "id": "NEURO-06",
+      "verdict": "upheld",
+      "revised_severity": "medium",
+      "reason": "Verified: RS starts at -70 mV with a 300 ms stimulus delay in a 1000 ms run. LTS starts at -84 mV (leak erev -85 mV) with a 400 ms delay and contains IM, IT and a Ca pool. The reviewer correctly flags settling as unverified. The handoff has no settling criterion, yet initial-voltage and onset mutations are listed operators whose meaning depends on one. The recommendations are proportionate and cheap.",
+      "revised_recommendation": ""
+    },
+    {
+      "id": "NEURO-07",
+      "verdict": "upheld",
+      "revised_severity": "high",
+      "reason": "Project-specific and supported. The M0 fixture evidence shows the licensed single-compartment candidates are mostly four Pospischil cells that share channel files. NeuroML-DB (verified: 1,222 cell models characterised, 1,584 models overall) includes non-positive-rheobase, rapidly adapting and abstract clusters. jLEMS is documented for single compartment models. Held-out models that share channel lineage with discovery models would weaken RQ4, and 4-6 held-out clusters give wide intervals. Per-model licenses in NeuroML-DB remain unexamined, so the shortfall is uncertain rather than established, consistent with the 'uncertain' category.",
+      "revised_recommendation": ""
+    },
+    {
+      "id": "NEURO-08",
+      "verdict": "upheld",
+      "revised_severity": "medium",
+      "reason": "Verified. The eFEL feature docs contain no firing-pattern or regime classifier. The M0 eFEL audit found burst_number and strict_burst_number disagree on an adapting train. IB's stimulus (500 ms delay + 2000 ms duration) runs past its 1000 ms simulation, so its own reference run does not demonstrate the 'bursting' label. Prescott et al. 2008 show that regime can depend on stimulus intensity. The handoff lists 'qualitative firing regime' as a feature and 'firing-regime changes' as a success criterion without defining either. Aligning with Petilla terms is optional, and the reviewer correctly notes those terms were not yet read.",
+      "revised_recommendation": ""
+    },
+    {
+      "id": "NEURO-09",
+      "verdict": "softened",
+      "revised_severity": "medium",
+      "reason": "The distinction between behaviour preservation and biological validity is correct, but the handoff already addresses it. Neel's required knowledge item 4 separates tested behaviour preservation from biological validity, and the final decision rule forbids unsupported biological claims. The only remaining project-specific tension is the phrase 'biological interpretation' in the TCBB rationale and 'neuroscience case studies' in Figure 7. The supporting points are right: tolerances come from refinement rather than experimental variability, and .mep files are simulated outputs. Much of the issue is general framing guidance, so 'high' is overstated.",
+      "revised_recommendation": "1. Add a short claim taxonomy to REQUIREMENTS.md: numerical convergence and behaviour preservation relative to a frozen reference are in scope; biological relevance is out of scope. 2. Limit case studies to mechanism within the model. Confirm a mechanistic explanation by in-silico ablation or clamp where it is central to a claim, not necessarily for every case study. 3. Showing published experimental variability in physiological units is optional context only, never a threshold."
+    },
+    {
+      "id": "NEURO-10",
+      "verdict": "upheld",
+      "revised_severity": "high",
+      "reason": "Verified and sharply project-specific. In the fixtures, the stimulus (pulseGenerator) and temperature (networkWithTemperature, 36 degC) live in the .net.nml, and duration, dt and recorded quantity live in LEMS_*.xml, not in the cell file. The LTS IT gate is temperature-scaled per the M0 evidence. A NeuroSem wrapper that injects its own stimuli cannot see stimulus-family mutants of the original net or LEMS files. Reusing the original network superimposes the embedded pulse on every protocol. A harness that drops temperature would bias reference and mutants identically, which the no-change and valid-transformation controls cannot detect. This could bias the main comparison toward canonical testing.",
+      "revised_recommendation": "As proposed, with a caveat on item 3. The OMV .mep spike-time files sit in NEURON_MODIFIED, which the repository LICENSE excludes from MIT (M0 fixture evidence D1). Either read them at the pinned SHA with citation as a comparison target, or regenerate the reference by running the original LEMS file under jNeuroML and require the NeuroSem wrapper to reproduce that trace within tolerance. Do not vendor the .mep files."
+    },
+    {
+      "id": "NEURO-11",
+      "verdict": "upheld",
+      "revised_severity": "high",
+      "reason": "Valid. Near rheobase, count and ISI features are discontinuous, and single-spike responses leave ISIs undefined (Prescott 2008 verified). The term c|f_h - f_h/2| bounds error only in the asymptotic regime and gives no useful scale for integer counts. Unstable near-threshold detectors threaten held-out generalisation. That greedy selection will favour near-threshold protocols is a plausible risk, not evidence. Recommendation 4 is partly wrong: excluding every feature that moves under +/-1% amplitude jitter would discard legitimate detectors of threshold-shifting faults (leak, Na vShift, erev), a core fault class. A fixed 1.5x margin is also not universal: NeuroML-DB reports that Rapidly Adapting models do not spike at 1.5x rheobase.",
+      "revised_recommendation": "1. Pre-register amplitude placement rules on discovery models: suprathreshold protocols sit a margin above reference rheobase, and subthreshold protocols at most a fixed fraction of it. Include a per-model fallback for when the default margin does not produce the intended regime. 2. Use a separate rule for count features: an integer difference present at h, h/2 and h/4. 3. Apply the refinement term only after observed convergence; otherwise flag the cell as numerically unreliable. 4. Replace feature exclusion with a robustness requirement. Run the reference and each mutant under a small pre-registered amplitude jitter set, and count a detection only if it persists across that set. Report threshold-sensitive detections separately instead of removing those features."
+    },
+    {
+      "id": "NEURO-12",
+      "verdict": "softened",
+      "revised_severity": "low",
+      "reason": "The biophysical point is fair: a voltage-dependent current is exercised only within the range the canonical protocol visits, so predicted silent drift is easy to construct, and the fixture canonical steps are verified. But the issue misreads the pilot's role. M6 is a go/no-go feasibility gate on 2-6 models. The handoff separately requires 'reproducible silent drift in more than isolated contrived cases' and quantitative frequency and generalisation (RQ1-5) for a strong paper. Requiring multiple families, multiple models and unpredicted cases at the pilot stage raises a feasibility check to the full study's bar, and 'not predicted by construction' is not operationally defined.",
+      "revised_recommendation": "Keep M6 as a feasibility gate, with two cheap additions: pre-register a mechanistic prediction for each pilot mutant (expected silent under canonical testing: yes/no, with reason), and label predicted silent cases as pipeline positive controls in the pilot report. Defer the frequency requirement, the multi-family and multi-model requirement, and canonical-protocol sensitivity (e.g. the model's own OSB step versus a NeuroSem standard step) to the full study, where they belong under RQ1 and the success criteria."
+    }
+  ]
+}

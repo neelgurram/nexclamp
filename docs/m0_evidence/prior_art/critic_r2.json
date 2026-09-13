@@ -1,0 +1,614 @@
+{
+  "critic": "completeness critic round 2 (prior-art sweep)",
+  "generated": "2026-09-13",
+  "scratch_dir": "C:/Users/gurra/AppData/Local/Temp/claude/C--Users-gurra-Continuum/d876c622-d308-4d4a-bbf3-2b2374480647/scratchpad/m0/critic_r2",
+  "notes": [
+    "Every missing work was retrieved in this session. DOI metadata comes from https://api.crossref.org/works/<doi> (raw: crdoi.json, cr1.json, cr2.json in scratch); arXiv metadata from arxiv.org/abs pages (arxabs.json); MEMOTE from Europe PMC; GitHub repositories from api.github.com/repos and raw.githubusercontent.com.",
+    "Relevance statements rest on retrieved titles, abstracts (where fetched) and README/docs text only; none of these works has been deep-read. Deep-read before using any in a novelty claim.",
+    "A grep of all finder_*.json and deepread_r1_*.json candidate titles (557 titles) matched none of the missing works listed here.",
+    "Where Crossref's 'issued' year differs from the volume year, the title field notes it."
+  ],
+  "probes_2026_09_13_utc": {
+    "arXiv export API": "https://export.arxiv.org/api/query?search_query=all:NeuroML -> no response (HTTP 000), 16:08 UTC",
+    "arXiv HTML search": "https://arxiv.org/search/ -> HTTP 200, works; 27 queries logged below (raw arx1/arx2/arx3.json in scratch)",
+    "OpenAlex": "https://api.openalex.org/works?search=NeuroML -> HTTP 429 Insufficient budget, retryAfter 28248 s",
+    "Semantic Scholar": "https://api.semanticscholar.org/graph/v1/paper/search -> HTTP 429 at 16:08 and ~16:25 UTC",
+    "Zenodo REST": "https://zenodo.org/api/records?q=NeuroML -> HTTP 504",
+    "GitHub REST": "core limit 0/60 at 16:08 UTC; after reset, 2 repo calls succeeded",
+    "Crossref REST": "HTTP 200",
+    "Europe PMC references": "https://www.ebi.ac.uk/europepmc/webservices/rest/MED/33513130/references -> HTTP 503 maintenance",
+    "PyPI search page": "https://pypi.org/search/?q=neuroml -> client challenge page",
+    "WebSearch": "session budget exhausted (200/200)",
+    "Allen ephys white paper": "http://help.brain-map.org/download/attachments/8323525/CellTypes_Ephys_Overview.pdf -> redirects to https://community.brain-map.org/c/how-to/15 (HTML, not PDF)"
+  },
+  "arxiv_html_queries_run": [
+    "conductance neuron model metamorphic testing",
+    "NeuroML mutation testing",
+    "neuron model semantic regression",
+    "behavioral preservation neuronal model conversion",
+    "perturbation fingerprint neuron model",
+    "automatic stimulation protocol selection model validation",
+    "mutation testing computational neuroscience",
+    "AI coding agent neuron simulation",
+    "NeuroML",
+    "neuron simulator validation",
+    "metamorphic testing simulation",
+    "mutation testing scientific software",
+    "Hodgkin-Huxley large language model",
+    "spiking neural network simulator comparison",
+    "electrophysiological features neuron model",
+    "SWE-bench language models resolve real-world GitHub issues",
+    "Unsupervised translation of programming languages",
+    "LLM translation scientific code differential testing",
+    "test suite reduction mutation score random baseline",
+    "informative features simulation-based inference neuron",
+    "large language model neuron model NEURON simulator",
+    "regression testing numerical simulation tolerance oracle",
+    "equivalent mutants numerical programs",
+    "silent semantic drift simulation model",
+    "model version differences biological models SBML behaviour",
+    "conformance testing hybrid systems trace distance",
+    "neuron model generalization held-out stimuli"
+  ],
+  "arxiv_html_query_url_pattern": "https://arxiv.org/search/?query=<q>&searchtype=all&abstracts=hide&size=50&order=",
+  "crossref_title_queries_run": "query.bibliographic lookups for every missing DOI-bearing work (q1.txt, q2.txt, q3.txt in scratch); failed to retrieve: McKeeman 'Differential testing for software' (no Crossref hit; WebSearch budget exhausted) - therefore omitted",
+  "gaps": [
+    {
+      "kind": "blocked_source_no_working_fallback",
+      "description": "OpenAlex daily budget was exhausted in every finder. The planned forward-citation snowball (19 anchors x 15 keywords) and 16 title/abstract lens searches never ran; Europe PMC, Semantic Scholar and OpenCitations citation graphs only partly replaced them. Re-checked 2026-09-13 16:08 UTC: still HTTP 429 'Insufficient budget', retryAfter 28248 s (resets 00:00 UTC).",
+      "suggested_sources": "OpenAlex works API after 00:00 UTC (https://api.openalex.org/works?filter=cites:W...&search=...); OpenCitations Index v2 /citations as an interim fallback.",
+      "suggested_queries": [
+        "filter=cites:<W-id of NeuroML 2010, LEMS 2014, OSB 2019, SciUnit 2014, NeuronUnit, HippoUnit, eFEL 2026, BluePyOpt 2016, Druckmann 2011>&search=mutation|regression|conversion|protocol|equivalence|large language model",
+        "title_and_abstract.search:stimulation protocol selection neuron model",
+        "title_and_abstract.search:neuron simulator regression testing versions",
+        "title_and_abstract.search:model translation behaviour preservation simulator"
+      ]
+    },
+    {
+      "kind": "blocked_source_partial",
+      "description": "Semantic Scholar Graph API: 10 lens/synonym queries were marked 'not executed', and 'NeuroML mutation testing' and 'perturbation fingerprint neuron model' never succeeded for one finder. Re-probed 2026-09-13 ~16:25 UTC: still HTTP 429 unauthenticated.",
+      "suggested_sources": "Semantic Scholar Graph API with an API key or from a different IP, spaced about 1 request per 3-5 s.",
+      "suggested_queries": [
+        "metamorphic testing neuron simulation",
+        "stimulus protocol design neuron model discrimination",
+        "optimal experimental design current clamp protocol ion channel model",
+        "model conversion NEURON NeuroML validation",
+        "regression testing biophysical neuron simulation",
+        "LLM agent neuron model NEURON NeuroML",
+        "validation of neuron models multiple stimulus protocols",
+        "numerical accuracy time step neuron simulation"
+      ]
+    },
+    {
+      "kind": "blocked_source_fallback_now_available",
+      "description": "The arXiv export API was rate-limited and several finders completed 0-1 queries there, so arXiv-only preprints were under-covered. The arxiv.org/search HTML interface works (verified 2026-09-13). This critic ran 27 queries through it, including all 8 handoff terms, which returned 0-3 off-topic hits each (e.g. https://arxiv.org/search/?query=NeuroML+mutation+testing&searchtype=all&abstracts=hide&size=50&order=). Lens queries surfaced relevant cs.SE preprints missing from the matrix: arXiv 2607.04058, 2605.17437, 2604.19086, 2605.25101, 2408.01760, 2506.09289 and 2210.11915. The remaining planned arXiv lens queries should be re-run through this interface.",
+      "suggested_sources": "https://arxiv.org/search/?query=<q>&searchtype=all (HTML; about 4 s between requests); arxiv.org/abs/<id> for metadata.",
+      "suggested_queries": [
+        "differential testing scientific code translation",
+        "LLM scientific code equivalence testing",
+        "semantic mutation scientific computing",
+        "metamorphic testing ODE simulation",
+        "hidden tests coding agents scientific",
+        "refactoring behaviour preservation LLM",
+        "test suite minimization greedy coverage",
+        "biophysical neuron model LLM agent"
+      ]
+    },
+    {
+      "kind": "blocked_endpoint_no_fallback",
+      "description": "Europe PMC references endpoint returned 'temporarily unavailable due to maintenance' (HTTP 503; re-checked 2026-09-13 ~16:25 UTC for MED/33513130). Backward reference lists of the anchor papers were never harvested; only forward citations were.",
+      "suggested_sources": "Crossref /works/<doi> 'reference' arrays for anchors whose publishers deposit references; OpenCitations Index v2 /references/doi:<doi>; retry Europe PMC /references later.",
+      "suggested_queries": [
+        "references of 10.7554/elife.95135 (NeuroML ecosystem)",
+        "references of 10.1371/journal.pcbi.1008114 (HippoUnit)",
+        "references of 10.1093/bioinformatics/btag328 (eFEL)",
+        "references of 10.1109/ICST69053.2026.00050 (NeuroCERT)",
+        "references of arXiv:2608.09956 (pyRMV)"
+      ]
+    },
+    {
+      "kind": "registry_search_limited",
+      "description": "PyPI has no keyword-search API. pypi.org/search returned a client challenge page to curl (verified 2026-09-13), and site:pypi.org WebSearch stopped after 10 queries when the budget ran out. PyPI coverage is therefore essentially name probes of already-known packages; unknown packages with relevant names cannot have been found.",
+      "suggested_sources": "PyPI Simple index (https://pypi.org/simple/, the full project-name list; a primary source that needs no search): grep names, then query https://pypi.org/pypi/<name>/json for each hit.",
+      "suggested_queries": [
+        "name regex: neuro|nml|lems|efel|ephys|sciunit|neuronunit|spike.*test|mutat|metamorph|rheobase|currentclamp|protocol.*select",
+        "neurosem (name-conflict check)"
+      ]
+    },
+    {
+      "kind": "registry_search_limited",
+      "description": "GitHub coverage used repository search only; code search (needs authentication) was never used. Neuron-simulator regression/validation repositories were missed: arbor-sim/nsuite and neuronsimulator/nrn-modeldb-ci (both verified by this critic). Organisation-scoped searches of simulator projects (neuronsimulator, arbor-sim, nest, brian-team, OpenSourceBrain OMT files) were not run.",
+      "suggested_sources": "GitHub REST search/code via an authenticated gh CLI; GitHub search/repositories with org: qualifiers.",
+      "suggested_queries": [
+        "org:neuronsimulator validation OR regression OR ci",
+        "org:arbor-sim validation",
+        "org:nest testsuite regression",
+        "org:brian-team test model comparison",
+        "filename:.test.omt",
+        "efel getFeatureValues mutant language:Python",
+        "modeldb run compare versions neuron"
+      ]
+    },
+    {
+      "kind": "source_fallback_weak",
+      "description": "IEEE Xplore and ACM DL were searched only through the WebSearch index (site: filters), because direct fetches were blocked (IEEE HTTP 202 empty body, ACM Cloudflare 403) and the DBLP API sat behind an Anubis challenge. Search-engine site: results are a thin proxy for native IEEE/ACM search, and the foundational SE works listed in missing_known_works (mutant validity, equivalent mutants, conformance testing, patch overfitting) were all missed.",
+      "suggested_sources": "Crossref REST restricted to IEEE and ACM DOI prefixes (https://api.crossref.org/works?query.bibliographic=<q>&filter=prefix:10.1109 and filter=prefix:10.1145): primary metadata with no bot wall.",
+      "suggested_queries": [
+        "conductance neuron model metamorphic testing (prefix 10.1109 / 10.1145)",
+        "neuron model semantic regression (both prefixes)",
+        "perturbation fingerprint neuron model (both prefixes)",
+        "automatic stimulation protocol selection model validation (both prefixes)",
+        "equivalent mutant detection",
+        "conformance testing hybrid systems",
+        "patch overfitting program repair"
+      ]
+    },
+    {
+      "kind": "blocked_source_partial",
+      "description": "Zenodo REST API returned HTTP 504 on every finder query and again on this critic's probe (2026-09-13 16:08 UTC). The DataCite fallback (client-id cern.zenodo) covers keyword matches in DOI metadata, but browsing Zenodo communities (which catches records deposited without descriptive keywords) was not possible, and site:zenodo.org WebSearch also failed on budget.",
+      "suggested_sources": "Zenodo REST /api/records and /api/communities retried later; DataCite REST querying descriptions/subjects.",
+      "suggested_queries": [
+        "communities: neuroml, ebrains, opensourcebrain",
+        "q=neuron model validation tests",
+        "q=mutation testing simulation",
+        "q=electrophysiology feature regression"
+      ]
+    },
+    {
+      "kind": "subfield_not_covered",
+      "description": "Mutation-testing foundations were not searched (queries paired mutation testing only with scientific software or Simulink): the original mutation concept, whether mutants are a valid substitute for real faults, the equivalent-mutant problem, and mutant subsumption/minimal mutant sets. NeuroSem's admissibility classification and detection-rate denominator depend on them.",
+      "suggested_sources": "Crossref (prefix 10.1109/10.1145), IEEE Xplore, ACM DL",
+      "suggested_queries": [
+        "equivalent mutant problem systematic review",
+        "mutants valid substitute real faults",
+        "minimal mutant sets subsumption",
+        "mutation testing survey analysis advances"
+      ]
+    },
+    {
+      "kind": "subfield_not_covered",
+      "description": "No queries on test-suite effectiveness when suite size is controlled, or on statistics for comparing against randomized baselines. These justify the count-matched and runtime-matched random protocol baselines and the analysis plan.",
+      "suggested_sources": "Crossref, ACM DL, Wiley STVR",
+      "suggested_queries": [
+        "test suite size coverage effectiveness mutation score",
+        "statistical tests randomized algorithms software engineering",
+        "random test selection baseline mutation score"
+      ]
+    },
+    {
+      "kind": "subfield_not_covered",
+      "description": "Formal equivalence and semantic differencing (regression verification, translation validation, semantic diff, equivalence modulo inputs, semantic model differencing) was never searched. It is the formal counterpart NeuroSem's 'empirical semantic certificate' must be positioned against, and the source of the 'semantic regression' terminology.",
+      "suggested_sources": "Crossref, ACM DL, DBLP (when reachable)",
+      "suggested_queries": [
+        "regression verification program equivalence",
+        "translation validation compiler",
+        "semantic differencing models",
+        "equivalence modulo inputs testing"
+      ]
+    },
+    {
+      "kind": "subfield_not_covered",
+      "description": "Cyber-physical and hybrid-system conformance testing (comparing two continuous-time model versions under tolerances on traces) was not searched. Simulink test generation is covered, but conformance notions such as the Skorokhod distance and reachset conformance, the closest formal analogue of NeuroSem's trace/feature tolerances, are not.",
+      "suggested_sources": "Crossref, ACM DL (HSCC), Springer FMSD, IEEE MEMOCODE",
+      "suggested_queries": [
+        "conformance testing hybrid systems",
+        "Skorokhod metric conformance",
+        "reachset conformance testing",
+        "model implementation conformance continuous time tolerance"
+      ]
+    },
+    {
+      "kind": "subfield_not_covered",
+      "description": "For the AI-assisted case study, program-repair work on patches that pass the given tests but are incorrect (overfitting, plausibility) and studies of hidden-test insufficiency in agent benchmarks were not searched. These motivate hidden deterministic tests better than the scientific-coding benchmarks already in the matrix.",
+      "suggested_sources": "ACM DL, arXiv HTML search",
+      "suggested_queries": [
+        "overfitting automated program repair",
+        "patch plausibility correctness",
+        "SWE-bench insufficient tests",
+        "LLM code translation bugs study"
+      ]
+    },
+    {
+      "kind": "subfield_not_covered",
+      "description": "Numerical solution verification (grid/step refinement reporting, V&V distinctions) and classic neuron-simulator integration-accuracy work are missing; only two recent accuracy papers are in the matrix. The tolerance rule (h, h/2, h/4) and the numerical mutation family depend on this literature.",
+      "suggested_sources": "Crossref, PubMed, Journal of Computational Neuroscience, Neural Computation",
+      "suggested_queries": [
+        "grid refinement study reporting verification",
+        "verification and validation computational simulation",
+        "numerical methods accuracy spiking neuron simulators",
+        "integration scheme selection neuron models",
+        "exact integration neuronal models time step"
+      ]
+    },
+    {
+      "kind": "subfield_not_covered",
+      "description": "Only 2021-2026 degeneracy papers are cited. The foundational degeneracy/compensation and parameter-sloppiness works are absent, although they explain why one canonical protocol can miss parameter mutations and why some mutants are behaviourally equivalent.",
+      "suggested_sources": "PubMed, Europe PMC, Crossref",
+      "suggested_queries": [
+        "similar activity disparate parameters",
+        "variability compensation homeostasis neurons",
+        "sloppy parameter sensitivities",
+        "similar behavior different conductance densities perturbation"
+      ]
+    },
+    {
+      "kind": "subfield_not_covered",
+      "description": "Several standard neuron-model references were not searched: quantitative evaluation of neuron models on held-out stimuli (single-neuron modelling competition, Allen GLIF), firing-pattern taxonomies (Izhikevich 2004 in IEEE TNN, Hippocampome phenotyping) and spike-train distance metrics. They are the usual precedents and alternatives for the protocol battery, the firing-regime feature and the detection metric.",
+      "suggested_sources": "PubMed, Crossref, IEEE Xplore (TNN)",
+      "suggested_queries": [
+        "quantitative single-neuron modeling competition",
+        "which model cortical spiking neurons firing patterns",
+        "firing pattern phenotyping neuron types",
+        "spike train distance synchrony measures",
+        "generalized leaky integrate-and-fire neuron types Allen"
+      ]
+    },
+    {
+      "kind": "subfield_not_covered",
+      "description": "Simulator verification benchmarks and CI for published models were not searched: N-version cross-simulator benchmarks (cardiac), NSuite, NEURON's ModelDB CI, and simulator-independent interfaces (PyNN, neuroConstruct). These are the closest existing 'same model, changed execution stack, compare outputs' systems.",
+      "suggested_sources": "GitHub (org-scoped), Crossref, Europe PMC",
+      "suggested_queries": [
+        "N-version benchmark simulator verification electrophysiology",
+        "ModelDB continuous integration NEURON versions",
+        "benchmark validation suite neural simulators Arbor NEURON",
+        "PyNN common interface simulators"
+      ]
+    },
+    {
+      "kind": "subfield_not_covered",
+      "description": "Two neighbouring areas are absent. First, model-version structural differencing and standardised test suites in sister model-format communities: model differencing for biology models, the BioModels-era reproducibility study, MEMOTE for metabolic models. Second, neuroimaging numerical-variability and result-CI work: cross-OS reproducibility, numerical-uncertainty propagation, NeuroCI. Reviewers at TCBB-style venues will expect these analogues.",
+      "suggested_sources": "Europe PMC, Crossref, bioRxiv",
+      "suggested_queries": [
+        "differences computational models versions algorithm",
+        "reproducibility systems biology models BioModels",
+        "standardized genome-scale metabolic model testing",
+        "neuroimaging reproducibility operating systems",
+        "numerical uncertainty neuroimaging pipelines",
+        "continuous integration neuroimaging results"
+      ]
+    },
+    {
+      "kind": "unverified_matrix_entry",
+      "description": "Matrix entry 'Allen Institute for Brain Science (unverified). Allen Cell Types Database: Electrophysiology' is still unverified. The electrophysiology overview white-paper link on https://celltypes.brain-map.org/ (http://help.brain-map.org/download/attachments/8323525/CellTypes_Ephys_Overview.pdf) now redirects to an HTML community page (https://community.brain-map.org/c/how-to/15), checked 2026-09-13. The stimulus-set document behind NeuroSem's protocol list therefore has no retrievable primary citation yet.",
+      "suggested_sources": "community.brain-map.org documentation threads; Internet Archive copy of the help.brain-map.org PDF; AllenSDK documentation stimulus descriptions",
+      "suggested_queries": [
+        "Allen Cell Types electrophysiology overview technical white paper",
+        "allensdk cell types stimulus names",
+        "web.archive.org help.brain-map.org CellTypes_Ephys_Overview.pdf"
+      ]
+    },
+    {
+      "kind": "budget_exhaustion",
+      "description": "The WebSearch budget (200 calls) was exhausted, including in this critic's session (verified). Several site: fallbacks were cut short: site:zenodo.org, site:arxiv.org, most site:semanticscholar.org, the remaining site:pypi.org queries, and the final lens queries. Any further web-search-dependent coverage needs a fresh session or a raised CLAUDE_CODE_MAX_WEB_SEARCHES_PER_SESSION.",
+      "suggested_sources": "New-session WebSearch; otherwise the primary APIs above (Crossref prefix filters, arxiv.org/search HTML, PyPI Simple index, DataCite).",
+      "suggested_queries": [
+        "site:zenodo.org neuron model validation NeuroML",
+        "site:zenodo.org mutation testing simulation model",
+        "site:pypi.org neuron model regression testing",
+        "site:semanticscholar.org perturbation fingerprint neuron model"
+      ]
+    }
+  ],
+  "missing_known_works": [
+    {
+      "title": "DeMillo RA, Lipton RJ, Sayward FG (1978). Hints on Test Data Selection: Help for the Practicing Programmer. Computer 11:34-41.",
+      "url": "https://doi.org/10.1109/c-m.1978.218136",
+      "why": "Founding mutation-analysis paper; the matrix cites mutation surveys (Jia & Harman) but not the origin of the mutant/kill concept NeuroSem's mutant definitions rest on. Metadata verified 2026-09-13 via https://api.crossref.org/works/10.1109/c-m.1978.218136"
+    },
+    {
+      "title": "Just R, Jalali D, Inozemtseva L, et al. (2014). Are mutants a valid substitute for real faults in software testing? Proc. 22nd ACM SIGSOFT FSE, pp. 654-665.",
+      "url": "https://doi.org/10.1145/2635868.2635929",
+      "why": "Addresses (per title) whether mutant detection is a valid proxy for real-fault detection - the external-validity question a reviewer will raise for NeuroSem's mutant-based detection rates. Only Andrews et al. 2005 covers this in the matrix. Metadata verified 2026-09-13 via https://api.crossref.org/works/10.1145/2635868.2635929"
+    },
+    {
+      "title": "Madeyski L, Orzeszyna W, Torkar R, et al. (2014). Overcoming the Equivalent Mutant Problem: A Systematic Literature Review and a Comparative Experiment of Second Order Mutation. IEEE Transactions on Software Engineering 40:23-42.",
+      "url": "https://doi.org/10.1109/tse.2013.44",
+      "why": "NeuroSem explicitly excludes behaviourally equivalent mutants from the denominator; the equivalent-mutant problem literature is absent from the matrix. Metadata verified 2026-09-13 via https://api.crossref.org/works/10.1109/tse.2013.44"
+    },
+    {
+      "title": "Papadakis M, Jia Y, Harman M, et al. (2015). Trivial Compiler Equivalence: A Large Scale Empirical Study of a Simple, Fast and Effective Equivalent Mutant Detection Technique. ICSE 2015, pp. 936-946.",
+      "url": "https://doi.org/10.1109/icse.2015.103",
+      "why": "Canonical automated equivalent-mutant screening method; analogous to NeuroSem screening mutants for behavioural equivalence with an exhaustive battery. Metadata verified 2026-09-13 via https://api.crossref.org/works/10.1109/icse.2015.103"
+    },
+    {
+      "title": "Ammann P, Delamaro ME, Offutt J (2014). Establishing Theoretical Minimal Sets of Mutants. ICST 2014, pp. 21-30.",
+      "url": "https://doi.org/10.1109/icst.2014.13",
+      "why": "Mutant subsumption/redundancy inflates detection rates; relevant to curating 100-160 mutants and to interpreting a greedy detection matrix. Metadata verified 2026-09-13 via https://api.crossref.org/works/10.1109/icst.2014.13"
+    },
+    {
+      "title": "[Authors not listed in Crossref record - unverified] (2019). Mutation Testing Advances: An Analysis and Survey. Advances in Computers, pp. 275-378.",
+      "url": "https://doi.org/10.1016/bs.adcom.2018.03.015",
+      "why": "Up-to-date mutation-testing survey (the matrix's survey, Jia & Harman, is 2011). Author list must be taken from the publisher page before citing. Metadata verified 2026-09-13 via https://api.crossref.org/works/10.1016/bs.adcom.2018.03.015"
+    },
+    {
+      "title": "Tian Z, Shu H, Wang D, et al. (2024). Large Language Models for Equivalent Mutant Detection: How Far Are We? arXiv:2408.01760 (arXiv comments: accepted by ISSTA 2024).",
+      "url": "https://arxiv.org/abs/2408.01760",
+      "why": "Equivalent-mutant detection with LLMs; relevant both to mutant classification and to the AI-assisted case study. Found via arxiv.org/search HTML query 'equivalent mutants numerical programs'; metadata from arxiv.org/abs page."
+    },
+    {
+      "title": "Inozemtseva L, Holmes R (2014). Coverage is not strongly correlated with test suite effectiveness. ICSE 2014, pp. 435-445.",
+      "url": "https://doi.org/10.1145/2568225.2568271",
+      "why": "Mutation-score study that controls for suite size; directly relevant to NeuroSem's count-matched and runtime-matched random baselines. Metadata verified 2026-09-13 via https://api.crossref.org/works/10.1145/2568225.2568271"
+    },
+    {
+      "title": "Namin AS, Andrews JH (2009). The influence of size and coverage on test suite effectiveness. ISSTA 2009, pp. 57-68.",
+      "url": "https://doi.org/10.1145/1572272.1572280",
+      "why": "Size as a confound of suite effectiveness; justifies cost/size-matched comparisons. Metadata verified 2026-09-13 via https://api.crossref.org/works/10.1145/1572272.1572280"
+    },
+    {
+      "title": "Arcuri A, Briand L (vol. 24; Crossref 'issued' 2012). A Hitchhiker's guide to statistical tests for assessing randomized algorithms in software engineering. Software Testing, Verification and Reliability 24:219-250.",
+      "url": "https://doi.org/10.1002/stvr.1486",
+      "why": "Standard SE reference for comparing a selection method against random-baseline distributions; supports the Statistics section. Metadata verified 2026-09-13 via https://api.crossref.org/works/10.1002/stvr.1486"
+    },
+    {
+      "title": "Nemhauser GL, Wolsey LA, Fisher ML (1978). An analysis of approximations for maximizing submodular set functions - I. Mathematical Programming 14:265-294.",
+      "url": "https://doi.org/10.1007/bf01588971",
+      "why": "Theory behind greedy maximum-coverage selection, NeuroSem's protocol-selection algorithm; reviewers will expect it (only empirical SE greedy-minimisation papers are in the matrix). Metadata verified 2026-09-13 via https://api.crossref.org/works/10.1007/bf01588971"
+    },
+    {
+      "title": "Feige U (1998). A threshold of ln n for approximating set cover. Journal of the ACM 45:634-652.",
+      "url": "https://doi.org/10.1145/285055.285059",
+      "why": "Approximation-hardness result for set cover/max coverage; bounds what any protocol-selection algorithm can guarantee. Metadata verified 2026-09-13 via https://api.crossref.org/works/10.1145/285055.285059"
+    },
+    {
+      "title": "Le V, Afshari M, Su Z (2014). Compiler validation via equivalence modulo inputs. PLDI 2014, pp. 216-226.",
+      "url": "https://doi.org/10.1145/2594291.2594334",
+      "why": "Equivalence-modulo-inputs testing: behaviour-preserving program variants checked on inputs - the closest SE analogue to NeuroSem's valid transformations evaluated under a stimulus battery. Metadata verified 2026-09-13 via https://api.crossref.org/works/10.1145/2594291.2594334"
+    },
+    {
+      "title": "Godlin B, Strichman O (2009). Regression verification. DAC 2009, pp. 466-471.",
+      "url": "https://doi.org/10.1145/1629911.1630034",
+      "why": "Formal equivalence of program versions; the formal counterpart that NeuroSem's 'empirical semantic certificate' must be distinguished from. Metadata verified 2026-09-13 via https://api.crossref.org/works/10.1145/1629911.1630034"
+    },
+    {
+      "title": "Pnueli A, Siegel M, Singerman E (1998). Translation validation. Lecture Notes in Computer Science, pp. 151-166.",
+      "url": "https://doi.org/10.1007/bfb0054170",
+      "why": "Per-translation correctness checking; conceptual prior art for 'behavioural preservation after model translation/conversion' (a handoff search term). Metadata verified 2026-09-13 via https://api.crossref.org/works/10.1007/bfb0054170"
+    },
+    {
+      "title": "Lahiri SK, Hawblitzel C, Kawaguchi M, et al. (2012). SYMDIFF: A Language-Agnostic Semantic Diff Tool for Imperative Programs. Lecture Notes in Computer Science, pp. 712-717.",
+      "url": "https://doi.org/10.1007/978-3-642-31424-7_54",
+      "why": "Semantic (behavioural) diff between program versions; prior art for the 'semantic regression' framing. Metadata verified 2026-09-13 via https://api.crossref.org/works/10.1007/978-3-642-31424-7_54"
+    },
+    {
+      "title": "Person S, Dwyer MB, Elbaum S, et al. (2008). Differential symbolic execution. Proc. 16th ACM SIGSOFT FSE, pp. 226-237.",
+      "url": "https://doi.org/10.1145/1453101.1453131",
+      "why": "Characterises behavioural differences between program versions; same semantic-regression family. Metadata verified 2026-09-13 via https://api.crossref.org/works/10.1145/1453101.1453131"
+    },
+    {
+      "title": "Maoz S, Ringert JO, Rumpe B (2011). ADDiff [semantic differencing for activity diagrams]. Proc. ESEC/FSE 2011, pp. 179-189.",
+      "url": "https://doi.org/10.1145/2025113.2025140",
+      "why": "Semantic model differencing (witnesses of behavioural difference between model versions) - the model-driven-engineering counterpart to detecting silent drift between model versions. Crossref title is just 'ADDiff'; subtitle from the Crossref search hit list (companion CDDiff record 10.1007/978-3-642-22655-7_12). Metadata verified 2026-09-13 via https://api.crossref.org/works/10.1145/2025113.2025140"
+    },
+    {
+      "title": "Deshmukh JV, Majumdar R, Prabhu VS (2017). Quantifying conformance using the Skorokhod metric. Formal Methods in System Design 50:168-206.",
+      "url": "https://doi.org/10.1007/s10703-016-0261-8",
+      "why": "Conformance between two versions of a continuous-time model with timing/value tolerances on traces - directly analogous to NeuroSem's tolerance-based trace/feature comparison. No CPS conformance-testing work is in the matrix. Metadata verified 2026-09-13 via https://api.crossref.org/works/10.1007/s10703-016-0261-8"
+    },
+    {
+      "title": "Abbas H, Mittelmann H, Fainekos G (2014). Formal property verification in a conformance testing framework. MEMOCODE 2014, pp. 155-164.",
+      "url": "https://doi.org/10.1109/memcod.2014.6961854",
+      "why": "Conformance testing of model versus implementation for hybrid systems; same subfield. Metadata verified 2026-09-13 via https://api.crossref.org/works/10.1109/memcod.2014.6961854"
+    },
+    {
+      "title": "Roehm H, Oehlerking J, Woehrle M, et al. (2016). Reachset Conformance Testing of Hybrid Automata. HSCC 2016, pp. 277-286.",
+      "url": "https://doi.org/10.1145/2883817.2883828",
+      "why": "Test-based conformance of dynamical models; same subfield (journal version 10.1145/3306157 appears in the Crossref hits). Metadata verified 2026-09-13 via https://api.crossref.org/works/10.1145/2883817.2883828"
+    },
+    {
+      "title": "Smith EK, Barr ET, Le Goues C, et al. (2015). Is the cure worse than the disease? Overfitting in automated program repair. ESEC/FSE 2015, pp. 532-543.",
+      "url": "https://doi.org/10.1145/2786805.2786825",
+      "why": "Patches that pass the provided tests yet are wrong - the software-repair analogue of passing canonical testing while drifting; core prior art for the hidden-test design of the Claude Code case study. Metadata verified 2026-09-13 via https://api.crossref.org/works/10.1145/2786805.2786825"
+    },
+    {
+      "title": "Qi Z, Long F, Achour S, et al. (2015). An analysis of patch plausibility and correctness for generate-and-validate patch generation systems. ISSTA 2015, pp. 24-36.",
+      "url": "https://doi.org/10.1145/2771783.2771791",
+      "why": "Plausible (test-passing) versus correct patches; same argument as above. Metadata verified 2026-09-13 via https://api.crossref.org/works/10.1145/2771783.2771791"
+    },
+    {
+      "title": "Pan R, Ibrahimzada AR, Krishna R, et al. (2024). Lost in Translation: A Study of Bugs Introduced by Large Language Models while Translating Code. ICSE 2024, pp. 1-13.",
+      "url": "https://doi.org/10.1145/3597503.3639226",
+      "why": "Empirical taxonomy of LLM translation bugs; the matrix has LLM Fortran/HPC translation papers but not this ICSE study. Metadata verified 2026-09-13 via https://api.crossref.org/works/10.1145/3597503.3639226"
+    },
+    {
+      "title": "Jimenez CE, Yang J, Wettig A, et al. (2023). SWE-bench: Can Language Models Resolve Real-World GitHub Issues? arXiv:2310.06770 (arXiv comments cite ICLR 2024).",
+      "url": "https://arxiv.org/abs/2310.06770",
+      "why": "Reference benchmark for agents scored by hidden tests; a Crossref query for it was run by a finder, but it is absent from the matrix. Metadata from arxiv.org/abs page."
+    },
+    {
+      "title": "Yu B, Zhu Y, He P, Kang D (2025). UTBoost: Rigorous Evaluation of Coding Agents on SWE-Bench. arXiv:2506.09289 (journal-ref: ACL 2025).",
+      "url": "https://arxiv.org/abs/2506.09289",
+      "why": "Abstract reports that insufficient benchmark tests let agent patches pass without fixing the issue - the agent-evaluation form of 'passes canonical test, still wrong'. Found via arxiv.org/search HTML; metadata from abs page."
+    },
+    {
+      "title": "Ludwig O, Anklesaria N, Jin Z, et al. (2026). Kaizen: Metamorphic Fuzzing and Differential Testing for LLM-Translated HPC Applications. arXiv:2607.04058 (under review at TOSEM per arXiv comments).",
+      "url": "https://arxiv.org/abs/2607.04058",
+      "why": "High closeness: per abstract, differential/metamorphic testing exposes LLM-translated scientific codes that compile and pass developer tests yet give wrong scientific results - the same 'silent drift beyond the reference test' claim, in HPC rather than neuron models. Not found by any finder (arXiv export API was blocked); found via arxiv.org/search HTML."
+    },
+    {
+      "title": "Li M, Yang X, Liu J, Yan S (2026). A semantic mutation metric for metamorphic relation adequacy in scientific computing programs. arXiv:2605.17437.",
+      "url": "https://arxiv.org/abs/2605.17437",
+      "why": "High closeness: per abstract, domain-semantic mutation operators for scientific programs plus attribution of detections versus tolerance artefacts - overlaps NeuroSem's domain-specific mutation families and tolerance handling. Same group as matrix entry arXiv:2606.17529, but this paper is absent. Found via arxiv.org/search HTML."
+    },
+    {
+      "title": "Chou CJ, Lwin KT, Soremekun E (2026). MUCOCO: Automated Consistency Testing of Code LLMs. arXiv:2604.19086 (EMNLP Findings 2026 per arXiv comments).",
+      "url": "https://arxiv.org/abs/2604.19086",
+      "why": "Per abstract, semantic-preserving program transformations used to expose inconsistent LLM behaviour; analogous to NeuroSem's valid-transformation controls. Found via arxiv.org/search HTML."
+    },
+    {
+      "title": "Kulshreshtha A, Mughees A, Sudheerbabu G, et al. (2026). Multi-Agent Specification-based Metamorphic Testing of FMU-Based Simulations. arXiv:2605.25101 (MET 2026 workshop per arXiv comments).",
+      "url": "https://arxiv.org/abs/2605.25101",
+      "why": "Metamorphic testing of exchanged simulation models (FMI/FMUs) with LLM agents; model-exchange-format analogue of NeuroML. A finder queried this arXiv id but it is not in the matrix. Metadata from abs page."
+    },
+    {
+      "title": "Roache PJ (1994). Perspective: A Method for Uniform Reporting of Grid Refinement Studies. Journal of Fluids Engineering 116:405-413.",
+      "url": "https://doi.org/10.1115/1.2910291",
+      "why": "Standard refinement-based solution-verification reporting; NeuroSem's h, h/2, h/4 tolerance calibration is a solution-verification procedure and should cite this tradition. Metadata verified 2026-09-13 via https://api.crossref.org/works/10.1115/1.2910291"
+    },
+    {
+      "title": "Oberkampf WL, Trucano TG (2002). Verification and validation in computational fluid dynamics. Progress in Aerospace Sciences 38:209-272.",
+      "url": "https://doi.org/10.1016/s0376-0421(02)00005-2",
+      "why": "Canonical code verification vs solution verification vs validation distinctions; the handoff's required-knowledge item 4 rests on these distinctions. Metadata verified 2026-09-13 via https://api.crossref.org/works/10.1016/s0376-0421(02)00005-2"
+    },
+    {
+      "title": "Henker S, Partzsch J, Schueffny R (vol. 32; Crossref 'issued' 2011). Accuracy evaluation of numerical methods used in state-of-the-art simulators for spiking neural networks. Journal of Computational Neuroscience 32:309-326.",
+      "url": "https://doi.org/10.1007/s10827-011-0353-9",
+      "why": "Directly on numerical accuracy of neuron simulators; the numerical-mutation family and tolerance floors need it. Matrix has only Valadez-Godinez 2020 and Lopes 2022 on this. Metadata verified 2026-09-13 via https://api.crossref.org/works/10.1007/s10827-011-0353-9"
+    },
+    {
+      "title": "Hansel D, Mato G, Meunier C, Neltner L (1998). On Numerical Simulations of Integrate-and-Fire Neural Networks. Neural Computation 10:467-483.",
+      "url": "https://doi.org/10.1162/089976698300017845",
+      "why": "Classic study of time-step artefacts in spiking simulations; supports the integration-step mutation operator and refinement rule. Metadata verified 2026-09-13 via https://api.crossref.org/works/10.1162/089976698300017845"
+    },
+    {
+      "title": "Rotter S, Diesmann M (1999). Exact digital simulation of time-invariant linear systems with applications to neuronal modeling. Biological Cybernetics 81:381-402.",
+      "url": "https://doi.org/10.1007/s004220050570",
+      "why": "Exact-integration reference solutions for neuron models; relevant to building numerically trustworthy reference traces. Metadata verified 2026-09-13 via https://api.crossref.org/works/10.1007/s004220050570"
+    },
+    {
+      "title": "Blundell I, Plotnikov D, Eppler JM, et al. (2018). Automatically Selecting a Suitable Integration Scheme for Systems of Differential Equations in Neuron Models. Frontiers in Neuroinformatics 12.",
+      "url": "https://doi.org/10.3389/fninf.2018.00050",
+      "why": "Solver choice for neuron-model ODEs from a model-description language; relevant to solver-configuration mutations. Metadata verified 2026-09-13 via https://api.crossref.org/works/10.3389/fninf.2018.00050"
+    },
+    {
+      "title": "Prinz AA, Bucher D, Marder E (2004). Similar network activity from disparate circuit parameters. Nature Neuroscience 7:1345-1352.",
+      "url": "https://doi.org/10.1038/nn1352",
+      "why": "Foundational degeneracy result (per title): disparate parameters, similar activity. This is the biological reason a single canonical protocol can miss parameter mutations. Matrix has only 2021-2026 degeneracy papers. Metadata verified 2026-09-13 via https://api.crossref.org/works/10.1038/nn1352"
+    },
+    {
+      "title": "Marder E, Goaillard J-M (2006). Variability, compensation and homeostasis in neuron and network function. Nature Reviews Neuroscience 7:563-574.",
+      "url": "https://doi.org/10.1038/nrn1949",
+      "why": "Foundational review for the same argument. Metadata verified 2026-09-13 via https://api.crossref.org/works/10.1038/nrn1949"
+    },
+    {
+      "title": "Alonso LM, Marder E (2019). Visualization of currents in neural models with similar behavior and different conductance densities. eLife 8.",
+      "url": "https://doi.org/10.7554/elife.42722",
+      "why": "Models with similar behaviour but different conductances (per title) - a direct precedent for hidden differences that other stimuli or perturbations can expose, i.e. the perturbation-fingerprint rationale. Metadata verified 2026-09-13 via https://api.crossref.org/works/10.7554/elife.42722"
+    },
+    {
+      "title": "Gutenkunst RN, Waterfall JJ, Casey FP, et al. (2007). Universally Sloppy Parameter Sensitivities in Systems Biology Models. PLoS Computational Biology 3:e189.",
+      "url": "https://doi.org/10.1371/journal.pcbi.0030189",
+      "why": "Parameter sloppiness bears on which mutants are behaviourally equivalent and why protocol choice matters. Metadata verified 2026-09-13 via https://api.crossref.org/works/10.1371/journal.pcbi.0030189"
+    },
+    {
+      "title": "Izhikevich EM (2004). Which Model to Use for Cortical Spiking Neurons? IEEE Transactions on Neural Networks 15:1063-1070.",
+      "url": "https://doi.org/10.1109/tnn.2004.832719",
+      "why": "IEEE-venue comparison of spiking neuron models by the firing behaviours they reproduce (tonic, adapting, bursting, rebound, etc.) under current stimuli (content to confirm on deep-read); maps closely onto NeuroSem's protocol/regime list and model-diversity criteria. Metadata verified 2026-09-13 via https://api.crossref.org/works/10.1109/tnn.2004.832719"
+    },
+    {
+      "title": "Jolivet R, Schuermann F, Berger TK, et al. (2008). The quantitative single-neuron modeling competition. Biological Cybernetics 99:417-426.",
+      "url": "https://doi.org/10.1007/s00422-008-0261-x",
+      "why": "Community benchmark for predicting neuron responses to injected currents; precedent for held-out-stimulus evaluation and spike-based similarity scores (confirm details on deep-read). Metadata verified 2026-09-13 via https://api.crossref.org/works/10.1007/s00422-008-0261-x"
+    },
+    {
+      "title": "Gerstner W, Naud R (2009). How Good Are Neuron Models? Science 326:379-380.",
+      "url": "https://doi.org/10.1126/science.1181936",
+      "why": "Widely cited perspective on quantitative neuron-model evaluation. Metadata verified 2026-09-13 via https://api.crossref.org/works/10.1126/science.1181936"
+    },
+    {
+      "title": "Teeter C, Iyer R, Menon V, et al. (2018). Generalized leaky integrate-and-fire models classify multiple neuron types. Nature Communications 9.",
+      "url": "https://doi.org/10.1038/s41467-017-02717-4",
+      "why": "Allen Institute GLIF models built from standardised Cell Types recordings; relevant to protocol batteries and candidate model pools. Metadata verified 2026-09-13 via https://api.crossref.org/works/10.1038/s41467-017-02717-4"
+    },
+    {
+      "title": "Hay E, Hill S, Schuermann F, et al. (2011). Models of Neocortical Layer 5b Pyramidal Cells Capturing a Wide Range of Dendritic and Perisomatic Active Properties. PLoS Computational Biology 7:e1002107.",
+      "url": "https://doi.org/10.1371/journal.pcbi.1002107",
+      "why": "Landmark multi-property, feature-based model construction; a reviewer will expect it alongside Druckmann 2007/2011. Metadata verified 2026-09-13 via https://api.crossref.org/works/10.1371/journal.pcbi.1002107"
+    },
+    {
+      "title": "Van Geit W, De Schutter E, Achard P (2008). Automated neuron model optimization techniques: a review. Biological Cybernetics 99:241-251.",
+      "url": "https://doi.org/10.1007/s00422-008-0257-6",
+      "why": "Review of neuron-model fitting methods; context for feature and cost-function choice. Metadata verified 2026-09-13 via https://api.crossref.org/works/10.1007/s00422-008-0257-6"
+    },
+    {
+      "title": "Nandi A, Chartrand T, Van Geit W, et al. (2022). Single-neuron models linking electrophysiology, morphology, and transcriptomics across cortical cell types. Cell Reports 40:111176.",
+      "url": "https://doi.org/10.1016/j.celrep.2022.111176",
+      "why": "Large Allen biophysical model set built from electrophysiology; possible model source and prior art for multi-protocol model assessment (validation details not yet deep-read). Metadata verified 2026-09-13 via https://api.crossref.org/works/10.1016/j.celrep.2022.111176"
+    },
+    {
+      "title": "Komendantov AO, Venkadesh S, Rees CL, et al. (2019). Quantitative firing pattern phenotyping of hippocampal neuron types. Scientific Reports 9.",
+      "url": "https://doi.org/10.1038/s41598-019-52611-w",
+      "why": "Firing-pattern classification scheme, a candidate for NeuroSem's 'qualitative firing regime' feature. The matrix has only the companion Venkadesh 2019 model paper. Metadata verified 2026-09-13 via https://api.crossref.org/works/10.1038/s41598-019-52611-w"
+    },
+    {
+      "title": "Beck J, Deistler M, Bernaerts Y, Macke J, Berens P (2022). Efficient identification of informative features in simulation-based inference. arXiv:2210.11915.",
+      "url": "https://arxiv.org/abs/2210.11915",
+      "why": "Per abstract, quantifies how much each summary feature of Hodgkin-Huxley models contributes to parameter inference - related to choosing informative features/protocols. Found via arxiv.org/search HTML."
+    },
+    {
+      "title": "Kreuz T, Chicharro D, Houghton C, et al. (2013). Monitoring spike train synchrony. Journal of Neurophysiology 109:1457-1472.",
+      "url": "https://doi.org/10.1152/jn.00873.2012",
+      "why": "Spike-train comparison measures are the main alternative to eFEL features for comparing outputs; a reviewer will ask why features rather than spike distances were used. Metadata verified 2026-09-13 via https://api.crossref.org/works/10.1152/jn.00873.2012"
+    },
+    {
+      "title": "Tripathy SJ, Savitskaya J, Burton SD, et al. (2014). NeuroElectro: a window to the world's neuron electrophysiology data. Frontiers in Neuroinformatics 8.",
+      "url": "https://doi.org/10.3389/fninf.2014.00040",
+      "why": "Electrophysiology property database; its name is in the title of matrix entry MitralSuite (NeuronUnit tests with NeuroElectro data), yet the database paper itself is not in the matrix. Metadata verified 2026-09-13 via https://api.crossref.org/works/10.3389/fninf.2014.00040"
+    },
+    {
+      "title": "Davison AP [first author per Crossref; full author list unverified] (2008). PyNN: a common interface for neuronal network simulators. Frontiers in Neuroinformatics 2.",
+      "url": "https://doi.org/10.3389/neuro.11.011.2008",
+      "why": "Main simulator-independent model interface besides NeuroML; relevant to the optional cross-simulator arm. The matrix only has the PyNNShowcase repo. Metadata verified 2026-09-13 via https://api.crossref.org/works/10.3389/neuro.11.011.2008"
+    },
+    {
+      "title": "Gleeson P, Steuber V, Silver RA (2007). neuroConstruct: A Tool for Modeling Networks of Neurons in 3D Space. Neuron 54:219-235.",
+      "url": "https://doi.org/10.1016/j.neuron.2007.03.025",
+      "why": "Early NeuroML-era modelling tool; a Crossref companion abstract title (10.1186/1471-2202-8-s2-p1) describes using NeuroML and neuroConstruct to build models for multiple simulators - prior art for behaviour preservation across generated simulator code. Metadata verified 2026-09-13 via https://api.crossref.org/works/10.1016/j.neuron.2007.03.025"
+    },
+    {
+      "title": "Niederer SA, Kerfoot E, Benson AP, et al. (2011). Verification of cardiac tissue electrophysiology simulators using an N-version benchmark. Philosophical Transactions of the Royal Society A 369:4331-4351.",
+      "url": "https://doi.org/10.1098/rsta.2011.0139",
+      "why": "Cross-simulator (N-version) verification of electrophysiology simulators on a common benchmark; closest cardiac analogue of NeuroSem's cross-simulator models. Metadata verified 2026-09-13 via https://api.crossref.org/works/10.1098/rsta.2011.0139"
+    },
+    {
+      "title": "Pathmanathan P, Gray RA (2013). Ensuring reliability of safety-critical clinical applications of computational cardiac models. Frontiers in Physiology 4.",
+      "url": "https://doi.org/10.3389/fphys.2013.00358",
+      "why": "Reliability/V&V framing for electrophysiology models in the cardiac community. Metadata verified 2026-09-13 via https://api.crossref.org/works/10.3389/fphys.2013.00358"
+    },
+    {
+      "title": "arbor-sim/nsuite (GitHub repository, created 2018-06-11; LICENSE text is BSD-3-style, GitHub SPDX field NOASSERTION). NSuite: benchmarks and numerical validation tests for multi-compartment neural simulators (Arbor, NEURON, CoreNEURON).",
+      "url": "https://github.com/arbor-sim/nsuite",
+      "why": "Per its docs, validation tests compare simulator output to reference solutions with pass/fail thresholds, and it is meant to catch correctness regressions as engines change - simulator-level regression testing of neuron models. Missed by the GitHub finder. Evidence: api.github.com/repos/arbor-sim/nsuite; raw.githubusercontent.com/arbor-sim/nsuite/master/docs/validation.rst; nsuite.readthedocs.io."
+    },
+    {
+      "title": "neuronsimulator/nrn-modeldb-ci (GitHub repository, created 2021-11-05, BSD-3-Clause, last push 2026-09-05). NEURON ModelDB CI tools.",
+      "url": "https://github.com/neuronsimulator/nrn-modeldb-ci",
+      "why": "Per its README, it retrieves and runs ModelDB models and diffs their outputs (gout files, reports) between two NEURON versions - an active regression-testing system for published neuron models across simulator versions, and close prior art for the numerical/configuration arm. Missed by the GitHub finder. Evidence: api.github.com/repos/neuronsimulator/nrn-modeldb-ci; raw README.md and LICENSE.txt."
+    },
+    {
+      "title": "Scharm M, Wolkenhauer O, Waltemath D (vol. 32; Crossref 'issued' 2015). An algorithm to detect and communicate the differences in computational models describing biological systems. Bioinformatics 32:563-570.",
+      "url": "https://doi.org/10.1093/bioinformatics/btv484",
+      "why": "Structural differencing of versions of computational biology models; the structural counterpart of NeuroSem's behavioural drift detection. The matrix has Waltemath 2013 version control but not this. Metadata verified 2026-09-13 via https://api.crossref.org/works/10.1093/bioinformatics/btv484"
+    },
+    {
+      "title": "Tiwari K, Kananathan S, Roberts MG, et al. (2021). Reproducibility in systems biology modelling. Molecular Systems Biology 17.",
+      "url": "https://doi.org/10.15252/msb.20209982",
+      "why": "Reproducibility of published models in the sister field (BioModels context); the matrix has BioModels curation (Smith 2025) but not this study. Metadata verified 2026-09-13 via https://api.crossref.org/works/10.15252/msb.20209982"
+    },
+    {
+      "title": "Lieven C, Beber ME, Olivier BG, et al. (2020). MEMOTE for standardized genome-scale metabolic model testing. Nature Biotechnology.",
+      "url": "https://doi.org/10.1038/s41587-020-0446-y",
+      "why": "Community standardised test suite for a biological model format (genome-scale metabolic models); closest 'standard test suite for a model format' analogue to OMV/NeuroSem outside neuroscience. Retrieved via Europe PMC search TITLE:memote (MED 32123384): https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=TITLE:memote&format=json"
+    },
+    {
+      "title": "Glatard T, Lewis LB, Ferreira da Silva R, et al. (2015). Reproducibility of neuroimaging analyses across operating systems. Frontiers in Neuroinformatics 9.",
+      "url": "https://doi.org/10.3389/fninf.2015.00012",
+      "why": "Neuroscience case of result changes driven by the execution environment rather than model edits; relevant to environment-digest and numerical-drift controls. Metadata verified 2026-09-13 via https://api.crossref.org/works/10.3389/fninf.2015.00012"
+    },
+    {
+      "title": "Kiar G, Chatelain Y, de Oliveira Castro P, et al. (2021). Numerical uncertainty in analytical pipelines lead to impactful variability in brain networks. PLOS ONE 16:e0250755.",
+      "url": "https://doi.org/10.1371/journal.pone.0250755",
+      "why": "Numerical uncertainty propagated through neuro pipelines; methodologically related to tolerance calibration. Metadata verified 2026-09-13 via https://api.crossref.org/works/10.1371/journal.pone.0250755"
+    },
+    {
+      "title": "Sanz-Robinson J, Jahanpour A, Phillips N, Glatard T, Poline J-B (2022). NeuroCI: Continuous Integration of Neuroimaging Results Across Software Pipelines and Datasets. bioRxiv preprint.",
+      "url": "https://doi.org/10.1101/2022.05.30.494062",
+      "why": "Per Crossref abstract, a framework to evaluate how neuroimaging results vary across seemingly equivalent tools and pipelines - result-level CI in neuroscience, a neighbour of OMV/NeuroSem. Surfaced by the Crossref Glatard query. Metadata verified 2026-09-13 via https://api.crossref.org/works/10.1101/2022.05.30.494062"
+    },
+    {
+      "title": "Hook D, Kelly D (2009). Testing for trustworthiness in scientific software. 2009 ICSE Workshop on Software Engineering for Computational Science and Engineering (SECSE), pp. 59-64.",
+      "url": "https://doi.org/10.1109/secse.2009.5069163",
+      "why": "Hook & Kelly's own scientific-software testing paper. Matrix entry Gray & Kelly 2010 names 'Hook's mutation sensitivity testing' in its title, so the original should be checked on deep-read and cited if it is the source. Metadata verified 2026-09-13 via https://api.crossref.org/works/10.1109/secse.2009.5069163"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+schema: neurosem-agent-task/1
+task_id: t04_include_refactor
+type: refactor_included_files
+base_model: nml2_hh_example
+title: Move the inline ion channels of the HH example cell into included files
+seeded_fault: null
+allowed_files:
+  - model/examples/**
+  - model/LEMSexamples/LEMS_NML2_Ex5_DetCell.xml
+answer_files: []
+budget: {max_turns: 80, max_wall_clock_minutes: 60, max_cost_usd: 15.0}

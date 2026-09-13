@@ -1,0 +1,35 @@
+# Conda alternative to the plain-venv route in docs/REPRODUCING.md.
+#
+# Scope, stated plainly: conda supplies only CPython 3.12 and pip 26.2.1 (the pip version the
+# venv, Docker, CI and Makefile routes pin; on conda-forge as of 2026-09-13). Every Python
+# package is installed by pip from requirements.lock. Java is NOT provided by this file: after
+# activating the environment run `python scripts/bootstrap_java.py` (Temurin 21 into .tools/).
+#
+# One difference from the other routes cannot be removed. They install the lock, then run
+# `pip install --no-deps -e .` as a separate step. Conda writes the `pip:` entries below into a
+# temporary requirements file and runs `pip install -U -r <that file>` (conda source
+# conda/env/installers/pip.py, read 2026-09-13), and pip rejects --no-deps inside a requirements
+# file ("no such option: --no-deps", pip 26.2.1, checked 2026-09-13). So here `-e .` is resolved
+# together with the lock. Every pyproject dependency is pinned in the lock
+# (tests/unit/test_infra_repro_files.py), so pip is expected to install exactly the lock pins;
+# that is an expectation, not a verified fact. After creating the environment, run the lock
+# comparison in docs/REPRODUCING.md ("Conda") before trusting it.
+#
+# Channel: conda-forge only (free to use; the Anaconda `defaults` channel is excluded).
+# Conda picks the newest CPython 3.12.x at creation time; the development venv used 3.12.10
+# and the Docker image uses 3.12.14.
+#
+# NOT TESTED: conda is not installed on the authoring machine (2026-09-13). Create the
+# environment from the repository root, so the relative paths below resolve to it:
+#   conda env create -f environment.yml
+#   conda activate neurosem
+name: neurosem
+channels:
+  - conda-forge
+  - nodefaults
+dependencies:
+  - python=3.12
+  - pip=26.2.1
+  - pip:
+      - -r requirements.lock
+      - -e .

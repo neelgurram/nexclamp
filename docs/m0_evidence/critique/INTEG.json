@@ -1,0 +1,257 @@
+{
+  "lens": "Research integrity, reproducibility, venue and AI policy (M0 critique of NEUROSEM_CLAUDE_HANDOFF; cross-checked against NEUROSEM_FINAL_SPEC where it supersedes the handoff). Retrieved 2026-09-13. Not legal advice. No results claimed; no held-out data created or accessed.",
+  "issues": [
+    {
+      "id": "INTEG-01",
+      "handoff_section": "IEEE pathway (venue list items 1, 3, 4, 5)",
+      "assumption": "The leading journal is 'IEEE/ACM Transactions on Computational Biology and Bioinformatics (TCBB)', its scope is known to fit, and open-access fees only matter for IEEE Access.",
+      "category": "outdated",
+      "severity": "medium",
+      "analysis": "Crossref lists a renamed title, 'IEEE Transactions on Computational Biology and Bioinformatics', with electronic ISSN 2998-4165. It has DOIs from 2025 (vol. 22) onward. The former ISSNs (1545-5963/1557-9964) have Crossref issues only up to 2024-11. Volume 22 mixes new tcbbio and legacy tcbb DOI suffixes, so cite by DOI, not by suffix pattern. The final spec says TCBB's 'stated scope' emphasises computational methods, but no IEEE primary scope page could be read in this audit: CSDL is JavaScript-only and Xplore blocked automated fetches. That claim is therefore unverified. Fees are also missing from the handoff. The 2026 IEEE APC list shows TCBB is hybrid, with a $2,800 optional OA fee and $220 per page beyond 12 pages; JBHI is hybrid at $2,800 with overlength charges; TNSRE is fully gold OA with a mandatory $2,160 APC; IEEE Access charges $2,160. Under the zero-budget constraint, TNSRE and IEEE Access both carry unavoidable charges, and TCBB overlength pages can cost money even without OA.",
+      "evidence_urls": [
+        "https://api.crossref.org/journals/2998-4165",
+        "https://api.crossref.org/journals/2998-4165/works?sort=issued&order=asc&rows=4",
+        "https://journals.ieeeauthorcenter.ieee.org/wp-content/uploads/sites/7/IEEE-Article-Processing-Charges-List.pdf",
+        "https://www.embs.org/tnsre/for-authors/",
+        "https://ieeeaccess.ieee.org/about/article-processing-charges/",
+        "https://www.computer.org/csdl/journal/tb/about/"
+      ],
+      "recommendation": "In PLAN.md and DECISIONS.md, replace the venue name with the current title and e-ISSN 2998-4165, and mark TCBB scope as 'unverified - re-check on IEEE primary page before targeting'. Add a venue cost table (APC, overlength, mandatory vs optional, dated 2026-09-13), and plan a TCBB manuscript within 12 regular pages to avoid overlength charges. Re-verify every venue fact at submission time, since these are 2026 list values.",
+      "needs_neel_decision": false,
+      "decision_question": ""
+    },
+    {
+      "id": "INTEG-02",
+      "handoff_section": "IEEE pathway (item 2: 'A current IEEE CIBCB conference'); Final decision rule",
+      "assumption": "A future CIBCB edition is a good conference route whose call, deadlines, fees and presentation rules can be checked later.",
+      "category": "uncertain",
+      "severity": "high",
+      "analysis": "CIBCB 2026 is over (Athens, 31 Aug - 2 Sep 2026; full papers were due 30 Apr 2026). CIBCB 2027 is announced on its official site: Bocconi University, Milan, main conference 1-3 Sep 2027. Full papers (8 pages) are due 2 Apr 2027, notification is 21 May and camera-ready is 25 Jun 2027. At least one author is expected to present on site. In 2026 presentation was in person only, and papers whose authors did not present were archived but not indexed in IEEE Xplore. Each 2026 paper needed a full non-student registration (EUR 700-930), plus travel. 2027 fees were not found. There are three integrity and feasibility consequences. (1) Registration and travel conflict with the zero-budget constraint. (2) The 2 Apr 2027 deadline is about 6.5 months away. It is unlikely that M1-M8 (pilot, frozen preregistered held-out study) can finish by then, so a CIBCB 2027 paper would in practice report pilot or discovery-only results. That creates pressure to report before the confirmatory phase. (3) A later TCBB paper on the same study must differ substantially and cite the conference paper, because IEEE bars concurrent consideration of substantially similar manuscripts. The 2027 track list keeps 'Modelling, Simulation, and Optimization of Biological Systems' but names neither neuroscience nor software testing.",
+      "evidence_urls": [
+        "https://attend.ieee.org/cibcb-2027/important-dates/",
+        "https://attend.ieee.org/cibcb-2027/call-for-papers/",
+        "https://attend.ieee.org/cibcb-2027/scope-topics/",
+        "https://cis.ieee.org/conferences/conference-calendar",
+        "https://cibcb2026.dib.uth.gr/registration/",
+        "https://cibcb2026.dib.uth.gr/",
+        "https://pspb.ieee.org/images/files/files/opsmanual.pdf"
+      ],
+      "recommendation": "Record the CIBCB 2027 facts in DECISIONS.md. Treat CIBCB as feasible only if the in-person and registration cost is funded, for example by a student travel grant or sponsor. Do not let the 2 Apr 2027 deadline set the study schedule. If a conference paper is wanted before the frozen study, label it explicitly as a pilot or methods paper with no held-out claims. Plan the journal paper as a substantially extended, cross-cited work, and state the relationship in both submissions.",
+      "needs_neel_decision": true,
+      "decision_question": "Drop CIBCB 2027 (conflicts with zero budget and in-person presentation), or target it only as a clearly labelled pilot/methods paper with its costs funded, accepting that the journal paper must then be a substantially extended, cross-cited manuscript?"
+    },
+    {
+      "id": "INTEG-03",
+      "handoff_section": "IEEE pathway (AI and authorship sentence); Milestones M0/M10 (AI-use log, disclosures)",
+      "assumption": "Only 'substantive generative-AI use' must be disclosed; 'only humans can be authors' is an IEEE policy statement; the planned disclosure lists scaffolding, debugging, refactoring, tests and documentation (final spec).",
+      "category": "outdated",
+      "severity": "medium",
+      "analysis": "The IEEE journal Author Center policy requires disclosing any AI-generated content in the article, including text, figures, images and code, in the acknowledgments. The disclosure names the AI system and the affected sections. Only editing and grammar help is outside the policy, and disclosure is still recommended even then. The IEEE PSPB Operations Manual (amended 25 June 2026) adds further principles:\n- authors check AI output for accuracy and plagiarism;\n- AI tools may be used as a source only if independently verified;\n- acknowledgment covers text, images, video, audio, graphics and code;\n- AI-generated simulation data are labelled;\n- code and data release is recommended when AI is the subject of the study.\nNo IEEE page retrieved says in so many words that AI cannot be an author. PSPB 8.2.1.A reserves authorship for individuals and requires each essential part to be the responsibility of an author, so the handoff's sentence is a paraphrase and should be cited that way. In practice, AI use in NeuroSem already goes beyond 'scaffolding'. In M0, AI agents ran the prior-art sweep, drafted the novelty matrix, screened licences and fixtures, and critiqued the design (AI_USE_LOG.md Entry 001). IEEE Access states it rejects articles containing fabricated content, including nonexistent references. JOSS additionally requires naming the tools and where AI was used, and confirming human review.",
+      "evidence_urls": [
+        "https://journals.ieeeauthorcenter.ieee.org/become-an-ieee-journal-author/publishing-ethics/guidelines-and-policies/submission-and-peer-review-policies/",
+        "https://pspb.ieee.org/images/files/files/opsmanual.pdf",
+        "https://conferences.ieeeauthorcenter.ieee.org/author-ethics/guidelines-and-policies/submission-policies/",
+        "https://ieeeaccess.ieee.org/authors/preparing-your-article/",
+        "https://joss.theoj.org/about"
+      ],
+      "recommendation": "Reword the policy line to: 'Disclose all AI-generated content (text, figures, code, literature search, data-generating code) in the acknowledgments, naming the system and sections, per the venue policy verified at submission'. Extend AI_USE_LOG.md with a per-artefact provenance column (human-authored / AI-drafted and human-verified / AI-generated), covering every citation in docs/novelty_matrix.csv. Add a gate: no citation enters the manuscript until Neel has opened the DOI or landing page himself. Label any AI-generated mutants, task files or simulation configurations as such in manifests.",
+      "needs_neel_decision": false,
+      "decision_question": ""
+    },
+    {
+      "id": "INTEG-04",
+      "handoff_section": "Claude Code case study (Isolation: 'Hide selected protocols and answer keys', 'Start each trial from the same clean commit', 'Score with deterministic hidden tests')",
+      "assumption": "Hidden tests stay hidden if they are not exposed as public tests and every trial starts from the same clean commit.",
+      "category": "infeasible",
+      "severity": "high",
+      "analysis": "As written, the design has several leakage channels.\n(1) Git history. If the trial workspace is a checkout of the NeuroSem repository, .git holds every earlier commit, including selected protocols, tolerance files, seeded-fault answer keys and scorer code once they are committed. GitHub's own documentation says that even after history is rewritten, removed data can remain reachable through clones, forks, cached commit views and pull-request refs.\n(2) Filesystem access. Claude Code reads files in the working directory without approval. Its Read/Edit deny rules cover built-in tools and recognised commands such as cat, but not commands that read files without naming them (e.g. recursive grep) or arbitrary programs. Deny rules are therefore not an isolation boundary. OS-level sandboxing covers only Bash and its child processes.\n(3) Public artefacts. A public OSF registration, Zenodo release or GitHub repository listing the selected battery and tolerances can be fetched by an agent that has web tools.\n(4) Authorship. The same assistant that will be evaluated is building NeuroSem, possibly including the tasks and hidden scorers.\n(5) Future training. On Free/Pro/Max accounts, Anthropic trains new models on Claude Code data when the user's model-improvement setting is on, with 5-year retention. If trials use a later model, development transcripts containing the hidden battery could have been in its training data.\nIn the coding-agent literature, SWE-Bench+ found that about a third of successful SWE-bench patches came from solutions leaked in the issue text, and that many issues predated model knowledge cutoffs. That shows how leakage inflates agent success rates.",
+      "evidence_urls": [
+        "https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/removing-sensitive-data-from-a-repository",
+        "https://code.claude.com/docs/en/permissions",
+        "https://code.claude.com/docs/en/data-usage",
+        "https://help.osf.io/article/229-select-a-registration-template",
+        "https://arxiv.org/abs/2410.06992"
+      ],
+      "recommendation": "Specify the agent-trial workspace as a freshly initialised repository built from an exported file tree of the frozen public components, with no NeuroSem .git history. Keep hidden protocols, answer keys and scorers outside any directory or machine the agent session can reach, and run scoring only after the session process has exited. Disable network tools in trials (deny WebFetch/WebSearch and use a sandbox network allowlist). Embargo the OSF registration and keep release artefacts private until M9 is complete. Embed a unique random marker string in every hidden file and grep all trial transcripts for it as a leakage check. Record the account's model-training setting in AI_USE_LOG.md, and turn it off, or use commercial API terms, for all NeuroSem sessions. Neel should author the case-study tasks and hidden scorers without Claude assistance (see INTEG-08).",
+      "needs_neel_decision": true,
+      "decision_question": "Will you (a) author the agent tasks and hidden scorers yourself, without Claude, (b) disable the model-training data setting for the account used on NeuroSem, and (c) keep the OSF registration and release embargoed until the agent study is finished?"
+    },
+    {
+      "id": "INTEG-05",
+      "handoff_section": "Claude Code case study (Isolation: 'Use fresh sessions with fixed permissions and budgets'); Mandatory Claude operating rules ('Stop for Neel's approval after every milestone')",
+      "assumption": "A new Claude Code session is a clean, standardised context, and development sessions follow only the handoff's operating rules.",
+      "category": "underspecified",
+      "severity": "medium",
+      "analysis": "According to Claude Code's docs, every session loads the following into context by default:\n- CLAUDE.md files from the working directory and every parent directory;\n- user-level CLAUDE.md and rules;\n- auto memory, which is on by default, stored per repository, with the first 200 lines / 25KB of MEMORY.md loaded.\nNon-interactive -p runs load the same context, including project hooks and MCP servers, unless --bare is used. --bare skips hooks, skills, plugins, MCP servers, auto memory and CLAUDE.md, but it does not use subscription login.\nThis M0 audit shows the problem concretely. It runs from C:/Users/gurra/Continuum, so the Continuum project's auto-memory index was loaded, including feedback memories telling the assistant to act without asking for confirmation and to commit and push at every stopping point. The Continuum project also has a Stop hook that runs git add/commit/push for that repository. Those directives conflict with the handoff's approval gates, and in an agent trial they would be uncontrolled, unrecorded instructions. The NeuroSem repository currently has no .claude directory and no git remote. The final spec asks to record the Claude Code version and model ID, but not the loaded instruction or memory context.",
+      "evidence_urls": [
+        "https://code.claude.com/docs/en/memory",
+        "https://code.claude.com/docs/en/headless",
+        "https://code.claude.com/docs/en/cli-reference",
+        "https://code.claude.com/docs/en/settings"
+      ],
+      "recommendation": "Development: launch NeuroSem sessions from the NeuroSem repository root. Add a NeuroSem CLAUDE.md that restates the mandatory operating rules, including stopping for approval, no held-out access and no pushing without approval. Log the list of loaded memory files in each AI_USE_LOG entry. Trials: use claude --bare -p with a dedicated CLAUDE_CONFIG_DIR and CLAUDE_CODE_DISABLE_AUTO_MEMORY=1. Pass settings explicitly with --settings, use --permission-mode dontAsk with an explicit --allowedTools list, and set identical --max-turns and --max-budget-usd. Save the stream-json output, whose system/init event records model, tools, MCP servers and plugins. Preregister these flags as part of the frozen agent configuration.",
+      "needs_neel_decision": true,
+      "decision_question": "For NeuroSem, should the milestone approval gates override your general 'work autonomously / auto-commit-and-push' preferences, and should NeuroSem sessions run from the NeuroSem repository with their own CLAUDE.md rather than from the Continuum project context?"
+    },
+    {
+      "id": "INTEG-06",
+      "handoff_section": "Claude Code case study (Isolation: 'Log model/version/date...'; 'Keep claims restricted to the evaluated Claude configuration'); Solo scope ('20-30 optional Claude Code tasks')",
+      "assumption": "Logging the model and version makes the agent case study reproducible, and one run per task over 20-30 tasks is informative.",
+      "category": "scientifically_weak",
+      "severity": "medium",
+      "analysis": "Three things make the evaluated configuration a moving, non-deterministic target.\n(1) Client drift. The npm registry shows 79 @anthropic-ai/claude-code releases between 2026-06-13 and 2026-09-12, 32 of them in the last month (latest 2.1.270 on 2026-09-12). Claude Code updates automatically unless DISABLE_AUTOUPDATER=1 is set, and its docs note that updates may change feature behaviour.\n(2) Model drift and retirement. Aliases such as 'opus' and 'sonnet' resolve to whatever model is current unless ANTHROPIC_DEFAULT_*_MODEL or a full model name is pinned. Anthropic retires models with at least 60 days' notice, after which requests to them fail. For example, claude-opus-4-1-20250805 was deprecated 2026-06-05 and retired 2026-08-05. Exact re-running of trials will therefore become impossible.\n(3) Sampling. The API returns an error for non-default temperature/top_p on Claude 4.7-and-later models, so sampling cannot be fixed and repeated trials of the same task can differ.\nWith one run per task, a success fraction over 20-30 tasks mixes task difficulty with run-to-run variance. Kapoor et al. (2024) report inadequate holdouts, missing cost reporting and a pervasive lack of reproducibility in agent evaluations.",
+      "evidence_urls": [
+        "https://registry.npmjs.org/@anthropic-ai/claude-code",
+        "https://code.claude.com/docs/en/env-vars",
+        "https://code.claude.com/docs/en/costs",
+        "https://platform.claude.com/docs/en/about-claude/model-deprecations",
+        "https://arxiv.org/abs/2407.01502"
+      ],
+      "recommendation": "Pin an exact Claude Code npm version, set DISABLE_AUTOUPDATER=1 and pass a full model ID (not an alias). Run all trials within one short window well before the model's listed retirement date. Record the version and model from each trial's system/init event. Run k repeated trials per task (k fixed in the preregistration), report per-task success distributions with uncertainty, and describe results as descriptive findings for one frozen configuration. Because exact re-execution will not be possible, archive complete transcripts, patches and scorer outputs as the reproducibility record.",
+      "needs_neel_decision": true,
+      "decision_question": "How many repeated trials per task (k) will you fund and preregister for the agent case study, given that more repeats multiply its cost (see INTEG-07)?"
+    },
+    {
+      "id": "INTEG-07",
+      "handoff_section": "Claude Code case study ('Log ... costs'; 'fixed permissions and budgets'); Solo scope (20-30 optional tasks)",
+      "assumption": "Trial costs can be logged precisely, and budgets can be enforced within a zero-budget project.",
+      "category": "underspecified",
+      "severity": "medium",
+      "analysis": "Claude Code's cost figures (/usage session block, status line, and total_cost_usd in --output-format json) are computed on the client from token counts at list price. The docs call them estimates that can differ from the bill. For Pro/Max subscribers the docs say the session dollar figure is not relevant for billing, and subscription usage is subject to rolling usage limits that can interrupt a run. --max-budget-usd (print mode) enforces a cap against the same estimate. The isolated --bare mode does not use subscription login and requires an ANTHROPIC_API_KEY, i.e. pay-per-token API billing. The cleanest isolation setup therefore conflicts with the zero-budget constraint. Running on a subscription instead gives no meaningful per-trial dollar cost and risks hitting usage limits mid-trial, which conflicts with 'do not manually intervene'. Kapoor et al. (2024) argue that agent evaluations should report cost alongside accuracy.",
+      "evidence_urls": [
+        "https://code.claude.com/docs/en/costs",
+        "https://code.claude.com/docs/en/headless",
+        "https://code.claude.com/docs/en/cli-reference",
+        "https://arxiv.org/abs/2407.01502"
+      ],
+      "recommendation": "Make token counts per model (input, output, cache read/write) the primary cost metric. Report dollar figures only as 'client-side list-price estimate', with the date and pricing source. Preregister an interruption rule, e.g. a trial that hits a usage or rate limit is voided and rerun from scratch, and report the count. Set identical --max-turns and --max-budget-usd for every trial. Decide the funding route before M9, and shrink or drop the optional case study rather than weaken isolation.",
+      "needs_neel_decision": true,
+      "decision_question": "Fund API usage for isolated --bare trials, run trials on a subscription with token-count-only cost reporting and a void-and-rerun rule, or reduce/drop the optional Claude Code case study?"
+    },
+    {
+      "id": "INTEG-08",
+      "handoff_section": "Mission ('Claude Code is a development assistant... may later be evaluated'); Claude Code case study; Success criteria ('Results independent of Claude failures')",
+      "assumption": "Separating Claude's two roles in the manuscript and AI log is enough to manage the conflict of interest, and NeuroSem-generated mutants form a fair benchmark for comparing NeuroSem's selected battery with baselines.",
+      "category": "scientifically_weak",
+      "severity": "high",
+      "analysis": "There are two nested self-evaluation risks.\n(1) The same assistant family designs and codes the instruments that will later score it: mutation operators, the classification cascade, tolerance calibration, the detection matrix and possibly the agent tasks and scorers. Systematic blind spots or bugs in AI-written evaluation code could inflate or deflate both the main detection rates and the agent results, and nobody independent checks the instruments. The final spec says the human author controls ground truth, thresholds and exclusions, but it defines no mechanism that demonstrates this.\n(2) The main comparison is a developer-controlled simulation benchmark. NeuroSem generates the mutants and valid transformations, then compares its own selected battery with canonical and random baselines on them. Pawel, Kook and Reeve (Biometrical Journal, 2023) show that questionable research practices in comparative simulation studies, such as choosing data-generating mechanisms, conditions or metrics after seeing results, can make almost any method look superior.\nThe handoff's leakage and freezing rules partly address (2) for thresholds and splits. They do not address the choice of mutation operators, parameter ranges, or which generated mutants count as 'carefully curated'.",
+      "evidence_urls": [
+        "https://api.crossref.org/works/10.1002/bimj.202200091",
+        "https://pspb.ieee.org/images/files/files/opsmanual.pdf",
+        "https://arxiv.org/abs/2407.01502"
+      ],
+      "recommendation": "(a) Before M4, Neel writes and hashes a human-authored mutation-operator specification: operators, parameter ranges, sampling rule and curation criteria. Curation then applies only frozen, pre-stated criteria that do not depend on detection outcomes. (b) In M5, independently check detection decisions on a sample of mutants, by hand or with OMV's compare_arrays against the recorded tolerance, and report agreement. (c) Neel authors the M9 tasks, seeded faults and scorers without Claude (INTEG-04). (d) Add a competing-interests and AI-role statement to the manuscript: the framework was built with help from the model family it evaluates. (e) Report every generated mutant in the validation cascade, including excluded ones, with the exclusion reason. Evaluating any non-Claude agent would be a scope change, so it is left as a decision.",
+      "needs_neel_decision": true,
+      "decision_question": "Do you accept writing (and hashing) the mutation-operator specification and the agent-study tasks/scorers yourself before implementation? Should the agent case study stay Claude-only (with an explicit competing-interest statement) or be dropped, given that adding other agents would change scope?"
+    },
+    {
+      "id": "INTEG-09",
+      "handoff_section": "Statistics ('Preregister ... before final evaluation'); Milestones M6-M8; Leakage prevention ('Do not repeatedly redesign after examining final failures')",
+      "assumption": "One preregistration at M8, after the pilot, tolerance calibration and discovery-based protocol selection, is practical and sufficient.",
+      "category": "underspecified",
+      "severity": "high",
+      "analysis": "OSF practicalities. Once submitted, registration content cannot be edited. Withdrawal is irreversible and removes the form contents. Appended Updates are possible and require approval. Registrations can be embargoed for up to four years and get a DOI when public. OSF offers relevant templates, including 'Secondary Data Preregistration' (for existing datasets such as public models) and 'Simulation Studies' (ADEMP-based, matching Siepe et al., Psychological Methods, 2024).\nDesign gaps.\n(1) By M8 all exploratory work has already been done on discovery data. The registration is therefore a confirmatory held-out-phase plan, and the manuscript must say so and report M6/M7 analyses in full.\n(2) Choosing held-out models requires screening them for validity, determinism, runtime and 'meaningful current response', which means running them. The handoff does not say which held-out outputs may be inspected before the registration.\n(3) Split files are hashed but not publicly committed before selection, so a solo author cannot demonstrate the order of events.\n(4) 'Do not repeatedly redesign' has no operational threshold.\n(5) A public, non-embargoed registration would disclose the battery and tolerances to the later agent study (INTEG-04).",
+      "evidence_urls": [
+        "https://help.osf.io/article/229-select-a-registration-template",
+        "https://help.osf.io/article/158-create-a-preregistration",
+        "https://help.osf.io/article/330-welcome-to-registrations",
+        "https://api.crossref.org/works/10.1037/met0000695"
+      ],
+      "recommendation": "Use a two-stage OSF registration.\nStage 1 (end of M5, before any selection code sees splits), embargoed, Secondary Data template:\n- held-out candidate list, split manifest and SHA-256 hashes;\n- screening rules and the exact screening outputs allowed to be viewed;\n- mutation-family hold-out.\nStage 2 (M8), Simulation Studies or OSF Preregistration template:\n- endpoint and analysis plan;\n- frozen tolerance and battery hashes;\n- crash, equivalent-mutant and undefined-feature rules;\n- a deviation policy, e.g. at most one pre-specified redesign, each logged as an OSF Update with a deviations table in the paper.\nKeep both registrations embargoed until the agent study is complete. Label M1-M7 as exploratory in the manuscript.",
+      "needs_neel_decision": true,
+      "decision_question": "Adopt a two-stage embargoed OSF registration (splits and screening rules after M5, analysis plan at M8) instead of a single registration at M8?"
+    },
+    {
+      "id": "INTEG-10",
+      "handoff_section": "Model selection ('Traceable public source and usable license'); Repository (models/{raw,curated,snapshots}, LICENSE, Dockerfile); Milestone M10 (public repository, DOI archive)",
+      "assumption": "A 'usable license' per source model is enough to store model snapshots, mutants and derived data in a public repository and DOI archive under one NeuroSem LICENSE.",
+      "category": "underspecified",
+      "severity": "high",
+      "analysis": "The planned repository would redistribute third-party model files and derivatives of them (mutants, valid transformations) under mixed licences.\n(1) The NeuroML2 repository, source of the HH/Ex5 backup fixture, is LGPL-3.0. LGPL-3.0 section 2 says modified versions may be conveyed only under the LGPL or GPL. Section 4 (Combined Works) requires prominent notice and accompanying copies of the GPL and LGPL texts. Mutants of LGPL files cannot be relicensed under NeuroSem's own licence.\n(2) The LEMS specification repository is GPL-3.0, which matters if core type or schema definitions are vendored.\n(3) The Pospischil fixture repository applies MIT to its NeuroML2 files but carves out NEURON_MODIFIED, which only carries a citation condition. The OMV .mep reference spike times sit in that folder, so they are not MIT. GitHub reports the licence as NOASSERTION.\n(4) GitHub's docs state that a repository without a licence keeps all rights reserved. This blocked candidate Ih and T-current mirrors in the fixture search.\n(5) The pyNeuroML jNeuroML jar-with-dependencies (LGPL-3.0) bundles many third-party libraries plus jlems 0.12.0, which has no release tag. Shipping it inside a Docker image or Zenodo archive brings LGPL source-availability duties for an untagged dependency.\n(6) OMV's required dependency pyrx declares 'GPLv2' on PyPI.\nA single root LICENSE, which currently exists untracked in the NeuroSem working tree, would mislabel these files. Handling via REUSE is available: spec 3.3 allows per-file SPDX metadata, .license sidecar files for uncommentable files, and a LICENSES/ directory, and the reuse tool is 6.2.0 on PyPI.",
+      "evidence_urls": [
+        "https://raw.githubusercontent.com/spdx/license-list-data/main/text/LGPL-3.0-only.txt",
+        "https://api.github.com/repos/NeuroML/NeuroML2/license?ref=a5f5dadccd23606e683eaa0dd58dd2c3b2a7ed58",
+        "https://api.github.com/repos/OpenSourceBrain/PospischilEtAl2008/license?ref=049081c39357d9e7c478b63ef7b10f374d1c50f4",
+        "https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository",
+        "https://github.com/LEMS/jLEMS/blob/development/pom.xml",
+        "https://pypi.org/pypi/pyrx/json",
+        "https://reuse.software/spec-3.3/",
+        "https://pypi.org/pypi/reuse/json"
+      ],
+      "recommendation": "Adopt a three-part licensing model in LICENSE_AUDIT.md:\n- NeuroSem code under the licence Neel chooses;\n- model snapshots and every derived mutant or transformation keep their upstream licence, recorded per file with REUSE metadata (REUSE.toml or .license sidecars) and tracked as a column in model_manifest.csv and mutation_manifest.csv;\n- generated traces and features under a separately chosen data licence.\nAlso:\n- Reference citation-only data such as the .mep files by URL plus hash instead of copying them.\n- Do not publish a Docker image that contains the jNeuroML jar; install the pinned PyPI pyNeuroML at build time and record the jar hash.\n- Run 'reuse lint' in CI.\n- Exclude sources with no licence.\nThis is not legal advice; flag unresolved cases for a human licensing check.",
+      "needs_neel_decision": true,
+      "decision_question": "Which licence for NeuroSem code and which for generated data? Should LGPL-3.0 model derivatives (mutants) be redistributed under their upstream licence, or should NeuroSem use only permissively licensed models and ship regeneration scripts instead of mutant files?"
+    },
+    {
+      "id": "INTEG-11",
+      "handoff_section": "Repository ('Every run must record run ID, ... Git commit. Raw results are immutable.'; results/raw); Tolerances (h, h/2, h/4); Milestone M10 (DOI archive, one-command reproduction)",
+      "assumption": "A solo student can record and preserve full per-run provenance with immutable raw traces inside the repository and its DOI archive.",
+      "category": "infeasible",
+      "severity": "high",
+      "analysis": "Measured in this audit's fixture verification (local scratch output, not a NeuroSem result): one PyLEMS 0.6.9 run of the Pospischil RS reference protocol (1000 ms at dt 0.001 ms) produced one voltage file of 46,259,248 bytes (1,000,000 rows, 2 columns). That run took 263 s. The time step was not changed. By arithmetic, h/2 and h/4 runs would give about 92 MB and about 185 MB per voltage column.\nGitHub warns at 50 MiB, blocks files over 100 MiB, and recommends repositories under 1 GB (strongly, under 5 GB). Zenodo allows 50 GB and at most 100 files per record by default, with up to 200 GB on request.\nAn illustrative lower bound at the handoff's upper planning numbers:\n- reference refinement: 16 models x 16 protocols x 3 steps = 768 runs;\n- admissible mutants: 160 x 16 protocols = 2,560 runs;\n- valid transformations: 40 x 16 protocols = 640 runs.\nThat totals about 3,970 runs, before inadmissible mutants, rheobase searches, no-change controls or reruns. At the measured file size this is about 180 GB of raw text traces. At the measured PyLEMS time it is about 290 CPU-hours. jNeuroML runtime is still unmeasured and protocol durations will differ, so this is an order-of-magnitude illustration only.\nRecording about 16 provenance fields per run by hand is not feasible at this scale. Provenance must be generated automatically or it will be incomplete.",
+      "evidence_urls": [
+        "https://docs.github.com/en/repositories/working-with-files/managing-large-files/about-large-files-on-github",
+        "https://help.zenodo.org/docs/deposit/manage-files/",
+        "https://about.zenodo.org/policies/",
+        "https://pypi.org/pypi/snakemake/json",
+        "https://pypi.org/pypi/sumatra/json"
+      ],
+      "recommendation": "(1) In M1, measure jNeuroML runtime and output size per protocol for both fixtures, and publish a compute and storage budget before M6.\n(2) Keep results/raw out of git. Use a content-addressed local store; commit only JSONL run manifests with SHA-256 hashes.\n(3) Write provenance automatically through one run wrapper that every simulation passes through, so no field is typed by hand. Snakemake 9.27.0 (MIT) or Sumatra 0.8.1 (BSD-2-Clause) are candidates, but a thin in-house wrapper is enough.\n(4) Store traces as compressed binary (e.g. float32 NPZ/HDF5), and decide whether the recording interval may be coarser than the integration step. That choice interacts with the 'output sampling' mutation family and eFEL interpolation, so freeze it before calibration.\n(5) Archive features, manifests, reference traces and every detection-evidence trace on Zenodo; make the remaining traces deterministically regenerable and verify them by hash in the reproduction command.",
+      "needs_neel_decision": true,
+      "decision_question": "Accept that full raw traces are regenerable and hash-verified rather than all archived, with only features, manifests, reference traces and detection-evidence traces deposited on Zenodo?"
+    },
+    {
+      "id": "INTEG-12",
+      "handoff_section": "Solo scope (Full study: 12-16 reference models, 8-10 discovery / 4-6 held-out, 100-160 curated admissible mutants); Model selection (diversity goals); Milestones",
+      "assumption": "One student can source, curate and evaluate 12-16 licensed, diverse NeuroML models and 100-160 admissible mutants, with no calendar, effort estimate or stop date.",
+      "category": "infeasible",
+      "severity": "high",
+      "analysis": "The handoff and final spec define 10 milestones but no calendar or time box. The final spec itself calls the numbers planning bounds that still need a pilot runtime estimate or power analysis.\nThe M0 fixture search found a thin model pool:\n- Licensed, single-compartment, jNeuroML-runnable candidates came mainly from one paper family: Pospischil RS/LTS/FS/IB, which share channel files and are correlated.\n- The remaining licensed candidates were one LGPL textbook HH example and one Wang-Buzsaki cell.\n- No clearly licensed single-compartment Ih/sag model was found.\n- The OSB repositories for Ih (3684) and T-current (279) models have no licence; Allen Cell Types content was excluded under its terms of use.\n- The docs describe jLEMS as single-compartment only, so multicompartment models need NEURON.\nThe handoff requires confidence intervals that resample base models. With 4-6 held-out models drawn from a few source families, the effective number of independent clusters is small and intervals will be wide. Curation is also labour-heavy: each admissible mutant needs the full classification cascade and exhaustive-battery runs, M4 alone audits 20 by hand, and Neel must master 14 listed concepts before the frozen study. The nearest external deadline (CIBCB 2027 full papers, 2 Apr 2027) is not compatible with the full scope.",
+      "evidence_urls": [
+        "https://api.github.com/repos/OpenSourceBrain/PospischilEtAl2008/license?ref=049081c39357d9e7c478b63ef7b10f374d1c50f4",
+        "https://api.github.com/orgs/OpenSourceBrain/repos",
+        "https://api.github.com/search/code?q=hcn+extension:nml+org:OpenSourceBrain",
+        "https://alleninstitute.org/terms-of-use/",
+        "https://attend.ieee.org/cibcb-2027/important-dates/"
+      ],
+      "recommendation": "Add to PLAN.md:\n- per-milestone time boxes and an overall stop date;\n- an M1 gate that counts licensed, valid, independent source families (not cells) available for discovery and held-out sets;\n- a split of held-out models by source family, not by cell;\n- a precision estimate after the M6 pilot (expected confidence-interval width versus number of base-model clusters) before fixing the full-study size.\nDefine a minimum viable study in advance, for example fewer mutants per model with the same controls, as the handoff already allows. Record the sag/Ih behaviour gap as a known limitation unless a licensed model is found.",
+      "needs_neel_decision": true,
+      "decision_question": "What calendar deadline and weekly hours apply? Do you approve a pre-defined minimum viable full study (for example, counting independent source families instead of cells and cutting mutants per model first) if the M1 model-pool gate or the M6 precision estimate falls short?"
+    },
+    {
+      "id": "INTEG-13",
+      "handoff_section": "Leakage prevention ('Store held-out manifests separately', 'Ensure selection code cannot read held-out labels', 'Hash split files and log held-out access')",
+      "assumption": "Code-level separation and self-logged access prevent held-out leakage in a solo project developed with an AI assistant that has filesystem access.",
+      "category": "underspecified",
+      "severity": "high",
+      "analysis": "The leakage controls target the selection code, not the humans and agents who write it. Claude Code sessions read any file in the working directory without approval. Deny rules are not a security boundary against commands that read files without naming them or against arbitrary programs, and sandboxing covers only Bash. Auto memory persists notes across sessions in the repository's memory directory and loads them at startup. An observation about held-out models made in one session could therefore silently shape later development sessions. Access logging done by the same person or agent who could leak the data does not show that leakage did not happen. Held-out model identities are also public models, so their published behaviour can be known to both the author and the assistant. Nothing in the handoff lets a reviewer check the order of events, i.e. that held-out assets were fixed before selection.",
+      "evidence_urls": [
+        "https://code.claude.com/docs/en/permissions",
+        "https://code.claude.com/docs/en/memory",
+        "https://help.osf.io/article/158-create-a-preregistration"
+      ],
+      "recommendation": "Before selection, hash the held-out manifest and model files and deposit the hashes in the embargoed stage-1 OSF registration (INTEG-09). Keep held-out files outside the NeuroSem repository and outside every directory opened in a Claude Code session, e.g. in an encrypted archive whose key only Neel, or a mentor, holds. Also add a Claude Code permissions.deny rule for that location, and turn off auto memory for NeuroSem sessions before M7. Run the held-out decrypt/evaluate step as a single scripted command that appends to a hash-chained access log. Add an M7 leakage test that runs protocol selection with the held-out directory absent and checks that the output is byte-identical.",
+      "needs_neel_decision": false,
+      "decision_question": ""
+    },
+    {
+      "id": "INTEG-14",
+      "handoff_section": "Milestone M10 (public repository, versioned release, DOI archive); IEEE pathway (no preprint or companion-paper plan)",
+      "assumption": "Keeping the repository private until M10 and then releasing, archiving and preprinting raises no policy or eligibility problems.",
+      "category": "underspecified",
+      "severity": "medium",
+      "analysis": "IEEE allows preprints before submission on arXiv, TechRxiv or PSPB-approved not-for-profit servers, and requires them to be updated with the DOI after acceptance. The IEEE documents retrieved do not name bioRxiv, so its status for an IEEE target is unverified. First-time arXiv submitters need endorsement, either automatically via institutional email criteria or from an established author in the subject area. This can take time for an unaffiliated student. JOSS requires at least six months of public development history, which conflicts with keeping all development private to protect hidden tests. Zenodo archives a GitHub release when it is published, and a .zenodo.json file overrides CITATION.cff entirely.",
+      "evidence_urls": [
+        "https://journals.ieeeauthorcenter.ieee.org/become-an-ieee-journal-author/publishing-ethics/guidelines-and-policies/post-publication-policies/",
+        "https://journals.ieeeauthorcenter.ieee.org/wp-content/uploads/sites/7/IEEE-Article-Sharing-and-Posting-Policies.pdf",
+        "https://info.arxiv.org/help/endorsement.html",
+        "https://www.biorxiv.org/about/FAQ",
+        "https://joss.theoj.org/about",
+        "https://help.zenodo.org/docs/github/enable-repository/"
+      ],
+      "recommendation": "Plan early: (1) choose arXiv as the preprint server for an IEEE target and line up an endorser well before submission; (2) if a JOSS software paper is wanted, make the general-purpose NeuroSem core public early. Keep held-out manifests, the selected battery and agent-study hidden assets in a separate private repository released after M9; (3) keep one citation-metadata source (CITATION.cff only, or .zenodo.json kept in sync), and do not enable Zenodo integration on any repository containing hidden assets.",
+      "needs_neel_decision": true,
+      "decision_question": "Should the NeuroSem core be developed publicly from early on (enabling a later JOSS paper), with hidden evaluation assets in a separate private repository, or should everything stay private until M10?"
+    }
+  ]
+}

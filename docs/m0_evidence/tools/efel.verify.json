@@ -1,0 +1,459 @@
+{
+  "subject": "Adversarial fact-check of C:/Users/gurra/NeuroSem/docs/m0_evidence/tools/efel.research.json (eFEL, PyPI package 'efel')",
+  "checked_on": "2026-09-13",
+  "verifier_environment": "Windows 11 Home 10.0.22631, Git Bash, Python 3.12.10, scratch venv at C:/Users/gurra/AppData/Local/Temp/claude/C--Users-gurra-Continuum/d876c622-d308-4d4a-bbf3-2b2374480647/scratchpad/m0/verify-efel/venv. Java is not installed ('java: command not found'); no jNeuroML/Java-dependent path was executed.",
+  "checks": [
+    {
+      "claim": "Latest efel version on PyPI, not yanked",
+      "reported_value": "5.7.34 (not yanked)",
+      "verified_value": "5.7.34; info.yanked=false; no file of 5.7.34 yanked. An unpinned 'pip install efel' in a fresh venv resolved to efel==5.7.34.",
+      "status": "confirmed",
+      "source_url": "https://pypi.org/pypi/efel/json",
+      "method": "curl PyPI JSON API; read info.version, releases map, per-file yanked flags; pip install efel in venv + pip freeze"
+    },
+    {
+      "claim": "Release date of 5.7.34",
+      "reported_value": "PyPI files uploaded 2026-08-25T09:05Z; GitHub release published 2026-08-25T09:00:56Z",
+      "verified_value": "PyPI upload_time_iso_8601 range 2026-08-25T09:05:02Z to 09:05:40Z (25 files); GitHub release 5.7.34 published_at 2026-08-25T09:00:56Z, created_at 2026-08-25T08:56:11Z, not draft/prerelease",
+      "status": "confirmed",
+      "source_url": "https://api.github.com/repos/openbraininstitute/eFEL/releases?per_page=10",
+      "method": "PyPI JSON upload times + GitHub REST releases API"
+    },
+    {
+      "claim": "requires_python and Python classifiers",
+      "reported_value": ">=3.10; classifiers list Python 3.10-3.14",
+      "verified_value": ">=3.10 (PyPI info.requires_python; also python_requires='>=3.10' in setup.py on master); classifiers Python 3.10, 3.11, 3.12, 3.13, 3.14",
+      "status": "confirmed",
+      "source_url": "https://pypi.org/pypi/efel/json",
+      "method": "PyPI JSON; raw setup.py line 82 (https://raw.githubusercontent.com/openbraininstitute/eFEL/master/setup.py)"
+    },
+    {
+      "claim": "Canonical repository and its status",
+      "reported_value": "https://github.com/openbraininstitute/eFEL; author 'Open Brain Institute'; default branch master; archived=false; created 2025-01-13; pushed 2026-08-25",
+      "verified_value": "Same: archived=false, created_at 2025-01-13T08:58:06Z, pushed_at 2026-08-25T09:00:50Z, default_branch master; PyPI home_page https://github.com/openbraininstitute/eFEL, author 'Open Brain Institute'",
+      "status": "confirmed",
+      "source_url": "https://api.github.com/repos/openbraininstitute/eFEL",
+      "method": "GitHub REST repo API + PyPI JSON"
+    },
+    {
+      "claim": "Old BlueBrain repository archived",
+      "reported_value": "BlueBrain/eFEL archived=true, last push 2025-02-26; new README says earlier code is in the Blue Brain Project repository",
+      "verified_value": "BlueBrain/eFEL archived=true, pushed_at 2025-02-26T12:49:40Z, created 2015-05-06; README.md line 110 notes earlier code at github.com/BlueBrain/eFEL, Zenodo 10.5281/zenodo.14222078 and PyPI history",
+      "status": "confirmed",
+      "source_url": "https://api.github.com/repos/BlueBrain/eFEL",
+      "method": "GitHub REST repo API; raw README.md from openbraininstitute/eFEL master"
+    },
+    {
+      "claim": "LICENSE.txt grants LGPL v3 or any later version; examples/tests BSD; COPYING.less is LGPLv3 text",
+      "reported_value": "LGPL v3 'or (at your option) any later version'; examples and tests BSD; COPYING.less is LGPL v3",
+      "verified_value": "Confirmed: LICENSE.txt says LGPL 'either version 3 of the License, or (at your option) any later version', examples and test BSD-licensed; COPYING.less is 'GNU LESSER GENERAL PUBLIC LICENSE Version 3, 29 June 2007'. Caveat missed by report: LICENSE.txt points to files 'COPYING and COPYING.lesser', but COPYING.lesser returns HTTP 404 on master (the file is named COPYING.less; COPYING returns 200).",
+      "status": "confirmed",
+      "source_url": "https://raw.githubusercontent.com/openbraininstitute/eFEL/master/LICENSE.txt",
+      "method": "curl raw LICENSE.txt, COPYING.less; HTTP status checks for COPYING (200) and COPYING.lesser (404)"
+    },
+    {
+      "claim": "SPDX license expression",
+      "reported_value": "LGPL-3.0-or-later",
+      "verified_value": "LGPL-3.0-or-later is supported by the LICENSE.txt grant text, but it is an interpretation: PyPI license_expression is null (no SPDX expression declared), PyPI license 'LGPLv3', and installed source headers (api.py, settings.py, pyfeatures/extrafeats.py) say 'version 3.0' with no or-later clause.",
+      "status": "confirmed",
+      "source_url": "https://raw.githubusercontent.com/openbraininstitute/eFEL/master/LICENSE.txt",
+      "method": "LICENSE.txt text; PyPI JSON info.license_expression; grep of installed headers"
+    },
+    {
+      "claim": "License metadata in other channels",
+      "reported_value": "PyPI 'LGPLv3' + classifier LGPLv3; GitHub spdx_id NOASSERTION; DataCite rights lgpl-3.0; settings.py header 'version 3.0'",
+      "verified_value": "All confirmed: PyPI license 'LGPLv3', classifier 'License :: OSI Approved :: GNU Lesser General Public License v3 (LGPLv3)'; GitHub license key 'other', spdx_id NOASSERTION (both repos); DataCite rightsIdentifier 'lgpl-3.0' for 10.5281/zenodo.19604220 and 10.5281/zenodo.14222078; settings.py line 10 'version 3.0'",
+      "status": "confirmed",
+      "source_url": "https://api.datacite.org/dois/10.5281/zenodo.19604220",
+      "method": "PyPI JSON, GitHub REST API, DataCite REST API, raw settings.py and installed headers"
+    },
+    {
+      "claim": "Runtime dependencies and extras",
+      "reported_value": "numpy>=1.6, neo>=0.14.0, typing-extensions>=4.8.0, scipy>=1.12.0; extras neo, nwb (pynwb>=2.6.0), h5py",
+      "verified_value": "Exact match with PyPI requires_dist",
+      "status": "confirmed",
+      "source_url": "https://pypi.org/pypi/efel/json",
+      "method": "PyPI JSON info.requires_dist"
+    },
+    {
+      "claim": "Resolved versions in clean venv on Python 3.12.10",
+      "reported_value": "numpy 2.5.3, scipy 1.18.1, neo 0.14.5, quantities 0.16.4, packaging 26.3, typing_extensions 4.16.0",
+      "verified_value": "Identical pip freeze on 2026-09-13: efel==5.7.34, neo==0.14.5, numpy==2.5.3, packaging==26.3, quantities==0.16.4, scipy==1.18.1, typing_extensions==4.16.0",
+      "status": "confirmed",
+      "source_url": "https://pypi.org/project/efel/5.7.34/",
+      "method": "python -m venv venv; venv/Scripts/python.exe -m pip install efel; pip freeze"
+    },
+    {
+      "claim": "Build requirements: C++17 compiler only for source builds; standalone C++ library needs CMake 3.12+; no Java",
+      "reported_value": "C++17 for source builds; CMake 3.12+ for standalone library; no Java",
+      "verified_value": "docs/source/installation.rst lines 9-10 state a C++17 compiler when pip builds from source and CMake 3.12+ plus C++17 for the standalone library; setup.py passes -std=c++17; CMakeLists.txt cmake_minimum_required(VERSION 3.12), CMAKE_CXX_STANDARD 17. No Java in requires_dist; efel imported and ran on this machine where java is absent.",
+      "status": "confirmed",
+      "source_url": "https://raw.githubusercontent.com/openbraininstitute/eFEL/master/docs/source/installation.rst",
+      "method": "curl raw installation.rst, setup.py, CMakeLists.txt, efel/cppcore/CMakeLists.txt; grep"
+    },
+    {
+      "claim": "Windows wheels for 5.7.34",
+      "reported_value": "win_amd64 for cp310, cp311, cp312, cp313, cp314, cp314t",
+      "verified_value": "Confirmed exactly. Full 5.7.34 file set (25): sdist + for each of cp310-cp314 and cp314t: macosx_11_0_arm64, manylinux_2_24/2_28 aarch64, manylinux_2_24/2_28 x86_64, win_amd64. Local install placed cppcore.cp312-win_amd64.pyd in site-packages/efel.",
+      "status": "confirmed",
+      "source_url": "https://pypi.org/pypi/efel/json",
+      "method": "PyPI JSON urls filenames; ls of installed package"
+    },
+    {
+      "claim": "Windows CI testing and missing Windows classifier",
+      "reported_value": "pyproject.toml has [tool.cibuildwheel.windows] test-command; classifiers only 'Operating System :: MacOS' and 'Operating System :: POSIX'",
+      "verified_value": "pyproject.toml on master contains [tool.cibuildwheel.windows] test-command = pytest -sx -n auto {project}\\tests; classifiers indeed only MacOS and POSIX. That CI actually runs this on Windows was not verified (workflow runs not inspected). Also note pyproject sets pytest filterwarnings ignore::DeprecationWarning.",
+      "status": "confirmed",
+      "source_url": "https://raw.githubusercontent.com/openbraininstitute/eFEL/master/pyproject.toml",
+      "method": "curl raw pyproject.toml; PyPI classifiers"
+    },
+    {
+      "claim": "Recent release cadence and content",
+      "reported_value": "Eight releases 5.7.27-5.7.34 uploaded 2026-06-29..2026-08-25; 5.7.30-5.7.34 are infra/docs/citation (ARM64 wheels, Bioinformatics citation, docs theme, install workflows)",
+      "verified_value": "Confirmed. Note 5.7.26 was also uploaded on 2026-06-29 (10:06Z), so nine releases fall inside that date window. GitHub notes: 5.7.30 native ARM64 runner for aarch64 builds (PR #23); 5.7.31 Bioinformatics citation (PR #22); 5.7.32 OBI RTD theme (PR #24); 5.7.33 installation workflows and copyright notices (PR #25); 5.7.34 remove theme overrides (PR #26). 5.7.29 added Linux aarch64 wheels.",
+      "status": "confirmed",
+      "source_url": "https://api.github.com/repos/openbraininstitute/eFEL/releases?per_page=10",
+      "method": "PyPI JSON per-release earliest upload time; GitHub releases API bodies"
+    },
+    {
+      "claim": "CHANGELOG.rst stale",
+      "reported_value": "Tops out at '5.7.11 - 2024-11'",
+      "verified_value": "First entry in CHANGELOG.rst on master is '5.7.11 - 2024-11', next '5.7.9 - 2024-09'",
+      "status": "confirmed",
+      "source_url": "https://raw.githubusercontent.com/openbraininstitute/eFEL/master/CHANGELOG.rst",
+      "method": "curl raw CHANGELOG.rst"
+    },
+    {
+      "claim": "Recommended citation paper",
+      "reported_value": "'eFEL: electrophysiology feature extraction library', Bioinformatics 42(6) btag328, published 2026-05-22, OUP, CC BY 4.0; 8 authors Mandge, Tuncel, Jaquier, Kilic, Damart, Markram, Van Geit, Ranjan",
+      "verified_value": "Crossref: title matches; container 'Bioinformatics', volume 42, issue 6, article-number btag328; publisher Oxford University Press (OUP); published/published-online/issued 2026-05-22; published-print 2026-06-01 (not mentioned in report); license CC BY 4.0 (vor); authors Darshan Mandge, Anıl Tuncel, Aurélien Jaquier, Ilkan Kilic, Tanguy Damart, Henry Markram, Werner Van Geit, Rajnish Ranjan (report dropped the diacritics). README 'How to cite' gives the same DOI. Paper content not read here either.",
+      "status": "confirmed",
+      "source_url": "https://api.crossref.org/works/10.1093/bioinformatics/btag328",
+      "method": "Crossref REST API (UTF-8 output); raw README.md lines 79-108"
+    },
+    {
+      "claim": "Software DOIs on Zenodo",
+      "reported_value": "Concept DOI 10.5281/zenodo.19604220 (DataCite version 5.7.34, 2026, lgpl-3.0); older DOI 10.5281/zenodo.14222078 (5.7.13, 2024)",
+      "verified_value": "Confirmed via DataCite: 19604220 has version 5.7.34, year 2026, lgpl-3.0, IsSupplementTo github.com/openbraininstitute/eFEL/tree/5.7.34 and multiple HasVersion relations; a version DOI 10.5281/zenodo.22014994 (5.7.32) IsVersionOf 19604220, supporting its concept status. 14222078 is a version DOI (5.7.13, 2024, IsSupplementTo BlueBrain/eFEL/tree/5.7.13) that IsVersionOf the BlueBrain-era concept DOI 10.5281/zenodo.593869 (72 HasVersion relations). Zenodo's own records API returned HTTP 504 twice.",
+      "status": "confirmed",
+      "source_url": "https://api.datacite.org/dois/10.5281/zenodo.19604220",
+      "method": "DataCite REST API for 19604220, 14222078, 22014994, 593869; https://zenodo.org/api/records/19604220 (504 Gateway Time-out)"
+    },
+    {
+      "claim": "Core extraction function signature",
+      "reported_value": "efel.get_feature_values(traces: list[dict], feature_names: list[str], parallel_map: Callable | None = None, return_list: bool = True, raise_warnings: bool = True) -> list | Iterator",
+      "verified_value": "Exact match from inspect.signature on installed 5.7.34; docstring says value is None if an error occurred",
+      "status": "confirmed",
+      "source_url": "https://pypi.org/project/efel/5.7.34/",
+      "method": "venv introspection (intro.py)"
+    },
+    {
+      "claim": "Other public API functions and signatures",
+      "reported_value": "get_mean_feature_values, get_distance(..., trace_check=True, error_dist=250), get_feature_names, set_setting, get_settings -> efel.Settings, reset, register_feature, get_py_feature, get_cpp_feature, feature_name_exists, set_int_setting/set_double_setting/set_str_setting, efel.io loaders/savers",
+      "verified_value": "All exist with the stated signatures (get_cpp_feature also has raise_warnings=False; load_ascii_input returns tuple[np.ndarray, np.ndarray]; get_mean_feature_values -> list[dict]). Correction: set_int_setting, set_double_setting and set_str_setting are decorated @deprecated('Use `set_setting()` instead') in api.py (lines 236-248), so they should not be listed as regular public API; set_dependency_file_location is also deprecated.",
+      "status": "corrected",
+      "source_url": "https://raw.githubusercontent.com/openbraininstitute/eFEL/master/efel/api.py",
+      "method": "inspect.signature in venv; grep '@deprecated(' in raw api.py"
+    },
+    {
+      "claim": "Deprecated API names",
+      "reported_value": "getFeatureValues -> 'Use get_feature_values instead'; set_threshold/set_derivative_threshold -> set_setting; camelCase aliases exist; no set_interpolation_step",
+      "verified_value": "Confirmed: api.py line 475 @deprecated('Use get_feature_values instead') on getFeatureValues; runtime DeprecationWarnings for set_threshold and set_derivative_threshold point to set_setting('Threshold'/'DerivativeThreshold', ...); getFeatureNames warns 'Use get_feature_names instead'; efel.set_interpolation_step does not exist. Note setThreshold/setDerivativeThreshold point to set_threshold/set_derivative_threshold, which are themselves deprecated (two-step chain).",
+      "status": "confirmed",
+      "source_url": "https://raw.githubusercontent.com/openbraininstitute/eFEL/master/efel/api.py",
+      "method": "warnings.catch_warnings in venv; grep of raw api.py"
+    },
+    {
+      "claim": "Settings defaults",
+      "reported_value": "Threshold -20.0; DerivativeThreshold 10.0; DownDerivativeThreshold -12.0; interp_step 0.1; DerivativeWindow 3; voltage_base_start_perc 0.9; voltage_base_end_perc 1.0; strict_stiminterval False; ignore_first_ISI True; burst_factor 1.5; strict_burst_factor 2.0; spike_skipf 0.1; max_spike_skip 2; min_spike_height 20.0; initial_perc 0.1; voltage_base_mode 'mean'; precision_threshold 1e-10",
+      "verified_value": "All values match print(efel.get_settings()) after reset and the Settings dataclass in settings.py",
+      "status": "confirmed",
+      "source_url": "https://raw.githubusercontent.com/openbraininstitute/eFEL/master/efel/settings.py",
+      "method": "venv introspection; raw settings.py lines 75-104"
+    },
+    {
+      "claim": "Settings are global; unknown names accepted with only a debug log",
+      "reported_value": "Typo setting stored without error; reset restores defaults",
+      "verified_value": "Confirmed: Settings.set_setting logs 'Setting ... not found in settings. Adding it as a new setting.' at logger.debug and setattr's it; probe stored Treshold_typo=5.0; after efel.reset() Threshold=-20.0 and the typo attribute was gone",
+      "status": "confirmed",
+      "source_url": "https://raw.githubusercontent.com/openbraininstitute/eFEL/master/efel/settings.py",
+      "method": "source read (installed settings.py lines 108-167) + probe.py"
+    },
+    {
+      "claim": "Stimulus window passing and errors",
+      "reported_value": "stim_start/stim_end must be list-like; scalars raise 'Unable to determine length...'; missing raises 'stim_start or stim_end missing from trace'; stim_end <= stim_start raises; single-element lists documented",
+      "verified_value": "All three exceptions reproduced (plain Exception). README example uses [700] and [2700]. Additionally (resolves report uncertainty): multi-element lists raise Exception 'stim_start and stim_end in the trace dictionary need to be lists of exactly 1 element'.",
+      "status": "confirmed",
+      "source_url": "https://raw.githubusercontent.com/openbraininstitute/eFEL/master/efel/api.py",
+      "method": "raw api.py lines 341-361; probe.py and probe_sag.py"
+    },
+    {
+      "claim": "Undefined feature value is None; counts return array([0])",
+      "reported_value": "None for mean_frequency, time_to_first_spike, AP_amplitude, AP_duration_half_width, AHP_depth, all_ISI_values, inv_first_ISI, inv_last_ISI, adaptation_index, adaptation_index2 on no-spike trace; array([0]) for Spikecount, spike_count, burst_number, strict_burst_number; get_mean_feature_values None for undefined",
+      "verified_value": "Reproduced exactly on a synthetic no-spike trace. get_mean_feature_values returned None for AP_amplitude and np.float64(0.0) for spike_count. api.py maps None or empty to None (lines 411-412).",
+      "status": "confirmed",
+      "source_url": "https://raw.githubusercontent.com/openbraininstitute/eFEL/master/efel/api.py",
+      "method": "probe.py in venv"
+    },
+    {
+      "claim": "Warnings for undefined features and unknown feature names",
+      "reported_value": "RuntimeWarning 'Error while calculating <feature>, ...' per failed feature; raise_warnings=False suppresses; unknown name raises RuntimeError 'Unknown feature name: <name>'",
+      "verified_value": "Confirmed: 10 RuntimeWarnings on the no-spike run; 0 RuntimeWarnings with raise_warnings=False; RuntimeError 'Unknown feature name: foo_bar'",
+      "status": "confirmed",
+      "source_url": "https://pypi.org/project/efel/5.7.34/",
+      "method": "probe.py with warnings.catch_warnings"
+    },
+    {
+      "claim": "Interpolation to uniform interp_step grid before extraction",
+      "reported_value": "Docs say T, V, I interpolated with interp_step (default 0.1 ms); C++ LinearInterpolation builds a uniform grid, fallback 0.1",
+      "verified_value": "eFeatures.rst line 7 says time, voltage and current are interpolated using interp_step (default 0.1 ms) before extraction; Utils.cpp line 30 LinearInterpolation(double Stepdx, ...) with steps of Stepdx; BasicFeatures.cpp line 30 falls back to 0.1 if the parameter is missing",
+      "status": "confirmed",
+      "source_url": "https://raw.githubusercontent.com/openbraininstitute/eFEL/master/docs/source/eFeatures.rst",
+      "method": "curl raw eFeatures.rst, efel/cppcore/Utils.cpp, efel/cppcore/BasicFeatures.cpp; grep"
+    },
+    {
+      "claim": "Time features quantised by interp_step; downsampling changes AP_amplitude",
+      "reported_value": "Half-width 0.6/0.7/0.65 at interp_step 0.1/0.05/0.025; AP_amplitude shift ~0.7 mV; 0.5 ms downsample 99.65 vs 98.02",
+      "verified_value": "Qualitatively reproduced on an independent synthetic Gaussian spike train (dt 0.05 ms): half-width 0.6/0.7/0.65 ms at 0.1/0.05/0.025; AP_amplitude 98.17 vs 98.91 mV (0.74 mV shift); downsample to 0.5 ms gave 99.81 vs 98.17. The report's exact downsample values (99.65 vs 98.02) depend on its own trace and were not reproduced, but the direction and size of the effect match.",
+      "status": "confirmed",
+      "source_url": "https://pypi.org/project/efel/5.7.34/",
+      "method": "probe.py (synthetic traces only)"
+    },
+    {
+      "claim": "Units assumed; SI traces fail silently",
+      "reported_value": "Docs units ms, mV, Hz, nA; SI trace gives spike_count 0 and AP_amplitude None with no unit error",
+      "verified_value": "Confirmed: eFeatures.rst Units fields use ms, mV, Hz, nA (and MOhm for resistance); SI-scaled trace (s, V) gave spike_count array([0]), AP_amplitude None, no exception or unit message",
+      "status": "confirmed",
+      "source_url": "https://raw.githubusercontent.com/openbraininstitute/eFEL/master/docs/source/eFeatures.rst",
+      "method": "rst read + probe.py"
+    },
+    {
+      "claim": "jLEMS .dat time in seconds per pyNeuroML; pyNeuroML multiplies t and v by 1000",
+      "reported_value": "reload_standard_dat_file docstring (near line 935) says first column is time in seconds; analysis/__init__.py lines 344-345 x1000",
+      "verified_value": "Confirmed: pynml.py line 939 def reload_standard_dat_file, docstring lines 940-941 say the file is as usually saved by jLEMS and the first column is time in seconds; analysis/__init__.py lines 344-345 multiply t and v by 1000. Volts remains an inference. The report's docs.neuroml.org LEMSSimulation check was not re-fetched here. jNeuroML itself could not be run (no Java).",
+      "status": "confirmed",
+      "source_url": "https://raw.githubusercontent.com/NeuroML/pyNeuroML/master/pyneuroml/pynml.py",
+      "method": "curl raw pynml.py and pyneuroml/analysis/__init__.py; grep -n"
+    },
+    {
+      "claim": "pyNeuroML analysis does not use eFEL",
+      "reported_value": "Imports max_min and mean_spike_frequency from pyelectro.analysis; no 'efel' in setup.cfg/pyproject.toml",
+      "verified_value": "Confirmed: analysis/__init__.py lines 21-22 import from pyelectro.analysis; case-insensitive 'efel' count is 0 in setup.cfg, pyproject.toml, analysis/__init__.py and pynml.py on master",
+      "status": "confirmed",
+      "source_url": "https://raw.githubusercontent.com/NeuroML/pyNeuroML/master/pyneuroml/analysis/__init__.py",
+      "method": "curl + grep -i -c efel"
+    },
+    {
+      "claim": "Number of features available",
+      "reported_value": "182 names from efel.get_feature_names()",
+      "verified_value": "len(efel.get_feature_names()) is 182, but only 179 are unique: 'time', 'voltage' and 'current' each appear twice. The feature universe is 179 distinct names.",
+      "status": "corrected",
+      "source_url": "https://pypi.org/project/efel/5.7.34/",
+      "method": "venv: len(names), len(set(names)), collections.Counter duplicates"
+    },
+    {
+      "claim": "Spike count feature names and deprecation",
+      "reported_value": "spike_count (whole trace) and spike_count_stimint (within [stim_start, stim_end]); Spikecount/Spikecount_stimint deprecated, docs say removal in future",
+      "verified_value": "Confirmed: eFeatures.rst lines 321-348 (removal notes at 333, 348); pyfeatures.py @deprecated('Use spike_count instead.') and @deprecated('Use spike_count_stimint instead.'); spike_count_stimint uses inclusive bounds stim_start <= t <= stim_end; DeprecationWarnings observed",
+      "status": "confirmed",
+      "source_url": "https://raw.githubusercontent.com/openbraininstitute/eFEL/master/docs/source/eFeatures.rst",
+      "method": "rst read; installed pyfeatures.py; probe.py"
+    },
+    {
+      "claim": "voltage_base definition",
+      "reported_value": "Mean V between voltage_base_start_perc*stim_start and voltage_base_end_perc*stim_start (last 10% pre-stimulus)",
+      "verified_value": "Confirmed (eFeatures.rst line 2135 onward, inclusive bounds)",
+      "status": "confirmed",
+      "source_url": "https://raw.githubusercontent.com/openbraininstitute/eFEL/master/docs/source/eFeatures.rst",
+      "method": "rst read"
+    },
+    {
+      "claim": "Steady-state voltage features",
+      "reported_value": "steady_state_voltage_stimend = last 10% of stimulus; steady_state_voltage = mean after stim_end; probe -65.0 vs -72.0",
+      "verified_value": "Confirmed: rst lines 2083 and 2123; a -7 mV hyperpolarising synthetic step gave steady_state_voltage -65.0 and steady_state_voltage_stimend -72.0",
+      "status": "confirmed",
+      "source_url": "https://raw.githubusercontent.com/openbraininstitute/eFEL/master/docs/source/eFeatures.rst",
+      "method": "rst read + probe.py"
+    },
+    {
+      "claim": "Voltage deflection variants",
+      "reported_value": "voltage_deflection uses mean of 5 samples before the last 5 before stim_end minus mean of all pre-stim V; voltage_deflection_vb_ssse = ssv_stimend - voltage_base; voltage_deflection_begin exists",
+      "verified_value": "Confirmed (rst lines 2410-2460; pseudocode V[stim_end_idx-10:stim_end_idx-5]). voltage_deflection_begin uses 5%-15% of stimulus duration. Note: the docs list 'voltage_deflection_stim_ssse' as a required feature of sag_amplitude, but that name is not in get_feature_names().",
+      "status": "confirmed",
+      "source_url": "https://raw.githubusercontent.com/openbraininstitute/eFEL/master/docs/source/eFeatures.rst",
+      "method": "rst read + membership test"
+    },
+    {
+      "claim": "Sag feature definitions",
+      "reported_value": "sag_ratio1 = sag_amplitude/(voltage_base - minimum_voltage); sag_ratio2 = (voltage_base - ssv_stimend)/(voltage_base - minimum_voltage); sag_amplitude = ssv_stimend - minimum_voltage only if voltage_deflection_stim_ssse <= 0",
+      "verified_value": "Confirmed from rst lines 2340-2390 (ratios None when voltage_base == minimum_voltage)",
+      "status": "confirmed",
+      "source_url": "https://raw.githubusercontent.com/openbraininstitute/eFEL/master/docs/source/eFeatures.rst",
+      "method": "rst read"
+    },
+    {
+      "claim": "Sag features return numbers on a spiking non-hyperpolarised trace",
+      "reported_value": "sag_ratio1 1.0, sag_amplitude 12.0",
+      "verified_value": "Specific values not reproducible without the original trace. Independent probes: spiking trace with no step gave sag_amplitude 0.0, sag_ratio1 None, sag_ratio2 None; spiking trace on a +12 mV depolarising step gave sag_ratio2 1.0, sag_ratio1 None, sag_amplitude None. So the general point (some sag features return finite values where sag is not meaningful) holds, but which feature does so depends on the trace; sag_ratio1 was None in both independent probes.",
+      "status": "unverifiable",
+      "source_url": "https://pypi.org/project/efel/5.7.34/",
+      "method": "probe.py SAG_SPIKING and probe_sag.py"
+    },
+    {
+      "claim": "mean_frequency definition and one-spike value",
+      "reported_value": "1000 * spikes strictly inside stimulus / (last spike before stim_end - stim_start); one spike gave 9.901 Hz",
+      "verified_value": "Confirmed: rst line 365 pseudocode; one spike 101 ms after stim_start gave 9.90099 Hz",
+      "status": "confirmed",
+      "source_url": "https://raw.githubusercontent.com/openbraininstitute/eFEL/master/docs/source/eFeatures.rst",
+      "method": "rst read + probe.py ONESPIKE"
+    },
+    {
+      "claim": "time_to_first_spike measured to peak; no 'latency' feature",
+      "reported_value": "time_to_first_spike = first peak time - stim_start; inv_time_to_first_spike exists; no 'latency'",
+      "verified_value": "Confirmed: rst line 44 pseudocode peaktime[0] - stimstart; 'latency' not in feature names; inv_time_to_first_spike present",
+      "status": "confirmed",
+      "source_url": "https://raw.githubusercontent.com/openbraininstitute/eFEL/master/docs/source/eFeatures.rst",
+      "method": "rst read + membership test"
+    },
+    {
+      "claim": "AP amplitude and height features",
+      "reported_value": "AP_amplitude = peak_voltage - V[AP_begin_indices]; AP_height = peak voltage; AP_amplitude_from_voltagebase, mean_AP_amplitude exist",
+      "verified_value": "Confirmed (rst lines 1210-1270); all names present",
+      "status": "confirmed",
+      "source_url": "https://raw.githubusercontent.com/openbraininstitute/eFEL/master/docs/source/eFeatures.rst",
+      "method": "rst read + membership test"
+    },
+    {
+      "claim": "AP_duration_half_width definition; spike_half_width exists",
+      "reported_value": "t(AP_fall_indices) - t(AP_rise_indices) at half of (peak - onset), ms, per spike",
+      "verified_value": "Confirmed (rst line 1654); spike_half_width present",
+      "status": "confirmed",
+      "source_url": "https://raw.githubusercontent.com/openbraininstitute/eFEL/master/docs/source/eFeatures.rst",
+      "method": "rst read + membership test"
+    },
+    {
+      "claim": "AHP depth features",
+      "reported_value": "AHP_depth = min_AHP_values - voltage_base; AHP_depth_abs = min_AHP_values; plus AHP_depth_from_peak, AHP_depth_slow, AHP_depth_abs_slow, AHP_depth_diff",
+      "verified_value": "Confirmed (rst lines 1382-1398); all six names present",
+      "status": "confirmed",
+      "source_url": "https://raw.githubusercontent.com/openbraininstitute/eFEL/master/docs/source/eFeatures.rst",
+      "method": "rst read + membership test"
+    },
+    {
+      "claim": "ISI features and deprecation chain",
+      "reported_value": "No first_ISI/last_ISI; all_ISI_values = diff(peak_time); inv_first_ISI/inv_last_ISI Hz; ISI_values drops first ISI and is deprecated ('Use ISIs instead.'); ISIs deprecated ('Use all_ISI_values instead')",
+      "verified_value": "Confirmed: first_ISI/last_ISI absent; rst lines 96-145; installed isi.py line 15 @deprecated('Use all_ISI_values instead') on ISIs, line 21 @deprecated('Use ISIs instead.') on ISI_values; warnings observed at runtime",
+      "status": "confirmed",
+      "source_url": "https://raw.githubusercontent.com/openbraininstitute/eFEL/master/docs/source/eFeatures.rst",
+      "method": "rst read; installed isi.py; probe.py DEPFEAT"
+    },
+    {
+      "claim": "Docs vs code mismatch for inv_first_ISI / inv_last_ISI",
+      "reported_value": "Docs say return 0 when no ISI; code returns None",
+      "verified_value": "Confirmed: rst line 130 heading text and pseudocode set 0 when no ISI; installed isi.py lines 395-440 return None when no ISI; probe with 0 and 1 spikes returned None",
+      "status": "confirmed",
+      "source_url": "https://raw.githubusercontent.com/openbraininstitute/eFEL/master/docs/source/eFeatures.rst",
+      "method": "rst vs installed source + probe.py"
+    },
+    {
+      "claim": "Adaptation index features",
+      "reported_value": "adaptation_index skips min(max_spike_skip, round(n*spike_skipf)); docs heading 'adaptation_index_2' vs API 'adaptation_index2' which skips only first spike",
+      "verified_value": "Confirmed: rst lines 268-320; 'adaptation_index2' in feature names, 'adaptation_index_2' not",
+      "status": "confirmed",
+      "source_url": "https://raw.githubusercontent.com/openbraininstitute/eFEL/master/docs/source/eFeatures.rst",
+      "method": "rst read + membership test"
+    },
+    {
+      "claim": "Burst count features disagree; '4 or more spikes' message",
+      "reported_value": "burst_number = len(burst_mean_freq); strict_burst_number = len(strict_burst_mean_freq); disagreed 0 vs 1 on adapting train; message printed for short trains",
+      "verified_value": "Confirmed: rst lines 546-580; independent 10-spike adapting train gave burst_number 0 vs strict_burst_number 1 (also 0 vs 1 on a 3-spike train); the message '4 or more spikes are needed for burst calculation.' was written to process stdout by the C++ core (not a Python warning)",
+      "status": "confirmed",
+      "source_url": "https://raw.githubusercontent.com/openbraininstitute/eFEL/master/docs/source/eFeatures.rst",
+      "method": "rst read + probe.py"
+    },
+    {
+      "claim": "No rheobase feature",
+      "reported_value": "'rheobase' not in get_feature_names()",
+      "verified_value": "Confirmed",
+      "status": "confirmed",
+      "source_url": "https://pypi.org/project/efel/5.7.34/",
+      "method": "membership test"
+    },
+    {
+      "claim": "trace_check behaviour and strict_stiminterval",
+      "reported_value": "trace_check array([0]) if no spikes or all peaks in [stim_start, 1.05*stim_end], else None; get_distance trace_check=True; strict_stiminterval restricts spike_count and all_ISI_values",
+      "verified_value": "Confirmed: installed pyfeatures.py trace_check source; post-stimulus spikes gave trace_check None, in-stimulus spikes array([0]); strict_stiminterval=True reduced spike_count 6 -> 2 and all_ISI_values to [200.]",
+      "status": "confirmed",
+      "source_url": "https://raw.githubusercontent.com/openbraininstitute/eFEL/master/efel/pyfeatures/pyfeatures.py",
+      "method": "source read + probe.py POSTSTIM"
+    },
+    {
+      "claim": "Spike threshold sensitivity",
+      "reported_value": "Spikes peaking ~-25 mV: count 0 at Threshold -20, 3 at -40",
+      "verified_value": "Reproduced: 3 spikes peaking at -25 mV gave spike_count 0 by default and 3 at Threshold -40",
+      "status": "confirmed",
+      "source_url": "https://pypi.org/project/efel/5.7.34/",
+      "method": "probe.py LOWSPIKE"
+    },
+    {
+      "claim": "Non-uniform input sampling accepted",
+      "reported_value": "Same spike_count, ISIs, time_to_first_spike; one half-width changed 0.6 -> 0.7",
+      "verified_value": "Reproduced on an independent random half-subsample: spike_count 3, all_ISI_values [150, 170], time_to_first_spike 100 unchanged; half-width [0.6,0.6,0.6] -> [0.6,0.6,0.7]",
+      "status": "confirmed",
+      "source_url": "https://pypi.org/project/efel/5.7.34/",
+      "method": "probe.py NONUNIF"
+    },
+    {
+      "claim": "Docs host",
+      "reported_value": "https://efel.readthedocs.io/en/latest/ (RTD project efel, repo openbraininstitute/eFEL.git, default version latest)",
+      "verified_value": "Confirmed: RTD API slug efel, repository https://github.com/openbraininstitute/eFEL.git, default_version latest, default_branch master; docs URL HTTP 200",
+      "status": "confirmed",
+      "source_url": "https://readthedocs.org/api/v3/projects/efel/",
+      "method": "curl RTD API v3 + HTTP status"
+    },
+    {
+      "claim": "Uncertainty: tag-to-commit identity of 5.7.34 not checked",
+      "reported_value": "Master HEAD 3a1652676f predates tag time; identity not checked",
+      "verified_value": "Resolved: refs/tags/5.7.34 points to commit 3a1652676fc05608f4616a33e874cba049b5a213, which is master HEAD (2026-08-25T08:56:11Z). Master files read on 2026-09-13 therefore match the 5.7.34 tag.",
+      "status": "confirmed",
+      "source_url": "https://api.github.com/repos/openbraininstitute/eFEL/git/ref/tags/5.7.34",
+      "method": "GitHub REST git ref API + commits API"
+    },
+    {
+      "claim": "Uncertainty: impedance imports scipy.ndimage.filters; compatibility with scipy 1.18.1 untested",
+      "reported_value": "Not tested",
+      "verified_value": "Resolved: impedance ran on scipy 1.18.1 and returned a value, emitting a DeprecationWarning to import gaussian_filter1d from the scipy.ndimage namespace, plus a RuntimeWarning (invalid value in divide) on a random-current synthetic input. Future scipy releases may remove the old import path.",
+      "status": "confirmed",
+      "source_url": "https://pypi.org/project/efel/5.7.34/",
+      "method": "probe.py IMPEDANCE (installed pyfeatures.py line 153)"
+    },
+    {
+      "claim": "Handoff feature list mapping (summary): most items have eFEL features, with rheobase and firing regime not provided",
+      "reported_value": "Most handoff items map to eFEL features with variants; rheobase, firing-regime label not eFEL",
+      "verified_value": "Consistent with handoff 'Features' list (baseline/steady-state, deflection/sag, rheobase, spike count/frequency, first-spike latency, AP amplitude/half-width, AHP depth, first/last ISI, adaptation index, burst count, qualitative firing regime) and with membership tests; no rheobase or regime feature name exists in 5.7.34",
+      "status": "confirmed",
+      "source_url": "https://pypi.org/project/efel/5.7.34/",
+      "method": "Read handoff extracted text lines 110-123; membership tests in venv"
+    }
+  ],
+  "introspection_log": "All commands run from C:/Users/gurra/AppData/Local/Temp/claude/C--Users-gurra-Continuum/d876c622-d308-4d4a-bbf3-2b2374480647/scratchpad/m0/verify-efel.\n1) python --version -> Python 3.12.10; python -m venv venv; venv/Scripts/python.exe -m pip install -q efel -> success (no errors); pip freeze -> efel==5.7.34 neo==0.14.5 numpy==2.5.3 packaging==26.3 quantities==0.16.4 scipy==1.18.1 typing_extensions==4.16.0.\n2) intro.py: print(efel.__version__) -> 5.7.34; inspect.signature(efel.get_feature_values) -> (traces: 'list[dict]', feature_names: 'list[str]', parallel_map: 'Callable | None' = None, return_list: 'bool' = True, raise_warnings: 'bool' = True) -> 'list | Iterator'; get_mean_feature_values(traces, feature_names, raise_warnings=True) -> list[dict]; get_distance(trace, feature_name, mean, std, trace_check=True, error_dist=250) -> float; set_setting(setting_name, new_value: int|float|str) -> None; get_settings() -> 'efel.Settings'; reset(); get_cpp_feature(feature_name, raise_warnings=False); efel.io.load_ascii_input(file_path: Path|str, delimiter=' ') -> tuple[np.ndarray, np.ndarray]; load_neo_file(file_name, stim_start=None, stim_end=None, **kwargs); getattr(efel,'set_interpolation_step') -> MISSING. print(efel.get_settings()) after reset -> Threshold -20.0, DerivativeThreshold 10.0, DownDerivativeThreshold -12.0, spike_skipf 0.1, max_spike_skip 2, interp_step 0.1, burst_factor 1.5, strict_burst_factor 2.0, voltage_base_start_perc 0.9, voltage_base_end_perc 1.0, initial_perc 0.1, min_spike_height 20.0, strict_stiminterval False, DerivativeWindow 3, voltage_base_mode mean, precision_threshold 1e-10, ignore_first_ISI True, depol_block_min_duration 50.0 (plus others). len(get_feature_names()) -> 182; len(set(...)) -> 179; duplicates -> ['current','time','voltage']. Membership: rheobase/latency/first_ISI/last_ISI/adaptation_index_2/voltage_deflection_stim_ssse -> False; spike_count, spike_count_stimint, Spikecount, steady_state_voltage(_stimend), voltage_deflection(_vb_ssse,_begin), sag_ratio1/2, sag_amplitude, mean_frequency, time_to_first_spike, AP_amplitude, AP_height, AP_duration_half_width, spike_half_width, AHP_depth(_abs,_from_peak,_slow,_abs_slow,_diff), all_ISI_values, ISI_values, ISIs, inv_first_ISI, inv_last_ISI, adaptation_index2, burst_number, strict_burst_number, depol_block_bool, trace_check, impedance -> True. Warnings: set_threshold -> DeprecationWarning \"Use `set_setting('Threshold', new_threshold)` instead\"; set_derivative_threshold -> \"Use `set_setting('DerivativeThreshold', new_derivative_threshold)` instead\"; getFeatureNames -> \"Use get_feature_names instead\".\n3) probe.py (synthetic Gaussian-spike traces, dt 0.05 ms, stim 100-900 ms unless noted): NOSPIKE -> mean_frequency/time_to_first_spike/AP_amplitude/AP_duration_half_width/AHP_depth/all_ISI_values/inv_first_ISI/inv_last_ISI/adaptation_index/adaptation_index2 None; Spikecount/spike_count/burst_number/strict_burst_number [0]; 10 RuntimeWarnings 'Error while calculating <f>, ...'; raise_warnings=False -> 0; get_mean_feature_values -> {'AP_amplitude': None, 'spike_count': 0.0}. Unknown name -> RuntimeError 'Unknown feature name: foo_bar'. Scalar stim -> Exception 'Unable to determine length of stim_start or stim_end, are you sure these are lists ?'; missing stim_end -> 'stim_start or stim_end missing from trace'; stim_end<stim_start -> 'stim_end needs to be larger than stim_start'. ONESPIKE -> mean_frequency 9.90099, inv_first_ISI None, inv_last_ISI None. TYPO -> 'Treshold_typo' stored 5.0; after reset Threshold -20.0, typo attr removed. Feature deprecations -> 'Use spike_count instead.', 'Use spike_count_stimint instead.', 'Use ISIs instead.', 'Use all_ISI_values instead'. INTERP 0.1/0.05/0.025 -> half-width 0.6/0.7/0.65, AP_amplitude 98.168/98.906/98.906. DOWNSAMPLE 0.5 ms -> AP_amplitude 99.807 vs 98.168. SI units -> spike_count [0], AP_amplitude None, no error. Peaks at -25 mV -> spike_count 0 (default), 3 (Threshold -40). POSTSTIM (stim 100-700, spikes to 900.5) -> trace_check None, spike_count 6, spike_count_stimint 2; strict_stiminterval True -> spike_count 2, all_ISI_values [200]. HYP (-7 mV step) -> steady_state_voltage -65.0, steady_state_voltage_stimend -72.0, voltage_base -65.07, voltage_deflection -6.993, voltage_deflection_vb_ssse -6.93, sag_ratio1 0, sag_ratio2 1, sag_amplitude 0. SAG_SPIKING (no step) -> sag_ratio1 None, sag_ratio2 None, sag_amplitude 0.0. Burst: 3-spike -> burst_number 0, strict_burst_number 1; 10-spike adapting -> 0 vs 1; C++ stdout line '4 or more spikes are needed for burst calculation.'. NONUNIF -> spike_count 3, ISIs [150,170], ttfs 100 unchanged; half-width [0.6,0.6,0.6] -> [0.6,0.6,0.7]. IMPEDANCE -> array([0.9999]) with DeprecationWarning 'Please import gaussian_filter1d from the scipy.ndimage namespace...' and RuntimeWarning invalid value in divide.\n4) probe_sag.py: +12 mV depolarising step with 7 spikes -> sag_ratio1 None, sag_ratio2 [1.], sag_amplitude None, minimum_voltage -53, voltage_base -64.88. stim_start=[100,100], stim_end=[900,900] -> Exception 'stim_start and stim_end in the trace dictionary need to be lists of exactly 1 element'.\n5) Source greps: raw api.py @deprecated on set_dependency_file_location (68), set_threshold (95), set_derivative_threshold (106), set_int_setting/set_double_setting/set_str_setting (236/242/248, 'Use `set_setting()` instead'), setThreshold (429), setDerivativeThreshold (434), getFeatureNames (439), featureNameExists (444), getFeatureValues (475, 'Use get_feature_values instead'). Utils.cpp:30 LinearInterpolation(double Stepdx, ...); BasicFeatures.cpp:30 InterpStep fallback 0.1. Installed headers api.py:14, settings.py:10, extrafeats.py:10 say LGPL 'version 3.0'.\n6) Java: 'java -version' -> 'java: command not found'; 'which jnml' -> not found. No jNeuroML/Java path executed.\n7) Network: Zenodo https://zenodo.org/api/records/19604220 -> HTTP 504 twice (fell back to DataCite). GitHub unauthenticated API calls succeeded (no 403).",
+  "corrections_summary": "The eFEL report is mostly accurate. Every version, date, license, requires_python, dependency, wheel, repository, DOI, API signature and default setting I re-derived matched primary sources and live introspection of efel 5.7.34. Two corrections: (1) get_feature_names() returns 182 entries but only 179 unique names ('time', 'voltage' and 'current' are listed twice). (2) set_int_setting, set_double_setting and set_str_setting are deprecated in favour of set_setting, but the report listed them as ordinary public API. One claim is unverifiable: the exact sag numbers on a spiking non-hyperpolarised trace (sag_ratio1 1.0, sag_amplitude 12.0). Independent probes showed trace-dependent results; sag_ratio1 was None in both, while sag_amplitude 0.0 or sag_ratio2 1.0 appeared. Minor precision gaps: five reported uncertainties are now resolved. Tag 5.7.34 is the master HEAD commit. Multi-element stim lists raise an exception. impedance works on scipy 1.18.1 with a DeprecationWarning. The BlueBrain Zenodo concept DOI is 10.5281/zenodo.593869. Crossref also has a print date of 2026-06-01. The 2026-06-29 to 2026-08-25 window holds nine releases, counting 5.7.26. No claim was found to be false.",
+  "additional_findings": [
+    "get_feature_names() contains duplicates: 182 entries, 179 unique ('time', 'voltage', 'current' twice). Validate and record the feature universe as a set. Source: venv introspection of efel 5.7.34 (https://pypi.org/project/efel/5.7.34/).",
+    "set_int_setting, set_double_setting, set_str_setting and set_dependency_file_location are @deprecated in api.py; setThreshold/setDerivativeThreshold point to set_threshold/set_derivative_threshold, which are also deprecated. Use only set_setting/get_settings/reset. Source: https://raw.githubusercontent.com/openbraininstitute/eFEL/master/efel/api.py",
+    "stim_start/stim_end must be lists of exactly one element; a two-element list raises an Exception. Protocols with multiple pulses need a separate trace dict (or window) per analysis window. Source: probe_sag.py; https://raw.githubusercontent.com/openbraininstitute/eFEL/master/efel/api.py",
+    "LICENSE.txt points readers to files named 'COPYING and COPYING.lesser', but COPYING.lesser returns HTTP 404 on master. The LGPL text is in COPYING.less, and COPYING exists (HTTP 200). Record this in LICENSE_AUDIT.md. Source: https://raw.githubusercontent.com/openbraininstitute/eFEL/master/LICENSE.txt",
+    "PyPI metadata declares no SPDX license_expression (null); only the legacy license string 'LGPLv3'. Source: https://pypi.org/pypi/efel/json",
+    "The 5.7.34 git tag resolves to commit 3a1652676fc05608f4616a33e874cba049b5a213, the master HEAD, so master-branch docs/source read on 2026-09-13 correspond to the 5.7.34 release. Source: https://api.github.com/repos/openbraininstitute/eFEL/git/ref/tags/5.7.34",
+    "macOS wheels for 5.7.34 exist only for arm64 (macosx_11_0_arm64); there are no macOS x86_64 wheels, so Intel Macs would need a C++17 source build. Linux wheels are manylinux_2_24/2_28 for x86_64 and aarch64. Source: https://pypi.org/pypi/efel/json",
+    "The impedance feature works on scipy 1.18.1 but emits a DeprecationWarning for the scipy.ndimage.filters import path (installed pyfeatures.py line 153), so it may break on a future scipy. pyproject.toml sets pytest filterwarnings ignore::DeprecationWarning, so upstream tests would not surface it. Sources: https://raw.githubusercontent.com/openbraininstitute/eFEL/master/pyproject.toml, venv probe.",
+    "The docs name 'voltage_deflection_stim_ssse' as a required input of sag_amplitude, but it is not an exposed feature name in 5.7.34. Source: https://raw.githubusercontent.com/openbraininstitute/eFEL/master/docs/source/eFeatures.rst plus membership test.",
+    "Window semantics differ across features: spike_count_stimint uses inclusive bounds [stim_start, stim_end], mean_frequency counts spikes strictly inside (stim_start, stim_end), and trace_check tolerates peaks up to 1.05*stim_end. NeuroSem should freeze one analysis-window convention. Sources: eFeatures.rst and installed pyfeatures.py.",
+    "The burst warning '4 or more spikes are needed for burst calculation.' is written to process stdout by the C++ core, not raised as a Python warning, so warnings.catch_warnings will not capture it. Capture at file-descriptor level if it must be logged. Source: probe.py (contextlib.redirect_stdout did not capture it).",
+    "get_mean_feature_values returns numpy float 0.0 for spike_count on a no-spike trace, and None for undefined features. Source: probe.py.",
+    "The BlueBrain-era Zenodo concept DOI is 10.5281/zenodo.593869 (DataCite, 72 HasVersion relations); 10.5281/zenodo.14222078 is its 5.7.13 version DOI. Version DOIs under the new concept 10.5281/zenodo.19604220 include 10.5281/zenodo.22014994 (5.7.32). Sources: https://api.datacite.org/dois/10.5281/zenodo.593869, https://api.datacite.org/dois/10.5281/zenodo.22014994",
+    "Crossref lists published-print 2026-06-01 alongside published-online 2026-05-22 for 10.1093/bioinformatics/btag328. Author names carry diacritics (Anıl Tuncel, Aurélien Jaquier). Use Crossref's forms in CITATION.cff. Source: https://api.crossref.org/works/10.1093/bioinformatics/btag328",
+    "The README copyright footer still reads 2009-2024 Blue Brain Project/EPFL, while LICENSE.txt adds Open Brain Institute 2025-2026 (the 5.7.33 release updated copyright notices). Sources: https://raw.githubusercontent.com/openbraininstitute/eFEL/master/README.md, https://api.github.com/repos/openbraininstitute/eFEL/releases?per_page=10",
+    "Java is not installed on this machine, so no jNeuroML/jLEMS output was produced. Units of real .dat output (s, V) remain unconfirmed by execution. Zenodo's records API returned HTTP 504 during this check; DataCite was used instead."
+  ]
+}

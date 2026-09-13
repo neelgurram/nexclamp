@@ -43,6 +43,7 @@ def find_java() -> Path | None:
         candidates.append(Path(env))
     exe = "java.exe" if os.name == "nt" else "java"
     candidates += sorted((REPO_ROOT / ".tools").glob(f"jdk-*/bin/{exe}"), reverse=True)
+    candidates += sorted((REPO_ROOT / ".tools").glob(f"jdk-*/Contents/Home/bin/{exe}"), reverse=True)   # macOS layout
     if home := os.environ.get("JAVA_HOME"):
         candidates.append(Path(home) / "bin" / exe)
     if which := shutil.which("java"):
@@ -69,6 +70,7 @@ class JNeuroML:
         self.java = java or find_java()
         self.jar = jar or find_jar()
         self.max_memory = max_memory
+        self._version: dict[str, str] | None = None
 
     # ------------------------------------------------------------------ facts
     def available(self) -> bool:
@@ -81,14 +83,15 @@ class JNeuroML:
             raise ToolUnavailable("jNeuroML jar not found (pip install pyneuroml==1.3.22)")
         return self.java, self.jar
 
-    @functools.cache
     def version_info(self) -> dict[str, str]:
+        if self._version is not None:
+            return self._version
         java, jar = self._require()
         jv = subprocess.run([str(java), "-version"], capture_output=True, text=True, timeout=60)
         java_version = (jv.stderr or jv.stdout).strip().splitlines()
         jn = subprocess.run([str(java), "-jar", str(jar), "-v"], capture_output=True, text=True, timeout=120)
         versions = dict(re.findall(r"^\s*(jNeuroML|org\.neuroml\.\w+|jLEMS)\s+v(\S+)", jn.stdout, re.MULTILINE))
-        return {
+        self._version = {
             "simulator": "jNeuroML",
             "jneuroml_version": versions.get("jNeuroML", "unknown"),
             "jlems_version": versions.get("jLEMS", "unknown"),
@@ -97,6 +100,7 @@ class JNeuroML:
             "jar_path": jar.name,
             "jar_sha256": sha256_file(jar),
         }
+        return self._version
 
     def version_string(self) -> str:
         v = self.version_info()
@@ -104,6 +108,9 @@ class JNeuroML:
 
     # ------------------------------------------------------------- validation
     def validate(self, files: list[Path], timeout_s: float = 600.0) -> ValidationResult:
+        missing = [str(f) for f in files if not Path(f).is_file()]
+        if missing:   # a caller error, not a tool failure and not a model property
+            raise FileNotFoundError(f"cannot validate missing files: {missing}")
         if not self.available():
             return ValidationResult(None, -1, ["tool unavailable: Java or jNeuroML jar missing"], "", self.name)
         java, jar = self._require()
@@ -118,8 +125,14 @@ class JNeuroML:
         out = proc.stdout + proc.stderr
         summary = re.search(r"Validated (\d+) files?: (.*)", out)
         if summary is None:
+            exc = re.search(r"^\s*(?:Exception in thread .*|[\w.$]+(?:Exception|Error)\b.*)$", out, re.MULTILINE)
+            if exc and "java" in out.lower():
+                # jNeuroML crashed while loading an existing file (e.g. a malformed include): a model defect.
+                return ValidationResult(False, proc.returncode, [f"validator crashed while loading the model: "
+                                                                 f"{exc.group(0).strip()[:300]}"], out, self.name)
             return ValidationResult(None, proc.returncode, ["unrecognised validator output"], out, self.name)
-        valid = proc.returncode == 0 and "All valid" in summary.group(2)
+        # Warnings (e.g. "1 passed with warnings", exit 0) are not validity failures.
+        valid = proc.returncode == 0 and re.search(r"\b[1-9]\d* failed", summary.group(2)) is None
         msgs = [ln.strip() for ln in out.splitlines()
                 if re.search(r"not valid|failed|cvc-|Error|Exception|Warning", ln) and "No warnings" not in ln]
         return ValidationResult(valid, proc.returncode, msgs, out, f"{self.name} -validate")

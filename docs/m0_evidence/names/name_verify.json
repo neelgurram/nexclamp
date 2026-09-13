@@ -1,0 +1,225 @@
+{
+  "task": "M0 independent re-check of name-conflict findings for NeuroSem and alternatives PerturbPrint, DriftClamp, EphysPrint",
+  "checked_on": "2026-09-13",
+  "input_evidence_file": "C:/Users/gurra/NeuroSem/docs/m0_evidence/names/name_search.json",
+  "scope_note": "Audit only. No name was registered, reserved or published. Nothing here establishes legal availability. Finite registry and literature searches cannot prove the absence of a conflict.",
+  "checks": [
+    {
+      "claim": "CMAME journal article titled 'NeuroSEM: A hybrid framework for simulating multiphysics problems by coupling PINNs and spectral elements', authors Shukla, Zou, Chan, Pandey, Wang, Karniadakis, issued 2025-01",
+      "reported_value": "Crossref journal-article, CMAME, issued 2025-01; arXiv 2407.21217 dated 2024; SSRN version exists",
+      "verified_value": "Crossref: journal-article, Elsevier BV, CMAME vol 433, issued 2025-01, same six family names. DataCite 10.48550/arxiv.2407.21217: same title and creators, publicationYear 2024. arXiv abs page: v1 submitted 2024-07-30, v2 2024-10-15, primary cs.LG. arXiv search lists it under cs.LG and physics.flu-dyn; the abstract describes coupling PINNs with the spectral element solver Nektar++. New detail: the SSRN version DOI is 10.2139/ssrn.4912094 (Crossref posted-content, 2024, same authors). The ZongrenZou/NeuroSEM README cites it as CMAME 433, 117498 (2025).",
+      "status": "confirmed",
+      "source_url": "https://api.crossref.org/works/10.1016/j.cma.2024.117498 ; https://api.datacite.org/dois/10.48550/arxiv.2407.21217 ; https://arxiv.org/abs/2407.21217 ; https://api.crossref.org/works/10.2139/ssrn.4912094",
+      "method": "Crossref works API, DataCite DOI API, WebFetch of arXiv abs and search pages, Crossref query.bibliographic=neurosem (top two hits were the SSRN and CMAME records)",
+      "severity": "high"
+    },
+    {
+      "claim": "GitHub vafaei-ar/NeuroSem: identical spelling, neuroscience plus language-model project, GPL-3.0, active, manuscript in submission freeze",
+      "reported_value": "Created 2026-08-19, pushed 2026-09-13, Python, GPL-3.0; README describes EEG/fMRI representational geometry supervising language models; submission freeze with the manuscript under author review",
+      "verified_value": "GitHub API: created 2026-08-19T02:31:59Z, pushed 2026-09-13T03:20:37Z, language Python, license GPL-3.0 (LICENSE file), 0 stars, no description. The README describes testing whether human neural representational geometry can give language models relational supervision, and whether the change transfers to independent EEG and fMRI data. It says the project is in a submission freeze with an author-review package (v1.19.2). The repo docs name an 'NMI' provenance ledger. The target journal is not stated explicitly, so it is unverified.",
+      "status": "confirmed",
+      "source_url": "https://api.github.com/repos/vafaei-ar/NeuroSem ; https://api.github.com/repos/vafaei-ar/NeuroSem/readme ; https://api.github.com/repos/vafaei-ar/NeuroSem/license",
+      "method": "gh api (authenticated, read-only) repos, readme and license endpoints",
+      "severity": "high"
+    },
+    {
+      "claim": "In neuroscience 'SEM' reads as scanning electron microscopy, standard error of the mean or structural equation modelling (OpenAlex counts 1232 / 167 / 78 etc.); PubMed expands 'neuro sem' to structural equation modeling / scanning electron microscopy",
+      "reported_value": "OpenAlex title/abstract counts: SEM microscopy AND neuron 1232; structural equation model AND neuron 78; standard error of the mean AND neuron 167; PubMed auto-expansion",
+      "verified_value": "PubMed part confirmed: esearch for 'neuro sem' returned 1410 records, and the query translation mapped 'sem' to the journal abbreviations 'struct equ modeling' and 'scan electron microsc' as well as the free-text term 'sem'. I could not re-check the OpenAlex counts: every OpenAlex call returned HTTP 429 (anonymous daily budget exhausted, via curl and WebFetch). The qualitative point that SEM is ambiguous stands. The exact counts are unverified by this re-check.",
+      "status": "unverifiable",
+      "source_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?retmode=json&db=pubmed&term=neuro%20sem ; https://api.openalex.org/works?filter=title_and_abstract.search:%22scanning%20electron%20microscopy%22%20AND%20neuron&per-page=1",
+      "method": "NCBI E-utilities esearch querytranslation; OpenAlex API attempted (429)",
+      "severity": "high"
+    },
+    {
+      "claim": "GitHub ZongrenZou/NeuroSEM: PINN code for the CMAME paper, created 2024-12-19, no license",
+      "reported_value": "Created 2024-12-19, no license detected, README cites paper",
+      "verified_value": "GitHub API: created 2024-12-19T19:10:22Z, pushed 2024-12-21T02:30:24Z, Python, no license, 6 stars, description 'Codes of PINNs for the NeuroSEM paper'. The README has a BibTeX entry for CMAME 433, 117498 and links to ScienceDirect PII S0045782524007527.",
+      "status": "confirmed",
+      "source_url": "https://api.github.com/repos/ZongrenZou/NeuroSEM",
+      "method": "gh api repos and readme",
+      "severity": "medium"
+    },
+    {
+      "claim": "Company NeuroSEM at neurosem.com: neuromarketing for search-engine marketing, New York / San Francisco / Europe contacts; domain registered 2013-03-01, expires 2027-03-01",
+      "reported_value": "Neuromarketing company for search-engine marketing, with New York, San Francisco and Europe contacts; RDAP registration 2013-03-01, expiry 2027-03-01",
+      "verified_value": "RDAP: registration 2013-03-01T15:34:50Z, expiration 2027-03-01T15:34:50Z, last changed 2026-02-14. WebFetch of the homepage: the site uses the name NeuroSEM and applies neuromarketing to search advertising for large advertisers. Correction: the fetched page lists regional contacts as US East Coast, US West Coast and Europe. It names no cities, so New York and San Francisco are not confirmed. Whether the company has traded continuously since 2013 is also unverified; registration only dates the domain.",
+      "status": "corrected",
+      "source_url": "https://rdap.org/domain/neurosem.com ; https://www.neurosem.com/",
+      "method": "rdap.org JSON; WebFetch summary of homepage (not full-page read)",
+      "severity": "medium"
+    },
+    {
+      "claim": "Paper 'Neuro-SEM Unveiled: Mapping Brain, Behavior, and Decision-Making' (SSRN and Global Health Synapse) uses Neuro-SEM for structural equation modelling",
+      "reported_value": "2025 work, DOIs 10.2139/ssrn.5194408 and 10.63456/ghs-2-1-12",
+      "verified_value": "Crossref confirms both DOIs with this title. 10.2139/ssrn.5194408 is posted-content, Elsevier BV (SSRN), 2025, author family 'Kok Wah'. 10.63456/ghs-2-1-12 is a journal-article in Global Health Synapse vol 2, publisher Tresearch, issued 2025-06-02, author 'NG KOK WAH'. That 'SEM' there means structural equation modelling was not re-verified: Crossref returned no abstract and I did not read the paper.",
+      "status": "confirmed",
+      "source_url": "https://api.crossref.org/works/10.2139/ssrn.5194408 ; https://api.crossref.org/works/10.63456/ghs-2-1-12",
+      "method": "Crossref works API",
+      "severity": "medium"
+    },
+    {
+      "claim": "Neuro-Semantics coaching movement (L. Michael Hall / International Society of Neuro-Semantics), derived from NLP",
+      "reported_value": "Training and coaching model derived from neuro-linguistic programming, with an international society",
+      "verified_value": "The Crown House author page (via WebFetch) describes L. Michael Hall's Neuro-Semantics work, says he co-founded the International Society of Neuro-Semantics (ISNS) and the Meta-Coaching Foundation, and ties his work to NLP (he has authored many NLP books). GitHub code search also shows 'Neurosemantic questioning' used in NLP-style coaching prompt files. WebSearch could not be re-run because the session search budget was exhausted.",
+      "status": "confirmed",
+      "source_url": "https://www.crownhouse.co.uk/l-michael-hall",
+      "method": "WebFetch summary; GitHub code search text-match",
+      "severity": "medium"
+    },
+    {
+      "claim": "Academic 'neuro-semantic' usage means the neural basis of word meaning (63 OpenAlex works; DOI 10.1002/hbm.23814; samiraabnar/NeuroSemantics)",
+      "reported_value": "63 OpenAlex works; example DOI 10.1002/hbm.23814 (2017); samiraabnar NeuroSemantics repositories",
+      "verified_value": "Crossref: 10.1002/hbm.23814 is 'Decoding the neural representation of story meanings across languages', Human Brain Mapping vol 38, 2017-09-20. GitHub search: samiraabnar/NeuroSemantics (2017) and samiraabnar/NeuroSemanticsDemo ('Predicting Brain Activations for Words'), plus stubridy/neurosemantic_norming (stimulus norming, listed in psiTurk docs). The OpenAlex count of 63 could not be re-checked (HTTP 429).",
+      "status": "confirmed",
+      "source_url": "https://api.crossref.org/works/10.1002/hbm.23814 ; https://api.github.com/search/repositories?q=neurosem&per_page=30",
+      "method": "Crossref works API; gh api search/repositories; OpenAlex attempted (429)",
+      "severity": "medium"
+    },
+    {
+      "claim": "GitHub drresearch2288/Neurosem-3D: NeuroSem-3D text-to-3D semantic field, package src/neurosem3d, created 2026-08-02",
+      "reported_value": "Created 2026-08-02; graphics/ML, not neuroscience",
+      "verified_value": "GitHub API: created 2026-08-02T16:53:44Z, pushed 2026-08-06T17:24:27Z, Python, license NOASSERTION. The README describes NeuroSem-3D as a learned, uncertainty-aware hierarchical 3D semantic field for editable text-to-3D generation, with source under src/neurosem3d/. PyPI neurosem3d returns 404.",
+      "status": "confirmed",
+      "source_url": "https://api.github.com/repos/drresearch2288/Neurosem-3D",
+      "method": "gh api repos and readme; PyPI JSON API",
+      "severity": "low"
+    },
+    {
+      "claim": "AlexMrzv/NeuroSEM and Bashkirov-NS/NeuroSEM (inactive 2023, no description); magabimkt/NeuroSemNeura (Portuguese neuroanatomy education); organisation neurosemantica (2026, knowledge graphs/agents)",
+      "reported_value": "Weak overlap only",
+      "verified_value": "AlexMrzv/NeuroSEM: created 2023-03-29, pushed 2023-07-01, Python, no description. Bashkirov-NS/NeuroSEM: created 2023-07-01, pushed 2023-07-03, Python, no description. magabimkt/NeuroSemNeura: created 2026-06-20, HTML; the README presents 'Neuro sem Neura' as a Portuguese-language neuroanatomy study project with its own CITATION.cff. neurosemantica: Organization created 2026-01-12, bio about data pipelines, ontology-grounded knowledge graphs and agentic systems.",
+      "status": "confirmed",
+      "source_url": "https://api.github.com/search/repositories?q=neurosem&per_page=30 ; https://api.github.com/users/neurosemantica ; https://api.github.com/repos/magabimkt/NeuroSemNeura/readme",
+      "method": "gh api search/repositories, users, repos, readme",
+      "severity": "low"
+    },
+    {
+      "claim": "No package or docs project named neurosem on PyPI, conda-forge, npm or Read the Docs; no GitHub user/org named neurosem, neuro-sem or neuro_sem",
+      "reported_value": "All 404",
+      "verified_value": "Confirmed and extended. PyPI JSON neurosem and neuro-sem: 404 (positive control efel: 200, version 5.7.34). api.anaconda.org conda-forge neurosem and neuro-sem: 404 (positive control numpy: 200). npm: 404. Read the Docs API v3: 404. CRAN (crandb): 404. GitHub users/neurosem and users/neuro-sem: 404; search/users returns only 'neurosemantica'. conda-forge/neurosem-feedstock: 404. No project matching neuro.?sem in the full PyPI simple index (890,745 projects) or in conda-forge channeldata.json (34,335 packages). Hugging Face model search returned nothing. Registry names are free, but GitHub code search found 1,140 code hits for 'neurosem'.",
+      "status": "confirmed",
+      "source_url": "https://pypi.org/pypi/neurosem/json ; https://api.anaconda.org/package/conda-forge/neurosem ; https://registry.npmjs.org/neurosem ; https://readthedocs.org/api/v3/projects/neurosem/ ; https://crandb.r-pkg.org/neurosem ; https://pypi.org/simple/ ; https://conda.anaconda.org/conda-forge/channeldata.json ; https://api.github.com/users/neurosem",
+      "method": "curl/urllib JSON APIs with positive controls; regex scan of full PyPI simple index (PEP 691 JSON) and conda-forge channeldata; gh api",
+      "severity": "none"
+    },
+    {
+      "claim": "USPTO tmsearch backend: 0 wordmark records for neurosem; sanity checks google 194, neuron 125",
+      "reported_value": "0 for neurosem and neurosem*; google 194; neuron 125",
+      "verified_value": "Reproduced with a POST to the tmsearch backend using a WM-field match/match_phrase query: neurosem 0, perturbprint 0, driftclamp 0, ephysprint 0; sanity checks google 194 and neuron 125, matching the earlier run. Split-token AND queries ('neuro sem', 'perturb print', 'drift clamp', 'ephys print') also returned 0. The wildcard form neurosem* was not re-run. The endpoint is undocumented and covers US federal marks only.",
+      "status": "confirmed",
+      "source_url": "https://tmsearch.uspto.gov/prod-stage-v1-0-0/tmsearch",
+      "method": "curl POST with Elasticsearch-style JSON body against the WM field",
+      "severity": "none"
+    },
+    {
+      "claim": "PerturbPrint: no conflicts on PyPI, conda-forge, npm, RTD, GitHub, Crossref, DataCite, arXiv, USPTO, RDAP .com/.org",
+      "reported_value": "All zero or 404; OpenAlex phrase 'perturbation fingerprint' 2 unrelated works; Semantic Scholar 429",
+      "verified_value": "Confirmed. PyPI perturbprint/perturb-print 404; conda-forge API 404; npm 404; CRAN 404; RTD 404; GitHub repository search 0 (also 'perturb-print' 0 and the phrase 'perturb print' 0); users 404, user search 0; GitHub code search 0; repository phrase search 'perturbation fingerprint' 0; Crossref query 0 items; DataCite 0; Europe PMC 0 (also the phrase 'perturbation fingerprint' 0); PubMed 0; arXiv web search 'no results'; Semantic Scholar total 0 (one successful call, another 429); USPTO 0; RDAP perturbprint.com and .org 404; Hugging Face none. The full PyPI index has no perturb.?print match. Perturb-prefixed PyPI projects do exist (e.g. perturbguard, perturbio, perturb-tools, PerturbNet, perturbvi), but none is identical. The OpenAlex figure (2 works) could not be re-checked (429).",
+      "status": "confirmed",
+      "source_url": "https://pypi.org/pypi/perturbprint/json ; https://api.github.com/search/code?q=perturbprint ; https://arxiv.org/search/?query=perturbprint&searchtype=all ; https://api.semanticscholar.org/graph/v1/paper/search?query=perturbprint ; https://rdap.org/domain/perturbprint.com",
+      "method": "Registry JSON APIs, gh api (repos/users/code search), Crossref, DataCite, Europe PMC, E-utilities, arXiv web via WebFetch, Semantic Scholar API, USPTO backend, RDAP, PyPI simple index scan",
+      "severity": "none"
+    },
+    {
+      "claim": "DriftClamp: no conflicts in registries, GitHub, scholarly indexes; runner-up",
+      "reported_value": "All zero or 404; OpenAlex 1 fuzzy hit; phrase 'drift clamp' 2 unrelated works",
+      "verified_value": "Mostly confirmed, with one missed item. PyPI, conda-forge API, npm, CRAN and RTD: 404. GitHub repository search 0; the hyphenated 'drift-clamp' returned 3 unrelated repositories (Moodle 'clamp-drift', an audio plugin suite, an Electron demo). No user or org. Crossref 0, DataCite 0, Europe PMC 0, PubMed 0, arXiv 'no results', Semantic Scholar total 0, USPTO 0, RDAP driftclamp.com 404 (.org not re-checked). MISSED: GitHub code search returned 102 hits. 'DriftClamp' is an existing C clamp helper in Hexlord/project-drift, and 'driftClamp' is a config key in the TheFaucett/stock-game simulation. These are generic identifier collisions, not a project name, but they add code-search noise. OpenAlex counts could not be re-checked (429).",
+      "status": "corrected",
+      "source_url": "https://api.github.com/search/code?q=driftclamp ; https://api.github.com/search/repositories?q=drift-clamp ; https://pypi.org/pypi/driftclamp/json ; https://arxiv.org/search/?query=driftclamp&searchtype=all",
+      "method": "gh api search/code with text-match media type; registry APIs; scholarly APIs; USPTO backend; RDAP",
+      "severity": "low"
+    },
+    {
+      "claim": "EphysPrint: no exact conflicts; 'electrophysiological fingerprint' is established wording (42 OpenAlex works, e.g. 10.1098/rsif.2016.0999, 10.1038/srep30259); crowded 'ephys' namespace",
+      "reported_value": "All exact-name checks 0/404; established phrase; crowded namespace",
+      "verified_value": "Confirmed. PyPI, conda-forge API, npm, CRAN and RTD: 404. GitHub repository, user and code search 0. Crossref 0, DataCite 0, Europe PMC 0, PubMed 0, arXiv 'no results', USPTO 0, RDAP ephysprint.com 404. Crossref titles confirm both example DOIs: 10.1098/rsif.2016.0999 is about identifying islet cell types by electrophysiological fingerprinting (J R Soc Interface 14, 2017); 10.1038/srep30259 is about electrophysiological fingerprints of OFF bipolar cells in rat retina (Sci Rep 6, 2016). Namespace crowding confirmed: 47 PyPI project names contain 'ephys' (e.g. osl-ephys, pyephys, ephyspy, open-ephys-python-tools). The OpenAlex count of 42 could not be re-checked (429), and Semantic Scholar returned 429 for this name.",
+      "status": "confirmed",
+      "source_url": "https://pypi.org/pypi/ephysprint/json ; https://api.crossref.org/works/10.1098/rsif.2016.0999 ; https://api.crossref.org/works/10.1038/srep30259 ; https://pypi.org/simple/",
+      "method": "Registry JSON APIs, gh api, Crossref, PyPI simple index substring scan, arXiv web via WebFetch",
+      "severity": "low"
+    }
+  ],
+  "new_conflicts_not_in_first_search": [
+    {
+      "where": "SSRN preprint of the CMAME NeuroSEM paper",
+      "url": "https://api.crossref.org/works/10.2139/ssrn.4912094",
+      "finding": "DOI 10.2139/ssrn.4912094, title 'Neurosem: A Hybrid Framework ...', 2024, same six authors. The first search mentioned an SSRN version but gave no DOI. It is the top Crossref bibliographic hit for 'neurosem', so the conflict takes up the first two Crossref results.",
+      "conflict_severity": "high (adds to existing CMAME conflict)"
+    },
+    {
+      "where": "GitHub Samsomyajit/NAVIER-CFD",
+      "url": "https://api.github.com/repos/Samsomyajit/NAVIER-CFD",
+      "finding": "Created 2026-07-11, pushed 2026-07-23. It registers 'neurosem' as a runtime model key in src/navier_cfd/runtime_registry.py and lists NeuroSEM in its model catalogue and hybrid-acceleration case study. The CMAME name is already being reused as a lowercase software identifier in third-party scientific code.",
+      "conflict_severity": "medium"
+    },
+    {
+      "where": "GitHub nsucher/semiology_quant",
+      "url": "https://api.github.com/repos/nsucher/semiology_quant",
+      "finding": "Created 2023-05-04, pushed 2024-12-04, no license. MATLAB functions named neurosem_plot and neurosem_data analyse neural activity at the onset of seizure symptoms (seizure semiology, OPSCEA data). This is an existing 'neurosem' identifier in neuroscience code, a sense unrelated to semantics.",
+      "conflict_severity": "low"
+    },
+    {
+      "where": "GitHub code search for 'neurosem'",
+      "url": "https://api.github.com/search/code?q=neurosem",
+      "finding": "1,140 code hits. They include the CMAME citation in publication lists (e.g. cyclotomicextension.github.io) and many prompt files using the joke condition 'Neurosemantical Inversitis' (e.g. friuns2/BlackFriday-GPTs-Prompts). The identifier is noisy on GitHub even though no repository owns the exact package name.",
+      "conflict_severity": "low"
+    },
+    {
+      "where": "GitHub code identifiers 'DriftClamp' / 'driftClamp'",
+      "url": "https://api.github.com/search/code?q=driftclamp",
+      "finding": "102 code hits, e.g. a C inline clamp helper DriftClamp in Hexlord/project-drift and a driftClamp parameter in TheFaucett/stock-game. These are generic identifier collisions, not a named project.",
+      "conflict_severity": "low"
+    },
+    {
+      "where": "PyPI perturb-prefixed projects",
+      "url": "https://pypi.org/simple/",
+      "finding": "The full index has no perturbprint-like name, but it has perturb-prefixed projects: perturbate, perturbation-classifiers, perturbation-kernel, perturbationx, perturbator, perturbers, perturbguard, perturb-hd, perturbio, perturbmerge, PerturbNet, perturbopy, perturbresidual, perturb-tools, perturbvi. None is identical; the prefix is only mildly crowded.",
+      "conflict_severity": "low"
+    }
+  ],
+  "neurosem_verdict_check": "Confirmed: do not keep 'NeuroSem'. Registry names are free (PyPI, conda-forge, npm, RTD, CRAN, GitHub user/org, USPTO backend). The identical or near-identical name already belongs to a 2024 arXiv / SSRN / 2025 CMAME computational framework with public code that third-party CFD code now uses as a model key, to an active GPL-3.0 neuroscience-and-language-model repository with the identical spelling (vafaei-ar/NeuroSem, pushed 2026-09-13, in submission freeze), to a commercial NeuroSEM domain registered since 2013, and to an NLP-derived coaching movement. The one correction: the fetched neurosem.com page gives US East Coast, US West Coast and Europe contacts, not the cities New York and San Francisco. The OpenAlex SEM counts could not be re-checked.",
+  "alternatives_ranking_check": [
+    {"name": "PerturbPrint", "rank": 1, "note": "Cleanest of the three: zero hits in every index that answered, including GitHub code search. Only a mild perturb- prefix crowd on PyPI and the Perturb-seq association noted earlier (that association was not re-verified because WebSearch was unavailable)."},
+    {"name": "DriftClamp", "rank": 2, "note": "Registries and literature clean, but 102 GitHub code hits for existing DriftClamp/driftClamp identifiers were missed earlier. Its semantic ambiguity with recording drift and clamp hardware is unchanged (not re-verified)."},
+    {"name": "EphysPrint", "rank": 3, "note": "No exact conflicts, but 47 PyPI projects contain 'ephys', and 'electrophysiological fingerprint' is established wording for recorded cells, so the name reads as a tool for experimental data rather than models."}
+  ],
+  "final_recommendation": "Agree with the first search: rename before Milestone 1 creates src/neurosem, the CLI or CITATION.cff. PerturbPrint (package and CLI 'perturbprint') is preferred. It was the only one of the three with zero hits in every source that answered in this re-check, GitHub code search included, and it maps onto the handoff's defined term 'perturbation fingerprint'. DriftClamp remains runner-up, slightly weaker than first reported because of existing code-identifier collisions. EphysPrint is third. This is not legal clearance: EUIPO, WIPO, company registries, Google Scholar, IEEE Xplore, ACM DL, OpenAlex, Zenodo and (partly) Semantic Scholar were not successfully checked here. The final choice is Neel's, and PyPI, conda-forge, GitHub and USPTO should be re-checked immediately before M1.",
+  "queries_run": [
+    "PyPI JSON API: neurosem, neuro-sem, perturbprint, perturb-print, driftclamp, drift-clamp, ephysprint, ephys-print, neurosem3d; control efel",
+    "PyPI simple index (PEP 691 JSON, 890,745 projects) regex scan: neuro.?sem, perturb.?print, perturbation.?fingerprint, drift.?clamp, clamp.?drift, ephys.?print; perturb* prefix; *ephys* substring",
+    "api.anaconda.org/package/conda-forge/{8 names, efel}; control numpy (200)",
+    "conda.anaconda.org/conda-forge/channeldata.json (34,335 packages) regex scan for the same patterns",
+    "GitHub (gh api, authenticated read-only): search/repositories for 8 names and the phrases 'perturb print', 'drift clamp', 'ephys print', 'perturbation fingerprint'; users/{8 names}; search/users for 8 names; search/code for neurosem, perturbprint, driftclamp, ephysprint (with text-match); repos, readme and license for vafaei-ar/NeuroSem, ZongrenZou/NeuroSEM, drresearch2288/Neurosem-3D, AlexMrzv/NeuroSEM, Bashkirov-NS/NeuroSEM, magabimkt/NeuroSemNeura, Samsomyajit/NAVIER-CFD, nsucher/semiology_quant; users/neurosemantica; conda-forge/{name}-feedstock",
+    "npm registry, crandb (CRAN), Read the Docs API v3, Hugging Face models search: neurosem, perturbprint, driftclamp, ephysprint",
+    "Crossref works: 10.1016/j.cma.2024.117498, 10.2139/ssrn.5194408, 10.63456/ghs-2-1-12, 10.1002/hbm.23814, 10.1098/rsif.2016.0999, 10.1038/srep30259, 10.1371/journal.pone.0058665, 10.2139/ssrn.4912094; query.bibliographic for neurosem, NeuroSEM, perturbprint, driftclamp, ephysprint",
+    "DataCite: dois/10.48550/arxiv.2407.21217; dois?query for 4 names",
+    "OpenAlex: works search and title_and_abstract filters for neurosem, neuro-sem, neuro-semantic, the 3 alternatives, perturbation fingerprint(s), electrophysiological fingerprint, drift clamp, and the three SEM-meaning counts; all HTTP 429 (budget exhausted), including via WebFetch",
+    "Europe PMC REST search: 4 names plus the phrase 'perturbation fingerprint'",
+    "NCBI E-utilities esearch: neurosem, perturbprint, driftclamp, ephysprint, 'neuro sem'",
+    "arXiv API id_list=2407.21217 and all:{4 names} (429 / timeouts); arXiv abs page 2407.21217 and web search for 4 names via WebFetch",
+    "Semantic Scholar graph/v1/paper/search for 4 names (curl twice, WebFetch once)",
+    "Zenodo API records?q for 4 names (504 via urllib, curl --max-time 90, and WebFetch)",
+    "DBLP publ API for neurosem and perturbprint (bot-check page)",
+    "RDAP: neurosem.com, perturbprint.com, perturbprint.org, driftclamp.com, ephysprint.com; control python.org",
+    "USPTO tmsearch backend POST: WM match/match_phrase for neurosem, perturbprint, driftclamp, ephysprint, with google and neuron as controls; WM token-AND for 'neuro sem', 'perturb print', 'drift clamp', 'ephys print'",
+    "WebFetch: https://www.neurosem.com/ ; https://www.crownhouse.co.uk/l-michael-hall",
+    "WebSearch attempted for NeuroSem, PerturbPrint, DriftClamp, EphysPrint: not performed (session WebSearch budget of 200 exhausted)"
+  ],
+  "unverifiable": [
+    "OpenAlex: every request returned HTTP 429 because the anonymous daily budget was exhausted. The earlier OpenAlex counts (SEM meanings 1232/78/167/173, the (SEM) parenthetical forms, 63 neuro-semantic, 42 electrophysiological fingerprint, 2 perturbation fingerprint, 2 drift clamp, 53 stimulation battery) were not re-checked",
+    "WebSearch could not be re-run because the session budget was exhausted; earlier web-search-only claims (Perturb-seq association, drift-racing and camera-clamp products, Neurocan results, METACLAMP/MTCLAMP marks) were not re-checked",
+    "Semantic Scholar: HTTP 429 for neurosem and ephysprint; perturbprint and driftclamp each returned total 0 once",
+    "Zenodo API: 504 on every attempt",
+    "arXiv API: 429 or timeouts; the arXiv web search page was used instead",
+    "DBLP: anti-bot page",
+    "Google Scholar, IEEE Xplore, ACM DL, EUIPO, WIPO, national trademark offices and company registries were not queried",
+    "The meaning of 'SEM' in the 'Neuro-SEM Unveiled' paper (structural equation modelling) was not re-verified; Crossref gave only title and metadata",
+    "USPTO results come from an undocumented backend and cover US federal marks only; the wildcard neurosem* query was not re-run",
+    "neurosem.com and Crown House descriptions are WebFetch model summaries, not full-page reads; neurosem.com city names are not confirmed",
+    "The venue and eventual publication name of the vafaei-ar/NeuroSem manuscript are unknown",
+    "The remaining lower-ranked alternatives (NeuroCanary, MutaClamp, StimBattery) were not re-checked in this pass",
+    "RDAP .org was checked only for perturbprint; .io results remain uninformative"
+  ],
+  "scratch_artifacts": "C:/Users/gurra/AppData/Local/Temp/claude/C--Users-gurra-Continuum/d876c622-d308-4d4a-bbf3-2b2374480647/scratchpad/m0/nameverify/ (probe.py, probe_out.json, probe_A.json, probe_B.json, probe_C.json, gh.sh, gh_out.txt)"
+}

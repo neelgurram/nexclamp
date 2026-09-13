@@ -1,0 +1,126 @@
+# Agent-study policy (spec "Claude Code experiment", Milestone 9). STATUS: provisional.
+#
+# This file fixes the conditions under which every Claude Code trial runs: one agent
+# configuration, fixed permissions, fixed budgets, and isolation from the hidden
+# evaluator. Values become binding only when Neel approves them and their SHA-256 is
+# recorded in the frozen agent-evaluation config (docs/agent_study_protocol.md, step 1).
+# Never edit after the first trial has started; a change means a new, separately reported
+# study configuration.
+#
+# The harness (src/neurosem/experiments/agent.py) never launches an agent. A human runs
+# trials by following docs/agent_study_protocol.md.
+
+schema: neurosem-agent-policy/1
+status: provisional
+
+# Role separation (AI_USE_LOG.md): Claude Code as development assistant is logged in
+# AI_USE_LOG.md; Claude Code as experimental subject is logged only in trial logs.
+agent:
+  product: Claude Code
+  # Recorded per trial from the tool itself (never assumed): `claude --version` output and
+  # the underlying model identifier reported by the session.
+  version: record_per_trial
+  model_identifier: record_per_trial
+  one_configuration_per_study: true     # all trials of one reported study share version, model and settings
+
+# Permissions granted to the agent inside a trial. They are identical for every trial and
+# are hashed into each trial log (permissions_sha256 = SHA-256 of this mapping as sorted JSON).
+permissions:
+  working_directory: trial_directory_only
+  file_read: trial_directory_only
+  file_write: trial_directory_only
+  shell: allowed                        # needed to run public_tests with Java/jNeuroML
+  network: denied                       # the upstream model repositories are public; network access would expose originals
+  web_tools: denied                     # no web search / web fetch
+  mcp_servers: none
+  subagents: denied                     # one agent loop, so the configuration is a single fixed object
+  operator_memory_and_instructions: disabled   # no user-level CLAUDE.md, auto-memory, skills or plugins from the operator's account
+  permission_prompts: none_answered     # a prompt the agent cannot pass counts as a denial, never a human approval
+  allowed_tools: [Read, Edit, Write, Glob, Grep, Bash]
+  denied_tools: [WebFetch, WebSearch]
+
+budget:
+  # Provisional values pending Neel's approval. Every task uses `default` unless its
+  # task.yaml states a smaller budget; no task may exceed `limits`.
+  default: {max_turns: 80, max_wall_clock_minutes: 60, max_cost_usd: 15.0}
+  limits:  {max_turns: 80, max_wall_clock_minutes: 60, max_cost_usd: 15.0}
+
+isolation:
+  # Tool permission settings are not a security boundary: a shell can read any path the OS
+  # account can read. Isolation is therefore enforced by the environment.
+  environment: dedicated OS account, container or VM that cannot read the NeuroSem repository or private trial records
+  trial_directory_outside_repository: true      # enforced by prepare_trial
+  private_records_outside_trial_directory: true # enforced by prepare_trial (never under the trial's parent folder)
+  private_records_default_root: results/agent_study/private   # agent.PRIVATE_ROOT; the agent environment cannot read the repository
+  exported_timestamps_normalized: true          # every exported file/dir has mtime 2000-01-01T00:00:00Z; transfers must preserve it
+  export_from_clean_commit: true                # prepare_trial refuses uncommitted inputs (allow_dirty = development only)
+  fresh_session_per_trial: true
+  resume_or_continue_sessions: denied
+  one_trial_per_session: true
+  same_clean_export_per_task: true              # every trial of a task starts from the same export content hash
+  manual_intervention: prohibited               # any intervention is logged and invalidates the trial
+  freeze_before_trials: true                    # evaluator, hidden checks, tolerances and this policy are hashed first
+
+export:
+  # Paths (relative to the repository root) copied into <trial>/framework/. Empty on
+  # purpose: NeuroSem itself contains the perturbation battery, so exporting it would turn
+  # hidden tests into public ones. The agent receives only the model, TASK.md and the
+  # public checks.
+  framework_include: []
+  # Additional exclusions. The harness also applies its own hard-coded exclusions
+  # (agent.MANDATORY_EXCLUDES), which configuration cannot remove; this list must contain
+  # at least those entries so the policy documents them.
+  mandatory_exclude:
+    - ".git/**"
+    - "**/.git/**"
+    - "agent_study/**"
+    - "docs/m0_evidence/**"
+    - "docs/handoff/**"
+    - "docs/build_notes/**"
+    - "docs/agent_study_protocol.md"
+    - "results/**"
+    - "work/**"
+    - "data/splits/**"
+    - "models/**"
+    - "tests/**"
+    - ".venv/**"
+    - ".tools/**"
+    - "**/__pycache__/**"
+    - "**/*.pyc"
+    - "**/.pytest_cache/**"
+    - "**/*.egg-info/**"
+    - "configs/agent_policy.yaml"
+    - "configs/FROZEN.lock"
+    - "src/neurosem/experiments/agent.py"
+    - "AI_USE_LOG.md"
+    - "**/PROVENANCE.json"
+
+trial:
+  scratch_dir: scratch
+  # NEW files the scorer ignores when looking for unauthorized edits: scratch space and
+  # interpreter caches. These patterns only hide files that did not exist in the export; an
+  # edit to, or removal of, an exported file is always compared. Simulator output written by
+  # running a shipped simulation in place is recognised separately and narrowly: only the
+  # files named by OutputFile/EventOutputFile/@fileName and Target/@reportFile/@timesFile in
+  # the LEMS files (agent.declared_output_paths). Everything else that changed must be
+  # permitted by the task's hidden edit rules.
+  ignore_paths:
+    - "scratch/**"
+    - "**/__pycache__/**"
+    - "**/.pytest_cache/**"
+
+public_checks:
+  # The public canonical check is a conventional regression test: same spike count and
+  # every spike time within this absolute tolerance of the reference recorded (with the
+  # frozen jNeuroML) from the unedited model. Provisional; must be approved before freezing.
+  spike_threshold_mV: -20.0             # same as eFEL Threshold in configs/features.yaml
+  spike_time_abs_tol_ms: 1.0
+
+scoring:
+  # Layers, in cascade order for the first four (a layer is evaluated only if every
+  # earlier cascade layer passed or was not applicable).
+  layers: [schema_valid, executes, canonical_passes, hidden_battery_passes, hidden_assertions_pass, edit_scope]
+  basic_validation: [schema_valid, executes, canonical_passes]
+  neurosem_validation: [schema_valid, executes, canonical_passes, hidden_battery_passes, hidden_assertions_pass, edit_scope]
+  tool_failure_or_missing_evaluator: indeterminate   # never counted as pass or fail
+  manual_patch_audit_after_scoring: required

@@ -42,20 +42,18 @@ def evaluate_heldout(campaign: str, selection_file: Path, reason: str, workers: 
 
     battery = np.array([bool(sel & set(o.detecting_protocols)) for o in adm])
     canonical = np.array([CANONICAL_ID in o.detecting_protocols for o in adm])
-    clusters = np.array([o.variant.model_id for o in adm])
+    clusters = [o.variant.model_id for o in adm]
+    acfg = ctx.cfg.get("analysis") or {}
     result = {
         "campaign": campaign, "created_utc": utc_now(), "reason": reason, "selection_file": str(selection_file),
         "n_heldout_admissible_mutants": int(len(adm)), "heldout_models": list(split.heldout_models),
-        "heldout_families": list(split.heldout_families),
-        "paired_counts": metrics.paired_counts(battery, canonical),
-        "rate_selected": float(battery.mean()) if len(adm) else None,
-        "rate_canonical": float(canonical.mean()) if len(adm) else None,
-        "cluster_bootstrap": bootstrap.cluster_bootstrap_diff(battery, canonical, clusters, 10000,
-                                                              int(ctx.cfg["selection"]["seed"])) if len(adm) else None,
+        "heldout_families": list(split.heldout_families), "analysis_config": acfg,
+        "primary_endpoint": (bootstrap.paired_comparison(battery, canonical, clusters, int(acfg.get("n_boot", 10000)),
+                                                         int(acfg.get("n_perm", 10000)),
+                                                         int(acfg.get("seed", ctx.cfg["selection"]["seed"])))
+                             if len(adm) else None),
         "cascade": summary["cascade"],
     }
-    pc = result["paired_counts"]
-    result["exact_mcnemar_p"] = bootstrap.exact_mcnemar(pc["only_a"], pc["only_b"]) if len(adm) else None
     out = ctx.processed / "heldout_evaluation.json"
     out.write_text(json.dumps(result, indent=2, default=str) + "\n", encoding="utf-8")
     return out

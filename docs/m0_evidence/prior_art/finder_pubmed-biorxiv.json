@@ -1,0 +1,1416 @@
+{
+  "finder": "pubmed-biorxiv",
+  "generated": "2026-09-13",
+  "scope_note": "Prior-art discovery for docs/novelty_matrix.csv using PubMed (MCP + NCBI E-utilities) and bioRxiv (WebSearch site:biorxiv.org, Europe PMC SRC:PPR, bioRxiv details API). Metadata and abstracts were verified via Europe PMC core DOI lookups or NCBI efetch; the retrieval URL pattern is recorded in queries_run. No candidate found in these sources integrates controlled mutation of neuron models, multi-protocol electrophysiology fingerprints, refinement-calibrated tolerances, optimised protocol-battery selection and held-out model/mutation-family evaluation; highest closeness assigned is 3 (partial overlaps). This is a finding about these sources only, not a proof of novelty.",
+  "candidates": [
+    {
+      "title": "Open Source Brain: A Collaborative Resource for Visualizing, Analyzing, Simulating, and Developing Standardized Models of Neurons and Circuits",
+      "authors": "Gleeson P, Cantarelli M, Marin B, Quintana A, Earnshaw M, Sadeh S, Piasini E, Birgiolas J, Cannon RC, ... Silver RA",
+      "year": "2019",
+      "venue": "Neuron",
+      "url": "https://doi.org/10.1016/j.neuron.2019.05.019",
+      "doi": "10.1016/j.neuron.2019.05.019",
+      "kind": "paper",
+      "found_via": "PubMed E-utilities 'Open Source Brain[tiab]'; Europe PMC '\"Open Source Brain\"'; preprint 10.1101/229484 via WebSearch site:biorxiv.org and Europe PMC SRC:PPR",
+      "why_relevant": "Canonical OSB citation. Per the bioRxiv version, OSB's Model Validation (OMV) framework applies unit-testing and CI so model behaviour is checked when models are converted to standard formats or code is updated. This is the closest existing practice to regression-testing NeuroML models, but it compares against saved expected values from a few configured tests. It has no controlled mutants, protocol-battery optimisation, refinement-based tolerances, or held-out evaluation.",
+      "estimated_closeness": 3
+    },
+    {
+      "title": "NeuroML-DB: Sharing and characterizing data-driven neuroscience models described in NeuroML",
+      "authors": "Birgiolas J, Haynes V, Gleeson P, Gerkin RC, Dietrich SW, Crook S",
+      "year": "2023",
+      "venue": "PLoS Computational Biology",
+      "url": "https://doi.org/10.1371/journal.pcbi.1010941",
+      "doi": "10.1371/journal.pcbi.1010941",
+      "kind": "paper",
+      "found_via": "PubMed 'NeuroML'; Europe PMC '\"NeuroML-DB\"'; bioRxiv preprint 10.1101/2021.09.11.459920 via WebSearch site:biorxiv.org",
+      "why_relevant": "Database of over 1,500 NeuroML models. Each model is characterised automatically with a battery of electrophysiology protocols and computed properties; the bioRxiv text mentions square current steps at 1.5x and 3.0x rheobase. That is multi-protocol, rheobase-normalised characterisation of NeuroML models, a direct precedent for NeuroSem's perturbation fingerprints and a possible model source. It does not mutate models or select protocols to detect changes.",
+      "estimated_closeness": 3
+    },
+    {
+      "title": "The NeuroML ecosystem for standardized multi-scale modeling in neuroscience",
+      "authors": "Sinha A, Gleeson P, Marin B, Dura-Bernal S, Panagiotou S, Crook S, Cantarelli M, Cannon RC, Davison AP, Gurnani H, Silver RA",
+      "year": "2025",
+      "venue": "eLife",
+      "url": "https://doi.org/10.7554/eLife.95135",
+      "doi": "10.7554/eLife.95135",
+      "kind": "paper",
+      "found_via": "PubMed 'NeuroML'; Europe PMC 'pyNeuroML OR jNeuroML' and '\"OSB Model Validation\" OR \"OMV\" AND NeuroML'; bioRxiv preprint 10.1101/2023.12.07.570537",
+      "why_relevant": "Current canonical overview of NeuroML v2, covering the tool ecosystem for creating, validating, simulating and testing models; per the search hits it is the paper that covers pyNeuroML/jNeuroML and OMV. It is the reference for the reused infrastructure and for existing validation and testing practice. No dedicated pyNeuroML or OMV paper turned up in PubMed or Europe PMC.",
+      "estimated_closeness": 3
+    },
+    {
+      "title": "NeuroML: a language for describing data driven models of neurons and networks with a high degree of biological detail",
+      "authors": "Gleeson P, Crook S, Cannon RC, Hines ML, Billings GO, Farinella M, Morse TM, Davison AP, Ray S, Bhalla US, Barnes SR, Dimitrova YD, Silver RA",
+      "year": "2010",
+      "venue": "PLoS Computational Biology",
+      "url": "https://doi.org/10.1371/journal.pcbi.1000815",
+      "doi": "10.1371/journal.pcbi.1000815",
+      "kind": "paper",
+      "found_via": "PubMed E-utilities 'NeuroML'",
+      "why_relevant": "Canonical NeuroML citation. It validated NeuroML descriptions by showing similar behaviour across five independent simulators, which is behaviour-preservation checking under translation (cross-simulator) with no mutation or protocol-optimisation element.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "LEMS: a language for expressing complex biological models in concise and hierarchical form and its use in underpinning NeuroML 2",
+      "authors": "Cannon RC, Gleeson P, Crook S, Ganapathy G, Marin B, Piasini E, Silver RA",
+      "year": "2014",
+      "venue": "Frontiers in Neuroinformatics",
+      "url": "https://doi.org/10.3389/fninf.2014.00079",
+      "doi": "10.3389/fninf.2014.00079",
+      "kind": "paper",
+      "found_via": "PubMed E-utilities 'NeuroML' and 'LEMS[tiab] AND (NeuroML OR simulation)'",
+      "why_relevant": "Canonical LEMS citation. Dimensional unit handling is built into the language, which bears directly on NeuroSem's unit-conversion valid transformations and unit-error mutants. No behavioural regression testing.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "libNeuroML and PyLEMS: using Python to combine procedural and declarative modeling approaches in computational neuroscience",
+      "authors": "Vella M, Cannon RC, Crook S, Davison AP, Ganapathy G, Robinson HP, Silver RA, Gleeson P",
+      "year": "2014",
+      "venue": "Frontiers in Neuroinformatics",
+      "url": "https://doi.org/10.3389/fninf.2014.00038",
+      "doi": "10.3389/fninf.2014.00038",
+      "kind": "paper",
+      "found_via": "PubMed E-utilities 'NeuroML'",
+      "why_relevant": "Canonical citation for the Python APIs (libNeuroML, PyLEMS) underlying pyNeuroML. Likely needed to implement programmatic mutation and valid transformation of NeuroML/LEMS documents. Tool, not a competing method.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "eFEL: electrophysiology feature extraction library",
+      "authors": "Mandge D, Tuncel A, Jaquier A, Kilic I, Damart T, Markram H, Van Geit W, Ranjan R",
+      "year": "2026",
+      "venue": "Bioinformatics",
+      "url": "https://doi.org/10.1093/bioinformatics/btag328",
+      "doi": "10.1093/bioinformatics/btag328",
+      "kind": "paper",
+      "found_via": "PubMed E-utilities 'electrophys feature extraction library eFEL'; Europe PMC 'eFEL AND electrophysiology'",
+      "why_relevant": "Canonical eFEL citation (this 2026 paper is the first formal eFEL journal article turned up in PubMed). It describes standardised definitions for over 90 electrophysiological features, the feature layer NeuroSem reuses. Tool only.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "NeuronUnit: A package for data-driven validation of neuron models using SciUnit",
+      "authors": "Gerkin RC, Birgiolas J, Jarvis RJ, Omar C, Crook SM",
+      "year": "2019",
+      "venue": "bioRxiv (preprint)",
+      "url": "https://www.biorxiv.org/content/10.1101/665331v1.full",
+      "doi": "10.1101/665331",
+      "kind": "preprint",
+      "found_via": "WebSearch site:biorxiv.org (neuron model validation NeuroML testing); Europe PMC 'NeuronUnit', 'SciUnit', 'NeuroML AND SRC:PPR'",
+      "why_relevant": "Canonical NeuronUnit citation, building on SciUnit. It provides executable validation tests that score single-neuron model predictions against experimental features and integrates with NeuroML-DB/OSB. It shares the idea of test suites over electrophysiology features, but it validates models against data and does not detect regressions between model versions, generate mutants, or optimise protocols.",
+      "estimated_closeness": 3
+    },
+    {
+      "title": "HippoUnit: A software tool for the automated testing and systematic comparison of detailed models of hippocampal neurons based on electrophysiological data",
+      "authors": "Saray S, Rossert CA, Appukuttan S, Migliore R, Vitale P, Lupascu CA, Bologna LL, Van Geit W, Romani A, Davison AP, Muller E, Freund TF, Kali S",
+      "year": "2021",
+      "venue": "PLoS Computational Biology",
+      "url": "https://doi.org/10.1371/journal.pcbi.1008114",
+      "doi": "10.1371/journal.pcbi.1008114",
+      "kind": "paper",
+      "found_via": "PubMed E-utilities 'HippoUnit'; Europe PMC 'NeuronUnit'/'HippoUnit'; bioRxiv preprint 10.1101/2020.07.02.184333 via WebSearch site:biorxiv.org",
+      "why_relevant": "Open-source Python test suite that automatically and systematically tests multiple properties of CA1 models against experimental data. It was motivated by models being built for a few properties, leaving their behaviour outside the original context unknown (HippoUnit also appeared in the Europe PMC eFEL query results; the exact protocols are not in the retrieved abstract). It shares automated multi-property testing and comparison across models. It differs in validating against experimental data, not detecting drift after transformations, and has no mutation, tolerance calibration or protocol selection.",
+      "estimated_closeness": 3
+    },
+    {
+      "title": "BluePyOpt: Leveraging Open Source Software and Cloud Infrastructure to Optimise Model Parameters in Neuroscience",
+      "authors": "Van Geit W, Gevaert M, Chindemi G, Rossert C, Courcol JD, Muller EB, Schurmann F, Segev I, Markram H",
+      "year": "2016",
+      "venue": "Frontiers in Neuroinformatics",
+      "url": "https://doi.org/10.3389/fninf.2016.00017",
+      "doi": "10.3389/fninf.2016.00017",
+      "kind": "paper",
+      "found_via": "PubMed E-utilities 'BluePyOpt'; Europe PMC 'BluePyOpt'",
+      "why_relevant": "Companion to eFEL. It defines multi-protocol, feature-based evaluators for neuron models (used for parameter fitting). Relevant as prior art for protocol-and-feature evaluation infrastructure, not for change detection.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Unit testing, model validation, and biological simulation",
+      "authors": "Sarma GP, Jacobs TW, Watts MD, Ghayoomie SV, Larson SD, Gerkin RC",
+      "year": "2016",
+      "venue": "F1000Research",
+      "url": "https://doi.org/10.12688/f1000research.9315.1",
+      "doi": "10.12688/f1000research.9315.1",
+      "kind": "paper",
+      "found_via": "Europe PMC 'NeuronUnit', 'SciUnit', 'test-driven AND neuroscience'; arXiv version surfaced in WebSearch site:biorxiv.org",
+      "why_relevant": "OpenWorm case study of unit testing, test-driven development and 'model validation tests' for biological simulation software. Conceptual prior art for treating scientific models as test targets, with no mutation or protocol optimisation.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Towards systematic, data-driven validation of a collaborative, multi-scale model of Caenorhabditis elegans",
+      "authors": "Gerkin RC, Jarvis RJ, Crook SM",
+      "year": "2018",
+      "venue": "Philosophical Transactions of the Royal Society B",
+      "url": "https://doi.org/10.1098/rstb.2017.0381",
+      "doi": "10.1098/rstb.2017.0381",
+      "kind": "paper",
+      "found_via": "PubMed E-utilities 'NeuronUnit OR SciUnit'; Europe PMC 'NeuronUnit'",
+      "why_relevant": "Continuous data-driven SciUnit 'unit tests' run as OpenWorm models are refined. Precedent for continuous validation of evolving neuroscience models, but against experimental data rather than a reference model version, with no mutants.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Reproducing and quantitatively validating a biologically-constrained point-neuron model of CA1 pyramidal cells",
+      "authors": "Appukuttan S, Davison AP",
+      "year": "2022",
+      "venue": "Frontiers in Integrative Neuroscience",
+      "url": "https://doi.org/10.3389/fnint.2022.1041423",
+      "doi": "10.3389/fnint.2022.1041423",
+      "kind": "paper",
+      "found_via": "PubMed E-utilities 'NeuronUnit OR SciUnit' and 'test suite[tiab] AND neuron model'; Europe PMC 'SciUnit'",
+      "why_relevant": "Re-implements a Brian point-neuron model in Brian2 and NEURON and quantitatively checks the reproductions with a SciUnit test suite, including extra tests beyond the original study; the core features reproduced but some discrepancies were unexplained. Close to NeuroSem's translation/behaviour-preservation use case with multiple tests. There are no controlled mutants, tolerance calibration by refinement, optimised battery or held-out evaluation.",
+      "estimated_closeness": 3
+    },
+    {
+      "title": "Reproducible Neural Network Simulations: Statistical Methods for Model Validation on the Level of Network Activity Data",
+      "authors": "Gutzen R, von Papen M, Trensch G, Quaglio P, Grun S, Denker M",
+      "year": "2018",
+      "venue": "Frontiers in Neuroinformatics",
+      "url": "https://doi.org/10.3389/fninf.2018.00090",
+      "doi": "10.3389/fninf.2018.00090",
+      "kind": "paper",
+      "found_via": "Europe PMC 'SciUnit', 'equivalence AND neuron model AND (translation OR conversion) AND simulator'",
+      "why_relevant": "Argues for statistical test metrics to validate different implementations of the same network model against each other, i.e. equivalence checking across simulators. This overlaps with NeuroSem's behaviour-preservation question at network scale. It uses network activity statistics rather than current-clamp protocol batteries, and has no mutation analysis or protocol selection.",
+      "estimated_closeness": 3
+    },
+    {
+      "title": "Rigorous Neural Network Simulations: A Model Substantiation Methodology for Increasing the Correctness of Simulation Results in the Absence of Experimental Validation Data",
+      "authors": "Trensch G, Gutzen R, Blundell I, Denker M, Morrison A",
+      "year": "2018",
+      "venue": "Frontiers in Neuroinformatics",
+      "url": "https://doi.org/10.3389/fninf.2018.00081",
+      "doi": "10.3389/fninf.2018.00081",
+      "kind": "paper",
+      "found_via": "Europe PMC 'test-driven AND (neuroscience OR neuron model)'; 'equivalence AND neuron model AND ... simulator'",
+      "why_relevant": "Proposes verification and validation terminology and a substantiation workflow for neural simulations, applied to comparing a published spiking network with its SpiNNaker reproduction. Relevant to framing NeuroSem's 'empirical semantic certificate' and implementation-equivalence claims. Network-level, no mutants.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Is realistic neuronal modeling realistic?",
+      "authors": "Almog M, Korngreen A",
+      "year": "2016",
+      "venue": "Journal of Neurophysiology",
+      "url": "https://doi.org/10.1152/jn.00360.2016",
+      "doi": "10.1152/jn.00360.2016",
+      "kind": "paper",
+      "found_via": "Europe PMC '\"simulator\" AND \"NeuroML\" AND convergence AND comparison'",
+      "why_relevant": "Puts three public layer-5 pyramidal models through simple computational challenges beyond their original use and reports shortcomings. This supports NeuroSem's premise that behaviour under non-canonical stimuli can expose problems hidden by the original validation. It is a model-critique paper with no mutation or selection method.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "A universal workflow for creation, validation, and generalization of detailed neuronal models",
+      "authors": "Reva M, Rossert C, Arnaudon A, Damart T, Mandge D, Tuncel A, Ramaswamy S, Markram H, Van Geit W",
+      "year": "2023",
+      "venue": "Patterns",
+      "url": "https://doi.org/10.1016/j.patter.2023.100855",
+      "doi": "10.1016/j.patter.2023.100855",
+      "kind": "paper",
+      "found_via": "Europe PMC 'BluePyOpt' and 'parameter sensitivity AND electrophysiological features AND neuron model'; bioRxiv preprint 10.1101/2022.12.13.520234 via WebSearch site:biorxiv.org",
+      "why_relevant": "BluePyOpt/eFEL workflow that validates optimised models against additional stimuli not used in fitting, with a parameter sensitivity analysis to spot degenerate parameters. It shares multi-protocol feature evaluation and 'held-out stimulus' validation in the fitting sense. It is not regression detection after edits.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Systematic generation of biophysically detailed models for diverse cortical neuron types",
+      "authors": "Gouwens NW, Berg J, Feng D, Sorensen SA, Zeng H, Hawrylycz MJ, Koch C, Arkhipov A",
+      "year": "2018",
+      "venue": "Nature Communications",
+      "url": "https://doi.org/10.1038/s41467-017-02718-3",
+      "doi": "10.1038/s41467-017-02718-3",
+      "kind": "paper",
+      "found_via": "Europe PMC '\"neuron models\" AND \"electrophysiological features\" AND \"current injection\" AND characterization AND database'",
+      "why_relevant": "Allen Cell Types biophysical models fitted to electrophysiological features and evaluated with additional stimuli. A source of openly available models and of feature-based multi-stimulus evaluation practice. No change-detection method.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Mapping the function of neuronal ion channels in model and experiment (ICGenealogy)",
+      "authors": "Podlaski WF, Seeholzer A, Groschner LN, Miesenbock G, Ranjan R, Vogels TP",
+      "year": "2017",
+      "venue": "eLife",
+      "url": "https://doi.org/10.7554/eLife.22152",
+      "doi": "10.7554/eLife.22152",
+      "kind": "paper",
+      "found_via": "PubMed E-utilities 'ICGenealogy OR ion channel genealogy'; bioRxiv preprint 10.1101/058685 via WebSearch site:biorxiv.org",
+      "why_relevant": "Classifies 2,378 NEURON ion-channel models into 211 clusters using responses to a standardised set of voltage-clamp protocols plus metadata. That is a multi-protocol behavioural fingerprint used to compare model variants at scale. It differs in being voltage-clamp at channel level and for classification, not detecting drift in cell models.",
+      "estimated_closeness": 3
+    },
+    {
+      "title": "An ion channel omnimodel for standardized biophysical neuron modelling",
+      "authors": "Chintaluri C, Podlaski W, Bozelos PA, Goncalves PJ, Lueckmann J, Macke JH, Vogels TP",
+      "year": "2025",
+      "venue": "bioRxiv (preprint)",
+      "url": "https://www.biorxiv.org/content/10.1101/2025.10.03.680368v1.full",
+      "doi": "10.1101/2025.10.03.680368",
+      "kind": "preprint",
+      "found_via": "Europe PMC 'NeuroML AND SRC:PPR' and 'NeuroML AND (test OR testing OR validation)'; WebSearch site:biorxiv.org (ion channel model genealogy)",
+      "why_relevant": "Re-expresses over 3,000 channel models in one standard HH-style formalism and checks the reformulated models give similar or identical responses under voltage-clamp protocols. A large-scale representational transformation validated by protocol-response comparison, analogous to NeuroSem's valid-transformation control. No mutants or protocol selection.",
+      "estimated_closeness": 3
+    },
+    {
+      "title": "Neuronal identity is not static: An input-driven perspective",
+      "authors": "Joshi N, van Der Burg S, Celikel T, Zeldenrust F",
+      "year": "2025",
+      "venue": "PLoS Computational Biology",
+      "url": "https://doi.org/10.1371/journal.pcbi.1013821",
+      "doi": "10.1371/journal.pcbi.1013821",
+      "kind": "paper",
+      "found_via": "Europe PMC '\"current clamp\" AND \"protocol\" AND \"neuron model\" AND (informative OR optimal OR selection)'",
+      "why_relevant": "Shows that functional classification of recorded neurons changes between step-and-hold and frozen-noise inputs. This is empirical support that conclusions about neuronal behaviour depend on the stimulation protocol, which motivates multi-protocol testing. Experimental data, not model regression.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Degeneracy in neuronal bifurcation landscapes: equivalent bifurcation sequences across distinct parameter sets",
+      "authors": "Cafaro G, Bernard C, Hashemi M, Depannemaecker D",
+      "year": "2025",
+      "venue": "bioRxiv (preprint)",
+      "url": "https://www.biorxiv.org/content/10.1101/2025.08.04.668451v2.full",
+      "doi": "10.1101/2025.08.04.668451",
+      "kind": "preprint",
+      "found_via": "WebSearch site:biorxiv.org (conductance-based model degeneracy parameter sensitivity electrophysiological features)",
+      "why_relevant": "Parameter sets that look equivalent under fixed conditions can still differ in sensitivity and transition thresholds when a condition (extracellular K+) is varied. A biological-modelling analogue of NeuroSem's 'silent drift': equivalence under one condition, divergence under another. It also warns that some parameter changes may be behaviourally near-equivalent, which matters for equivalent-mutant handling.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Different parameter solutions of a conductance-based model that behave identically are not necessarily degenerate",
+      "authors": "Naudin L",
+      "year": "2023",
+      "venue": "Journal of Computational Neuroscience",
+      "url": "https://doi.org/10.1007/s10827-023-00848-w",
+      "doi": "10.1007/s10827-023-00848-w",
+      "kind": "paper",
+      "found_via": "Europe PMC '\"conductance-based\" AND degeneracy AND (parameter OR sensitivity)'; PubMed efetch PMID 36905484 (no abstract available)",
+      "why_relevant": "Title-level relevance only (no abstract retrieved): identical behaviour of different parameter sets needs careful interpretation. This bears on how NeuroSem defines behaviourally equivalent mutants and on the limits of finite behavioural testing. Content beyond the title is unverified.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Ion Channel Degeneracy, Variability, and Covariation in Neuron and Circuit Resilience",
+      "authors": "Goaillard JM, Marder E",
+      "year": "2021",
+      "venue": "Annual Review of Neuroscience",
+      "url": "https://doi.org/10.1146/annurev-neuro-092920-121538",
+      "doi": "10.1146/annurev-neuro-092920-121538",
+      "kind": "paper",
+      "found_via": "PubMed E-utilities 'degeneracy[ti] AND conductance-based'",
+      "why_relevant": "Review: neurons with different conductance densities can show similar behaviour yet respond differently to perturbations and pharmacological manipulation. A biological rationale for why one canonical test may miss parameter changes that other perturbations reveal, and for expecting many equivalent-looking conductance mutants.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Neuronal excitability and parameter variability in the Hodgkin-Huxley model",
+      "authors": "Korngreen A",
+      "year": "2026",
+      "venue": "PLoS Computational Biology",
+      "url": "https://doi.org/10.1371/journal.pcbi.1014458",
+      "doi": "10.1371/journal.pcbi.1014458",
+      "kind": "paper",
+      "found_via": "Europe PMC '\"conductance-based\" AND degeneracy AND (parameter OR sensitivity)'; preprint 10.64898/2025.12.30.696982 listed in same results",
+      "why_relevant": "Propagates fitted-parameter uncertainty through an HH cable model with global Sobol sensitivity analysis; parameter influence is strongly time- and regime-dependent. Informs which biophysical mutations (conductances, gating kinetics) should be detectable, and under which stimulus windows.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Toward Reference-Grade neuron models",
+      "authors": "Korngreen A",
+      "year": "2026",
+      "venue": "Communications Biology",
+      "url": "https://doi.org/10.1038/s42003-026-10561-w",
+      "doi": "10.1038/s42003-026-10561-w",
+      "kind": "paper",
+      "found_via": "Europe PMC '\"model validation\" AND \"computational neuroscience\" AND (software OR framework)' and '\"reference-grade\" AND neuron'; PubMed efetch PMID 42342835",
+      "why_relevant": "Comment proposing reference-grade neuron models with traceable provenance, declared uncertainty and ensemble predictions. Relevant to NeuroSem's 'reference model' definition, provenance requirements and uncertainty-aware tolerances. Position piece, no testing method.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "A Semi-Analytical Verification Framework for Pospischil-Type Cortical Neuron Models: Parameter Estimation, Independent Cross-Validation, and a Mouse-Human Comparison",
+      "authors": "Gnanaraj V",
+      "year": "2026",
+      "venue": "Research Square (preprint)",
+      "url": "https://doi.org/10.21203/rs.3.rs-10978243/v1",
+      "doi": "10.21203/rs.3.rs-10978243/v1",
+      "kind": "preprint",
+      "found_via": "Europe PMC '\"neuron model\" AND validation AND SRC:PPR'",
+      "why_relevant": "Cross-checking a numerical pipeline against an independent semi-analytical solver exposed a real unit error (a spurious factor of 1000 in the voltage equation) that had still allowed a model fit. A concrete example of a silent unit fault in a conductance-based model, found by independent cross-implementation checking rather than a stimulus battery. Not peer reviewed.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Reproducibility in Computational Neuroscience Models and Simulations",
+      "authors": "McDougal RA, Bulanova AS, Lytton WW",
+      "year": "2016",
+      "venue": "IEEE Transactions on Biomedical Engineering",
+      "url": "https://doi.org/10.1109/tbme.2016.2539602",
+      "doi": "10.1109/tbme.2016.2539602",
+      "kind": "paper",
+      "found_via": "Europe PMC '\"model conversion\" AND NeuroML', 'NeuronUnit', 'cross-simulator AND neuron'",
+      "why_relevant": "IEEE-venue review of reproducibility practices: version control, standardised simulators, declarative descriptions and model-sharing repositories. Useful background for the IEEE framing; proposes no behavioural regression method.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Reproducibility and Comparability of Computational Models for Astrocyte Calcium Excitability",
+      "authors": "Manninen T, Havela R, Linne ML",
+      "year": "2017",
+      "venue": "Frontiers in Neuroinformatics",
+      "url": "https://doi.org/10.3389/fninf.2017.00011",
+      "doi": "10.3389/fninf.2017.00011",
+      "kind": "paper",
+      "found_via": "PubMed E-utilities 'reproducibility[ti] AND (computational model OR simulation) AND neuron'",
+      "why_relevant": "Reimplemented four published astrocyte models and tested them under other stimulation conditions: missing information was common and only one model fully reproduced. Evidence that reimplementation or translation silently changes behaviour and that other conditions expose it. Manual study, no automated method.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Challenges in Reproducibility, Replicability, and Comparability of Computational Models and Tools for Neuronal and Glial Networks, Cells, and Subcellular Structures",
+      "authors": "Manninen T, Acimovic J, Havela R, Teppola H, Linne ML",
+      "year": "2018",
+      "venue": "Frontiers in Neuroinformatics",
+      "url": "https://doi.org/10.3389/fninf.2018.00020",
+      "doi": "10.3389/fninf.2018.00020",
+      "kind": "paper",
+      "found_via": "PubMed E-utilities 'reproducibility[ti] AND (computational model OR simulation) AND neuron'",
+      "why_relevant": "Survey of replicability and comparability problems across neuroscience simulation tools and models; calls for model validation practices. Background motivation only.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Reimplementation of the Potjans-Diesmann cortical microcircuit model: from NEST to Brian",
+      "authors": "Shimoura RO, Kamiji NL, de Oliveira Pena RF, Cordeiro VL, Ceballos CC, Romaro C, Roque AC",
+      "year": "2018",
+      "venue": "bioRxiv (preprint)",
+      "url": "https://www.biorxiv.org/content/10.1101/248401v1.full",
+      "doi": "10.1101/248401",
+      "kind": "preprint",
+      "found_via": "WebSearch site:biorxiv.org (same neuron model different simulators discrepancies NEURON Brian NEST translation equivalence single cell)",
+      "why_relevant": "Cross-simulator translation of a network model checked by comparing firing-rate, synchrony and irregularity statistics. Some layer-specific firing-rate discrepancies appeared, and an approximate equation introduced differences. A translation-induced behavioural drift example; network scale, manual comparison.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Building on models-a perspective for computational neuroscience",
+      "authors": "Plesser HE, Davison AP, Diesmann M, Fukai T, Gemmeke T, Gleeson P, Knight JC, Nowotny T, Rene A, Rhodes O, Roque AC, Senk J, Schwalger T, Stadtmann T, Tiddia G, van Albada SJ",
+      "year": "2025",
+      "venue": "Cerebral Cortex",
+      "url": "https://doi.org/10.1093/cercor/bhaf295",
+      "doi": "10.1093/cercor/bhaf295",
+      "kind": "paper",
+      "found_via": "Europe PMC 'NeuroML AND (test OR testing OR validation)', 'pyNeuroML OR jNeuroML', '\"OSB Model Validation\" OR \"OMV\" AND NeuroML'",
+      "why_relevant": "Workshop report on the Potjans-Diesmann model as a community benchmark for correctness and performance across simulators. Context for reference-model and correctness-benchmark practice.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Code Generation in Computational Neuroscience: A Review of Tools and Techniques",
+      "authors": "Blundell I, Brette R, Cleland TA, Close TG, Coca D, Davison AP, Diaz-Pier S, Fernandez Musoles C, Gleeson P, Goodman DFM, Hines M, ... et al.",
+      "year": "2018",
+      "venue": "Frontiers in Neuroinformatics",
+      "url": "https://doi.org/10.3389/fninf.2018.00068",
+      "doi": "10.3389/fninf.2018.00068",
+      "kind": "paper",
+      "found_via": "Europe PMC 'pyNeuroML OR jNeuroML'",
+      "why_relevant": "Reviews translation of model descriptions (NeuroML/LEMS, NESTML, Brian, NMODL) into executable code, the translation step whose correctness NeuroSem aims to test behaviourally. Background, no testing method.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Modernizing the NEURON Simulator for Sustainability, Portability, and Performance",
+      "authors": "Awile O, Kumbhar P, Cornu N, Dura-Bernal S, King JG, Lupton O, Magkanaris I, McDougal RA, Newton AJH, Pereira F, Savulescu A, Carnevale NT, Lytton WW, Hines ML, Schurmann F",
+      "year": "2022",
+      "venue": "Frontiers in Neuroinformatics",
+      "url": "https://doi.org/10.3389/fninf.2022.884046",
+      "doi": "10.3389/fninf.2022.884046",
+      "kind": "paper",
+      "found_via": "Europe PMC '(bug OR bugs OR \"software errors\") AND (\"neural simulator\" ...)'; bioRxiv version via WebSearch site:biorxiv.org",
+      "why_relevant": "Adds continuous integration and a new NMODL source-to-source compiler to NEURON. This is simulator-level regression infrastructure and a translation pathway (NMODL to CoreNEURON) that could itself introduce silent drift. It does not test user models with protocol batteries.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "EDEN: A High-Performance, General-Purpose, NeuroML-Based Neural Simulator",
+      "authors": "Panagiotou S, Sidiropoulos H, Soudris D, Negrello M, Strydis C",
+      "year": "2022",
+      "venue": "Frontiers in Neuroinformatics",
+      "url": "https://doi.org/10.3389/fninf.2022.724336",
+      "doi": "10.3389/fninf.2022.724336",
+      "kind": "paper",
+      "found_via": "PubMed E-utilities 'NeuroML'; Europe PMC '\"cross-simulator\" AND neuron'",
+      "why_relevant": "Independent NeuroML v2 simulator whose functional correctness is evaluated (abstract truncated in retrieved record; comparison details unverified). A candidate cross-simulator target for NeuroSem's optional extension.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Neuromorphic intermediate representation: A unified instruction set for interoperable brain-inspired computing",
+      "authors": "Pedersen JE, Abreu S, Jobst M, Lenz G, Fra V, Bauer FC, Muir DR, Zhou P, Vogginger B, Heckel K, Urgese G, Shankar S, Stewart TC, Sheik S, Eshraghian JK",
+      "year": "2024",
+      "venue": "Nature Communications",
+      "url": "https://doi.org/10.1038/s41467-024-52259-9",
+      "doi": "10.1038/s41467-024-52259-9",
+      "kind": "paper",
+      "found_via": "Europe PMC '\"model conversion\" AND NeuroML'",
+      "why_relevant": "Intermediate representation for moving spiking models across neuromorphic platforms while preserving the computational model. Adjacent behaviour-preservation-under-translation problem outside conductance-based NeuroML.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Twenty years of ModelDB and beyond: building essential modeling tools for the future of neuroscience",
+      "authors": "McDougal RA, Morse TM, Carnevale T, Marenco L, Wang R, Migliore M, Miller PL, Shepherd GM, Hines ML",
+      "year": "2017",
+      "venue": "Journal of Computational Neuroscience",
+      "url": "https://doi.org/10.1007/s10827-016-0623-7",
+      "doi": "10.1007/s10827-016-0623-7",
+      "kind": "paper",
+      "found_via": "PubMed E-utilities 'ModelDB[tiab]' and 'reproducibility[tiab] AND ModelDB'",
+      "why_relevant": "Canonical description of ModelDB curation and model sharing (the model database curation lens). A potential provenance source for reference models; no behavioural regression testing.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Automating literature screening and curation with applications to computational neuroscience",
+      "authors": "Ji Z, Guo S, Qiao Y, McDougal RA",
+      "year": "2024",
+      "venue": "Journal of the American Medical Informatics Association",
+      "url": "https://doi.org/10.1093/jamia/ocae097",
+      "doi": "10.1093/jamia/ocae097",
+      "kind": "paper",
+      "found_via": "PubMed E-utilities 'ModelDB[tiab]'; Europe PMC '\"large language model\" AND \"computational neuroscience\"'",
+      "why_relevant": "Uses GPT-3.5/GPT-4 and SPECTER2 to identify computational neuroscience work and metadata for ModelDB curation. The only retrieved item that pairs LLMs with neuron-model repositories, though for curation, not model transformation.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "ElecFeX is a user-friendly toolbox for efficient feature extraction from single-cell electrophysiological recordings",
+      "authors": "Ma X, Miraucourt LS, Qiu H, Xu M, Cook EP, Krishnaswamy A, Sharif-Naeini R, Khadra A",
+      "year": "2024",
+      "venue": "Cell Reports Methods",
+      "url": "https://doi.org/10.1016/j.crmeth.2024.100791",
+      "doi": "10.1016/j.crmeth.2024.100791",
+      "kind": "software",
+      "found_via": "Europe PMC '\"current clamp\" AND \"stimulus protocol\" AND model ...'; bioRxiv preprint via WebSearch site:biorxiv.org (eFEL ... BluePyEfe)",
+      "why_relevant": "Alternative (MATLAB) electrophysiology feature-extraction toolbox, a comparator to eFEL for the dependency audit. No model-testing method.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "The EBRAINS NeuroFeatureExtract: An Online Resource for the Extraction of Neural Activity Features From Electrophysiological Data",
+      "authors": "Bologna LL, Smiriglia R, Curreri D, Migliore M",
+      "year": "2021",
+      "venue": "Frontiers in Neuroinformatics",
+      "url": "https://doi.org/10.3389/fninf.2021.713899",
+      "doi": "10.3389/fninf.2021.713899",
+      "kind": "software",
+      "found_via": "Europe PMC 'eFEL AND electrophysiology' and 'BluePyOpt'",
+      "why_relevant": "Online feature-extraction service whose output is formatted for model optimisation; another feature-layer alternative. No model-testing method.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Optimizing experimental designs for model selection of ion channel drug-binding mechanisms",
+      "authors": "Patten-Elliott F, Lei CL, Preston SP, Wilkinson RD, Mirams GR",
+      "year": "2025",
+      "venue": "Philosophical Transactions of the Royal Society A",
+      "url": "https://doi.org/10.1098/rsta.2024.0227",
+      "doi": "10.1098/rsta.2024.0227",
+      "kind": "paper",
+      "found_via": "PubMed E-utilities '(model discrimination[tiab] OR model selection[tiab]) AND voltage protocol'; Europe PMC OED queries; bioRxiv preprint 10.1101/2024.08.20.608856",
+      "why_relevant": "Optimises voltage-clamp protocols so that competing model variants (hERG drug-binding mechanisms) can be told apart, and shows the benefit shrinks when the base model is misspecified. The closest retrieved analogue to 'select stimulation protocols that best reveal differences between model variants'. It differs in being cardiac ion channel, voltage clamp, optimising waveforms by statistical model selection, with no fault mutants, feature fingerprints, test-budget greedy coverage or held-out model families.",
+      "estimated_closeness": 3
+    },
+    {
+      "title": "Optimal experimental designs for characterising ion channel gating by filling the phase-voltage space of model dynamics",
+      "authors": "Mirams GR, Clerx M, Whittaker DG, Lei CL",
+      "year": "2024",
+      "venue": "bioRxiv (preprint)",
+      "url": "https://doi.org/10.1101/2024.05.02.592179",
+      "doi": "10.1101/2024.05.02.592179",
+      "kind": "preprint",
+      "found_via": "Europe PMC '\"optimal\" AND \"ion channel\" AND \"protocol\" AND \"experimental design\"'",
+      "why_relevant": "Automated design of short voltage-clamp protocols that visit as much of the phase-voltage space as possible, with the resulting protocols also presented as a challenging test of gating assumptions. Prior art for automatic protocol design based on coverage, a close conceptual cousin of NeuroSem's coverage-based battery selection, but for parameter characterisation of single channels, not detection of model faults.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Quantifying the efficacy of voltage protocols in characterising ion channel kinetics: A novel information-theoretic approach",
+      "authors": "Jennings MW, Nithiarasu P, Pant S",
+      "year": "2024",
+      "venue": "International Journal for Numerical Methods in Biomedical Engineering",
+      "url": "https://doi.org/10.1002/cnm.3815",
+      "doi": "10.1002/cnm.3815",
+      "kind": "paper",
+      "found_via": "Europe PMC '\"optimal\" AND \"ion channel\" AND \"protocol\" AND \"experimental design\"'",
+      "why_relevant": "Information-theoretic metrics to rank voltage protocols by how informative they are about model parameters, evaluated on seven literature protocols. Related to ranking and selecting protocols; its target is parameter identifiability, not mutation detection.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Empirical Quantification of Predictive Uncertainty Due to Model Discrepancy by Training with an Ensemble of Experimental Designs: An Application to Ion Channel Kinetics",
+      "authors": "Shuttleworth JG, Lei CL, Whittaker DG, Windley MJ, Hill AP, Preston SP, Mirams GR",
+      "year": "2023",
+      "venue": "Bulletin of Mathematical Biology",
+      "url": "https://doi.org/10.1007/s11538-023-01224-6",
+      "doi": "10.1007/s11538-023-01224-6",
+      "kind": "paper",
+      "found_via": "Europe PMC '(\"model discrimination\" OR \"model selection\") AND (\"voltage protocol\" OR \"stimulus protocol\") AND design'",
+      "why_relevant": "Trains on data from different protocols and uses the spread of predictions to expose model discrepancy. Shows that behaviour under one protocol does not guarantee agreement under others, which parallels NeuroSem's multi-protocol rationale in cardiac electrophysiology.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Evaluating the predictive accuracy of ion channel models using data from multiple experimental designs",
+      "authors": "Shuttleworth JG, Lei CL, Windley MJ, Hill AP, Preston SP, Mirams GR",
+      "year": "2024",
+      "venue": "bioRxiv (preprint)",
+      "url": "https://www.biorxiv.org/content/10.1101/2024.08.16.608289v1.full",
+      "doi": "10.1101/2024.08.16.608289",
+      "kind": "preprint",
+      "found_via": "WebSearch site:biorxiv.org (ion channel model genealogy comparison ... protocols)",
+      "why_relevant": "Fits IKr models to each protocol separately and quantifies prediction errors across a diverse protocol ensemble. A cross-protocol generalisation test design related to NeuroSem's held-out protocol and model logic.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Hodgkin-Huxley revisited: reparametrization and identifiability analysis of the classic action potential model with approximate Bayesian methods",
+      "authors": "Daly AC, Gavaghan DJ, Holmes C, Cooper J",
+      "year": "2015",
+      "venue": "Royal Society Open Science",
+      "url": "https://doi.org/10.1098/rsos.150499",
+      "doi": "10.1098/rsos.150499",
+      "kind": "paper",
+      "found_via": "PubMed E-utilities 'ICGenealogy OR ion channel genealogy'",
+      "why_relevant": "Finds some HH parameters poorly constrained by standard voltage-clamp data, while complex protocols separate posterior models. Evidence that conventional protocols can leave parameter changes undetected, relevant to choosing mutation magnitudes and protocols.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Optimizing experimental design for comparing models of brain function",
+      "authors": "Daunizeau J, Preuschoff K, Friston K, Stephan K",
+      "year": "2011",
+      "venue": "PLoS Computational Biology",
+      "url": "https://doi.org/10.1371/journal.pcbi.1002280",
+      "doi": "10.1371/journal.pcbi.1002280",
+      "kind": "paper",
+      "found_via": "PubMed E-utilities 'optimal experimental design[tiab] AND neuron'",
+      "why_relevant": "Formal design optimisation to maximise model-selection accuracy (DCM/fMRI). General precedent for choosing experiments that best discriminate candidate models; different scale and no software faults.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Designing optimal perturbation inputs for system identification in neuroscience",
+      "authors": "Ogino M, Sekizawa D, Kitazono J, Oizumi M",
+      "year": "2025",
+      "venue": "bioRxiv (preprint)",
+      "url": "https://www.biorxiv.org/content/10.1101/2025.03.02.641008v2.full",
+      "doi": "10.1101/2025.03.02.641008",
+      "kind": "preprint",
+      "found_via": "WebSearch site:biorxiv.org (optimal current clamp stimulus protocol design ...; perturbation fingerprint ...)",
+      "why_relevant": "Theory for optimising perturbation inputs (and relating them to step, impulse and frequency stimuli) to reveal hidden network dynamics for system identification. Conceptual support for 'perturbations reveal what passive observation hides'; linear systems, connectivity estimation.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "On the accuracy and computational cost of spiking neuron implementation",
+      "authors": "Valadez-Godinez S, Sossa H, Santiago-Montero R",
+      "year": "2020",
+      "venue": "Neural Networks",
+      "url": "https://doi.org/10.1016/j.neunet.2019.09.026",
+      "doi": "10.1016/j.neunet.2019.09.026",
+      "kind": "paper",
+      "found_via": "PubMed E-utilities 'time step[tiab] AND neuron model AND numerical accuracy'",
+      "why_relevant": "Multi-objective analysis of accuracy versus cost for HH, tabulated HH, Izhikevich and LIF implementations across simulation parameters. Relevant to NeuroSem's numerical mutants (integration step) and to refinement-based tolerance calibration.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "An innovative approach for testing bioinformatics programs using metamorphic testing",
+      "authors": "Chen TY, Ho JW, Liu H, Xie X",
+      "year": "2009",
+      "venue": "BMC Bioinformatics",
+      "url": "https://doi.org/10.1186/1471-2105-10-24",
+      "doi": "10.1186/1471-2105-10-24",
+      "kind": "paper",
+      "found_via": "PubMed E-utilities 'metamorphic testing[tiab]'",
+      "why_relevant": "Applies metamorphic testing to bioinformatics programs and shows it detects faults in a real program and in artificially fault-seeded versions. That combines metamorphic relations with seeded-fault (mutant-like) evaluation in life-science software. Not neuron models, no stimulus protocols.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Testing Scientific Software: A Systematic Literature Review",
+      "authors": "Kanewala U, Bieman JM",
+      "year": "2014",
+      "venue": "Information and Software Technology",
+      "url": "https://doi.org/10.1016/j.infsof.2014.05.006",
+      "doi": "10.1016/j.infsof.2014.05.006",
+      "kind": "paper",
+      "found_via": "Europe PMC '\"metamorphic testing\" AND (\"scientific software\" OR simulation OR bioinformatics)'",
+      "why_relevant": "Systematic review of scientific-software testing challenges (oracle problem, treating code and model as inseparable). Framing reference for why NeuroSem uses a reference model plus calibrated tolerances as its oracle.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Exploratory Metamorphic Testing for Scientific Software",
+      "authors": "Lin X, Simon M, Niu N",
+      "year": "2018",
+      "venue": "Computing in Science & Engineering",
+      "url": "https://doi.org/10.1109/MCSE.2018.2880577",
+      "doi": "10.1109/MCSE.2018.2880577",
+      "kind": "paper",
+      "found_via": "PubMed E-utilities 'metamorphic testing[tiab]'; Europe PMC MT query",
+      "why_relevant": "Metamorphic testing of a continuous-simulation scientific model (EPA SWMM) run over multiple iterations of tests to find bugs and mismatches. Non-neuroscience simulation precedent for metamorphic-style behavioural testing.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Unit and regression tests of scientific software: A study on SWMM",
+      "authors": "Peng Z, Lin X, Simon M, Niu N",
+      "year": "2021",
+      "venue": "Journal of Computational Science",
+      "url": "https://doi.org/10.1016/j.jocs.2021.101347",
+      "doi": "10.1016/j.jocs.2021.101347",
+      "kind": "paper",
+      "found_via": "PubMed E-utilities 'regression testing[tiab] AND software'",
+      "why_relevant": "Empirical study of unit and regression test coverage in a scientific simulation code. Background on regression-test adequacy in scientific simulation; no mutation-based battery selection.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Measuring Effectiveness of Metamorphic Relations for Image Processing Using Mutation Testing",
+      "authors": "Jafari F, Nadeem A",
+      "year": "2024",
+      "venue": "Journal of Imaging",
+      "url": "https://doi.org/10.3390/jimaging10040087",
+      "doi": "10.3390/jimaging10040087",
+      "kind": "paper",
+      "found_via": "PubMed E-utilities 'metamorphic testing[tiab]'",
+      "why_relevant": "Uses mutation operators and fault-detection rates to rank metamorphic relations. Generic precedent for NeuroSem's use of controlled mutants to score and choose tests, in image processing rather than neuroscience.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "TOPAS-nBio-Reg: a regression testing system for track structure simulations in TOPAS-nBio",
+      "authors": "Masilela TAM, D-Kondo N, Shin WG, Ortiz R, Meyer I, LaVerne JA, Faddegon B, Schuemann J, Ramos-Mendez J",
+      "year": "2025",
+      "venue": "Physics in Medicine and Biology",
+      "url": "https://doi.org/10.1088/1361-6560/add4b9",
+      "doi": "10.1088/1361-6560/add4b9",
+      "kind": "software",
+      "found_via": "PubMed E-utilities 'regression testing[tiab] AND software'; Europe PMC regression-testing query",
+      "why_relevant": "Regression-test suite comparing outputs across versions of a biological radiation simulation code with percentage-difference criteria. Scientific-simulation regression testing with version comparison but fixed tests, no mutation-calibrated selection.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Verification and reproducible curation of the BioModels repository",
+      "authors": "Smith LP, Malik-Sheriff RS, Nguyen TVN, Hermjakob H, Karr J, Shaikh B, Drescher L, Moraru II, Schaff JC, Agmon E, Patrie AA, Blinov ML, Hellerstein JL, May EE, Nickerson DP, Gennari JH, Sauro HM",
+      "year": "2025",
+      "venue": "PLoS Computational Biology",
+      "url": "https://doi.org/10.1371/journal.pcbi.1013239",
+      "doi": "10.1371/journal.pcbi.1013239",
+      "kind": "paper",
+      "found_via": "PubMed E-utilities 'BioModels[tiab] AND curation[tiab] AND reproducibility'; Europe PMC NeuroML testing query; bioRxiv preprint 10.1101/2025.01.16.633337",
+      "why_relevant": "Corrected or generated SED-ML for 1,055 curated SBML models and verified results across multiple simulation engines, finding almost all existing SED-ML files had at least one error. Model-repository-scale verification in systems biology, a sibling of NeuroSem's model-curation and cross-simulator concerns without perturbation batteries or mutants.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "BioSimulators: a central registry of simulation engines and services for recommending specific tools",
+      "authors": "Shaikh B, Smith LP, Vasilescu D, Marupilla G, Wilson M, Agmon E, ... Gleeson P, ... et al.",
+      "year": "2022",
+      "venue": "Nucleic Acids Research",
+      "url": "https://doi.org/10.1093/nar/gkac331",
+      "doi": "10.1093/nar/gkac331",
+      "kind": "software",
+      "found_via": "Europe PMC 'pyNeuroML OR jNeuroML'",
+      "why_relevant": "Registry with consistent containerised interfaces and validation tools for simulation engines and projects (SBML, CellML, SED-ML, COMBINE). Adjacent infrastructure for reproducible multi-engine execution; no behavioural drift detection.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "From FAIR to CURE: guidelines for computational models of biological systems",
+      "authors": "Sauro HM, Agmon E, Blinov ML, Gennari JH, Hellerstein JL, Heydarabadipour A, Jardine BE, May E, Nickerson DP, Smith LP, ... et al.",
+      "year": "2026",
+      "venue": "NPJ Systems Biology and Applications",
+      "url": "https://doi.org/10.1038/s41540-026-00651-0",
+      "doi": "10.1038/s41540-026-00651-0",
+      "kind": "paper",
+      "found_via": "Europe PMC 'NeuroML AND (test OR testing OR validation)'",
+      "why_relevant": "Guidelines (Credible, Understandable, Reproducible, Extensible) covering verification, validation and uncertainty quantification for mechanistic models. Framing reference for NeuroSem's verification claims and reporting.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Twelve quick tips for AI-assisted coding in science",
+      "authors": "Bridgeford EW, Campbell ID, Chen Z, Lin Z, Ritz H, Vandekerckhove J, Poldrack RA",
+      "year": "2026",
+      "venue": "PLoS Computational Biology",
+      "url": "https://doi.org/10.1371/journal.pcbi.1014428",
+      "doi": "10.1371/journal.pcbi.1014428",
+      "kind": "paper",
+      "found_via": "PubMed E-utilities 'AI-assisted coding[tiab] OR (coding assistant[tiab] AND science)'; Europe PMC 'test-driven AND (neuroscience OR neuron model)'",
+      "why_relevant": "Guidance on AI-assisted scientific coding stressing testing and validation to protect scientific validity. Motivates the optional AI-assisted transformation case study; offers no empirical measurement of behavioural drift in neuron models.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Agentic AI-Assisted Coding Offers a Unique Opportunity to Instill Epistemic Grounding during Software Development",
+      "authors": "Palmblad M, Ragland JM, Neely BA",
+      "year": "2026",
+      "venue": "Journal of Proteome Research",
+      "url": "https://doi.org/10.1021/acs.jproteome.6c00398",
+      "doi": "10.1021/acs.jproteome.6c00398",
+      "kind": "paper",
+      "found_via": "PubMed E-utilities 'AI-assisted coding[tiab] OR (coding assistant[tiab] AND science)'",
+      "why_relevant": "Proposes a field-scoped document of hard validity constraints for agentic AI coding (proteomics example). Related to constraining AI edits to scientific code; no behavioural testing of simulation models.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Talk2Biomodels: AI agent-based open-source LLM initiative for kinetic biological models",
+      "authors": "Wehling L, Singh G, Mulyadi AW, Sreenath RH, Hermjakob H, Nguyen T, Ruckle T, Mosa MH, Cordes H, Andreani T, Klabunde T, Malik-Sheriff RS, McCloskey D",
+      "year": "2025",
+      "venue": "bioRxiv (preprint)",
+      "url": "https://www.biorxiv.org/content/10.1101/2025.03.11.642548v1",
+      "doi": "10.1101/2025.03.11.642548",
+      "kind": "preprint",
+      "found_via": "WebSearch site:biorxiv.org (LLM computational neuroscience model building agent automated modeling)",
+      "why_relevant": "LLM agent that explores, simulates and analyses SBML models from BioModels through natural language. The closest retrieved example of an AI agent operating on standardised biological model files, but in systems biology, without transformation-correctness evaluation.",
+      "estimated_closeness": 2
+    }
+  ],
+  "queries_run": [
+    {
+      "source": "PubMed (MCP plugin bio-research pubmed search_articles)",
+      "query": "conductance neuron model metamorphic testing",
+      "result_note": "0 hits (query translation expanded conductance/neuron/model/metamorphic/testing). Cross-checked with E-utilities: 0."
+    },
+    {
+      "source": "PubMed (MCP plugin bio-research pubmed search_articles)",
+      "query": "NeuroML mutation testing",
+      "result_note": "0 hits. Cross-checked with E-utilities: 0."
+    },
+    {
+      "source": "PubMed (NCBI E-utilities esearch+esummary, sort=relevance, top 20) | https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&retmode=json&retmax=20&sort=relevance&term=conductance%20neuron%20model%20metamorphic%20testing",
+      "query": "conductance neuron model metamorphic testing",
+      "result_note": "0 hits (also 0 via PubMed MCP). No neuroscience metamorphic-testing work indexed."
+    },
+    {
+      "source": "PubMed (NCBI E-utilities esearch+esummary, sort=relevance, top 20) | https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&retmode=json&retmax=20&sort=relevance&term=NeuroML%20mutation%20testing",
+      "query": "NeuroML mutation testing",
+      "result_note": "0 hits (also 0 via PubMed MCP). No NeuroML mutation-testing work indexed."
+    },
+    {
+      "source": "PubMed (NCBI E-utilities esearch+esummary, sort=relevance, top 20) | https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&retmode=json&retmax=20&sort=relevance&term=neuron%20model%20semantic%20regression",
+      "query": "neuron model semantic regression",
+      "result_note": "18 hits, all off-topic (dementia, fMRI semantics, YOLO). Nothing on model regression testing."
+    },
+    {
+      "source": "PubMed (NCBI E-utilities esearch+esummary, sort=relevance, top 20) | https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&retmode=json&retmax=20&sort=relevance&term=behavioral%20preservation%20neuronal%20model%20conversion",
+      "query": "behavioral preservation neuronal model conversion",
+      "result_note": "10 hits, all off-topic (stem-cell neuron conversion, aging)."
+    },
+    {
+      "source": "PubMed (NCBI E-utilities esearch+esummary, sort=relevance, top 20) | https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&retmode=json&retmax=20&sort=relevance&term=perturbation%20fingerprint%20neuron%20model",
+      "query": "perturbation fingerprint neuron model",
+      "result_note": "11 hits, off-topic (proteomics, metabolomics fingerprints, EEG fingerprint)."
+    },
+    {
+      "source": "PubMed (NCBI E-utilities esearch+esummary, sort=relevance, top 20) | https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&retmode=json&retmax=20&sort=relevance&term=automatic%20stimulation%20protocol%20selection%20model%20validation",
+      "query": "automatic stimulation protocol selection model validation",
+      "result_note": "4 hits, off-topic (basal ganglia oscillations, tissue models)."
+    },
+    {
+      "source": "PubMed (NCBI E-utilities esearch+esummary, sort=relevance, top 20) | https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&retmode=json&retmax=20&sort=relevance&term=mutation%20testing%20computational%20neuroscience",
+      "query": "mutation testing computational neuroscience",
+      "result_note": "0 hits."
+    },
+    {
+      "source": "PubMed (NCBI E-utilities esearch+esummary, sort=relevance, top 20) | https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&retmode=json&retmax=20&sort=relevance&term=AI%20coding%20agent%20neuron%20simulation",
+      "query": "AI coding agent neuron simulation",
+      "result_note": "1 off-topic hit (drug repurposing)."
+    },
+    {
+      "source": "PubMed (NCBI E-utilities esearch+esummary, sort=relevance, top 20) | https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&retmode=json&retmax=20&sort=relevance&term=metamorphic%20testing%5Btiab%5D",
+      "query": "metamorphic testing[tiab]",
+      "result_note": "19 hits. Scientific/bioinformatics software MT (Chen 2009 BMC Bioinf; Lin 2018 CiSE; Jafari 2024 MR-effectiveness via mutation testing). None on neuron models."
+    },
+    {
+      "source": "PubMed (NCBI E-utilities esearch+esummary, sort=relevance, top 20) | https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&retmode=json&retmax=20&sort=relevance&term=mutation%20testing%5Btiab%5D%20AND%20%28simulation%20OR%20model%29",
+      "query": "mutation testing[tiab] AND (simulation OR model)",
+      "result_note": "186 hits dominated by clinical genetic mutation testing; one software item (mutation testing with hyperproperties). Term is ambiguous in PubMed."
+    },
+    {
+      "source": "PubMed (NCBI E-utilities esearch+esummary, sort=relevance, top 20) | https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&retmode=json&retmax=20&sort=relevance&term=NeuroML",
+      "query": "NeuroML",
+      "result_note": "26 hits. Canonical NeuroML (2010 PCBI), LEMS (2014), libNeuroML/PyLEMS (2014), NeuroML ecosystem (eLife 2025), NeuroML-DB (PCBI 2023), EDEN, NetPyNE."
+    },
+    {
+      "source": "PubMed (NCBI E-utilities esearch+esummary, sort=relevance, top 20) | https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&retmode=json&retmax=20&sort=relevance&term=LEMS%5Btiab%5D%20AND%20%28NeuroML%20OR%20simulation%29",
+      "query": "LEMS[tiab] AND (NeuroML OR simulation)",
+      "result_note": "18 hits; LEMS 2014 and libNeuroML/PyLEMS 2014 relevant; rest off-topic acronym collisions."
+    },
+    {
+      "source": "PubMed (NCBI E-utilities esearch+esummary, sort=relevance, top 20) | https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&retmode=json&retmax=20&sort=relevance&term=Open%20Source%20Brain%5Btiab%5D",
+      "query": "Open Source Brain[tiab]",
+      "result_note": "24 hits; OSB Neuron 2019 canonical; NeuroML-DB, Geppetto, EDEN; rest off-topic (open-source hardware/MRI)."
+    },
+    {
+      "source": "PubMed (NCBI E-utilities esearch+esummary, sort=relevance, top 20) | https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&retmode=json&retmax=20&sort=relevance&term=NeuronUnit%20OR%20SciUnit",
+      "query": "NeuronUnit OR SciUnit",
+      "result_note": "4 hits; Appukuttan & Davison 2022 (SciUnit reproduction of CA1 point neuron across simulators); Gerkin 2018 OpenWorm SciUnit validation."
+    },
+    {
+      "source": "PubMed (NCBI E-utilities esearch+esummary, sort=relevance, top 20) | https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&retmode=json&retmax=20&sort=relevance&term=electrophys%20feature%20extraction%20library%20eFEL",
+      "query": "electrophys feature extraction library eFEL",
+      "result_note": "1 hit: eFEL Bioinformatics 2026 (canonical eFEL citation)."
+    },
+    {
+      "source": "PubMed (NCBI E-utilities esearch+esummary, sort=relevance, top 20) | https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&retmode=json&retmax=20&sort=relevance&term=%28neuron%20model%5Btiab%5D%20OR%20neuronal%20model%5Btiab%5D%29%20AND%20validation%5Bti%5D%20AND%20%28software%20OR%20framework%29",
+      "query": "(neuron model[tiab] OR neuronal model[tiab]) AND validation[ti] AND (software OR framework)",
+      "result_note": "0 hits."
+    },
+    {
+      "source": "PubMed (NCBI E-utilities esearch+esummary, sort=relevance, top 20) | https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&retmode=json&retmax=20&sort=relevance&term=model%20conversion%5Btiab%5D%20AND%20%28NEURON%20OR%20NeuroML%20OR%20simulator%29%20AND%20neuron",
+      "query": "model conversion[tiab] AND (NEURON OR NeuroML OR simulator) AND neuron",
+      "result_note": "0 hits."
+    },
+    {
+      "source": "PubMed (NCBI E-utilities esearch+esummary, sort=relevance, top 20) | https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&retmode=json&retmax=20&sort=relevance&term=reproducibility%5Bti%5D%20AND%20%28computational%20model%20OR%20simulation%29%20AND%20neuron",
+      "query": "reproducibility[ti] AND (computational model OR simulation) AND neuron",
+      "result_note": "21 hits; Manninen 2017/2018 reproducibility of neuro/glia models; Cudone 2023; rest imaging reproducibility."
+    },
+    {
+      "source": "PubMed (NCBI E-utilities esearch+esummary, sort=relevance, top 20) | https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&retmode=json&retmax=20&sort=relevance&term=software%20testing%5Btiab%5D%20AND%20computational%20neuroscience",
+      "query": "software testing[tiab] AND computational neuroscience",
+      "result_note": "0 hits."
+    },
+    {
+      "source": "PubMed (NCBI E-utilities esearch+esummary, sort=relevance, top 20) | https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&retmode=json&retmax=20&sort=relevance&term=ModelDB%5Btiab%5D",
+      "query": "ModelDB[tiab]",
+      "result_note": "25 hits; ModelDB 2004, Twenty years of ModelDB 2017, LLM-assisted curation (Ji 2024), NeuroML-DB, HippoUnit-based validation."
+    },
+    {
+      "source": "PubMed (NCBI E-utilities esearch+esummary, sort=relevance, top 20) | https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&retmode=json&retmax=20&sort=relevance&term=NeuroML-DB%20OR%20%28model%20database%5Btiab%5D%20AND%20neuron%20AND%20curation%29",
+      "query": "NeuroML-DB OR (model database[tiab] AND neuron AND curation)",
+      "result_note": "2 hits: NeuroML-DB 2023, EDEN 2022."
+    },
+    {
+      "source": "PubMed (NCBI E-utilities esearch+esummary, sort=relevance, top 20) | https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&retmode=json&retmax=20&sort=relevance&term=degeneracy%5Bti%5D%20AND%20conductance-based",
+      "query": "degeneracy[ti] AND conductance-based",
+      "result_note": "7 hits; Goaillard & Marder 2021 review; degeneracy population modelling papers."
+    },
+    {
+      "source": "PubMed (NCBI E-utilities esearch+esummary, sort=relevance, top 20) | https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&retmode=json&retmax=20&sort=relevance&term=parameter%20sensitivity%5Btiab%5D%20AND%20conductance-based%20model%20AND%20neuron",
+      "query": "parameter sensitivity[tiab] AND conductance-based model AND neuron",
+      "result_note": "0 hits."
+    },
+    {
+      "source": "PubMed (NCBI E-utilities esearch+esummary, sort=relevance, top 20) | https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&retmode=json&retmax=20&sort=relevance&term=current%20clamp%5Btiab%5D%20protocol%5Btiab%5D%20optimal%5Btiab%5D%20model",
+      "query": "current clamp[tiab] protocol[tiab] optimal[tiab] model",
+      "result_note": "0 hits."
+    },
+    {
+      "source": "PubMed (NCBI E-utilities esearch+esummary, sort=relevance, top 20) | https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&retmode=json&retmax=20&sort=relevance&term=optimal%20experimental%20design%5Btiab%5D%20AND%20ion%20channel",
+      "query": "optimal experimental design[tiab] AND ion channel",
+      "result_note": "0 hits in PubMed (Europe PMC variant found Mirams-group OED papers)."
+    },
+    {
+      "source": "PubMed (NCBI E-utilities esearch+esummary, sort=relevance, top 20) | https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&retmode=json&retmax=20&sort=relevance&term=stimulus%20design%5Btiab%5D%20AND%20neuron%20model%20AND%20parameter%20estimation",
+      "query": "stimulus design[tiab] AND neuron model AND parameter estimation",
+      "result_note": "4 hits on adaptive sensory stimulus optimization; not model regression testing."
+    },
+    {
+      "source": "PubMed (NCBI E-utilities esearch+esummary, sort=relevance, top 20) | https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&retmode=json&retmax=20&sort=relevance&term=%28large%20language%20model%5Btiab%5D%20OR%20LLM%5Btiab%5D%29%20AND%20neuron%20model%20AND%20simulation",
+      "query": "(large language model[tiab] OR LLM[tiab]) AND neuron model AND simulation",
+      "result_note": "1 off-topic hit."
+    },
+    {
+      "source": "Europe PMC REST search (lite, pageSize 25; indexes bioRxiv/medRxiv preprints as SRC:PPR) | https://www.ebi.ac.uk/europepmc/webservices/rest/search?format=json&pageSize=25&resultType=lite&query=%22metamorphic%20testing%22%20AND%20neuron",
+      "query": "\"metamorphic testing\" AND neuron",
+      "result_note": "8 hits; all about DNN 'neuron coverage' testing, not biological neuron models."
+    },
+    {
+      "source": "Europe PMC REST search (lite, pageSize 25; indexes bioRxiv/medRxiv preprints as SRC:PPR) | https://www.ebi.ac.uk/europepmc/webservices/rest/search?format=json&pageSize=25&resultType=lite&query=%22mutation%20testing%22%20AND%20%28neuroscience%20OR%20neuron%20OR%20%22systems%20biology%22%29",
+      "query": "\"mutation testing\" AND (neuroscience OR neuron OR \"systems biology\")",
+      "result_note": "484 hits dominated by clinical mutation testing; top-25 screened, none relevant."
+    },
+    {
+      "source": "Europe PMC REST search (lite, pageSize 25; indexes bioRxiv/medRxiv preprints as SRC:PPR) | https://www.ebi.ac.uk/europepmc/webservices/rest/search?format=json&pageSize=25&resultType=lite&query=NeuroML%20AND%20%28test%20OR%20testing%20OR%20validation%29",
+      "query": "NeuroML AND (test OR testing OR validation)",
+      "result_note": "210 hits; NeuroML ecosystem, EDEN, NESTML, Building on models, omnimodel preprint, BioModels verification, FAIR->CURE."
+    },
+    {
+      "source": "Europe PMC REST search (lite, pageSize 25; indexes bioRxiv/medRxiv preprints as SRC:PPR) | https://www.ebi.ac.uk/europepmc/webservices/rest/search?format=json&pageSize=25&resultType=lite&query=%22neuron%20model%22%20AND%20%22semantic%22%20AND%20regression",
+      "query": "\"neuron model\" AND \"semantic\" AND regression",
+      "result_note": "66 hits, off-topic (spiking neural networks for ML, semantic cognition)."
+    },
+    {
+      "source": "Europe PMC REST search (lite, pageSize 25; indexes bioRxiv/medRxiv preprints as SRC:PPR) | https://www.ebi.ac.uk/europepmc/webservices/rest/search?format=json&pageSize=25&resultType=lite&query=%22model%20conversion%22%20AND%20NeuroML",
+      "query": "\"model conversion\" AND NeuroML",
+      "result_note": "4 hits; NIR (Nat Commun 2024); McDougal 2016 TBME reproducibility."
+    },
+    {
+      "source": "Europe PMC REST search (lite, pageSize 25; indexes bioRxiv/medRxiv preprints as SRC:PPR) | https://www.ebi.ac.uk/europepmc/webservices/rest/search?format=json&pageSize=25&resultType=lite&query=%22perturbation%20fingerprint%22",
+      "query": "\"perturbation fingerprint\"",
+      "result_note": "0 hits."
+    },
+    {
+      "source": "Europe PMC REST search (lite, pageSize 25; indexes bioRxiv/medRxiv preprints as SRC:PPR) | https://www.ebi.ac.uk/europepmc/webservices/rest/search?format=json&pageSize=25&resultType=lite&query=%22protocol%20selection%22%20AND%20%22neuron%20model%22",
+      "query": "\"protocol selection\" AND \"neuron model\"",
+      "result_note": "0 hits."
+    },
+    {
+      "source": "Europe PMC REST search (lite, pageSize 25; indexes bioRxiv/medRxiv preprints as SRC:PPR) | https://www.ebi.ac.uk/europepmc/webservices/rest/search?format=json&pageSize=25&resultType=lite&query=%28%22coding%20agent%22%20OR%20%22large%20language%20model%22%29%20AND%20%28NEURON%20OR%20NeuroML%20OR%20%22neuron%20simulation%22%29",
+      "query": "(\"coding agent\" OR \"large language model\") AND (NEURON OR NeuroML OR \"neuron simulation\")",
+      "result_note": "436 hits; top-25 screened: LLM/BCI/clinical items; nothing on AI agents editing neuron models."
+    },
+    {
+      "source": "Europe PMC REST search (lite, pageSize 25; indexes bioRxiv/medRxiv preprints as SRC:PPR) | https://www.ebi.ac.uk/europepmc/webservices/rest/search?format=json&pageSize=25&resultType=lite&query=%22Open%20Source%20Brain%22",
+      "query": "\"Open Source Brain\"",
+      "result_note": "181 hits; OSB Neuron 2019, NeuroML ecosystem, NeuroML-DB, Building on models; many off-topic open-source imaging tools."
+    },
+    {
+      "source": "Europe PMC REST search (lite, pageSize 25; indexes bioRxiv/medRxiv preprints as SRC:PPR) | https://www.ebi.ac.uk/europepmc/webservices/rest/search?format=json&pageSize=25&resultType=lite&query=NeuronUnit",
+      "query": "NeuronUnit",
+      "result_note": "14 hits; NeuronUnit bioRxiv 2019, HippoUnit, Sarma 2016, McDougal 2016, OpenWorm SciUnit."
+    },
+    {
+      "source": "Europe PMC REST search (lite, pageSize 25; indexes bioRxiv/medRxiv preprints as SRC:PPR) | https://www.ebi.ac.uk/europepmc/webservices/rest/search?format=json&pageSize=25&resultType=lite&query=SciUnit",
+      "query": "SciUnit",
+      "result_note": "27 hits; Appukuttan 2022, NeuronUnit, HippoUnit, Gutzen 2018 network validation, Sarma 2016."
+    },
+    {
+      "source": "Europe PMC REST search (lite, pageSize 25; indexes bioRxiv/medRxiv preprints as SRC:PPR) | https://www.ebi.ac.uk/europepmc/webservices/rest/search?format=json&pageSize=25&resultType=lite&query=eFEL%20AND%20electrophysiology",
+      "query": "eFEL AND electrophysiology",
+      "result_note": "52 hits; eFEL 2026, NeuroFeatureExtract 2021, Neuroptimus, Nandi 2022, HippoUnit."
+    },
+    {
+      "source": "Europe PMC REST search (lite, pageSize 25; indexes bioRxiv/medRxiv preprints as SRC:PPR) | https://www.ebi.ac.uk/europepmc/webservices/rest/search?format=json&pageSize=25&resultType=lite&query=%22neuron%20model%22%20AND%20validation%20AND%20SRC%3APPR",
+      "query": "\"neuron model\" AND validation AND SRC:PPR",
+      "result_note": "25 preprint hits; NeuronUnit, NeuroML ecosystem, omnimodel, Jaxley, semi-analytical verification of Pospischil models (Research Square 2026)."
+    },
+    {
+      "source": "Europe PMC REST search (lite, pageSize 25; indexes bioRxiv/medRxiv preprints as SRC:PPR) | https://www.ebi.ac.uk/europepmc/webservices/rest/search?format=json&pageSize=25&resultType=lite&query=NeuroML%20AND%20SRC%3APPR",
+      "query": "NeuroML AND SRC:PPR",
+      "result_note": "5 preprint hits: NeuroML ecosystem, NeuroML-DB, omnimodel, NeuronUnit, NetPyNE."
+    },
+    {
+      "source": "Europe PMC REST search (lite, pageSize 25; indexes bioRxiv/medRxiv preprints as SRC:PPR) | https://www.ebi.ac.uk/europepmc/webservices/rest/search?format=json&pageSize=25&resultType=lite&query=%22model%20validation%22%20AND%20%22computational%20neuroscience%22%20AND%20%28software%20OR%20framework%29",
+      "query": "\"model validation\" AND \"computational neuroscience\" AND (software OR framework)",
+      "result_note": "330 hits; Toward Reference-Grade neuron models (Commun Biol 2026); NESTML; rest broad."
+    },
+    {
+      "source": "Europe PMC REST search (lite, pageSize 25; indexes bioRxiv/medRxiv preprints as SRC:PPR) | https://www.ebi.ac.uk/europepmc/webservices/rest/search?format=json&pageSize=25&resultType=lite&query=%22conductance-based%22%20AND%20degeneracy%20AND%20%28parameter%20OR%20sensitivity%29",
+      "query": "\"conductance-based\" AND degeneracy AND (parameter OR sensitivity)",
+      "result_note": "88 hits; Korngreen 2026 HH variability; Brandoit 2026; Naudin 2023; Goaillard-style degeneracy papers."
+    },
+    {
+      "source": "Europe PMC REST search (lite, pageSize 25; indexes bioRxiv/medRxiv preprints as SRC:PPR) | https://www.ebi.ac.uk/europepmc/webservices/rest/search?format=json&pageSize=25&resultType=lite&query=%22current%20clamp%22%20AND%20%22stimulus%20protocol%22%20AND%20model%20AND%20%28design%20OR%20optimal%20OR%20selection%29",
+      "query": "\"current clamp\" AND \"stimulus protocol\" AND model AND (design OR optimal OR selection)",
+      "result_note": "145 hits; mostly experimental papers; ElecFeX 2024 only tool-relevant item."
+    },
+    {
+      "source": "Europe PMC REST search (lite, pageSize 25; indexes bioRxiv/medRxiv preprints as SRC:PPR) | https://www.ebi.ac.uk/europepmc/webservices/rest/search?format=json&pageSize=25&resultType=lite&query=%22regression%20testing%22%20AND%20%28%22scientific%20software%22%20OR%20simulation%29%20AND%20%28neuron%20OR%20neuroscience%20OR%20biology%29",
+      "query": "\"regression testing\" AND (\"scientific software\" OR simulation) AND (neuron OR neuroscience OR biology)",
+      "result_note": "92 hits; TOPAS-nBio-Reg 2025; nf-test; test-suite optimization; ten simple rules scientific software."
+    },
+    {
+      "source": "Europe PMC REST search (lite, pageSize 25; indexes bioRxiv/medRxiv preprints as SRC:PPR) | https://www.ebi.ac.uk/europepmc/webservices/rest/search?format=json&pageSize=25&resultType=lite&query=%22test%20suite%22%20AND%20%28neuron%20OR%20neuronal%29%20AND%20model%20AND%20validation",
+      "query": "\"test suite\" AND (neuron OR neuronal) AND model AND validation",
+      "result_note": "122 hits; Neuroptimus, Appukuttan 2022; rest DNN testing/ML."
+    },
+    {
+      "source": "Europe PMC REST search (lite, pageSize 25; indexes bioRxiv/medRxiv preprints as SRC:PPR) | https://www.ebi.ac.uk/europepmc/webservices/rest/search?format=json&pageSize=25&resultType=lite&query=%22model%20database%22%20AND%20neuron%20AND%20curation",
+      "query": "\"model database\" AND neuron AND curation",
+      "result_note": "27 hits, low relevance (Geppetto, FindSim)."
+    },
+    {
+      "source": "PubMed (NCBI E-utilities esearch+esummary, sort=relevance, top 20) | https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&retmode=json&retmax=20&sort=relevance&term=HippoUnit",
+      "query": "HippoUnit",
+      "result_note": "13 hits; HippoUnit PCBI + bioRxiv; Tar et al. 2026 CA1 model preprint validated with HippoUnit."
+    },
+    {
+      "source": "PubMed (NCBI E-utilities esearch+esummary, sort=relevance, top 20) | https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&retmode=json&retmax=20&sort=relevance&term=BluePyOpt",
+      "query": "BluePyOpt",
+      "result_note": "82 hits; eFEL 2026, BluePyOpt 2016, Reva 2023 universal workflow, EBRAINS HH Neuron Builder, Jaxley."
+    },
+    {
+      "source": "PubMed (NCBI E-utilities esearch+esummary, sort=relevance, top 20) | https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&retmode=json&retmax=20&sort=relevance&term=BluePyEfe%20OR%20BluePyEModel",
+      "query": "BluePyEfe OR BluePyEModel",
+      "result_note": "0 hits."
+    },
+    {
+      "source": "PubMed (NCBI E-utilities esearch+esummary, sort=relevance, top 20) | https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&retmode=json&retmax=20&sort=relevance&term=ICGenealogy%20OR%20ion%20channel%20genealogy",
+      "query": "ICGenealogy OR ion channel genealogy",
+      "result_note": "19 hits; ICGenealogy eLife 2017 relevant; Daly 2015 HH identifiability; rest genetic genealogy."
+    },
+    {
+      "source": "PubMed (NCBI E-utilities esearch+esummary, sort=relevance, top 20) | https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&retmode=json&retmax=20&sort=relevance&term=Allen%20Cell%20Types%5Btiab%5D%20AND%20biophysical%20model%5Btiab%5D",
+      "query": "Allen Cell Types[tiab] AND biophysical model[tiab]",
+      "result_note": "0 hits."
+    },
+    {
+      "source": "PubMed (NCBI E-utilities esearch+esummary, sort=relevance, top 20) | https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&retmode=json&retmax=20&sort=relevance&term=test%20suite%5Btiab%5D%20AND%20neuron%20model",
+      "query": "test suite[tiab] AND neuron model",
+      "result_note": "5 hits; HippoUnit, Appukuttan & Davison 2022, reduced CA1 model."
+    },
+    {
+      "source": "PubMed (NCBI E-utilities esearch+esummary, sort=relevance, top 20) | https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&retmode=json&retmax=20&sort=relevance&term=simulator%20comparison%5Btiab%5D%20AND%20neuron",
+      "query": "simulator comparison[tiab] AND neuron",
+      "result_note": "1275 hits (query too broad); top-20 screened, only Neuroptimus 2024 and multitask-learning surrogate marginally related."
+    },
+    {
+      "source": "PubMed (NCBI E-utilities esearch+esummary, sort=relevance, top 20) | https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&retmode=json&retmax=20&sort=relevance&term=model%20validation%5Bti%5D%20AND%20neuron",
+      "query": "model validation[ti] AND neuron",
+      "result_note": "5 hits, off-topic."
+    },
+    {
+      "source": "PubMed (NCBI E-utilities esearch+esummary, sort=relevance, top 20) | https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&retmode=json&retmax=20&sort=relevance&term=sensitivity%20analysis%5Bti%5D%20AND%20neuron%20model%20AND%20conductance",
+      "query": "sensitivity analysis[ti] AND neuron model AND conductance",
+      "result_note": "10 hits; classic sensitivity analyses (1998 membrane model, neuromorphic point neurons). Low relevance."
+    },
+    {
+      "source": "PubMed (NCBI E-utilities esearch+esummary, sort=relevance, top 20) | https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&retmode=json&retmax=20&sort=relevance&term=rheobase%5Btiab%5D%20AND%20model%5Bti%5D%20AND%20characterization%5Btiab%5D%20AND%20simulation",
+      "query": "rheobase[tiab] AND model[ti] AND characterization[tiab] AND simulation",
+      "result_note": "0 hits."
+    },
+    {
+      "source": "PubMed (NCBI E-utilities esearch+esummary, sort=relevance, top 20) | https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&retmode=json&retmax=20&sort=relevance&term=electrophysiological%20features%5Btiab%5D%20AND%20neuron%20model%5Btiab%5D%20AND%20database",
+      "query": "electrophysiological features[tiab] AND neuron model[tiab] AND database",
+      "result_note": "0 hits."
+    },
+    {
+      "source": "PubMed (NCBI E-utilities esearch+esummary, sort=relevance, top 20) | https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&retmode=json&retmax=20&sort=relevance&term=reproducibility%5Btiab%5D%20AND%20ModelDB",
+      "query": "reproducibility[tiab] AND ModelDB",
+      "result_note": "2 hits: Twenty years of ModelDB; ModelView."
+    },
+    {
+      "source": "PubMed (NCBI E-utilities esearch+esummary, sort=relevance, top 20) | https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&retmode=json&retmax=20&sort=relevance&term=time%20step%5Btiab%5D%20AND%20neuron%20model%20AND%20numerical%20accuracy",
+      "query": "time step[tiab] AND neuron model AND numerical accuracy",
+      "result_note": "10 hits; Valadez-Godinez 2020 accuracy/cost of spiking neuron implementations; integrate-and-fire time-stepping schemes."
+    },
+    {
+      "source": "PubMed (NCBI E-utilities esearch+esummary, sort=relevance, top 20) | https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&retmode=json&retmax=20&sort=relevance&term=optimal%20experimental%20design%5Btiab%5D%20AND%20neuron",
+      "query": "optimal experimental design[tiab] AND neuron",
+      "result_note": "4 hits; Daunizeau 2011 OED for model comparison; dendritic sampling OED."
+    },
+    {
+      "source": "PubMed (NCBI E-utilities esearch+esummary, sort=relevance, top 20) | https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&retmode=json&retmax=20&sort=relevance&term=protocol%20design%5Btiab%5D%20AND%20ion%20channel%20model",
+      "query": "protocol design[tiab] AND ion channel model",
+      "result_note": "2 hits, low relevance (hERG CiPA dynamic protocol)."
+    },
+    {
+      "source": "PubMed (NCBI E-utilities esearch+esummary, sort=relevance, top 20) | https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&retmode=json&retmax=20&sort=relevance&term=fault%20injection%5Btiab%5D%20AND%20simulation%20model",
+      "query": "fault injection[tiab] AND simulation model",
+      "result_note": "16 hits, engineering/automotive; none in neuroscience."
+    },
+    {
+      "source": "PubMed (NCBI E-utilities esearch+esummary, sort=relevance, top 20) | https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&retmode=json&retmax=20&sort=relevance&term=regression%20testing%5Btiab%5D%20AND%20software",
+      "query": "regression testing[tiab] AND software",
+      "result_note": "20 hits; SWMM unit/regression tests (Peng 2021); TOPAS-nBio-Reg 2025; generic test prioritization."
+    },
+    {
+      "source": "PubMed (NCBI E-utilities esearch+esummary, sort=relevance, top 20) | https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&retmode=json&retmax=20&sort=relevance&term=large%20language%20model%5Btiab%5D%20AND%20code%20generation%5Btiab%5D%20AND%20simulation",
+      "query": "large language model[tiab] AND code generation[tiab] AND simulation",
+      "result_note": "5 hits, none on neuron models."
+    },
+    {
+      "source": "PubMed (NCBI E-utilities esearch+esummary, sort=relevance, top 20) | https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&retmode=json&retmax=20&sort=relevance&term=ChatGPT%5Btiab%5D%20AND%20computational%20neuroscience",
+      "query": "ChatGPT[tiab] AND computational neuroscience",
+      "result_note": "0 hits."
+    },
+    {
+      "source": "PubMed (NCBI E-utilities esearch+esummary, sort=relevance, top 20) | https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&retmode=json&retmax=20&sort=relevance&term=BioModels%5Btiab%5D%20AND%20curation%5Btiab%5D%20AND%20reproducibility",
+      "query": "BioModels[tiab] AND curation[tiab] AND reproducibility",
+      "result_note": "7 hits; Verification and reproducible curation of BioModels (PCBI 2025 + bioRxiv)."
+    },
+    {
+      "source": "PubMed (NCBI E-utilities esearch+esummary, sort=relevance, top 20) | https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&retmode=json&retmax=20&sort=relevance&term=Neuroptimus",
+      "query": "Neuroptimus",
+      "result_note": "1 hit: Neuroptimus PCBI 2024."
+    },
+    {
+      "source": "PubMed (NCBI E-utilities esearch+esummary, sort=relevance, top 20) | https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&retmode=json&retmax=20&sort=relevance&term=NeuroElectro",
+      "query": "NeuroElectro",
+      "result_note": "5 hits; NeuroElectro 2014 (data resource)."
+    },
+    {
+      "source": "PubMed (NCBI E-utilities esearch+esummary, sort=relevance, top 20) | https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&retmode=json&retmax=20&sort=relevance&term=verification%5Btiab%5D%20AND%20validation%5Btiab%5D%20AND%20computational%20neuroscience",
+      "query": "verification[tiab] AND validation[tiab] AND computational neuroscience",
+      "result_note": "0 hits."
+    },
+    {
+      "source": "PubMed (NCBI E-utilities esearch+esummary, sort=relevance, top 20) | https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&retmode=json&retmax=20&sort=relevance&term=interoperability%5Btiab%5D%20AND%20neuron%20simulators%20AND%20standardized%20model",
+      "query": "interoperability[tiab] AND neuron simulators AND standardized model",
+      "result_note": "9 hits; eFEL 2026, NeuroML 2010, NeuroML ecosystem 2025."
+    },
+    {
+      "source": "Europe PMC REST search (lite, pageSize 25; indexes bioRxiv/medRxiv preprints as SRC:PPR) | https://www.ebi.ac.uk/europepmc/webservices/rest/search?format=json&pageSize=25&resultType=lite&query=HippoUnit",
+      "query": "HippoUnit",
+      "result_note": "13 hits; HippoUnit PCBI + bioRxiv; Tar et al. 2026 CA1 model preprint validated with HippoUnit."
+    },
+    {
+      "source": "Europe PMC REST search (lite, pageSize 25; indexes bioRxiv/medRxiv preprints as SRC:PPR) | https://www.ebi.ac.uk/europepmc/webservices/rest/search?format=json&pageSize=25&resultType=lite&query=BluePyOpt",
+      "query": "BluePyOpt",
+      "result_note": "82 hits; eFEL 2026, BluePyOpt 2016, Reva 2023 universal workflow, EBRAINS HH Neuron Builder, Jaxley."
+    },
+    {
+      "source": "Europe PMC REST search (lite, pageSize 25; indexes bioRxiv/medRxiv preprints as SRC:PPR) | https://www.ebi.ac.uk/europepmc/webservices/rest/search?format=json&pageSize=25&resultType=lite&query=%22NeuroML-DB%22",
+      "query": "\"NeuroML-DB\"",
+      "result_note": "13 hits; NeuroML-DB PCBI + bioRxiv; Model exchange with NeuroML-DB (CNS 2014 abstract)."
+    },
+    {
+      "source": "Europe PMC REST search (lite, pageSize 25; indexes bioRxiv/medRxiv preprints as SRC:PPR) | https://www.ebi.ac.uk/europepmc/webservices/rest/search?format=json&pageSize=25&resultType=lite&query=%22model%20validation%22%20AND%20NEURON%20AND%20SRC%3APPR",
+      "query": "\"model validation\" AND NEURON AND SRC:PPR",
+      "result_note": "51 preprint hits; only NeuronUnit and NeuroML ecosystem relevant."
+    },
+    {
+      "source": "Europe PMC REST search (lite, pageSize 25; indexes bioRxiv/medRxiv preprints as SRC:PPR) | https://www.ebi.ac.uk/europepmc/webservices/rest/search?format=json&pageSize=25&resultType=lite&query=%22degeneracy%22%20AND%20%22conductance-based%22%20AND%20SRC%3APPR",
+      "query": "\"degeneracy\" AND \"conductance-based\" AND SRC:PPR",
+      "result_note": "12 preprint hits; Korngreen HH variability preprint; morphological variability; deep inverse modeling."
+    },
+    {
+      "source": "Europe PMC REST search (lite, pageSize 25; indexes bioRxiv/medRxiv preprints as SRC:PPR) | https://www.ebi.ac.uk/europepmc/webservices/rest/search?format=json&pageSize=25&resultType=lite&query=%22optimal%22%20AND%20%22ion%20channel%22%20AND%20%22protocol%22%20AND%20%22experimental%20design%22",
+      "query": "\"optimal\" AND \"ion channel\" AND \"protocol\" AND \"experimental design\"",
+      "result_note": "1350 hits; top-25 screened: Mirams et al. 2024 phase-voltage OED preprint; IonBench 2025; Patten-Elliott 2025; Jennings 2024 information-theoretic protocol efficacy."
+    },
+    {
+      "source": "Europe PMC REST search (lite, pageSize 25; indexes bioRxiv/medRxiv preprints as SRC:PPR) | https://www.ebi.ac.uk/europepmc/webservices/rest/search?format=json&pageSize=25&resultType=lite&query=%22test-driven%22%20AND%20%28neuroscience%20OR%20%22neuron%20model%22%29",
+      "query": "\"test-driven\" AND (neuroscience OR \"neuron model\")",
+      "result_note": "48 hits; Twelve quick tips AI-assisted coding 2026; Trensch 2018 model substantiation; Sarma 2016."
+    },
+    {
+      "source": "Europe PMC REST search (lite, pageSize 25; indexes bioRxiv/medRxiv preprints as SRC:PPR) | https://www.ebi.ac.uk/europepmc/webservices/rest/search?format=json&pageSize=25&resultType=lite&query=%22unit%20testing%22%20AND%20%22model%20validation%22%20AND%20%28biology%20OR%20neuroscience%29",
+      "query": "\"unit testing\" AND \"model validation\" AND (biology OR neuroscience)",
+      "result_note": "31 hits; NeuroML ecosystem; Gutzen 2018; Sarma 2016; Pelot 2025 guidance for sharing neural stimulation models."
+    },
+    {
+      "source": "Europe PMC REST search (lite, pageSize 25; indexes bioRxiv/medRxiv preprints as SRC:PPR) | https://www.ebi.ac.uk/europepmc/webservices/rest/search?format=json&pageSize=25&resultType=lite&query=%22large%20language%20model%22%20AND%20%22computational%20neuroscience%22%20AND%20%28simulation%20OR%20modeling%29",
+      "query": "\"large language model\" AND \"computational neuroscience\" AND (simulation OR modeling)",
+      "result_note": "41 hits; only Ji 2024 (LLM curation for ModelDB) relevant."
+    },
+    {
+      "source": "Europe PMC REST search (lite, pageSize 25; indexes bioRxiv/medRxiv preprints as SRC:PPR) | https://www.ebi.ac.uk/europepmc/webservices/rest/search?format=json&pageSize=25&resultType=lite&query=%28LLM%20OR%20%22large%20language%20model%22%29%20AND%20%28NEURON%20OR%20NeuroML%20OR%20Brian%20OR%20NEST%29%20AND%20simulation%20AND%20code",
+      "query": "(LLM OR \"large language model\") AND (NEURON OR NeuroML OR Brian OR NEST) AND simulation AND code",
+      "result_note": "190 hits; none on LLMs editing neuron models."
+    },
+    {
+      "source": "Europe PMC REST search (lite, pageSize 25; indexes bioRxiv/medRxiv preprints as SRC:PPR) | https://www.ebi.ac.uk/europepmc/webservices/rest/search?format=json&pageSize=25&resultType=lite&query=%22Open%20Source%20Brain%22%20AND%20SRC%3APPR",
+      "query": "\"Open Source Brain\" AND SRC:PPR",
+      "result_note": "8 preprint hits; OSB bioRxiv 2018; NeuroML ecosystem; NeuroML-DB."
+    },
+    {
+      "source": "Europe PMC REST search (lite, pageSize 25; indexes bioRxiv/medRxiv preprints as SRC:PPR) | https://www.ebi.ac.uk/europepmc/webservices/rest/search?format=json&pageSize=25&resultType=lite&query=%22mutation%20testing%22%20AND%20%28%22scientific%20software%22%20OR%20simulation%20OR%20bioinformatics%29",
+      "query": "\"mutation testing\" AND (\"scientific software\" OR simulation OR bioinformatics)",
+      "result_note": "1074 hits dominated by clinical mutation testing; top-25 screened, only DNN metamorphic item."
+    },
+    {
+      "source": "Europe PMC REST search (lite, pageSize 25; indexes bioRxiv/medRxiv preprints as SRC:PPR) | https://www.ebi.ac.uk/europepmc/webservices/rest/search?format=json&pageSize=25&resultType=lite&query=%22metamorphic%20testing%22%20AND%20%28%22scientific%20software%22%20OR%20simulation%20OR%20bioinformatics%29",
+      "query": "\"metamorphic testing\" AND (\"scientific software\" OR simulation OR bioinformatics)",
+      "result_note": "43 hits; Kanewala & Bieman 2014 review; SWMM MT papers; BWA/Bowtie MT; formal verification of bioinformatics software."
+    },
+    {
+      "source": "Europe PMC REST search (lite, pageSize 25; indexes bioRxiv/medRxiv preprints as SRC:PPR) | https://www.ebi.ac.uk/europepmc/webservices/rest/search?format=json&pageSize=25&resultType=lite&query=%22current%20clamp%22%20AND%20%22protocol%22%20AND%20%22neuron%20model%22%20AND%20%28informative%20OR%20optimal%20OR%20selection%29",
+      "query": "\"current clamp\" AND \"protocol\" AND \"neuron model\" AND (informative OR optimal OR selection)",
+      "result_note": "189 hits; Joshi 2025 input-dependent neuronal identity; NeuroML-DB; Neuroptimus; EP-GAN."
+    },
+    {
+      "source": "Europe PMC REST search (lite, pageSize 25; indexes bioRxiv/medRxiv preprints as SRC:PPR) | https://www.ebi.ac.uk/europepmc/webservices/rest/search?format=json&pageSize=25&resultType=lite&query=%22neuron%20models%22%20AND%20%22electrophysiological%20features%22%20AND%20%22current%20injection%22%20AND%20characterization%20AND%20database",
+      "query": "\"neuron models\" AND \"electrophysiological features\" AND \"current injection\" AND characterization AND database",
+      "result_note": "20 hits; NeuroML-DB; Gouwens 2018; Venkadesh 2019; Nandi 2022; HippoUnit."
+    },
+    {
+      "source": "Europe PMC REST search (lite, pageSize 25; indexes bioRxiv/medRxiv preprints as SRC:PPR) | https://www.ebi.ac.uk/europepmc/webservices/rest/search?format=json&pageSize=25&resultType=lite&query=%22simulator%22%20AND%20%22NeuroML%22%20AND%20convergence%20AND%20comparison",
+      "query": "\"simulator\" AND \"NeuroML\" AND convergence AND comparison",
+      "result_note": "23 hits; McDougal 2016; NeuroML 2010; Almog & Korngreen 2016; BluePyOpt."
+    },
+    {
+      "source": "Europe PMC REST search (lite, pageSize 25; indexes bioRxiv/medRxiv preprints as SRC:PPR) | https://www.ebi.ac.uk/europepmc/webservices/rest/search?format=json&pageSize=25&resultType=lite&query=%22silent%22%20AND%20%22model%22%20AND%20%22regression%22%20AND%20%28%22scientific%20software%22%20OR%20simulation%29",
+      "query": "\"silent\" AND \"model\" AND \"regression\" AND (\"scientific software\" OR simulation)",
+      "result_note": "4133 hits (query too loose); top-25 screened, none relevant."
+    },
+    {
+      "source": "Europe PMC REST search (lite, pageSize 25; indexes bioRxiv/medRxiv preprints as SRC:PPR) | https://www.ebi.ac.uk/europepmc/webservices/rest/search?format=json&pageSize=25&resultType=lite&query=%22equivalence%22%20AND%20%22neuron%20model%22%20AND%20%28translation%20OR%20conversion%29%20AND%20simulator",
+      "query": "\"equivalence\" AND \"neuron model\" AND (translation OR conversion) AND simulator",
+      "result_note": "18 hits; Gutzen 2018; Trensch 2018; NIR 2024; Felix->NEST transition."
+    },
+    {
+      "source": "Europe PMC REST search (lite, pageSize 25; indexes bioRxiv/medRxiv preprints as SRC:PPR) | https://www.ebi.ac.uk/europepmc/webservices/rest/search?format=json&pageSize=25&resultType=lite&query=%22parameter%20sensitivity%22%20AND%20%22electrophysiological%20features%22%20AND%20%22neuron%20model%22",
+      "query": "\"parameter sensitivity\" AND \"electrophysiological features\" AND \"neuron model\"",
+      "result_note": "6 hits; Reva 2023 universal workflow; STN model optimization; higher-order interactions."
+    },
+    {
+      "source": "Europe PMC REST search (lite, pageSize 25; indexes bioRxiv/medRxiv preprints as SRC:PPR) | https://www.ebi.ac.uk/europepmc/webservices/rest/search?format=json&pageSize=25&resultType=lite&query=%22stimulus%20protocols%22%20AND%20%22neuron%20models%22%20AND%20%22discriminat%2A%22",
+      "query": "\"stimulus protocols\" AND \"neuron models\" AND \"discriminat*\"",
+      "result_note": "0 hits."
+    },
+    {
+      "source": "PubMed (NCBI E-utilities esearch+esummary, sort=relevance, top 20) | https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&retmode=json&retmax=20&sort=relevance&term=pyNeuroML%20OR%20jNeuroML%20OR%20%22NeuroML%20model%20validation%22",
+      "query": "pyNeuroML OR jNeuroML OR \"NeuroML model validation\"",
+      "result_note": "2 hits: NeuroML ecosystem 2025, NeuroML 2010. No standalone pyNeuroML/jNeuroML paper indexed."
+    },
+    {
+      "source": "PubMed (NCBI E-utilities esearch+esummary, sort=relevance, top 20) | https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&retmode=json&retmax=20&sort=relevance&term=voltage%20clamp%20protocol%20design%5Btiab%5D%20AND%20model",
+      "query": "voltage clamp protocol design[tiab] AND model",
+      "result_note": "0 hits."
+    },
+    {
+      "source": "PubMed (NCBI E-utilities esearch+esummary, sort=relevance, top 20) | https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&retmode=json&retmax=20&sort=relevance&term=%28model%20discrimination%5Btiab%5D%20OR%20model%20selection%5Btiab%5D%29%20AND%20voltage%20protocol",
+      "query": "(model discrimination[tiab] OR model selection[tiab]) AND voltage protocol",
+      "result_note": "3 hits; Patten-Elliott 2025 OED for model selection of hERG drug-binding."
+    },
+    {
+      "source": "PubMed (NCBI E-utilities esearch+esummary, sort=relevance, top 20) | https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&retmode=json&retmax=20&sort=relevance&term=integration%20time%20step%5Btiab%5D%20AND%20action%20potential%20AND%20simulation%20accuracy",
+      "query": "integration time step[tiab] AND action potential AND simulation accuracy",
+      "result_note": "0 hits."
+    },
+    {
+      "source": "PubMed (NCBI E-utilities esearch+esummary, sort=relevance, top 20) | https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&retmode=json&retmax=20&sort=relevance&term=%28software%20bugs%5Btiab%5D%20OR%20software%20errors%5Btiab%5D%29%20AND%20%28computational%20neuroscience%20OR%20neural%20simulation%29",
+      "query": "(software bugs[tiab] OR software errors[tiab]) AND (computational neuroscience OR neural simulation)",
+      "result_note": "0 hits."
+    },
+    {
+      "source": "PubMed (NCBI E-utilities esearch+esummary, sort=relevance, top 20) | https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&retmode=json&retmax=20&sort=relevance&term=credibility%5Btiab%5D%20AND%20verification%5Btiab%5D%20AND%20computational%20model%20AND%20neuron",
+      "query": "credibility[tiab] AND verification[tiab] AND computational model AND neuron",
+      "result_note": "1 off-topic hit."
+    },
+    {
+      "source": "PubMed (NCBI E-utilities esearch+esummary, sort=relevance, top 20) | https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&retmode=json&retmax=20&sort=relevance&term=channelopathy%5Btiab%5D%20AND%20in%20silico%5Btiab%5D%20AND%20firing%20AND%20current%20clamp%20AND%20model%5Bti%5D",
+      "query": "channelopathy[tiab] AND in silico[tiab] AND firing AND current clamp AND model[ti]",
+      "result_note": "1 off-topic hit."
+    },
+    {
+      "source": "PubMed (NCBI E-utilities esearch+esummary, sort=relevance, top 20) | https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&retmode=json&retmax=20&sort=relevance&term=AI-assisted%20coding%5Btiab%5D%20OR%20%28coding%20assistant%5Btiab%5D%20AND%20science%29",
+      "query": "AI-assisted coding[tiab] OR (coding assistant[tiab] AND science)",
+      "result_note": "32 hits; Twelve quick tips for AI-assisted coding in science (PCBI 2026); agentic coding grounding (J Proteome Res 2026); rest clinical coding."
+    },
+    {
+      "source": "PubMed (NCBI E-utilities esearch+esummary, sort=relevance, top 20) | https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&retmode=json&retmax=20&sort=relevance&term=electrophysiological%20feature%5Btiab%5D%20AND%20sensitivity%5Btiab%5D%20AND%20stimulus%5Btiab%5D%20AND%20neuron%20model%5Btiab%5D",
+      "query": "electrophysiological feature[tiab] AND sensitivity[tiab] AND stimulus[tiab] AND neuron model[tiab]",
+      "result_note": "0 hits."
+    },
+    {
+      "source": "Europe PMC REST search (lite, pageSize 25; indexes bioRxiv/medRxiv preprints as SRC:PPR) | https://www.ebi.ac.uk/europepmc/webservices/rest/search?format=json&pageSize=25&resultType=lite&query=pyNeuroML%20OR%20jNeuroML",
+      "query": "pyNeuroML OR jNeuroML",
+      "result_note": "24 hits; NeuroML ecosystem; EDEN; BioSimulators; code generation review; no dedicated pyNeuroML paper."
+    },
+    {
+      "source": "Europe PMC REST search (lite, pageSize 25; indexes bioRxiv/medRxiv preprints as SRC:PPR) | https://www.ebi.ac.uk/europepmc/webservices/rest/search?format=json&pageSize=25&resultType=lite&query=%22OSB%20Model%20Validation%22%20OR%20%22OMV%22%20AND%20NeuroML",
+      "query": "\"OSB Model Validation\" OR \"OMV\" AND NeuroML",
+      "result_note": "4 hits; NeuroML ecosystem (eLife + preprint), OSB 2019, Building on models. No standalone OMV paper."
+    },
+    {
+      "source": "Europe PMC REST search (lite, pageSize 25; indexes bioRxiv/medRxiv preprints as SRC:PPR) | https://www.ebi.ac.uk/europepmc/webservices/rest/search?format=json&pageSize=25&resultType=lite&query=%22time%20step%22%20AND%20%22convergence%22%20AND%20%22neuron%20model%22%20AND%20%28spike%20OR%20%22action%20potential%22%29%20AND%20simulation",
+      "query": "\"time step\" AND \"convergence\" AND \"neuron model\" AND (spike OR \"action potential\") AND simulation",
+      "result_note": "341 hits, mostly SNN/ML; nothing on refinement-based tolerance calibration."
+    },
+    {
+      "source": "Europe PMC REST search (lite, pageSize 25; indexes bioRxiv/medRxiv preprints as SRC:PPR) | https://www.ebi.ac.uk/europepmc/webservices/rest/search?format=json&pageSize=25&resultType=lite&query=%28%22model%20discrimination%22%20OR%20%22model%20selection%22%29%20AND%20%28%22voltage%20protocol%22%20OR%20%22stimulus%20protocol%22%29%20AND%20design",
+      "query": "(\"model discrimination\" OR \"model selection\") AND (\"voltage protocol\" OR \"stimulus protocol\") AND design",
+      "result_note": "27 hits; Patten-Elliott 2024/2025; Shuttleworth 2023 ensemble of experimental designs; Lei 2020 discrepancy."
+    },
+    {
+      "source": "Europe PMC REST search (lite, pageSize 25; indexes bioRxiv/medRxiv preprints as SRC:PPR) | https://www.ebi.ac.uk/europepmc/webservices/rest/search?format=json&pageSize=25&resultType=lite&query=%28bug%20OR%20bugs%20OR%20%22software%20errors%22%29%20AND%20%28%22neural%20simulator%22%20OR%20%22neuronal%20simulator%22%20OR%20%22NEURON%20simulator%22%29",
+      "query": "(bug OR bugs OR \"software errors\") AND (\"neural simulator\" OR \"neuronal simulator\" OR \"NEURON simulator\")",
+      "result_note": "23 hits; Modernizing NEURON (CI); code-generation and simulator papers; no empirical bug study of neuron models."
+    },
+    {
+      "source": "Europe PMC REST search (lite, pageSize 25; indexes bioRxiv/medRxiv preprints as SRC:PPR) | https://www.ebi.ac.uk/europepmc/webservices/rest/search?format=json&pageSize=25&resultType=lite&query=%28ChatGPT%20OR%20LLM%20OR%20%22large%20language%20model%22%20OR%20%22AI%20coding%22%29%20AND%20%28%22neuron%20model%22%20OR%20%22biophysical%20model%22%20OR%20%22NEURON%20simulator%22%29",
+      "query": "(ChatGPT OR LLM OR \"large language model\" OR \"AI coding\") AND (\"neuron model\" OR \"biophysical model\" OR \"NEURON simulator\")",
+      "result_note": "77 hits; none on AI-transformed neuron models."
+    },
+    {
+      "source": "Europe PMC REST search (lite, pageSize 25; indexes bioRxiv/medRxiv preprints as SRC:PPR) | https://www.ebi.ac.uk/europepmc/webservices/rest/search?format=json&pageSize=25&resultType=lite&query=%22set%20cover%22%20OR%20%22greedy%22%20AND%20%22protocol%22%20AND%20%22neuron%20model%22",
+      "query": "\"set cover\" OR \"greedy\" AND \"protocol\" AND \"neuron model\"",
+      "result_note": "25 hits; none on greedy protocol/test selection for neuron models."
+    },
+    {
+      "source": "Europe PMC REST search (lite, pageSize 25; indexes bioRxiv/medRxiv preprints as SRC:PPR) | https://www.ebi.ac.uk/europepmc/webservices/rest/search?format=json&pageSize=25&resultType=lite&query=%22cross-simulator%22%20AND%20neuron",
+      "query": "\"cross-simulator\" AND neuron",
+      "result_note": "14 hits; EDEN 2022/2025; NeuroML 2010; LEMS; McDougal 2016; OSB 3D explorer abstract."
+    },
+    {
+      "source": "Europe PMC REST search (lite, pageSize 25; indexes bioRxiv/medRxiv preprints as SRC:PPR) | https://www.ebi.ac.uk/europepmc/webservices/rest/search?format=json&pageSize=25&resultType=lite&query=%22reference-grade%22%20AND%20neuron",
+      "query": "\"reference-grade\" AND neuron",
+      "result_note": "17 hits; Korngreen 2026 Toward Reference-Grade neuron models; rest off-topic."
+    },
+    {
+      "source": "Europe PMC REST search (lite, pageSize 25; indexes bioRxiv/medRxiv preprints as SRC:PPR) | https://www.ebi.ac.uk/europepmc/webservices/rest/search?format=json&pageSize=25&resultType=lite&query=SRC%3APPR%20AND%20%28%22test%20suite%22%20OR%20%22regression%20test%22%29%20AND%20%28NEURON%20OR%20NeuroML%20OR%20neuron%29%20AND%20model",
+      "query": "SRC:PPR AND (\"test suite\" OR \"regression test\") AND (NEURON OR NeuroML OR neuron) AND model",
+      "result_note": "7 preprint hits; IonBench preprint; HippoUnit preprint."
+    },
+    {
+      "source": "Europe PMC REST search (lite, pageSize 25; indexes bioRxiv/medRxiv preprints as SRC:PPR) | https://www.ebi.ac.uk/europepmc/webservices/rest/search?format=json&pageSize=25&resultType=lite&query=SRC%3APPR%20AND%20%22stimulus%20protocols%22%20AND%20%28%22neuron%20model%22%20OR%20%22neuronal%20model%22%29%20AND%20%28features%20OR%20e-features%29",
+      "query": "SRC:PPR AND \"stimulus protocols\" AND (\"neuron model\" OR \"neuronal model\") AND (features OR e-features)",
+      "result_note": "1 preprint hit (Na/K pump memory traces in Drosophila models); low relevance."
+    },
+    {
+      "source": "WebSearch (bioRxiv via site: filter)",
+      "query": "site:biorxiv.org neuron model validation NeuroML testing stimulation protocols",
+      "result_note": "NeuronUnit preprint, NeuroML-DB preprint (1.5x/3x rheobase step characterisation), NeuroML ecosystem preprint, NetPyNE, modular workflow; ASSRUnit arXiv."
+    },
+    {
+      "source": "WebSearch (bioRxiv via site: filter)",
+      "query": "site:biorxiv.org mutation testing computational neuroscience model",
+      "result_note": "NeuroML ecosystem, NeuronUnit; otherwise biological-mutation papers. No software mutation testing of neuron models."
+    },
+    {
+      "source": "WebSearch (bioRxiv via site: filter)",
+      "query": "site:biorxiv.org metamorphic testing neuron model simulation",
+      "result_note": "Modernizing NEURON, NetPyNE, NeuroML ecosystem, Sarma et al. unit-testing paper (arXiv). No metamorphic testing of neuron models."
+    },
+    {
+      "source": "WebSearch (bioRxiv via site: filter)",
+      "query": "site:biorxiv.org Open Source Brain model validation continuous testing",
+      "result_note": "OSB bioRxiv 229484 (OMV framework: tests ensure behaviour unchanged after conversion/updates, CI); HippoUnit preprint."
+    },
+    {
+      "source": "WebSearch (bioRxiv via site: filter)",
+      "query": "site:biorxiv.org conductance-based model degeneracy parameter sensitivity electrophysiological features",
+      "result_note": "Cafaro et al. 2025 degeneracy in bifurcation landscapes; higher-order interactions; morphology variability; Reva universal workflow; CA1 degeneracy preprint."
+    },
+    {
+      "source": "WebSearch (bioRxiv via site: filter)",
+      "query": "site:biorxiv.org optimal current clamp stimulus protocol design neuron model parameter identification",
+      "result_note": "Ogino et al. 2025 optimal perturbation inputs; Neuroptimus; multi-modal fitting (eCode protocols); unrolled HH conductance estimation."
+    },
+    {
+      "source": "WebSearch (bioRxiv via site: filter)",
+      "query": "site:biorxiv.org large language model agent generate neuron simulation code NEURON NeuroML",
+      "result_note": "No LLM/agent work on neuron model code found; only simulator/tool papers."
+    },
+    {
+      "source": "WebSearch (bioRxiv via site: filter)",
+      "query": "site:biorxiv.org model conversion NEURON to NeuroML behavior preserved comparison of simulators",
+      "result_note": "NeuroML 2010 (cross-simulator behaviour), NeuroML-DB (manual checking of conversions), NeuroML ecosystem, EDEN (arXiv)."
+    },
+    {
+      "source": "WebSearch (bioRxiv via site: filter)",
+      "query": "site:biorxiv.org perturbation fingerprint neuron model electrophysiology",
+      "result_note": "Optogenetic perturbation prediction, perturbome theory; nothing on stimulus-battery fingerprints for model change detection."
+    },
+    {
+      "source": "WebSearch (bioRxiv via site: filter)",
+      "query": "site:biorxiv.org automatic stimulation protocol selection model validation neuron",
+      "result_note": "Neuroptimus, LSTM estimation, neurostimulation protocol optimization (therapy). None on protocol selection for regression detection."
+    },
+    {
+      "source": "WebSearch (bioRxiv via site: filter)",
+      "query": "site:biorxiv.org neuron model semantic regression testing reproducibility simulation",
+      "result_note": "HippoUnit preprint, EXSIMO, Brian 2, neurolib, Cudone reproducibility preprint. No semantic regression method."
+    },
+    {
+      "source": "WebSearch (bioRxiv via site: filter)",
+      "query": "site:biorxiv.org ModelDB curation neuron model database reproducibility",
+      "result_note": "LLM curation for ModelDB preprint, differentiable neuron model dataset (Yeung 2025), OSB, HippoUnit, BioModels OMEX curation, NeuroML-DB."
+    },
+    {
+      "source": "WebSearch (bioRxiv via site: filter)",
+      "query": "site:biorxiv.org eFEL electrophysiology feature extraction library BluePyEfe",
+      "result_note": "ElecFeX preprint, BluePyOpt (arXiv), HippoUnit, multi-modal fitting; no standalone eFEL preprint."
+    },
+    {
+      "source": "WebSearch (bioRxiv via site: filter)",
+      "query": "site:biorxiv.org ion channel model genealogy comparison current clamp voltage clamp protocols classification of models",
+      "result_note": "ICGenealogy preprint; omnimodel preprint; Shuttleworth 2024 multi-design predictive accuracy; four ways to fit an ion channel model."
+    },
+    {
+      "source": "WebSearch (bioRxiv via site: filter)",
+      "query": "site:biorxiv.org reproducibility biophysical neuron models across simulators versions numerical differences",
+      "result_note": "Jaxley, NeuroGPU, Brian 2, NeuroML ecosystem, Cudone 2023 preprint."
+    },
+    {
+      "source": "WebSearch (bioRxiv via site: filter)",
+      "query": "site:biorxiv.org LLM computational neuroscience model building agent automated modeling",
+      "result_note": "Talk2Biomodels (LLM agent over SBML models), AIDO.Harness, Agentomics; none for neuron models."
+    },
+    {
+      "source": "WebSearch (bioRxiv via site: filter)",
+      "query": "site:biorxiv.org same neuron model different simulators discrepancies NEURON Brian NEST translation equivalence single cell",
+      "result_note": "Shimoura et al. 2018 NEST->Brian reimplementation (layer-specific firing-rate discrepancies); Brian 2; Brain Scaffold Builder simulator cross-comparison."
+    },
+    {
+      "source": "WebSearch (bioRxiv via site: filter)",
+      "query": "site:biorxiv.org hidden errors computational neuron models detected additional stimuli beyond original protocol generalization test",
+      "result_note": "No relevant hits (predictive-coding papers)."
+    },
+    {
+      "source": "Europe PMC REST (resultType=core, DOI: lookups) for metadata/abstract verification",
+      "query": "91 DOI lookups in 3 batches (dois1.txt, dois2.txt, dois3.txt) e.g. DOI:\"10.1101/665331\"",
+      "result_note": "All resolved except 10.64898/2025.12.02.691895 (not indexed); abstracts missing for Korngreen 2026 comment, Naudin 2023, Crook & Dietrich 2014 abstract, Crook et al. 2020 editorial."
+    },
+    {
+      "source": "NCBI E-utilities esearch+efetch (abstract text)",
+      "query": "10.1038/s42003-026-10561-w[doi]; 10.1007/s10827-023-00848-w[doi]",
+      "result_note": "PMID 42342835 (Korngreen 2026 Comment, abstract retrieved); PMID 36905484 (Naudin 2023, no abstract in PubMed)."
+    },
+    {
+      "source": "bioRxiv public API https://api.biorxiv.org/details/biorxiv/<doi>",
+      "query": "10.64898/2025.12.02.691895; 10.64898/2026.03.19.712861",
+      "result_note": "Yeung et al. 2025 differentiable single-neuron model dataset (not relevant enough to include); Tar et al. 2026 CA1 model validated with HippoUnit (not included)."
+    }
+  ],
+  "blocked_sources": [
+    "None blocked. PubMed E-utilities, PubMed MCP, Europe PMC REST, bioRxiv details API and WebSearch (site:biorxiv.org) all responded.",
+    "Limitation (not a block): the bioRxiv MCP tool search_preprints supports only date/category filters, with no keyword search (per its tool description), so it was not used for keyword discovery. bioRxiv keyword coverage came from WebSearch site:biorxiv.org and Europe PMC SRC:PPR.",
+    "Limitation: Europe PMC had no record for 10.64898/2025.12.02.691895 (resolved via bioRxiv API) and returned no abstract for 10.1038/s42003-026-10561-w (retrieved via NCBI efetch) or 10.1007/s10827-023-00848-w (no abstract in PubMed either)."
+  ]
+}

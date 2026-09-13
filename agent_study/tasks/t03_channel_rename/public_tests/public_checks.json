@@ -1,0 +1,18 @@
+{
+  "schema": "neurosem-public-checks/1",
+  "validate": [
+    "model/NeuroML2/cells/RS/RS.cell.nml",
+    "model/NeuroML2/cells/FS/FS.cell.nml",
+    "model/NeuroML2/cells/LTS/LTS.cell.nml",
+    "model/NeuroML2/cells/IB/IB.cell.nml"
+  ],
+  "simulation": {
+    "lems": "model/NeuroML2/cells/RS/LEMS_RS.xml",
+    "output_file": "RS.dat",
+    "v_column": 1,
+    "spike_threshold_mV": -20.0,
+    "reference": "canonical_reference.json",
+    "spike_time_abs_tol_ms": 1.0,
+    "timeout_s": 3600
+  }
+}

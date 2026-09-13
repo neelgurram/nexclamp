@@ -279,7 +279,9 @@ def aggregate(ctx: Context, refs: dict[str, RefState], outcomes: Sequence[Varian
                      "libneuroml_strict": o.libneuroml_strict, "status_h": o.status_h,
                      "n_detections_h": len(o.detections_h),
                      "n_detections_h2": "" if o.detections_h2 is None else len(o.detections_h2),
-                     "canonical_detected_h": o.canonical_detected, "detecting_protocols": ";".join(o.detecting_protocols),
+                     "canonical_detected_h": o.canonical_detected,
+                     "canonical_detected_reproducible": CANONICAL_ID in o.detecting_protocols,
+                     "detecting_protocols": ";".join(o.detecting_protocols),
                      "canonical_runs_but_battery_failed": o.canonical_runs_battery_failed,
                      "runtime_s": o.runtime_s})
     _write_rows(p / "classification.csv", rows)

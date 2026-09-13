@@ -1,0 +1,26 @@
+# Keep the Docker build context small and free of machine-specific state.
+# The image installs Java and Python packages itself; nothing local is reused.
+#
+# Rule: never exclude a repository file that a test reads. The image's default command runs the
+# whole pytest suite, so an excluded input fails CI's docker job. (.github used to be listed here
+# and broke tests/unit/test_infra_repro_files.py::test_ci_workflow_structure inside the image.)
+# tests/unit/test_infra_repro_files.py checks this list against the files the tests read.
+.git
+.venv
+venv
+.tools
+work
+**/__pycache__
+**/*.py[cod]
+**/*.egg-info
+.pytest_cache
+.ruff_cache
+.mypy_cache
+.coverage
+build
+dist
+# Bulky regenerable raw traces (their hashes are tracked in run.json files).
+results/raw/**/*.npz
+results/raw/**/*.dat
+# Reference PDFs of the specification are not needed to run anything.
+docs/handoff/*.pdf

@@ -1,0 +1,1852 @@
+{
+  "finder": "code-registries",
+  "generated": "2026-09-13",
+  "sources_assigned": [
+    "GitHub",
+    "PyPI",
+    "Zenodo"
+  ],
+  "raw_scratch_dir": "C:/Users/gurra/AppData/Local/Temp/claude/C--Users-gurra-Continuum/d876c622-d308-4d4a-bbf3-2b2374480647/scratchpad/m0/code-registries",
+  "candidates": [
+    {
+      "title": "LEMS: a language for expressing complex biological models in concise and hierarchical form and its use in underpinning NeuroML 2",
+      "authors": "Robert C. Cannon, Padraig Gleeson, Sharon Crook, Gautham Ganapathy, Boris Marin, Eugenio Piasini, et al. (7 authors per Crossref)",
+      "year": "2014",
+      "venue": "Frontiers in Neuroinformatics",
+      "url": "https://doi.org/10.3389/fninf.2014.00079",
+      "doi": "10.3389/fninf.2014.00079",
+      "kind": "paper",
+      "found_via": "DOI in README of GitHub LEMS/LEMS and NeuroML/NeuroML2; verified via Crossref works API",
+      "why_relevant": "Canonical citation for LEMS, the simulation/behaviour description language underlying NeuroML 2 that NeuroSem will parse, simulate and mutate. Reused infrastructure; no mutation, protocol battery or behavioural regression testing.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "The NeuroML ecosystem for standardized multi-scale modeling in neuroscience",
+      "authors": "Ankur Sinha, Padraig Gleeson, Bóris Marin, Salvador Dura-Bernal, Sotirios Panagiotou, Sharon Crook, et al. (11 authors per Crossref)",
+      "year": "2025",
+      "venue": "eLife",
+      "url": "https://doi.org/10.7554/eLife.95135",
+      "doi": "10.7554/eLife.95135",
+      "kind": "paper",
+      "found_via": "Crossref bibliographic query (NeuroML ecosystem); verified via Crossref works API",
+      "why_relevant": "Current canonical citation for the NeuroML 2 ecosystem (schema, libNeuroML, pyNeuroML, jNeuroML, validation and simulation tooling). Crossref abstract lists validation and simulation among ecosystem functions. Reused infrastructure, not a behavioural-drift detection method.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "libNeuroML and PyLEMS: using Python to combine procedural and declarative modeling approaches in computational neuroscience",
+      "authors": "Michael Vella, Robert C. Cannon, Sharon Crook, Andrew P. Davison, Gautham Ganapathy, Hugh P. C. Robinson, et al. (8 authors per Crossref)",
+      "year": "2014",
+      "venue": "Frontiers in Neuroinformatics",
+      "url": "https://doi.org/10.3389/fninf.2014.00038",
+      "doi": "10.3389/fninf.2014.00038",
+      "kind": "paper",
+      "found_via": "DOI in README of GitHub NeuralEnsemble/libNeuroML; verified via Crossref works API",
+      "why_relevant": "Canonical citation for libNeuroML and PyLEMS, the Python APIs NeuroSem would use to read/write and programmatically mutate NeuroML models. Infrastructure only.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "NeuroML/pyNeuroML: v1.3.22",
+      "authors": "Ankur Sinha, Padraig Gleeson, Aditya Pandey, Richard C Gerkin, Giannis Daras, Robert Vickerstaff (first creators per DataCite)",
+      "year": "2026",
+      "venue": "Zenodo (software record; metadata via DataCite API)",
+      "url": "https://github.com/NeuroML/pyNeuroML",
+      "doi": "10.5281/zenodo.5744044",
+      "kind": "software",
+      "found_via": "GitHub org:NeuroML search + DOI badge in pyNeuroML README; DataCite API; PyPI JSON (pyneuroml 1.3.22)",
+      "why_relevant": "pyNeuroML is the Python entry point for validating, simulating and translating NeuroML/LEMS models that NeuroSem plans to reuse. DataCite record: version v1.3.22, rights lgpl-3.0; PyPI JSON latest 1.3.22; GitHub license LGPL-3.0. Provides execution and validation, not mutation-calibrated perturbation testing.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "NeuroML/jNeuroML (Java command line tool and library to validate, simulate, translate and analyse NeuroML 2 models)",
+      "authors": "Padraig Gleeson, Ankur Sinha, Russell Jarvis, Finn Krewer (first creators per DataCite)",
+      "year": "2012",
+      "venue": "GitHub; Zenodo release records (e.g. v0.14.0, DataCite year 2025)",
+      "url": "https://github.com/NeuroML/jNeuroML",
+      "doi": "10.5281/zenodo.593108",
+      "kind": "software",
+      "found_via": "GitHub org:NeuroML validation search; DataCite Zenodo query jNeuroML",
+      "why_relevant": "Planned pilot simulator (handoff: jNeuroML only). GitHub description covers validation, simulation, translation to other simulators. Translation outputs are exactly the kind of transformation whose behaviour preservation NeuroSem would test. [GitHub API: created 2012-12-18, license LGPL-3.0; DataCite DOI 10.5281/zenodo.593108 titled NeuroML/jNeuroML: v0.14.0]",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Open Source Brain: A Collaborative Resource for Visualizing, Analyzing, Simulating, and Developing Standardized Models of Neurons and Circuits",
+      "authors": "Padraig Gleeson, Matteo Cantarelli, Boris Marin, Adrian Quintana, Matt Earnshaw, Sadra Sadeh, et al. (27 authors per Crossref)",
+      "year": "2019",
+      "venue": "Neuron",
+      "url": "https://doi.org/10.1016/j.neuron.2019.05.019",
+      "doi": "10.1016/j.neuron.2019.05.019",
+      "kind": "paper",
+      "found_via": "osb-model-validation README links the OSB paper; DOI resolved by Crossref bibliographic query and verified via Crossref works API",
+      "why_relevant": "Canonical citation for Open Source Brain; per OMV README, OMV was used to test the 30+ NeuroML and PyNN models described in this paper. Continuous automated model testing across simulators is the closest community infrastructure to NeuroSem regression testing, but it checks fixed expected behaviours rather than mutation-calibrated multi-protocol fingerprints.",
+      "estimated_closeness": 3
+    },
+    {
+      "title": "OSB Model Validation (OMV): tools for automated model validation in Open Source Brain projects",
+      "authors": "OpenSourceBrain (GitHub owner; individual authors not verified)",
+      "year": "2014",
+      "venue": "GitHub",
+      "url": "https://github.com/OpenSourceBrain/osb-model-validation",
+      "doi": "",
+      "kind": "software",
+      "found_via": "GitHub search osb-model-validation; PyPI JSON OSBModelValidation 0.4.0",
+      "why_relevant": "OMV runs declarative tests (OMT/MEP files) of model behaviour on many simulation engines under CI, per its README. Directly overlaps NeuroSem on executable regression tests of NeuroML models and cross-simulator checks; no controlled mutants, protocol-battery optimisation, tolerance calibration by refinement, or held-out evaluation found in README. PyPI: OSBModelValidation 0.4.0, license LGPL-3.0-only. [GitHub API: created 2014-04-16, last push 2026-08-17, license LGPL-3.0]",
+      "estimated_closeness": 3
+    },
+    {
+      "title": "HH model with OSB model validation (LEMS/NeuroML2, NEURON and GENESIS implementations)",
+      "authors": "borismarin (GitHub owner; individual authors not verified)",
+      "year": "2014",
+      "venue": "GitHub",
+      "url": "https://github.com/borismarin/hh-testing",
+      "doi": "",
+      "kind": "software",
+      "found_via": "GitHub search LEMS test",
+      "why_relevant": "Example of OMV-based CI comparing one model implemented in three simulators against shared expectations: a small cross-simulator behaviour-preservation check of the kind NeuroSem generalises. Single model, fixed tests. [GitHub API: created 2014-04-14, last push 2017-04-05, license none]",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Collaborative infrastructure for test-driven scientific model validation",
+      "authors": "Cyrus Omar, Jonathan Aldrich, Richard C. Gerkin",
+      "year": "2014",
+      "venue": "Companion Proceedings of the 36th International Conference on Software Engineering",
+      "url": "https://doi.org/10.1145/2591062.2591129",
+      "doi": "10.1145/2591062.2591129",
+      "kind": "paper",
+      "found_via": "SciUnit README links the ICSE 2014 conference paper; DOI via Crossref bibliographic query, verified via Crossref works API",
+      "why_relevant": "Canonical citation for SciUnit, a framework for executable, data-driven model validation tests that NeuroSem may reuse. Validates models against data, not edits against a reference model.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "NeuronUnit: A package for data-driven validation of neuron models using SciUnit",
+      "authors": "Richard C. Gerkin, Justas Birgiolas, Russell J. Jarvis, Cyrus Omar, Sharon M. Crook",
+      "year": "2019",
+      "venue": "bioRxiv / posted content",
+      "url": "https://doi.org/10.1101/665331",
+      "doi": "10.1101/665331",
+      "kind": "preprint",
+      "found_via": "GitHub search neuronunit / sciunit neuron; DOI via Crossref bibliographic query, verified via Crossref works API",
+      "why_relevant": "Citable description of NeuronUnit (GitHub scidash/neuronunit: data-driven validation of neuron and ion channel models using SciUnit). Suites of feature-level validation tests for neuron models overlap with NeuroSem feature tests; target is agreement with experimental data rather than detecting behavioural drift after transformation. GitHub repo has no detected license (API: none); last push 2021-07-18. PyPI neuronunit 0.1.8.2.",
+      "estimated_closeness": 3
+    },
+    {
+      "title": "eFEL: electrophysiology feature extraction library",
+      "authors": "Darshan Mandge, Anıl Tuncel, Aurélien Jaquier, Ilkan Kilic, Tanguy Damart, Henry Markram, et al. (8 authors per Crossref)",
+      "year": "2026",
+      "venue": "Bioinformatics",
+      "url": "https://doi.org/10.1093/bioinformatics/btag328",
+      "doi": "10.1093/bioinformatics/btag328",
+      "kind": "paper",
+      "found_via": "DOI in README of GitHub openbraininstitute/eFEL; verified via Crossref works API",
+      "why_relevant": "Journal citation for eFEL, the feature extractor NeuroSem plans to reuse for spike count, latency, AP shape, adaptation and related features. Feature extraction only.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "eFEL",
+      "authors": "Ranjan, Rajnish, Van Geit, Werner, Moor, Ruben, Rössert, Christian, Riquelme, Juan Luis, Damart, Tanguy (first creators per DataCite)",
+      "year": "2024",
+      "venue": "Zenodo (software record; metadata via DataCite API)",
+      "url": "https://github.com/openbraininstitute/eFEL",
+      "doi": "10.5281/zenodo.593869",
+      "kind": "software",
+      "found_via": "GitHub search efel electrophysiology; CITATION.cff in BlueBrain/eFEL; DataCite API; PyPI JSON efel 5.7.34",
+      "why_relevant": "eFEL software record. Concept DOI from BlueBrain/eFEL CITATION.cff; DataCite rights lgpl-3.0; newest version DOI seen 10.5281/zenodo.19604220 (version 5.7.34), matching PyPI efel 5.7.34. Development moved from BlueBrain to openbraininstitute on GitHub (GitHub license field NOASSERTION). Version and feature names must be frozen by NeuroSem.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "HippoUnit: A software tool for the automated testing and systematic comparison of detailed models of hippocampal neurons based on electrophysiological data",
+      "authors": "Sára Sáray, Christian A. Rössert, Shailesh Appukuttan, Rosanna Migliore, Paola Vitale, Carmen A. Lupascu, et al. (13 authors per Crossref)",
+      "year": "2021",
+      "venue": "PLOS Computational Biology",
+      "url": "https://doi.org/10.1371/journal.pcbi.1008114",
+      "doi": "10.1371/journal.pcbi.1008114",
+      "kind": "paper",
+      "found_via": "GitHub search hippounit (KaliLab/hippounit README DOI); verified via Crossref works API; PyPI hippounit 1.4.1",
+      "why_relevant": "Automated test suite that systematically compares many CA1 pyramidal cell models on multiple somatic and dendritic properties against electrophysiological data (Crossref abstract). Shares the multi-test, multi-model comparison framing; no controlled mutants, tolerance calibration, protocol selection or held-out mutation families. GitHub KaliLab/hippounit license BSD-3-Clause.",
+      "estimated_closeness": 3
+    },
+    {
+      "title": "NetworkUnit: a SciUnit library for validation testing of spiking neural network models",
+      "authors": "INM-6 (GitHub owner; individual authors not verified)",
+      "year": "2017",
+      "venue": "GitHub",
+      "url": "https://github.com/INM-6/networkunit",
+      "doi": "",
+      "kind": "software",
+      "found_via": "GitHub search sciunit; PyPI JSON networkunit 0.2.2",
+      "why_relevant": "SciUnit-based validation including model-to-model comparison for spiking networks (README flowchart references model-to-model). Network level rather than single-cell edits; no mutation or protocol optimisation. [GitHub API: created 2017-11-14, last push 2024-08-01, license BSD-3-Clause]",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "BluePyOpt: Leveraging Open Source Software and Cloud Infrastructure to Optimise Model Parameters in Neuroscience",
+      "authors": "Werner Van Geit, Michael Gevaert, Giuseppe Chindemi, Christian Rössert, Jean-Denis Courcol, Eilif B. Muller, et al. (9 authors per Crossref)",
+      "year": "2016",
+      "venue": "Frontiers in Neuroinformatics",
+      "url": "https://doi.org/10.3389/fninf.2016.00017",
+      "doi": "10.3389/fninf.2016.00017",
+      "kind": "paper",
+      "found_via": "DOI in README of GitHub openbraininstitute/BluePyOpt; verified via Crossref works API; PyPI bluepyopt 1.14.25",
+      "why_relevant": "Canonical BluePyOpt citation. Multi-protocol, feature-based fitness evaluation of neuron models (protocol plus eFEL features) is a reusable pattern for NeuroSem batteries; purpose is parameter optimisation, not regression detection. Software DOI in README: 10.5281/zenodo.19630564 (DataCite version 1.14.25).",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "BluePyEModel",
+      "authors": "Mandge, Darshan, Jaquier, Aurélien, Damart, Tanguy Pierre Louis, Kilic, Ilkan, Tuncel, Anil, Arnaudon, Alexis (first creators per DataCite)",
+      "year": "2026",
+      "venue": "Zenodo (software record; metadata via DataCite API)",
+      "url": "https://github.com/openbraininstitute/BluePyEModel",
+      "doi": "10.5281/zenodo.19593077",
+      "kind": "software",
+      "found_via": "GitHub search bluepyemodel; CITATION.cff; DataCite API; PyPI JSON bluepyemodel 1.0.47 and site:pypi.org WebSearch",
+      "why_relevant": "Electrical model building pipeline covering feature extraction from electrophysiology, parameter optimisation and model validation on top of eFEL, BluePyEfe and BluePyOpt (PyPI description). Closest reusable source of protocol/feature battery definitions; aims at fitting and validating e-models against data, not detecting silent drift after transformations. DataCite version 1.0.47.",
+      "estimated_closeness": 3
+    },
+    {
+      "title": "A universal workflow for creation, validation, and generalization of detailed neuronal models",
+      "authors": "Maria Reva, Christian Rössert, Alexis Arnaudon, Tanguy Damart, Darshan Mandge, Anıl Tuncel, et al. (9 authors per Crossref)",
+      "year": "2023",
+      "venue": "Patterns",
+      "url": "https://doi.org/10.1016/j.patter.2023.100855",
+      "doi": "10.1016/j.patter.2023.100855",
+      "kind": "paper",
+      "found_via": "DOI in README of GitHub openbraininstitute/BluePyEModel; verified via Crossref works API (no abstract in Crossref)",
+      "why_relevant": "Workflow paper for creation, validation and generalization of detailed neuronal models (title per Crossref). Generalization of validated models is conceptually adjacent to NeuroSem held-out model evaluation; content beyond title not retrieved here, so overlap depth is unverified.",
+      "estimated_closeness": 3
+    },
+    {
+      "title": "BluePyEfe",
+      "authors": "Rössert, Christian, Van Geit, Werner, Iavarone, Elisabetta, Bologna, Luca Leonardo, Damart, Tanguy, Jaquier, Aurélien (first creators per DataCite)",
+      "year": "2026",
+      "venue": "Zenodo (software record; metadata via DataCite API)",
+      "url": "https://github.com/openbraininstitute/BluePyEfe",
+      "doi": "10.5281/zenodo.19591682",
+      "kind": "software",
+      "found_via": "GitHub search bluepyefe; CITATION.cff; DataCite API; PyPI bluepyefe 2.3.63",
+      "why_relevant": "E-feature extraction across protocols from experimental traces (BluePyEfe). Multi-protocol feature targets; no mutation or selection. DataCite version 2.3.63.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "IPFX: intrinsic cell features from intracellular electrophysiology data",
+      "authors": "AllenInstitute (GitHub owner; individual authors not verified)",
+      "year": "2017",
+      "venue": "GitHub",
+      "url": "https://github.com/AllenInstitute/ipfx",
+      "doi": "",
+      "kind": "software",
+      "found_via": "GitHub search ipfx electrophysiology; PyPI JSON ipfx 2.1.2",
+      "why_relevant": "Alternative feature extractor tied to Allen standardized current-clamp stimulus sets; relevant to NeuroSem feature/protocol definitions and to distinguishing standardized protocol batteries from optimised ones. No mutation or regression framing. [GitHub API: created 2017-12-10, last push 2026-08-14, license NOASSERTION]",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "pyelectro: analysis of electrophysiology in Python",
+      "authors": "NeuralEnsemble (GitHub owner; individual authors not verified)",
+      "year": "2013",
+      "venue": "GitHub",
+      "url": "https://github.com/NeuralEnsemble/pyelectro",
+      "doi": "",
+      "kind": "software",
+      "found_via": "GitHub search pyelectro; PyPI JSON pyelectro 0.2.7",
+      "why_relevant": "NeuroML-community trace analysis library (spike detection, feature analysis) used with neurotune; alternative or complement to eFEL. [GitHub API: created 2013-08-26, last push 2026-07-24, license BSD-3-Clause]",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Neurotune: fitting/optimization of NeuroML models",
+      "authors": "NeuralEnsemble (GitHub owner; individual authors not verified)",
+      "year": "2012",
+      "venue": "GitHub",
+      "url": "https://github.com/NeuralEnsemble/neurotune",
+      "doi": "",
+      "kind": "software",
+      "found_via": "GitHub search neurotune; PyPI JSON neurotune 0.2.6",
+      "why_relevant": "Feature-target optimisation of NeuroML models; shows existing NeuroML tooling for feature-based comparison of model outputs, without mutation-based test selection. [GitHub API: created 2012-07-16, last push 2026-07-21, license BSD-3-Clause]",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "NeuroML-DB: Sharing and characterizing data-driven neuroscience models described in NeuroML",
+      "authors": "Justas Birgiolas, Vergil Haynes, Padraig Gleeson, Richard C. Gerkin, Suzanne W. Dietrich, Sharon Crook",
+      "year": "2023",
+      "venue": "PLOS Computational Biology",
+      "url": "https://doi.org/10.1371/journal.pcbi.1010941",
+      "doi": "10.1371/journal.pcbi.1010941",
+      "kind": "paper",
+      "found_via": "GitHub search NeuroML-DB (scrook/neuroml-db); DOI via Crossref bibliographic query, verified via Crossref works API",
+      "why_relevant": "NeuroML-DB stores 1,500+ models translated to NeuroML and lets users assess stored model electrophysiology properties, with a database-scale analysis of model similarity in property/feature space (Crossref abstract). Overlaps on large-scale electrophysiological characterization of NeuroML models and on translation; does not address controlled mutations, silent drift, tolerance calibration or protocol-battery optimisation.",
+      "estimated_closeness": 3
+    },
+    {
+      "title": "Mapping the function of neuronal ion channels in model and experiment",
+      "authors": "William F Podlaski, Alexander Seeholzer, Lukas N Groschner, Gero Miesenböck, Rajnish Ranjan, Tim P Vogels",
+      "year": "2017",
+      "venue": "eLife",
+      "url": "https://doi.org/10.7554/eLife.22152",
+      "doi": "10.7554/eLife.22152",
+      "kind": "paper",
+      "found_via": "GitHub search ion channel genealogy (OpenSourceBrain/IonChannelGenealogyShowcase); DOI via Crossref bibliographic query, verified via Crossref works API",
+      "why_relevant": "ICGenealogy classifies 2378 NEURON ion channel models into clusters using metadata and responses to a fixed set of voltage-clamp protocols (Crossref abstract): a protocol-response fingerprint for model comparison at channel level. Partial overlap with perturbation fingerprints; no mutants, current-clamp cell-level battery, tolerance calibration or optimised selection.",
+      "estimated_closeness": 3
+    },
+    {
+      "title": "An ion channel omnimodel for standardized biophysical neuron modelling",
+      "authors": "Chaitanya Chintaluri, William Podlaski, Panos A. Bozelos, Pedro J Gonçalves, Jan-Matthis Lueckmann, Jakob H. Macke, et al. (7 authors per Crossref)",
+      "year": "2025",
+      "venue": "bioRxiv / posted content",
+      "url": "https://doi.org/10.1101/2025.10.03.680368",
+      "doi": "10.1101/2025.10.03.680368",
+      "kind": "preprint",
+      "found_via": "Crossref bibliographic query (Channelpedia / ion channel genealogy); verified via Crossref works API",
+      "why_relevant": "Re-expresses 3,000+ database channel models in one standard Hodgkin-Huxley form and checks that responses to voltage-clamp protocols are similar or identical (Crossref abstract). A large-scale behaviour-preservation check of a model translation, at channel level and with fixed protocols; relevant to NeuroSem valid-transformation framing.",
+      "estimated_closeness": 3
+    },
+    {
+      "title": "Ion Channel Genealogy Visualizer (source-code similarity across ModelDB ion channel models)",
+      "authors": "bozelosp (GitHub owner; individual authors not verified)",
+      "year": "2026",
+      "venue": "GitHub",
+      "url": "https://github.com/bozelosp/ion-channel-genealogy-viz",
+      "doi": "",
+      "kind": "software",
+      "found_via": "GitHub search ion channel genealogy",
+      "why_relevant": "Traces reuse and modification of channel model source files across publications via code similarity and diffs: evidence that model edits propagate, but compares code, not behaviour. [GitHub API: created 2026-09-05, last push 2026-09-05, license none]",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Numerical Validation for Cell-Matched Neuronal Model Replay",
+      "authors": "G. Blake Pierpoint, Yichen Liu (per DataCite and CITATION.cff)",
+      "year": "2026",
+      "venue": "Zenodo software record (v0.2.1) and GitHub blakepi/neuronal-model-replay-validation",
+      "url": "https://github.com/blakepi/neuronal-model-replay-validation",
+      "doi": "10.5281/zenodo.21483417",
+      "kind": "software",
+      "found_via": "GitHub search neuron model validation; DOI badge in README; DataCite API (also surfaced by DataCite Zenodo query neuronal model replay validation)",
+      "why_relevant": "Recent (repo created 2026-07-22, MIT) benchmark testing stimulus-delivery fidelity, equilibration and outcome eligibility when replaying Allen stimuli into neuron models. Its methodology doc uses solver-step refinement (0.025 down to 0.0025 ms), explicit material-change criteria on spike count, event timing and steady-state voltage, and non-evaluable outcome codes that are never converted to zero. Strong overlap with NeuroSem numerical-refinement tolerances and undefined-feature handling; no mutation operators, protocol selection or held-out mutation families. Accompanying manuscript is anonymous; no paper DOI found.",
+      "estimated_closeness": 3
+    },
+    {
+      "title": "Loss or gain of function? Effects of ion channel mutations on neuronal firing depend on the neuron type",
+      "authors": "Nils A. Koch, Lukas Sonnenberg, Ulrike B. S. Hedrich, Stephan Lauxmann, Jan Benda",
+      "year": "2023",
+      "venue": "Frontiers in Neurology",
+      "url": "https://doi.org/10.3389/fneur.2023.1194811",
+      "doi": "10.3389/fneur.2023.1194811",
+      "kind": "paper",
+      "found_via": "GitHub search neuron model mutation / channel mutation neuron firing (nkoch1/LOFGOF2023, MIT); verified via Crossref works API",
+      "why_relevant": "Systematically perturbs ionic current properties across a diverse set of single-compartment conductance-based models and shows firing outcomes depend on model type (Crossref abstract). Closest analogue found of a controlled biophysical perturbation family evaluated across many models; aims at channelopathy interpretation, not software regression detection or protocol selection.",
+      "estimated_closeness": 3
+    },
+    {
+      "title": "hnn-jax: differentiable JAX reimplementation of the HNN forward model validated against an hnn_core (NEURON) test oracle",
+      "authors": "m9h (GitHub owner; individual authors not verified)",
+      "year": "2026",
+      "venue": "GitHub",
+      "url": "https://github.com/m9h/hnn-jax",
+      "doi": "",
+      "kind": "software",
+      "found_via": "GitHub search neuron model validation",
+      "why_relevant": "Treats a translated neuroscience simulator as a program under test: forward differential oracle across a Sobol-dense parameter space, finite-difference gradient oracle, and metamorphic/property oracles (zero-drive quiescence, superposition, monotonicity) in CI, per README. Overlaps NeuroSem on behaviour preservation under translation and metamorphic testing in neuroscience simulation; network/dipole level, no mutants or protocol selection. [GitHub API: created 2026-07-27, last push 2026-08-06, license MIT]",
+      "estimated_closeness": 3
+    },
+    {
+      "title": "A Semi-Analytical Verification Framework for Pospischil-Type Cortical Neuron Models: Parameter Estimation, Independent Cross-Validation, and a Mouse-Human Comparison",
+      "authors": "Vaitheeswaran Gnanaraj",
+      "year": "2026",
+      "venue": "Springer Science and Business Media LLC",
+      "url": "https://doi.org/10.21203/rs.3.rs-10978243/v1",
+      "doi": "10.21203/rs.3.rs-10978243/v1",
+      "kind": "preprint",
+      "found_via": "Crossref bibliographic query (cross-simulator comparison neuron models NeuroML); verified via Crossref works API",
+      "why_relevant": "Cross-checking two independent solvers for a Pospischil-type conductance model fitted to Allen data exposed a unit error (a factor of 1000 in the voltage equation) in the numerical pipeline (Crossref abstract). Concrete example of a silent unit fault in a conductance-based model workflow, the fault class NeuroSem targets; single model, single author, not a testing framework.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "DendroTweaks, an interactive approach for unraveling dendritic dynamics",
+      "authors": "Roman Makarov, Spyridon Chavlis, Panayiota Poirazi",
+      "year": "2025",
+      "venue": "eLife",
+      "url": "https://doi.org/10.7554/eLife.103324",
+      "doi": "10.7554/eLife.103324",
+      "kind": "paper",
+      "found_via": "GitHub search neuron model validation (Poirazi-Lab/DendroTweaks, MPL-2.0); DOI in README verified via Crossref works API; PyPI dendrotweaks 0.5.2",
+      "why_relevant": "Toolbox for creating and validating single-cell biophysical models with active dendrites (GitHub/PyPI description). Adjacent model-validation tooling; not transformation testing.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "NeuroForgeAI: toolkit for building optimized biophysical neuron models from recordings",
+      "authors": "rhkrohan (GitHub owner; individual authors not verified)",
+      "year": "2025",
+      "venue": "GitHub",
+      "url": "https://github.com/rhkrohan/NeuroForgeAI",
+      "doi": "",
+      "kind": "software",
+      "found_via": "GitHub search neuron model validation",
+      "why_relevant": "README describes cross-validation on independent stimulus protocols, local perturbation sensitivity analysis, robustness testing, and advanced stimulation tests (ramps, bursts, noise). Combines multi-protocol validation with parameter perturbation in a fitting workflow; small unlicensed student-scale repo, no mutation testing or protocol selection. [GitHub API: created 2025-06-30, last push 2025-06-30, license none]",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "PyNNShowcase: testing interactions/conversions between NeuroML and PyNN",
+      "authors": "OpenSourceBrain (GitHub owner; individual authors not verified)",
+      "year": "2016",
+      "venue": "GitHub",
+      "url": "https://github.com/OpenSourceBrain/PyNNShowcase",
+      "doi": "",
+      "kind": "software",
+      "found_via": "GitHub search org:OpenSourceBrain test",
+      "why_relevant": "Community repository for testing model conversions between NeuroML and PyNN simulators; conversion-equivalence testing is part of NeuroSem valid-transformation scope. [GitHub API: created 2016-03-16, last push 2026-08-17, license none]",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "AllenInstituteNeuroML: testing interaction between Allen Institute models and NeuroML",
+      "authors": "OpenSourceBrain (GitHub owner; individual authors not verified)",
+      "year": "2014",
+      "venue": "GitHub",
+      "url": "https://github.com/OpenSourceBrain/AllenInstituteNeuroML",
+      "doi": "",
+      "kind": "software",
+      "found_via": "GitHub search org:OpenSourceBrain test",
+      "why_relevant": "Converted Allen cell models in NeuroML with tests; a potential source of reference models with standardized-stimulus provenance and an example of conversion checking. [GitHub API: created 2014-08-26, last push 2026-05-19, license NOASSERTION]",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "mod2neuroml: pipelines for generating NeuroML2/LEMS from NEURON mod files",
+      "authors": "NeuroML (GitHub owner; individual authors not verified)",
+      "year": "2017",
+      "venue": "GitHub",
+      "url": "https://github.com/NeuroML/mod2neuroml",
+      "doi": "",
+      "kind": "software",
+      "found_via": "GitHub search org:NeuroML NeuroML2",
+      "why_relevant": "Automated NMODL-to-NeuroML translation: a transformation type whose semantic preservation NeuroSem could test. [GitHub API: created 2017-08-30, last push 2017-08-30, license none]",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "mod2nml: NMODL to NeuroML language translator",
+      "authors": "ninadakolekar (GitHub owner; individual authors not verified)",
+      "year": "2018",
+      "venue": "GitHub",
+      "url": "https://github.com/ninadakolekar/mod2nml",
+      "doi": "",
+      "kind": "software",
+      "found_via": "GitHub search topic:neuroml",
+      "why_relevant": "Another NMODL-to-NeuroML translator (archived repo); same relevance as mod2neuroml. [GitHub API: created 2018-11-05, last push 2019-10-03, license none]",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Neuro-Klea: Knowledge vaLidated Expert AI assistant for neuroscience",
+      "authors": "NeuroML (GitHub owner; individual authors not verified)",
+      "year": "2025",
+      "venue": "GitHub",
+      "url": "https://github.com/NeuroML/neuroklea",
+      "doi": "",
+      "kind": "software",
+      "found_via": "GitHub search org:NeuroML validation",
+      "why_relevant": "AI assistant from the NeuroML organisation with a general-purpose agent with coding capabilities, RAG, and an MCP server for NeuroML (README). Evidence that AI-assisted NeuroML model editing is emerging, relevant to NeuroSem AI-transformation case study; no behavioural drift testing described in README. [GitHub API: created 2025-08-07, last push 2026-09-11, license GPL-3.0]",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "MitralSuite: validation of olfactory bulb mitral cell models with NeuroElectro data using NeuronUnit",
+      "authors": "JustasB (GitHub owner; individual authors not verified)",
+      "year": "2016",
+      "venue": "GitHub",
+      "url": "https://github.com/JustasB/MitralSuite",
+      "doi": "",
+      "kind": "software",
+      "found_via": "GitHub search neuronunit",
+      "why_relevant": "Applied NeuronUnit suite comparing multiple published cell models on electrophysiological properties; data-validation, not transformation testing. [GitHub API: created 2016-05-20, last push 2016-07-03, license MIT]",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "netpyneunit: SciUnit tests for NetPyNE models",
+      "authors": "lakesare (GitHub owner; individual authors not verified)",
+      "year": "2021",
+      "venue": "GitHub",
+      "url": "https://github.com/lakesare/netpyneunit",
+      "doi": "",
+      "kind": "software",
+      "found_via": "GitHub search sciunit",
+      "why_relevant": "SciUnit test integration for NetPyNE models; shows executable model-test tooling beyond NeuroML. [GitHub API: created 2021-06-04, last push 2022-05-12, license MIT]",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "EDEN: A High-Performance, General-Purpose, NeuroML-Based Neural Simulator",
+      "authors": "Sotirios Panagiotou, Harry Sidiropoulos, Dimitrios Soudris, Mario Negrello, Christos Strydis",
+      "year": "2022",
+      "venue": "Frontiers in Neuroinformatics",
+      "url": "https://doi.org/10.3389/fninf.2022.724336",
+      "doi": "10.3389/fninf.2022.724336",
+      "kind": "paper",
+      "found_via": "Crossref bibliographic query (cross-simulator comparison neuron models NeuroML); verified via Crossref works API; PyPI eden-simulator seen in site:pypi.org WebSearch",
+      "why_relevant": "EDEN is a NeuroML-based simulator; OSB EDENShowcase (GitHub) tests it with NeuroML models. Candidate for optional cross-simulator transformations; infrastructure only.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Usability and functionality of NeuroML description language evaluated using three distinct spiking neuron models",
+      "authors": "Lehtimäki Mikko, Linne Marja-Leena",
+      "year": "2014",
+      "venue": "Frontiers in Neuroinformatics",
+      "url": "https://doi.org/10.3389/conf.fninf.2014.18.00005",
+      "doi": "10.3389/conf.fninf.2014.18.00005",
+      "kind": "paper",
+      "found_via": "Crossref bibliographic query (reproducibility neuron model conversion NEURON NeuroML); verified via Crossref works API",
+      "why_relevant": "Conference abstract evaluating NeuroML usability using three spiking neuron models (title per Crossref); likely touches reimplementation fidelity, content not retrieved, overlap unverified.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Improving the Efficacy of Testing Scientific Software: Insights from Mutation Testing",
+      "authors": "Kris Roker, Upulee Kanewala",
+      "year": "2024",
+      "venue": "2024 IEEE International Conference on Software Testing, Verification and Validation Workshops (ICSTW)",
+      "url": "https://doi.org/10.1109/icstw60967.2024.00056",
+      "doi": "10.1109/icstw60967.2024.00056",
+      "kind": "paper",
+      "found_via": "Crossref bibliographic query (mutation testing scientific simulation software); verified via Crossref works API (no abstract)",
+      "why_relevant": "Mutation testing applied to scientific software (IEEE ICST workshops 2024). Generic prior art that NeuroSem must not claim: mutation testing of scientific code; not neuron-model semantics or protocol batteries.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "An application of metamorphic testing for testing scientific software",
+      "authors": "Junhua Ding, Dongmei Zhang, Xin-Hua Hu",
+      "year": "2016",
+      "venue": "Proceedings of the 1st International Workshop on Metamorphic Testing",
+      "url": "https://doi.org/10.1145/2896971.2896981",
+      "doi": "10.1145/2896971.2896981",
+      "kind": "paper",
+      "found_via": "Crossref bibliographic query (metamorphic testing scientific simulation software); verified via Crossref works API",
+      "why_relevant": "Metamorphic testing of scientific software; generic prior art for metamorphic testing claims.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Predicting metamorphic relations for testing scientific software: a machine learning approach using graph kernels",
+      "authors": "Upulee Kanewala, James M. Bieman, Asa Ben‐Hur",
+      "year": "2015",
+      "venue": "Software Testing, Verification and Reliability",
+      "url": "https://doi.org/10.1002/stvr.1594",
+      "doi": "10.1002/stvr.1594",
+      "kind": "paper",
+      "found_via": "Crossref bibliographic query (metamorphic testing scientific simulation software); verified via Crossref works API",
+      "why_relevant": "Predicting metamorphic relations for scientific software; generic prior art on test-oracle construction for scientific code.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "An Empirical Study of Greedy Test Suite Minimization Techniques Using Mutation Coverage",
+      "authors": "Seema Jehan, Franz Wotawa",
+      "year": "2023",
+      "venue": "IEEE Access",
+      "url": "https://doi.org/10.1109/access.2023.3289073",
+      "doi": "10.1109/access.2023.3289073",
+      "kind": "paper",
+      "found_via": "Crossref bibliographic query (test suite minimization greedy set cover mutation); verified via Crossref works API",
+      "why_relevant": "Greedy test-suite minimisation using mutation coverage (IEEE Access). Methodological prior art for NeuroSem greedy maximum-coverage protocol selection over a mutant-by-test detection matrix; generic software, no neuroscience.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Test Suite Reduction by Mutation Testing Mapped to Set Cover Problem",
+      "authors": "Nishtha Jatana, Bharti Suri, Prateek Kumar, Bimlesh Wadhwa",
+      "year": "2016",
+      "venue": "Proceedings of the Second International Conference on Information and Communication Technology for Competitive Strategies",
+      "url": "https://doi.org/10.1145/2905055.2905094",
+      "doi": "10.1145/2905055.2905094",
+      "kind": "paper",
+      "found_via": "Crossref bibliographic query (test suite minimization greedy set cover mutation); verified via Crossref works API",
+      "why_relevant": "Test-suite reduction by mapping mutation testing to set cover; same methodological precedent as above.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Optimal experiment design for practical parameter identifiability and model discrimination",
+      "authors": "Yue Liu, Philip K. Maini, Ruth E. Baker",
+      "year": "2026",
+      "venue": "Mathematical Biosciences",
+      "url": "https://doi.org/10.1016/j.mbs.2026.109710",
+      "doi": "10.1016/j.mbs.2026.109710",
+      "kind": "paper",
+      "found_via": "Crossref bibliographic query (optimal stimulus protocol design neuron model parameter identifiability); verified via Crossref works API",
+      "why_relevant": "Optimal experiment design for parameter identifiability and model discrimination (Mathematical Biosciences 2026). Adjacent to automatic stimulation-protocol selection for discriminating models; not neuron-specific per title, not mutation-based.",
+      "estimated_closeness": 2
+    }
+  ],
+  "queries_run": [
+    {
+      "source": "GitHub REST search/repositories (via authenticated gh api) [handoff term]",
+      "query": "conductance neuron model metamorphic testing",
+      "result_note": "0 results"
+    },
+    {
+      "source": "GitHub REST search/repositories (via authenticated gh api) [handoff term]",
+      "query": "NeuroML mutation testing",
+      "result_note": "0 results"
+    },
+    {
+      "source": "GitHub REST search/repositories (via authenticated gh api) [handoff term]",
+      "query": "neuron model semantic regression",
+      "result_note": "1 hit, irrelevant (Parkinson ML prediction)"
+    },
+    {
+      "source": "GitHub REST search/repositories (via authenticated gh api) [handoff term]",
+      "query": "behavioral preservation neuronal model conversion",
+      "result_note": "0 results"
+    },
+    {
+      "source": "GitHub REST search/repositories (via authenticated gh api) [handoff term]",
+      "query": "perturbation fingerprint neuron model",
+      "result_note": "0 results"
+    },
+    {
+      "source": "GitHub REST search/repositories (via authenticated gh api) [handoff term]",
+      "query": "automatic stimulation protocol selection model validation",
+      "result_note": "0 results"
+    },
+    {
+      "source": "GitHub REST search/repositories (via authenticated gh api) [handoff term]",
+      "query": "mutation testing computational neuroscience",
+      "result_note": "0 results"
+    },
+    {
+      "source": "GitHub REST search/repositories (via authenticated gh api) [handoff term]",
+      "query": "AI coding agent neuron simulation",
+      "result_note": "0 results"
+    },
+    {
+      "source": "GitHub REST search/repositories (via authenticated gh api)",
+      "query": "metamorphic testing neuron",
+      "result_note": "0 results"
+    },
+    {
+      "source": "GitHub REST search/repositories (via authenticated gh api)",
+      "query": "metamorphic testing simulation",
+      "result_note": "3 hits: generic MT handlers for drone/MD simulations (khvilaboa/mmpy etc.); none neuroscience"
+    },
+    {
+      "source": "GitHub REST search/repositories (via authenticated gh api)",
+      "query": "metamorphic testing scientific software",
+      "result_note": "0 results"
+    },
+    {
+      "source": "GitHub REST search/repositories (via authenticated gh api)",
+      "query": "mutation testing neuroscience",
+      "result_note": "0 results"
+    },
+    {
+      "source": "GitHub REST search/repositories (via authenticated gh api)",
+      "query": "mutation testing scientific simulation",
+      "result_note": "0 results"
+    },
+    {
+      "source": "GitHub REST search/repositories (via authenticated gh api)",
+      "query": "NeuroML mutation",
+      "result_note": "0 results"
+    },
+    {
+      "source": "GitHub REST search/repositories (via authenticated gh api)",
+      "query": "neuron model mutation",
+      "result_note": "5 hits; relevant only nkoch1/LOFGOF2023 (ion channel mutation effects across neuron models) and a ModelDB NaV1.1 mutation model (biological mutations, not software mutants)"
+    },
+    {
+      "source": "GitHub REST search/repositories (via authenticated gh api)",
+      "query": "neuron model regression test",
+      "result_note": "5 hits, all ANN/ML projects; none relevant"
+    },
+    {
+      "source": "GitHub REST search/repositories (via authenticated gh api)",
+      "query": "neuron model validation",
+      "result_note": "40 hits; relevant: scidash/neuronunit, Poirazi-Lab/DendroTweaks, blakepi/neuronal-model-replay-validation, asiaszmek/CaNeuronUnit, m9h/hnn-jax, rhkrohan/NeuroForgeAI, lucatar/hippounit_CA1_demo"
+    },
+    {
+      "source": "GitHub REST search/repositories (via authenticated gh api)",
+      "query": "neuronunit",
+      "result_note": "6 hits: scidash/neuronunit, JustasB/MitralSuite, openworm/owmeta-sciunit, forks"
+    },
+    {
+      "source": "GitHub REST search/repositories (via authenticated gh api)",
+      "query": "sciunit",
+      "result_note": "59 hits (many unrelated LSST/Sciunit-reproducibility name clashes); relevant: scidash/sciunit, INM-6/networkunit, netpyneunit, basalunit, morphounit, hippounit"
+    },
+    {
+      "source": "GitHub REST search/repositories (via authenticated gh api)",
+      "query": "efel electrophysiology",
+      "result_note": "3 hits: BlueBrain/eFEL, openbraininstitute/eFEL (active), a MATLAB fork"
+    },
+    {
+      "source": "GitHub REST search/repositories (via authenticated gh api)",
+      "query": "bluepyemodel",
+      "result_note": "2 hits: BlueBrain/BluePyEModel and openbraininstitute/BluePyEModel (active development)"
+    },
+    {
+      "source": "GitHub REST search/repositories (via authenticated gh api)",
+      "query": "bluepyopt",
+      "result_note": "13 hits: BlueBrain/BluePyOpt, openbraininstitute/BluePyOpt (active), AllenInstitute/All-active-Workflow built on BluePyOpt, forks and utilities"
+    },
+    {
+      "source": "GitHub REST search/repositories (via authenticated gh api)",
+      "query": "bluepyefe",
+      "result_note": "4 hits: BlueBrain/BluePyEfe, openbraininstitute/BluePyEfe, KaliLab/autoextract (BluePyEfe-based extraction across protocols)"
+    },
+    {
+      "source": "GitHub REST search/repositories (via authenticated gh api)",
+      "query": "osb-model-validation",
+      "result_note": "1 hit: OpenSourceBrain/osb-model-validation (LGPL-3.0)"
+    },
+    {
+      "source": "GitHub REST search/repositories (via authenticated gh api)",
+      "query": "omv neuroml",
+      "result_note": "0 results"
+    },
+    {
+      "source": "GitHub REST search/repositories (via authenticated gh api)",
+      "query": "org:OpenSourceBrain validation",
+      "result_note": "1 hit (osb-model-validation, listed under earlier query)"
+    },
+    {
+      "source": "GitHub REST search/repositories (via authenticated gh api)",
+      "query": "org:OpenSourceBrain test",
+      "result_note": "15 hits: conversion/showcase test repos (PyNNShowcase, AllenInstituteNeuroML, EDENShowcase, OlfactoryTest, SinusoidalVoltageProtocols, BioSimulationsShowcase)"
+    },
+    {
+      "source": "GitHub REST search/repositories (via authenticated gh api)",
+      "query": "org:NeuroML test",
+      "result_note": "1 hit: NeuroML/NeuroMech (neuromechanics language tests); not relevant"
+    },
+    {
+      "source": "GitHub REST search/repositories (via authenticated gh api)",
+      "query": "org:NeuroML validation",
+      "result_note": "2 hits: NeuroML/jNeuroML, NeuroML/neuroklea (AI assistant)"
+    },
+    {
+      "source": "GitHub REST search/repositories (via authenticated gh api)",
+      "query": "org:scidash",
+      "result_note": "7 hits: assets, sysbiounit, scidash collection repos; no new neuron-model testing tool"
+    },
+    {
+      "source": "GitHub REST search/repositories (via authenticated gh api)",
+      "query": "electrophysiology feature extraction",
+      "result_note": "10 hits: patch-clamp feature extractors (berenslab/ephyspy, smestern/pyAPisolation, MATLAB pipelines); none about model regression testing"
+    },
+    {
+      "source": "GitHub REST search/repositories (via authenticated gh api)",
+      "query": "allensdk stimulus protocol",
+      "result_note": "0 results"
+    },
+    {
+      "source": "GitHub REST search/repositories (via authenticated gh api)",
+      "query": "ipfx electrophysiology",
+      "result_note": "2 hits: AllenInstitute/ipfx and an ABF-to-NWB converter"
+    },
+    {
+      "source": "GitHub REST search/repositories (via authenticated gh api)",
+      "query": "NeuroML NEURON conversion comparison",
+      "result_note": "0 results"
+    },
+    {
+      "source": "GitHub REST search/repositories (via authenticated gh api)",
+      "query": "neuron simulator cross-simulator comparison",
+      "result_note": "0 results"
+    },
+    {
+      "source": "GitHub REST search/repositories (via authenticated gh api)",
+      "query": "LEMS test",
+      "result_note": "38 hits mostly name clashes (lem-in, LEMS sensors); relevant borismarin/hh-testing, pgleeson/DNSimShowcase, FinnK/lems2hdl"
+    },
+    {
+      "source": "GitHub REST search/repositories (via authenticated gh api)",
+      "query": "hodgkin huxley test suite",
+      "result_note": "0 results"
+    },
+    {
+      "source": "GitHub REST search/repositories (via authenticated gh api)",
+      "query": "spiking neuron model testing",
+      "result_note": "5 hits: PyTorch LIF/Izhikevich implementations with unit tests, robotics SNN projects; none relevant"
+    },
+    {
+      "source": "GitHub REST search/repositories (via authenticated gh api)",
+      "query": "stimulus protocol optimization neuron",
+      "result_note": "0 results"
+    },
+    {
+      "source": "GitHub REST search/repositories (via authenticated gh api)",
+      "query": "optimal experimental design neuron model",
+      "result_note": "0 results"
+    },
+    {
+      "source": "GitHub REST search/repositories (via authenticated gh api)",
+      "query": "e-model validation",
+      "result_note": "106 hits, all web/ORM model validators; irrelevant"
+    },
+    {
+      "source": "GitHub REST search/repositories (via authenticated gh api)",
+      "query": "hippounit",
+      "result_note": "8 hits: KaliLab/hippounit, demos, HippoUnit-validated CA1 models, neuroptimus-hippoUnit"
+    },
+    {
+      "source": "GitHub REST search/repositories (via authenticated gh api)",
+      "query": "neuron model fuzzing",
+      "result_note": "0 results"
+    },
+    {
+      "source": "GitHub REST search/repositories (via authenticated gh api)",
+      "query": "neuroml llm",
+      "result_note": "0 results"
+    },
+    {
+      "source": "GitHub REST search/repositories (via authenticated gh api)",
+      "query": "llm agent neuroscience model",
+      "result_note": "3 hits: agent memory systems inspired by neuroscience; none about neuron model editing"
+    },
+    {
+      "source": "GitHub REST search/repositories (via authenticated gh api)",
+      "query": "neuron model fingerprint electrophysiology",
+      "result_note": "0 results"
+    },
+    {
+      "source": "GitHub REST search/repositories (via authenticated gh api)",
+      "query": "test suite minimization simulation",
+      "result_note": "0 results"
+    },
+    {
+      "source": "GitHub REST search/repositories (via authenticated gh api)",
+      "query": "neuron model equivalence",
+      "result_note": "1 hit, ANN compression; irrelevant"
+    },
+    {
+      "source": "GitHub REST search/repositories (via authenticated gh api)",
+      "query": "neurotune",
+      "result_note": "228 hits, mostly name clashes; relevant NeuralEnsemble/neurotune"
+    },
+    {
+      "source": "GitHub REST search/repositories (via authenticated gh api)",
+      "query": "pyelectro",
+      "result_note": "26 hits, mostly name clashes; relevant NeuralEnsemble/pyelectro"
+    },
+    {
+      "source": "GitHub REST search/repositories (via authenticated gh api)",
+      "query": "neuroptimus",
+      "result_note": "3 hits: Neuroptimus parameter-fitting forks/variants; not transformation testing"
+    },
+    {
+      "source": "GitHub REST search/repositories (via authenticated gh api)",
+      "query": "cell model benchmark electrophysiology features",
+      "result_note": "0 results"
+    },
+    {
+      "source": "GitHub REST search/repositories (via authenticated gh api)",
+      "query": "topic:neuroml",
+      "result_note": "27 hits: libNeuroML, OSBv2, pylems, org.neuroml.export, EDEN mirror, mod2nml, neuroml-model-template"
+    },
+    {
+      "source": "GitHub REST search/repositories (via authenticated gh api)",
+      "query": "topic:electrophysiology topic:testing",
+      "result_note": "0 results"
+    },
+    {
+      "source": "GitHub REST search/repositories (via authenticated gh api)",
+      "query": "NeuroML-DB",
+      "result_note": "2 hits: scrook/neuroml-db (MIT), thin client"
+    },
+    {
+      "source": "GitHub REST search/repositories (via authenticated gh api)",
+      "query": "neuroml-db electrophysiology",
+      "result_note": "0 results"
+    },
+    {
+      "source": "GitHub REST search/repositories (via authenticated gh api)",
+      "query": "ICGenealogy",
+      "result_note": "0 results"
+    },
+    {
+      "source": "GitHub REST search/repositories (via authenticated gh api)",
+      "query": "ion channel genealogy",
+      "result_note": "2 hits: bozelosp/ion-channel-genealogy-viz, OpenSourceBrain/IonChannelGenealogyShowcase"
+    },
+    {
+      "source": "GitHub REST search/repositories (via authenticated gh api)",
+      "query": "ion channel model classification protocols",
+      "result_note": "0 results"
+    },
+    {
+      "source": "GitHub REST search/repositories (via authenticated gh api)",
+      "query": "neuron model characterization protocols",
+      "result_note": "0 results"
+    },
+    {
+      "source": "GitHub REST search/repositories (via authenticated gh api)",
+      "query": "NeuroML model conversion validation",
+      "result_note": "0 results"
+    },
+    {
+      "source": "GitHub REST search/repositories (via authenticated gh api)",
+      "query": "NMODL NeuroML conversion",
+      "result_note": "0 results"
+    },
+    {
+      "source": "GitHub REST search/repositories (via authenticated gh api)",
+      "query": "ModelDB NeuroML conversion",
+      "result_note": "0 results"
+    },
+    {
+      "source": "GitHub REST search/repositories (via authenticated gh api)",
+      "query": "neuron model reproducibility test",
+      "result_note": "3 hits: experimental biology analysis code; none relevant"
+    },
+    {
+      "source": "GitHub REST search/repositories (via authenticated gh api)",
+      "query": "model replay validation neuron",
+      "result_note": "1 result: blakepi/neuronal-model-replay-validation"
+    },
+    {
+      "source": "GitHub REST search/repositories (via authenticated gh api)",
+      "query": "neuroagent",
+      "result_note": "58 hits: BlueBrain/neuroagent and openbraininstitute/neuroagent (Apache-2.0, LLM agent for neuroscience tools); rest unrelated. Not a model-transformation tool, not listed as candidate"
+    },
+    {
+      "source": "GitHub REST search/repositories (via authenticated gh api)",
+      "query": "claude neuroml",
+      "result_note": "0 results"
+    },
+    {
+      "source": "GitHub REST search/repositories (via authenticated gh api)",
+      "query": "llm neuron model",
+      "result_note": "39 hits, all LLM-interpretability 'neurons'; irrelevant"
+    },
+    {
+      "source": "GitHub REST search/repositories (via authenticated gh api)",
+      "query": "agent computational neuroscience simulation",
+      "result_note": "2 hits: agentic-coding nervous-system toy and SNN artificial-life project; none about model testing"
+    },
+    {
+      "source": "GitHub REST search/repositories (via authenticated gh api)",
+      "query": "mutation analysis simulation model",
+      "result_note": "5 results, all genetics/biology mutation simulations; none about software mutants"
+    },
+    {
+      "source": "GitHub REST search/repositories (via authenticated gh api)",
+      "query": "mutation operators simulink",
+      "result_note": "0 results"
+    },
+    {
+      "source": "GitHub REST search/repositories (via authenticated gh api)",
+      "query": "metamorphic testing epidemiological",
+      "result_note": "0 results"
+    },
+    {
+      "source": "GitHub REST search/repositories (via authenticated gh api)",
+      "query": "metamorphic testing bioinformatics",
+      "result_note": "0 results"
+    },
+    {
+      "source": "GitHub REST search/repositories (via authenticated gh api)",
+      "query": "metamorphic relations scientific",
+      "result_note": "0 results"
+    },
+    {
+      "source": "GitHub REST search/repositories (via authenticated gh api)",
+      "query": "osb omv tests",
+      "result_note": "0 results"
+    },
+    {
+      "source": "GitHub REST search/repositories (via authenticated gh api)",
+      "query": "org:OpenSourceBrain omt",
+      "result_note": "0 results"
+    },
+    {
+      "source": "GitHub REST search/repositories (via authenticated gh api)",
+      "query": "org:NeuroML NeuroML2",
+      "result_note": "5 hits: NeuroML2 schema, pyNeuroML, mod2neuroml"
+    },
+    {
+      "source": "GitHub REST search/repositories (via authenticated gh api)",
+      "query": "org:NeuroML pyNeuroML",
+      "result_note": "1 hit: NeuroML/pyNeuroML"
+    },
+    {
+      "source": "GitHub REST search/repositories (via authenticated gh api)",
+      "query": "org:LEMS",
+      "result_note": "6 hits: LEMS (GPL-3.0), pylems (LGPL-3.0), jLEMS (MIT)"
+    },
+    {
+      "source": "GitHub REST search/repositories (via authenticated gh api)",
+      "query": "electrophysiology stimulus protocol library",
+      "result_note": "0 results"
+    },
+    {
+      "source": "GitHub REST search/repositories (via authenticated gh api)",
+      "query": "current clamp protocol generator",
+      "result_note": "0 results"
+    },
+    {
+      "source": "GitHub REST search/repositories (via authenticated gh api)",
+      "query": "rheobase efel",
+      "result_note": "0 results"
+    },
+    {
+      "source": "GitHub REST search/repositories (via authenticated gh api)",
+      "query": "cell type features allen current clamp",
+      "result_note": "0 results"
+    },
+    {
+      "source": "GitHub REST search/repositories (via authenticated gh api)",
+      "query": "e-feature protocol optimization",
+      "result_note": "0 results"
+    },
+    {
+      "source": "GitHub REST search/repositories (via authenticated gh api)",
+      "query": "sensitivity analysis neuron model features",
+      "result_note": "1 hit, ANN tutorial; irrelevant"
+    },
+    {
+      "source": "GitHub REST search/repositories (via authenticated gh api)",
+      "query": "neuron model parameter perturbation electrophysiology",
+      "result_note": "0 results"
+    },
+    {
+      "source": "GitHub REST search/repositories (via authenticated gh api)",
+      "query": "channel mutation neuron firing",
+      "result_note": "1 hit: nkoch1/LOFGOF2023"
+    },
+    {
+      "source": "GitHub REST search/repositories (via authenticated gh api)",
+      "query": "sciunit neuron",
+      "result_note": "2 results: scidash/neuronunit, appukuttan-shailesh/Spoleti2021"
+    },
+    {
+      "source": "GitHub REST search/repositories (via authenticated gh api)",
+      "query": "neuron simulator regression testing",
+      "result_note": "0 results"
+    },
+    {
+      "source": "GitHub REST search/repositories (via authenticated gh api)",
+      "query": "NEURON nrn testcorenrn",
+      "result_note": "0 results"
+    },
+    {
+      "source": "GitHub REST search/repositories (via authenticated gh api)",
+      "query": "brian2 neuron model comparison",
+      "result_note": "1 hit, unrelated toy model"
+    },
+    {
+      "source": "GitHub REST search/repositories (via authenticated gh api)",
+      "query": "cross simulator NeuroML",
+      "result_note": "0 results"
+    },
+    {
+      "source": "GitHub REST search/repositories (via authenticated gh api)",
+      "query": "neuromodel benchmark suite",
+      "result_note": "0 results"
+    },
+    {
+      "source": "GitHub REST search/repositories (via authenticated gh api)",
+      "query": "equivalence checking simulation models",
+      "result_note": "0 results"
+    },
+    {
+      "source": "GitHub REST search/repositories (via authenticated gh api)",
+      "query": "numerical convergence neuron simulation timestep",
+      "result_note": "0 results"
+    },
+    {
+      "source": "GitHub REST search/repositories (via authenticated gh api)",
+      "query": "active learning stimulus design neuron",
+      "result_note": "0 results"
+    },
+    {
+      "source": "GitHub REST search/repositories (via authenticated gh api)",
+      "query": "optimal stimulus design ion channel",
+      "result_note": "0 results"
+    },
+    {
+      "source": "GitHub REST search/repositories (via authenticated gh api)",
+      "query": "test prioritization scientific software",
+      "result_note": "0 results"
+    },
+    {
+      "source": "GitHub REST search/repositories (via authenticated gh api)",
+      "query": "BluePyEModel validation protocols",
+      "result_note": "0 results"
+    },
+    {
+      "source": "GitHub REST search/repositories (via authenticated gh api)",
+      "query": "DendroTweaks",
+      "result_note": "2 results: Poirazi-Lab/DendroTweaks and DendroTweaksApp (MPL-2.0)"
+    },
+    {
+      "source": "GitHub REST search/repositories (via authenticated gh api)",
+      "query": "neuroklea",
+      "result_note": "1 result: NeuroML/neuroklea (GPL-3.0)"
+    },
+    {
+      "source": "GitHub raw / REST contents",
+      "query": "CITATION.cff and README fetch for 21 core tool repos (NeuroML, LEMS, OMV, SciUnit, NeuronUnit, eFEL, BluePy*, HippoUnit, NetworkUnit, ipfx, DendroTweaks, neurotune, pyelectro, neuroptimus) and flagged repos",
+      "result_note": "CITATION.cff present only for BlueBrain/eFEL, BluePyEModel, BluePyEfe and blakepi repo; DOIs extracted from READMEs and verified via Crossref/DataCite"
+    },
+    {
+      "source": "PyPI JSON API",
+      "query": "https://pypi.org/pypi/efel/json",
+      "result_note": "exists; latest 5.7.34; summary: eFEL: electrophysiology feature extraction library"
+    },
+    {
+      "source": "PyPI JSON API",
+      "query": "https://pypi.org/pypi/neuronunit/json",
+      "result_note": "exists; latest 0.1.8.2; summary: A SciUnit library for data-driven testing of single-neuron physiology models."
+    },
+    {
+      "source": "PyPI JSON API",
+      "query": "https://pypi.org/pypi/sciunit/json",
+      "result_note": "exists; latest 0.2.8; summary: A test-driven framework for formally validating scientific models against data."
+    },
+    {
+      "source": "PyPI JSON API",
+      "query": "https://pypi.org/pypi/pyneuroml/json",
+      "result_note": "exists; latest 1.3.22; summary: Python utilities for NeuroML"
+    },
+    {
+      "source": "PyPI JSON API",
+      "query": "https://pypi.org/pypi/pylems/json",
+      "result_note": "exists; latest 0.6.9; summary: A Python library for working with the Low Entropy Model Specification language (LEMS)"
+    },
+    {
+      "source": "PyPI JSON API",
+      "query": "https://pypi.org/pypi/libneuroml/json",
+      "result_note": "exists; latest 0.6.7; summary: A Python library for working with NeuroML descriptions of neuronal models"
+    },
+    {
+      "source": "PyPI JSON API",
+      "query": "https://pypi.org/pypi/OSBModelValidation/json",
+      "result_note": "exists; latest 0.4.0; summary: Open Source Brain Model validation"
+    },
+    {
+      "source": "PyPI JSON API",
+      "query": "https://pypi.org/pypi/osb-model-validation/json",
+      "result_note": "not found (HTTP 404)"
+    },
+    {
+      "source": "PyPI JSON API",
+      "query": "https://pypi.org/pypi/bluepyopt/json",
+      "result_note": "exists; latest 1.14.25; summary: Blue Brain Python Optimisation Library (bluepyopt)"
+    },
+    {
+      "source": "PyPI JSON API",
+      "query": "https://pypi.org/pypi/bluepyemodel/json",
+      "result_note": "exists; latest 1.0.47; summary: Blue Brain Python Electrical Modeling Pipeline"
+    },
+    {
+      "source": "PyPI JSON API",
+      "query": "https://pypi.org/pypi/bluepyefe/json",
+      "result_note": "exists; latest 2.3.63; summary: Blue Brain Python E-feature extraction"
+    },
+    {
+      "source": "PyPI JSON API",
+      "query": "https://pypi.org/pypi/bluecellulab/json",
+      "result_note": "exists; latest 2.6.103; summary: Biologically detailed neural network simulations and analysis."
+    },
+    {
+      "source": "PyPI JSON API",
+      "query": "https://pypi.org/pypi/allensdk/json",
+      "result_note": "exists; latest 2.16.2; summary: core libraries for the allensdk."
+    },
+    {
+      "source": "PyPI JSON API",
+      "query": "https://pypi.org/pypi/ipfx/json",
+      "result_note": "exists; latest 2.1.2; summary: Intrinsic Physiology Feature Extractor (IPFX) - tool for computing neuronal features from "
+    },
+    {
+      "source": "PyPI JSON API",
+      "query": "https://pypi.org/pypi/hippounit/json",
+      "result_note": "exists; latest 1.4.1; summary: A SciUnit library for data-driven validation testing of models of hippocampus."
+    },
+    {
+      "source": "PyPI JSON API",
+      "query": "https://pypi.org/pypi/pyelectro/json",
+      "result_note": "exists; latest 0.2.7; summary: A Python library for analysis of electrophysiological data"
+    },
+    {
+      "source": "PyPI JSON API",
+      "query": "https://pypi.org/pypi/neurotune/json",
+      "result_note": "exists; latest 0.2.6; summary: A Python library for optimising neuronal models"
+    },
+    {
+      "source": "PyPI JSON API",
+      "query": "https://pypi.org/pypi/neuroptimus/json",
+      "result_note": "not found (HTTP 404)"
+    },
+    {
+      "source": "PyPI JSON API",
+      "query": "https://pypi.org/pypi/netpyne/json",
+      "result_note": "exists; latest 1.1.1; summary: A Python package to develop, simulate and analyse biological neuronal networks in NEURON."
+    },
+    {
+      "source": "PyPI JSON API",
+      "query": "https://pypi.org/pypi/neurosem/json",
+      "result_note": "not found (HTTP 404): no PyPI project named neurosem as of 2026-09-13 (name-conflict evidence)"
+    },
+    {
+      "source": "PyPI JSON API",
+      "query": "https://pypi.org/pypi/neuroml-db/json",
+      "result_note": "not found (HTTP 404)"
+    },
+    {
+      "source": "PyPI JSON API",
+      "query": "https://pypi.org/pypi/nmldb/json",
+      "result_note": "not found (HTTP 404)"
+    },
+    {
+      "source": "PyPI JSON API",
+      "query": "https://pypi.org/pypi/pynml/json",
+      "result_note": "exists; latest 1.1.1; summary: Python library for the Network Markup Language (NML) standard for network topologies repre"
+    },
+    {
+      "source": "PyPI JSON API",
+      "query": "https://pypi.org/pypi/neuromllite/json",
+      "result_note": "exists; latest 0.6.1; summary: A common JSON/YAML based format for compact network specification, closely tied to NeuroML"
+    },
+    {
+      "source": "PyPI JSON API",
+      "query": "https://pypi.org/pypi/morphounit/json",
+      "result_note": "exists; latest 1.0.4; summary: A SciUnit library for data-driven testing of neuronal morphologies."
+    },
+    {
+      "source": "PyPI JSON API",
+      "query": "https://pypi.org/pypi/cellunit/json",
+      "result_note": "not found (HTTP 404)"
+    },
+    {
+      "source": "PyPI JSON API",
+      "query": "https://pypi.org/pypi/networkunit/json",
+      "result_note": "exists; latest 0.2.2; summary: A SciUnit library for validation testing of spiking networks."
+    },
+    {
+      "source": "PyPI JSON API",
+      "query": "https://pypi.org/pypi/mutmut/json",
+      "result_note": "exists; latest 3.8.0; summary: mutation testing for Python 3"
+    },
+    {
+      "source": "PyPI JSON API",
+      "query": "https://pypi.org/pypi/cosmic-ray/json",
+      "result_note": "exists; latest 8.7.0; summary: Mutation testing"
+    },
+    {
+      "source": "PyPI JSON API",
+      "query": "https://pypi.org/pypi/metamorphic-relations/json",
+      "result_note": "exists; latest 0.1.2; summary: Metamorphic relations library"
+    },
+    {
+      "source": "PyPI JSON API",
+      "query": "https://pypi.org/pypi/neurodamus/json",
+      "result_note": "exists; latest 4.2.4; summary: An OBI Simulation Control application for NEURON"
+    },
+    {
+      "source": "PyPI JSON API",
+      "query": "https://pypi.org/pypi/arbor/json",
+      "result_note": "exists; latest 0.12.2; summary: High performance simulation of networks of multicompartment neurons."
+    },
+    {
+      "source": "PyPI JSON API",
+      "query": "https://pypi.org/pypi/brian2/json",
+      "result_note": "exists; latest 2.10.1; summary: A clock-driven simulator for spiking neural networks"
+    },
+    {
+      "source": "PyPI JSON API",
+      "query": "https://pypi.org/pypi/neuron/json",
+      "result_note": "exists; latest 9.0.2; summary: Empirically-based simulator for modeling neurons and networks of neurons"
+    },
+    {
+      "source": "PyPI JSON API",
+      "query": "https://pypi.org/pypi/neuroagent/json",
+      "result_note": "exists; latest 0.3.3; summary: Search agent for neuroscience."
+    },
+    {
+      "source": "PyPI JSON API",
+      "query": "https://pypi.org/pypi/elektro/json",
+      "result_note": "exists; latest 2.1.2; summary: ephys data for arkitekt"
+    },
+    {
+      "source": "PyPI JSON API",
+      "query": "https://pypi.org/pypi/biosimulators-pyneuroml/json",
+      "result_note": "exists; latest 0.0.16; summary: BioSimulators-compliant command-line interface to the jNeuroML/pyNeuroML, NEURON, and NetP"
+    },
+    {
+      "source": "PyPI JSON API",
+      "query": "https://pypi.org/pypi/dendrotweaks/json",
+      "result_note": "exists; latest 0.5.2; summary: A toolbox for exploring dendritic dynamics"
+    },
+    {
+      "source": "PyPI JSON API",
+      "query": "https://pypi.org/pypi/PyNN/json",
+      "result_note": "exists; latest 0.13.0; summary: A Python package for simulator-independent specification of neuronal network models"
+    },
+    {
+      "source": "PyPI JSON API",
+      "query": "https://pypi.org/pypi/ephyspy/json",
+      "result_note": "exists; latest 0.0.8; summary: Package to extract summary statistics from electrophysiological data."
+    },
+    {
+      "source": "PyPI JSON API",
+      "query": "https://pypi.org/pypi/fit_neuron/json",
+      "result_note": "exists; latest 0.0.6; summary: Package for estimation and evaluation of neural models from patch clamp neural recordings."
+    },
+    {
+      "source": "PyPI JSON API",
+      "query": "https://pypi.org/pypi/model-validation/json",
+      "result_note": "exists; latest 0.2; summary: Model validation tools"
+    },
+    {
+      "source": "PyPI JSON API",
+      "query": "https://pypi.org/pypi/OSBModelValidation/json",
+      "result_note": "exists; latest 0.4.0; summary: Open Source Brain Model validation"
+    },
+    {
+      "source": "PyPI JSON API",
+      "query": "https://pypi.org/pypi/networkunit/json",
+      "result_note": "exists; latest 0.2.2; summary: A SciUnit library for validation testing of spiking networks."
+    },
+    {
+      "source": "PyPI JSON API",
+      "query": "https://pypi.org/pypi/morphounit/json",
+      "result_note": "exists; latest 1.0.4; summary: A SciUnit library for data-driven testing of neuronal morphologies."
+    },
+    {
+      "source": "WebSearch (site:pypi.org)",
+      "query": "site:pypi.org neuron model validation electrophysiology tests NeuroML",
+      "result_note": "bluepyemodel, fit_neuron, PyNN, biosimulators-pyneuroml, biosimulators-utils, modeci-mdf, libNeuroML; nothing on mutation/regression testing"
+    },
+    {
+      "source": "WebSearch (site:pypi.org)",
+      "query": "site:pypi.org mutation testing neuron model computational neuroscience",
+      "result_note": "PyNN, ngclearn, neurondm, mutationNN (ANN mutation), neuron; DNN mutation-testing arXiv papers (off-target); no neuron-model mutation tool"
+    },
+    {
+      "source": "WebSearch (site:pypi.org)",
+      "query": "site:pypi.org metamorphic testing simulation package",
+      "result_note": "no metamorphic testing package for neuron simulation; unrelated hits (metamorphism, pm4py-ucm)"
+    },
+    {
+      "source": "WebSearch (site:pypi.org)",
+      "query": "site:pypi.org stimulation protocol selection electrophysiology model validation",
+      "result_note": "elektro, neo, pyNIBS, ems, model-validation (generic); no protocol-selection tool"
+    },
+    {
+      "source": "WebSearch (site:pypi.org)",
+      "query": "site:pypi.org neuron model regression testing compare simulations NeuroML NEURON",
+      "result_note": "biosimulators-pyneuroml, PyNN, neuro-mf, modeci-mdf, libNeuroML; HippoUnit bioRxiv PDF"
+    },
+    {
+      "source": "WebSearch (site:pypi.org)",
+      "query": "site:pypi.org perturbation fingerprint neuron model conversion behavioral equivalence",
+      "result_note": "no PyPI package; off-target arXiv/patent hits"
+    },
+    {
+      "source": "WebSearch (site:pypi.org)",
+      "query": "site:pypi.org AI coding agent neuron simulation LLM NeuroML",
+      "result_note": "biosimulators-pyneuroml, neuromllite, eden-simulator, neuron, neuroagent, neurosym-ai; no AI tool for NeuroML model transformation testing"
+    },
+    {
+      "source": "WebSearch (site:pypi.org)",
+      "query": "site:pypi.org neuroagent LLM agent neuroscience tools",
+      "result_note": "neuroagent PyPI (last release per JSON 2024-10-30) and GitHub BlueBrain/openbraininstitute neuroagent"
+    },
+    {
+      "source": "WebSearch (site:pypi.org)",
+      "query": "site:pypi.org electrophysiology feature extraction current clamp protocols model optimisation e-features",
+      "result_note": "bluepyemodel, efel (several version pages), fit_neuron"
+    },
+    {
+      "source": "WebSearch (site:pypi.org)",
+      "query": "site:pypi.org Open Source Brain model validation OMV test",
+      "result_note": "no OMV hit via web search (PyPI JSON confirms OSBModelValidation 0.4.0 exists)"
+    },
+    {
+      "source": "WebSearch (site:zenodo.org)",
+      "query": "site:zenodo.org neuron model validation NeuroML electrophysiology tests",
+      "result_note": "not executed: session WebSearch budget exhausted (200/200)"
+    },
+    {
+      "source": "WebSearch (site:zenodo.org)",
+      "query": "site:zenodo.org mutation testing OR metamorphic testing neuron simulation model",
+      "result_note": "not executed: session WebSearch budget exhausted (200/200)"
+    },
+    {
+      "source": "Zenodo REST API /api/records (size=50)",
+      "query": "conductance neuron model metamorphic testing",
+      "result_note": "HTTP 504 Gateway Time-out (blocked); retried NeuroML with size 50/20/10 and without size, all 504"
+    },
+    {
+      "source": "Zenodo REST API /api/records (size=50)",
+      "query": "NeuroML mutation testing",
+      "result_note": "HTTP 504 Gateway Time-out (blocked); retried NeuroML with size 50/20/10 and without size, all 504"
+    },
+    {
+      "source": "Zenodo REST API /api/records (size=50)",
+      "query": "neuron model semantic regression",
+      "result_note": "HTTP 504 Gateway Time-out (blocked); retried NeuroML with size 50/20/10 and without size, all 504"
+    },
+    {
+      "source": "Zenodo REST API /api/records (size=50)",
+      "query": "behavioral preservation neuronal model conversion",
+      "result_note": "HTTP 504 Gateway Time-out (blocked); retried NeuroML with size 50/20/10 and without size, all 504"
+    },
+    {
+      "source": "Zenodo REST API /api/records (size=50)",
+      "query": "perturbation fingerprint neuron model",
+      "result_note": "HTTP 504 Gateway Time-out (blocked); retried NeuroML with size 50/20/10 and without size, all 504"
+    },
+    {
+      "source": "Zenodo REST API /api/records (size=50)",
+      "query": "automatic stimulation protocol selection model validation",
+      "result_note": "HTTP 504 Gateway Time-out (blocked); retried NeuroML with size 50/20/10 and without size, all 504"
+    },
+    {
+      "source": "Zenodo REST API /api/records (size=50)",
+      "query": "mutation testing computational neuroscience",
+      "result_note": "HTTP 504 Gateway Time-out (blocked); retried NeuroML with size 50/20/10 and without size, all 504"
+    },
+    {
+      "source": "Zenodo REST API /api/records (size=50)",
+      "query": "AI coding agent neuron simulation",
+      "result_note": "HTTP 504 Gateway Time-out (blocked); retried NeuroML with size 50/20/10 and without size, all 504"
+    },
+    {
+      "source": "Zenodo REST API /api/records (size=50)",
+      "query": "\"metamorphic testing\" neuron",
+      "result_note": "HTTP 504 Gateway Time-out (blocked); retried NeuroML with size 50/20/10 and without size, all 504"
+    },
+    {
+      "source": "Zenodo REST API /api/records (size=50)",
+      "query": "\"metamorphic testing\" simulation",
+      "result_note": "HTTP 504 Gateway Time-out (blocked); retried NeuroML with size 50/20/10 and without size, all 504"
+    },
+    {
+      "source": "Zenodo REST API /api/records (size=50)",
+      "query": "\"mutation testing\" neuroscience",
+      "result_note": "HTTP 504 Gateway Time-out (blocked); retried NeuroML with size 50/20/10 and without size, all 504"
+    },
+    {
+      "source": "Zenodo REST API /api/records (size=50)",
+      "query": "\"mutation testing\" simulation model",
+      "result_note": "HTTP 504 Gateway Time-out (blocked); retried NeuroML with size 50/20/10 and without size, all 504"
+    },
+    {
+      "source": "Zenodo REST API /api/records (size=50)",
+      "query": "NeuroML validation",
+      "result_note": "HTTP 504 Gateway Time-out (blocked); retried NeuroML with size 50/20/10 and without size, all 504"
+    },
+    {
+      "source": "Zenodo REST API /api/records (size=50)",
+      "query": "NeuroML",
+      "result_note": "HTTP 504 Gateway Time-out (blocked); retried NeuroML with size 50/20/10 and without size, all 504"
+    },
+    {
+      "source": "Zenodo REST API /api/records (size=50)",
+      "query": "pyNeuroML",
+      "result_note": "HTTP 504 Gateway Time-out (blocked); retried NeuroML with size 50/20/10 and without size, all 504"
+    },
+    {
+      "source": "Zenodo REST API /api/records (size=50)",
+      "query": "jNeuroML",
+      "result_note": "HTTP 504 Gateway Time-out (blocked); retried NeuroML with size 50/20/10 and without size, all 504"
+    },
+    {
+      "source": "Zenodo REST API /api/records (size=50)",
+      "query": "LEMS neuroml",
+      "result_note": "HTTP 504 Gateway Time-out (blocked); retried NeuroML with size 50/20/10 and without size, all 504"
+    },
+    {
+      "source": "Zenodo REST API /api/records (size=50)",
+      "query": "\"osb-model-validation\"",
+      "result_note": "HTTP 504 Gateway Time-out (blocked); retried NeuroML with size 50/20/10 and without size, all 504"
+    },
+    {
+      "source": "Zenodo REST API /api/records (size=50)",
+      "query": "\"Open Source Brain\"",
+      "result_note": "HTTP 504 Gateway Time-out (blocked); retried NeuroML with size 50/20/10 and without size, all 504"
+    },
+    {
+      "source": "Zenodo REST API /api/records (size=50)",
+      "query": "NeuronUnit",
+      "result_note": "HTTP 504 Gateway Time-out (blocked); retried NeuroML with size 50/20/10 and without size, all 504"
+    },
+    {
+      "source": "Zenodo REST API /api/records (size=50)",
+      "query": "SciUnit",
+      "result_note": "HTTP 504 Gateway Time-out (blocked); retried NeuroML with size 50/20/10 and without size, all 504"
+    },
+    {
+      "source": "Zenodo REST API /api/records (size=50)",
+      "query": "eFEL",
+      "result_note": "HTTP 504 Gateway Time-out (blocked); retried NeuroML with size 50/20/10 and without size, all 504"
+    },
+    {
+      "source": "Zenodo REST API /api/records (size=50)",
+      "query": "\"Electrophys Feature Extraction Library\"",
+      "result_note": "HTTP 504 Gateway Time-out (blocked); retried NeuroML with size 50/20/10 and without size, all 504"
+    },
+    {
+      "source": "Zenodo REST API /api/records",
+      "query": "remaining planned lens queries (BluePyEModel, BluePyOpt, BluePyEfe, HippoUnit, stimulation protocol, regression testing, e-model, Neuroptimus, ipfx, NetPyNE)",
+      "result_note": "script terminated by repeated 504s before these ran; covered instead via DataCite fallback"
+    },
+    {
+      "source": "DataCite REST API (client-id cern.zenodo; fallback for blocked Zenodo API)",
+      "query": "conductance neuron model metamorphic testing",
+      "result_note": "0 results. no records"
+    },
+    {
+      "source": "DataCite REST API (client-id cern.zenodo; fallback for blocked Zenodo API)",
+      "query": "NeuroML mutation testing",
+      "result_note": "0 results. no records"
+    },
+    {
+      "source": "DataCite REST API (client-id cern.zenodo; fallback for blocked Zenodo API)",
+      "query": "neuron model semantic regression",
+      "result_note": "18 results. hits were off-topic self-published texts; none relevant"
+    },
+    {
+      "source": "DataCite REST API (client-id cern.zenodo; fallback for blocked Zenodo API)",
+      "query": "behavioral preservation neuronal model conversion",
+      "result_note": "4 results. off-topic; none relevant"
+    },
+    {
+      "source": "DataCite REST API (client-id cern.zenodo; fallback for blocked Zenodo API)",
+      "query": "perturbation fingerprint neuron model",
+      "result_note": "26 results. off-topic; none relevant"
+    },
+    {
+      "source": "DataCite REST API (client-id cern.zenodo; fallback for blocked Zenodo API)",
+      "query": "automatic stimulation protocol selection model validation",
+      "result_note": "27 results. off-topic; none relevant"
+    },
+    {
+      "source": "DataCite REST API (client-id cern.zenodo; fallback for blocked Zenodo API)",
+      "query": "mutation testing computational neuroscience",
+      "result_note": "43 results. off-topic; none relevant"
+    },
+    {
+      "source": "DataCite REST API (client-id cern.zenodo; fallback for blocked Zenodo API)",
+      "query": "AI coding agent neuron simulation",
+      "result_note": "40 results. off-topic; none relevant"
+    },
+    {
+      "source": "DataCite REST API (client-id cern.zenodo; fallback for blocked Zenodo API)",
+      "query": "metamorphic testing neuron",
+      "result_note": "1 results. 1 off-topic hit"
+    },
+    {
+      "source": "DataCite REST API (client-id cern.zenodo; fallback for blocked Zenodo API)",
+      "query": "mutation testing neuroscience",
+      "result_note": "52 results. off-topic; none relevant"
+    },
+    {
+      "source": "DataCite REST API (client-id cern.zenodo; fallback for blocked Zenodo API)",
+      "query": "NeuroML validation",
+      "result_note": "6 results. NeuroML2Loihi release, pyNeuroML releases"
+    },
+    {
+      "source": "DataCite REST API (client-id cern.zenodo; fallback for blocked Zenodo API)",
+      "query": "NeuroML",
+      "result_note": "127 results. pyNeuroML, NeuroMLlite, libNeuroML releases; NeuroEval preprint; nml2_extensions_draft"
+    },
+    {
+      "source": "DataCite REST API (client-id cern.zenodo; fallback for blocked Zenodo API)",
+      "query": "pyNeuroML",
+      "result_note": "44 results. pyNeuroML version records (concept DOI 10.5281/zenodo.5744044 resolves to v1.3.22)"
+    },
+    {
+      "source": "DataCite REST API (client-id cern.zenodo; fallback for blocked Zenodo API)",
+      "query": "jNeuroML",
+      "result_note": "22 results. jNeuroML version records incl. 10.5281/zenodo.593108 (v0.14.0)"
+    },
+    {
+      "source": "DataCite REST API (client-id cern.zenodo; fallback for blocked Zenodo API)",
+      "query": "LEMS NeuroML",
+      "result_note": "8 results. jLEMS and LEMS release records"
+    },
+    {
+      "source": "DataCite REST API (client-id cern.zenodo; fallback for blocked Zenodo API)",
+      "query": "osb-model-validation",
+      "result_note": "3 results. no OMV Zenodo record found"
+    },
+    {
+      "source": "DataCite REST API (client-id cern.zenodo; fallback for blocked Zenodo API)",
+      "query": "Open Source Brain",
+      "result_note": "14949 results. 14949 fuzzy hits (unrelated); not useful"
+    },
+    {
+      "source": "DataCite REST API (client-id cern.zenodo; fallback for blocked Zenodo API)",
+      "query": "NeuronUnit",
+      "result_note": "0 results. no NeuronUnit Zenodo record found"
+    },
+    {
+      "source": "DataCite REST API (client-id cern.zenodo; fallback for blocked Zenodo API)",
+      "query": "SciUnit",
+      "result_note": "26 results. reproducibility-tool datasets (name clash); HippoNetworkUnit, SynapseUnit, morphounit software"
+    },
+    {
+      "source": "DataCite REST API (client-id cern.zenodo; fallback for blocked Zenodo API)",
+      "query": "eFEL",
+      "result_note": "214 results. eFEL, BluePyEModel, BluePyEfe records; unrelated EFEL earthquake code"
+    },
+    {
+      "source": "DataCite REST API (client-id cern.zenodo; fallback for blocked Zenodo API)",
+      "query": "Electrophys Feature Extraction Library",
+      "result_note": "78 results. eFEL 2.7 (2015) record"
+    },
+    {
+      "source": "DataCite REST API (client-id cern.zenodo; fallback for blocked Zenodo API)",
+      "query": "BluePyEModel",
+      "result_note": "106 results. BluePyEModel software; Blue Brain canonical electrical neuron models dataset (2025)"
+    },
+    {
+      "source": "DataCite REST API (client-id cern.zenodo; fallback for blocked Zenodo API)",
+      "query": "BluePyOpt",
+      "result_note": "147 results. BluePyOpt software record"
+    },
+    {
+      "source": "DataCite REST API (client-id cern.zenodo; fallback for blocked Zenodo API)",
+      "query": "HippoUnit",
+      "result_note": "3 results. CA1 pyramidal cell model record (2026)"
+    },
+    {
+      "source": "DataCite REST API (client-id cern.zenodo; fallback for blocked Zenodo API)",
+      "query": "neuron model validation electrophysiology",
+      "result_note": "111 results. off-topic; none relevant"
+    },
+    {
+      "source": "DataCite REST API (client-id cern.zenodo; fallback for blocked Zenodo API)",
+      "query": "stimulation protocol neuron model",
+      "result_note": "58 results. one ultrasonic neuromodulation modeling paper; rest off-topic"
+    },
+    {
+      "source": "DataCite REST API (client-id cern.zenodo; fallback for blocked Zenodo API)",
+      "query": "regression testing neuron simulator",
+      "result_note": "18 results. no relevant hits"
+    },
+    {
+      "source": "DataCite REST API (client-id cern.zenodo; fallback for blocked Zenodo API)",
+      "query": "neuronal model replay validation",
+      "result_note": "11 results. Numerical Validation for Cell-Matched Neuronal Model Replay (10.5281/zenodo.21483418 version record)"
+    },
+    {
+      "source": "DataCite REST API (client-id cern.zenodo; fallback for blocked Zenodo API)",
+      "query": "NEURON NeuroML conversion",
+      "result_note": "4 results. BluePyOpt, NetPyNE, nat release records; no conversion-validation work"
+    },
+    {
+      "source": "DataCite REST API (client-id cern.zenodo; fallback for blocked Zenodo API)",
+      "query": "ipfx",
+      "result_note": "3 results. no ipfx record (off-topic hit)"
+    },
+    {
+      "source": "DataCite REST API (client-id cern.zenodo; fallback for blocked Zenodo API)",
+      "query": "NetworkUnit",
+      "result_note": "0 results. no NetworkUnit Zenodo record found"
+    },
+    {
+      "source": "DataCite REST API (client-id cern.zenodo; fallback for blocked Zenodo API)",
+      "query": "neuron model electrophysiology features benchmark",
+      "result_note": "1 results. 1 hit, not listed (off-topic)"
+    },
+    {
+      "source": "Crossref REST API query.bibliographic (fallback for citation resolution)",
+      "query": "NeuroML v2 standardised representation computational models neuroscience ecosystem",
+      "result_note": "top: 10.7554/elife.95135.3.sa1 (2025); 10.7554/elife.95135.1.sa2 (2024); 10.7554/elife.95135.1.sa1 (2024)"
+    },
+    {
+      "source": "Crossref REST API query.bibliographic (fallback for citation resolution)",
+      "query": "Open Source Brain collaborative resource visualizing analyzing sharing computational models neurons circuits",
+      "result_note": "top: 10.1101/229484 (2018); 10.1016/j.neuron.2019.05.019 (2019); 10.5040/9798216423393.ch-0006 (2021)"
+    },
+    {
+      "source": "Crossref REST API query.bibliographic (fallback for citation resolution)",
+      "query": "SciUnit framework test-driven validation scientific models",
+      "result_note": "top: 10.1101/665331 (2019); 10.1109/modevva.2010.21 (2010); 10.17771/pucrio.acad.74271 (None)"
+    },
+    {
+      "source": "Crossref REST API query.bibliographic (fallback for citation resolution)",
+      "query": "NeuronUnit data-driven validation neuron models",
+      "result_note": "top: 10.1101/665331 (2019); 10.52843/cassyni.vx0zhh (2026); 10.1016/j.neuron.2024.03.021 (2024)"
+    },
+    {
+      "source": "Crossref REST API query.bibliographic (fallback for citation resolution)",
+      "query": "NetworkUnit validation spiking neural network models",
+      "result_note": "top: 10.1109/access.2026.3713432/mm1 (None); 10.1109/access.2026.3713432/mm2 (None); 10.1016/s0893-6080(97)00011-7 (1997)"
+    },
+    {
+      "source": "Crossref REST API query.bibliographic (fallback for citation resolution)",
+      "query": "NeuroML-DB sharing characterizing computational neuron models",
+      "result_note": "top: 10.1101/2021.09.11.459920 (2021); 10.1371/journal.pcbi.1010941 (2023); 10.3389/conf.neuro.11.2008.01.135 (2008)"
+    },
+    {
+      "source": "Crossref REST API query.bibliographic (fallback for citation resolution)",
+      "query": "Ion channel genealogy classification ion channel models voltage clamp protocols",
+      "result_note": "top: 10.1101/2025.08.05.668838 (2025); 10.1385/0-89603-311-2:259 (None); 10.1007/978-1-4020-5525-6_14 (None)"
+    },
+    {
+      "source": "Crossref REST API query.bibliographic (fallback for citation resolution)",
+      "query": "HippoUnit automated testing systematic comparison detailed models hippocampal neurons",
+      "result_note": "top: 10.1101/2020.07.02.184333 (2020); 10.1371/journal.pcbi.1008114 (2021); 10.1017/cbo9780511815706.003 (2002)"
+    },
+    {
+      "source": "Crossref REST API query.bibliographic (fallback for citation resolution)",
+      "query": "eFEL electrophysiology feature extraction library",
+      "result_note": "top: 10.1093/bioinformatics/btag328 (2026); 10.1021/acs.jcim.4c00424.s001 (None); 10.1201/9781003323693-6 (2023)"
+    },
+    {
+      "source": "Crossref REST API query.bibliographic (fallback for citation resolution)",
+      "query": "pyNeuroML NeuroML simulation validation",
+      "result_note": "top: 10.1101/2021.09.11.459920 (2021); 10.7490/f1000research.1117929.1 (2020); 10.7554/elife.44494.003 (None)"
+    },
+    {
+      "source": "Crossref REST API query.bibliographic (fallback for citation resolution)",
+      "query": "mutation testing scientific simulation software",
+      "result_note": "top: 10.1109/icstw60967.2024.00056 (2024); 10.1109/anss.2007.30 (2007); 10.5220/0013561000004525 (2025)"
+    },
+    {
+      "source": "Crossref REST API query.bibliographic (fallback for citation resolution)",
+      "query": "metamorphic testing scientific simulation software",
+      "result_note": "top: 10.1145/2896971.2896981 (2016); 10.1002/stvr.1912 (2024); 10.1002/stvr.1594 (2015)"
+    },
+    {
+      "source": "Crossref REST API query.bibliographic (fallback for citation resolution)",
+      "query": "metamorphic testing computational neuroscience",
+      "result_note": "top: 10.1109/met.2017.7 (2017); 10.1145/3193977.3193986 (2018); 10.7717/peerj-cs.2658/fig-2 (None)"
+    },
+    {
+      "source": "Crossref REST API query.bibliographic (fallback for citation resolution)",
+      "query": "mutation analysis neuron model",
+      "result_note": "top: 10.1016/0896-6273(90)90034-d (1990); 10.7554/elife.73062.sa1 (2021); 10.1016/j.neuron.2026.07.022 (2026)"
+    },
+    {
+      "source": "Crossref REST API query.bibliographic (fallback for citation resolution)",
+      "query": "reproducibility neuron model conversion NEURON NeuroML",
+      "result_note": "top: 10.3389/conf.neuro.11.2008.01.135 (2008); 10.1016/j.neuron.2018.11.030 (2019); 10.7554/elife.44494.003 (None)"
+    },
+    {
+      "source": "Crossref REST API query.bibliographic (fallback for citation resolution)",
+      "query": "optimal stimulus protocol design neuron model parameter identifiability",
+      "result_note": "top: 10.2139/ssrn.5377217 (2025); 10.1016/j.mbs.2026.109710 (2026); 10.1109/cse.2009.39 (2009)"
+    },
+    {
+      "source": "Crossref REST API query.bibliographic (fallback for citation resolution)",
+      "query": "test suite minimization greedy set cover mutation",
+      "result_note": "top: 10.1109/access.2023.3289073 (2023); 10.1360/jos171494 (2006); 10.1145/1108768.1108802 (2005)"
+    },
+    {
+      "source": "Crossref REST API query.bibliographic (fallback for citation resolution)",
+      "query": "large language model agent computational neuroscience model building",
+      "result_note": "top: 10.1021/acs.jcim.6c00343.s001 (None); 10.4018/979-8-3373-1419-8.ch001 (2025); 10.63044/w25zha5 (2025)"
+    },
+    {
+      "source": "Crossref REST API query.bibliographic (fallback for citation resolution)",
+      "query": "Allen cell types database biophysical models electrophysiology stimulus sets",
+      "result_note": "top: 10.1007/s12021-017-9337-x (2017); 10.1016/b978-0-12-817882-9.00005-7 (2021); 10.1093/hesc/9780199642144.003.0010 (2012)"
+    },
+    {
+      "source": "Crossref REST API query.bibliographic (fallback for citation resolution)",
+      "query": "BluePyEModel electrical model building pipeline",
+      "result_note": "top: 10.1080/19401493.2017.1410572 (2017); 10.1007/978-1-4842-5349-6_3 (2019); 10.1007/978-1-4842-5349-6 (2020)"
+    },
+    {
+      "source": "Crossref REST API query.bibliographic (fallback for citation resolution)",
+      "query": "model validation neuron electrophysiology features multiple stimuli protocols",
+      "result_note": "top: 10.2139/ssrn.5005092 (2024); 10.1007/978-3-642-70911-1_21 (1986); 10.1016/s0006-3495(62)86953-7 (1962)"
+    },
+    {
+      "source": "Crossref REST API query.bibliographic (fallback for citation resolution)",
+      "query": "cross-simulator comparison neuron models NeuroML",
+      "result_note": "top: 10.3389/conf.neuro.11.2008.01.135 (2008); 10.3389/conf.fninf.2014.18.00005 (2014); 10.1101/2021.09.11.459920 (2021)"
+    },
+    {
+      "source": "Crossref REST API query.bibliographic (fallback for citation resolution)",
+      "query": "Open Source Brain Gleeson 2019 Neuron",
+      "result_note": "top: 10.1016/j.neuron.2017.10.013 (2017); 10.1007/978-1-4614-7320-6_595-2 (2013); 10.1007/978-1-4614-7320-6_595-3 (2014)"
+    },
+    {
+      "source": "Crossref REST API query.bibliographic (fallback for citation resolution)",
+      "query": "Collaborative infrastructure for test-driven scientific model validation",
+      "result_note": "top: 10.1145/2591062.2591129 (2014); 10.1109/wetice.2013.62 (2013); 10.1109/hldvt.2007.4392792 (2007)"
+    },
+    {
+      "source": "Crossref REST API query.bibliographic (fallback for citation resolution)",
+      "query": "NeuronUnit Gerkin Frontiers Neuroinformatics validation",
+      "result_note": "top: 10.1101/665331 (2019); 10.3389/fninf.2014.00040 (2014); 10.3389/conf.fninf.2013.09.00013 (2013)"
+    },
+    {
+      "source": "Crossref REST API query.bibliographic (fallback for citation resolution)",
+      "query": "NeuroML 2 ecosystem Sinha eLife",
+      "result_note": "top: 10.7554/elife.95135.2.sa3 (2024); 10.7554/elife.95135.1.sa2 (2024); 10.7554/elife.95135.3.sa0 (2025)"
+    },
+    {
+      "source": "Crossref REST API query.bibliographic (fallback for citation resolution)",
+      "query": "Channelpedia ion channel genealogy Podlaski",
+      "result_note": "top: 10.1101/2025.10.03.680368 (2025); 10.3389/fninf.2011.00036 (2011); 10.1007/978-1-4757-1361-9_2 (1986)"
+    },
+    {
+      "source": "Crossref REST API query.bibliographic",
+      "query": "Mapping the function of neuronal ion channels in model and experiment",
+      "result_note": "found 10.7554/elife.22152 (eLife 2017) and bioRxiv 10.1101/058685"
+    },
+    {
+      "source": "Crossref REST API /works/{doi}",
+      "query": "verification of 29 DOIs (tool citations and partial-overlap papers)",
+      "result_note": "all resolved; titles, years, venues and authors taken from API responses"
+    },
+    {
+      "source": "DataCite REST API /dois/{doi}",
+      "query": "verification of 8 Zenodo DOIs (eFEL, pyNeuroML, BluePyEModel, BluePyEfe, BluePyOpt, replay-validation)",
+      "result_note": "all resolved with version and rights metadata"
+    },
+    {
+      "source": "OpenAlex API /works?search=",
+      "query": "metamorphic testing neuron model",
+      "result_note": "HTTP 429 Too Many Requests (blocked)"
+    },
+    {
+      "source": "OpenAlex API /works?search=",
+      "query": "mutation testing neuron model",
+      "result_note": "HTTP 429 Too Many Requests (blocked)"
+    },
+    {
+      "source": "OpenAlex API /works?search=",
+      "query": "mutation testing NeuroML",
+      "result_note": "HTTP 429 Too Many Requests (blocked)"
+    },
+    {
+      "source": "OpenAlex API /works?search=",
+      "query": "stimulus protocol selection neuron model discrimination",
+      "result_note": "HTTP 429 Too Many Requests (blocked)"
+    },
+    {
+      "source": "OpenAlex API /works?search=",
+      "query": "ion channel genealogy",
+      "result_note": "HTTP 429 Too Many Requests (blocked)"
+    },
+    {
+      "source": "OpenAlex API /works?search=",
+      "query": "NeuroML validation simulator",
+      "result_note": "HTTP 429 Too Many Requests (blocked)"
+    },
+    {
+      "source": "OpenAlex API /works?search=",
+      "query": "silent behavioral change scientific model refactoring",
+      "result_note": "HTTP 429 Too Many Requests (blocked)"
+    },
+    {
+      "source": "OpenAlex API /works?search=",
+      "query": "LLM agent NeuroML model",
+      "result_note": "HTTP 429 Too Many Requests (blocked)"
+    },
+    {
+      "source": "OpenAlex API /works?search=",
+      "query": "electrophysiological feature fingerprint neuron model comparison",
+      "result_note": "HTTP 429 Too Many Requests (blocked)"
+    },
+    {
+      "source": "OpenAlex API /works?search=",
+      "query": "test suite reduction mutation greedy scientific software",
+      "result_note": "HTTP 429 Too Many Requests (blocked)"
+    }
+  ],
+  "blocked_sources": [
+    "Zenodo REST API (https://zenodo.org/api/records): HTTP 504 Gateway Time-out on every query on 2026-09-13, including retries with size=50, 20, 10 and no size; fallback DataCite API with client-id cern.zenodo",
+    "WebSearch tool: session budget exhausted (200 of 200 calls) after 10 site:pypi.org searches in this finder; site:zenodo.org searches could not run",
+    "OpenAlex API (https://api.openalex.org/works): HTTP 429 Too Many Requests on all 10 queries",
+    "GitHub REST API: not blocked (used authenticated gh CLI; unauthenticated search limit was 10/min)"
+  ],
+  "notes": [
+    "No repository, package or Zenodo record found that combines controlled mutation of neuron models, multi-protocol electrophysiology fingerprints, refinement-calibrated tolerances, optimised protocol-battery selection and held-out model or mutation-family evaluation; absence in these registries is not proof of absence in the literature.",
+    "Closeness scores are subjective triage for the novelty matrix, based on README, PyPI or Crossref abstract text actually retrieved; they are not result claims.",
+    "No PyPI project named neurosem exists (PyPI JSON 404) as of 2026-09-13; GitHub/other name-conflict checks belong to the name-conflict task."
+  ]
+}
