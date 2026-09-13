@@ -285,13 +285,15 @@ def aggregate(ctx: Context, refs: dict[str, RefState], outcomes: Sequence[Varian
     first_ref = next(iter(refs.values()))
     protocol_ids = [CANONICAL_ID] + [q.protocol_id for q in first_ref.protocols] + [RHEOBASE_ID]
     cost = {pid: float(np.mean([r.fps[1].cell_steps.get(pid, 0) for r in refs.values()])) for pid in protocol_ids}
+    from neurosem.selection.matrix import DetectionMatrix
+
     adm = [o for o in outcomes if o.variant.kind is VariantKind.MUTANT and o.klass.admissible]
-    mat_rows = []
-    for o in adm:
-        row = {"mutant_id": o.variant.variant_id, "model_id": o.variant.model_id, "family": o.variant.family}
-        row.update({pid: int(pid in o.detecting_protocols) for pid in protocol_ids})
-        mat_rows.append(row)
-    _write_rows(p / "detection_matrix.csv", mat_rows, fieldnames=["mutant_id", "model_id", "family"] + protocol_ids)
+    matrix = DetectionMatrix.from_detected_sets(
+        [o.variant.variant_id for o in adm], protocol_ids,
+        {o.variant.variant_id: set(o.detecting_protocols) for o in adm},
+        {o.variant.variant_id: o.variant.model_id for o in adm}, {o.variant.variant_id: o.variant.family for o in adm},
+        cost)
+    matrix.to_csv(p / "detection_matrix.csv")
     _write_rows(p / "protocol_costs.csv", [{"protocol_id": k, "mean_cell_steps": v} for k, v in cost.items()])
 
     mutants = [o for o in outcomes if o.variant.kind is VariantKind.MUTANT]
