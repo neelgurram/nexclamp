@@ -5,16 +5,16 @@
 | Document | Milestone 0 deliverable `PLAN.md` (handoff "Initial Claude prompt", item 8: "Convert the milestones into an incremental implementation plan with exit tests"; item 9: decisions list) |
 | Date | 2026-09-13 |
 | Authority | `docs/handoff/NEUROSEM_FINAL_SPEC.pdf` (text in `NEUROSEM_FINAL_SPEC.extracted.md`) supersedes the handoff (D-002) |
-| Repository state | Branch `m0-audit`, HEAD `d323afa`. No Git remote. Uncommitted at the time of writing: `DECISIONS.md` (D-023) and `CHANGELOG.md` are modified; `DEPENDENCY_AUDIT.md`, `LICENSE_AUDIT.md`, `docs/NAME_CONFLICT_AUDIT.md` and four round-2 prior-art evidence files are untracked. Nothing under `results/` is tracked. |
+| Repository state | Branch `m0-audit`. No Git remote. The pilot ran at `d323afa`; its results and all Milestone 0 documents are committed in the following commit (see `git log`). Raw run records and features under `results/` are tracked; traces (`*.npz`) are Git-ignored. |
 | Roles | Neel Gurram is the author and makes every scientific and outward-facing decision. Claude Code built the software and wrote this plan. |
-| Running now | The Milestone 6 pilot, `neurosem pilot --campaign pilot`, started 2026-09-13T17:11:01Z at `d323afa` (`work/logs/pilot_run.log`). **Running; results pending.** Nothing in this plan interprets its partial output. |
-| Results | No study results exist. Nothing here is a finding or a novelty claim. |
+| Pilot | The Milestone 6 pilot ran 2026-09-13 17:11-18:55 UTC at `d323afa`. Report: `results/processed/pilot/pilot_report.md`; interpretation: `docs/pilot/pilot_interpretation.md`. Development-stage and in-sample, not a confirmatory result. |
+| Results | Only the development pilot exists; no confirmatory study results. Nothing here is a novelty claim. |
 
 ## In plain English
 
 - NeuroSem asks one question: does an edited neuron model still behave like the original?
 - Most of the machinery is built and tested on this laptop.
-- The first real test run, the pilot, is running now. We do not know its outcome yet.
+- The first real test run, the pilot, has finished. It passed its formal checks, but the only hidden changes it found came from simulator settings, not from edits to the model's biology (`docs/pilot/pilot_interpretation.md`).
 - The pilot decides whether the project continues. If edits never hide behaviour changes, we do not invent them.
 - Some checks only a human can do. Example: reading at least 20 generated mutants and confirming each label.
 - Some steps are locked on purpose. The final study, the held-out test and the AI-agent trials wait for Neel.
@@ -37,7 +37,7 @@
 
 | Milestone | Status (verified 2026-09-13) | Main thing missing |
 |---|---|---|
-| M0 Audit | in progress | `PRIOR_ART_AUDIT.md`, `docs/novelty_matrix.csv`, `RISK_REGISTER.md`, `REQUIREMENTS.md`; audits uncommitted; Neel's review |
+| M0 Audit | done except human step | all documents written, fact-checked and committed; Neel's review, citation spot-check and approval |
 | M1 Environment | in progress (CI part blocked on N-01) | Docker never built, CI never run, clean-install exit command never run and logged |
 | M2 Reference pipeline | in progress | inspection plots of reference traces |
 | M3 Protocol engine | in progress | visual verification plots |
@@ -61,8 +61,8 @@ The handoff's initial prompt also asks for `PLAN.md`, `REQUIREMENTS.md`, `PRIOR_
 | 1. Separate reused from new functionality | `DEPENDENCY_AUDIT.md` section 5 (see "Separation" below) |
 | 2. Verify NeuroML, LEMS, pyNeuroML, jNeuroML, OMV, SciUnit/NeuronUnit, eFEL from primary sources | `DEPENDENCY_AUDIT.md`; `docs/m0_evidence/tools/*.research.json` with `*.verify.json` |
 | 3. Name conflicts | `docs/NAME_CONFLICT_AUDIT.md`; `docs/m0_evidence/names/` |
-| 4. Prior-art sweep and novelty matrix | Evidence only: `docs/m0_evidence/prior_art/` (11 finder files, 46 round-1 and 6 round-2 deep-read files, `critic_r2.json`). **`PRIOR_ART_AUDIT.md` and `docs/novelty_matrix.csv` do not exist.** |
-| 5. Outdated, uncertain, infeasible or weak assumptions | Evidence only: `docs/m0_evidence/critique/` (five lenses, each with a skeptic verdict). Cited in the audits, **not compiled into one document**. |
+| 4. Prior-art sweep and novelty matrix | `PRIOR_ART_AUDIT.md` and `docs/novelty_matrix.csv` (335 verified works; novelty stress test); evidence in `docs/m0_evidence/prior_art/` |
+| 5. Outdated, uncertain, infeasible or weak assumptions | `RISK_REGISTER.md` section "Handoff assumptions" (from `docs/m0_evidence/critique/` with skeptic verdicts) |
 | 6. Two fixtures, provenance and license verified before download | `docs/m0_evidence/fixtures/`, `docs/model_selection.md`; "Fixture models" below |
 | 7. Exact environment setup commands | `docs/REPRODUCING.md`, `DEPENDENCY_AUDIT.md` section 6 |
 | 8. Milestones as a plan with exit tests | this file |
@@ -74,20 +74,17 @@ The handoff's initial prompt also asks for `PLAN.md`, `REQUIREMENTS.md`, `PRIOR_
 3. Neel spot-checks the closest-prior-work citations (required by `AI_USE_LOG.md` Entry 001).
 4. The audits are committed, and Neel's approval is recorded in `DECISIONS.md`.
 
-**Status: in progress.**
-- Done: `DECISIONS.md`, `CHANGELOG.md`, `AI_USE_LOG.md` (commits `4e1acd5`, `4b9b7bd`, later edits).
-- Written but uncommitted: `DEPENDENCY_AUDIT.md`, `LICENSE_AUDIT.md`, `docs/NAME_CONFLICT_AUDIT.md`.
-- Missing: `PRIOR_ART_AUDIT.md`, `docs/novelty_matrix.csv`, `RISK_REGISTER.md`, `REQUIREMENTS.md`.
-- The M0 approval stop: Neel's instruction "keep going, and build out the entire thing" was taken as approval to build M1-M7, with integrity gates kept (D-003). The M0 documents themselves have not been reviewed.
-- Two documents already point to files that do not exist yet: `AI_USE_LOG.md` refers to `PRIOR_ART_AUDIT.md` and `docs/novelty_matrix.csv`.
+**Status: done except human step.**
+- All documents exist and are committed: `PLAN.md`, `REQUIREMENTS.md`, `PRIOR_ART_AUDIT.md`, `docs/novelty_matrix.csv`, `DEPENDENCY_AUDIT.md`, `LICENSE_AUDIT.md`, `docs/NAME_CONFLICT_AUDIT.md`, `RISK_REGISTER.md`, `DECISIONS.md`, `CHANGELOG.md`, `AI_USE_LOG.md`.
+- Each audit was fact-checked by an independent agent and corrected (`AI_USE_LOG.md`).
+- Known limits of the prior-art sweep are in `PRIOR_ART_AUDIT.md` section 7 (Web of Science/Scopus not searched, rate-limited APIs, 144 screened-but-unread candidates).
+- The M0 approval stop: Neel's instruction "keep going, and build out the entire thing" was taken as approval to build M1-M7, with integrity gates kept (D-003). The M0 documents themselves have not yet been reviewed by Neel.
 
 **Evidence.** `docs/m0_evidence/{tools,environment,fixtures,names,prior_art,critique,model_curation}/`; `docs/handoff/`; the files above.
 
 **Next actions.**
-1. Write `PRIOR_ART_AUDIT.md` and `docs/novelty_matrix.csv` from the saved prior-art evidence. Do not claim novelty; "absence from a search is not proof" (spec).
-2. Write `RISK_REGISTER.md` from the upheld or softened critique issues (`docs/m0_evidence/critique/*.skeptic.json`), plus the risks in the spec's "Failure and pivot criteria".
-3. Write `REQUIREMENTS.md` (spec requirements traced to code and tests).
-4. Commit the audits and this plan. Neel reviews and records approval.
+1. Neel reviews the documents and spot-checks the closeness-3 citations and stress-test verdicts.
+2. Neel records M0 approval and the open decisions (N-01 to N-13, L-01 to L-12) in `DECISIONS.md`.
 
 ## Milestone 1: Environment
 
