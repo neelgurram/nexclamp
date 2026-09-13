@@ -1,0 +1,1541 @@
+{
+  "finder": "gap-r2-2",
+  "date": "2026-09-13",
+  "scope_note": "Gap-filling prior-art discovery for docs/novelty_matrix.csv: foundational degeneracy/sloppiness, neuron-model evaluation and firing-pattern taxonomies, spike-train distances, stimulus-design precedents, simulator verification/CI, sister-community model testing and neuroimaging numerical reproducibility, canonical tool citations, and the Allen electrophysiology white paper. Every candidate's DOI/URL appeared in an API or page response retrieved in this session. Relevance notes paraphrase titles and snippets; items marked 'not deep-read' need verification before any matrix claim. No result claims are made.",
+  "allen_whitepaper_resolution": {
+    "status": "retrieved",
+    "document": "Allen Cell Types Database TECHNICAL WHITE PAPER: ELECTROPHYSIOLOGY, October 2017 v.5 (15 pages)",
+    "primary_url_current": "https://community.brain-map.org/uploads/short-url/veJ9z4lwAJoxv4Rx23b7KpnUYEp.pdf",
+    "listing_page": "https://community.brain-map.org/t/documentation-cell-types-database/2845",
+    "archived_copy": "https://web.archive.org/web/20230324143213/http://help.brain-map.org/download/attachments/8323525/CellTypes_Ephys_Overview.pdf",
+    "original_url_dead": "http://help.brain-map.org/download/attachments/8323525/CellTypes_Ephys_Overview.pdf",
+    "ia_note": "IA CDX shows 200 application/pdf captures 2017-02 to 2023-04 (digest differs for the 2017-02 and 2021-05-11 captures), 404 on 2023-12-29, 302 from 2024-04-11",
+    "stimulus_sets_named": [
+      "Ramp",
+      "Long Square",
+      "Short Square",
+      "Short Square - Hold (-60/-70/-80 mV)",
+      "Short Square - Triple",
+      "Noise 1 & 2",
+      "Ramp to Rheobase",
+      "Square 2 s Suprathreshold",
+      "Square 0.5 ms Subthreshold"
+    ],
+    "caveat": "Version history not established beyond the header 'v.5' and the PDF creation date 2017-10-16; the document names no personal authors (PDF metadata Author field only)."
+  },
+  "candidates": [
+    {
+      "title": "Allen Cell Types Database Technical White Paper: Electrophysiology (October 2017, v.5)",
+      "authors": "Allen Institute for Brain Science (PDF metadata Author field: Susan Sunkin; no author list on the document)",
+      "year": "2017",
+      "venue": "Allen Institute for Brain Science technical white paper, now hosted on community.brain-map.org (Documentation: Cell Types Database, topic 2845)",
+      "url": "https://community.brain-map.org/uploads/short-url/veJ9z4lwAJoxv4Rx23b7KpnUYEp.pdf",
+      "doi": "",
+      "kind": "other",
+      "found_via": "community.brain-map.org Discourse JSON (t/2845 'Documentation: Cell Types Database', link 'Electrophysiology Overview' -> uploads short-url, resolves to S3 file .../2X/d/daed9acdc3e1fdbf11c5c01ca8ee970daad83c49.pdf); cross-checked against Internet Archive capture 20230324143213 of help.brain-map.org/download/attachments/8323525/CellTypes_Ephys_Overview.pdf (CDX status 200, application/pdf). Both files: 15 pages, PDF title 'Electrophysiology', creation date 2017-10-16, header 'OCTOBER 2017 v.5'.",
+      "why_relevant": "Retrievable primary citation for the Allen stimulus set that NeuroSem's protocol list resembles. It resolves the unverified matrix entry. Table 2 and Figure 3 name these stimulus sets: Ramp (25 pA/s), Long Square (1 s steps in 20 pA increments), Short Square (3 ms), Short Square - Hold (-60/-70/-80 mV), Short Square - Triple, Noise 1 & 2 (scaled to rheobase), Ramp to Rheobase, Square 2 s Suprathreshold (rheobase +40/+80 pA) and Square 0.5 ms Subthreshold. The paper splits them into a fixed 'Core 1' sequence and a flexible 'Core 2' sequence, and states that model construction and testing is one design goal. Precedent for a standardized multi-protocol battery, but applied to biological cells, with no mutation or optimisation. The original help.brain-map.org URL went 404 around Dec 2023 and has redirected since Apr 2024 (IA CDX). Suggested citation URL: the community short-url, with the IA snapshot as a fallback.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Classification of electrophysiological and morphological neuron types in the mouse visual cortex",
+      "authors": "Gouwens NW, Sorensen SA, Berg J, Lee C, Jarsky T, Ting J, Sunkin SM, et al.",
+      "year": "2019",
+      "venue": "Nat Neurosci",
+      "url": "https://doi.org/10.1038/s41593-019-0417-0",
+      "doi": "10.1038/s41593-019-0417-0",
+      "kind": "paper",
+      "found_via": "Europe PMC REST search TITLE query; also cited by Allen staff in community.brain-map.org t/1815",
+      "why_relevant": "Peer-reviewed use of the Allen short-square, long-square and ramp stimuli with feature vectors concatenated across protocols (feature-extraction details confirmed in thread t/1815). Precedent for a multi-protocol electrophysiology fingerprint; its purpose is cell-type classification, not change detection.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Systematic generation of biophysically detailed models for diverse cortical neuron types",
+      "authors": "Gouwens NW, Berg J, Feng D, Sorensen SA, Zeng H, Hawrylycz MJ, Koch C, et al.",
+      "year": "2018",
+      "venue": "Nat Commun",
+      "url": "https://doi.org/10.1038/s41467-017-02718-3",
+      "doi": "10.1038/s41467-017-02718-3",
+      "kind": "paper",
+      "found_via": "Europe PMC REST search TITLE query",
+      "why_relevant": "Allen perisomatic biophysical models fitted to features from the standardized stimulus set and evaluated on responses. Neighbouring precedent for feature-based evaluation of conductance models across several stimuli.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Generalized leaky integrate-and-fire models classify multiple neuron types",
+      "authors": "Teeter C, Iyer R, Menon V, Gouwens N, Feng D, Berg J, Szafer A, Cain N, et al.",
+      "year": "2018",
+      "venue": "Nat Commun",
+      "url": "https://doi.org/10.1038/s41467-017-02717-4",
+      "doi": "10.1038/s41467-017-02717-4",
+      "kind": "paper",
+      "found_via": "Europe PMC REST search TITLE query; Crossref also returned bioRxiv 10.1101/104703",
+      "why_relevant": "Allen GLIF family; models are fitted on some stimuli and assessed on held-out stimulus types (e.g. noise). Precedent for held-out-stimulus quantitative evaluation of neuron models, a baseline notion related to NeuroSem's held-out evaluation, but held-out stimuli rather than held-out models or mutation families.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "IPFX (intrinsic physiology feature extraction)",
+      "authors": "Allen Institute (GitHub AllenInstitute/ipfx)",
+      "year": "2017",
+      "venue": "GitHub repository (created 2017-12-10; pushed 2026-08-14; license field NOASSERTION)",
+      "url": "https://github.com/AllenInstitute/ipfx",
+      "doi": "",
+      "kind": "software",
+      "found_via": "GitHub REST /repos/AllenInstitute/ipfx; package named by Allen staff in community.brain-map.org t/1815",
+      "why_relevant": "Allen's feature extractor for the stimulus set above. An alternative or complement to eFEL for protocol-specific features (rheobase sweep, short-square AP, ramp).",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Alternative to hand-tuning conductance-based models: construction and analysis of databases of model neurons",
+      "authors": "Prinz AA, Billimoria CP, Marder E",
+      "year": "2003",
+      "venue": "J Neurophysiol",
+      "url": "https://doi.org/10.1152/jn.00641.2003",
+      "doi": "10.1152/jn.00641.2003",
+      "kind": "paper",
+      "found_via": "Europe PMC REST search TITLE query; confirmed by Crossref",
+      "why_relevant": "Foundational database of parameter combinations producing similar activity classes. Explains why many single-parameter mutants can be behaviourally equivalent under a given protocol, and why one canonical protocol can miss parameter changes. Supports the equivalent-mutant handling.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Similar network activity from disparate circuit parameters",
+      "authors": "Prinz AA, Bucher D, Marder E",
+      "year": "2004",
+      "venue": "Nat Neurosci",
+      "url": "https://doi.org/10.1038/nn1352",
+      "doi": "10.1038/nn1352",
+      "kind": "paper",
+      "found_via": "Europe PMC REST search phrase query; confirmed by Crossref",
+      "why_relevant": "Canonical degeneracy result: very different parameter sets give near-identical output. Background for NeuroSem's 'behaviourally equivalent' mutant class and the limits of finite testing.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Global structure, robustness, and modulation of neuronal models",
+      "authors": "Goldman MS, Golowasch J, Marder E, Abbott LF",
+      "year": "2001",
+      "venue": "J Neurosci",
+      "url": "https://doi.org/10.1523/jneurosci.21-14-05229.2001",
+      "doi": "10.1523/jneurosci.21-14-05229.2001",
+      "kind": "paper",
+      "found_via": "Europe PMC REST search TITLE query",
+      "why_relevant": "Maps activity across conductance space and shows that behaviour is sensitive along some parameter directions and insensitive along others. Direct background for which mutation operators are likely to be silent under a given protocol.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Failure of averaging in the construction of a conductance-based neuron model",
+      "authors": "Golowasch J, Goldman MS, Abbott LF, Marder E",
+      "year": "2002",
+      "venue": "J Neurophysiol",
+      "url": "https://doi.org/10.1152/jn.00412.2001",
+      "doi": "10.1152/jn.00412.2001",
+      "kind": "paper",
+      "found_via": "Europe PMC REST search TITLE query",
+      "why_relevant": "Shows that parameter changes (averaging) can change behaviour qualitatively. Counterpart to degeneracy and relevant to whether parameter edits produce drift.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Variability, compensation and homeostasis in neuron and network function",
+      "authors": "Marder E, Goaillard JM",
+      "year": "2006",
+      "venue": "Nat Rev Neurosci",
+      "url": "https://doi.org/10.1038/nrn1949",
+      "doi": "10.1038/nrn1949",
+      "kind": "paper",
+      "found_via": "Europe PMC REST search phrase query",
+      "why_relevant": "Foundational review of compensation and variability. Supports the claim that equal output under one condition does not imply equal parameters or equal responses under other perturbations.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Multiple models to capture the variability in biological neurons and networks",
+      "authors": "Marder E, Taylor AL",
+      "year": "2011",
+      "venue": "Nat Neurosci",
+      "url": "https://doi.org/10.1038/nn.2735",
+      "doi": "10.1038/nn.2735",
+      "kind": "paper",
+      "found_via": "Europe PMC REST search TITLE query",
+      "why_relevant": "Review advocating populations of models rather than single fits. Background for multiple reference models and for interpreting parameter mutants.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "How multiple conductances determine electrophysiological properties in a multicompartment model",
+      "authors": "Taylor AL, Goaillard JM, Marder E",
+      "year": "2009",
+      "venue": "J Neurosci",
+      "url": "https://doi.org/10.1523/jneurosci.4438-08.2009",
+      "doi": "10.1523/jneurosci.4438-08.2009",
+      "kind": "paper",
+      "found_via": "Europe PMC REST search TITLE query",
+      "why_relevant": "Relates many conductances to many electrophysiological features across a model population. Precedent for a conductance-to-feature sensitivity mapping, i.e. which features reveal which parameter changes.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Complex parameter landscape for a complex neuron model",
+      "authors": "Achard P, De Schutter E",
+      "year": "2006",
+      "venue": "PLoS Comput Biol",
+      "url": "https://doi.org/10.1371/journal.pcbi.0020094",
+      "doi": "10.1371/journal.pcbi.0020094",
+      "kind": "paper",
+      "found_via": "Europe PMC REST search TITLE query",
+      "why_relevant": "Many distinct good fits for a detailed Purkinje model. Degeneracy background specific to multicompartment models NeuroSem may add later.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Using constraints on neuronal activity to reveal compensatory changes in neuronal parameters",
+      "authors": "Olypher AV, Calabrese RL",
+      "year": "2007",
+      "venue": "J Neurophysiol",
+      "url": "https://doi.org/10.1152/jn.00842.2007",
+      "doi": "10.1152/jn.00842.2007",
+      "kind": "paper",
+      "found_via": "Europe PMC REST search TITLE query",
+      "why_relevant": "Characterises parameter directions that preserve activity. Relevant to predicting which single-fault mutants are equivalent under constrained behaviour.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Ion channel degeneracy enables robust and tunable neuronal firing rates",
+      "authors": "Drion G, O'Leary T, Marder E",
+      "year": "2015",
+      "venue": "Proc Natl Acad Sci U S A",
+      "url": "https://doi.org/10.1073/pnas.1516400112",
+      "doi": "10.1073/pnas.1516400112",
+      "kind": "paper",
+      "found_via": "Europe PMC REST search TITLE query",
+      "why_relevant": "Degeneracy/compensation in a conductance model. Background for equivalent vs non-equivalent conductance mutants.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Visualization of currents in neural models with similar behavior and different conductance densities",
+      "authors": "Alonso LM, Marder E",
+      "year": "2019",
+      "venue": "Elife",
+      "url": "https://doi.org/10.7554/elife.42722",
+      "doi": "10.7554/elife.42722",
+      "kind": "paper",
+      "found_via": "Europe PMC REST search TITLE query (matches critic query 'similar behavior different conductance densities')",
+      "why_relevant": "Models with similar baseline behaviour but different conductance densities respond differently to perturbations. Conceptually the closest degeneracy precedent to 'passes the canonical protocol, diverges under another stimulus', though framed as biology rather than as testing.",
+      "estimated_closeness": 3
+    },
+    {
+      "title": "Perturbation-specific responses by two neural circuits generating similar activity patterns",
+      "authors": "Powell DJ, Marder E, Nusbaum MP",
+      "year": "2021",
+      "venue": "Curr Biol",
+      "url": "https://doi.org/10.1016/j.cub.2021.08.042",
+      "doi": "10.1016/j.cub.2021.08.042",
+      "kind": "paper",
+      "found_via": "Europe PMC REST search query '\"similar activity\" AND \"disparate\" AND neuron'",
+      "why_relevant": "Experimental evidence that similar baseline output can hide different perturbation responses. Biological analogue of silent drift exposed by extra protocols.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Universally sloppy parameter sensitivities in systems biology models",
+      "authors": "Gutenkunst RN, Waterfall JJ, Casey FP, Brown KS, Myers CR, Sethna JP",
+      "year": "2007",
+      "venue": "PLoS Comput Biol",
+      "url": "https://doi.org/10.1371/journal.pcbi.0030189",
+      "doi": "10.1371/journal.pcbi.0030189",
+      "kind": "paper",
+      "found_via": "Europe PMC REST search TITLE query; confirmed by Crossref",
+      "why_relevant": "Foundational sloppiness paper: most parameter directions barely affect outputs. Explains why many parameter mutants are near-equivalent and motivates tolerance calibration.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Sloppiness, robustness, and evolvability in systems biology",
+      "authors": "Daniels BC, Chen YJ, Sethna JP, Gutenkunst RN, Myers CR",
+      "year": "2008",
+      "venue": "Curr Opin Biotechnol",
+      "url": "https://doi.org/10.1016/j.copbio.2008.06.008",
+      "doi": "10.1016/j.copbio.2008.06.008",
+      "kind": "paper",
+      "found_via": "Europe PMC REST search TITLE query",
+      "why_relevant": "Follow-on review linking sloppiness to robustness. Background only.",
+      "estimated_closeness": 1
+    },
+    {
+      "title": "Parameter space compression underlies emergent theories and predictive models",
+      "authors": "Machta BB, Chachra R, Transtrum MK, Sethna JP",
+      "year": "2013",
+      "venue": "Science",
+      "url": "https://doi.org/10.1126/science.1238723",
+      "doi": "10.1126/science.1238723",
+      "kind": "paper",
+      "found_via": "Europe PMC REST search TITLE query",
+      "why_relevant": "Theory of why few parameter combinations matter. Background for equivalent mutants.",
+      "estimated_closeness": 1
+    },
+    {
+      "title": "Perspective: Sloppiness and emergent theories in physics, biology, and beyond",
+      "authors": "Transtrum MK, Machta BB, Brown KS, Daniels BC, Myers CR, Sethna JP",
+      "year": "2015",
+      "venue": "J Chem Phys",
+      "url": "https://doi.org/10.1063/1.4923066",
+      "doi": "10.1063/1.4923066",
+      "kind": "paper",
+      "found_via": "Europe PMC REST search TITLE query",
+      "why_relevant": "Review of sloppiness. Citable background for the observation that detectability depends on stimulus and feature choice.",
+      "estimated_closeness": 1
+    },
+    {
+      "title": "Uncertainpy: A Python Toolbox for Uncertainty Quantification and Sensitivity Analysis in Computational Neuroscience",
+      "authors": "Tennøe S, Halnes G, Einevoll GT",
+      "year": "2018",
+      "venue": "Front Neuroinform",
+      "url": "https://doi.org/10.3389/fninf.2018.00049",
+      "doi": "10.3389/fninf.2018.00049",
+      "kind": "paper",
+      "found_via": "Europe PMC REST search TITLE query",
+      "why_relevant": "Feature-based sensitivity analysis of neuron models (parameter perturbation -> spike features). Partial overlap with perturbation plus feature fingerprints, without mutation testing or protocol selection.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "The quantitative single-neuron modeling competition",
+      "authors": "Jolivet R, Schürmann F, Berger TK, Naud R, Gerstner W, Roth A",
+      "year": "2008",
+      "venue": "Biol Cybern",
+      "url": "https://doi.org/10.1007/s00422-008-0261-x",
+      "doi": "10.1007/s00422-008-0261-x",
+      "kind": "paper",
+      "found_via": "Europe PMC REST search TITLE query",
+      "why_relevant": "Standard precedent for scoring neuron models on held-out stimulus data with a spike-timing coincidence metric. Alternative detection metric and held-out evaluation design (held-out data, not held-out models or mutation families).",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "A benchmark test for a quantitative assessment of simple neuron models",
+      "authors": "Jolivet R, Kobayashi R, Rauch A, Naud R, Shinomoto S, Gerstner W",
+      "year": "2008",
+      "venue": "J Neurosci Methods",
+      "url": "https://doi.org/10.1016/j.jneumeth.2007.11.006",
+      "doi": "10.1016/j.jneumeth.2007.11.006",
+      "kind": "paper",
+      "found_via": "Europe PMC REST search TITLE query",
+      "why_relevant": "Benchmark dataset and protocol for model assessment. Precedent for a standardized evaluation benchmark.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "How good are neuron models?",
+      "authors": "Gerstner W, Naud R",
+      "year": "2009",
+      "venue": "Science",
+      "url": "https://doi.org/10.1126/science.1181936",
+      "doi": "10.1126/science.1181936",
+      "kind": "paper",
+      "found_via": "Europe PMC REST search TITLE query",
+      "why_relevant": "Perspective on the competition results and quantitative model evaluation. Background citation.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Which model to use for cortical spiking neurons?",
+      "authors": "Izhikevich EM",
+      "year": "2004",
+      "venue": "IEEE Transactions on Neural Networks",
+      "url": "https://doi.org/10.1109/tnn.2004.832719",
+      "doi": "10.1109/tnn.2004.832719",
+      "kind": "paper",
+      "found_via": "Crossref /works query.bibliographic (IEEE TNN); doi.org redirect to ieeexplore.ieee.org/document/1333071 confirmed",
+      "why_relevant": "Canonical taxonomy of firing behaviours (tonic, phasic, bursting, rebound, etc.) and which models reproduce them. Precedent for NeuroSem's qualitative firing-regime feature and for protocol types (rebound, threshold variability). IEEE TNN venue is relevant for the IEEE pathway.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Simple model of spiking neurons",
+      "authors": "Izhikevich EM",
+      "year": "2003",
+      "venue": "IEEE Transactions on Neural Networks",
+      "url": "https://doi.org/10.1109/tnn.2003.820440",
+      "doi": "10.1109/tnn.2003.820440",
+      "kind": "paper",
+      "found_via": "Crossref /works query.bibliographic (returned alongside the 2004 paper)",
+      "why_relevant": "Companion IEEE TNN model paper. Frequently used simple fixture model family with known firing regimes.",
+      "estimated_closeness": 1
+    },
+    {
+      "title": "Quantitative firing pattern phenotyping of hippocampal neuron types",
+      "authors": "Komendantov AO, Venkadesh S, Rees CL, Wheeler DW, et al.",
+      "year": "2019",
+      "venue": "Scientific Reports",
+      "url": "https://doi.org/10.1038/s41598-019-52611-w",
+      "doi": "10.1038/s41598-019-52611-w",
+      "kind": "paper",
+      "found_via": "Crossref /works query.bibliographic (preprint 10.1101/212084 also returned)",
+      "why_relevant": "Quantitative firing-pattern classification scheme (Hippocampome). Candidate operational definition for NeuroSem's 'qualitative firing regime' feature.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Hippocampome.org 2.0 is a knowledge base enabling data-driven spiking neural network simulations of rodent hippocampal circuits",
+      "authors": "Wheeler DW, Kopsick JD, Sutton N, Tecuatl C, Komendantov AO, et al.",
+      "year": "2024",
+      "venue": "Elife",
+      "url": "https://doi.org/10.7554/elife.90597",
+      "doi": "10.7554/elife.90597",
+      "kind": "paper",
+      "found_via": "Europe PMC REST search query Hippocampome AND firing pattern AND phenotyp*",
+      "why_relevant": "Current Hippocampome release with firing-pattern phenotypes and simple models. Firing-regime taxonomy source.",
+      "estimated_closeness": 1
+    },
+    {
+      "title": "Petilla terminology: nomenclature of features of GABAergic interneurons of the cerebral cortex",
+      "authors": "Petilla Interneuron Nomenclature Group, Ascoli GA, et al.",
+      "year": "2008",
+      "venue": "Nat Rev Neurosci",
+      "url": "https://doi.org/10.1038/nrn2402",
+      "doi": "10.1038/nrn2402",
+      "kind": "paper",
+      "found_via": "Europe PMC REST search TITLE query",
+      "why_relevant": "Community nomenclature of firing patterns (e.g. fast-spiking, adapting, bursting). Terminology source for firing-regime labels.",
+      "estimated_closeness": 1
+    },
+    {
+      "title": "Nature and precision of temporal coding in visual cortex: a metric-space analysis",
+      "authors": "Victor JD, Purpura KP",
+      "year": "1996",
+      "venue": "J Neurophysiol",
+      "url": "https://doi.org/10.1152/jn.1996.76.2.1310",
+      "doi": "10.1152/jn.1996.76.2.1310",
+      "kind": "paper",
+      "found_via": "Crossref /works query.bibliographic",
+      "why_relevant": "Victor-Purpura spike-train metric. Standard alternative to feature-threshold detection for comparing reference and mutant spike trains.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "A novel spike distance",
+      "authors": "van Rossum MC",
+      "year": "2001",
+      "venue": "Neural Comput",
+      "url": "https://doi.org/10.1162/089976601300014321",
+      "doi": "10.1162/089976601300014321",
+      "kind": "paper",
+      "found_via": "Europe PMC REST search TITLE query",
+      "why_relevant": "van Rossum distance. Alternative trace-level detection metric.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Measuring spike train synchrony",
+      "authors": "Kreuz T, Haas JS, Morelli A, Abarbanel HD",
+      "year": "2007",
+      "venue": "J Neurosci Methods",
+      "url": "https://doi.org/10.1016/j.jneumeth.2007.05.031",
+      "doi": "10.1016/j.jneumeth.2007.05.031",
+      "kind": "paper",
+      "found_via": "Crossref /works query.bibliographic",
+      "why_relevant": "ISI-distance, a parameter-free spike-train dissimilarity. Alternative detection metric.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Monitoring spike train synchrony",
+      "authors": "Kreuz T, Chicharro D, Houghton C, Andrzejak RG, Mormann F",
+      "year": "2013",
+      "venue": "J Neurophysiol",
+      "url": "https://doi.org/10.1152/jn.00873.2012",
+      "doi": "10.1152/jn.00873.2012",
+      "kind": "paper",
+      "found_via": "Europe PMC REST search TITLE query",
+      "why_relevant": "SPIKE-distance. Time-resolved alternative metric.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "PySpike—A Python library for analyzing spike train synchrony",
+      "authors": "Mulansky M, Kreuz T",
+      "year": "2016",
+      "venue": "SoftwareX",
+      "url": "https://doi.org/10.1016/j.softx.2016.07.006",
+      "doi": "10.1016/j.softx.2016.07.006",
+      "kind": "paper",
+      "found_via": "Crossref /works query.bibliographic",
+      "why_relevant": "Reusable software implementing ISI/SPIKE distances. Possible baseline metric implementation.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Improved similarity measures for small sets of spike trains",
+      "authors": "Naud R, Gerhard F, Mensi S, Gerstner W",
+      "year": "2011",
+      "venue": "Neural Comput",
+      "url": "https://doi.org/10.1162/neco_a_00208",
+      "doi": "10.1162/neco_a_00208",
+      "kind": "paper",
+      "found_via": "Europe PMC REST search TITLE query",
+      "why_relevant": "Similarity measures used in model-evaluation contexts. Alternative metric.",
+      "estimated_closeness": 1
+    },
+    {
+      "title": "Effective stimuli for constructing reliable neuron models",
+      "authors": "Druckmann S, Berger TK, Schürmann F, Hill S, Markram H, Segev I",
+      "year": "2011",
+      "venue": "PLoS Comput Biol",
+      "url": "https://doi.org/10.1371/journal.pcbi.1002133",
+      "doi": "10.1371/journal.pcbi.1002133",
+      "kind": "paper",
+      "found_via": "Europe PMC REST search TITLE query",
+      "why_relevant": "Asks which current-clamp stimuli best constrain conductance-based model parameters, a stimulus-selection question on neuron models with electrophysiology features. Strong partial overlap with protocol optimisation, but for parameter constraint rather than change detection, with no mutation families or held-out evaluation.",
+      "estimated_closeness": 3
+    },
+    {
+      "title": "Sequential optimal design of neurophysiology experiments",
+      "authors": "Lewi J, Butera R, Paninski L",
+      "year": "2009",
+      "venue": "Neural Comput",
+      "url": "https://doi.org/10.1162/neco.2008.08-07-594",
+      "doi": "10.1162/neco.2008.08-07-594",
+      "kind": "paper",
+      "found_via": "Europe PMC REST search TITLE query",
+      "why_relevant": "Adaptive stimulus design for model estimation. Optimal-stimulus precedent (a statistical estimation goal, not a testing goal).",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Sinusoidal voltage protocols for rapid characterisation of ion channel kinetics",
+      "authors": "Beattie KA, Hill AP, Bardenet R, Cui Y, Vandenberg JI, Gavaghan DJ, et al.",
+      "year": "2018",
+      "venue": "J Physiol",
+      "url": "https://doi.org/10.1113/jp275733",
+      "doi": "10.1113/jp275733",
+      "kind": "paper",
+      "found_via": "Europe PMC REST search TITLE query",
+      "why_relevant": "Designed short protocol that replaces a long battery for ion-channel model identification. Protocol-compaction precedent in electrophysiology (voltage clamp, parameter inference).",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Optimising experimental designs for model selection of ion channel drug binding mechanisms",
+      "authors": "Patten-Elliott F, Lei CL, Preston SP, Wilkinson RD, Mirams GR",
+      "year": "2024",
+      "venue": "bioRxiv",
+      "url": "https://doi.org/10.1101/2024.08.20.608856",
+      "doi": "10.1101/2024.08.20.608856",
+      "kind": "preprint",
+      "found_via": "Europe PMC REST search query 'optimal experimental design' AND neuron/ion channel model AND discriminat*/model selection",
+      "why_relevant": "Optimises protocols to discriminate between candidate electrophysiology models. Protocol optimisation for model discrimination is close in spirit to selecting protocols that detect mutants; cardiac/pharmacology rather than neuron-model regression.",
+      "estimated_closeness": 3
+    },
+    {
+      "title": "Verification of cardiac tissue electrophysiology simulators using an N-version benchmark",
+      "authors": "Niederer SA, Kerfoot E, Benson AP, Bernabeu MO, Bernus O, Bradley C, et al.",
+      "year": "2011",
+      "venue": "Philos Trans A Math Phys Eng Sci",
+      "url": "https://doi.org/10.1098/rsta.2011.0139",
+      "doi": "10.1098/rsta.2011.0139",
+      "kind": "paper",
+      "found_via": "Europe PMC REST search TITLE query; confirmed by Crossref",
+      "why_relevant": "The same benchmark problem runs on many independent simulators and outputs are compared under spatial and temporal refinement. Closest 'same model, different execution stack, refinement-based comparison' precedent for NeuroSem's cross-simulator and tolerance-by-refinement elements; no mutation or protocol selection.",
+      "estimated_closeness": 3
+    },
+    {
+      "title": "High-throughput functional curation of cellular electrophysiology models",
+      "authors": "Cooper J, Mirams GR, Niederer SA",
+      "year": "2011",
+      "venue": "Prog Biophys Mol Biol",
+      "url": "https://doi.org/10.1016/j.pbiomolbio.2011.06.003",
+      "doi": "10.1016/j.pbiomolbio.2011.06.003",
+      "kind": "paper",
+      "found_via": "Europe PMC REST search TITLE query",
+      "why_relevant": "Applies a set of virtual experimental protocols automatically to many cell electrophysiology models and compares emergent properties. Strong partial overlap: multi-protocol characterisation across a model repository; cardiac, without mutants or battery optimisation.",
+      "estimated_closeness": 3
+    },
+    {
+      "title": "The Cardiac Electrophysiology Web Lab",
+      "authors": "Cooper J, Scharm M, Mirams GR",
+      "year": "2016",
+      "venue": "Biophys J",
+      "url": "https://doi.org/10.1016/j.bpj.2015.12.012",
+      "doi": "10.1016/j.bpj.2015.12.012",
+      "kind": "paper",
+      "found_via": "Europe PMC REST search TITLE query",
+      "why_relevant": "Web platform that runs models against shared protocols and compares outputs across models and versions. Closest sister-community system for protocol-based behavioural comparison.",
+      "estimated_closeness": 3
+    },
+    {
+      "title": "Reproducible model development in the cardiac electrophysiology Web Lab",
+      "authors": "Daly AC, Clerx M, Beattie KA, Cooper J, Gavaghan DJ, Mirams GR",
+      "year": "2018",
+      "venue": "Prog Biophys Mol Biol",
+      "url": "https://doi.org/10.1016/j.pbiomolbio.2018.05.011",
+      "doi": "10.1016/j.pbiomolbio.2018.05.011",
+      "kind": "paper",
+      "found_via": "Europe PMC REST search TITLE query",
+      "why_relevant": "Extends the Web Lab to track model development and version comparison against protocols and data. Relevant to behavioural regression across model versions.",
+      "estimated_closeness": 3
+    },
+    {
+      "title": "ModellingWebLab/WebLab",
+      "authors": "Modelling Web Lab developers (GitHub)",
+      "year": "2017",
+      "venue": "GitHub repository (created 2017-07-25; pushed 2024-02-21; license field NOASSERTION)",
+      "url": "https://github.com/ModellingWebLab/WebLab",
+      "doi": "",
+      "kind": "software",
+      "found_via": "GitHub REST /repos/ModellingWebLab/weblab",
+      "why_relevant": "Source of the Web Lab v2 front end. Software counterpart of the Web Lab papers.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "NSuite",
+      "authors": "arbor-sim (GitHub)",
+      "year": "2018",
+      "venue": "GitHub repository (created 2018-06-11; pushed 2024-04-26; license field NOASSERTION)",
+      "url": "https://github.com/arbor-sim/nsuite",
+      "doi": "",
+      "kind": "software",
+      "found_via": "GitHub REST /repos/arbor-sim/nsuite and README",
+      "why_relevant": "Per its README, a framework for benchmarks and numerical validation of multicompartment simulators (Arbor, NEURON, CoreNEURON), intended for CI. Precedent for cross-simulator numerical validation tests; no mutants or protocol battery selection.",
+      "estimated_closeness": 3
+    },
+    {
+      "title": "nrn-modeldb-ci (NEURON ModelDB CI tools)",
+      "authors": "neuronsimulator (GitHub)",
+      "year": "2021",
+      "venue": "GitHub repository (created 2021-11-05; pushed 2026-09-05; BSD-3-Clause)",
+      "url": "https://github.com/neuronsimulator/nrn-modeldb-ci",
+      "doi": "",
+      "kind": "software",
+      "found_via": "GitHub REST /repos/neuronsimulator/nrn-modeldb-ci and README",
+      "why_relevant": "Retrieves ModelDB models and runs them against NEURON builds (commands getmodels/runmodels) to catch changed behaviour across simulator versions. Closest neuroscience 'same published models, changed execution stack' regression system; README excerpt shows no stimulus battery or mutation testing.",
+      "estimated_closeness": 3
+    },
+    {
+      "title": "Modernizing the NEURON Simulator for Sustainability, Portability, and Performance",
+      "authors": "Awile O, Kumbhar P, Cornu N, Dura-Bernal S, King JG, Lupton O, et al.",
+      "year": "2022",
+      "venue": "Front Neuroinform",
+      "url": "https://doi.org/10.3389/fninf.2022.884046",
+      "doi": "10.3389/fninf.2022.884046",
+      "kind": "paper",
+      "found_via": "Europe PMC REST search query ModelDB AND 'continuous integration'",
+      "why_relevant": "Returned for the ModelDB continuous-integration query. Likely describes the NEURON testing/CI infrastructure related to nrn-modeldb-ci (abstract not deep-read here; verify).",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Arbor — A Morphologically-Detailed Neural Network Simulation Library for Contemporary High-Performance Computing Architectures",
+      "authors": "Akar NA, Cumming B, Karakasis V, Kusters A, et al.",
+      "year": "2019",
+      "venue": "2019 27th Euromicro PDP (IEEE)",
+      "url": "https://doi.org/10.1109/empdp.2019.8671560",
+      "doi": "10.1109/empdp.2019.8671560",
+      "kind": "paper",
+      "found_via": "Crossref /works query.bibliographic",
+      "why_relevant": "Canonical Arbor citation, a simulator targeted by NSuite validation. Context for cross-simulator checks.",
+      "estimated_closeness": 1
+    },
+    {
+      "title": "PyNN: A Common Interface for Neuronal Network Simulators",
+      "authors": "Davison AP, Brüderle D, Eppler J, Kremkow J, Muller E, Pecevski D, et al.",
+      "year": "2008",
+      "venue": "Front Neuroinform",
+      "url": "https://doi.org/10.3389/neuro.11.011.2008",
+      "doi": "10.3389/neuro.11.011.2008",
+      "kind": "paper",
+      "found_via": "Europe PMC REST search TITLE query; GitHub NeuralEnsemble/PyNN (license field NOASSERTION, pushed 2026-09-10)",
+      "why_relevant": "Simulator-independent model specification, used to run one model on several simulators and compare. Precedent for the execution-stack-change comparison.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "neuroConstruct: a tool for modeling networks of neurons in 3D space",
+      "authors": "Gleeson P, Steuber V, Silver RA",
+      "year": "2007",
+      "venue": "Neuron",
+      "url": "https://doi.org/10.1016/j.neuron.2007.03.025",
+      "doi": "10.1016/j.neuron.2007.03.025",
+      "kind": "paper",
+      "found_via": "Europe PMC REST search TITLE query; GitHub NeuralEnsemble/neuroConstruct (GPL-2.0)",
+      "why_relevant": "Generated code for multiple simulators from one model description and supported cross-simulator comparison. Historical precedent for translation-preservation checking in the NeuroML lineage.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Simulation of networks of spiking neurons: a review of tools and strategies",
+      "authors": "Brette R, Rudolph M, Carnevale T, Hines M, Beeman D, Bower JM, et al.",
+      "year": "2007",
+      "venue": "J Comput Neurosci",
+      "url": "https://doi.org/10.1007/s10827-007-0038-6",
+      "doi": "10.1007/s10827-007-0038-6",
+      "kind": "paper",
+      "found_via": "Europe PMC REST search TITLE query",
+      "why_relevant": "Cross-simulator benchmark models and a comparison of simulator results. Early neuroscience N-version style comparison.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "BioSimulators: a central registry of simulation engines and services for recommending specific tools",
+      "authors": "Shaikh B, Smith LP, Vasilescu D, Marupilla G, Wilson M, Agmon E, et al.",
+      "year": "2022",
+      "venue": "Nucleic Acids Res",
+      "url": "https://doi.org/10.1093/nar/gkac331",
+      "doi": "10.1093/nar/gkac331",
+      "kind": "paper",
+      "found_via": "Europe PMC REST search TITLE query; GitHub biosimulators/Biosimulators (MIT); PyPI biosimulators-pyneuroml 0.0.16 (MIT)",
+      "why_relevant": "Standard containerised interface for running the same COMBINE/SED-ML simulation across engines, including a jNeuroML/pyNeuroML wrapper. Infrastructure for cross-simulator execution of NeuroML models.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Credibility, Replicability, and Reproducibility in Simulation for Biomedicine and Clinical Applications in Neuroscience",
+      "authors": "Mulugeta L, Drach A, Erdemir A, Hunt CA, Horner M, Ku JP, et al.",
+      "year": "2018",
+      "venue": "Front Neuroinform",
+      "url": "https://doi.org/10.3389/fninf.2018.00018",
+      "doi": "10.3389/fninf.2018.00018",
+      "kind": "paper",
+      "found_via": "Europe PMC REST search query ModelDB AND 'continuous integration'",
+      "why_relevant": "Verification/validation credibility framework for neuroscience simulation. Terminology source for verification vs validation claims.",
+      "estimated_closeness": 1
+    },
+    {
+      "title": "An algorithm to detect and communicate the differences in computational models describing biological systems",
+      "authors": "Scharm M, Wolkenhauer O, Waltemath D",
+      "year": "2016",
+      "venue": "Bioinformatics",
+      "url": "https://doi.org/10.1093/bioinformatics/btv484",
+      "doi": "10.1093/bioinformatics/btv484",
+      "kind": "paper",
+      "found_via": "Europe PMC REST search TITLE query; Crossref gives issued 2015 and PeerJ preprint 10.7287/peerj.preprints.640v1",
+      "why_relevant": "BiVeS structural differencing of SBML/CellML model versions. Structural diff is complementary to NeuroSem's behavioural diff; it shows what changed but not whether behaviour changed. Year differs by source (Crossref 2015 online vs EPMC 2016 issue).",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Exploring the evolution of biochemical models at the network level",
+      "authors": "Gebhardt T, Touré V, Waltemath D, Wolkenhauer O, Scharm M",
+      "year": "2022",
+      "venue": "PLoS One",
+      "url": "https://doi.org/10.1371/journal.pone.0265735",
+      "doi": "10.1371/journal.pone.0265735",
+      "kind": "paper",
+      "found_via": "Europe PMC REST search query BiVeS AND model",
+      "why_relevant": "Version-history analysis of biochemical models. Precedent for studying model edits over versions.",
+      "estimated_closeness": 1
+    },
+    {
+      "title": "Reproducibility in systems biology modelling",
+      "authors": "Tiwari K, Kananathan S, Roberts MG, Meyer JP, Sharif Shohan MU, Xavier A, et al.",
+      "year": "2021",
+      "venue": "Mol Syst Biol",
+      "url": "https://doi.org/10.15252/msb.20209982",
+      "doi": "10.15252/msb.20209982",
+      "kind": "paper",
+      "found_via": "Europe PMC REST search TITLE query; confirmed by Crossref",
+      "why_relevant": "BioModels-era study reporting that many published models could not be reproduced directly from their papers. Motivation analogue for silent errors in published models.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "MEMOTE for standardized genome-scale metabolic model testing",
+      "authors": "Lieven C, Beber ME, Olivier BG, Bergmann FT, Ataman M, Babaei P, et al.",
+      "year": "2020",
+      "venue": "Nat Biotechnol",
+      "url": "https://doi.org/10.1038/s41587-020-0446-y",
+      "doi": "10.1038/s41587-020-0446-y",
+      "kind": "paper",
+      "found_via": "Europe PMC REST search TITLE query; GitHub opencobra/memote (Apache-2.0); PyPI 'memote' present",
+      "why_relevant": "Community-standard test suite and CI for metabolic models, including tracking model changes across versions. Closest sister-community analogue of a standardized regression test suite for a model format; tests are largely structural or consistency checks, not stimulus-response batteries.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Reproducibility of neuroimaging analyses across operating systems",
+      "authors": "Glatard T, Lewis LB, Ferreira da Silva R, Adalat R, Beck N, Lepage C, et al.",
+      "year": "2015",
+      "venue": "Front Neuroinform",
+      "url": "https://doi.org/10.3389/fninf.2015.00012",
+      "doi": "10.3389/fninf.2015.00012",
+      "kind": "paper",
+      "found_via": "Europe PMC REST search TITLE query",
+      "why_relevant": "Same pipeline, different OS/library stack, divergent results. Neuroimaging analogue of execution-stack-induced silent drift.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "The effects of FreeSurfer version, workstation type, and Macintosh operating system version on anatomical volume and cortical thickness measurements",
+      "authors": "Gronenschild EH, Habets P, Jacobs HI, Mengelers R, Rozendaal N, van Os J, et al.",
+      "year": "2012",
+      "venue": "PLoS One",
+      "url": "https://doi.org/10.1371/journal.pone.0038234",
+      "doi": "10.1371/journal.pone.0038234",
+      "kind": "paper",
+      "found_via": "Europe PMC REST search TITLE query",
+      "why_relevant": "Software-version and platform effects on outputs. Analogue for version-change regression.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Numerical uncertainty in analytical pipelines lead to impactful variability in brain networks",
+      "authors": "Kiar G, Chatelain Y, de Oliveira Castro P, Petit E, Rokem A, Varoquaux G, et al.",
+      "year": "2021",
+      "venue": "PLoS One",
+      "url": "https://doi.org/10.1371/journal.pone.0250755",
+      "doi": "10.1371/journal.pone.0250755",
+      "kind": "paper",
+      "found_via": "Europe PMC REST search TITLE query; confirmed by Crossref",
+      "why_relevant": "Perturbs numerics with Monte Carlo arithmetic to estimate result variability. Analogue for NeuroSem's numerical-refinement tolerance calibration (noise-floor estimation before declaring a difference).",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "File-based localization of numerical perturbations in data analysis pipelines",
+      "authors": "Salari A, Kiar G, Lewis L, Evans AC, Glatard T",
+      "year": "2020",
+      "venue": "Gigascience",
+      "url": "https://doi.org/10.1093/gigascience/giaa106",
+      "doi": "10.1093/gigascience/giaa106",
+      "kind": "paper",
+      "found_via": "Europe PMC REST search TITLE query",
+      "why_relevant": "Localises where numerical differences arise in pipelines. Analogue for diagnosing which step or protocol exposes drift.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "NeuroCI: Continuous Integration of Neuroimaging Results Across Software Pipelines and Datasets",
+      "authors": "Sanz-Robinson J, Jahanpour A, Phillips N, Glatard T",
+      "year": "2022",
+      "venue": "2022 IEEE 18th International Conference on e-Science (e-Science)",
+      "url": "https://doi.org/10.1109/escience55777.2022.00025",
+      "doi": "10.1109/escience55777.2022.00025",
+      "kind": "paper",
+      "found_via": "Crossref /works query.bibliographic (bioRxiv 10.1101/2022.05.30.494062 also returned); GitHub neurodatascience/NeuroCI exists (no description or license)",
+      "why_relevant": "CI that tracks scientific results, not just code, across pipeline versions and datasets. Closest 'result-level CI' analogue, at an IEEE venue.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Open-source platforms to investigate analytical flexibility in neuroimaging",
+      "authors": "Sanz-Robinson J, Wang M, McPherson B, Chatelain Y, Kennedy D, Glatard T, et al.",
+      "year": "2025",
+      "venue": "Imaging Neurosci (Camb)",
+      "url": "https://doi.org/10.1162/imag.a.79",
+      "doi": "10.1162/imag.a.79",
+      "kind": "paper",
+      "found_via": "Europe PMC REST search query operating system AND reproducibility AND neuroimaging",
+      "why_relevant": "Recent review of tools for pipeline variability. Background for the neuroimaging-analogue paragraph.",
+      "estimated_closeness": 1
+    },
+    {
+      "title": "NeuroML: A Language for Describing Data Driven Models of Neurons and Networks with a High Degree of Biological Detail",
+      "authors": "Gleeson P, Crook S, Cannon RC, Hines ML, et al.",
+      "year": "2010",
+      "venue": "PLoS Comput Biol",
+      "url": "https://doi.org/10.1371/journal.pcbi.1000815",
+      "doi": "10.1371/journal.pcbi.1000815",
+      "kind": "paper",
+      "found_via": "Crossref /works query.bibliographic",
+      "why_relevant": "Canonical NeuroML citation (tool reused).",
+      "estimated_closeness": 1
+    },
+    {
+      "title": "LEMS: a language for expressing complex biological models in concise and hierarchical form and its use in underpinning NeuroML 2",
+      "authors": "Cannon RC, Gleeson P, Crook S, Ganapathy G, et al.",
+      "year": "2014",
+      "venue": "Front Neuroinform",
+      "url": "https://doi.org/10.3389/fninf.2014.00079",
+      "doi": "10.3389/fninf.2014.00079",
+      "kind": "paper",
+      "found_via": "Crossref /works query.bibliographic",
+      "why_relevant": "Canonical LEMS citation (tool reused).",
+      "estimated_closeness": 1
+    },
+    {
+      "title": "libNeuroML and PyLEMS: using Python to combine procedural and declarative modeling approaches in computational neuroscience",
+      "authors": "Vella M, Cannon RC, Crook S, Davison AP, et al.",
+      "year": "2014",
+      "venue": "Front Neuroinform",
+      "url": "https://doi.org/10.3389/fninf.2014.00038",
+      "doi": "10.3389/fninf.2014.00038",
+      "kind": "paper",
+      "found_via": "Crossref /works query.bibliographic",
+      "why_relevant": "Python NeuroML/LEMS libraries underlying pyNeuroML (tool reused).",
+      "estimated_closeness": 1
+    },
+    {
+      "title": "The NeuroML ecosystem for standardized multi-scale modeling in neuroscience",
+      "authors": "Sinha A, Gleeson P, Marin B, Dura-Bernal S, Panagiotou S, Crook S, et al.",
+      "year": "2025",
+      "venue": "Elife",
+      "url": "https://doi.org/10.7554/elife.95135",
+      "doi": "10.7554/elife.95135",
+      "kind": "paper",
+      "found_via": "Europe PMC REST search TITLE query (bioRxiv 10.1101/2023.12.07.570537); Crossref returned eLife review records under 10.7554/elife.95135.*",
+      "why_relevant": "Current overview of the NeuroML/pyNeuroML/jNeuroML/OMV ecosystem, including validation. Canonical current citation (tool reused).",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Open Source Brain: A Collaborative Resource for Visualizing, Analyzing, Simulating, and Developing Standardized Models of Neurons and Circuits",
+      "authors": "Gleeson P, Cantarelli M, Marin B, Quintana A, Earnshaw M, Sadeh S, et al.",
+      "year": "2019",
+      "venue": "Neuron",
+      "url": "https://doi.org/10.1016/j.neuron.2019.05.019",
+      "doi": "10.1016/j.neuron.2019.05.019",
+      "kind": "paper",
+      "found_via": "Europe PMC REST search query ModelDB AND 'continuous integration'",
+      "why_relevant": "OSB platform with automated model validation (OMV). Canonical citation for reused CI/validation infrastructure.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "osb-model-validation (OMV)",
+      "authors": "OpenSourceBrain (GitHub)",
+      "year": "2014",
+      "venue": "GitHub repository (created 2014-04-16; pushed 2026-08-17; LGPL-3.0); PyPI project 'omv' present",
+      "url": "https://github.com/OpenSourceBrain/osb-model-validation",
+      "doi": "",
+      "kind": "software",
+      "found_via": "GitHub REST /repos/OpenSourceBrain/osb-model-validation; PyPI Simple index name scan",
+      "why_relevant": "Automated model tests across simulators with saved-output comparison. Reused tool and closest existing NeuroML regression mechanism (single-configuration tests).",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "pyNeuroML",
+      "authors": "NeuroML (GitHub)",
+      "year": "2014",
+      "venue": "GitHub repository (LGPL-3.0; pushed 2026-07-31); Zenodo software DOIs via DataCite (e.g. v1.0.8 10.5281/zenodo.7944221)",
+      "url": "https://github.com/NeuroML/pyNeuroML",
+      "doi": "10.5281/zenodo.7944221",
+      "kind": "software",
+      "found_via": "GitHub REST /repos/NeuroML/pyNeuroML; DataCite query 'NeuroML validation'",
+      "why_relevant": "Reused parsing, validation, simulation and translation tool. The Zenodo DOI shown is one older version found via DataCite; pick the version-specific DOI at freeze time.",
+      "estimated_closeness": 1
+    },
+    {
+      "title": "Collaborative infrastructure for test-driven scientific model validation",
+      "authors": "Omar C, Aldrich J, Gerkin RC",
+      "year": "2014",
+      "venue": "Companion Proceedings of the 36th International Conference on Software Engineering (ICSE)",
+      "url": "https://doi.org/10.1145/2591062.2591129",
+      "doi": "10.1145/2591062.2591129",
+      "kind": "paper",
+      "found_via": "Crossref /works query.bibliographic; GitHub scidash/sciunit (MIT)",
+      "why_relevant": "Canonical SciUnit citation (reused scientific model-testing framework).",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "NeuronUnit: A package for data-driven validation of neuron models using SciUnit",
+      "authors": "Gerkin RC, Birgiolas J, Jarvis RJ, Omar C, Crook SM",
+      "year": "2019",
+      "venue": "bioRxiv",
+      "url": "https://doi.org/10.1101/665331",
+      "doi": "10.1101/665331",
+      "kind": "preprint",
+      "found_via": "Crossref /works query.bibliographic and Europe PMC REST search TITLE query; GitHub scidash/neuronunit (no license field; last push 2021-07-18)",
+      "why_relevant": "Canonical NeuronUnit citation: tests neuron models against electrophysiology observations with multiple test types. Reused tool and partial overlap (multiple tests and features, no mutation or selection).",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "eFEL (Electrophys Feature Extraction Library)",
+      "authors": "BlueBrain (GitHub) / Zenodo software records",
+      "year": "2015",
+      "venue": "GitHub BlueBrain/eFEL (archived=true, last push 2025-02-26, license field NOASSERTION); Zenodo 'eFEL' software records via DataCite (e.g. 10.5281/zenodo.22093396, 2026)",
+      "url": "https://github.com/BlueBrain/eFEL",
+      "doi": "10.5281/zenodo.22093396",
+      "kind": "software",
+      "found_via": "GitHub REST /repos/BlueBrain/eFEL; DataCite titles.title:eFEL",
+      "why_relevant": "Reused feature extractor. Note: the BlueBrain GitHub repository reports archived=true, so the active upstream location must be verified by the dependency audit. The Zenodo DOI shown is the most recent record DataCite returned; confirm which version DOI to cite.",
+      "estimated_closeness": 1
+    },
+    {
+      "title": "BluePyOpt: Leveraging Open Source Software and Cloud Infrastructure to Optimise Model Parameters in Neuroscience",
+      "authors": "Van Geit W, Gevaert M, Chindemi G, Rössert C, et al.",
+      "year": "2016",
+      "venue": "Front Neuroinform",
+      "url": "https://doi.org/10.3389/fninf.2016.00017",
+      "doi": "10.3389/fninf.2016.00017",
+      "kind": "paper",
+      "found_via": "Crossref /works query.bibliographic",
+      "why_relevant": "Multi-protocol, eFEL-feature-based objective for fitting neuron models. Partial overlap on protocols plus features; purpose is fitting, not change detection.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "NeuroML-DB: Sharing and characterizing data-driven neuroscience models described in NeuroML",
+      "authors": "Birgiolas J, Haynes V, Gleeson P, Gerkin RC, et al.",
+      "year": "2023",
+      "venue": "PLOS Comput Biol",
+      "url": "https://doi.org/10.1371/journal.pcbi.1010941",
+      "doi": "10.1371/journal.pcbi.1010941",
+      "kind": "paper",
+      "found_via": "Crossref /works query.bibliographic (returned for NeuroML canonical query)",
+      "why_relevant": "Characterises many NeuroML models under standard current-clamp protocols with electrophysiology properties. Partial overlap on a multi-protocol fingerprint across a NeuroML model corpus; also a fixture-model source.",
+      "estimated_closeness": 3
+    },
+    {
+      "title": "eFELunit (PyPI)",
+      "authors": "Appukuttan S, Davison A (PyPI author field)",
+      "year": "unverified",
+      "venue": "PyPI project eFELunit 2.0.3 (MIT); home page github.com/appukuttan-shailesh/eFELunit",
+      "url": "https://pypi.org/project/eFELunit/",
+      "doi": "",
+      "kind": "software",
+      "found_via": "PyPI Simple index name scan + PyPI JSON",
+      "why_relevant": "SciUnit tests built on eFEL features. The PyPI summary oddly reads as testing of neuronal morphologies. Small partial overlap (feature-based tests); release year unverified.",
+      "estimated_closeness": 1
+    }
+  ],
+  "queries_run": [
+    {
+      "source": "PubMed (MCP search_articles)",
+      "query": "Prinz AE[Author] AND Marder E[Author] AND disparate",
+      "result_note": "0 hits (author initials wrong); switched to Europe PMC phrase/TITLE queries"
+    },
+    {
+      "source": "PubMed (MCP search_articles)",
+      "query": "(stimulation protocol OR stimulus protocol)[tiab] AND neuron model[tiab] AND (optimal/optimized/selection) AND (constrain*/identifiab*/fitting)",
+      "result_note": "0 hits"
+    },
+    {
+      "source": "Europe PMC",
+      "query": "\"similar activity\" AND \"disparate\" AND neuron",
+      "result_note": "117 hits; Deistler 2022, Powell 2021, Jedlicka 2022"
+    },
+    {
+      "source": "Europe PMC",
+      "query": "Prinz AND \"similar network activity from disparate circuit parameters\"",
+      "result_note": "Prinz 2004 Nat Neurosci found"
+    },
+    {
+      "source": "Europe PMC",
+      "query": "\"variability, compensation and homeostasis\"",
+      "result_note": "Marder & Goaillard 2006 found"
+    },
+    {
+      "source": "Europe PMC",
+      "query": "sloppy AND \"parameter sensitivities\" AND \"systems biology\"",
+      "result_note": "41 hits; foundational paper not at top; fixed with TITLE query"
+    },
+    {
+      "source": "Europe PMC",
+      "query": "\"conductance densities\" AND \"similar\" AND perturbation AND model neuron",
+      "result_note": "51 hits; Zang & Marder 2023, Alonso 2023, Gorur-Shandilya 2020 (recent)"
+    },
+    {
+      "source": "Europe PMC",
+      "query": "degeneracy AND \"ion channel\" AND neuron AND compensation AND model",
+      "result_note": "57 hits; mostly 2024-2026 degeneracy papers (Brandoit 2026, Fyon 2024/2026, Reva 2025)"
+    },
+    {
+      "source": "Europe PMC",
+      "query": "TITLE:\"alternative to hand-tuning conductance-based models\"",
+      "result_note": "Prinz 2003 found"
+    },
+    {
+      "source": "Europe PMC",
+      "query": "TITLE:\"universally sloppy parameter sensitivities\"",
+      "result_note": "Gutenkunst 2007 found"
+    },
+    {
+      "source": "Europe PMC",
+      "query": "TITLE:\"global structure, robustness, and modulation of neuronal models\"",
+      "result_note": "Goldman 2001 found"
+    },
+    {
+      "source": "Europe PMC",
+      "query": "TITLE:\"multiple models to capture the variability in biological neurons and networks\"",
+      "result_note": "Marder & Taylor 2011 found"
+    },
+    {
+      "source": "Europe PMC",
+      "query": "TITLE:\"how good are neuron models\"",
+      "result_note": "Gerstner & Naud 2009 found"
+    },
+    {
+      "source": "Europe PMC",
+      "query": "TITLE:\"quantitative single-neuron modeling competition\"",
+      "result_note": "Jolivet 2008 Biol Cybern found"
+    },
+    {
+      "source": "Europe PMC",
+      "query": "TITLE:\"generalized leaky integrate-and-fire models classify multiple neuron types\"",
+      "result_note": "Teeter 2018 + bioRxiv found"
+    },
+    {
+      "source": "Europe PMC",
+      "query": "\"Hippocampome\" AND \"firing pattern\" AND phenotyp*",
+      "result_note": "4 hits; Hippocampome 2.0 (2024), Venkadesh 2018"
+    },
+    {
+      "source": "Europe PMC",
+      "query": "TITLE:\"multineuronal spike train analysis\"",
+      "result_note": "0 hits"
+    },
+    {
+      "source": "Europe PMC",
+      "query": "TITLE:\"A new correlation-based measure of spike timing reliability\" OR TITLE:\"novel spike distance\"",
+      "result_note": "van Rossum 2001, Schreiber 2003"
+    },
+    {
+      "source": "Europe PMC",
+      "query": "TITLE:\"monitoring spike train synchrony\"",
+      "result_note": "Kreuz 2013, SPIKY 2015"
+    },
+    {
+      "source": "Europe PMC",
+      "query": "TITLE:\"what can we learn from\" AND \"spike train distance\" OR TITLE:\"measuring spike train synchrony\"",
+      "result_note": "malformed boolean precedence, 1733 irrelevant hits; discarded"
+    },
+    {
+      "source": "Europe PMC",
+      "query": "TITLE:\"verification of cardiac tissue electrophysiology simulators\"",
+      "result_note": "Niederer 2011 N-version benchmark found"
+    },
+    {
+      "source": "Europe PMC",
+      "query": "nsuite OR (\"benchmark\" AND \"Arbor\" AND \"NEURON\" AND simulator AND validation)",
+      "result_note": "119 hits; no NSuite paper; Albers 2022 benchmarking workflow, EDEN 2025, NESTML 2025"
+    },
+    {
+      "source": "Europe PMC",
+      "query": "TITLE:\"PyNN: a common interface for neuronal network simulators\"",
+      "result_note": "Davison 2008 found"
+    },
+    {
+      "source": "Europe PMC",
+      "query": "TITLE:\"neuroConstruct\"",
+      "result_note": "Gleeson 2007 Neuron found"
+    },
+    {
+      "source": "Europe PMC",
+      "query": "ModelDB AND \"continuous integration\"",
+      "result_note": "15 hits; Awile 2022 NEURON modernization, OSB 2019, Mulugeta 2018, Pelot 2025"
+    },
+    {
+      "source": "Europe PMC",
+      "query": "TITLE:\"differences between versions of computational models\" OR (BiVeS AND model)",
+      "result_note": "26 hits, mostly noise (author-name matches); Gebhardt 2022 relevant"
+    },
+    {
+      "source": "Europe PMC",
+      "query": "TITLE:\"reproducibility crisis\" AND BioModels",
+      "result_note": "0 hits; replaced by TITLE 'reproducibility in systems biology modelling'"
+    },
+    {
+      "source": "Europe PMC",
+      "query": "TITLE:\"MEMOTE for standardized genome-scale metabolic model testing\"",
+      "result_note": "Lieven 2020 found"
+    },
+    {
+      "source": "Europe PMC",
+      "query": "\"operating system\" AND reproducibility AND neuroimaging AND (FreeSurfer OR FSL)",
+      "result_note": "147 hits; Sanz-Robinson 2025; script crashed on a Unicode title (fixed via PYTHONIOENCODING)"
+    },
+    {
+      "source": "Europe PMC",
+      "query": "TITLE:\"reproducibility of neuroimaging analyses across operating systems\"",
+      "result_note": "Glatard 2015 found"
+    },
+    {
+      "source": "Europe PMC",
+      "query": "TITLE:\"effects of FreeSurfer version, workstation type\"",
+      "result_note": "Gronenschild 2012 found"
+    },
+    {
+      "source": "Europe PMC",
+      "query": "TITLE:\"numerical uncertainty in analytical pipelines\"",
+      "result_note": "Kiar 2021 + bioRxiv found"
+    },
+    {
+      "source": "Europe PMC",
+      "query": "TITLE:\"file-based localization of numerical perturbations\"",
+      "result_note": "Salari 2020 found"
+    },
+    {
+      "source": "Europe PMC",
+      "query": "TITLE:\"reproducibility in systems biology modelling\"",
+      "result_note": "Tiwari 2021 + bioRxiv found"
+    },
+    {
+      "source": "Europe PMC",
+      "query": "TITLE:\"detect and communicate the differences in computational models\"",
+      "result_note": "Scharm 2016 BiVeS + PeerJ preprint"
+    },
+    {
+      "source": "Europe PMC",
+      "query": "TITLE:\"cardiac electrophysiology web lab\"",
+      "result_note": "Cooper 2016, Daly 2018"
+    },
+    {
+      "source": "Europe PMC",
+      "query": "TITLE:\"high-throughput functional curation of cellular electrophysiology models\"",
+      "result_note": "Cooper 2011 found"
+    },
+    {
+      "source": "Europe PMC",
+      "query": "TITLE:\"BioSimulators\"",
+      "result_note": "Shaikh 2022 found"
+    },
+    {
+      "source": "Europe PMC",
+      "query": "TITLE:\"effective stimuli for constructing reliable neuron models\"",
+      "result_note": "Druckmann 2011 found"
+    },
+    {
+      "source": "Europe PMC",
+      "query": "TITLE:\"sinusoidal voltage protocols\"",
+      "result_note": "Beattie 2018 found"
+    },
+    {
+      "source": "Europe PMC",
+      "query": "TITLE:\"Petilla terminology\"",
+      "result_note": "Petilla 2008 found"
+    },
+    {
+      "source": "Europe PMC",
+      "query": "TITLE:\"how multiple conductances determine electrophysiological properties\"",
+      "result_note": "Taylor 2009 found"
+    },
+    {
+      "source": "Europe PMC",
+      "query": "TITLE:\"complex parameter landscape for a complex neuron model\"",
+      "result_note": "Achard 2006 found"
+    },
+    {
+      "source": "Europe PMC",
+      "query": "TITLE:\"benchmark test for a quantitative assessment of simple neuron models\"",
+      "result_note": "Jolivet 2008 JNM found"
+    },
+    {
+      "source": "Europe PMC",
+      "query": "TITLE:\"systematic generation of biophysically detailed models for diverse cortical neuron types\"",
+      "result_note": "Gouwens 2018 found"
+    },
+    {
+      "source": "Europe PMC",
+      "query": "TITLE:\"classification of electrophysiological and morphological neuron types in the mouse visual cortex\"",
+      "result_note": "Gouwens 2019 found"
+    },
+    {
+      "source": "Europe PMC",
+      "query": "TITLE:\"sloppiness and emergent theories\"",
+      "result_note": "Transtrum 2015 found"
+    },
+    {
+      "source": "Europe PMC",
+      "query": "TITLE:\"Uncertainpy\"",
+      "result_note": "Tennøe 2018 found"
+    },
+    {
+      "source": "Europe PMC",
+      "query": "TITLE:\"visualization of currents in neural models with similar behavior and different conductance densities\"",
+      "result_note": "Alonso & Marder 2019 found"
+    },
+    {
+      "source": "Europe PMC",
+      "query": "TITLE:\"failure of averaging in the construction of a conductance-based neuron model\"",
+      "result_note": "Golowasch 2002 found"
+    },
+    {
+      "source": "Europe PMC",
+      "query": "TITLE:\"using constraints on neuronal activity to reveal compensatory changes\"",
+      "result_note": "Olypher & Calabrese 2007 found"
+    },
+    {
+      "source": "Europe PMC",
+      "query": "TITLE:\"ion channel degeneracy enables robust and tunable neuronal firing rates\"",
+      "result_note": "Drion 2015 found"
+    },
+    {
+      "source": "Europe PMC",
+      "query": "TITLE:\"simulation of networks of spiking neurons: a review of tools and strategies\"",
+      "result_note": "Brette 2007 found"
+    },
+    {
+      "source": "Europe PMC",
+      "query": "TITLE:\"learning from the past: approaches for reproducibility in computational neuroscience\"",
+      "result_note": "0 hits (guessed title not confirmed; nothing included)"
+    },
+    {
+      "source": "Europe PMC",
+      "query": "TITLE:\"NeuroML ecosystem for standardized multi-scale modeling\"",
+      "result_note": "Sinha 2025 eLife + 2023 bioRxiv"
+    },
+    {
+      "source": "Europe PMC",
+      "query": "TITLE:\"NeuronUnit\"",
+      "result_note": "Gerkin 2019 bioRxiv"
+    },
+    {
+      "source": "Europe PMC (bioRxiv/preprints via SRC:PPR)",
+      "query": "SRC:PPR AND \"NeuroML\" AND (validation OR testing) AND PUB_YEAR:[2022 TO 2026]",
+      "result_note": "2 hits; Sinha 2023 preprint, Chintaluri 2025 ion channel omnimodel"
+    },
+    {
+      "source": "Europe PMC (bioRxiv/preprints via SRC:PPR)",
+      "query": "SRC:PPR AND (\"neuron model\" OR \"neuronal model\") AND (\"mutation testing\" OR \"mutant models\" OR \"fault injection\")",
+      "result_note": "0 hits"
+    },
+    {
+      "source": "Europe PMC",
+      "query": "(\"perturbation\" AND \"fingerprint\") AND (\"neuron model\" OR \"conductance-based\")",
+      "result_note": "22 hits, none relevant"
+    },
+    {
+      "source": "Europe PMC",
+      "query": "\"stimulus protocol\" AND \"conductance-based\" AND (discriminat* OR \"model selection\" OR identifiab*)",
+      "result_note": "5 hits; Shapira 2022 statistical emulation marginal; none close"
+    },
+    {
+      "source": "Europe PMC",
+      "query": "TITLE:\"sequential optimal design of neurophysiology experiments\"",
+      "result_note": "Lewi 2009 found"
+    },
+    {
+      "source": "Europe PMC",
+      "query": "TITLE:\"improved similarity measures for small sets of spike trains\"",
+      "result_note": "Naud 2011 found"
+    },
+    {
+      "source": "Europe PMC",
+      "query": "\"optimal experimental design\" AND (\"neuron model\" OR \"ion channel model\") AND (discriminat* OR \"model selection\")",
+      "result_note": "4 hits; Patten-Elliott 2024 preprint, Shuttleworth 2023, Whittaker 2020"
+    },
+    {
+      "source": "Europe PMC",
+      "query": "TITLE:\"parameter space compression underlies emergent theories\"",
+      "result_note": "Machta 2013 found"
+    },
+    {
+      "source": "Europe PMC",
+      "query": "TITLE:\"sloppiness, robustness, and evolvability in systems biology\"",
+      "result_note": "Daniels 2008 found"
+    },
+    {
+      "source": "Crossref",
+      "query": "Which model to use for cortical spiking neurons Izhikevich IEEE Transactions on Neural Networks",
+      "result_note": "Izhikevich 2004 TNN 10.1109/tnn.2004.832719 + 2003 TNN"
+    },
+    {
+      "source": "Crossref",
+      "query": "Simple model of spiking neurons Izhikevich",
+      "result_note": "Izhikevich 2003 TNN confirmed"
+    },
+    {
+      "source": "Crossref",
+      "query": "Verification of cardiac tissue electrophysiology simulators using an N-version benchmark",
+      "result_note": "Niederer 2011 confirmed"
+    },
+    {
+      "source": "Crossref",
+      "query": "NSuite benchmark validation neural network simulators Arbor NEURON NEST",
+      "result_note": "no NSuite publication; noise"
+    },
+    {
+      "source": "Crossref",
+      "query": "Universally sloppy parameter sensitivities in systems biology models",
+      "result_note": "Gutenkunst 2007 confirmed"
+    },
+    {
+      "source": "Crossref",
+      "query": "Similar network activity from disparate circuit parameters",
+      "result_note": "Prinz 2004 confirmed; Deistler preprint/PNAS"
+    },
+    {
+      "source": "Crossref",
+      "query": "Alternative to hand-tuning conductance-based models construction database",
+      "result_note": "Prinz 2003 confirmed"
+    },
+    {
+      "source": "Crossref",
+      "query": "generalized leaky integrate-and-fire models classify multiple neuron types Teeter",
+      "result_note": "Teeter 2018 + preprint"
+    },
+    {
+      "source": "Crossref",
+      "query": "Beyond the hippocampome firing pattern phenotyping neuron types Komendantov",
+      "result_note": "Komendantov 2019 Sci Rep + preprint"
+    },
+    {
+      "source": "Crossref",
+      "query": "SPIKY graphical user interface monitoring spike train synchrony",
+      "result_note": "Kreuz 2013/2015; Scholarpedia entries"
+    },
+    {
+      "source": "Crossref",
+      "query": "Nature and precision of temporal coding in visual cortex metric-space analysis Victor Purpura",
+      "result_note": "Victor & Purpura 1996 + 1997"
+    },
+    {
+      "source": "Crossref",
+      "query": "NeuroCI continuous integration neuroimaging results across software versions",
+      "result_note": "NeuroCI IEEE e-Science 2022 + bioRxiv"
+    },
+    {
+      "source": "Crossref",
+      "query": "NeuroML: a language for describing data driven models of neurons and networks with a high degree of biological detail",
+      "result_note": "Gleeson 2010; NeuroML-DB 2023"
+    },
+    {
+      "source": "Crossref",
+      "query": "LEMS: a language for expressing complex biological models in concise and hierarchical form",
+      "result_note": "Cannon 2014"
+    },
+    {
+      "source": "Crossref",
+      "query": "libNeuroML and PyLEMS: using Python to combine procedural and declarative modeling approaches",
+      "result_note": "Vella 2014"
+    },
+    {
+      "source": "Crossref",
+      "query": "The NeuroML ecosystem for standardized multi-scale modeling in neuroscience",
+      "result_note": "only eLife review/assessment records; article DOI taken from Europe PMC"
+    },
+    {
+      "source": "Crossref",
+      "query": "Collaborative infrastructure for test-driven scientific model validation SciUnit",
+      "result_note": "Omar 2014 ICSE companion; NeuronUnit 2019 preprint"
+    },
+    {
+      "source": "Crossref",
+      "query": "BluePyOpt: leveraging open source software and cloud infrastructure to optimise model parameters in neuroscience",
+      "result_note": "Van Geit 2016"
+    },
+    {
+      "source": "Crossref",
+      "query": "An algorithm to detect and communicate the differences in computational models describing biological systems",
+      "result_note": "Scharm 2015/2016 + PeerJ preprint"
+    },
+    {
+      "source": "Crossref",
+      "query": "Reproducibility in systems biology modelling Tiwari",
+      "result_note": "Tiwari 2021 MSB"
+    },
+    {
+      "source": "Crossref",
+      "query": "Arbor a morphologically-detailed neural network simulation library for contemporary high-performance computing architectures",
+      "result_note": "Akar 2019 Euromicro PDP"
+    },
+    {
+      "source": "Crossref",
+      "query": "PySpike A Python library for analyzing spike train synchrony",
+      "result_note": "Mulansky & Kreuz 2016"
+    },
+    {
+      "source": "Crossref",
+      "query": "Measuring spike train synchrony Kreuz Haas Morelli",
+      "result_note": "Kreuz 2007 JNM"
+    },
+    {
+      "source": "Crossref",
+      "query": "Numerical uncertainty in analytical pipelines lead to impactful variability in brain networks",
+      "result_note": "Kiar 2021 confirmed"
+    },
+    {
+      "source": "Crossref (filter prefix:10.5281, Zenodo)",
+      "query": "NeuroML model validation | eFEL electrophysiology feature extraction library | mutation testing simulation model | neuron model regression test",
+      "result_note": "0 results for all four (Zenodo DOIs are registered with DataCite, not Crossref)"
+    },
+    {
+      "source": "DataCite REST",
+      "query": "NeuroML validation",
+      "result_note": "6 hits: pyNeuroML Zenodo versions, NeuroML2Loihi 2026"
+    },
+    {
+      "source": "DataCite REST",
+      "query": "neuron model mutation",
+      "result_note": "397 hits, irrelevant noise"
+    },
+    {
+      "source": "DataCite REST",
+      "query": "electrophysiology feature extraction",
+      "result_note": "57 hits, irrelevant"
+    },
+    {
+      "source": "DataCite REST",
+      "query": "neuron model regression test",
+      "result_note": "116 hits, irrelevant"
+    },
+    {
+      "source": "DataCite REST",
+      "query": "titles.title:eFEL",
+      "result_note": "92 records; eFEL Zenodo software versions (2026)"
+    },
+    {
+      "source": "DataCite REST",
+      "query": "titles.title:osb-model-validation",
+      "result_note": "non-JSON response (query syntax rejected)"
+    },
+    {
+      "source": "DataCite REST",
+      "query": "titles.title:NeuronUnit",
+      "result_note": "1 hit: INCF 2017 abstract"
+    },
+    {
+      "source": "GitHub REST (org-scoped repos)",
+      "query": "arbor-sim/nsuite, neuronsimulator/nrn-modeldb-ci, NeuralEnsemble/PyNN, NeuralEnsemble/neuroConstruct, opencobra/memote, big-data-lab-team/NeuroCI",
+      "result_note": "all found except big-data-lab-team/NeuroCI (Not Found); READMEs of nrn-modeldb-ci and nsuite read"
+    },
+    {
+      "source": "GitHub REST search",
+      "query": "NeuroCI in:name",
+      "result_note": "neurodatascience/NeuroCI found"
+    },
+    {
+      "source": "GitHub REST (org-scoped repos)",
+      "query": "ModellingWebLab/weblab, biosimulators/Biosimulators, BlueBrain/eFEL, OpenSourceBrain/osb-model-validation, scidash/neuronunit, scidash/sciunit, NeuroML/pyNeuroML, AllenInstitute/ipfx",
+      "result_note": "all found; BlueBrain/eFEL archived=true"
+    },
+    {
+      "source": "Internet Archive CDX",
+      "query": "help.brain-map.org/download/attachments/8323525/CellTypes_Ephys_Overview.pdf*",
+      "result_note": "20 captures 2017-2025; 200 PDF until 2023-04; 404 on 2023-12-29; 302 from 2024-04; downloaded capture 20230324143213 (15 pp, Oct 2017 v.5)"
+    },
+    {
+      "source": "community.brain-map.org Discourse JSON",
+      "query": "c/how-to/15.json (topic list) and search.json?q=electrophysiology overview cell types",
+      "result_note": "found t/2845 Documentation: Cell Types Database, t/1815 feature-extraction thread, t/3016 API doc"
+    },
+    {
+      "source": "community.brain-map.org Discourse JSON",
+      "query": "t/2845.json, t/1815.json, t/3016.json",
+      "result_note": "t/2845 links an Electrophysiology Overview PDF (short-url veJ9z4...); t/1815 staff reply names short/long square and ramp AP waveforms and IPFX; the thread still quotes the old help.brain-map.org link"
+    },
+    {
+      "source": "community.brain-map.org upload",
+      "query": "uploads/short-url/veJ9z4lwAJoxv4Rx23b7KpnUYEp.pdf",
+      "result_note": "redirects to an S3 PDF whose metadata matches the IA copy: 'TECHNICAL WHITE PAPER: ELECTROPHYSIOLOGY', Oct 2017 v.5; stimulus table extracted"
+    },
+    {
+      "source": "AllenSDK documentation (WebFetch)",
+      "query": "https://allensdk.readthedocs.io/en/latest/cell_types.html",
+      "result_note": "code examples reference stimulus names Ramp, Short Square, Long Square; no white-paper link; SDK version not shown"
+    },
+    {
+      "source": "PyPI Simple index (JSON API, 890,791 projects)",
+      "query": "regex scans: neurosem | neuro.*(test|valid|regress|mutat|diff) | efel/neuronunit/sciunit/omv/pyneuroml/spike distance | nsuite/memote/neuroci/bives",
+      "result_note": "no 'neurosem' project; found efel, eFELunit, neuronunit, neuronunitopt, neuronunit-opt, sciunit, sciunit2, omv, pyNeuroML, biosimulators-pyneuroml, memote; no NSuite/NeuroCI/BiVeS packages"
+    },
+    {
+      "source": "PyPI JSON API",
+      "query": "eFELunit, neuronunitopt, biosimulators-pyneuroml",
+      "result_note": "eFELunit 2.0.3 MIT; neuronunitopt 0.19 MIT; biosimulators-pyneuroml 0.0.16 MIT"
+    },
+    {
+      "source": "WebSearch",
+      "query": "site:zenodo.org neuron model validation NeuroML",
+      "result_note": "not performed: session web-search budget exhausted (200/200)"
+    },
+    {
+      "source": "WebSearch",
+      "query": "site:pypi.org neuron model regression testing electrophysiology",
+      "result_note": "not performed: budget exhausted"
+    },
+    {
+      "source": "WebSearch",
+      "query": "site:semanticscholar.org perturbation fingerprint neuron model stimulation protocols",
+      "result_note": "not performed: budget exhausted"
+    },
+    {
+      "source": "arXiv API (export.arxiv.org)",
+      "query": "all:/abs: queries: mutation+neuron+simulation+testing; spike train distance; neuron model regression testing; metamorphic testing simulation; stimulus design neuron model identifiability",
+      "result_note": "HTTP 429 (rate-limited) on every attempt; no results"
+    },
+    {
+      "source": "OpenAlex API",
+      "query": "N-version benchmark neural simulator verification; neuron model mutation testing electrophysiology features; optimal stimulus protocol design discriminating neuron models; cross-simulator comparison NeuroML models reproducibility",
+      "result_note": "blocked: 'Insufficient budget' (paid-credit limit, resets midnight UTC)"
+    },
+    {
+      "source": "Semantic Scholar Graph API",
+      "query": "perturbation fingerprint neuron model; stimulus protocol selection neuron model validation",
+      "result_note": "HTTP 429 Too Many Requests (two attempts)"
+    },
+    {
+      "source": "DBLP search API",
+      "query": "NeuroCI; Which Model to Use for Cortical Spiking Neurons",
+      "result_note": "blocked: bot-check HTML page instead of JSON"
+    },
+    {
+      "source": "IEEE Xplore",
+      "query": "https://ieeexplore.ieee.org/document/1333071 (via doi.org/10.1109/tnn.2004.832719 redirect)",
+      "result_note": "HTTP 202 with no usable content for curl; metadata taken from Crossref instead"
+    }
+  ],
+  "blocked_sources": [
+    "WebSearch: session budget exhausted (200/200 calls); all site: fallback queries not run",
+    "arXiv API export.arxiv.org: HTTP 429 on all attempts (2026-09-13)",
+    "OpenAlex API: 'Insufficient budget' paid-credit limit, 0 remaining (2026-09-13)",
+    "Semantic Scholar Graph API: HTTP 429 without API key",
+    "DBLP search API: bot-check interstitial HTML instead of JSON",
+    "IEEE Xplore document page: HTTP 202 with empty body for curl; used Crossref for IEEE TNN metadata",
+    "Crossref prefix:10.5281 filter: 0 results (Zenodo DOIs are DataCite-registered); used DataCite instead",
+    "help.brain-map.org CellTypes_Ephys_Overview.pdf: original URL dead (404, then 302 redirect per IA CDX); retrieved via Internet Archive capture and community.brain-map.org upload",
+    "GitHub big-data-lab-team/NeuroCI: Not Found (repository is at neurodatascience/NeuroCI)",
+    "PubMed MCP: two queries returned 0 hits (syntax/author-initial issues); Europe PMC used as main MEDLINE-backed source"
+  ]
+}

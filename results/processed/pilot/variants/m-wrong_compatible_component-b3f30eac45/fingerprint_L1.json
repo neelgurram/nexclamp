@@ -1,0 +1,589 @@
+{
+  "cell_steps": {
+    "P00_canonical": 1000000,
+    "P01_baseline": 200000,
+    "P02_weak_step": 200000,
+    "P03_rheobase": 9600000,
+    "P04_step_2x": 200000,
+    "P05_long_step": 500000,
+    "P06_ramp": 300000,
+    "P07_hyperpolarizing_step": 200000,
+    "P08_rebound": 220000,
+    "P09_short_pulse": 100000,
+    "P10_paired_pulses": 100000
+  },
+  "dt_ms": 0.005,
+  "level_factor": 1,
+  "messages": [
+    "org.lemsml.jlems.core.run.ConnectionError: No such child element or variable IM in IM_all[channelDensity]"
+  ],
+  "model_id": "pospischil2008_rs",
+  "rheobase": {
+    "history": [
+      {
+        "amplitudes_nA": [
+          0.0,
+          0.045454545454545456,
+          0.09090909090909091,
+          0.13636363636363635,
+          0.18181818181818182,
+          0.2272727272727273,
+          0.2727272727272727,
+          0.3181818181818182,
+          0.36363636363636365,
+          0.4090909090909091,
+          0.4545454545454546,
+          0.5
+        ],
+        "counts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "amplitudes_nA": [
+          0.5,
+          0.6363636363636364,
+          0.7727272727272727,
+          0.9090909090909091,
+          1.0454545454545454,
+          1.1818181818181817,
+          1.3181818181818181,
+          1.4545454545454546,
+          1.5909090909090908,
+          1.727272727272727,
+          1.8636363636363635,
+          2.0
+        ],
+        "counts": [
+          0,
+          17,
+          25,
+          32,
+          39,
+          45,
+          51,
+          56,
+          61,
+          65,
+          70,
+          74
+        ]
+      },
+      {
+        "amplitudes_nA": [
+          0.5,
+          0.512396694214876,
+          0.5247933884297521,
+          0.5371900826446281,
+          0.5495867768595041,
+          0.5619834710743802,
+          0.5743801652892562,
+          0.5867768595041323,
+          0.5991735537190083,
+          0.6115702479338843,
+          0.6239669421487604,
+          0.6363636363636364
+        ],
+        "counts": [
+          0,
+          4,
+          6,
+          8,
+          9,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17
+        ]
+      },
+      {
+        "amplitudes_nA": [
+          0.5,
+          0.5011269722013524,
+          0.5022539444027048,
+          0.503380916604057,
+          0.5045078888054094,
+          0.5056348610067618,
+          0.5067618332081142,
+          0.5078888054094666,
+          0.509015777610819,
+          0.5101427498121712,
+          0.5112697220135236,
+          0.512396694214876
+        ],
+        "counts": [
+          0,
+          0,
+          0,
+          1,
+          2,
+          2,
+          3,
+          3,
+          3,
+          4,
+          4,
+          4
+        ]
+      },
+      {
+        "amplitudes_nA": [
+          0.5022539444027048,
+          0.5023563964210095,
+          0.5024588484393143,
+          0.502561300457619,
+          0.5026637524759238,
+          0.5027662044942285,
+          0.5028686565125333,
+          0.502971108530838,
+          0.5030735605491428,
+          0.5031760125674475,
+          0.5032784645857523,
+          0.503380916604057
+        ],
+        "counts": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    ],
+    "lower_nA": 0.502561300457619,
+    "n_simulations": 5,
+    "rheobase_nA": 0.5026637524759238,
+    "status": "ok",
+    "upper_nA": 0.5026637524759238
+  },
+  "run_ids": {
+    "P00_canonical": "r-23225ac811c806707804",
+    "P01_baseline": "r-59fada5919f7b08e02cf",
+    "P02_weak_step": "r-59fada5919f7b08e02cf",
+    "P03_rheobase": "s-185f3251db53482ac07a",
+    "P04_step_2x": "r-59fada5919f7b08e02cf",
+    "P05_long_step": "r-6ccaf562a3f38d767878",
+    "P06_ramp": "r-3098b8f5df97950eab0f",
+    "P07_hyperpolarizing_step": "r-59fada5919f7b08e02cf",
+    "P08_rebound": "r-9ae210aa83e97fbee100",
+    "P09_short_pulse": "r-0779896294ade6a145f3",
+    "P10_paired_pulses": "r-0779896294ade6a145f3"
+  },
+  "runtime_s": 469.038,
+  "status": "build_error",
+  "tables": {
+    "P01_baseline": {
+      "baseline_voltage": {
+        "name": "baseline_voltage",
+        "source": "efel:voltage_base[scalar]",
+        "state": "defined",
+        "unit": "mV",
+        "value": -69.99999237060547
+      },
+      "firing_regime": {
+        "name": "firing_regime",
+        "source": "neurosem:firing_regime",
+        "state": "defined",
+        "unit": "",
+        "value": "silent"
+      },
+      "spike_count": {
+        "name": "spike_count",
+        "source": "efel:spike_count_stimint[scalar]",
+        "state": "defined",
+        "unit": "1",
+        "value": 0.0
+      },
+      "steady_state_voltage": {
+        "name": "steady_state_voltage",
+        "source": "efel:steady_state_voltage_stimend[scalar]",
+        "state": "defined",
+        "unit": "mV",
+        "value": -69.99999237060547
+      }
+    },
+    "P02_weak_step": {
+      "baseline_voltage": {
+        "name": "baseline_voltage",
+        "source": "efel:voltage_base[scalar]",
+        "state": "defined",
+        "unit": "mV",
+        "value": -69.99999237060547
+      },
+      "spike_count": {
+        "name": "spike_count",
+        "source": "efel:spike_count_stimint[scalar]",
+        "state": "defined",
+        "unit": "1",
+        "value": 0.0
+      },
+      "steady_state_voltage": {
+        "name": "steady_state_voltage",
+        "source": "efel:steady_state_voltage_stimend[scalar]",
+        "state": "defined",
+        "unit": "mV",
+        "value": -60.31200124282825
+      },
+      "voltage_deflection": {
+        "name": "voltage_deflection",
+        "source": "efel:voltage_deflection_vb_ssse[scalar]",
+        "state": "defined",
+        "unit": "mV",
+        "value": 9.687991127777217
+      }
+    },
+    "P03_rheobase": {
+      "rheobase": {
+        "name": "rheobase",
+        "source": "neurosem:rheobase[ok]",
+        "state": "defined",
+        "unit": "nA",
+        "value": 0.5026637524759238
+      }
+    },
+    "P04_step_2x": {
+      "adaptation_index": {
+        "name": "adaptation_index",
+        "source": "efel:adaptation_index2[scalar]",
+        "state": "defined",
+        "unit": "1",
+        "value": 1.0943672915503902e-05
+      },
+      "ahp_depth": {
+        "name": "ahp_depth",
+        "source": "efel:AHP_depth[first]",
+        "state": "defined",
+        "unit": "mV",
+        "value": 2.6341934204086783
+      },
+      "ap_amplitude": {
+        "name": "ap_amplitude",
+        "source": "efel:AP_amplitude[first]",
+        "state": "defined",
+        "unit": "mV",
+        "value": 89.59736633380615
+      },
+      "ap_half_width": {
+        "name": "ap_half_width",
+        "source": "efel:AP_duration_half_width[first]",
+        "state": "defined",
+        "unit": "ms",
+        "value": 0.7099999999993543
+      },
+      "burst_count": {
+        "name": "burst_count",
+        "source": "efel:strict_burst_number[scalar]",
+        "state": "defined",
+        "unit": "1",
+        "value": 1.0
+      },
+      "firing_regime": {
+        "name": "firing_regime",
+        "source": "neurosem:firing_regime",
+        "state": "defined",
+        "unit": "",
+        "value": "tonic"
+      },
+      "first_isi": {
+        "name": "first_isi",
+        "source": "efel:all_ISI_values[first]",
+        "state": "defined",
+        "unit": "ms",
+        "value": 11.739999999989323
+      },
+      "first_spike_latency": {
+        "name": "first_spike_latency",
+        "source": "efel:time_to_first_spike[scalar]",
+        "state": "defined",
+        "unit": "ms",
+        "value": 10.209999999862873
+      },
+      "last_isi": {
+        "name": "last_isi",
+        "source": "efel:all_ISI_values[last]",
+        "state": "defined",
+        "unit": "ms",
+        "value": 11.71999999998934
+      },
+      "mean_frequency": {
+        "name": "mean_frequency",
+        "source": "efel:mean_frequency[scalar]",
+        "state": "defined",
+        "unit": "Hz",
+        "value": 85.5989891168001
+      },
+      "spike_count": {
+        "name": "spike_count",
+        "source": "efel:spike_count_stimint[scalar]",
+        "state": "defined",
+        "unit": "1",
+        "value": 42.0
+      }
+    },
+    "P05_long_step": {
+      "adaptation_index": {
+        "name": "adaptation_index",
+        "source": "efel:adaptation_index2[scalar]",
+        "state": "defined",
+        "unit": "1",
+        "value": 2.5671437416806334e-06
+      },
+      "ahp_depth": {
+        "name": "ahp_depth",
+        "source": "efel:AHP_depth[first]",
+        "state": "defined",
+        "unit": "mV",
+        "value": 1.9261169433659546
+      },
+      "ap_amplitude": {
+        "name": "ap_amplitude",
+        "source": "efel:AP_amplitude[first]",
+        "state": "defined",
+        "unit": "mV",
+        "value": 89.16496658484613
+      },
+      "ap_half_width": {
+        "name": "ap_half_width",
+        "source": "efel:AP_duration_half_width[first]",
+        "state": "defined",
+        "unit": "ms",
+        "value": 0.6999999999993634
+      },
+      "burst_count": {
+        "name": "burst_count",
+        "source": "efel:strict_burst_number[scalar]",
+        "state": "defined",
+        "unit": "1",
+        "value": 1.0
+      },
+      "firing_regime": {
+        "name": "firing_regime",
+        "source": "neurosem:firing_regime",
+        "state": "defined",
+        "unit": "",
+        "value": "tonic"
+      },
+      "first_isi": {
+        "name": "first_isi",
+        "source": "efel:all_ISI_values[first]",
+        "state": "defined",
+        "unit": "ms",
+        "value": 17.079999999984466
+      },
+      "first_spike_latency": {
+        "name": "first_spike_latency",
+        "source": "efel:time_to_first_spike[scalar]",
+        "state": "defined",
+        "unit": "ms",
+        "value": 15.519999999858044
+      },
+      "last_isi": {
+        "name": "last_isi",
+        "source": "efel:all_ISI_values[last]",
+        "state": "defined",
+        "unit": "ms",
+        "value": 17.09000000037304
+      },
+      "mean_frequency": {
+        "name": "mean_frequency",
+        "source": "efel:mean_frequency[scalar]",
+        "state": "defined",
+        "unit": "Hz",
+        "value": 58.591402587928336
+      },
+      "spike_count": {
+        "name": "spike_count",
+        "source": "efel:spike_count_stimint[scalar]",
+        "state": "defined",
+        "unit": "1",
+        "value": 117.0
+      }
+    },
+    "P06_ramp": {
+      "firing_regime": {
+        "name": "firing_regime",
+        "source": "neurosem:firing_regime",
+        "state": "defined",
+        "unit": "",
+        "value": "tonic"
+      },
+      "first_spike_latency": {
+        "name": "first_spike_latency",
+        "source": "efel:time_to_first_spike[scalar]",
+        "state": "defined",
+        "unit": "ms",
+        "value": 336.7699999995659
+      },
+      "mean_frequency": {
+        "name": "mean_frequency",
+        "source": "efel:mean_frequency[scalar]",
+        "state": "defined",
+        "unit": "Hz",
+        "value": 55.40556876340523
+      },
+      "spike_count": {
+        "name": "spike_count",
+        "source": "efel:spike_count_stimint[scalar]",
+        "state": "defined",
+        "unit": "1",
+        "value": 55.0
+      }
+    },
+    "P07_hyperpolarizing_step": {
+      "baseline_voltage": {
+        "name": "baseline_voltage",
+        "source": "efel:voltage_base[scalar]",
+        "state": "defined",
+        "unit": "mV",
+        "value": -69.99999237060547
+      },
+      "minimum_voltage": {
+        "name": "minimum_voltage",
+        "source": "efel:minimum_voltage[scalar]",
+        "state": "defined",
+        "unit": "mV",
+        "value": -89.36425018310547
+      },
+      "sag_ratio": {
+        "name": "sag_ratio",
+        "source": "efel:sag_ratio1[scalar]",
+        "state": "defined",
+        "unit": "1",
+        "value": 9.999557592142316e-08
+      },
+      "steady_state_voltage": {
+        "name": "steady_state_voltage",
+        "source": "efel:steady_state_voltage_stimend[scalar]",
+        "state": "defined",
+        "unit": "mV",
+        "value": -89.36424824676536
+      },
+      "voltage_deflection": {
+        "name": "voltage_deflection",
+        "source": "efel:voltage_deflection_vb_ssse[scalar]",
+        "state": "defined",
+        "unit": "mV",
+        "value": -19.364255876159888
+      }
+    },
+    "P08_rebound": {
+      "firing_regime": {
+        "name": "firing_regime",
+        "source": "neurosem:firing_regime",
+        "state": "defined",
+        "unit": "",
+        "value": "silent"
+      },
+      "first_spike_latency": {
+        "name": "first_spike_latency",
+        "source": "efel:time_to_first_spike[scalar]",
+        "state": "not_applicable",
+        "unit": "ms",
+        "value": null
+      },
+      "maximum_voltage": {
+        "name": "maximum_voltage",
+        "source": "efel:maximum_voltage[scalar]",
+        "state": "defined",
+        "unit": "mV",
+        "value": -69.99999237060547
+      },
+      "spike_count": {
+        "name": "spike_count",
+        "source": "efel:spike_count_stimint[scalar]",
+        "state": "defined",
+        "unit": "1",
+        "value": 0.0
+      }
+    },
+    "P09_short_pulse": {
+      "ahp_depth": {
+        "name": "ahp_depth",
+        "source": "efel:AHP_depth[first]",
+        "state": "defined",
+        "unit": "mV",
+        "value": -0.8534698486324146
+      },
+      "ap_amplitude": {
+        "name": "ap_amplitude",
+        "source": "efel:AP_amplitude[first]",
+        "state": "defined",
+        "unit": "mV",
+        "value": 118.56591415660512
+      },
+      "ap_half_width": {
+        "name": "ap_half_width",
+        "source": "efel:AP_duration_half_width[first]",
+        "state": "defined",
+        "unit": "ms",
+        "value": 0.8699999999992087
+      },
+      "first_spike_latency": {
+        "name": "first_spike_latency",
+        "source": "efel:time_to_first_spike[scalar]",
+        "state": "defined",
+        "unit": "ms",
+        "value": 2.129999999870222
+      },
+      "spike_count": {
+        "name": "spike_count",
+        "source": "efel:spike_count_stimint[scalar]",
+        "state": "defined",
+        "unit": "1",
+        "value": 1.0
+      }
+    },
+    "P10_paired_pulses": {
+      "ap_amplitude": {
+        "name": "ap_amplitude",
+        "source": "efel:AP_amplitude[first]",
+        "state": "defined",
+        "unit": "mV",
+        "value": 118.56591415660512
+      },
+      "first_isi": {
+        "name": "first_isi",
+        "source": "efel:all_ISI_values[first]",
+        "state": "defined",
+        "unit": "ms",
+        "value": 22.99999999997908
+      },
+      "first_spike_latency": {
+        "name": "first_spike_latency",
+        "source": "efel:time_to_first_spike[scalar]",
+        "state": "defined",
+        "unit": "ms",
+        "value": 2.129999999870222
+      },
+      "spike_count": {
+        "name": "spike_count",
+        "source": "efel:spike_count_stimint[scalar]",
+        "state": "defined",
+        "unit": "1",
+        "value": 2.0
+      }
+    }
+  },
+  "variant_id": "m-wrong_compatible_component-b3f30eac45"
+}

@@ -130,6 +130,28 @@ Such variants are class 2 (structurally valid, non-executable) and are flagged `
 - **Why.** Trials run on exported directories without Git history, but hidden files that enter history are hard to remove and would leak if the repository is pushed before the trials finish.
 - **Conflict of interest.** The same assistant that built NeuroSem wrote these evaluator specs. Neel should review them, and ideally revise them independently, before any trial.
 
+**D-023 A run is "dirty" only if simulation-relevant files differ from the commit** (fixed)
+`provenance.git_state` checks `src`, `configs`, `data`, `models`, `scripts`, `workflows`, `pyproject.toml` and `requirements.lock`. Edits to documentation or audit evidence (for example, the prior-art sweep writing into `docs/m0_evidence` while the pilot ran) cannot change a simulation or a derived number, so they do not mark runs dirty.
+
+**D-024 The pilot is larger than the specification's pilot table** (provisional; Neel to confirm)
+The spec's pilot table lists 4 protocols, 3-5 features and 5-10 mutants per model. The pilot that ran on 2026-09-13 used:
+- all 9 implemented battery protocols (P01, P02, P04-P10) plus rheobase (P03) and the canonical harness;
+- the full feature set in `configs/features.yaml`;
+- 2 sites per mutation operator across the biophysical, reference and numerical families, which gives about 26 mutants per model;
+- 8 valid-transformation and no-change operators per model.
+
+Why: the battery runs as one batched simulation per variant, so the extra protocols cost little. Running the full candidate battery also tests every protocol and feature for stability before anything is frozen. The larger scope makes the pilot's go/no-go criteria harder to pass by chance, not easier.
+
+The primary protocol count and the frozen study scope remain decisions for the preregistration.
+
+**D-025 The frozen study runs as a fresh campaign, with no cache reuse across commits** (provisional; Neel to confirm)
+The pilot reused 75 cached simulations from earlier development commits; 38 were recorded with a dirty tree (`docs/pilot/pilot_interpretation.md` section 7).
+
+Content addressing guarantees those traces match their inputs, but provenance is cleaner when every run of a confirmatory campaign comes from one clean commit. So the frozen study must:
+- use a new campaign name;
+- run on a committed, clean tree;
+- check that every `run.json` records the same commit with `git_dirty = false`.
+
 ## Models and licensing
 
 **D-017 Pilot fixtures: Pospischil 2008 RS and LTS** (provisional)
@@ -155,5 +177,6 @@ Model files keep their own licenses: MIT, or LGPL-3.0 for the NeuroML2 HH exampl
 | N-08 | Whether to add NEURON as a cross-simulator (optional in the spec) | deferred |
 | N-09 | Accept correlated Pospischil cells in the full study, and which curated candidates to add | see `docs/model_curation_candidates.md` when available |
 | N-11 | Report the jNeuroML validator gap (`channelDensityVShift` references are not checked by test 10025) to the NeuroML maintainers? | not reported; outward-facing, needs Neel |
+| N-13 | **Milestone 6 decision.** The pilot met all three formal criteria, but its only silent mutants are numerical-configuration changes (two explained largely by the harness/battery base-step asymmetry). The canonical harness caught every behaviour-changing biophysical and reference edit on the two correlated pilot models. Choose: a second design-frozen pilot on independent models; reframe as an evaluation of existing validation adequacy; or continue as specified | Recommend option 1 or 2 in `docs/pilot/pilot_interpretation.md`, not continuing on the numerical silent mutants |
 | N-12 | Where the hidden agent-study evaluators live permanently (separate private repository, encrypted archive, or offline), and whether Neel revises them independently, given they were written by the assistant that built NeuroSem | local only, Git-ignored, hashes committed |
-| N-10 | Project name. The audit (`docs/m0_evidence/names/`, independently re-checked) found: no PyPI, conda-forge or GitHub-account conflict, but a 2025 CMAME article with an arXiv preprint and code named "NeuroSEM" (a computational simulation framework); an active GPL-3.0 GitHub project spelled "NeuroSem" in neuroscience and language models; the neuromarketing company NeuroSEM holding neurosem.com since 2013; and heavy overloading of "SEM" in neuroscience | **Recommend renaming before any public release.** Preferred: **PerturbPrint** (package/CLI `perturbprint`); it matches the defined term "perturbation fingerprint" and had zero hits in every source checked. Runner-up: DriftClamp. Not legal clearance; re-check registries before release. Code keeps the working name `neurosem` until Neel decides (a rename is a mechanical refactor). |
+| N-10 | Project name. The audit (`docs/m0_evidence/names/`, independently re-checked) found: no PyPI, conda-forge or GitHub-account conflict, but a 2025 CMAME article with an arXiv preprint and code named "NeuroSEM" (a computational simulation framework); an active GPL-3.0 GitHub project spelled "NeuroSem" in neuroscience and language models; the neuromarketing company NeuroSEM holding neurosem.com since 2013; and heavy overloading of "SEM" in neuroscience | **Recommend renaming before any public release.** Preferred: **PerturbPrint** (package/CLI `perturbprint`); it matches the defined term "perturbation fingerprint" and had zero hits in every source that answered (Zenodo, EUIPO and some rate-limited indexes could not be checked). `docs/NAME_CONFLICT_AUDIT.md` recommends deciding before preregistration and the frozen study, whose raw results are immutable. Runner-up: DriftClamp. Not legal clearance; re-check registries before release. Code keeps the working name `neurosem` until Neel decides (a rename is a mechanical refactor). |

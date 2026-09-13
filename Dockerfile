@@ -31,11 +31,11 @@ LABEL org.opencontainers.image.title="NeuroSem" \
       org.opencontainers.image.licenses="BSD-3-Clause" \
       org.opencontainers.image.revision="${GIT_COMMIT}"
 
-# PROVENANCE GAP: NEUROSEM_GIT_COMMIT (and the OCI revision label) record the build commit, but
-# core neurosem.provenance.git_state() does not read it yet and the image has no git or .git, so
-# runs inside this image record commit "unknown" and dirty=True. That does NOT meet the spec's
-# per-run Git-commit requirement: do not use container runs as study results until the core change
-# requested in docs/build_notes/infra.md (request 2) lands.
+# PROVENANCE: the image has no git or .git. neurosem.provenance.git_state() falls back to
+# NEUROSEM_GIT_COMMIT (set below from the GIT_COMMIT build argument, like the OCI revision label) and
+# reports dirty=True, because the tree cannot be checked. Build with --build-arg GIT_COMMIT=<sha>, and
+# pass -e NEUROSEM_CONTAINER_IMAGE=<repo@sha256:...> at run time so the image enters the environment
+# digest. Neither path has been exercised in a real container yet (Docker has not been run).
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
     PIP_NO_CACHE_DIR=1 \

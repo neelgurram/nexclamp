@@ -1,0 +1,117 @@
+{
+  "campaign": "pilot",
+  "created_utc": "2026-09-13T18:56:14+00:00",
+  "in_sample_note": "Everything here reads ``results/processed/<campaign>/`` (and, for trace figures, the raw\ntrace files when present). Nothing is simulated. Results computed on a discovery/pilot\ncampaign are *in-sample and descriptive*: the same mutants define admissibility and, when\ngreedy ordering is used, the battery order. Only the gated held-out evaluation tests the\nstudy hypothesis. Statistical outputs on few base models are flagged unreliable by the\nanalysis functions themselves.\n",
+  "classes": {
+    "5_non_equivalent": 25,
+    "4_equivalent_within_tested_domain": 29,
+    "6_silent_under_canonical": 3,
+    "3_numerically_unstable": 1,
+    "2_non_executable": 8,
+    "1_structurally_invalid": 2
+  },
+  "n_admissible_mutants": 28,
+  "paired_battery_vs_canonical_in_sample": {
+    "counts": {
+      "both": 21,
+      "only_a": 3,
+      "only_b": 4,
+      "neither": 0,
+      "n": 28
+    },
+    "rate_a": 0.8571428571428571,
+    "rate_b": 0.8928571428571429,
+    "diff": -0.03571428571428571,
+    "exact_mcnemar_p": 1.0,
+    "exact_mcnemar_note": "two-sided exact binomial on discordant pairs; assumes independent mutants",
+    "cluster_bootstrap": {
+      "statistic": "pooled paired difference in detection rate (a - b)",
+      "diff": -0.03571428571428581,
+      "rate_a": 0.8571428571428571,
+      "rate_b": 0.8928571428571429,
+      "ci_low": -0.2,
+      "ci_high": 0.15384615384615385,
+      "rate_a_ci": [
+        0.7333333333333333,
+        1.0
+      ],
+      "rate_b_ci": [
+        0.8461538461538461,
+        0.9333333333333333
+      ],
+      "ci_level": 0.95,
+      "ci_method": "cluster percentile bootstrap (base models resampled with replacement)",
+      "boot_se": 0.12622116220041138,
+      "n_boot": 2000,
+      "seed": 20260913,
+      "n_mutants": 28,
+      "n_clusters": 2,
+      "cluster_sizes": {
+        "pospischil2008_lts": 15,
+        "pospischil2008_rs": 13
+      },
+      "n_distinct_resamples": 3,
+      "reliable": false,
+      "warning": "only 2 base-model cluster(s) (< 5): the cluster bootstrap has few distinct resamples and its percentile interval is unreliable"
+    },
+    "cluster_permutation": {
+      "p_value": 1.0,
+      "statistic": -1,
+      "statistic_definition": "sum over base models of (only_a - only_b)",
+      "per_cluster_difference": {
+        "pospischil2008_lts": -3,
+        "pospischil2008_rs": 2
+      },
+      "n_clusters": 2,
+      "n_informative_clusters": 2,
+      "exact": true,
+      "n_perm": 4,
+      "seed": 20260914,
+      "min_attainable_p": 0.5,
+      "reliable": false,
+      "warning": "only 2 base-model cluster(s) (< 5): the sign-flip test has few distinct sign patterns and low attainable significance",
+      "assumption": "independent base models; per-model discordant difference symmetric about 0 under H0"
+    },
+    "n_clusters": 2,
+    "n_informative_clusters": 2,
+    "reliable": false
+  },
+  "tolerance_sensitivity_not_evaluable": {
+    "0.5": {
+      "not_evaluable": 1
+    },
+    "1.0": {
+      "not_evaluable": 0
+    },
+    "2.0": {
+      "not_evaluable": 0
+    },
+    "4.0": {
+      "not_evaluable": 0
+    }
+  },
+  "false_positives": {
+    "n": 16,
+    "n_detected": 0,
+    "rate": 0.0,
+    "ci_low": 0.0,
+    "ci_high": 0.20590721420782268,
+    "ci_level": 0.95,
+    "ci_method": "clopper_pearson (units treated as independent)",
+    "n_clusters": 2
+  },
+  "figures": [
+    "results/figures/pilot/fig1_concept.pdf",
+    "results/figures/pilot/fig1_concept.png",
+    "results/figures/pilot/fig2_validation_cascade.pdf",
+    "results/figures/pilot/fig2_validation_cascade.png",
+    "results/figures/pilot/fig3_detection_heatmap.pdf",
+    "results/figures/pilot/fig3_detection_heatmap.png",
+    "results/figures/pilot/fig4_efficiency_curve.pdf",
+    "results/figures/pilot/fig4_efficiency_curve.png",
+    "results/figures/pilot/fig6_false_positives.pdf",
+    "results/figures/pilot/fig6_false_positives.png",
+    "results/figures/pilot/fig7_case_studies.pdf",
+    "results/figures/pilot/fig7_case_studies.png"
+  ]
+}

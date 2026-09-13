@@ -116,8 +116,8 @@ Excluded from N but reported in the validation cascade:
 | **selected misses** | c (only canonical) | d (neither) |
 
 - DR_selected = (a + b) / N and DR_canonical = (a + c) / N, both under the reproducible
-  detection rule of section 2. DR_canonical is not 1 - silent-survival rate (section 2,
-  caveat).
+  detection rule of section 2. Because class 6 uses the same canonical rule (section 2,
+  DECISIONS D-021), DR_canonical = 1 - silent-survival rate on the same admissible mutants.
 - **Paired difference** Delta = DR_selected - DR_canonical = (b - c) / N.
 - Also reported for every held-out model j: N_j, a_j, b_j, c_j, d_j and Delta_j.
 - Counts are also broken down by mutation family, including the held-out family.

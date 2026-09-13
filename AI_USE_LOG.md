@@ -104,6 +104,21 @@ Both led to the relative structural oracle (D-006).
 
 Every change came with updated or new tests. The full suite was run before committing `3cdb957`.
 
+**Interruption and rescoping (2026-09-13, about 18:30 UTC).** A usage session limit stopped two workflows partway through.
+
+- **Research workflow `wf_4db58141-488`:** 84 of 133 agents finished. The rest were lost: the second-round prior-art deep reads, the third critic round, and the novelty stress test.
+- **Documents workflow `wf_7ab5e6e4-e5a`:** 3 of 9 agents finished.
+
+On Neel's instruction ("Try again") the remaining work was redone without workflow orchestration, using individual background subagents:
+- `REQUIREMENTS.md`, `RISK_REGISTER.md` and `PLAN.md` were written;
+- `LICENSE_AUDIT.md` and `DEPENDENCY_AUDIT.md` were fact-checked and fixed;
+- three deep-read batches covered all 73 second-round candidates estimated at closeness 3;
+- one novelty stress test covered the closest verified works.
+
+The main session fixed the name audit from its fact-check findings. It also built `docs/novelty_matrix.csv` with `scripts/build_novelty_matrix.py` and wrote `PRIOR_ART_AUDIT.md`.
+
+Scope that was dropped is recorded openly: 144 second-round candidates at estimated closeness 2 were not deep-read, and the third critic round did not run (`PRIOR_ART_AUDIT.md` section 7).
+
 **Accepted, modified, or rejected.** All code is pending Neel's review. Nothing has been released.
 
 **Scientific control.** The following remain provisional and are listed for Neel's decision in DECISIONS.md:

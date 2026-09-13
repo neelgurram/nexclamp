@@ -1,0 +1,25 @@
+  |    |    +-----------------------------------------------------------------------------
+  |    +----------------------------------------------------------------------------------
+  |    | specificCapacitances[0] +--------------------------------------------------------
+  |    | specificCapacitances[0] |  StateInstance: null [StateType: specificCapacitance, parent: null] 
+  |    | specificCapacitances[0] |    Variables: {t = 0.4114399999994449, value = 0.01, specCap = 0.01}
+  |    | specificCapacitances[0] |    Exposures: {specCap = 0.01}
+  |    | specificCapacitances[0] +--------------------------------------------------------
+  |    +---------------------------------------------------------------------------------------
+  +---------------------------------------------------------------------------------------
+	at org.lemsml.jlems.core.run.StateInstance.checkReturn(StateInstance.java:602)
+	at org.lemsml.jlems.core.run.StateInstance.getVariable(StateInstance.java:573)
+	at org.lemsml.jlems.core.run.PathDerivedVariable.eval(PathDerivedVariable.java:119)
+	... 16 more
+Sep 13, 2026 1:34:15 PM org.lemsml.jlems.io.logging.DefaultLogger msg
+SEVERE:  (ERROR) 
+
+ *******************************************************************************
+ *
+ *    Error occurred when running jLEMS!
+ *    
+ *    Note: LEMS model description was successfully parsed, and simulation started (t = 0.41144 sec)
+ *    This error *MAY* be caused by too large a time step (dt = 5.0E-6 sec currently)
+ *    Try reducing the 'step' attribute in the <Simulation> element
+ *
+ *******************************************************************************

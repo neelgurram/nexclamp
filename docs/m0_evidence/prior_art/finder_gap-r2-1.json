@@ -1,0 +1,2046 @@
+{
+  "finder": "gap-r2-1",
+  "retrieved_on": "2026-09-13",
+  "notes": "Gap-fill finder for critic round 2. Zenodo REST was reachable this time (HTTP 200); communities opensourcebrain, ocns, hbp, incf, computneurobio and neuromorphic were browsed. They held no neuron-model mutation-testing, behavioural-regression or protocol-selection work. The only new neuro-adjacent tool record is ODE-toolbox. DataCite description/subject queries combining neuron models with mutation testing, fault injection, rheobase regression tests or stimulus-protocol selection returned 0 hits. New candidates fill the critic subfields: mutation-testing foundations (validity of mutants as fault proxies, equivalent and redundant mutants, subsumption), size-controlled suite effectiveness, minimization and statistics for random baselines, formal equivalence and semantic differencing, CPS/hybrid conformance (Skorokhod, reachset, falsification), APR overfitting and SWE-bench test insufficiency, numerical solution verification, and classic neuron-simulator integration accuracy. All metadata (title, authors, year, venue) comes from Crossref /works/<doi> or DataCite /dois/<doi> responses retrieved in this session. Authors or year are marked unverified where the registry record lacks them. why_relevant is flagged as title-level where no abstract was retrieved. No retrieved work integrates neuron-model mutation, multi-protocol electrophysiology fingerprints, refinement-calibrated tolerances, compact battery selection and held-out evaluation. The closest partial analogues are CPS conformance-as-falsification (closeness 3) and neuroscience numerical-accuracy work (Hansel et al. 1998; Oesterle et al. 2022; closeness 3). Closeness distribution: {\"1\": 2, \"2\": 71, \"3\": 3}. This is a search record, not a claim that no closer prior art exists: DBLP, OpenAlex, WebSearch, arXiv API, Semantic Scholar, IEEE Xplore and ACM DL were blocked or rate-limited (see blocked_sources).",
+  "candidates": [
+    {
+      "title": "Hints on Test Data Selection: Help for the Practicing Programmer",
+      "authors": "R.A. DeMillo; R.J. Lipton; F.G. Sayward",
+      "year": "1978",
+      "venue": "Computer",
+      "url": "https://doi.org/10.1109/c-m.1978.218136",
+      "doi": "10.1109/c-m.1978.218136",
+      "kind": "paper",
+      "found_via": "Crossref query.bibliographic 'hints on test data selection help for the practicing programmer'",
+      "why_relevant": "Commonly cited origin of program mutation as a test-adequacy idea. Background citation for NeuroSem's mutant-based detection rates; it involves no neuron models, stimuli or tolerances.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Mutation Testing Advances: An Analysis and Survey",
+      "authors": "unverified (no author list in the registry record retrieved)",
+      "year": "2019",
+      "venue": "Advances in Computers",
+      "url": "https://doi.org/10.1016/bs.adcom.2018.03.015",
+      "doi": "10.1016/bs.adcom.2018.03.015",
+      "kind": "paper",
+      "found_via": "Crossref query.bibliographic 'mutation testing analysis and survey development'",
+      "why_relevant": "Survey of mutation testing advances in Advances in Computers. Useful as a current overview for positioning NeuroSem's operator families, equivalent-mutant handling and mutant-selection choices. Generic software; Crossref lists no authors, so the author list is unverified.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Are mutants a valid substitute for real faults in software testing?",
+      "authors": "René Just; Darioush Jalali; Laura Inozemtseva; Michael D. Ernst; Reid Holmes; Gordon Fraser",
+      "year": "2014",
+      "venue": "Proceedings of the 22nd ACM SIGSOFT International Symposium on Foundations of Software Engineering",
+      "url": "https://doi.org/10.1145/2635868.2635929",
+      "doi": "10.1145/2635868.2635929",
+      "kind": "paper",
+      "found_via": "Crossref query.bibliographic 'are mutants a valid substitute for real faults in software testing'",
+      "why_relevant": "Empirical study of whether detection of mutants tracks detection of real faults. This is the standard justification (and caveat) for using controlled single-fault mutants as proxies for real edit errors, which NeuroSem assumes for neuron-model edits. Java programs only.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "How Closely are Common Mutation Operators Coupled to Real Faults?",
+      "authors": "Gregory Gay; Alireza Salahirad",
+      "year": "2023",
+      "venue": "2023 IEEE Conference on Software Testing, Verification and Validation (ICST)",
+      "url": "https://doi.org/10.1109/icst57152.2023.00021",
+      "doi": "10.1109/icst57152.2023.00021",
+      "kind": "paper",
+      "found_via": "Crossref query.bibliographic 'how effective are mutation testing tools real faults Defects4J mutants coupling'; replication dataset surfaced by Zenodo REST q='mutation testing simulation' (10.5281/zenodo.7261554)",
+      "why_relevant": "Per-operator coupling between mutants and real faults; the Zenodo replication record reports 32,002 mutants from 31 operators against 144 real faults. Relevant to NeuroSem's per-family breakdown and to the argument that different mutation families differ in realism. Software, not neuroscience.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Overcoming the Equivalent Mutant Problem: A Systematic Literature Review and a Comparative Experiment of Second Order Mutation",
+      "authors": "Lech Madeyski; Wojciech Orzeszyna; Richard Torkar; Mariusz Jozala",
+      "year": "2014",
+      "venue": "IEEE Transactions on Software Engineering",
+      "url": "https://doi.org/10.1109/tse.2013.44",
+      "doi": "10.1109/tse.2013.44",
+      "kind": "paper",
+      "found_via": "Crossref query.bibliographic 'equivalent mutant problem systematic literature review'",
+      "why_relevant": "Systematic review of the equivalent-mutant problem. Directly relevant to NeuroSem's rule that behaviourally equivalent mutants are excluded from the detection-rate denominator; in NeuroSem equivalence is only empirical, relative to an exhaustive battery and tolerance.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Trivial Compiler Equivalence: A Large Scale Empirical Study of a Simple, Fast and Effective Equivalent Mutant Detection Technique",
+      "authors": "Mike Papadakis; Yue Jia; Mark Harman; Yves Le Traon",
+      "year": "2015",
+      "venue": "2015 IEEE/ACM 37th IEEE International Conference on Software Engineering",
+      "url": "https://doi.org/10.1109/icse.2015.103",
+      "doi": "10.1109/icse.2015.103",
+      "kind": "paper",
+      "found_via": "Crossref query.bibliographic 'trivial compiler equivalence equivalent mutants'",
+      "why_relevant": "Large-scale study of detecting equivalent and duplicate mutants by comparing compiled binaries. A software analogue of NeuroSem classifying mutants and valid transformations as equivalent via structural inspection plus behavioural runs.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "The Impact of Equivalent Mutants",
+      "authors": "Bernhard J. M. Grün; David Schuler; Andreas Zeller",
+      "year": "2009",
+      "venue": "2009 International Conference on Software Testing, Verification, and Validation Workshops",
+      "url": "https://doi.org/10.1109/icstw.2009.37",
+      "doi": "10.1109/icstw.2009.37",
+      "kind": "paper",
+      "found_via": "Crossref query.bibliographic 'the impact of equivalent mutants and redundant mutants on mutation score'",
+      "why_relevant": "Title indicates a study of how equivalent mutants affect mutation analysis. Supports reporting admissible-mutant counts separately from raw mutant counts.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Mutant Subsumption Graphs",
+      "authors": "Bob Kurtz; Paul Ammann; Marcio E. Delamaro; Jeff Offutt; Lin Deng",
+      "year": "2014",
+      "venue": "2014 IEEE Seventh International Conference on Software Testing, Verification and Validation Workshops",
+      "url": "https://doi.org/10.1109/icstw.2014.20",
+      "doi": "10.1109/icstw.2014.20",
+      "kind": "paper",
+      "found_via": "Crossref query.bibliographic 'minimal mutant sets subsumption' and 'mutant subsumption graphs'",
+      "why_relevant": "Introduces mutant subsumption graphs (minimal/redundant mutant sets). Relevant because redundant mutants in NeuroSem's detection matrix could inflate detection rates and bias greedy protocol selection; subsumption-aware reporting is a possible robustness check.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Do Redundant Mutants Affect the Effectiveness and Efficiency of Mutation Analysis?",
+      "authors": "Rene Just; Gregory M. Kapfhammer; Franz Schweiggert",
+      "year": "2012",
+      "venue": "2012 IEEE Fifth International Conference on Software Testing, Verification and Validation",
+      "url": "https://doi.org/10.1109/icst.2012.162",
+      "doi": "10.1109/icst.2012.162",
+      "kind": "paper",
+      "found_via": "Crossref query.bibliographic 'the impact of equivalent mutants and redundant mutants on mutation score'",
+      "why_relevant": "Title indicates an analysis of whether redundant mutants distort mutation-analysis effectiveness and efficiency. Bears on NeuroSem's denominator and on de-duplicating mutants that are behaviourally identical.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Threats to the validity of mutation-based test assessment",
+      "authors": "Mike Papadakis; Christopher Henard; Mark Harman; Yue Jia; Yves Le Traon",
+      "year": "2016",
+      "venue": "Proceedings of the 25th International Symposium on Software Testing and Analysis",
+      "url": "https://doi.org/10.1145/2931037.2931040",
+      "doi": "10.1145/2931037.2931040",
+      "kind": "paper",
+      "found_via": "Crossref query.bibliographic 'threats to the validity of mutation-based test assessment'",
+      "why_relevant": "Title indicates a study of validity threats in mutation-based test assessment (e.g. inflated scores from subsumed mutants). Directly informs threats-to-validity for NeuroSem's mutant-based comparison of batteries.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "An experimental determination of sufficient mutant operators",
+      "authors": "A. Jefferson Offutt; Ammei Lee; Gregg Rothermel; Roland H. Untch; Christian Zapf",
+      "year": "1996",
+      "venue": "ACM Transactions on Software Engineering and Methodology",
+      "url": "https://doi.org/10.1145/227607.227610",
+      "doi": "10.1145/227607.227610",
+      "kind": "paper",
+      "found_via": "Crossref query.bibliographic 'an experimental determination of sufficient mutant operators'",
+      "why_relevant": "Selective mutation: whether a reduced set of operators suffices. Background for choosing a small number of curated mutation families in NeuroSem and for holding out one family.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "The influence of size and coverage on test suite effectiveness",
+      "authors": "Akbar Siami Namin; James H. Andrews",
+      "year": "2009",
+      "venue": "Proceedings of the eighteenth international symposium on Software testing and analysis",
+      "url": "https://doi.org/10.1145/1572272.1572280",
+      "doi": "10.1145/1572272.1572280",
+      "kind": "paper",
+      "found_via": "Crossref query.bibliographic 'test suite size coverage effectiveness mutation score'",
+      "why_relevant": "Title indicates that suite size and coverage both affect effectiveness. Justifies NeuroSem comparing its selected battery against protocol-count-matched random sets rather than only against the single canonical test.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Coverage is not strongly correlated with test suite effectiveness",
+      "authors": "Laura Inozemtseva; Reid Holmes",
+      "year": "2014",
+      "venue": "Proceedings of the 36th International Conference on Software Engineering",
+      "url": "https://doi.org/10.1145/2568225.2568271",
+      "doi": "10.1145/2568225.2568271",
+      "kind": "paper",
+      "found_via": "Crossref query.bibliographic 'coverage is not strongly correlated with test suite effectiveness'",
+      "why_relevant": "Well-known study controlling for suite size when relating coverage to mutant detection. Methodological precedent for size-controlled random baselines like NeuroSem's count- and runtime-matched random batteries.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "An empirical study of the effects of minimization on the fault detection capabilities of test suites",
+      "authors": "G. Rothermel; M.J. Harrold; J. Ostrin; C. Hong",
+      "year": "unverified",
+      "venue": "Proceedings. International Conference on Software Maintenance (Cat. No. 98CB36272)",
+      "url": "https://doi.org/10.1109/icsm.1998.738487",
+      "doi": "10.1109/icsm.1998.738487",
+      "kind": "paper",
+      "found_via": "Crossref query.bibliographic 'empirical study of the effects of minimization on the fault detection capabilities of test suites'",
+      "why_relevant": "Classic study of how test-suite minimization affects fault detection. A caution for NeuroSem's compact battery: minimizing on discovery mutants may lose detection on held-out faults, which the held-out family evaluation is meant to expose.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "An Empirical Study of Greedy Test Suite Minimization Techniques Using Mutation Coverage",
+      "authors": "Seema Jehan; Franz Wotawa",
+      "year": "2023",
+      "venue": "IEEE Access",
+      "url": "https://doi.org/10.1109/access.2023.3289073",
+      "doi": "10.1109/access.2023.3289073",
+      "kind": "paper",
+      "found_via": "Crossref query.bibliographic 'test suite size coverage effectiveness mutation score'",
+      "why_relevant": "Title indicates an empirical comparison of greedy test-suite minimization driven by mutation coverage. Closest generic-software analogue of NeuroSem's greedy maximum coverage over a mutant-by-protocol detection matrix; not neuroscience and no held-out mutation family.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Test Set Diameter: Quantifying the Diversity of Sets of Test Cases",
+      "authors": "Robert Feldt; Simon Poulding; David Clark; Shin Yoo",
+      "year": "2016",
+      "venue": "2016 IEEE International Conference on Software Testing, Verification and Validation (ICST)",
+      "url": "https://doi.org/10.1109/icst.2016.33",
+      "doi": "10.1109/icst.2016.33",
+      "kind": "paper",
+      "found_via": "Crossref query.bibliographic 'test set diameter diversity'",
+      "why_relevant": "Diversity-based metric for sets of test cases. A possible alternative or extra baseline to greedy coverage selection when choosing stimulation protocols (e.g. diversity of stimulus waveforms).",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "A practical guide for using statistical tests to assess randomized algorithms in software engineering",
+      "authors": "Andrea Arcuri; Lionel Briand",
+      "year": "2011",
+      "venue": "Proceedings of the 33rd International Conference on Software Engineering",
+      "url": "https://doi.org/10.1145/1985793.1985795",
+      "doi": "10.1145/1985793.1985795",
+      "kind": "paper",
+      "found_via": "Crossref query.bibliographic 'practical guide for using statistical tests to assess randomized algorithms in software engineering'",
+      "why_relevant": "Guidance on statistical comparison of randomized algorithms in SE. Supports NeuroSem's analysis plan for comparing the selected battery against a distribution of random batteries.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "A Hitchhiker's guide to statistical tests for assessing randomized algorithms in software engineering",
+      "authors": "Andrea Arcuri; Lionel Briand",
+      "year": "2012",
+      "venue": "Software Testing, Verification and Reliability",
+      "url": "https://doi.org/10.1002/stvr.1486",
+      "doi": "10.1002/stvr.1486",
+      "kind": "paper",
+      "found_via": "Crossref query.bibliographic 'practical guide for using statistical tests to assess randomized algorithms in software engineering' (Wiley STVR hit)",
+      "why_relevant": "Extended STVR version of the guidance on statistical tests and effect sizes for randomized algorithms. Analysis-plan citation for the random-baseline comparison.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "A Critique and Improvement of the CL Common Language Effect Size Statistics of McGraw and Wong",
+      "authors": "András Vargha; Harold D. Delaney",
+      "year": "2000",
+      "venue": "Journal of Educational and Behavioral Statistics",
+      "url": "https://doi.org/10.3102/10769986025002101",
+      "doi": "10.3102/10769986025002101",
+      "kind": "paper",
+      "found_via": "Crossref query.bibliographic 'critique and improvement of the CL common language effect size statistics of McGraw and Wong'",
+      "why_relevant": "Source of the Vargha-Delaney A effect-size measure often used with random baselines in SE experiments. Statistics citation only; no bearing on novelty.",
+      "estimated_closeness": 1
+    },
+    {
+      "title": "Bootstrapping Clustered Data",
+      "authors": "C. A. Field; A. H. Welsh",
+      "year": "2007",
+      "venue": "Journal of the Royal Statistical Society Series B: Statistical Methodology",
+      "url": "https://doi.org/10.1111/j.1467-9868.2007.00593.x",
+      "doi": "10.1111/j.1467-9868.2007.00593.x",
+      "kind": "paper",
+      "found_via": "Crossref query.bibliographic 'bootstrapping clustered data'",
+      "why_relevant": "Bootstrap methods for clustered (one-way array) data. Supports NeuroSem's plan to resample base models rather than individual correlated mutants when building confidence intervals. Statistics only.",
+      "estimated_closeness": 1
+    },
+    {
+      "title": "Regression verification: proving the equivalence of similar programs",
+      "authors": "Benny Godlin; Ofer Strichman",
+      "year": "2012",
+      "venue": "Software Testing, Verification and Reliability",
+      "url": "https://doi.org/10.1002/stvr.1472",
+      "doi": "10.1002/stvr.1472",
+      "kind": "paper",
+      "found_via": "Crossref query.bibliographic 'regression verification program equivalence'",
+      "why_relevant": "Regression verification: proving equivalence of closely related program versions. Abstract notes it avoids needing a full specification. The formal counterpart of NeuroSem's finite, tolerance-based empirical semantic certificate, which must not be presented as an equivalence proof.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Automating regression verification",
+      "authors": "Dennis Felsing; Sarah Grebing; Vladimir Klebanov; Philipp Rümmer; Mattias Ulbrich",
+      "year": "2014",
+      "venue": "Proceedings of the 29th ACM/IEEE International Conference on Automated Software Engineering",
+      "url": "https://doi.org/10.1145/2642937.2642987",
+      "doi": "10.1145/2642937.2642987",
+      "kind": "paper",
+      "found_via": "Crossref query.bibliographic 'automating regression verification'",
+      "why_relevant": "Automated regression verification of program versions. Formal-methods contrast for NeuroSem's empirical before/after comparison of neuron-model versions.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Translation validation",
+      "authors": "A. Pnueli; M. Siegel; E. Singerman",
+      "year": "1998",
+      "venue": "Lecture Notes in Computer Science",
+      "url": "https://doi.org/10.1007/bfb0054170",
+      "doi": "10.1007/bfb0054170",
+      "kind": "paper",
+      "found_via": "Crossref query.bibliographic 'translation validation Pnueli Siegel Singerman'",
+      "why_relevant": "Original translation-validation paper: checking each individual translation run instead of verifying the translator. Conceptually parallel to NeuroSem checking each specific model translation or refactoring rather than validating the toolchain.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Translation validation for an optimizing compiler",
+      "authors": "George C. Necula",
+      "year": "2000",
+      "venue": "Proceedings of the ACM SIGPLAN 2000 conference on Programming language design and implementation",
+      "url": "https://doi.org/10.1145/349299.349314",
+      "doi": "10.1145/349299.349314",
+      "kind": "paper",
+      "found_via": "Crossref query.bibliographic 'translation validation compiler'",
+      "why_relevant": "Translation validation applied to an optimizing compiler. Formal analogue for validating model translations (e.g. NeuroML to simulator code) per instance.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "SYMDIFF: A Language-Agnostic Semantic Diff Tool for Imperative Programs",
+      "authors": "Shuvendu K. Lahiri; Chris Hawblitzel; Ming Kawaguchi; Henrique Rebêlo",
+      "year": "2012",
+      "venue": "Lecture Notes in Computer Science",
+      "url": "https://doi.org/10.1007/978-3-642-31424-7_54",
+      "doi": "10.1007/978-3-642-31424-7_54",
+      "kind": "paper",
+      "found_via": "Crossref query.bibliographic 'SymDiff language-agnostic semantic diff tool'",
+      "why_relevant": "Language-agnostic semantic diff tool for imperative programs. Related to the 'semantic regression/semantic diff' terminology NeuroSem uses; formal and code-level, not behavioural stimulus testing.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Differential assertion checking",
+      "authors": "Shuvendu K. Lahiri; Kenneth L. McMillan; Rahul Sharma; Chris Hawblitzel",
+      "year": "2013",
+      "venue": "Proceedings of the 2013 9th Joint Meeting on Foundations of Software Engineering",
+      "url": "https://doi.org/10.1145/2491411.2491452",
+      "doi": "10.1145/2491411.2491452",
+      "kind": "paper",
+      "found_via": "Crossref query.bibliographic 'differential assertion checking'",
+      "why_relevant": "Title indicates differential (relative-correctness) checking of two program versions. Related formal notion to detecting behaviour change between an original and an edited model.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Compiler validation via equivalence modulo inputs",
+      "authors": "Vu Le; Mehrdad Afshari; Zhendong Su",
+      "year": "2014",
+      "venue": "Proceedings of the 35th ACM SIGPLAN Conference on Programming Language Design and Implementation",
+      "url": "https://doi.org/10.1145/2594291.2594334",
+      "doi": "10.1145/2594291.2594334",
+      "kind": "paper",
+      "found_via": "Crossref query.bibliographic 'equivalence modulo inputs compiler testing'",
+      "why_relevant": "Equivalence modulo inputs (EMI): builds program variants that should behave identically on given inputs and uses them to test compilers. Testing-side analogue of NeuroSem's valid transformations: variants expected to be equivalent under the tested stimuli, used to expose toolchain faults and false positives.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "SLEMI",
+      "authors": "Shafiul Azam Chowdhury; Sohil Lal Shrestha; Taylor T. Johnson; Christoph Csallner",
+      "year": "2020",
+      "venue": "Proceedings of the ACM/IEEE 42nd International Conference on Software Engineering",
+      "url": "https://doi.org/10.1145/3377811.3380381",
+      "doi": "10.1145/3377811.3380381",
+      "kind": "paper",
+      "found_via": "Crossref query.bibliographic 'equivalence modulo inputs compiler testing' (record title given as 'SLEMI' in Crossref)",
+      "why_relevant": "Crossref record titled SLEMI (ICSE 2020): EMI-style testing applied to Simulink model toolchains. Closest cyber-physical analogue of generating equivalent model variants to test a model-execution toolchain; not neuroscience, no stimulus-protocol selection.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Hybrid Equivalence/Non-Equivalence Testing",
+      "authors": "Laboni Sarker; Tevfik Bultan",
+      "year": "2025",
+      "venue": "2025 IEEE Conference on Software Testing, Verification and Validation (ICST)",
+      "url": "https://doi.org/10.1109/icst62969.2025.10988990",
+      "doi": "10.1109/icst62969.2025.10988990",
+      "kind": "paper",
+      "found_via": "Crossref query.bibliographic 'regression verification program equivalence'",
+      "why_relevant": "Title indicates a hybrid technique combining equivalence and non-equivalence testing of programs. Relevant to NeuroSem's three-way classification of transformations (equivalent, non-equivalent, undetermined by finite testing).",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "A Manifesto for Semantic Model Differencing",
+      "authors": "Shahar Maoz; Jan Oliver Ringert; Bernhard Rumpe",
+      "year": "2011",
+      "venue": "Lecture Notes in Computer Science",
+      "url": "https://doi.org/10.1007/978-3-642-21210-9_19",
+      "doi": "10.1007/978-3-642-21210-9_19",
+      "kind": "paper",
+      "found_via": "Crossref query.bibliographic 'semantic differencing models' and 'semantic model differencing'",
+      "why_relevant": "Manifesto for semantic (behaviour-based) rather than syntactic differencing of models. Positions NeuroSem's perturbation fingerprint as an empirical semantic difference between model versions.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Semantic Model Differencing Utilizing Behavioral Semantics Specifications",
+      "authors": "Philip Langer; Tanja Mayerhofer; Gerti Kappel",
+      "year": "2014",
+      "venue": "Lecture Notes in Computer Science",
+      "url": "https://doi.org/10.1007/978-3-319-11653-2_8",
+      "doi": "10.1007/978-3-319-11653-2_8",
+      "kind": "paper",
+      "found_via": "Crossref query.bibliographic 'semantic model differencing'",
+      "why_relevant": "Semantic model differencing driven by behavioural semantics specifications, i.e. comparing executed behaviours of model versions. Model-driven engineering analogue of comparing traces and features of two neuron-model versions.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Identifying the semantic and textual differences between two versions of a program",
+      "authors": "Susan Horwitz",
+      "year": "1990",
+      "venue": "Proceedings of the ACM SIGPLAN 1990 conference on Programming language design and implementation  - PLDI '90",
+      "url": "https://doi.org/10.1145/93542.93574",
+      "doi": "10.1145/93542.93574",
+      "kind": "paper",
+      "found_via": "Crossref query.bibliographic 'symbolic execution semantic differences program versions'",
+      "why_relevant": "Early work distinguishing semantic from textual differences between two program versions. Historical source for the semantic-versus-syntactic change distinction behind 'silent semantic drift'.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Using semantic differencing to reduce the cost of regression testing",
+      "authors": "D. Binkley",
+      "year": "unverified",
+      "venue": "Proceedings Conference on Software Maintenance 1992",
+      "url": "https://doi.org/10.1109/icsm.1992.242560",
+      "doi": "10.1109/icsm.1992.242560",
+      "kind": "paper",
+      "found_via": "Crossref query.bibliographic 'semantic differencing models' / 'semantic model differencing'",
+      "why_relevant": "Title indicates semantic differencing used to reduce regression-testing cost, i.e. choosing which tests matter for a change. Distant analogue of choosing protocols that expose a model change.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Quantifying conformance using the Skorokhod metric",
+      "authors": "Jyotirmoy V. Deshmukh; Rupak Majumdar; Vinayak S. Prabhu",
+      "year": "2017",
+      "venue": "Formal Methods in System Design",
+      "url": "https://doi.org/10.1007/s10703-016-0261-8",
+      "doi": "10.1007/s10703-016-0261-8",
+      "kind": "paper",
+      "found_via": "Crossref query.bibliographic 'Skorokhod metric conformance' (conference version 10.1007/978-3-319-21668-3_14 also returned)",
+      "why_relevant": "Quantifies conformance between continuous-time traces with the Skorokhod metric (tolerating both time and value distortion). The closest formal analogue of NeuroSem's trace and feature tolerances when comparing two model versions; it gives a principled alternative to per-feature absolute/relative floors. No mutation or protocol selection.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Conformance Testing as Falsification for Cyber-Physical Systems",
+      "authors": "Abbas, Houssam; Hoxha, Bardh; Fainekos, Georgios; Deshmukh, Jyotirmoy V.; Kapinski, James; Ueda, Koichi",
+      "year": "2014",
+      "venue": "arXiv",
+      "url": "https://doi.org/10.48550/arxiv.1401.5200",
+      "doi": "10.48550/arxiv.1401.5200",
+      "kind": "preprint",
+      "found_via": "DataCite query titles.title:(conformance AND (\"cyber-physical\" OR \"hybrid system*\")); WiP abstract version 10.1109/iccps.2014.6843724 found via Crossref 'conformance relation cyber-physical systems models implementations'",
+      "why_relevant": "Frames conformance between models of different fidelity, or model versus implementation, as a falsification problem: search for inputs that expose non-conformance. Closest formal/CPS analogue of NeuroSem's search for stimuli exposing divergence between a reference and a transformed model. Differences: no neuroscience, no mutant-calibrated battery, no held-out evaluation.",
+      "estimated_closeness": 3
+    },
+    {
+      "title": "Formal property verification in a conformance testing framework",
+      "authors": "Houssam Abbas; Hans Mittelmann; Georgios Fainekos",
+      "year": "2014",
+      "venue": "2014 Twelfth ACM/IEEE Conference on Formal Methods and Models for Codesign (MEMOCODE)",
+      "url": "https://doi.org/10.1109/memcod.2014.6961854",
+      "doi": "10.1109/memcod.2014.6961854",
+      "kind": "paper",
+      "found_via": "Crossref query.bibliographic 'Formal property verification in a conformance testing framework' (IEEE MEMOCODE)",
+      "why_relevant": "MEMOCODE paper linking a conformance-closeness notion between a model and its implementation to preservation of verified properties. Gives a formal account of what a trace-tolerance certificate can and cannot guarantee, relevant to limiting NeuroSem's claims.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Reachset Conformance Testing of Hybrid Automata",
+      "authors": "Hendrik Roehm; Jens Oehlerking; Matthias Woehrle; Matthias Althoff",
+      "year": "2016",
+      "venue": "Proceedings of the 19th International Conference on Hybrid Systems: Computation and Control",
+      "url": "https://doi.org/10.1145/2883817.2883828",
+      "doi": "10.1145/2883817.2883828",
+      "kind": "paper",
+      "found_via": "Crossref query.bibliographic 'reachset conformance testing' and 'conformance testing hybrid systems' (HSCC)",
+      "why_relevant": "Reachset conformance testing of hybrid automata (HSCC). Alternative conformance notion (reachable-set containment) against which NeuroSem's trace/feature tolerance approach can be positioned.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Model Conformance for Cyber-Physical Systems",
+      "authors": "Hendrik Roehm; Jens Oehlerking; Matthias Woehrle; Matthias Althoff",
+      "year": "2019",
+      "venue": "ACM Transactions on Cyber-Physical Systems",
+      "url": "https://doi.org/10.1145/3306157",
+      "doi": "10.1145/3306157",
+      "kind": "paper",
+      "found_via": "Crossref query.bibliographic 'conformance relation cyber-physical systems models implementations'",
+      "why_relevant": "Retrieved abstract: reviews how to choose among conformance relations linking a model to a more concrete model or the real system in CPS development. Useful to justify NeuroSem's chosen relation (feature-level tolerance per protocol) against formal alternatives.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Conformance Testing of Cyber-Physical Systems: A Comparative Study",
+      "authors": "Mohaqeqi, Morteza; Mousavi, Mohammad Reza; Taha, Walid",
+      "year": "2014",
+      "venue": "Electronic Communications of the EASST",
+      "url": "https://doi.org/10.14279/tuj.eceasst.70.982",
+      "doi": "10.14279/tuj.eceasst.70.982",
+      "kind": "paper",
+      "found_via": "DataCite query descriptions.description:(\"conformance testing\" AND (\"hybrid system*\" OR \"cyber-physical\"))",
+      "why_relevant": "Retrieved abstract: reviews and compares two theories of conformance testing for cyber-physical systems and proves when they coincide. Background on formal conformance notions for continuous-time models.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Notions of Conformance Testing for Cyber-Physical Systems: Overview and Roadmap (Invited Paper)",
+      "authors": "Khakpour, Narges; Mousavi, Mohammad Reza",
+      "year": "2015",
+      "venue": "Schloss Dagstuhl – Leibniz-Zentrum für Informatik",
+      "url": "https://doi.org/10.4230/lipics.concur.2015.18",
+      "doi": "10.4230/lipics.concur.2015.18",
+      "kind": "paper",
+      "found_via": "DataCite query descriptions.description:(\"conformance testing\" AND (\"hybrid system*\" OR \"cyber-physical\"))",
+      "why_relevant": "Retrieved abstract: overview comparing three notions of conformance testing for CPS and discussing what an ideal notion would require. Positioning reference for NeuroSem's empirical tolerance-based notion.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Robust Satisfaction of Temporal Logic over Real-Valued Signals",
+      "authors": "Alexandre Donzé; Oded Maler",
+      "year": "2010",
+      "venue": "Lecture Notes in Computer Science",
+      "url": "https://doi.org/10.1007/978-3-642-15297-9_9",
+      "doi": "10.1007/978-3-642-15297-9_9",
+      "kind": "paper",
+      "found_via": "Crossref query.bibliographic 'robust satisfaction of temporal logic over real-valued signals'",
+      "why_relevant": "Quantitative (robustness) semantics of temporal logic over real-valued signals. A formal way to turn trace differences into a margin, relevant to how NeuroSem sets and reports detection margins against tolerances.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Is the cure worse than the disease? overfitting in automated program repair",
+      "authors": "Edward K. Smith; Earl T. Barr; Claire Le Goues; Yuriy Brun",
+      "year": "2015",
+      "venue": "Proceedings of the 2015 10th Joint Meeting on Foundations of Software Engineering",
+      "url": "https://doi.org/10.1145/2786805.2786825",
+      "doi": "10.1145/2786805.2786825",
+      "kind": "paper",
+      "found_via": "Crossref query.bibliographic 'is the cure worse than the disease overfitting in automated program repair'",
+      "why_relevant": "Foundational study of overfitting in automated program repair: patches that pass the given tests but are not correct. Motivates NeuroSem's hidden deterministic tests in the AI-assisted case study.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Overfitting in semantics-based automated program repair",
+      "authors": "Xuan Bach D. Le; Ferdian Thung; David Lo; Claire Le Goues",
+      "year": "2018",
+      "venue": "Empirical Software Engineering",
+      "url": "https://doi.org/10.1007/s10664-017-9577-2",
+      "doi": "10.1007/s10664-017-9577-2",
+      "kind": "paper",
+      "found_via": "Crossref query.bibliographic 'overfitting in semantics-based automated program repair' (ICSE journal-first record 10.1145/3180155.3182536 also returned)",
+      "why_relevant": "Overfitting in semantics-based program repair (Empirical Software Engineering). Same motivation: passing public tests does not establish correctness, supporting held-out protocols and answer keys.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Automated patch correctness assessment",
+      "authors": "Shangwen Wang; Ming Wen; Bo Lin; Hongjun Wu; Yihao Qin; Deqing Zou; Xiaoguang Mao; Hai Jin",
+      "year": "2020",
+      "venue": "Proceedings of the 35th IEEE/ACM International Conference on Automated Software Engineering",
+      "url": "https://doi.org/10.1145/3324884.3416590",
+      "doi": "10.1145/3324884.3416590",
+      "kind": "paper",
+      "found_via": "Crossref query.bibliographic 'automated patch correctness assessment plausible overfitting'",
+      "why_relevant": "Title indicates a study of automated patch correctness assessment, i.e. separating plausible from correct patches. Relevant to scoring AI-produced model edits beyond pass/fail on visible tests.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Identifying Patch Correctness in Test-Based Program Repair",
+      "authors": "Xiong, Yingfei; Liu, Xinyuan; Zeng, Muhan; Zhang, Lu; Huang, Gang",
+      "year": "2017",
+      "venue": "arXiv",
+      "url": "https://doi.org/10.48550/arxiv.1706.09120",
+      "doi": "10.48550/arxiv.1706.09120",
+      "kind": "preprint",
+      "found_via": "DataCite query titles.title:(\"SWE-bench Verified\" OR \"UTBoost\" OR \"patch correctness\") AND client_id:arxiv.content",
+      "why_relevant": "Title indicates identifying patch correctness in test-based program repair, e.g. by generating extra tests. Close SE analogue of adding hidden perturbation protocols to judge whether an AI-assisted edit preserved behaviour.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Are “Solved Issues” in SWE-bench Really Solved Correctly? An Empirical Study",
+      "authors": "You Wang; Michael Pradel; Zhongxin Liu",
+      "year": "2026",
+      "venue": "Proceedings of the 2026 IEEE/ACM 48th International Conference on Software Engineering",
+      "url": "https://doi.org/10.1145/3744916.3764576",
+      "doi": "10.1145/3744916.3764576",
+      "kind": "paper",
+      "found_via": "Crossref query.bibliographic 'are \"solved issues\" in SWE-bench really solved correctly'",
+      "why_relevant": "ICSE 2026 empirical study questioning whether SWE-bench issues counted as solved are really solved correctly. Direct evidence of hidden-test insufficiency in agent benchmarks, motivating NeuroSem's hidden deterministic protocol tests for Claude Code tasks.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "UTBoost: Rigorous Evaluation of Coding Agents on SWE-Bench",
+      "authors": "Yu, Boxi; Zhu, Yuxuan; He, Pinjia; Kang, Daniel",
+      "year": "2025",
+      "venue": "arXiv",
+      "url": "https://doi.org/10.48550/arxiv.2506.09289",
+      "doi": "10.48550/arxiv.2506.09289",
+      "kind": "preprint",
+      "found_via": "DataCite query titles.title:(\"SWE-bench Verified\" OR \"UTBoost\" OR \"patch correctness\") AND client_id:arxiv.content (ACL 2025 talk record 10.48448/qjjr-cs37 also returned)",
+      "why_relevant": "Retrieved abstract: SWE-Bench test cases are often insufficient, so generated patches pass without resolving the issue; UTBoost augments the tests. Direct precedent for strengthening hidden tests when evaluating coding agents; software only.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Investigating Test Overfitting on SWE-bench",
+      "authors": "Ahmed, Toufique; Ganhotra, Jatin; Shinnar, Avraham; Hirzel, Martin",
+      "year": "2025",
+      "venue": "arXiv",
+      "url": "https://doi.org/10.48550/arxiv.2511.16858",
+      "doi": "10.48550/arxiv.2511.16858",
+      "kind": "preprint",
+      "found_via": "DataCite query titles.title:(\"SWE-bench\") AND descriptions.description:(test* AND (insufficient OR incorrect OR \"pass\" OR overfit* OR weak))",
+      "why_relevant": "Retrieved abstract: test overfitting in issue resolution, where code passes observed tests but misses cases or breaks functionality. Motivates keeping NeuroSem's selected protocols hidden from the agent.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Probe to Generate: Program Variant-Guided Test Augmentation for Repository-Level Repair Benchmarks",
+      "authors": "Li, Chenglin; Xu, Yisen; Wang, Zehao; Tan, Shin Hwei; Tse-Hsun; Chen",
+      "year": "2026",
+      "venue": "arXiv",
+      "url": "https://doi.org/10.48550/arxiv.2604.01518",
+      "doi": "10.48550/arxiv.2604.01518",
+      "kind": "preprint",
+      "found_via": "DataCite query descriptions.description:(\"SWE-bench\" AND (\"insufficient test\" OR \"weak test\" OR \"test adequacy\" OR \"incorrect patches\" OR \"plausible\"))",
+      "why_relevant": "Retrieved abstract: uses semantically modified program variants as behavioural probes to find and close gaps in repair-benchmark test suites that admit plausible but incorrect patches. Methodologically the closest SE work to NeuroSem's idea of calibrating a test battery with controlled mutants to catch silently wrong AI edits; not neuroscience, and no stimulus protocols or numerical tolerances.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Confident and Wrong: Silent Semantic Failures in Coding Agents",
+      "authors": "Mehta, Aman",
+      "year": "2026",
+      "venue": "arXiv",
+      "url": "https://doi.org/10.48550/arxiv.2603.25764",
+      "doi": "10.48550/arxiv.2603.25764",
+      "kind": "preprint",
+      "found_via": "DataCite query descriptions.description:(\"SWE-bench\" AND (\"insufficient test\" OR \"weak test\" OR \"test adequacy\" OR \"incorrect patches\" OR \"plausible\"))",
+      "why_relevant": "Retrieved abstract: on SWE-bench Verified tasks, submission rates and test-verified resolve rates diverge sharply, framed as silent semantic failures of coding agents. Terminology overlap with NeuroSem's silent semantic drift; general code, not neuron models.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Lost in Translation: A Study of Bugs Introduced by Large Language Models while Translating Code",
+      "authors": "Rangeet Pan; Ali Reza Ibrahimzada; Rahul Krishna; Divya Sankar; Lambert Pouguem Wassi; Michele Merler; Boris Sobolev; Raju Pavuluri; et al.",
+      "year": "2024",
+      "venue": "Proceedings of the IEEE/ACM 46th International Conference on Software Engineering",
+      "url": "https://doi.org/10.1145/3597503.3639226",
+      "doi": "10.1145/3597503.3639226",
+      "kind": "paper",
+      "found_via": "Crossref query.bibliographic 'lost in translation bugs introduced by large language models while translating code'",
+      "why_relevant": "ICSE 2024 study of bugs LLMs introduce when translating code between languages. Motivates the AI-assisted translation/conversion tasks in NeuroSem's case study; general code, not model description languages.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Verification of Codes and Calculations",
+      "authors": "Patrick J. Roache",
+      "year": "1998",
+      "venue": "AIAA Journal",
+      "url": "https://doi.org/10.2514/2.457",
+      "doi": "10.2514/2.457",
+      "kind": "paper",
+      "found_via": "Crossref query.bibliographic 'verification of codes and calculations Roache'",
+      "why_relevant": "Standard reference distinguishing code verification from solution (calculation) verification, including grid-refinement error estimation. Supports NeuroSem's h, h/2, h/4 refinement step for tolerances and its V&V terminology.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Verification, validation, and predictive capability in computational engineering and physics",
+      "authors": "William L Oberkampf; Timothy G Trucano; Charles Hirsch",
+      "year": "2004",
+      "venue": "Applied Mechanics Reviews",
+      "url": "https://doi.org/10.1115/1.1767847",
+      "doi": "10.1115/1.1767847",
+      "kind": "paper",
+      "found_via": "Crossref query.bibliographic 'verification and validation in computational science and engineering Oberkampf Roache'",
+      "why_relevant": "Retrieved abstract: V&V as the primary means of building confidence in simulations, with verification assessing solution accuracy against the computational model. Terminology basis for NeuroSem separating numerical convergence, tested-behaviour preservation and biological validity.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Procedure for Estimation and Reporting of Uncertainty Due to Discretization in CFD Applications",
+      "authors": "unverified (no author list in the registry record retrieved)",
+      "year": "2008",
+      "venue": "Journal of Fluids Engineering",
+      "url": "https://doi.org/10.1115/1.2960953",
+      "doi": "10.1115/1.2960953",
+      "kind": "paper",
+      "found_via": "Crossref query.bibliographic 'procedure for estimation and reporting of uncertainty due to discretization in CFD applications'",
+      "why_relevant": "Journal of Fluids Engineering procedure for estimating and reporting discretization uncertainty via grid refinement. Template for how NeuroSem should report refinement-based tolerances. Crossref lists no authors, so the author list is unverified.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "A procedure for the estimation of the numerical uncertainty of CFD calculations based on grid refinement studies",
+      "authors": "L. Eça; M. Hoekstra",
+      "year": "2014",
+      "venue": "Journal of Computational Physics",
+      "url": "https://doi.org/10.1016/j.jcp.2014.01.006",
+      "doi": "10.1016/j.jcp.2014.01.006",
+      "kind": "paper",
+      "found_via": "Crossref query.bibliographic 'procedure for estimation and reporting of uncertainty due to discretization in CFD applications'",
+      "why_relevant": "Procedure for estimating numerical uncertainty from grid-refinement studies. Alternative, more robust refinement-based uncertainty estimation that could inform or sensitivity-test NeuroSem's tolerance constant c.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "On Numerical Simulations of Integrate-and-Fire Neural Networks",
+      "authors": "D. Hansel; G. Mato; C. Meunier; L. Neltner",
+      "year": "1998",
+      "venue": "Neural Computation",
+      "url": "https://doi.org/10.1162/089976698300017845",
+      "doi": "10.1162/089976698300017845",
+      "kind": "paper",
+      "found_via": "Crossref query.bibliographic 'on numerical simulations of integrate-and-fire neural networks' (Crossref used because OpenAlex returned HTTP 429)",
+      "why_relevant": "Retrieved abstract: very small time steps are needed with Euler or second-order Runge-Kutta to reproduce synchronization in integrate-and-fire networks, and an improved scheme is proposed. Neuroscience precedent that step size and solver choice silently change model behaviour, supporting NeuroSem's numerical mutation family and refinement-based tolerances.",
+      "estimated_closeness": 3
+    },
+    {
+      "title": "Accuracy evaluation of numerical methods used in state-of-the-art simulators for spiking neural networks",
+      "authors": "Stephan Henker; Johannes Partzsch; René Schüffny",
+      "year": "2011",
+      "venue": "Journal of Computational Neuroscience",
+      "url": "https://doi.org/10.1007/s10827-011-0353-9",
+      "doi": "10.1007/s10827-011-0353-9",
+      "kind": "paper",
+      "found_via": "Crossref query.bibliographic 'accuracy of spiking neuron simulators numerical integration comparison'",
+      "why_relevant": "Journal of Computational Neuroscience paper evaluating the accuracy of numerical methods in widely used spiking-network simulators (title-level evidence; no abstract in Crossref). Classic integration-accuracy reference the critic flagged as missing; network simulators, no mutation or protocol selection.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "How much can we trust neural simulation strategies?",
+      "authors": "Michelle Rudolph; Alain Destexhe",
+      "year": "2007",
+      "venue": "Neurocomputing",
+      "url": "https://doi.org/10.1016/j.neucom.2006.10.138",
+      "doi": "10.1016/j.neucom.2006.10.138",
+      "kind": "paper",
+      "found_via": "Crossref query.bibliographic 'how much can we trust neural simulation strategies'",
+      "why_relevant": "Neurocomputing paper (title-level evidence) questioning the reliability of neural simulation strategies. Supports treating numerical settings as a source of silent behavioural change in NeuroSem.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Exact Subthreshold Integration with Continuous Spike Times in Discrete-Time Neural Network Simulations",
+      "authors": "Abigail Morrison; Sirko Straube; Hans Ekkehard Plesser; Markus Diesmann",
+      "year": "2007",
+      "venue": "Neural Computation",
+      "url": "https://doi.org/10.1162/neco.2007.19.1.47",
+      "doi": "10.1162/neco.2007.19.1.47",
+      "kind": "paper",
+      "found_via": "Crossref query.bibliographic 'exact subthreshold integration with continuous spike times in discrete time neural network simulations'",
+      "why_relevant": "Retrieved abstract: restricting spike times to the time grid loses accuracy with undesirable consequences, so continuous spike times are combined with exact subthreshold integration. Evidence that grid/time-step choices alter spike-timing features NeuroSem measures (latency, ISI).",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Exact digital simulation of time-invariant linear systems with applications to neuronal modeling",
+      "authors": "Stefan Rotter; Markus Diesmann",
+      "year": "1999",
+      "venue": "Biological Cybernetics",
+      "url": "https://doi.org/10.1007/s004220050570",
+      "doi": "10.1007/s004220050570",
+      "kind": "paper",
+      "found_via": "Crossref query.bibliographic 'exact digital simulation of time-invariant linear systems with applications to neuronal modeling'",
+      "why_relevant": "Exact integration of linear neuronal dynamics (Biological Cybernetics). Background for the exact-integration option that makes step-size refinement trivial for some model classes; relevant when choosing NeuroSem fixtures and numerical mutants.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Efficient and Accurate Time-Stepping Schemes for Integrate-and-Fire Neuronal Networks",
+      "authors": "Michael J. Shelley; Louis Tao",
+      "year": "2001",
+      "venue": "Journal of Computational Neuroscience",
+      "url": "https://doi.org/10.1023/a:1012885314187",
+      "doi": "10.1023/a:1012885314187",
+      "kind": "paper",
+      "found_via": "Crossref query.bibliographic 'efficient and accurate time-stepping schemes for integrate-and-fire neuronal networks'; also PubMed search (PMID 11717528)",
+      "why_relevant": "PubMed abstract: addresses numerical errors from resetting the membrane potential after spikes in integrate-and-fire network simulations, via modified time stepping. Classic integration-accuracy reference for spike-reset models.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Spiking neural network simulation: numerical integration with the Parker-Sochacki method",
+      "authors": "Robert D. Stewart; Wyeth Bair",
+      "year": "2009",
+      "venue": "Journal of Computational Neuroscience",
+      "url": "https://doi.org/10.1007/s10827-008-0131-5",
+      "doi": "10.1007/s10827-008-0131-5",
+      "kind": "paper",
+      "found_via": "Crossref query.bibliographic 'spiking neural network simulation numerical integration with the Parker-Sochacki method'; also PubMed search (PMID 19151930)",
+      "why_relevant": "PubMed abstract: Parker-Sochacki integration for neuronal model ODEs with adaptive solution order. Relevant as a high-accuracy reference solver against which step-size tolerances could be checked.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Independent Variable Time-Step Integration of Individual Neurons for Network Simulations",
+      "authors": "William W. Lytton; Michael L. Hines",
+      "year": "2005",
+      "venue": "Neural Computation",
+      "url": "https://doi.org/10.1162/0899766053429453",
+      "doi": "10.1162/0899766053429453",
+      "kind": "paper",
+      "found_via": "Crossref query.bibliographic 'independent variable time-step integration of individual neurons for network simulations'",
+      "why_relevant": "Retrieved abstract: local variable time-step integration (lvardt) for networks, per-neuron variable-step integrators in NEURON. Relevant because variable-step solver configuration is a candidate numerical mutation or valid-transformation family in NeuroSem.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Exact Simulation of Integrate-and-Fire Models with Synaptic Conductances",
+      "authors": "Romain Brette",
+      "year": "2006",
+      "venue": "Neural Computation",
+      "url": "https://doi.org/10.1162/neco.2006.18.8.2004",
+      "doi": "10.1162/neco.2006.18.8.2004",
+      "kind": "paper",
+      "found_via": "PubMed search '(numerical uncertainty OR solver accuracy OR time step) AND (neuroscience/neuron models OR Hodgkin-Huxley) AND journal filter' (PMID 16771661); DOI from PubMed metadata",
+      "why_relevant": "PubMed abstract contrasts approximation methods with spike times binned to the time step against exact event-driven simulation of integrate-and-fire models with synaptic conductances. Supports the claim that simulation strategy is a behaviour-relevant setting.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "The Backward Euler Method for Numerical Solution of the Hodgkin–Huxley Equations of Nerve Conduction",
+      "authors": "Michael Mascagni",
+      "year": "1990",
+      "venue": "SIAM Journal on Numerical Analysis",
+      "url": "https://doi.org/10.1137/0727054",
+      "doi": "10.1137/0727054",
+      "kind": "paper",
+      "found_via": "Crossref query.bibliographic 'numerical integration Hodgkin-Huxley equations stability accuracy'",
+      "why_relevant": "Retrieved abstract: backward Euler method for the Hodgkin-Huxley cable PDEs. Classic numerical-analysis reference for conductance-based models, relevant to spatial and temporal discretization mutants.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "On numerical integration of the Hodgkin and Huxley equations for a membrane action potential",
+      "authors": "John W. Moore; Fidel Ramon",
+      "year": "1974",
+      "venue": "Journal of Theoretical Biology",
+      "url": "https://doi.org/10.1016/0022-5193(74)90054-x",
+      "doi": "10.1016/0022-5193(74)90054-x",
+      "kind": "paper",
+      "found_via": "Crossref query.bibliographic 'numerical integration Hodgkin-Huxley equations stability accuracy'",
+      "why_relevant": "Early paper on numerical integration of the Hodgkin-Huxley membrane action potential equations (title-level evidence). Historical integration-accuracy reference for conductance-based neuron models.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Automatically Selecting a Suitable Integration Scheme for Systems of Differential Equations in Neuron Models",
+      "authors": "Inga Blundell; Dimitri Plotnikov; Jochen M. Eppler; Abigail Morrison",
+      "year": "2018",
+      "venue": "Frontiers in Neuroinformatics",
+      "url": "https://doi.org/10.3389/fninf.2018.00050",
+      "doi": "10.3389/fninf.2018.00050",
+      "kind": "paper",
+      "found_via": "Crossref query.bibliographic 'automatically selecting a suitable integration scheme for systems of differential equations in neuron models'; first surfaced by Zenodo REST q='\"stimulation protocol\" selection neuron model'",
+      "why_relevant": "Automatic selection of integration schemes for neuron-model ODEs (title-level evidence; no abstract in Crossref). Directly matches the critic's 'integration scheme selection neuron models' query; relevant to numerical-mutation design and to documenting solver choice per fixture.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "ODE-toolbox: Automatic selection and generation of integration schemes for systems of ordinary differential equations",
+      "authors": "Linssen, Charl; Jain, Shraddha; Morrison, Abigail; Eppler, Jochen Martin",
+      "year": "2020",
+      "venue": "Zenodo",
+      "url": "https://doi.org/10.5281/zenodo.4926346",
+      "doi": "10.5281/zenodo.4926346",
+      "kind": "software",
+      "found_via": "Zenodo REST /api/communities/hbp/records q='validation OR validate OR testing OR test' (earlier version 10.5281/zenodo.3822082)",
+      "why_relevant": "Zenodo record (license gpl-2.0 per record metadata): ODE-toolbox, a Python package for solver benchmarking and heuristic solver recommendation, generating exact propagators where possible. A reusable tool for checking whether NeuroSem's fixtures admit exact or reference solutions when calibrating tolerances.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Probabilistic solvers enable a straight-forward exploration of numerical uncertainty in neuroscience models",
+      "authors": "Jonathan Oesterle; Nicholas Krämer; Philipp Hennig; Philipp Berens",
+      "year": "2022",
+      "venue": "Journal of Computational Neuroscience",
+      "url": "https://doi.org/10.1007/s10827-022-00827-7",
+      "doi": "10.1007/s10827-022-00827-7",
+      "kind": "paper",
+      "found_via": "Crossref abstract fetch after Europe PMC query '\"integration method\" AND (\"spiking neuron\" OR \"Hodgkin-Huxley\") AND (error OR accuracy)'; also PubMed (PMID 35932442)",
+      "why_relevant": "Retrieved abstract: deterministic ODE solvers give single solutions without adequate error indication, so probabilistic solvers are used to explore numerical uncertainty in neuroscience models. Closest neuroscience alternative to NeuroSem's h, h/2, h/4 refinement tolerance rule; a candidate comparator or sensitivity analysis. No mutation testing or protocol selection.",
+      "estimated_closeness": 3
+    },
+    {
+      "title": "Accuracy and Efficiency in Fixed-Point Neural ODE Solvers",
+      "authors": "Michael Hopkins; Steve Furber",
+      "year": "2015",
+      "venue": "Neural Computation",
+      "url": "https://doi.org/10.1162/neco_a_00772",
+      "doi": "10.1162/neco_a_00772",
+      "kind": "paper",
+      "found_via": "PubMed search with journal filter (PMID 26313605); DOI from PubMed metadata",
+      "why_relevant": "PubMed abstract: accuracy versus efficiency of neural ODE solvers in fixed-point digital simulation. Shows that numeric representation and solver affect neural behaviour, relevant to numeric-formatting valid transformations and numerical mutants.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "On the Accuracy and Performance of Spiking Neural Network Simulations",
+      "authors": "Adriano Pimpini; Andrea Piccione; Alessandro Pellegrini",
+      "year": "2022",
+      "venue": "2022 IEEE/ACM 26th International Symposium on Distributed Simulation and Real Time Applications (DS-RT)",
+      "url": "https://doi.org/10.1109/ds-rt55542.2022.9932062",
+      "doi": "10.1109/ds-rt55542.2022.9932062",
+      "kind": "paper",
+      "found_via": "Crossref query.bibliographic 'time step dependence spiking network simulation results'",
+      "why_relevant": "Title indicates a study of the accuracy and performance of spiking-network simulations (DS-RT 2022). A more recent integration-accuracy reference for spiking simulators.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "NESTML: a generic modeling language and code generation tool for the simulation of spiking neural networks with advanced plasticity rules",
+      "authors": "Charl Linssen; Pooja N. Babu; Jochen M. Eppler; Luca Koll; Bernhard Rumpe; Abigail Morrison",
+      "year": "2025",
+      "venue": "Frontiers in Neuroinformatics",
+      "url": "https://doi.org/10.3389/fninf.2025.1544143",
+      "doi": "10.3389/fninf.2025.1544143",
+      "kind": "paper",
+      "found_via": "Europe PMC query '(NeuroML OR \"NEURON simulator\") AND (conversion OR translation) AND (validation OR behaviour OR behavior) AND model'",
+      "why_relevant": "NESTML: modeling language and code generator for spiking-network simulation (Europe PMC record). Model-to-code generation is a transformation whose behavioural preservation NeuroSem-style fingerprints could test; relevant to scoping cross-simulator transformations.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Model-based Mutation Testing (MMT)",
+      "authors": "Bockisch, Christoph; Taentzer, Gabriele",
+      "year": "2024",
+      "venue": "Phillips University Marburg",
+      "url": "https://doi.org/10.5281/zenodo.13138451",
+      "doi": "10.5281/zenodo.13138451",
+      "kind": "software",
+      "found_via": "Zenodo REST /api/records q='\"mutation testing\" neuron'",
+      "why_relevant": "Retrieved description: Model-based Mutation Testing, where domain-specific mutation operators are specified at model level rather than hard-coded for bytecode. Analogue of defining NeuroSem's mutation operators on NeuroML/LEMS model structure; general software, no neuroscience.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Structural Fuzzing: Adapting Input Mutation Testing for Parameterized Model Validation",
+      "authors": "Bond, Andrew H.",
+      "year": "2026",
+      "venue": "Zenodo",
+      "url": "https://doi.org/10.5281/zenodo.21435107",
+      "doi": "10.5281/zenodo.21435107",
+      "kind": "paper",
+      "found_via": "DataCite query titles.title:(\"mutation testing\") AND descriptions.description:(simulation OR scientific); Zenodo record fetched",
+      "why_relevant": "Retrieved description: adapts fuzzing and input-mutation ideas to validating parameterized predictive models, including ablation, minimal flipping perturbation search and greedy parameter addition, demonstrated on an economics model. Partial conceptual overlap (mutation-style perturbation plus greedy analysis for scientific-model validation) outside neuroscience; no stimulus protocols, numerical tolerances or held-out mutants. Self-deposited, unclear peer review.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "LEMS/LEMS: v0.7.6",
+      "authors": "Padraig Gleeson; Robertcannon; Ankur Sinha",
+      "year": "2021",
+      "venue": "Zenodo",
+      "url": "https://doi.org/10.5281/zenodo.5788686",
+      "doi": "10.5281/zenodo.5788686",
+      "kind": "software",
+      "found_via": "Zenodo REST /api/records q='\"NeuroML\" test' and q='neuroml validation'",
+      "why_relevant": "Zenodo software record for LEMS/LEMS (the LEMS specification repository; version v0.7.6 dated 2021-12-17 on the record surfaced). Canonical archive DOI for LEMS, one of the tools NeuroSem reuses; this version is not necessarily current, so check the latest version before citing.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "NeuroML/NeuroML2: v1.5.4",
+      "authors": "Padraig Gleeson; Marin, Boris; Piasini, Eugenio; Stanislovas, Rokas; Cantarelli, Matteo; Quintana, Adrian",
+      "year": "2019",
+      "venue": "Zenodo",
+      "url": "https://doi.org/10.5281/zenodo.3155348",
+      "doi": "10.5281/zenodo.3155348",
+      "kind": "software",
+      "found_via": "Zenodo REST /api/records q='neuroml validation' and q='\"model validation\" neuroml'",
+      "why_relevant": "Zenodo software record for NeuroML/NeuroML2 (schema and core definitions; the version surfaced is v1.5.4, 2019-05-22). Archive DOI for the NeuroML 2 specification NeuroSem validates against; not necessarily current, so check the latest version before citing.",
+      "estimated_closeness": 2
+    }
+  ],
+  "queries_run": [
+    {
+      "source": "Zenodo REST /api/communities?q=",
+      "query": "neuroml",
+      "result_note": "HTTP 200 (API reachable again, unlike the critic probe at 16:08 UTC). No NeuroML community; only unrelated neuro-named communities (e.g. neuromorphic, neuromatch)."
+    },
+    {
+      "source": "Zenodo REST /api/communities?q=",
+      "query": "ebrains",
+      "result_note": "HTTP 200; no EBRAINS community returned (unrelated EB* slugs only)."
+    },
+    {
+      "source": "Zenodo REST /api/communities?q=",
+      "query": "opensourcebrain",
+      "result_note": "HTTP 200; no match for the joined word."
+    },
+    {
+      "source": "Zenodo REST /api/communities?q=",
+      "query": "open source brain",
+      "result_note": "Found community slug 'opensourcebrain' (Open Source Brain)."
+    },
+    {
+      "source": "Zenodo REST /api/communities?q=",
+      "query": "computational neuroscience",
+      "result_note": "Found 'ocns' (Organization for Computational Neurosciences), 'computneurobio', 'neuromorphic'."
+    },
+    {
+      "source": "Zenodo REST /api/communities?q=",
+      "query": "neuron model",
+      "result_note": "Found 'computneurobio', 'fet-neurotwin', 'cneuromod'; nothing on model testing."
+    },
+    {
+      "source": "Zenodo REST /api/communities/<slug> (direct slug probe)",
+      "query": "neuroml",
+      "result_note": "neuroml, ebrains, humanbrainproject: HTTP 404 (no such community). hbp: HTTP 200 (Human Brain Project). incf: HTTP 200 (INCF, 1 unrelated record)."
+    },
+    {
+      "source": "Zenodo REST /api/communities/<slug> (direct slug probe)",
+      "query": "ebrains",
+      "result_note": "neuroml, ebrains, humanbrainproject: HTTP 404 (no such community). hbp: HTTP 200 (Human Brain Project). incf: HTTP 200 (INCF, 1 unrelated record)."
+    },
+    {
+      "source": "Zenodo REST /api/communities/<slug> (direct slug probe)",
+      "query": "humanbrainproject",
+      "result_note": "neuroml, ebrains, humanbrainproject: HTTP 404 (no such community). hbp: HTTP 200 (Human Brain Project). incf: HTTP 200 (INCF, 1 unrelated record)."
+    },
+    {
+      "source": "Zenodo REST /api/communities/<slug> (direct slug probe)",
+      "query": "hbp",
+      "result_note": "neuroml, ebrains, humanbrainproject: HTTP 404 (no such community). hbp: HTTP 200 (Human Brain Project). incf: HTTP 200 (INCF, 1 unrelated record)."
+    },
+    {
+      "source": "Zenodo REST /api/communities/<slug> (direct slug probe)",
+      "query": "incf",
+      "result_note": "neuroml, ebrains, humanbrainproject: HTTP 404 (no such community). hbp: HTTP 200 (Human Brain Project). incf: HTTP 200 (INCF, 1 unrelated record)."
+    },
+    {
+      "source": "Zenodo REST /api/communities/opensourcebrain/records",
+      "query": "(all records)",
+      "result_note": "Community holds only 3 records (PotjansDiesmann2014 v0.1, NeuroinformaticsTutorial v1.0.1, GranuleCell v0.1.1). Only GranuleCell matched the validation/test filter; 0 matches for neuroml or mutation/regression/equivalence. No prior-art candidates."
+    },
+    {
+      "source": "Zenodo REST /api/communities/opensourcebrain/records",
+      "query": "validation OR test OR testing",
+      "result_note": "Community holds only 3 records (PotjansDiesmann2014 v0.1, NeuroinformaticsTutorial v1.0.1, GranuleCell v0.1.1). Only GranuleCell matched the validation/test filter; 0 matches for neuroml or mutation/regression/equivalence. No prior-art candidates."
+    },
+    {
+      "source": "Zenodo REST /api/communities/opensourcebrain/records",
+      "query": "neuroml",
+      "result_note": "Community holds only 3 records (PotjansDiesmann2014 v0.1, NeuroinformaticsTutorial v1.0.1, GranuleCell v0.1.1). Only GranuleCell matched the validation/test filter; 0 matches for neuroml or mutation/regression/equivalence. No prior-art candidates."
+    },
+    {
+      "source": "Zenodo REST /api/communities/opensourcebrain/records",
+      "query": "mutation OR regression OR equivalence",
+      "result_note": "Community holds only 3 records (PotjansDiesmann2014 v0.1, NeuroinformaticsTutorial v1.0.1, GranuleCell v0.1.1). Only GranuleCell matched the validation/test filter; 0 matches for neuroml or mutation/regression/equivalence. No prior-art candidates."
+    },
+    {
+      "source": "Zenodo REST /api/communities/ocns/records",
+      "query": "(all records)",
+      "result_note": "166 records, mostly CNS*2026 abstracts dated 2026-09-07. 44 matched validation/test and 14 matched mutation/regression/equivalence, but on inspection none concern behavioural regression, mutation testing or protocol selection for neuron models; 0 neuroml matches."
+    },
+    {
+      "source": "Zenodo REST /api/communities/ocns/records",
+      "query": "validation OR test OR testing",
+      "result_note": "166 records, mostly CNS*2026 abstracts dated 2026-09-07. 44 matched validation/test and 14 matched mutation/regression/equivalence, but on inspection none concern behavioural regression, mutation testing or protocol selection for neuron models; 0 neuroml matches."
+    },
+    {
+      "source": "Zenodo REST /api/communities/ocns/records",
+      "query": "neuroml",
+      "result_note": "166 records, mostly CNS*2026 abstracts dated 2026-09-07. 44 matched validation/test and 14 matched mutation/regression/equivalence, but on inspection none concern behavioural regression, mutation testing or protocol selection for neuron models; 0 neuroml matches."
+    },
+    {
+      "source": "Zenodo REST /api/communities/ocns/records",
+      "query": "mutation OR regression OR equivalence",
+      "result_note": "166 records, mostly CNS*2026 abstracts dated 2026-09-07. 44 matched validation/test and 14 matched mutation/regression/equivalence, but on inspection none concern behavioural regression, mutation testing or protocol selection for neuron models; 0 neuroml matches."
+    },
+    {
+      "source": "Zenodo REST /api/communities/computneurobio/records",
+      "query": "(all records)",
+      "result_note": "Community is empty (0 records)."
+    },
+    {
+      "source": "Zenodo REST /api/communities/computneurobio/records",
+      "query": "validation OR test OR testing",
+      "result_note": "Community is empty (0 records)."
+    },
+    {
+      "source": "Zenodo REST /api/communities/computneurobio/records",
+      "query": "neuroml",
+      "result_note": "Community is empty (0 records)."
+    },
+    {
+      "source": "Zenodo REST /api/communities/computneurobio/records",
+      "query": "mutation OR regression OR equivalence",
+      "result_note": "Community is empty (0 records)."
+    },
+    {
+      "source": "Zenodo REST /api/communities/neuromorphic/records",
+      "query": "(all records)",
+      "result_note": "26 records, mostly speculative self-deposits; none relevant."
+    },
+    {
+      "source": "Zenodo REST /api/communities/neuromorphic/records",
+      "query": "validation OR test OR testing",
+      "result_note": "26 records, mostly speculative self-deposits; none relevant."
+    },
+    {
+      "source": "Zenodo REST /api/communities/neuromorphic/records",
+      "query": "neuroml",
+      "result_note": "26 records, mostly speculative self-deposits; none relevant."
+    },
+    {
+      "source": "Zenodo REST /api/communities/neuromorphic/records",
+      "query": "mutation OR regression OR equivalence",
+      "result_note": "26 records, mostly speculative self-deposits; none relevant."
+    },
+    {
+      "source": "Zenodo REST /api/communities/hbp/records",
+      "query": "(all records)",
+      "result_note": "138 records. The validation/test filter returned 5, including ODE-toolbox (automatic integration-scheme selection; kept as candidate). The neuron-model filter returned morphologies, the EBRAINS Hodgkin-Huxley Neuron Builder and a striatal MSN model; no testing/mutation work. Tool-name filter: 0."
+    },
+    {
+      "source": "Zenodo REST /api/communities/hbp/records",
+      "query": "validation OR validate OR testing OR test",
+      "result_note": "138 records. The validation/test filter returned 5, including ODE-toolbox (automatic integration-scheme selection; kept as candidate). The neuron-model filter returned morphologies, the EBRAINS Hodgkin-Huxley Neuron Builder and a striatal MSN model; no testing/mutation work. Tool-name filter: 0."
+    },
+    {
+      "source": "Zenodo REST /api/communities/hbp/records",
+      "query": "neuron model OR single cell model OR electrophysiology",
+      "result_note": "138 records. The validation/test filter returned 5, including ODE-toolbox (automatic integration-scheme selection; kept as candidate). The neuron-model filter returned morphologies, the EBRAINS Hodgkin-Huxley Neuron Builder and a striatal MSN model; no testing/mutation work. Tool-name filter: 0."
+    },
+    {
+      "source": "Zenodo REST /api/communities/hbp/records",
+      "query": "neuroml OR sciunit OR efel OR bluepyopt OR hippounit",
+      "result_note": "138 records. The validation/test filter returned 5, including ODE-toolbox (automatic integration-scheme selection; kept as candidate). The neuron-model filter returned morphologies, the EBRAINS Hodgkin-Huxley Neuron Builder and a striatal MSN model; no testing/mutation work. Tool-name filter: 0."
+    },
+    {
+      "source": "Zenodo REST /api/communities/incf/records",
+      "query": "(all records)",
+      "result_note": "Only 1 unrelated record; filters returned 0."
+    },
+    {
+      "source": "Zenodo REST /api/communities/incf/records",
+      "query": "validation OR validate OR testing OR test",
+      "result_note": "Only 1 unrelated record; filters returned 0."
+    },
+    {
+      "source": "Zenodo REST /api/communities/incf/records",
+      "query": "neuron model OR single cell model OR electrophysiology",
+      "result_note": "Only 1 unrelated record; filters returned 0."
+    },
+    {
+      "source": "Zenodo REST /api/communities/incf/records",
+      "query": "neuroml OR sciunit OR efel OR bluepyopt OR hippounit",
+      "result_note": "Only 1 unrelated record; filters returned 0."
+    },
+    {
+      "source": "Zenodo REST /api/records?q=",
+      "query": "neuron model validation tests",
+      "result_note": "Very broad (~610k hits, unfielded OR semantics); top 15 mostly unrelated. BluePyEModel record surfaced (already in matrix)."
+    },
+    {
+      "source": "Zenodo REST /api/records?q=",
+      "query": "mutation testing simulation",
+      "result_note": "Generic SE mutation artifacts. Kept: replication data for Gay and Salahirad (mutant-to-real-fault coupling). No neuroscience mutation testing."
+    },
+    {
+      "source": "Zenodo REST /api/records?q=",
+      "query": "electrophysiology feature regression",
+      "result_note": "eFEL dataset record, BluePyEfe; otherwise unrelated."
+    },
+    {
+      "source": "Zenodo REST /api/records?q=",
+      "query": "\"NeuroML\" test",
+      "result_note": "NeuroML toolchain software records (LEMS v0.7.6, jNeuroML v0.14.0, pyNeuroML v1.3.22, NeuroMLlite, org.neuroml.*, spanag/nml2_extensions_draft). No testing/mutation study."
+    },
+    {
+      "source": "Zenodo REST /api/records?q=",
+      "query": "neuroml validation",
+      "result_note": "Same NeuroML/LEMS software records, including NeuroML2 v1.5.4 (kept as canonical tool record)."
+    },
+    {
+      "source": "Zenodo REST /api/records?q=",
+      "query": "\"mutation testing\" neuron",
+      "result_note": "Generic mutation-testing artifacts (MMT model-based mutation testing kept; DeepCrime DNN mutations, equivalent-mutant classifiers). Nothing on biophysical neuron models."
+    },
+    {
+      "source": "Zenodo REST /api/records?q=",
+      "query": "efel electrophysiology features",
+      "result_note": "BluePyEModel, eFEL, BluePyEfe Zenodo records (already in matrix)."
+    },
+    {
+      "source": "Zenodo REST /api/records?q=",
+      "query": "\"regression testing\" neuron model",
+      "result_note": "Generic regression-testing records plus unrelated neuron-model deposits; no neuron-model regression testing work."
+    },
+    {
+      "source": "Zenodo REST /api/records?q=",
+      "query": "\"model validation\" neuroml",
+      "result_note": "NeuroML/LEMS software records only."
+    },
+    {
+      "source": "Zenodo REST /api/records?q=",
+      "query": "osb model validation",
+      "result_note": "Unrelated (OSB = oriented strand board, Benedictine order). No OMV Zenodo record found by this query."
+    },
+    {
+      "source": "Zenodo REST /api/records?q=",
+      "query": "neuronunit",
+      "result_note": "0 hits."
+    },
+    {
+      "source": "Zenodo REST /api/records?q=",
+      "query": "sciunit",
+      "result_note": "5 hits: SynapseUnit, morphounit, HippoNetworkUnit (SciUnit-based test suites) and reproducibility packages; SciUnit-family validation already in matrix."
+    },
+    {
+      "source": "Zenodo REST /api/records?q=",
+      "query": "\"stimulation protocol\" selection neuron model",
+      "result_note": "Broad; surfaced Blundell et al. 2018 Front Neuroinform on automatic integration-scheme selection (kept); otherwise unrelated."
+    },
+    {
+      "source": "Zenodo REST /api/records?q=",
+      "query": "neuron model conversion NEURON NeuroML equivalence",
+      "result_note": "Unrelated results only."
+    },
+    {
+      "source": "Zenodo REST /api/records?q=",
+      "query": "\"semantic drift\" model",
+      "result_note": "Linguistics/LLM semantic-drift deposits; no model-behaviour drift work."
+    },
+    {
+      "source": "Zenodo REST /api/records?q=",
+      "query": "\"hodgkin-huxley\" regression test",
+      "result_note": "HH model code deposits and SimHH GPU simulator; no regression-testing methodology."
+    },
+    {
+      "source": "Zenodo REST /api/records?q= (fielded)",
+      "query": "title:(mutant OR mutation) AND description:(neuron OR neuronal OR electrophysiology)",
+      "result_note": "20 hits, all genetic mutations in neurobiology; no software/model mutation testing."
+    },
+    {
+      "source": "Zenodo REST /api/records?q= (fielded)",
+      "query": "description:(\"regression test*\" AND (NEURON OR NeuroML OR NEST OR Brian2) AND simulat*)",
+      "result_note": "1 hit: UWB-Biocomputing/Graphitti simulator release; not a regression-testing method."
+    },
+    {
+      "source": "Zenodo REST /api/records/<id> (metadata fetch)",
+      "query": "21435107 (Structural Fuzzing)",
+      "result_note": "Descriptions retrieved. Kept Structural Fuzzing, MMT and ODE-toolbox. The 7261554 dataset is merged into the Gay & Salahirad ICST 2023 candidate. NeuroEval (LLM reproducibility checks of neuroscience papers) and nml2_extensions_draft (draft NeuroML extensions) judged not relevant. 22018943 returned non-JSON."
+    },
+    {
+      "source": "Zenodo REST /api/records/<id> (metadata fetch)",
+      "query": "20690622 (NeuroEval)",
+      "result_note": "Descriptions retrieved. Kept Structural Fuzzing, MMT and ODE-toolbox. The 7261554 dataset is merged into the Gay & Salahirad ICST 2023 candidate. NeuroEval (LLM reproducibility checks of neuroscience papers) and nml2_extensions_draft (draft NeuroML extensions) judged not relevant. 22018943 returned non-JSON."
+    },
+    {
+      "source": "Zenodo REST /api/records/<id> (metadata fetch)",
+      "query": "21876528 (nml2_extensions_draft)",
+      "result_note": "Descriptions retrieved. Kept Structural Fuzzing, MMT and ODE-toolbox. The 7261554 dataset is merged into the Gay & Salahirad ICST 2023 candidate. NeuroEval (LLM reproducibility checks of neuroscience papers) and nml2_extensions_draft (draft NeuroML extensions) judged not relevant. 22018943 returned non-JSON."
+    },
+    {
+      "source": "Zenodo REST /api/records/<id> (metadata fetch)",
+      "query": "7261554 (mutation coupling replication data)",
+      "result_note": "Descriptions retrieved. Kept Structural Fuzzing, MMT and ODE-toolbox. The 7261554 dataset is merged into the Gay & Salahirad ICST 2023 candidate. NeuroEval (LLM reproducibility checks of neuroscience papers) and nml2_extensions_draft (draft NeuroML extensions) judged not relevant. 22018943 returned non-JSON."
+    },
+    {
+      "source": "Zenodo REST /api/records/<id> (metadata fetch)",
+      "query": "13138451 (MMT)",
+      "result_note": "Descriptions retrieved. Kept Structural Fuzzing, MMT and ODE-toolbox. The 7261554 dataset is merged into the Gay & Salahirad ICST 2023 candidate. NeuroEval (LLM reproducibility checks of neuroscience papers) and nml2_extensions_draft (draft NeuroML extensions) judged not relevant. 22018943 returned non-JSON."
+    },
+    {
+      "source": "Zenodo REST /api/records/<id> (metadata fetch)",
+      "query": "22018943 (TAF15 simulation)",
+      "result_note": "Descriptions retrieved. Kept Structural Fuzzing, MMT and ODE-toolbox. The 7261554 dataset is merged into the Gay & Salahirad ICST 2023 candidate. NeuroEval (LLM reproducibility checks of neuroscience papers) and nml2_extensions_draft (draft NeuroML extensions) judged not relevant. 22018943 returned non-JSON."
+    },
+    {
+      "source": "Zenodo REST /api/records/<id> (metadata fetch)",
+      "query": "4926346 (ODE-toolbox)",
+      "result_note": "Descriptions retrieved. Kept Structural Fuzzing, MMT and ODE-toolbox. The 7261554 dataset is merged into the Gay & Salahirad ICST 2023 candidate. NeuroEval (LLM reproducibility checks of neuroscience papers) and nml2_extensions_draft (draft NeuroML extensions) judged not relevant. 22018943 returned non-JSON."
+    },
+    {
+      "source": "DataCite REST /dois?query=",
+      "query": "descriptions.description:(neuroml AND (test* OR validat*))",
+      "result_note": "41 hits: pyNeuroML, NeuroMLlite, libNeuroML, jNeuroML versions and NeuroML2Loihi; tooling only."
+    },
+    {
+      "source": "DataCite REST /dois?query=",
+      "query": "descriptions.description:(\"mutation testing\" AND (neuron OR neuroscience OR simulation))",
+      "result_note": "18 hits: autonomous-driving/DNN mutation testing, Simulink timed mutation operators (arXiv 2301.00835), TRANSMUT-Spark; no neuroscience."
+    },
+    {
+      "source": "DataCite REST /dois?query=",
+      "query": "descriptions.description:(electrophysiology AND feature* AND regression AND (model OR simulation))",
+      "result_note": "11 hits, unrelated (Virtual Cell, cardiac graph datasets)."
+    },
+    {
+      "source": "DataCite REST /dois?query=",
+      "query": "subjects.subject:neuroml",
+      "result_note": "10 hits: NeuroEval preprint versions, pyNeuroML v0.5.18, EDEN benchmark dataset."
+    },
+    {
+      "source": "DataCite REST /dois?query=",
+      "query": "subjects.subject:(\"computational neuroscience\") AND descriptions.description:(validation OR testing)",
+      "result_note": "735 hits; top 20 are speculative preprints and unrelated software; no model-testing prior art."
+    },
+    {
+      "source": "DataCite REST /dois?query=",
+      "query": "descriptions.description:(\"neuron model\" AND (\"stimulation protocol\" OR \"stimulus protocol\") AND (select* OR optim*))",
+      "result_note": "0 hits."
+    },
+    {
+      "source": "DataCite REST /dois?query=",
+      "query": "descriptions.description:(efel AND (validation OR test*))",
+      "result_note": "102 hits, dominated by BluePyEModel versions (already in matrix)."
+    },
+    {
+      "source": "DataCite REST /dois?query=",
+      "query": "descriptions.description:((\"hodgkin-huxley\" OR \"conductance-based\") AND (\"regression test\" OR \"mutation\"))",
+      "result_note": "23 hits: genetic-mutation excitability simulations (TAF15 R408C), dissertations; no model mutation testing."
+    },
+    {
+      "source": "DataCite REST /dois?query=",
+      "query": "descriptions.description:(\"model validation\" AND (\"open source brain\" OR omv))",
+      "result_note": "0 hits."
+    },
+    {
+      "source": "DataCite REST /dois?query=",
+      "query": "descriptions.description:(neuronunit OR sciunit)",
+      "result_note": "31 hits, mostly the unrelated Sciunit reproducibility-container tool (hydrology/computational experiments), a name collision with neuroscience SciUnit."
+    },
+    {
+      "source": "DataCite REST /dois?query=",
+      "query": "titles.title:(\"mutation testing\") AND descriptions.description:(simulation OR scientific)",
+      "result_note": "7 hits; kept 'Structural Fuzzing: Adapting Input Mutation Testing for Parameterized Model Validation'."
+    },
+    {
+      "source": "DataCite REST /dois?query=",
+      "query": "descriptions.description:(\"semantic drift\" OR \"behavioural equivalence\" OR \"behavioral equivalence\") AND descriptions.description:(neuron OR neuroml)",
+      "result_note": "6 hits, speculative/unrelated (SD-SNN, SC-NeuroCore)."
+    },
+    {
+      "source": "DataCite REST /dois?query= (batch 2)",
+      "query": "descriptions.description:(\"current clamp\" AND protocol* AND (regression OR \"model validation\" OR \"model testing\") AND simulat*)",
+      "result_note": "1 unrelated dataset."
+    },
+    {
+      "source": "DataCite REST /dois?query= (batch 2)",
+      "query": "descriptions.description:((\"NEURON\" AND \"NeuroML\") AND (equivalen* OR \"cross-simulator\" OR \"same behaviour\" OR \"same behavior\"))",
+      "result_note": "0 hits."
+    },
+    {
+      "source": "DataCite REST /dois?query= (batch 2)",
+      "query": "descriptions.description:(\"mutation\" AND \"neuron model\" AND (test OR tests OR testing))",
+      "result_note": "5 hits, all genetic-variant simulations or recordings."
+    },
+    {
+      "source": "DataCite REST /dois?query= (batch 2)",
+      "query": "descriptions.description:((\"time step\" OR \"step size\") AND convergence AND (\"neuron model\" OR \"Hodgkin-Huxley\"))",
+      "result_note": "1 unrelated hit."
+    },
+    {
+      "source": "DataCite REST /dois?query= (batch 2)",
+      "query": "descriptions.description:(\"rheobase\" AND (\"regression test\" OR \"unit test\" OR \"model test\"))",
+      "result_note": "0 hits."
+    },
+    {
+      "source": "DataCite REST /dois?query= (batch 2)",
+      "query": "descriptions.description:(\"equivalent mutant*\")",
+      "result_note": "53 hits: LLM equivalent-mutant detection (arXiv 2408.01760, 2607.00511), quantum mutant equivalence via transpilation, MutantBench; general SE."
+    },
+    {
+      "source": "DataCite REST /dois?query= (batch 2)",
+      "query": "descriptions.description:(\"patch overfitting\" OR \"overfitting patches\" OR \"plausible patches\")",
+      "result_note": "59 hits: PatchCheck, RePaCA and APR replication packages; general APR."
+    },
+    {
+      "source": "DataCite REST /dois?query= (batch 2)",
+      "query": "descriptions.description:(\"conformance testing\" AND (\"hybrid system*\" OR \"cyber-physical\"))",
+      "result_note": "8 hits; kept Mohaqeqi et al. 2014 ECEASST and Khakpour & Mousavi 2015 CONCUR."
+    },
+    {
+      "source": "DataCite REST /dois?query= (batch 3, incl. arXiv DOIs)",
+      "query": "titles.title:(\"SWE-bench\") AND descriptions.description:(test* AND (insufficient OR incorrect OR \"pass\" OR overfit* OR weak))",
+      "result_note": "21 hits; kept 'Investigating Test Overfitting on SWE-bench' (arXiv 2511.16858). Also SWE-bench Science (arXiv 2608.19799) and construct-validity audits of Multi-SWE-bench parsers (not kept)."
+    },
+    {
+      "source": "DataCite REST /dois?query= (batch 3, incl. arXiv DOIs)",
+      "query": "titles.title:(\"SWE-bench Verified\" OR \"UTBoost\" OR \"patch correctness\") AND client_id:arxiv.content",
+      "result_note": "17 hits; kept UTBoost (arXiv 2506.09289) and Xiong et al. 2017 (arXiv 1706.09120)."
+    },
+    {
+      "source": "DataCite REST /dois?query= (batch 3, incl. arXiv DOIs)",
+      "query": "descriptions.description:(\"SWE-bench\" AND (\"insufficient test\" OR \"weak test\" OR \"test adequacy\" OR \"incorrect patches\" OR \"plausible\"))",
+      "result_note": "26 hits; kept 'Probe to Generate' (arXiv 2604.01518) and 'Confident and Wrong' (arXiv 2603.25764)."
+    },
+    {
+      "source": "DataCite REST /dois?query= (batch 3, incl. arXiv DOIs)",
+      "query": "titles.title:(\"code translation\") AND descriptions.description:(bugs AND \"large language model*\")",
+      "result_note": "2 hits: MatchFixAgent software records (title-level only; not kept)."
+    },
+    {
+      "source": "DataCite REST /dois?query= (batch 3, incl. arXiv DOIs)",
+      "query": "titles.title:(\"equivalent mutant*\" OR \"mutant subsumption\" OR \"minimal mutant\")",
+      "result_note": "19 hits; general SE artifacts; foundations taken from Crossref instead."
+    },
+    {
+      "source": "DataCite REST /dois?query= (batch 3, incl. arXiv DOIs)",
+      "query": "titles.title:(conformance AND (\"cyber-physical\" OR \"hybrid system*\"))",
+      "result_note": "11 hits; kept Abbas et al. arXiv 1401.5200. Stochastic CPS conformance (arXiv 2308.06474) noted, not kept."
+    },
+    {
+      "source": "DataCite REST /dois?query= (batch 3, incl. arXiv DOIs)",
+      "query": "titles.title:(\"regression verification\" OR \"semantic differencing\" OR \"translation validation\")",
+      "result_note": "815 hits, dominated by questionnaire translation/validation studies (term collision); DESTIVA translation-validation software noted."
+    },
+    {
+      "source": "DataCite REST /dois?query= (batch 3, incl. arXiv DOIs)",
+      "query": "descriptions.description:(\"scientific software\" AND (\"mutation testing\" OR \"mutation analysis\"))",
+      "result_note": "9 hits; metamorphic-meets-regression-testing supplements; nothing on neuron models."
+    },
+    {
+      "source": "DataCite REST /dois?query= (batch 3, incl. arXiv DOIs)",
+      "query": "descriptions.description:((\"neuron model\" OR \"neuronal model\") AND (\"mutation testing\" OR \"mutation analysis\" OR \"fault injection\"))",
+      "result_note": "0 hits. No DataCite-registered record combines neuron models with mutation testing or fault injection."
+    },
+    {
+      "source": "DataCite REST /dois?query= (batch 3, incl. arXiv DOIs)",
+      "query": "descriptions.description:((\"large language model*\" OR \"LLM\") AND (\"neuron model*\" OR NeuroML OR \"NEURON simulator\") AND (translat* OR convert* OR port*))",
+      "result_note": "2 unrelated hits."
+    },
+    {
+      "source": "DataCite REST /dois/<doi> (abstract fetch)",
+      "query": "10.48550/arxiv.2511.16858",
+      "result_note": "Abstracts retrieved; used to write why_relevant. The quantum-mutant-equivalence artifact was judged too distant and not kept."
+    },
+    {
+      "source": "DataCite REST /dois/<doi> (abstract fetch)",
+      "query": "10.48550/arxiv.2506.09289",
+      "result_note": "Abstracts retrieved; used to write why_relevant. The quantum-mutant-equivalence artifact was judged too distant and not kept."
+    },
+    {
+      "source": "DataCite REST /dois/<doi> (abstract fetch)",
+      "query": "10.48550/arxiv.2603.25764",
+      "result_note": "Abstracts retrieved; used to write why_relevant. The quantum-mutant-equivalence artifact was judged too distant and not kept."
+    },
+    {
+      "source": "DataCite REST /dois/<doi> (abstract fetch)",
+      "query": "10.48550/arxiv.2604.01518",
+      "result_note": "Abstracts retrieved; used to write why_relevant. The quantum-mutant-equivalence artifact was judged too distant and not kept."
+    },
+    {
+      "source": "DataCite REST /dois/<doi> (abstract fetch)",
+      "query": "10.14279/tuj.eceasst.70.982",
+      "result_note": "Abstracts retrieved; used to write why_relevant. The quantum-mutant-equivalence artifact was judged too distant and not kept."
+    },
+    {
+      "source": "DataCite REST /dois/<doi> (abstract fetch)",
+      "query": "10.4230/lipics.concur.2015.18",
+      "result_note": "Abstracts retrieved; used to write why_relevant. The quantum-mutant-equivalence artifact was judged too distant and not kept."
+    },
+    {
+      "source": "DataCite REST /dois/<doi> (abstract fetch)",
+      "query": "10.48550/arxiv.1401.5200",
+      "result_note": "Abstracts retrieved; used to write why_relevant. The quantum-mutant-equivalence artifact was judged too distant and not kept."
+    },
+    {
+      "source": "DataCite REST /dois/<doi> (abstract fetch)",
+      "query": "10.5281/zenodo.21534778",
+      "result_note": "Abstracts retrieved; used to write why_relevant. The quantum-mutant-equivalence artifact was judged too distant and not kept."
+    },
+    {
+      "source": "Crossref REST /works?query.bibliographic= (batch 1: mutation foundations, suite size, formal equivalence, CPS conformance)",
+      "query": "equivalent mutant problem systematic literature review",
+      "result_note": "Top hit Madeyski et al. 2014 TSE (kept); MutantBench ICSTW 2021 and a retrospective 2018 paper also returned."
+    },
+    {
+      "source": "Crossref REST /works?query.bibliographic= (batch 1: mutation foundations, suite size, formal equivalence, CPS conformance)",
+      "query": "are mutants a valid substitute for real faults in software testing",
+      "result_note": "Top hit Just et al. FSE 2014 (kept); also Laurent et al. 2022 Defects4J 2.0 revisit and Salahirad et al. STVR."
+    },
+    {
+      "source": "Crossref REST /works?query.bibliographic= (batch 1: mutation foundations, suite size, formal equivalence, CPS conformance)",
+      "query": "minimal mutant sets subsumption",
+      "result_note": "Generalized mutant subsumption 2022, dynamic subsumption with LittleDarwin 2017; mostly noise."
+    },
+    {
+      "source": "Crossref REST /works?query.bibliographic= (batch 1: mutation foundations, suite size, formal equivalence, CPS conformance)",
+      "query": "mutation testing analysis and survey development",
+      "result_note": "Returned 'Mutation Testing Advances: An Analysis and Survey' (Adv. Computers 2019; kept) and Jia & Harman TSE 2011 (already in matrix)."
+    },
+    {
+      "source": "Crossref REST /works?query.bibliographic= (batch 1: mutation foundations, suite size, formal equivalence, CPS conformance)",
+      "query": "hints on test data selection help for the practicing programmer",
+      "result_note": "Top hit DeMillo, Lipton & Sayward 1978 Computer (kept)."
+    },
+    {
+      "source": "Crossref REST /works?query.bibliographic= (batch 1: mutation foundations, suite size, formal equivalence, CPS conformance)",
+      "query": "program mutation testing mutation analysis theory",
+      "result_note": "Noisy; Harman et al. 2001 on program dependence and mutation analysis."
+    },
+    {
+      "source": "Crossref REST /works?query.bibliographic= (batch 1: mutation foundations, suite size, formal equivalence, CPS conformance)",
+      "query": "mutant subsumption graphs",
+      "result_note": "Kurtz et al. ICSTW 2014 (kept); static subsumption analysis 2015."
+    },
+    {
+      "source": "Crossref REST /works?query.bibliographic= (batch 1: mutation foundations, suite size, formal equivalence, CPS conformance)",
+      "query": "trivial compiler equivalence equivalent mutants",
+      "result_note": "Papadakis et al. ICSE 2015 (kept); Offutt & Craft 1994 STVR on compiler optimization for equivalent mutants."
+    },
+    {
+      "source": "Crossref REST /works?query.bibliographic= (batch 1: mutation foundations, suite size, formal equivalence, CPS conformance)",
+      "query": "coverage is not strongly correlated with test suite effectiveness",
+      "result_note": "Inozemtseva & Holmes ICSE 2014 (kept); Namin & Andrews ISSTA 2009 (kept)."
+    },
+    {
+      "source": "Crossref REST /works?query.bibliographic= (batch 1: mutation foundations, suite size, formal equivalence, CPS conformance)",
+      "query": "test suite size coverage effectiveness mutation score",
+      "result_note": "Namin & Andrews 2009; Jehan & Wotawa 2023 IEEE Access greedy minimization with mutation coverage (kept)."
+    },
+    {
+      "source": "Crossref REST /works?query.bibliographic= (batch 1: mutation foundations, suite size, formal equivalence, CPS conformance)",
+      "query": "practical guide for using statistical tests to assess randomized algorithms in software engineering",
+      "result_note": "Arcuri & Briand ICSE 2011 and STVR 2012 (both kept)."
+    },
+    {
+      "source": "Crossref REST /works?query.bibliographic= (batch 1: mutation foundations, suite size, formal equivalence, CPS conformance)",
+      "query": "random test selection baseline mutation score",
+      "result_note": "Noise; only 'Quasi-Dominators and Random Selection in Mutation Testing' (ICCQ 2022) is on topic, not kept."
+    },
+    {
+      "source": "Crossref REST /works?query.bibliographic= (batch 1: mutation foundations, suite size, formal equivalence, CPS conformance)",
+      "query": "regression verification program equivalence",
+      "result_note": "Godlin & Strichman STVR 2012 (kept); Strichman LNCS 2009; Sarker & Bultan ICST 2025 hybrid equivalence/non-equivalence testing (kept)."
+    },
+    {
+      "source": "Crossref REST /works?query.bibliographic= (batch 1: mutation foundations, suite size, formal equivalence, CPS conformance)",
+      "query": "translation validation compiler",
+      "result_note": "Necula PLDI 2000 (kept); V8 JIT translation validation ICSE 2024."
+    },
+    {
+      "source": "Crossref REST /works?query.bibliographic= (batch 1: mutation foundations, suite size, formal equivalence, CPS conformance)",
+      "query": "semantic differencing models",
+      "result_note": "Maoz, Ringert & Rumpe 2011 manifesto (kept); Binkley 1992 (kept); statechart and use-case semantic differencing."
+    },
+    {
+      "source": "Crossref REST /works?query.bibliographic= (batch 1: mutation foundations, suite size, formal equivalence, CPS conformance)",
+      "query": "equivalence modulo inputs compiler testing",
+      "result_note": "Le, Afshari & Su PLDI 2014 (kept); SLEMI ICSE 2020 (kept); equivalence modulo states 2017."
+    },
+    {
+      "source": "Crossref REST /works?query.bibliographic= (batch 1: mutation foundations, suite size, formal equivalence, CPS conformance)",
+      "query": "differential assertion checking",
+      "result_note": "Lahiri et al. FSE 2013 (kept)."
+    },
+    {
+      "source": "Crossref REST /works?query.bibliographic= (batch 1: mutation foundations, suite size, formal equivalence, CPS conformance)",
+      "query": "symbolic execution semantic differences program versions",
+      "result_note": "Horwitz PLDI 1990 (kept); unified/split symbolic execution TOSEM 2025."
+    },
+    {
+      "source": "Crossref REST /works?query.bibliographic= (batch 1: mutation foundations, suite size, formal equivalence, CPS conformance)",
+      "query": "semantic model differencing",
+      "result_note": "Langer, Mayerhofer & Kappel 2014 (kept); Maoz et al."
+    },
+    {
+      "source": "Crossref REST /works?query.bibliographic= (batch 1: mutation foundations, suite size, formal equivalence, CPS conformance)",
+      "query": "conformance testing hybrid systems",
+      "result_note": "Mostly ISO/ETSI standards noise; Roehm et al. HSCC 2016 reachset conformance (kept)."
+    },
+    {
+      "source": "Crossref REST /works?query.bibliographic= (batch 1: mutation foundations, suite size, formal equivalence, CPS conformance)",
+      "query": "Skorokhod metric conformance",
+      "result_note": "Deshmukh, Majumdar & Prabhu FMSD 2017 and CAV 2015 version (kept)."
+    },
+    {
+      "source": "Crossref REST /works?query.bibliographic= (batch 1: mutation foundations, suite size, formal equivalence, CPS conformance)",
+      "query": "reachset conformance testing",
+      "result_note": "Roehm et al. HSCC 2016; Althoff CORA 2023 (EPiC); Roehm et al. Mathematics 2022."
+    },
+    {
+      "source": "Crossref REST /works?query.bibliographic= (batch 1: mutation foundations, suite size, formal equivalence, CPS conformance)",
+      "query": "conformance relation cyber-physical systems models implementations",
+      "result_note": "Roehm et al. TCPS 2019 (kept); Abbas et al. ICCPS 2014 WiP; probabilistic conformance ICCPS 2021."
+    },
+    {
+      "source": "Crossref REST /works?query.bibliographic= (batch 1: mutation foundations, suite size, formal equivalence, CPS conformance)",
+      "query": "model implementation conformance continuous time tolerance",
+      "result_note": "Standards noise only."
+    },
+    {
+      "source": "Crossref REST /works?query.bibliographic= (batch 2: APR overfitting, LLM translation, numerical verification, neuron-simulator accuracy)",
+      "query": "overfitting in semantics-based automated program repair",
+      "result_note": "Le et al. 2018 EMSE and ICSE records (kept); 2026 undecidability of overfitting (ICSE)."
+    },
+    {
+      "source": "Crossref REST /works?query.bibliographic= (batch 2: APR overfitting, LLM translation, numerical verification, neuron-simulator accuracy)",
+      "query": "is the cure worse than the disease overfitting in automated program repair",
+      "result_note": "Smith et al. FSE 2015 (kept); rest noise."
+    },
+    {
+      "source": "Crossref REST /works?query.bibliographic= (batch 2: APR overfitting, LLM translation, numerical verification, neuron-simulator accuracy)",
+      "query": "anti-patterns in search-based program repair plausible patches",
+      "result_note": "Tan et al. FSE 2016 (not kept, to limit padding)."
+    },
+    {
+      "source": "Crossref REST /works?query.bibliographic= (batch 2: APR overfitting, LLM translation, numerical verification, neuron-simulator accuracy)",
+      "query": "automated patch correctness assessment plausible overfitting",
+      "result_note": "Wang et al. ASE 2020 (kept); several 2025-2026 learned APCA papers."
+    },
+    {
+      "source": "Crossref REST /works?query.bibliographic= (batch 2: APR overfitting, LLM translation, numerical verification, neuron-simulator accuracy)",
+      "query": "SWE-bench verified patches pass tests but incorrect",
+      "result_note": "Only ResearchHub exam-dump spam; no relevant hit. Covered via DataCite instead."
+    },
+    {
+      "source": "Crossref REST /works?query.bibliographic= (batch 2: APR overfitting, LLM translation, numerical verification, neuron-simulator accuracy)",
+      "query": "are \"solved issues\" in SWE-bench really solved correctly",
+      "result_note": "Wang, Pradel & Liu ICSE 2026 (kept)."
+    },
+    {
+      "source": "Crossref REST /works?query.bibliographic= (batch 2: APR overfitting, LLM translation, numerical verification, neuron-simulator accuracy)",
+      "query": "lost in translation bugs introduced by large language models while translating code",
+      "result_note": "Pan et al. ICSE 2024 (kept)."
+    },
+    {
+      "source": "Crossref REST /works?query.bibliographic= (batch 2: APR overfitting, LLM translation, numerical verification, neuron-simulator accuracy)",
+      "query": "large language models code translation study correctness",
+      "result_note": "TOSEM 2026 code smells and functional correctness; C to Rust local LLM study; not kept."
+    },
+    {
+      "source": "Crossref REST /works?query.bibliographic= (batch 2: APR overfitting, LLM translation, numerical verification, neuron-simulator accuracy)",
+      "query": "grid convergence index reporting numerical uncertainty",
+      "result_note": "Applied GCI studies (CFD, aneurysm); no general reference beyond those below."
+    },
+    {
+      "source": "Crossref REST /works?query.bibliographic= (batch 2: APR overfitting, LLM translation, numerical verification, neuron-simulator accuracy)",
+      "query": "procedure for estimation and reporting of uncertainty due to discretization in CFD applications",
+      "result_note": "J. Fluids Eng. 2008 procedure (kept; no authors in Crossref record); Eca & Hoekstra JCP 2014 (kept)."
+    },
+    {
+      "source": "Crossref REST /works?query.bibliographic= (batch 2: APR overfitting, LLM translation, numerical verification, neuron-simulator accuracy)",
+      "query": "verification and validation in computational science and engineering Oberkampf Roache",
+      "result_note": "Oberkampf, Trucano & Hirsch Appl. Mech. Rev. 2004 (kept); several Sandia reports."
+    },
+    {
+      "source": "Crossref REST /works?query.bibliographic= (batch 2: APR overfitting, LLM translation, numerical verification, neuron-simulator accuracy)",
+      "query": "verification of codes and calculations Roache",
+      "result_note": "Roache AIAA J 1998 (kept); Lisbon workshop overviews."
+    },
+    {
+      "source": "Crossref REST /works?query.bibliographic= (batch 2: APR overfitting, LLM translation, numerical verification, neuron-simulator accuracy)",
+      "query": "accuracy of spiking neuron simulators numerical integration comparison",
+      "result_note": "Henker, Partzsch & Schueffny JCNS 2011 (kept)."
+    },
+    {
+      "source": "Crossref REST /works?query.bibliographic= (batch 2: APR overfitting, LLM translation, numerical verification, neuron-simulator accuracy)",
+      "query": "choice of integration method neuron models time step spike timing",
+      "result_note": "Noise (STDP papers)."
+    },
+    {
+      "source": "Crossref REST /works?query.bibliographic= (batch 2: APR overfitting, LLM translation, numerical verification, neuron-simulator accuracy)",
+      "query": "exact digital simulation of time-invariant linear systems with applications to neuronal modeling",
+      "result_note": "Rotter & Diesmann Biol Cybern 1999 (kept)."
+    },
+    {
+      "source": "Crossref REST /works?query.bibliographic= (batch 2: APR overfitting, LLM translation, numerical verification, neuron-simulator accuracy)",
+      "query": "event-driven simulation spiking neuron exact integration",
+      "result_note": "Reutimann et al. Neural Comput 2003 (stochastic event-driven); not kept."
+    },
+    {
+      "source": "Crossref REST /works?query.bibliographic= (batch 2: APR overfitting, LLM translation, numerical verification, neuron-simulator accuracy)",
+      "query": "numerical integration Hodgkin-Huxley equations stability accuracy",
+      "result_note": "Moore & Ramon J Theor Biol 1974 (kept); Mascagni SIAM J Numer Anal 1990 (kept); Rinzel & Miller 1980."
+    },
+    {
+      "source": "Crossref REST /works?query.bibliographic= (batch 2: APR overfitting, LLM translation, numerical verification, neuron-simulator accuracy)",
+      "query": "precise spike timing simulation grid-constrained time step",
+      "result_note": "Noise."
+    },
+    {
+      "source": "Crossref REST /works?query.bibliographic= (batch 3: classic neuron numerics, formal/CPS, mutation validity, statistics)",
+      "query": "automatically selecting a suitable integration scheme for systems of differential equations in neuron models",
+      "result_note": "Each title-style query found its intended record as the top hit (all kept except: NEURON environment, returning book-chapter/encyclopedia records only; differential symbolic execution, where the intended Person et al. paper was not returned; Gopinath et al. ICSE 2014; mutant-sampling noise; Morrison et al. 2005, a distributed-simulation paper with no testing relevance). Also returned: Offutt et al. TOSEM 1996, Gay & Salahirad ICST 2023, Rothermel et al. ICSM 1998, Field & Welsh JRSS-B 2007, Vargha & Delaney 2000, Felsing et al. ASE 2014, Lahiri et al. SymDiff 2012, Donze & Maler 2010, Abbas et al. MEMOCODE 2014."
+    },
+    {
+      "source": "Crossref REST /works?query.bibliographic= (batch 3: classic neuron numerics, formal/CPS, mutation validity, statistics)",
+      "query": "on numerical simulations of integrate-and-fire neural networks",
+      "result_note": "Each title-style query found its intended record as the top hit (all kept except: NEURON environment, returning book-chapter/encyclopedia records only; differential symbolic execution, where the intended Person et al. paper was not returned; Gopinath et al. ICSE 2014; mutant-sampling noise; Morrison et al. 2005, a distributed-simulation paper with no testing relevance). Also returned: Offutt et al. TOSEM 1996, Gay & Salahirad ICST 2023, Rothermel et al. ICSM 1998, Field & Welsh JRSS-B 2007, Vargha & Delaney 2000, Felsing et al. ASE 2014, Lahiri et al. SymDiff 2012, Donze & Maler 2010, Abbas et al. MEMOCODE 2014."
+    },
+    {
+      "source": "Crossref REST /works?query.bibliographic= (batch 3: classic neuron numerics, formal/CPS, mutation validity, statistics)",
+      "query": "exact subthreshold integration with continuous spike times in discrete time neural network simulations",
+      "result_note": "Each title-style query found its intended record as the top hit (all kept except: NEURON environment, returning book-chapter/encyclopedia records only; differential symbolic execution, where the intended Person et al. paper was not returned; Gopinath et al. ICSE 2014; mutant-sampling noise; Morrison et al. 2005, a distributed-simulation paper with no testing relevance). Also returned: Offutt et al. TOSEM 1996, Gay & Salahirad ICST 2023, Rothermel et al. ICSM 1998, Field & Welsh JRSS-B 2007, Vargha & Delaney 2000, Felsing et al. ASE 2014, Lahiri et al. SymDiff 2012, Donze & Maler 2010, Abbas et al. MEMOCODE 2014."
+    },
+    {
+      "source": "Crossref REST /works?query.bibliographic= (batch 3: classic neuron numerics, formal/CPS, mutation validity, statistics)",
+      "query": "spiking neural network simulation numerical integration with the Parker-Sochacki method",
+      "result_note": "Each title-style query found its intended record as the top hit (all kept except: NEURON environment, returning book-chapter/encyclopedia records only; differential symbolic execution, where the intended Person et al. paper was not returned; Gopinath et al. ICSE 2014; mutant-sampling noise; Morrison et al. 2005, a distributed-simulation paper with no testing relevance). Also returned: Offutt et al. TOSEM 1996, Gay & Salahirad ICST 2023, Rothermel et al. ICSM 1998, Field & Welsh JRSS-B 2007, Vargha & Delaney 2000, Felsing et al. ASE 2014, Lahiri et al. SymDiff 2012, Donze & Maler 2010, Abbas et al. MEMOCODE 2014."
+    },
+    {
+      "source": "Crossref REST /works?query.bibliographic= (batch 3: classic neuron numerics, formal/CPS, mutation validity, statistics)",
+      "query": "how much can we trust neural simulation strategies",
+      "result_note": "Each title-style query found its intended record as the top hit (all kept except: NEURON environment, returning book-chapter/encyclopedia records only; differential symbolic execution, where the intended Person et al. paper was not returned; Gopinath et al. ICSE 2014; mutant-sampling noise; Morrison et al. 2005, a distributed-simulation paper with no testing relevance). Also returned: Offutt et al. TOSEM 1996, Gay & Salahirad ICST 2023, Rothermel et al. ICSM 1998, Field & Welsh JRSS-B 2007, Vargha & Delaney 2000, Felsing et al. ASE 2014, Lahiri et al. SymDiff 2012, Donze & Maler 2010, Abbas et al. MEMOCODE 2014."
+    },
+    {
+      "source": "Crossref REST /works?query.bibliographic= (batch 3: classic neuron numerics, formal/CPS, mutation validity, statistics)",
+      "query": "independent variable time-step integration of individual neurons for network simulations",
+      "result_note": "Each title-style query found its intended record as the top hit (all kept except: NEURON environment, returning book-chapter/encyclopedia records only; differential symbolic execution, where the intended Person et al. paper was not returned; Gopinath et al. ICSE 2014; mutant-sampling noise; Morrison et al. 2005, a distributed-simulation paper with no testing relevance). Also returned: Offutt et al. TOSEM 1996, Gay & Salahirad ICST 2023, Rothermel et al. ICSM 1998, Field & Welsh JRSS-B 2007, Vargha & Delaney 2000, Felsing et al. ASE 2014, Lahiri et al. SymDiff 2012, Donze & Maler 2010, Abbas et al. MEMOCODE 2014."
+    },
+    {
+      "source": "Crossref REST /works?query.bibliographic= (batch 3: classic neuron numerics, formal/CPS, mutation validity, statistics)",
+      "query": "efficient and accurate time-stepping schemes for integrate-and-fire neuronal networks",
+      "result_note": "Each title-style query found its intended record as the top hit (all kept except: NEURON environment, returning book-chapter/encyclopedia records only; differential symbolic execution, where the intended Person et al. paper was not returned; Gopinath et al. ICSE 2014; mutant-sampling noise; Morrison et al. 2005, a distributed-simulation paper with no testing relevance). Also returned: Offutt et al. TOSEM 1996, Gay & Salahirad ICST 2023, Rothermel et al. ICSM 1998, Field & Welsh JRSS-B 2007, Vargha & Delaney 2000, Felsing et al. ASE 2014, Lahiri et al. SymDiff 2012, Donze & Maler 2010, Abbas et al. MEMOCODE 2014."
+    },
+    {
+      "source": "Crossref REST /works?query.bibliographic= (batch 3: classic neuron numerics, formal/CPS, mutation validity, statistics)",
+      "query": "the NEURON simulation environment",
+      "result_note": "Each title-style query found its intended record as the top hit (all kept except: NEURON environment, returning book-chapter/encyclopedia records only; differential symbolic execution, where the intended Person et al. paper was not returned; Gopinath et al. ICSE 2014; mutant-sampling noise; Morrison et al. 2005, a distributed-simulation paper with no testing relevance). Also returned: Offutt et al. TOSEM 1996, Gay & Salahirad ICST 2023, Rothermel et al. ICSM 1998, Field & Welsh JRSS-B 2007, Vargha & Delaney 2000, Felsing et al. ASE 2014, Lahiri et al. SymDiff 2012, Donze & Maler 2010, Abbas et al. MEMOCODE 2014."
+    },
+    {
+      "source": "Crossref REST /works?query.bibliographic= (batch 3: classic neuron numerics, formal/CPS, mutation validity, statistics)",
+      "query": "Formal property verification in a conformance testing framework",
+      "result_note": "Each title-style query found its intended record as the top hit (all kept except: NEURON environment, returning book-chapter/encyclopedia records only; differential symbolic execution, where the intended Person et al. paper was not returned; Gopinath et al. ICSE 2014; mutant-sampling noise; Morrison et al. 2005, a distributed-simulation paper with no testing relevance). Also returned: Offutt et al. TOSEM 1996, Gay & Salahirad ICST 2023, Rothermel et al. ICSM 1998, Field & Welsh JRSS-B 2007, Vargha & Delaney 2000, Felsing et al. ASE 2014, Lahiri et al. SymDiff 2012, Donze & Maler 2010, Abbas et al. MEMOCODE 2014."
+    },
+    {
+      "source": "Crossref REST /works?query.bibliographic= (batch 3: classic neuron numerics, formal/CPS, mutation validity, statistics)",
+      "query": "conformance testing as falsification for cyber-physical systems",
+      "result_note": "Each title-style query found its intended record as the top hit (all kept except: NEURON environment, returning book-chapter/encyclopedia records only; differential symbolic execution, where the intended Person et al. paper was not returned; Gopinath et al. ICSE 2014; mutant-sampling noise; Morrison et al. 2005, a distributed-simulation paper with no testing relevance). Also returned: Offutt et al. TOSEM 1996, Gay & Salahirad ICST 2023, Rothermel et al. ICSM 1998, Field & Welsh JRSS-B 2007, Vargha & Delaney 2000, Felsing et al. ASE 2014, Lahiri et al. SymDiff 2012, Donze & Maler 2010, Abbas et al. MEMOCODE 2014."
+    },
+    {
+      "source": "Crossref REST /works?query.bibliographic= (batch 3: classic neuron numerics, formal/CPS, mutation validity, statistics)",
+      "query": "robust satisfaction of temporal logic over real-valued signals",
+      "result_note": "Each title-style query found its intended record as the top hit (all kept except: NEURON environment, returning book-chapter/encyclopedia records only; differential symbolic execution, where the intended Person et al. paper was not returned; Gopinath et al. ICSE 2014; mutant-sampling noise; Morrison et al. 2005, a distributed-simulation paper with no testing relevance). Also returned: Offutt et al. TOSEM 1996, Gay & Salahirad ICST 2023, Rothermel et al. ICSM 1998, Field & Welsh JRSS-B 2007, Vargha & Delaney 2000, Felsing et al. ASE 2014, Lahiri et al. SymDiff 2012, Donze & Maler 2010, Abbas et al. MEMOCODE 2014."
+    },
+    {
+      "source": "Crossref REST /works?query.bibliographic= (batch 3: classic neuron numerics, formal/CPS, mutation validity, statistics)",
+      "query": "translation validation Pnueli Siegel Singerman",
+      "result_note": "Each title-style query found its intended record as the top hit (all kept except: NEURON environment, returning book-chapter/encyclopedia records only; differential symbolic execution, where the intended Person et al. paper was not returned; Gopinath et al. ICSE 2014; mutant-sampling noise; Morrison et al. 2005, a distributed-simulation paper with no testing relevance). Also returned: Offutt et al. TOSEM 1996, Gay & Salahirad ICST 2023, Rothermel et al. ICSM 1998, Field & Welsh JRSS-B 2007, Vargha & Delaney 2000, Felsing et al. ASE 2014, Lahiri et al. SymDiff 2012, Donze & Maler 2010, Abbas et al. MEMOCODE 2014."
+    },
+    {
+      "source": "Crossref REST /works?query.bibliographic= (batch 3: classic neuron numerics, formal/CPS, mutation validity, statistics)",
+      "query": "differential symbolic execution",
+      "result_note": "Each title-style query found its intended record as the top hit (all kept except: NEURON environment, returning book-chapter/encyclopedia records only; differential symbolic execution, where the intended Person et al. paper was not returned; Gopinath et al. ICSE 2014; mutant-sampling noise; Morrison et al. 2005, a distributed-simulation paper with no testing relevance). Also returned: Offutt et al. TOSEM 1996, Gay & Salahirad ICST 2023, Rothermel et al. ICSM 1998, Field & Welsh JRSS-B 2007, Vargha & Delaney 2000, Felsing et al. ASE 2014, Lahiri et al. SymDiff 2012, Donze & Maler 2010, Abbas et al. MEMOCODE 2014."
+    },
+    {
+      "source": "Crossref REST /works?query.bibliographic= (batch 3: classic neuron numerics, formal/CPS, mutation validity, statistics)",
+      "query": "automating regression verification",
+      "result_note": "Each title-style query found its intended record as the top hit (all kept except: NEURON environment, returning book-chapter/encyclopedia records only; differential symbolic execution, where the intended Person et al. paper was not returned; Gopinath et al. ICSE 2014; mutant-sampling noise; Morrison et al. 2005, a distributed-simulation paper with no testing relevance). Also returned: Offutt et al. TOSEM 1996, Gay & Salahirad ICST 2023, Rothermel et al. ICSM 1998, Field & Welsh JRSS-B 2007, Vargha & Delaney 2000, Felsing et al. ASE 2014, Lahiri et al. SymDiff 2012, Donze & Maler 2010, Abbas et al. MEMOCODE 2014."
+    },
+    {
+      "source": "Crossref REST /works?query.bibliographic= (batch 3: classic neuron numerics, formal/CPS, mutation validity, statistics)",
+      "query": "SymDiff language-agnostic semantic diff tool",
+      "result_note": "Each title-style query found its intended record as the top hit (all kept except: NEURON environment, returning book-chapter/encyclopedia records only; differential symbolic execution, where the intended Person et al. paper was not returned; Gopinath et al. ICSE 2014; mutant-sampling noise; Morrison et al. 2005, a distributed-simulation paper with no testing relevance). Also returned: Offutt et al. TOSEM 1996, Gay & Salahirad ICST 2023, Rothermel et al. ICSM 1998, Field & Welsh JRSS-B 2007, Vargha & Delaney 2000, Felsing et al. ASE 2014, Lahiri et al. SymDiff 2012, Donze & Maler 2010, Abbas et al. MEMOCODE 2014."
+    },
+    {
+      "source": "Crossref REST /works?query.bibliographic= (batch 3: classic neuron numerics, formal/CPS, mutation validity, statistics)",
+      "query": "threats to the validity of mutation-based test assessment",
+      "result_note": "Each title-style query found its intended record as the top hit (all kept except: NEURON environment, returning book-chapter/encyclopedia records only; differential symbolic execution, where the intended Person et al. paper was not returned; Gopinath et al. ICSE 2014; mutant-sampling noise; Morrison et al. 2005, a distributed-simulation paper with no testing relevance). Also returned: Offutt et al. TOSEM 1996, Gay & Salahirad ICST 2023, Rothermel et al. ICSM 1998, Field & Welsh JRSS-B 2007, Vargha & Delaney 2000, Felsing et al. ASE 2014, Lahiri et al. SymDiff 2012, Donze & Maler 2010, Abbas et al. MEMOCODE 2014."
+    },
+    {
+      "source": "Crossref REST /works?query.bibliographic= (batch 3: classic neuron numerics, formal/CPS, mutation validity, statistics)",
+      "query": "an experimental determination of sufficient mutant operators",
+      "result_note": "Each title-style query found its intended record as the top hit (all kept except: NEURON environment, returning book-chapter/encyclopedia records only; differential symbolic execution, where the intended Person et al. paper was not returned; Gopinath et al. ICSE 2014; mutant-sampling noise; Morrison et al. 2005, a distributed-simulation paper with no testing relevance). Also returned: Offutt et al. TOSEM 1996, Gay & Salahirad ICST 2023, Rothermel et al. ICSM 1998, Field & Welsh JRSS-B 2007, Vargha & Delaney 2000, Felsing et al. ASE 2014, Lahiri et al. SymDiff 2012, Donze & Maler 2010, Abbas et al. MEMOCODE 2014."
+    },
+    {
+      "source": "Crossref REST /works?query.bibliographic= (batch 3: classic neuron numerics, formal/CPS, mutation validity, statistics)",
+      "query": "how effective are mutation testing tools real faults Defects4J mutants coupling",
+      "result_note": "Each title-style query found its intended record as the top hit (all kept except: NEURON environment, returning book-chapter/encyclopedia records only; differential symbolic execution, where the intended Person et al. paper was not returned; Gopinath et al. ICSE 2014; mutant-sampling noise; Morrison et al. 2005, a distributed-simulation paper with no testing relevance). Also returned: Offutt et al. TOSEM 1996, Gay & Salahirad ICST 2023, Rothermel et al. ICSM 1998, Field & Welsh JRSS-B 2007, Vargha & Delaney 2000, Felsing et al. ASE 2014, Lahiri et al. SymDiff 2012, Donze & Maler 2010, Abbas et al. MEMOCODE 2014."
+    },
+    {
+      "source": "Crossref REST /works?query.bibliographic= (batch 3: classic neuron numerics, formal/CPS, mutation validity, statistics)",
+      "query": "empirical study of the effects of minimization on the fault detection capabilities of test suites",
+      "result_note": "Each title-style query found its intended record as the top hit (all kept except: NEURON environment, returning book-chapter/encyclopedia records only; differential symbolic execution, where the intended Person et al. paper was not returned; Gopinath et al. ICSE 2014; mutant-sampling noise; Morrison et al. 2005, a distributed-simulation paper with no testing relevance). Also returned: Offutt et al. TOSEM 1996, Gay & Salahirad ICST 2023, Rothermel et al. ICSM 1998, Field & Welsh JRSS-B 2007, Vargha & Delaney 2000, Felsing et al. ASE 2014, Lahiri et al. SymDiff 2012, Donze & Maler 2010, Abbas et al. MEMOCODE 2014."
+    },
+    {
+      "source": "Crossref REST /works?query.bibliographic= (batch 3: classic neuron numerics, formal/CPS, mutation validity, statistics)",
+      "query": "code coverage for suite evaluation by developers",
+      "result_note": "Each title-style query found its intended record as the top hit (all kept except: NEURON environment, returning book-chapter/encyclopedia records only; differential symbolic execution, where the intended Person et al. paper was not returned; Gopinath et al. ICSE 2014; mutant-sampling noise; Morrison et al. 2005, a distributed-simulation paper with no testing relevance). Also returned: Offutt et al. TOSEM 1996, Gay & Salahirad ICST 2023, Rothermel et al. ICSM 1998, Field & Welsh JRSS-B 2007, Vargha & Delaney 2000, Felsing et al. ASE 2014, Lahiri et al. SymDiff 2012, Donze & Maler 2010, Abbas et al. MEMOCODE 2014."
+    },
+    {
+      "source": "Crossref REST /works?query.bibliographic= (batch 3: classic neuron numerics, formal/CPS, mutation validity, statistics)",
+      "query": "bootstrapping clustered data",
+      "result_note": "Each title-style query found its intended record as the top hit (all kept except: NEURON environment, returning book-chapter/encyclopedia records only; differential symbolic execution, where the intended Person et al. paper was not returned; Gopinath et al. ICSE 2014; mutant-sampling noise; Morrison et al. 2005, a distributed-simulation paper with no testing relevance). Also returned: Offutt et al. TOSEM 1996, Gay & Salahirad ICST 2023, Rothermel et al. ICSM 1998, Field & Welsh JRSS-B 2007, Vargha & Delaney 2000, Felsing et al. ASE 2014, Lahiri et al. SymDiff 2012, Donze & Maler 2010, Abbas et al. MEMOCODE 2014."
+    },
+    {
+      "source": "Crossref REST /works?query.bibliographic= (batch 3: classic neuron numerics, formal/CPS, mutation validity, statistics)",
+      "query": "critique and improvement of the CL common language effect size statistics of McGraw and Wong",
+      "result_note": "Each title-style query found its intended record as the top hit (all kept except: NEURON environment, returning book-chapter/encyclopedia records only; differential symbolic execution, where the intended Person et al. paper was not returned; Gopinath et al. ICSE 2014; mutant-sampling noise; Morrison et al. 2005, a distributed-simulation paper with no testing relevance). Also returned: Offutt et al. TOSEM 1996, Gay & Salahirad ICST 2023, Rothermel et al. ICSM 1998, Field & Welsh JRSS-B 2007, Vargha & Delaney 2000, Felsing et al. ASE 2014, Lahiri et al. SymDiff 2012, Donze & Maler 2010, Abbas et al. MEMOCODE 2014."
+    },
+    {
+      "source": "Crossref REST /works?query.bibliographic= (batch 3: classic neuron numerics, formal/CPS, mutation validity, statistics)",
+      "query": "mutation analysis cost reduction random mutant selection sampling",
+      "result_note": "Each title-style query found its intended record as the top hit (all kept except: NEURON environment, returning book-chapter/encyclopedia records only; differential symbolic execution, where the intended Person et al. paper was not returned; Gopinath et al. ICSE 2014; mutant-sampling noise; Morrison et al. 2005, a distributed-simulation paper with no testing relevance). Also returned: Offutt et al. TOSEM 1996, Gay & Salahirad ICST 2023, Rothermel et al. ICSM 1998, Field & Welsh JRSS-B 2007, Vargha & Delaney 2000, Felsing et al. ASE 2014, Lahiri et al. SymDiff 2012, Donze & Maler 2010, Abbas et al. MEMOCODE 2014."
+    },
+    {
+      "source": "Crossref REST /works?query.bibliographic= (batch 3: classic neuron numerics, formal/CPS, mutation validity, statistics)",
+      "query": "Morrison Diesmann advancing the boundaries of high-connectivity network simulation distributed computing",
+      "result_note": "Each title-style query found its intended record as the top hit (all kept except: NEURON environment, returning book-chapter/encyclopedia records only; differential symbolic execution, where the intended Person et al. paper was not returned; Gopinath et al. ICSE 2014; mutant-sampling noise; Morrison et al. 2005, a distributed-simulation paper with no testing relevance). Also returned: Offutt et al. TOSEM 1996, Gay & Salahirad ICST 2023, Rothermel et al. ICSM 1998, Field & Welsh JRSS-B 2007, Vargha & Delaney 2000, Felsing et al. ASE 2014, Lahiri et al. SymDiff 2012, Donze & Maler 2010, Abbas et al. MEMOCODE 2014."
+    },
+    {
+      "source": "Crossref REST /works?query.bibliographic= (batch 4)",
+      "query": "SWE-bench can language models resolve real-world GitHub issues",
+      "result_note": "The SWE-bench paper itself is not in Crossref (only look-alike benchmarks returned); unverified via Crossref."
+    },
+    {
+      "source": "Crossref REST /works?query.bibliographic= (batch 4)",
+      "query": "patch overfitting large language model agents benchmark test adequacy",
+      "result_note": "Noise (SSRN preprints); one on LLM agents for Simulink model repair (SSRN 2026), not kept."
+    },
+    {
+      "source": "Crossref REST /works?query.bibliographic= (batch 4)",
+      "query": "the impact of equivalent mutants and redundant mutants on mutation score",
+      "result_note": "Grun, Schuler & Zeller ICSTW 2009 (kept); Just et al. ICST 2012 (kept); Kintis et al. ICST 2012."
+    },
+    {
+      "source": "Crossref REST /works?query.bibliographic= (batch 4)",
+      "query": "mutant sampling random selection effectiveness mutation analysis",
+      "result_note": "Noise."
+    },
+    {
+      "source": "Crossref REST /works?query.bibliographic= (batch 4)",
+      "query": "test set diameter diversity",
+      "result_note": "Feldt et al. ICST 2016 (kept)."
+    },
+    {
+      "source": "Crossref REST /works?query.bibliographic= (batch 4)",
+      "query": "neuron model reproducibility different simulators same model different results",
+      "result_note": "Noise."
+    },
+    {
+      "source": "Crossref REST /works?query.bibliographic= (batch 4)",
+      "query": "NeuroML model conversion NEURON validation comparison simulators",
+      "result_note": "Gleeson et al. 2007 BMC Neurosci abstract (neuroConstruct for multiple simulators); conference abstracts only, not kept."
+    },
+    {
+      "source": "Crossref REST /works?query.bibliographic= (batch 4)",
+      "query": "reproducing computational neuroscience models replication ReScience",
+      "result_note": "Only peer-review records of the ReScience initiative paper; not kept."
+    },
+    {
+      "source": "Crossref REST /works?query.bibliographic= (batch 4)",
+      "query": "time step dependence spiking network simulation results",
+      "result_note": "Pimpini et al. DS-RT 2022 on SNN simulation accuracy (kept)."
+    },
+    {
+      "source": "Crossref REST /works/<doi> (metadata/abstract verification)",
+      "query": "every candidate DOI in this file (e.g.10.1115/1.2960953, 10.1016/bs.adcom.2018.03.015, 10.1145/2635868.2635929, 10.1162/089976698300017845, 10.1007/s10827-022-00827-7, 10.1145/3306157, 10.1002/stvr.1472)",
+      "result_note": "Titles, years, venues and authors verified from Crossref. Two records (10.1115/1.2960953, 10.1016/bs.adcom.2018.03.015) have no author list in Crossref, so their authors are marked unverified. Abstracts were available for only a minority; why_relevant is marked title-level where no abstract was retrieved."
+    },
+    {
+      "source": "PubMed E-utilities via MCP search_articles",
+      "query": "(numerical integration OR time step OR integration method) AND (neuron model OR neuronal simulation) AND accuracy",
+      "result_note": "683 hits; PMIDs only returned, sorted by recency; too broad, replaced by a journal-filtered query."
+    },
+    {
+      "source": "PubMed E-utilities via MCP search_articles",
+      "query": "(simulator comparison OR cross-simulator OR model conversion) AND (NEURON OR NeuroML OR NEST OR Brian) AND (reproducib* OR equivalen* OR validation)",
+      "result_note": "505 hits; PMIDs only, too broad (automatic term expansion); not inspected further."
+    },
+    {
+      "source": "PubMed E-utilities via MCP search_articles",
+      "query": "verification validation computational model reporting guidelines mesh convergence solution verification biomechanics OR computational biology",
+      "result_note": "431,272 hits due to the OR operator; unusable."
+    },
+    {
+      "source": "PubMed E-utilities via MCP search_articles + get_article_metadata",
+      "query": "(numerical uncertainty[Title/Abstract] OR solver accuracy[Title/Abstract] OR time step[Title/Abstract]) AND (neuroscience models OR neuron models OR Hodgkin-Huxley) AND (J Comput Neurosci[Journal] OR Neural Comput[Journal] OR Front Neuroinform[Journal] OR PLoS Comput Biol[Journal])",
+      "result_note": "23 hits; metadata for top 20 retrieved. Kept Oesterle et al. 2022, Shelley & Tao 2001, Stewart & Bair 2009, Brette 2006, Hopkins & Furber 2015. Also seen: Rangan & Cai 2006, Borg-Graham 2000 adaptive time step, Touboul 2011, Pu & Thomas 2020 Langevin HH, and a multirate co-simulation method (not kept)."
+    },
+    {
+      "source": "Europe PMC REST /search",
+      "query": "\"time step\" AND \"neuron model\" AND (accuracy OR convergence) AND (simulat*)",
+      "result_note": "880 hits; top 15 dominated by SNN machine-learning applications; not useful."
+    },
+    {
+      "source": "Europe PMC REST /search",
+      "query": "(NeuroML OR \"NEURON simulator\") AND (conversion OR translation) AND (validation OR \"behaviour\" OR \"behavior\") AND model",
+      "result_note": "170 hits: NeuroML ecosystem eLife 2025, EDEN 2025, NeuroML-DB 2023 (already in matrix); NESTML 2025 (kept); ion-channel omnimodel preprint 2025; DendroTweaks."
+    },
+    {
+      "source": "Europe PMC REST /search",
+      "query": "\"integration method\" AND (\"spiking neuron\" OR \"Hodgkin-Huxley\") AND (error OR accuracy)",
+      "result_note": "129 hits; surfaced Oesterle et al. 2022 JCNS (kept) and Arpra arbitrary-precision range analysis (Front Neuroinform 2021; not kept)."
+    },
+    {
+      "source": "Europe PMC REST /search",
+      "query": "\"mutation testing\" AND (bioinformatics OR \"scientific software\" OR \"computational model\")",
+      "result_note": "811 hits, all clinical genetic mutation testing (term collision); nothing relevant."
+    },
+    {
+      "source": "Europe PMC REST /search",
+      "query": "\"current clamp\" AND protocol AND \"model validation\" AND (feature* OR efel)",
+      "result_note": "53 hits: data-driven single-neuron modelling papers (Masoli et al. cerebellar models, Marasco et al. A-GLIF, NeuroML-DB); model fitting/validation with multiple protocols but no mutation testing or battery selection."
+    },
+    {
+      "source": "DBLP publ search API (https://dblp.org/search/publ/api?format=json)",
+      "query": "regression verification",
+      "result_note": "BLOCKED: every request returned HTTP 200 with an HTML bot-verification page titled 'Making sure you're not a bot!' instead of JSON (checked 2026-09-13 16:49 UTC). Crossref and DataCite used instead."
+    },
+    {
+      "source": "DBLP publ search API (https://dblp.org/search/publ/api?format=json)",
+      "query": "translation validation",
+      "result_note": "BLOCKED: every request returned HTTP 200 with an HTML bot-verification page titled 'Making sure you're not a bot!' instead of JSON (checked 2026-09-13 16:49 UTC). Crossref and DataCite used instead."
+    },
+    {
+      "source": "DBLP publ search API (https://dblp.org/search/publ/api?format=json)",
+      "query": "semantic differencing",
+      "result_note": "BLOCKED: every request returned HTTP 200 with an HTML bot-verification page titled 'Making sure you're not a bot!' instead of JSON (checked 2026-09-13 16:49 UTC). Crossref and DataCite used instead."
+    },
+    {
+      "source": "DBLP publ search API (https://dblp.org/search/publ/api?format=json)",
+      "query": "equivalence modulo inputs",
+      "result_note": "BLOCKED: every request returned HTTP 200 with an HTML bot-verification page titled 'Making sure you're not a bot!' instead of JSON (checked 2026-09-13 16:49 UTC). Crossref and DataCite used instead."
+    },
+    {
+      "source": "DBLP publ search API (https://dblp.org/search/publ/api?format=json)",
+      "query": "differential assertion checking",
+      "result_note": "BLOCKED: every request returned HTTP 200 with an HTML bot-verification page titled 'Making sure you're not a bot!' instead of JSON (checked 2026-09-13 16:49 UTC). Crossref and DataCite used instead."
+    },
+    {
+      "source": "DBLP publ search API (https://dblp.org/search/publ/api?format=json)",
+      "query": "Skorokhod conformance",
+      "result_note": "BLOCKED: every request returned HTTP 200 with an HTML bot-verification page titled 'Making sure you're not a bot!' instead of JSON (checked 2026-09-13 16:49 UTC). Crossref and DataCite used instead."
+    },
+    {
+      "source": "DBLP publ search API (https://dblp.org/search/publ/api?format=json)",
+      "query": "reachset conformance",
+      "result_note": "BLOCKED: every request returned HTTP 200 with an HTML bot-verification page titled 'Making sure you're not a bot!' instead of JSON (checked 2026-09-13 16:49 UTC). Crossref and DataCite used instead."
+    },
+    {
+      "source": "DBLP publ search API (https://dblp.org/search/publ/api?format=json)",
+      "query": "conformance testing hybrid systems",
+      "result_note": "BLOCKED: every request returned HTTP 200 with an HTML bot-verification page titled 'Making sure you're not a bot!' instead of JSON (checked 2026-09-13 16:49 UTC). Crossref and DataCite used instead."
+    },
+    {
+      "source": "DBLP publ search API (https://dblp.org/search/publ/api?format=json)",
+      "query": "mutant subsumption",
+      "result_note": "BLOCKED: every request returned HTTP 200 with an HTML bot-verification page titled 'Making sure you're not a bot!' instead of JSON (checked 2026-09-13 16:49 UTC). Crossref and DataCite used instead."
+    },
+    {
+      "source": "DBLP publ search API (https://dblp.org/search/publ/api?format=json)",
+      "query": "equivalent mutant",
+      "result_note": "BLOCKED: every request returned HTTP 200 with an HTML bot-verification page titled 'Making sure you're not a bot!' instead of JSON (checked 2026-09-13 16:49 UTC). Crossref and DataCite used instead."
+    },
+    {
+      "source": "DBLP publ search API (https://dblp.org/search/publ/api?format=json)",
+      "query": "mutants valid substitute real faults",
+      "result_note": "BLOCKED: every request returned HTTP 200 with an HTML bot-verification page titled 'Making sure you're not a bot!' instead of JSON (checked 2026-09-13 16:49 UTC). Crossref and DataCite used instead."
+    },
+    {
+      "source": "DBLP publ search API (https://dblp.org/search/publ/api?format=json)",
+      "query": "coverage test suite effectiveness",
+      "result_note": "BLOCKED: every request returned HTTP 200 with an HTML bot-verification page titled 'Making sure you're not a bot!' instead of JSON (checked 2026-09-13 16:49 UTC). Crossref and DataCite used instead."
+    },
+    {
+      "source": "DBLP publ search API (https://dblp.org/search/publ/api?format=json)",
+      "query": "statistical tests randomized algorithms software engineering",
+      "result_note": "BLOCKED: every request returned HTTP 200 with an HTML bot-verification page titled 'Making sure you're not a bot!' instead of JSON (checked 2026-09-13 16:49 UTC). Crossref and DataCite used instead."
+    },
+    {
+      "source": "DBLP publ search API (https://dblp.org/search/publ/api?format=json)",
+      "query": "overfitting program repair",
+      "result_note": "BLOCKED: every request returned HTTP 200 with an HTML bot-verification page titled 'Making sure you're not a bot!' instead of JSON (checked 2026-09-13 16:49 UTC). Crossref and DataCite used instead."
+    },
+    {
+      "source": "DBLP publ search API (https://dblp.org/search/publ/api?format=json)",
+      "query": "SWE-bench tests",
+      "result_note": "BLOCKED: every request returned HTTP 200 with an HTML bot-verification page titled 'Making sure you're not a bot!' instead of JSON (checked 2026-09-13 16:49 UTC). Crossref and DataCite used instead."
+    },
+    {
+      "source": "DBLP publ search API (https://dblp.org/search/publ/api?format=json)",
+      "query": "code translation large language models bugs",
+      "result_note": "BLOCKED: every request returned HTTP 200 with an HTML bot-verification page titled 'Making sure you're not a bot!' instead of JSON (checked 2026-09-13 16:49 UTC). Crossref and DataCite used instead."
+    },
+    {
+      "source": "DBLP publ search API (https://dblp.org/search/publ/api?format=json)",
+      "query": "mutation testing simulation models",
+      "result_note": "BLOCKED: every request returned HTTP 200 with an HTML bot-verification page titled 'Making sure you're not a bot!' instead of JSON (checked 2026-09-13 16:49 UTC). Crossref and DataCite used instead."
+    },
+    {
+      "source": "DBLP publ search API (https://dblp.org/search/publ/api?format=json)",
+      "query": "mutation testing Simulink",
+      "result_note": "BLOCKED: every request returned HTTP 200 with an HTML bot-verification page titled 'Making sure you're not a bot!' instead of JSON (checked 2026-09-13 16:49 UTC). Crossref and DataCite used instead."
+    },
+    {
+      "source": "DBLP publ search API (https://dblp.org/search/publ/api?format=json)",
+      "query": "metamorphic testing neuron",
+      "result_note": "BLOCKED: every request returned HTTP 200 with an HTML bot-verification page titled 'Making sure you're not a bot!' instead of JSON (checked 2026-09-13 16:49 UTC). Crossref and DataCite used instead."
+    },
+    {
+      "source": "DBLP publ search API (https://dblp.org/search/publ/api?format=json)",
+      "query": "neuron simulator testing",
+      "result_note": "BLOCKED: every request returned HTTP 200 with an HTML bot-verification page titled 'Making sure you're not a bot!' instead of JSON (checked 2026-09-13 16:49 UTC). Crossref and DataCite used instead."
+    },
+    {
+      "source": "OpenAlex /works?search=",
+      "query": "overfitting in automated program repair",
+      "result_note": "BLOCKED: HTTP 429 on every query. Headers showed X-RateLimit-Remaining 0 and Retry-After 25683 s, so the daily budget was exhausted (probably by earlier finders). The same topics were re-run on Crossref, PubMed and Europe PMC."
+    },
+    {
+      "source": "OpenAlex /works?search=",
+      "query": "patch plausibility correctness automated program repair",
+      "result_note": "BLOCKED: HTTP 429 on every query. Headers showed X-RateLimit-Remaining 0 and Retry-After 25683 s, so the daily budget was exhausted (probably by earlier finders). The same topics were re-run on Crossref, PubMed and Europe PMC."
+    },
+    {
+      "source": "OpenAlex /works?search=",
+      "query": "is the cure worse than the disease overfitting program repair",
+      "result_note": "BLOCKED: HTTP 429 on every query. Headers showed X-RateLimit-Remaining 0 and Retry-After 25683 s, so the daily budget was exhausted (probably by earlier finders). The same topics were re-run on Crossref, PubMed and Europe PMC."
+    },
+    {
+      "source": "OpenAlex /works?search=",
+      "query": "SWE-bench insufficient tests patch correctness",
+      "result_note": "BLOCKED: HTTP 429 on every query. Headers showed X-RateLimit-Remaining 0 and Retry-After 25683 s, so the daily budget was exhausted (probably by earlier finders). The same topics were re-run on Crossref, PubMed and Europe PMC."
+    },
+    {
+      "source": "OpenAlex /works?search=",
+      "query": "LLM code translation bugs study",
+      "result_note": "BLOCKED: HTTP 429 on every query. Headers showed X-RateLimit-Remaining 0 and Retry-After 25683 s, so the daily budget was exhausted (probably by earlier finders). The same topics were re-run on Crossref, PubMed and Europe PMC."
+    },
+    {
+      "source": "OpenAlex /works?search=",
+      "query": "lost in translation study of bugs introduced by large language models translating code",
+      "result_note": "BLOCKED: HTTP 429 on every query. Headers showed X-RateLimit-Remaining 0 and Retry-After 25683 s, so the daily budget was exhausted (probably by earlier finders). The same topics were re-run on Crossref, PubMed and Europe PMC."
+    },
+    {
+      "source": "OpenAlex /works?search=",
+      "query": "grid refinement study verification reporting",
+      "result_note": "BLOCKED: HTTP 429 on every query. Headers showed X-RateLimit-Remaining 0 and Retry-After 25683 s, so the daily budget was exhausted (probably by earlier finders). The same topics were re-run on Crossref, PubMed and Europe PMC."
+    },
+    {
+      "source": "OpenAlex /works?search=",
+      "query": "verification and validation computational simulation",
+      "result_note": "BLOCKED: HTTP 429 on every query. Headers showed X-RateLimit-Remaining 0 and Retry-After 25683 s, so the daily budget was exhausted (probably by earlier finders). The same topics were re-run on Crossref, PubMed and Europe PMC."
+    },
+    {
+      "source": "OpenAlex /works?search=",
+      "query": "numerical methods accuracy spiking neuron simulators",
+      "result_note": "BLOCKED: HTTP 429 on every query. Headers showed X-RateLimit-Remaining 0 and Retry-After 25683 s, so the daily budget was exhausted (probably by earlier finders). The same topics were re-run on Crossref, PubMed and Europe PMC."
+    },
+    {
+      "source": "OpenAlex /works?search=",
+      "query": "integration scheme selection neuron models",
+      "result_note": "BLOCKED: HTTP 429 on every query. Headers showed X-RateLimit-Remaining 0 and Retry-After 25683 s, so the daily budget was exhausted (probably by earlier finders). The same topics were re-run on Crossref, PubMed and Europe PMC."
+    },
+    {
+      "source": "OpenAlex /works?search=",
+      "query": "exact integration neuronal models time step",
+      "result_note": "BLOCKED: HTTP 429 on every query. Headers showed X-RateLimit-Remaining 0 and Retry-After 25683 s, so the daily budget was exhausted (probably by earlier finders). The same topics were re-run on Crossref, PubMed and Europe PMC."
+    },
+    {
+      "source": "OpenAlex /works?search=",
+      "query": "time step size error spiking neural network simulation",
+      "result_note": "BLOCKED: HTTP 429 on every query. Headers showed X-RateLimit-Remaining 0 and Retry-After 25683 s, so the daily budget was exhausted (probably by earlier finders). The same topics were re-run on Crossref, PubMed and Europe PMC."
+    },
+    {
+      "source": "OpenAlex /works?search=",
+      "query": "Hodgkin-Huxley numerical integration accuracy time step",
+      "result_note": "BLOCKED: HTTP 429 on every query. Headers showed X-RateLimit-Remaining 0 and Retry-After 25683 s, so the daily budget was exhausted (probably by earlier finders). The same topics were re-run on Crossref, PubMed and Europe PMC."
+    },
+    {
+      "source": "WebSearch (session tool)",
+      "query": "SWE-bench patches pass tests but incorrect insufficient test cases arXiv (allowed_domains arxiv.org)",
+      "result_note": "BLOCKED: session web-search budget exhausted (200 of 200); no search performed. DataCite arXiv DOI metadata used instead."
+    },
+    {
+      "source": "WebSearch (session tool)",
+      "query": "UTBoost augmenting test cases SWE-bench",
+      "result_note": "BLOCKED: session web-search budget exhausted (200 of 200); no search performed. DataCite arXiv DOI metadata used instead."
+    },
+    {
+      "source": "arXiv API (export.arxiv.org/api/query)",
+      "query": "search_query=all:mutation (probe)",
+      "result_note": "BLOCKED: HTTP 301 on http, HTTP 429 on https probe, then timeout (status 000). arXiv records obtained through DataCite (10.48550/arxiv.*)."
+    },
+    {
+      "source": "arXiv API (export.arxiv.org/api/query)",
+      "query": "search_query=ti:SWE-bench",
+      "result_note": "BLOCKED: HTTP 301 on http, HTTP 429 on https probe, then timeout (status 000). arXiv records obtained through DataCite (10.48550/arxiv.*)."
+    },
+    {
+      "source": "Semantic Scholar Graph API /paper/search",
+      "query": "SWE-bench insufficient tests",
+      "result_note": "BLOCKED: HTTP 429 (unauthenticated rate limit)."
+    },
+    {
+      "source": "IEEE Xplore (https://ieeexplore.ieee.org/rest/search probe)",
+      "query": "(reachability probe)",
+      "result_note": "BLOCKED: HTTP 418 to automated request. IEEE records (prefix 10.1109) retrieved via Crossref instead."
+    },
+    {
+      "source": "ACM Digital Library (https://dl.acm.org/action/doSearch?AllField=equivalent+mutant)",
+      "query": "equivalent mutant",
+      "result_note": "BLOCKED: HTTP 403 to automated request. ACM records (prefix 10.1145) retrieved via Crossref instead."
+    }
+  ],
+  "blocked_sources": [
+    "DBLP search API: bot-verification HTML page (HTTP 200, 'Making sure you're not a bot!') instead of JSON for all 20 queries, 2026-09-13 ~16:49 UTC",
+    "OpenAlex API: HTTP 429, daily rate-limit budget exhausted (X-RateLimit-Remaining 0, Retry-After 25683 s), 2026-09-13 ~16:51 UTC",
+    "WebSearch tool: session budget exhausted (200/200), no searches executed",
+    "arXiv export API: HTTP 429, then connection timeout; arXiv metadata obtained via DataCite 10.48550 DOIs",
+    "Semantic Scholar Graph API: HTTP 429 (unauthenticated)",
+    "IEEE Xplore: HTTP 418 on automated REST request; used Crossref for 10.1109 records",
+    "ACM Digital Library: HTTP 403 on automated search request; used Crossref for 10.1145 records",
+    "Zenodo REST API: NOT blocked this time (HTTP 200 for /api/records, /api/communities and community record listings, 2026-09-13 ~16:40-17:00 UTC). This resolves the critic's blocked_source_partial for Zenodo. Community slugs neuroml, ebrains and humanbrainproject do not exist (HTTP 404); opensourcebrain, ocns, hbp, incf, computneurobio and neuromorphic were browsed."
+  ]
+}

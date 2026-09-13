@@ -18,7 +18,7 @@
       "doi": "10.1007/s10827-022-00827-7",
       "kind": "paper",
       "found_via": "OpenCitations Index v2 /citations of anchor DOI, then Crossref /works/<doi> for metadata (cites Blundell et al. 2018 integration-scheme paper)",
-      "why_relevant": "Per title, uses probabilistic ODE solvers to expose numerical uncertainty in neuroscience models; directly relevant to calibrating feature tolerances by numerical refinement (h, h/2, h/4) and a possible alternative/complement to NeuroSem's refinement rule. No mutation, protocol selection or held-out evaluation indicated.",
+      "why_relevant": "Per its Crossref abstract, proposes sampling-based probabilistic ODE solvers to quantify numerical uncertainty in neuron and network models, and reports that such uncertainty can affect quantities like spike times and spike counts; directly relevant to calibrating feature tolerances by numerical refinement (h, h/2, h/4) and a possible complement to NeuroSem's refinement rule. No mutation, protocol selection or held-out evaluation indicated.",
       "estimated_closeness": 3
     },
     {
@@ -306,8 +306,44 @@
       "doi": "10.1113/jp270618",
       "kind": "paper",
       "found_via": "OpenCitations Index v2 /citations of anchor DOI, title via OpenCitations Meta v1, metadata confirmed via Crossref /works/<doi> (cites Druckmann et al. 2007)",
-      "why_relevant": "Designs dynamic electrophysiology protocols plus optimisation to constrain cardiomyocyte model parameters; precedent for choosing stimulation protocols that are informative about model changes in excitable cells, aimed at identifiability during fitting rather than detecting edits.",
+      "why_relevant": "Per its Crossref abstract, reviews how standard voltage-clamp protocols not designed for model building, plus manual tuning, limit cardiac cell-model parameter identification, and surveys dynamic protocols combined with optimisation as a remedy; precedent for choosing stimulation protocols that are informative about model parameters in excitable cells, aimed at identifiability during fitting rather than detecting edits.",
       "estimated_closeness": 3
+    },
+    {
+      "title": "Wavelet-based protocols for ion channel electrophysiology",
+      "authors": "Kargol Armin",
+      "year": "2013",
+      "venue": "BMC Biophysics",
+      "url": "https://doi.org/10.1186/2046-1682-6-3",
+      "doi": "10.1186/2046-1682-6-3",
+      "kind": "paper",
+      "found_via": "OpenCitations Index v2 /references of anchor DOI, title via OpenCitations Meta v1, metadata confirmed via Crossref /works/<doi> (reference list of the sinusoidal voltage-protocol paper, 10.1113/JP275733)",
+      "why_relevant": "Wavelet-based stimulation protocols for ion-channel electrophysiology; another protocol-design precedent in excitable-cell modelling, aimed at efficient channel characterisation rather than detecting changes in edited neuron models.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "Statistical Emulation of Neural Simulators: Application to Neocortical L2/3 Large Basket Cells",
+      "authors": "Shapira Gilad; Marcus-Kalish Mira; Amsalem Oren; Van Geit Werner; Segev Idan; Steinberg David M.",
+      "year": "2022",
+      "venue": "Frontiers in Big Data",
+      "url": "https://doi.org/10.3389/fdata.2022.789962",
+      "doi": "10.3389/fdata.2022.789962",
+      "kind": "paper",
+      "found_via": "OpenCitations Index v2 /citations of anchor DOI, title via OpenCitations Meta v1, metadata confirmed via Crossref /works/<doi> (cites BluePyOpt 2016 and Druckmann et al. 2007)",
+      "why_relevant": "Per its Crossref abstract, builds statistical emulators of neuron simulators (applied to neocortical L2/3 large basket cell models) and addresses where to sample the simulator input space; relevant as a cheaper surrogate for exhaustive protocol batteries and to design-of-experiments for simulator inputs, not to mutation-based change detection.",
+      "estimated_closeness": 2
+    },
+    {
+      "title": "NeuroUnit: Validation Tests for Neuroscience Models",
+      "authors": "Richard Gerkin; Cyrus Omar",
+      "year": "2013",
+      "venue": "Frontiers in Neuroinformatics",
+      "url": "https://doi.org/10.3389/conf.fninf.2013.09.00013",
+      "doi": "10.3389/conf.fninf.2013.09.00013",
+      "kind": "paper",
+      "found_via": "OpenCitations Index v2 /references of anchor DOI, title via OpenCitations Meta v1, metadata confirmed via Crossref /works/<doi> (reference list of HippoUnit 2021)",
+      "why_relevant": "Early conference abstract introducing NeuroUnit validation tests for neuroscience models (precursor of NeuronUnit/SciUnit, which are already in the matrix); canonical-citation candidate for the reused testing framework. No abstract in Crossref; relevance per title and lineage only.",
+      "estimated_closeness": 2
     },
     {
       "title": "Large Language Models for Multi-Lingual Equivalent Mutant Detection: An Extended Empirical Study",
@@ -1260,12 +1296,12 @@
     {
       "source": "OpenCitations Meta v1",
       "query": "https://api.opencitations.net/meta/v1/metadata/doi:...__doi:... (batches of 10 over all 2105 harvested DOIs)",
-      "result_note": "slow (multi-second per 10-DOI batch) and not finished at write-up: 1669 of 2105 DOIs resolved and keyword-screened; forward citations of broad anchors (NeuroML 2010, Druckmann 2007, Gerstner & Naud 2009, BluePyOpt, Van Geit 2008, LEMS, Jolivet 2008) only partly screened"
+      "result_note": "completed: all 2105 harvested DOIs resolved to titles (2190 Meta records in total, because some records carry several DOIs); all resolved titles keyword-screened"
     },
     {
       "source": "Crossref /works/<doi>",
       "query": "metadata for OpenCitations citing DOIs of 14 targeted anchors (HippoUnit, NeuronUnit, SciUnit, NeuroML-DB, Unit-testing 2016, Hook&Kelly 2010, Functional curation 2011, Detecting undetectables 2019, Henker 2011, Scharm 2016, Blundell 2018, Universal workflow 2023, Druckmann 2011, NeuroML ecosystem 2025)",
-      "result_note": "292 DOIs resolved; titles keyword-screened (mutation/regression/conversion/protocol/equivalence/LLM/test/validation/numerical ...); new relevant works added as candidates"
+      "result_note": "288 of 292 DOIs resolved (4 failed: HTTP 429/404 after retry); titles keyword-screened (mutation/regression/conversion/protocol/equivalence/LLM/test/validation/numerical ...); new relevant works added as candidates"
     },
     {
       "source": "Crossref /works/<doi> reference arrays",
@@ -1407,7 +1443,6 @@
     "OpenAlex works API: HTTP 429 \"Insufficient budget\" at 16:36 and ~16:42 UTC 2026-09-13, retryAfter ~26,600 s (daily budget resets 00:00 UTC). Forward-citation snowball (filter=cites:W...) and title_and_abstract.search lenses NOT run; OpenCitations Index v2 used as interim fallback.",
     "Semantic Scholar Graph API: HTTP 429 unauthenticated at ~16:41 UTC (3 queries, 4 s spacing); no API key or alternative IP available. S2 lens queries NOT run.",
     "Europe PMC /references endpoint: HTTP 503 (maintenance) at 16:36 and 16:43 UTC. Replaced by Crossref reference arrays (eFEL, NeuroCERT, HippoUnit, NeuroML ecosystem) and OpenCitations /references.",
-    "GitHub code search index: covers few .test.omt files (2 hits), so OMV test-file coverage via code search is weak.",
-    "OpenCitations Meta v1: not blocked but slow; slow (multi-second per 10-DOI batch) and not finished at write-up: 1669 of 2105 DOIs resolved and keyword-screened; forward citations of broad anchors (NeuroML 2010, Druckmann 2007, Gerstner & Naud 2009, BluePyOpt, Van Geit 2008, LEMS, Jolivet 2008) only partly screened."
+    "GitHub code search index: covers few .test.omt files (2 hits), so OMV test-file coverage via code search is weak."
   ]
 }

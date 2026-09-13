@@ -1,0 +1,348 @@
+{
+  "anticipation": [
+    {
+      "work": "Marin B, Gleeson P et al. OSB Model Validation (OMV), GitHub OpenSourceBrain/osb-model-validation (2014-2026, PyPI 0.4.0); described in Sinha A, Gleeson P et al. (2025) The NeuroML ecosystem for standardized multi-scale modeling in neuroscience, eLife",
+      "url": "https://github.com/OpenSourceBrain/osb-model-validation",
+      "anticipates_core_claim": "partially",
+      "anticipated_elements": [
+        "Automated, per-commit regression of NeuroML/LEMS neuron models against saved expected observables (spike times, rates, resting potential, input resistance, time series)",
+        "Tolerance-based comparison of observables, including across simulators and simulator versions",
+        "Multiple named experiments per model via MEP/OMT files (a hand-written, per-project multi-protocol set)",
+        "Continuous-integration execution on GitHub Actions for dozens of models"
+      ],
+      "remaining_elements": [
+        "No mutant generation, fault seeding, or measurement of what the checks can and cannot detect",
+        "Tolerances are user-typed per observable (README examples range from 0 to ~2e-16; NeuroML-DB and eLife describe an allowed tolerance of the expected value), not calibrated by numerical refinement",
+        "No standardized protocol library or rheobase-relative battery; experiments are whatever the project author writes",
+        "No protocol selection, cost accounting, or held-out model / held-out mutation-family evaluation",
+        "No classification of admissible (behaviour-preserving) versus behaviour-changing edits"
+      ],
+      "strongest_anticipation_argument": "OMV already is 'multi-experiment tolerance regression of NeuroML neurons run on every edit'. A reviewer can argue that NeuroSem's fingerprint is just a richer MEP file, that refinement-calibrated tolerance is a one-line change to how the tolerance key is filled, and that adding more experiments to an OMT is exactly what a careful OSB maintainer would do after a missed bug. The eLife ecosystem paper explicitly frames OMV as ensuring consistent model behaviour as models and simulators are updated, i.e. the same practical goal NeuroSem states.",
+      "most_defensible_distinction": "OMV supplies the canonical-regression oracle but never asks how adequate that oracle is. NeuroSem's contribution must be the measurement layer on top: seeded behaviour-changing mutants that survive an OMV-style canonical check, a detection matrix showing which protocols expose them, and a battery chosen on discovery data that is shown to transfer to held-out models and a held-out mutation family. OMV is the baseline, not the contribution.",
+      "related_followup_works": [
+        {
+          "citation": "Sinha A, Gleeson P, Marin B, et al. (2025). The NeuroML ecosystem for standardized multi-scale modeling in neuroscience. eLife (reviewed preprint 95135; PMC11723582).",
+          "url": "https://elifesciences.org/articles/95135",
+          "relevance": "Describes OMV as tolerance checks on model outputs across simulators and versions, run in GitHub Actions; notes NeuronUnit NeuroML compliance. Retrieved text contains no mutation, test-adequacy or protocol-selection mechanism, so it does not close the gap."
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "work": "SciUnit-based neuron validation suites: Gerkin RC et al. (2019) NeuronUnit (bioRxiv 10.1101/665331) and Saray S et al. (2021) HippoUnit, PLOS Comput Biol 17:e1008114",
+      "url": "https://doi.org/10.1101/665331 ; https://doi.org/10.1371/journal.pcbi.1008114",
+      "anticipates_core_claim": "partially",
+      "anticipated_elements": [
+        "Multi-protocol electrophysiological characterisation of neuron models (current steps at several amplitudes, rheobase search, depolarisation block, bAP, PSP attenuation)",
+        "Feature extraction (NeuronUnit ~50 test classes incl. Druckmann-style features; HippoUnit uses eFEL) and scoring of deviations",
+        "Test suites that can be re-run on any compatible model, including NeuroML models, in an automated way",
+        "HippoUnit: systematic comparison of many models on the same battery, which can expose models that pass some tests and fail others"
+      ],
+      "remaining_elements": [
+        "Reference is experimental data (biological validity), not the model's own pre-edit behaviour (transformation preservation)",
+        "Tolerances are statistical deviations from experimental means/SD, not numerically calibrated against solver refinement",
+        "No seeded mutants and no estimate of the sensitivity of a test suite to model edits",
+        "Protocols are fixed to mirror source experiments; no compact-battery selection, cost model, or random-battery baseline",
+        "No held-out model or held-out fault-family evaluation of a detection method"
+      ],
+      "strongest_anticipation_argument": "SciUnit's design separates capabilities, tests and models so any suite can be re-run on an edited model; running HippoUnit on model v1 and v2 already yields a multi-protocol feature fingerprint difference. Replacing 'experimental mean' with 'reference model output' is a trivial parameter change, so the fingerprint half of NeuroSem is anticipated in practice. HippoUnit's observation that optimized models pass fitted features but fail other tests is conceptually the 'passes canonical, fails elsewhere' phenomenon.",
+      "most_defensible_distinction": "These tools answer 'does the model match biology?' with fixed protocols. They provide no evidence about which tests detect which kinds of edits, and no method to choose a minimal set. NeuroSem can defensibly claim an empirical detection study (mutant-by-protocol matrix) plus validated battery selection for self-referential regression, reusing SciUnit/eFEL rather than competing with them.",
+      "related_followup_works": [
+        {
+          "citation": "Sinha A, Gleeson P, et al. (2025). The NeuroML ecosystem for standardized multi-scale modeling in neuroscience. eLife 95135.",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11723582/",
+          "relevance": "States NeuronUnit is fully NeuroML compliant and supports automated validation of NeuroML-DB/OSB models; no mutation or battery-selection extension found."
+        },
+        {
+          "citation": "HumanBrainProject/hbp-validation-client: Python client for the EBRAINS/HBP Model Validation Framework (Appukuttan S, Davison AP et al.)",
+          "url": "https://github.com/HumanBrainProject/hbp-validation-client",
+          "relevance": "Cloud registry/runner for SciUnit-style validation tests incl. HippoUnit; retrieved only as repository and docs listing via WebSearch. Infrastructure for running tests, no mutation-based adequacy found."
+        },
+        {
+          "citation": "Online interoperable resources for building hippocampal neuron models via the Hippocampus Hub (2023). Frontiers in Neuroinformatics, 10.3389/fninf.2023.1271059.",
+          "url": "https://www.frontiersin.org/journals/neuroinformatics/articles/10.3389/fninf.2023.1271059/full",
+          "relevance": "Same community (HBP hippocampus); retrieved as a search result only, not read in full. Appears to be model-building resources, not change-detection testing."
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "work": "Birgiolas J, Haynes V, Gleeson P, et al. (2023). NeuroML-DB: Sharing and characterizing data-driven neuroscience models described in NeuroML. PLOS Comput Biol 19:e1010941",
+      "url": "https://doi.org/10.1371/journal.pcbi.1010941",
+      "anticipates_core_claim": "partially",
+      "anticipated_elements": [
+        "Multi-protocol, rheobase-normalised electrophysiological fingerprints of NeuroML cell models at database scale (Allen Cell Types protocols, 1.5x/3x rheobase steps, ramps, noise)",
+        "38 Druckmann-style properties computed with NeuronUnit tests",
+        "Explicit recognition that fixed stimuli characterise some model clusters poorly and that tailored protocols may be needed",
+        "Notes that NeuroML-to-NEURON conversions were checked for correctness with OMV (i.e. transformation correctness is recognised as an issue)"
+      ],
+      "remaining_elements": [
+        "Fingerprints compare different models for clustering/search, not a reference against its transformed versions",
+        "Missing features are imputed for PCA, whereas change detection requires undefined features to remain informative",
+        "No seeded mutants, no tolerance calibration, no detection rates",
+        "Protocol improvement is proposed as future work; no algorithmic selection or held-out evaluation"
+      ],
+      "strongest_anticipation_argument": "NeuroML-DB already computes, for every NeuroML cell model, the exact kind of multi-protocol feature vector NeuroSem calls a fingerprint, on the same toolchain (jNeuroML to NEURON, NeuronUnit). Its discussion even asks whether 1.5x vs 3x rheobase samples qualitatively different regimes and suggests an automated method to pick stimuli from the model's bifurcation structure. A reviewer can argue that NeuroSem is NeuroML-DB fingerprints plus a diff, plus the protocol-choice idea this paper already raised.",
+      "most_defensible_distinction": "NeuroML-DB leaves protocol adequacy as an open question and measures it only qualitatively (features undefined for some clusters). NeuroSem can claim to operationalise that question for a different purpose: measuring, with controlled mutants, which protocols expose behaviour changes and whether a greedily chosen battery generalises beyond the models it was chosen on.",
+      "related_followup_works": [
+        {
+          "citation": "Discovering optimal features for neuron-type identification from extracellular recordings (2024). Frontiers in Neuroinformatics, 10.3389/fninf.2024.1303993.",
+          "url": "https://doi.org/10.3389/fninf.2024.1303993",
+          "relevance": "Found as a Semantic Scholar citation of NeuroML-DB (title and DOI only). Feature selection for classification of real recordings, not protocol selection for change detection; does not close the gap."
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "work": "Reva M, Rossert C, Arnaudon A, et al. (2023). A universal workflow for creation, validation, and generalization of detailed neuronal models. Patterns 4:100855 (BluePyEModel line)",
+      "url": "https://doi.org/10.1016/j.patter.2023.100855",
+      "anticipates_core_claim": "partially",
+      "anticipated_elements": [
+        "Multi-protocol e-feature characterisation at rheobase-normalised targets (steps, ramps, sAHP, IDHyperpol, bAP, EPSP)",
+        "Validation on stimuli withheld from optimisation (a held-out-protocol idea)",
+        "Generalisation to many unseen morphologies with pass/fail criteria (a held-out-model idea, for fidelity)",
+        "One-at-a-time parameter perturbation (10/50/90% reductions) with a parameter-by-e-feature sensitivity matrix, i.e. a perturbation-by-feature response table"
+      ],
+      "remaining_elements": [
+        "Perturbations are sensitivity analysis on parameters, not edits to model files, units, kinetics, references or numerical settings, and are not evaluated for detectability",
+        "No distinction between changes that survive structural/execution/canonical checks and those that do not",
+        "No selection of a compact protocol subset from a perturbation-by-protocol matrix; protocols are fixed by design",
+        "No tolerance calibration by numerical refinement; tolerance in the paper is a stimulus binning width for averaging recordings",
+        "No held-out mutation family; held-out morphologies test model fidelity, not detector transfer"
+      ],
+      "strongest_anticipation_argument": "The sensitivity figure is essentially a perturbation-by-feature matrix over a multi-protocol battery for a conductance-based neuron, and the workflow already validates on unseen stimuli and unseen morphologies. Adding a column-cover step over that matrix to pick the most sensitive protocols is an obvious engineering extension for BBP-style pipelines, and BluePyEModel already exports NeuroML.",
+      "most_defensible_distinction": "Reva et al. quantify parameter sensitivity to understand and repair a model; NeuroSem quantifies detection of behaviour-changing transformations to certify an edit, and must show that a battery selected on discovery perturbations detects different perturbations on different models. The generalisation target (detector transfer vs model fidelity) is the real difference; it is narrow and must be demonstrated, not asserted.",
+      "related_followup_works": [
+        {
+          "citation": "Arnaudon A, Reva M, Zbili M, et al. (2023). Controlling morpho-electrophysiological variability of neurons with detailed biophysical models. iScience (DOAJ record); code BlueBrain/emodel-generalisation.",
+          "url": "https://github.com/BlueBrain/emodel-generalisation",
+          "relevance": "Same group; MCMC populations of e-models and morphology generalisation. Retrieved via WebSearch (repo and DOAJ listing). Extends fidelity/variability, not edit detection or battery selection."
+        },
+        {
+          "citation": "BluePyEModel: Blue Brain Python Electrical Modeling Pipeline (software; PyPI bluepyemodel 1.0.47).",
+          "url": "https://github.com/BlueBrain/BluePyEModel",
+          "relevance": "Pipeline implementing feature extraction, optimisation and validation; no mutation-based battery selection found in retrieved listing."
+        }
+      ],
+      "confidence": "medium-high"
+    },
+    {
+      "work": "Cardiac functional curation / Web Lab line: Cooper J, Mirams GR, Niederer SA (2011) High-throughput functional curation of cellular electrophysiology models, PBMB 107:11-20; Cooper J, Scharm M, Mirams GR (2016) The Cardiac Electrophysiology Web Lab, Biophys J 110:292-300; Daly AC et al. (2018) Reproducible model development in the cardiac electrophysiology Web Lab, PBMB 139:3-14",
+      "url": "https://doi.org/10.1016/j.bpj.2015.12.012",
+      "anticipates_core_claim": "partially",
+      "anticipated_elements": [
+        "Model-independent protocol language: the same battery of virtual experiments applied to any annotated model (23 protocols x 36 models in 2016)",
+        "Explicitly recommended for in-development models: upload new versions and check behaviour across far more protocols than used during construction (2011 abstract: making incremental model development more robust)",
+        "Demonstrated detection of a real encoding error: a Decker 2009 CellML file, public since 2010, was found wrong via its S1-S2 restitution protocol and corrected; BiVeS shows version differences",
+        "Daly 2018 lists 'continuous testing of models' and 'protocol design' as planned Web Lab 2 capabilities, and argues that fitting to a single-AP biomarker can leave models that behave wrongly in new contexts"
+      ],
+      "remaining_elements": [
+        "No controlled mutants; the error detection evidence is a single anecdote",
+        "The Web Lab deliberately makes no pass/fail judgement and specifies no quantitative tolerances",
+        "Protocol design in Daly 2018 is future work aimed at constraining parameters, not at detecting edits; no protocol subset selection",
+        "No held-out evaluation; cardiac CellML, not NeuroML neurons"
+      ],
+      "strongest_anticipation_argument": "This line states NeuroSem's plain-language message a decade earlier: a model reproducing its headline behaviour may be wrong under other protocols, and running a broad, reusable protocol battery on each model version exposes this (with a documented real bug). Daly 2018 then names continuous testing and protocol design as the next steps. Porting functional curation to NeuroML via SED-ML/LEMS is the obvious move for anyone who read these papers, so the 'multi-protocol regression of model versions' idea is anticipated.",
+      "most_defensible_distinction": "Functional curation shows a battery can reveal version errors; it never measures how often, for which kinds of error, with what tolerance, or how few protocols suffice. NeuroSem must credit this line for the idea of protocol-battery regression across model versions and claim only the quantitative, mutation-calibrated adequacy study and the validated compact-battery selection for conductance-based neurons.",
+      "related_followup_works": [
+        {
+          "citation": "Shuttleworth JG, Lei CL, Windley MJ, Hill AP, Preston SP, Mirams GR (2025). Evaluating the predictive accuracy of ion-channel models using data from multiple experimental designs. Phil Trans R Soc A 383(2292):20240211.",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11904619/",
+          "relevance": "Same group; fits on one protocol and measures prediction error on others, quantifying that single-protocol agreement does not imply cross-protocol agreement. Retrieved via WebSearch (PubMed/PMC listings). Supports NeuroSem's premise; not edit detection or battery selection."
+        },
+        {
+          "citation": "Wilsdorf P, Wolpers A, Hilton J, Haack F, Uhrmacher AM (2021). Automatic Reuse, Adaption, and Execution of Simulation Experiments via Provenance Patterns. ACM TOMACS, 10.1145/3564928.",
+          "url": "https://doi.org/10.1145/3564928",
+          "relevance": "Cites the Web Lab; automatically re-runs and adapts simulation experiments across model development (migration and signalling models). Closes the 'rerun experiments on each version' part in general M&S, not mutation calibration or selection."
+        },
+        {
+          "citation": "Peng D, Warnke T, Haack F, Uhrmacher AM (2016). Reusing simulation experiment specifications to support developing models by successive extension. Simulation Modelling Practice and Theory 68:33-53.",
+          "url": "https://doi.org/10.1016/j.simpat.2016.07.006",
+          "relevance": "Cites the Web Lab; title and Crossref metadata retrieved, abstract unavailable. Likely reuses experiment specifications as checks when extending models; contents unverified, flag for deep read."
+        }
+      ],
+      "confidence": "medium-high"
+    },
+    {
+      "work": "Druckmann S, Berger TK, Schurmann F, Hill S, Markram H, Segev I (2011). Effective Stimuli for Constructing Reliable Neuron Models. PLOS Comput Biol 7(8):e1002133",
+      "url": "https://doi.org/10.1371/journal.pcbi.1002133",
+      "anticipates_core_claim": "partially",
+      "anticipated_elements": [
+        "Premise that responses to one stimulus type under-determine conductance-based neuron behaviour; multiple stimulus types needed",
+        "Systematic, quantitative comparison of stimulus sets (steps, ramps, noisy currents) by how well they generalise to withheld stimuli",
+        "Feature-based error scoring (firing rate, AP height etc.) against mean and SD",
+        "Explicit statement of the goal of an optimal and minimal stimulus set, and of standardising protocols"
+      ],
+      "remaining_elements": [
+        "Objective is constraining parameters of fitted models to data, not detecting edits to an existing model",
+        "No seeded faults, no tolerance calibration against numerical refinement",
+        "No budgeted selection algorithm; set comparison is exhaustive over a few candidates",
+        "No held-out models or fault families"
+      ],
+      "strongest_anticipation_argument": "Druckmann et al. already frame stimulus choice for conductance-based neurons as a learning-theory selection problem judged on withheld data, and call for a minimal optimal set. Swapping 'generalisation error of fitted models' for 'detection of changed models' is a change of objective within the same framework, so a reviewer could call NeuroSem's battery selection a re-targeting of Druckmann's idea.",
+      "most_defensible_distinction": "Druckmann's selection criterion is identifiability of a single cell's parameters; NeuroSem's is coverage of behaviour-changing transformations under a no-false-alarm tolerance. The two can rank protocols differently (a protocol that constrains parameters well need not expose unit or kinetics edits). NeuroSem should test this directly rather than assume it.",
+      "related_followup_works": [
+        {
+          "citation": "Druckmann S, Hill S, Schurmann F, Markram H, Segev I (2013). A Hierarchical Structure of Cortical Interneuron Electrical Diversity Revealed by Automated Statistical Analysis. Cerebral Cortex 23(12):2994-3006.",
+          "url": "https://academic.oup.com/cercor/article/23/12/2994/470476",
+          "relevance": "Same group; source of the feature set reused by NeuronUnit and NeuroML-DB. Retrieved via WebSearch listing only. Feature characterisation of cells, does not close the selection-for-detection gap."
+        },
+        {
+          "citation": "Birgiolas J et al. (2023). NeuroML-DB (PLOS Comput Biol 19:e1010941).",
+          "url": "https://doi.org/10.1371/journal.pcbi.1010941",
+          "relevance": "Cites Druckmann on normal vs strong stimulation and leaves principled protocol choice open, indicating the minimal-set goal was still unmet for NeuroML models as of 2023."
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "work": "Ion-channel / AP optimal experimental design line: Lei CL, Clerx M, Gavaghan DJ, Mirams GR (2023) Model-driven optimal experimental design for calibrating cardiac electrophysiology models, Comput Methods Programs Biomed 240:107690 (bioRxiv 2022); Patten-Elliott F, Lei CL, Preston SP, et al. (2025) Optimizing experimental designs for model selection of ion channel drug-binding mechanisms, Phil Trans R Soc A 383(2292)",
+      "url": "https://doi.org/10.1098/rsta.2024.0227 ; https://doi.org/10.1016/j.cmpb.2023.107690",
+      "anticipates_core_claim": "partially",
+      "anticipated_elements": [
+        "Algorithmic design of stimulation protocols to maximise differences between model variants (Patten-Elliott: CMA-ES maximising median pairwise trace difference across 15 candidate models)",
+        "Current-clamp and voltage-clamp protocol optimisation for AP models, compared with literature benchmark protocols (Lei)",
+        "Transfer of designs from the design model to other published models (Lei), and robustness to a discrepant data-generating model (Patten-Elliott): a partial held-out-model check",
+        "Recognition that biomarker-based comparison can be biased by noise and that summary features lose information (Lei)"
+      ],
+      "remaining_elements": [
+        "Variants are competing mechanistic hypotheses or parameter uncertainty, not unintended edits to one reference model",
+        "Continuous protocol parameter optimisation, not discrete cost-bounded selection from an interpretable protocol library",
+        "Discrimination uses traces/likelihoods; no feature tolerances calibrated for numerical noise and admissible transformations",
+        "No evaluation on a held-out family of variants unseen during design; cardiac, not neuronal"
+      ],
+      "strongest_anticipation_argument": "Patten-Elliott et al. literally design electrophysiology stimuli to maximise the separation of a set of model variants and evaluate whether the design still works when the true model differs from the design set. If one relabels the 15 binding models as 'mutants' of hERG, this is protocol optimisation over a variant set with a robustness test; NeuroSem's greedy cover is a cheaper discrete surrogate for the same objective.",
+      "most_defensible_distinction": "OED chooses one continuous experiment to tell known hypotheses apart; NeuroSem chooses a small set of standard protocols to catch unknown edits and must show transfer to a mutation family never seen during selection, while keeping false alarms at zero on admissible transformations. That false-alarm constraint and unseen-family transfer are absent from OED and are the defensible delta.",
+      "related_followup_works": [
+        {
+          "citation": "Shuttleworth JG, Lei CL, et al. (2025). Evaluating the predictive accuracy of ion-channel models using data from multiple experimental designs. Phil Trans R Soc A 383(2292):20240211.",
+          "url": "https://royalsocietypublishing.org/rsta/article/383/2292/20240211/108510/Evaluating-the-predictive-accuracy-of-ion-channel",
+          "relevance": "Same theme issue and group; protocol-ensemble cross-validation of models. Premise support; no mutants or battery selection."
+        },
+        {
+          "citation": "Patten-Elliott F et al. (2024). bioRxiv 10.1101/2024.08.20.608856 and code CardiacModelling/binding_model_OED.",
+          "url": "https://github.com/CardiacModelling/binding_model_OED",
+          "relevance": "Preprint and code of the journal paper; confirms the CMA-ES pairwise-difference objective. Same work, not a gap-closing follow-up."
+        }
+      ],
+      "confidence": "medium-high"
+    },
+    {
+      "work": "Mutation-guided testing of continuous Simulink/CPS models: Matinnejad R, Nejati S, Briand LC, Bruckmann T (2016) ICSE 595-606 and (2019) IEEE TSE 45(9):919-944; Arrieta A et al. (2019) IST 114:137-154; Ling X, Menzies T (2023) What Not to Test (For Cyber-Physical Systems), IEEE TSE 49(7); Zhan Y, Clark JA (2005) GECCO",
+      "url": "https://doi.org/10.1109/tse.2018.2811489",
+      "anticipates_core_claim": "partially",
+      "anticipated_elements": [
+        "Seeded single faults in time-continuous dynamical models (104 and 74 faulty Simulink models; mutation operators from fault patterns) used to measure test fault-revealing ability",
+        "Small stimulus suites (3/5/10 input signals) for continuous models, compared against random testing",
+        "Signal-shape feature descriptions of outputs (instability, discontinuity, growth) as a trace-feature analogue",
+        "Budget-aware greedy test prioritisation (Matinnejad 2019) and cost-aware multi-objective selection trading effectiveness against simulation time (Arrieta 2019)",
+        "Minimal effective test subset selection validated with mutants (Ling and Menzies 2023)",
+        "Search for mutant-killing inputs on Simulink models (Zhan and Clark 2005)"
+      ],
+      "remaining_elements": [
+        "Selection objectives are surrogate (diversity, coverage, anti-patterns), with mutants used afterwards; not greedy cover over a known mutant-by-protocol detection matrix with transfer to unseen mutants",
+        "Oracles are manual or raw signal comparison; no tolerance calibrated by numerical refinement to suppress solver noise",
+        "No evaluation on held-out models or a held-out mutation family",
+        "No domain protocol library; inputs are generated signals rather than interpretable physiological protocols",
+        "No admissible-transformation (false-positive) control set; no neuron or NeuroML models"
+      ],
+      "strongest_anticipation_argument": "Stripped of domain vocabulary, NeuroSem is: continuous dynamical models, seeded faults, output features, a small budgeted stimulus suite, comparison with random suites. Every one of those appears in Matinnejad 2016/2019 and Arrieta 2019, and greedy mutant-kill set cover is textbook (also in EvalPlus). Under a software-testing lens, applying this to NeuroML neurons is an instance of known technique on a new subject.",
+      "most_defensible_distinction": "The SE line optimises surrogates and evaluates on the same subject models; none select directly on detection evidence and then test transfer to unseen models and an unseen fault family under a calibrated oracle. NeuroSem's methodological delta is the evaluation design (frozen discovery/held-out split over both models and mutation families, cost-matched random baselines, false-alarm control on admissible edits), not the selection algorithm.",
+      "related_followup_works": [
+        {
+          "citation": "Menghi C, Nejati S, Briand LC, Parache YI (2020). Approximation-refinement testing of compute-intensive cyber-physical models: an approach based on system identification. ICSE 2020, 10.1145/3377811.3380370.",
+          "url": "https://dl.acm.org/doi/abs/10.1145/3377811.3380370",
+          "relevance": "Same group; reduces cost of testing expensive continuous models via surrogates. Addresses simulation cost, not mutation-calibrated battery selection or held-out fault families."
+        },
+        {
+          "citation": "Ugarte M, Valle P, Illarramendi M, Arrieta A (2025). Enhancing multi-objective test case selection through the mutation operator. Automated Software Engineering 32(1), 10.1007/s10515-025-00489-6.",
+          "url": "https://doi.org/10.1007/s10515-025-00489-6",
+          "relevance": "Arrieta group follow-up on multi-objective test selection (Crossref metadata only, no abstract; the 'mutation operator' likely refers to the search algorithm's operator, unverified). Needs deep read to confirm it does not select on mutant detection with held-out evaluation."
+        },
+        {
+          "citation": "Arrieta A (2025/2026). An Empirical Evaluation of White-box and Black-box Test Case Prioritization Techniques in CPSs Modeled in Simulink. arXiv 2504.10313; Empirical Software Engineering 10.1007/s10664-026-10875-7.",
+          "url": "https://arxiv.org/abs/2504.10313",
+          "relevance": "Compares 11 prioritisation techniques on six Simulink models; abstract says total-greedy methods did best on larger models. Abstract does not state held-out families; does not close the gap."
+        },
+        {
+          "citation": "Kavak M, Kilincceker O, Demeyer S, et al. (2026). Mutation Testing of Simulink Cyber-Physical System Models: Challenges and Solutions in Practice. arXiv 2608.24250.",
+          "url": "https://arxiv.org/abs/2608.24250",
+          "relevance": "Industrial experience report; highlights equivalent mutants as a practical challenge, which parallels NeuroSem's admissible-mutant classification. No test selection or held-out evaluation."
+        }
+      ],
+      "confidence": "medium"
+    }
+  ],
+  "combination": [
+    {
+      "lens": "software-testing / mutation analysis",
+      "obviousness_risk": "high",
+      "strongest_combination_argument": "Mutation analysis to measure test adequacy, greedy set-cover test-suite minimisation over a mutant-kill matrix, and cost-aware selection for expensive continuous simulations are all established (Matinnejad 2016/2019; Arrieta 2019; Ling and Menzies 2023; Srinivasan and Kanewala 2022 with a cross-tool mutant set; EvalPlus). Tolerance oracles for numerical software and metamorphic relations for simulations are also established. Porting this pipeline to a new model language (NeuroML/LEMS) with domain mutation operators and domain features is, to an SE reviewer, a routine application paper unless it yields a transferable finding.",
+      "cited_works": [
+        "Matinnejad et al. 2016 ICSE, 10.1145/2884781.2884797",
+        "Matinnejad et al. 2019 IEEE TSE, 10.1109/tse.2018.2811489",
+        "Arrieta et al. 2019 IST, 10.1016/j.infsof.2019.06.009",
+        "Ling and Menzies 2023 IEEE TSE, 10.1109/tse.2023.3272309",
+        "Zhan and Clark 2005 GECCO, 10.1145/1068009.1068188",
+        "Srinivasan and Kanewala 2022 STVR, 10.1002/stvr.1807",
+        "Liu et al. 2023 NeurIPS (EvalPlus), 10.52202/075280-0943",
+        "Gray and Kelly 2010 Procedia CS, 10.1016/j.procs.2010.04.165",
+        "Menghi et al. 2020 ICSE, 10.1145/3377811.3380370"
+      ],
+      "what_neurosem_must_show_empirically": [
+        "Selection on discovery mutants transfers: the selected battery beats count- and runtime-matched random batteries on held-out models AND a held-out mutation family, with confidence intervals and a pre-registered (frozen) split",
+        "Mutation-based selection beats the SE surrogates it could have used (output-diversity or feature-coverage selection, e.g. Matinnejad-style), not only random and canonical baselines",
+        "Refinement-calibrated tolerances measurably change outcomes versus a fixed relative tolerance (e.g. OMV-style 0.1 or allclose defaults): fewer false alarms on admissible transformations at equal or higher detection",
+        "Mutant realism: a non-trivial fraction of behaviour-changing mutants survive schema validation, execution, and canonical OMV-style regression, and at least some correspond to real historical NeuroML/model-repository errors",
+        "Equivalent/admissible mutants are handled explicitly and their rate reported, so detection scores are not inflated",
+        "Detection is not trivially saturated: a single extra protocol does not already catch nearly all mutants (otherwise selection is moot)"
+      ],
+      "defensible_novelty_statement": "To our knowledge, NeuroSem is the first study to evaluate mutation-guided selection of stimulation protocols for regression testing of conductance-based neuron models, with tolerances calibrated against numerical refinement and with transfer tested on held-out models and a held-out mutation family. The selection and mutation techniques themselves are standard; the contribution is their calibrated instantiation and the empirical evidence on transfer.",
+      "claims_to_avoid": [
+        "A novel test-selection or test-minimisation algorithm (greedy set cover over a kill matrix is textbook)",
+        "The first mutation testing of simulation or continuous dynamical models",
+        "The first to show that a single reference test misses faults in simulation models",
+        "That mutation score predicts real-fault detection, unless real faults are evaluated",
+        "Guarantees of correctness or behavioural equivalence from passing the battery",
+        "Generality beyond the mutation operators, protocols and model classes actually evaluated"
+      ]
+    },
+    {
+      "lens": "computational-neuroscience / model validation",
+      "obviousness_risk": "medium",
+      "strongest_combination_argument": "Multi-protocol characterisation of NeuroML neurons (NeuroML-DB, NeuronUnit, HippoUnit, BluePyEModel), tolerance regression across model and simulator versions (OMV), re-running a reusable protocol battery on each model version to catch encoding errors (cardiac functional curation / Web Lab, with a documented Decker 2009 bug), and designing stimuli to discriminate model variants (Druckmann 2011; Lei 2023; Patten-Elliott 2025) are all published. Daly 2018 even lists continuous model testing and protocol design as next steps. A modeller could argue that combining OMV with NeuroML-DB fingerprints and an OED-style protocol choice is the natural next step that the community already signposted.",
+      "cited_works": [
+        "OSB Model Validation (OMV), github.com/OpenSourceBrain/osb-model-validation; Sinha et al. 2025 eLife 95135",
+        "Gerkin et al. 2019 NeuronUnit, 10.1101/665331",
+        "Saray et al. 2021 HippoUnit, 10.1371/journal.pcbi.1008114",
+        "Birgiolas et al. 2023 NeuroML-DB, 10.1371/journal.pcbi.1010941",
+        "Reva et al. 2023 Patterns, 10.1016/j.patter.2023.100855",
+        "Cooper, Mirams, Niederer 2011 PBMB, 10.1016/j.pbiomolbio.2011.06.003",
+        "Cooper, Scharm, Mirams 2016 Biophys J, 10.1016/j.bpj.2015.12.012",
+        "Daly et al. 2018 PBMB, 10.1016/j.pbiomolbio.2018.05.011",
+        "Druckmann et al. 2011 PLOS Comput Biol, 10.1371/journal.pcbi.1002133",
+        "Lei et al. 2023 CMPB, 10.1016/j.cmpb.2023.107690",
+        "Patten-Elliott et al. 2025 Phil Trans A, 10.1098/rsta.2024.0227",
+        "Shuttleworth et al. 2025 Phil Trans A, 10.1098/rsta.2024.0211"
+      ],
+      "what_neurosem_must_show_empirically": [
+        "The phenomenon exists at meaningful rates in NeuroML neurons: realistic edits (units, kinetics, reversal potentials, gating exponents, references, numerical settings) pass structural, execution and canonical checks but change behaviour under other protocols",
+        "Which protocols expose which mutation families, with an interpretable explanation tied to neuron dynamics (e.g. hyperpolarisation release for h-current edits), not just a detection count",
+        "The selected compact battery outperforms the protocols the community already uses (OMV canonical test, NeuroML-DB 1.5x/3x rheobase steps, a HippoUnit/NeuronUnit-style standard set) at matched simulation cost",
+        "Protocol ranking for change detection differs from ranking for parameter identifiability or model fitting (Druckmann/OED criteria); if it does not, say so",
+        "Refinement-calibrated tolerances do not flag admissible transformations (unit rescaling, renaming, simulator swap) while catching behaviour-changing ones",
+        "Results hold on models from more than one source/lab and more than one cell class, with the held-out split frozen before evaluation"
+      ],
+      "defensible_novelty_statement": "Existing neuron-model tools characterise models under many protocols or check them against saved outputs, and cardiac functional curation showed that protocol batteries can expose errors between model versions. NeuroSem instead measures, with controlled and admissible transformations, how well such protocols detect behaviour-changing edits to conductance-based NeuroML neurons, and tests whether a compact battery chosen on some models and mutation families still works on others.",
+      "claims_to_avoid": [
+        "Inventing multi-protocol or electrophysiological fingerprinting of neuron models (NeuroML-DB, NeuronUnit, HippoUnit, Druckmann)",
+        "The first automated regression testing of NeuroML models (OMV)",
+        "The first to show that one reference response can hide model errors revealed by other protocols (Cooper 2016 Web Lab; Druckmann 2011; Shuttleworth 2025 support this premise)",
+        "The first stimulus/protocol optimisation to discriminate electrophysiology model variants (Lei 2023; Patten-Elliott 2025)",
+        "Biological validity or experimental relevance of the batteries; NeuroSem tests self-consistency with a reference model, not agreement with data",
+        "Claims about AI-assisted transformations beyond the small isolated case study, and any finding stated before data collection"
+      ]
+    }
+  ],
+  "note_on_scope": "This stress test covers 8 picks (some grouping several papers) from the 28 verified closeness-3 works in work/tmp/prior_art/verified_close3.json; no verified work had been rated 4 or 5. In parallel, 73 further gap-round candidates were being deep-read by other reviewers, and 144 lower-closeness candidates were screened but not deep-read, so a closer work may still surface. Evidence sources: primary texts opened via Europe PMC full-text XML (Daly 2018, Cooper 2016, Druckmann 2011, Reva 2023, NeuroML-DB 2023, Patten-Elliott 2025), the OMV README, Crossref/Semantic Scholar metadata, and per-row verification notes from the input file for the Simulink papers (not re-opened here). Follow-ups were retrieved via WebSearch, Semantic Scholar citation lists and Crossref. Several were checked only at title/abstract level and are flagged in their relevance notes: Peng et al. 2016 (abstract unavailable), Ugarte et al. 2025 (no abstract), Hippocampus Hub 2023, Druckmann 2013, and Arnaudon et al. 2023. OpenAlex and one Semantic Scholar search were rate-limited (HTTP 429), so the direct gap search 'mutation + neuron model + protocol selection' was run only through WebSearch; it found no work combining these (the one hit, arXiv 2512.05383, fuzzes ML neurostimulation controllers, not neuron models). Verdict: the closeness-3 ceiling holds. No examined work anticipates the integrated claim, but every individual element is anticipated somewhere, so novelty rests on the evaluation design and on empirical results that do not yet exist."
+}

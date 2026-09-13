@@ -154,12 +154,14 @@ At build time the image also checks that jNeuroML and Java are found. The defaul
 `python -m pytest -q`, so `.dockerignore` must never exclude a file that a test reads.
 `tests/unit/test_infra_repro_files.py` checks this.
 
-> **Provenance gap: container runs are not spec-compliant results yet.** The specification requires
-> every simulation to record its Git commit. The image has no `git` and no `.git`, so
-> `neurosem.provenance.git_state()` records commit `unknown` with `dirty=True`. This was reproduced in the
-> emulated build context. The image sets `NEUROSEM_GIT_COMMIT` from the build argument, but core code does
-> not read it yet (requested in `docs/build_notes/infra.md`). Until that change lands, use the image to
-> run tests, not to produce study results.
+> **Provenance in containers.** The specification requires every simulation to record its Git commit.
+> The image has no `git` and no `.git`, so `neurosem.provenance.git_state()` falls back to
+> `NEUROSEM_GIT_COMMIT`, set from the `GIT_COMMIT` build argument, and reports `dirty=True` because the
+> tree cannot be checked. This was implemented after the infra build note, as DECISIONS D-021 records.
+> Build with `--build-arg GIT_COMMIT=$(git rev-parse HEAD)`. Pass
+> `-e NEUROSEM_CONTAINER_IMAGE=<repo@sha256:...>` so the image digest enters the environment digest.
+> The fallback is unit-level only and has not been exercised in a real container, so verify it before
+> using container runs as study results.
 
 ## Conda (untested alternative)
 
@@ -222,8 +224,8 @@ produce correct outputs.
 - Compiled wheels (numpy, scipy, efel, lxml, …) differ between operating systems, and jLEMS
   floating-point output may differ at the last bits across JVM builds and CPUs. Compare simulated
   quantities within the study's calibrated tolerances, never bit for bit across platforms.
-- Inside Docker, runs record Git commit `unknown` with `dirty=True`. That does not meet the spec's
-  provenance requirement (see the Docker section and `docs/build_notes/infra.md`).
+- Inside Docker, runs record the commit from `NEUROSEM_GIT_COMMIT` (the build argument) with
+  `dirty=True`. This fallback is untested in a real container (see the Docker section).
 - The conda route resolves `-e .` together with the lock instead of using `--no-deps` (see Conda).
 - Passing tests show that these specific checks passed. They do not prove that two environments
   are equivalent.

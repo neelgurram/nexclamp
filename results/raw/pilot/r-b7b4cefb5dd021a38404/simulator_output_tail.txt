@@ -1,0 +1,24 @@
+jNeuroML v0.14.0
+Loading: C:\Users\gurra\NeuroSem\work\runs\pilot\_staging\1e294f57fe6c4533bc5b8ce0f00533ec\NeuroML2\cells\RS\LEMS_RS.xml with jLEMS, NO GUI mode...
+INFO Sep 13,2026 13:36  (INFO) Loading LEMS file from: C:\Users\gurra\NeuroSem\work\runs\pilot\_staging\1e294f57fe6c4533bc5b8ce0f00533ec\NeuroML2\cells\RS\LEMS_RS.xml
+INFO Sep 13,2026 13:36  (INFO) Reading from: C:\Users\gurra\NeuroSem\work\runs\pilot\_staging\1e294f57fe6c4533bc5b8ce0f00533ec\NeuroML2\cells\RS\LEMS_RS.xml
+WARNING Sep 13,2026 13:36  (WARNING) Unused attribute in Component(id=null type=bqmodel_isDescribedBy): XMLAttribute(xmlns:bqmodel, http://biomodels.net/model-qualifiers/)  at: org.lemsml.jlems.core.type.Component.resolve(Component.java:540)
+WARNING Sep 13,2026 13:36  (WARNING) Unused attribute in Component(id=null type=bqbiol_isVersionOf): XMLAttribute(xmlns:bqbiol, http://biomodels.net/biology-qualifiers/)  at: 
+WARNING Sep 13,2026 13:36  (WARNING) Unused attribute in Component(id=null type=bqmodel_isDescribedBy): XMLAttribute(xmlns:bqmodel, http://biomodels.net/model-qualifiers/)  at: 
+WARNING Sep 13,2026 13:36  (WARNING) Unused attribute in Component(id=null type=bqbiol_isVersionOf): XMLAttribute(xmlns:bqbiol, http://biomodels.net/biology-qualifiers/)  at: 
+WARNING Sep 13,2026 13:36  (WARNING) Unused attribute in Component(id=null type=bqmodel_isDescribedBy): XMLAttribute(xmlns:bqmodel, http://biomodels.net/model-qualifiers/)  at: 
+WARNING Sep 13,2026 13:36  (WARNING) Unused attribute in Component(id=null type=bqmodel_isDescribedBy): XMLAttribute(xmlns:bqmodel, http://biomodels.net/model-qualifiers/)  at: 
+WARNING Sep 13,2026 13:36  (WARNING) Unused attribute in Component(id=null type=bqbiol_isVersionOf): XMLAttribute(xmlns:bqbiol, http://biomodels.net/biology-qualifiers/)  at: 
+org.lemsml.jlems.core.run.ConnectionError: No such child element or variable Kd in Kd_all[channelDensity]
+childHM= {ionChannel=Na[ionChannelHH]}
+multiHM= null
+childA= [Na[ionChannelHH]]
+	at org.lemsml.jlems.core.run.StateInstance.getChild(StateInstance.java:559)
+	at org.lemsml.jlems.core.sim.RunnableAccessor.getStateWrapper(RunnableAccessor.java:48)
+	at org.lemsml.jlems.core.run.RuntimeRecorder.connectRunnable(RuntimeRecorder.java:57)
+	at org.lemsml.jlems.core.sim.Sim.run(Sim.java:241)
+	at org.lemsml.jlems.core.sim.Sim.run(Sim.java:154)
+	at org.lemsml.jlems.core.sim.Sim.run(Sim.java:145)
+	at org.neuroml.export.utils.Utils.loadLemsFile(Utils.java:568)
+	at org.neuroml.export.utils.Utils.runLemsFile(Utils.java:526)
+	at org.neuroml.JNeuroML.main(JNeuroML.java:622)

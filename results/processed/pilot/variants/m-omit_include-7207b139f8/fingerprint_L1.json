@@ -1,0 +1,211 @@
+{
+  "cell_steps": {
+    "P00_canonical": 1000000,
+    "P01_baseline": 200000,
+    "P02_weak_step": 200000,
+    "P03_rheobase": 7680000,
+    "P04_step_2x": 200000,
+    "P05_long_step": 500000,
+    "P06_ramp": 300000,
+    "P07_hyperpolarizing_step": 200000,
+    "P08_rebound": 220000,
+    "P09_short_pulse": 100000,
+    "P10_paired_pulses": 100000
+  },
+  "dt_ms": 0.005,
+  "level_factor": 1,
+  "messages": [
+    "org.lemsml.jlems.core.sim.ContentError: No component found: CaPoolModel. Existing components:",
+    "org.lemsml.jlems.core.sim.ContentError: No component found: CaPoolModel. Existing components:",
+    "org.lemsml.jlems.core.sim.ContentError: No component found: CaPoolModel. Existing components:",
+    "org.lemsml.jlems.core.sim.ContentError: No component found: CaPoolModel. Existing components:",
+    "org.lemsml.jlems.core.sim.ContentError: No component found: CaPoolModel. Existing components:"
+  ],
+  "model_id": "pospischil2008_lts",
+  "rheobase": {
+    "history": [
+      {
+        "amplitudes_nA": [
+          0.0,
+          0.045454545454545456,
+          0.09090909090909091,
+          0.13636363636363635,
+          0.18181818181818182,
+          0.2272727272727273,
+          0.2727272727272727,
+          0.3181818181818182,
+          0.36363636363636365,
+          0.4090909090909091,
+          0.4545454545454546,
+          0.5
+        ],
+        "counts": null,
+        "note": "initial grid failed to simulate; retrying with a smaller upper amplitude"
+      },
+      {
+        "amplitudes_nA": [
+          0.0,
+          0.011363636363636364,
+          0.022727272727272728,
+          0.03409090909090909,
+          0.045454545454545456,
+          0.05681818181818182,
+          0.06818181818181818,
+          0.07954545454545454,
+          0.09090909090909091,
+          0.10227272727272728,
+          0.11363636363636365,
+          0.125
+        ],
+        "counts": null,
+        "note": "initial grid failed to simulate; retrying with a smaller upper amplitude"
+      },
+      {
+        "amplitudes_nA": [
+          0.0,
+          0.002840909090909091,
+          0.005681818181818182,
+          0.008522727272727272,
+          0.011363636363636364,
+          0.014204545454545456,
+          0.017045454545454544,
+          0.019886363636363636,
+          0.022727272727272728,
+          0.02556818181818182,
+          0.02840909090909091,
+          0.03125
+        ],
+        "counts": null,
+        "note": "initial grid failed to simulate; retrying with a smaller upper amplitude"
+      },
+      {
+        "amplitudes_nA": [
+          0.0,
+          0.0007102272727272727,
+          0.0014204545454545455,
+          0.002130681818181818,
+          0.002840909090909091,
+          0.003551136363636364,
+          0.004261363636363636,
+          0.004971590909090909,
+          0.005681818181818182,
+          0.006392045454545455,
+          0.007102272727272728,
+          0.0078125
+        ],
+        "counts": null
+      }
+    ],
+    "lower_nA": null,
+    "n_simulations": 4,
+    "rheobase_nA": null,
+    "status": "error",
+    "upper_nA": null
+  },
+  "run_ids": {
+    "P00_canonical": "r-0ce8854770584d86504f",
+    "P01_baseline": "r-a88ed9cf8c0a9b6a2b3a",
+    "P02_weak_step": "r-a88ed9cf8c0a9b6a2b3a",
+    "P03_rheobase": "s-7e192fce882ef982b90a",
+    "P04_step_2x": "r-a88ed9cf8c0a9b6a2b3a",
+    "P05_long_step": "r-c5901fce52ea686789d6",
+    "P06_ramp": "r-c312a70933dbd5781c83",
+    "P07_hyperpolarizing_step": "r-a88ed9cf8c0a9b6a2b3a",
+    "P08_rebound": "r-fed01d630a8ca561aca1",
+    "P09_short_pulse": "r-3939ef5b6e473bdf0932",
+    "P10_paired_pulses": "r-3939ef5b6e473bdf0932"
+  },
+  "runtime_s": 63.738,
+  "status": "build_error",
+  "tables": {
+    "P00_canonical": {
+      "adaptation_index": {
+        "name": "adaptation_index",
+        "source": "efel:adaptation_index2[scalar]",
+        "state": "defined",
+        "unit": "1",
+        "value": 0.45003406360930803
+      },
+      "ahp_depth": {
+        "name": "ahp_depth",
+        "source": "efel:AHP_depth[first]",
+        "state": "defined",
+        "unit": "mV",
+        "value": 16.573501743312846
+      },
+      "ap_amplitude": {
+        "name": "ap_amplitude",
+        "source": "efel:AP_amplitude[first]",
+        "state": "defined",
+        "unit": "mV",
+        "value": 100.01163101444587
+      },
+      "ap_half_width": {
+        "name": "ap_half_width",
+        "source": "efel:AP_duration_half_width[first]",
+        "state": "defined",
+        "unit": "ms",
+        "value": 0.7799999999992906
+      },
+      "baseline_voltage": {
+        "name": "baseline_voltage",
+        "source": "efel:voltage_base[scalar]",
+        "state": "defined",
+        "unit": "mV",
+        "value": -83.95132461929322
+      },
+      "firing_regime": {
+        "name": "firing_regime",
+        "source": "neurosem:firing_regime",
+        "state": "defined",
+        "unit": "",
+        "value": "adapting"
+      },
+      "first_isi": {
+        "name": "first_isi",
+        "source": "efel:all_ISI_values[first]",
+        "state": "defined",
+        "unit": "ms",
+        "value": 14.159999999987122
+      },
+      "first_spike_latency": {
+        "name": "first_spike_latency",
+        "source": "efel:time_to_first_spike[scalar]",
+        "state": "defined",
+        "unit": "ms",
+        "value": 31.629999999752442
+      },
+      "last_isi": {
+        "name": "last_isi",
+        "source": "efel:all_ISI_values[last]",
+        "state": "defined",
+        "unit": "ms",
+        "value": 202.1999999998161
+      },
+      "mean_frequency": {
+        "name": "mean_frequency",
+        "source": "efel:mean_frequency[scalar]",
+        "state": "defined",
+        "unit": "Hz",
+        "value": 12.319822594574143
+      },
+      "spike_count": {
+        "name": "spike_count",
+        "source": "efel:spike_count_stimint[scalar]",
+        "state": "defined",
+        "unit": "1",
+        "value": 4.0
+      }
+    },
+    "P03_rheobase": {
+      "rheobase": {
+        "name": "rheobase",
+        "source": "neurosem:rheobase[error]",
+        "state": "undefined",
+        "unit": "nA",
+        "value": null
+      }
+    }
+  },
+  "variant_id": "m-omit_include-7207b139f8"
+}
