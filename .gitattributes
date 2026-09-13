@@ -1,0 +1,7 @@
+# Byte-exact storage matters: model files, traces and manifests are identified by SHA-256.
+# Normalise text to LF in the repository and never rewrite model snapshots or raw results.
+* text=auto eol=lf
+*.pdf binary
+models/** -text
+results/raw/** -text
+data/splits/** -text
