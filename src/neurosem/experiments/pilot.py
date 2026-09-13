@@ -57,8 +57,13 @@ def write_report(ctx, refs, tol, outcomes, summary, seed) -> Path:
         "no-change controls)",
     ]
     for mid, r in refs.items():
+        m_entries = [e for e in entries if e.model_id == mid]
+        undefined = sum(1 for e in m_entries if e.limiting == "both_undefined")
+        silent_protocols = sorted({e.protocol_id for e in m_entries if e.feature == "spike_count" and e.f_h == 0})
         lines.append(f"- `{mid}` rheobase ({r.rheobase_status}): {r.rheobase_nA:.6g} nA; libNeuroML strict valid: "
-                     f"{r.structural.libneuroml_strict}")
+                     f"{r.structural.libneuroml_strict}; {undefined} of {len(m_entries)} reference (protocol, feature) "
+                     f"entries undefined at h and h/2 (detectable only by becoming defined); protocols with zero "
+                     f"reference spikes: {', '.join(silent_protocols) or 'none'}")
     lines += ["", "## Validation cascade (mutants)", "", "```", json.dumps(summary["cascade"], indent=2), "```", "",
               "## Classes (all variants)", "", "| class | count |", "|---|---|"]
     lines += [f"| {k} | {v} |" for k, v in sorted(summary["classes"].items())]

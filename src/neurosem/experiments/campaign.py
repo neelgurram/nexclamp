@@ -188,18 +188,19 @@ def generate_stage(ctx: Context, refs: dict[str, RefState], families: Sequence[s
     records: list[VariantRecord] = []
     for mid in refs:
         model = refs[mid].ws.model
-        records += mutations.generate_mutants(model, mut_ops, n_mutants, seed, ctx.variants_root / mid / "mutants")
-        records += transforms.generate_transforms(model, tr_ops, n_transforms, seed, ctx.variants_root / mid / "transforms")
+        # Both generators write to root/<model_id>/<variant_id>/.
+        records += mutations.generate_mutants(model, mut_ops, n_mutants, seed, ctx.variants_root / "mutants")
+        records += transforms.generate_transforms(model, tr_ops, n_transforms, seed, ctx.variants_root / "transforms")
     mutants = [r for r in records if r.kind is VariantKind.MUTANT]
     trans = [r for r in records if r.kind is not VariantKind.MUTANT]
     mutations.write_manifest(mutants, ctx.processed / "mutation_manifest.csv")
-    mutations.write_manifest(trans, ctx.processed / "valid_transforms.csv")
+    transforms.write_manifest(trans, ctx.processed / "valid_transforms.csv")
     return records
 
 
 def variant_dir(ctx: Context, v: VariantRecord) -> Path:
     sub = "mutants" if v.kind is VariantKind.MUTANT else "transforms"
-    return ctx.variants_root / v.model_id / sub / v.variant_id
+    return ctx.variants_root / sub / v.model_id / v.variant_id
 
 
 @dc.dataclass
@@ -217,7 +218,11 @@ class VariantOutcome:
 
 
 def _variant_one(ctx: Context, ref: RefState, tol: ToleranceTable, v: VariantRecord) -> VariantOutcome:
-    ws = Workspace(variant_dir(ctx, v), ref.ws.model)
+    from neurosem.mutations import load_variant
+
+    ws, loaded = load_variant(variant_dir(ctx, v))
+    if loaded.variant_id != v.variant_id or loaded.tree_sha256 != ws.tree_sha256():
+        raise RuntimeError(f"variant workspace {v.variant_id} does not match its record (edited after generation?)")
     out = ctx.processed / "variants" / v.variant_id
     out.mkdir(parents=True, exist_ok=True)
     st = structural.check(ws, ctx.sim, reference=ref.structural)
@@ -254,7 +259,7 @@ def variant_stage(ctx: Context, refs: dict[str, RefState], tol: ToleranceTable,
 
 def load_variant_records(ctx: Context) -> list[VariantRecord]:
     recs = []
-    for p in sorted(ctx.variants_root.glob("*/*/*/variant.json")):
+    for p in sorted([*ctx.variants_root.glob("mutants/*/*/variant.json"), *ctx.variants_root.glob("transforms/*/*/variant.json")]):
         recs.append(variant_from_dict(json.loads(p.read_text(encoding="utf-8"))))
     return recs
 
