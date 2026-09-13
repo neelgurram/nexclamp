@@ -16,9 +16,14 @@ from neurosem.schemas import ExecConfig, RunStatus
 pytestmark = pytest.mark.jnml
 
 
-def test_huge_step_during_spiking_is_numerically_unstable(rs_ws, sim):
-    step2x = next(t for t in DEFAULT_TEMPLATES if t.protocol_id == "P04_step_2x").instantiate(0.5607, 300.0)
-    bundle = write_probe(rs_ws, [step2x], ExecConfig(0.1), tag="unstable")
+@pytest.mark.parametrize("protocol_ids", [
+    ("P01_baseline", "P02_weak_step", "P04_step_2x", "P07_hyperpolarizing_step"),   # the 1000 ms group that failed
+    ("P08_rebound",),                                                              # the rebound group that failed
+])
+def test_observed_divergent_groups_are_numerically_unstable(rs_ws, sim, protocol_ids):
+    by_id = {t.protocol_id: t for t in DEFAULT_TEMPLATES}
+    protos = [by_id[p].instantiate(0.5606515948364182, 300.0) for p in protocol_ids]
+    bundle = write_probe(rs_ws, protos, ExecConfig(0.1), tag="unstable")
     res = sim.run_lems(bundle.lems_file, [bundle.output], timeout_s=300)
     assert res.status is RunStatus.UNSTABLE, (res.status, res.message)
 
