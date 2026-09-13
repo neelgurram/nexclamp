@@ -34,7 +34,9 @@ def run_pilot(campaign: str = "pilot", model_ids: list[str] | None = None, worke
 
 
 def write_report(ctx, refs, tol, outcomes, summary, seed) -> Path:
-    entries = tol.entries
+    # Pilot criteria use the primary feature panel only; secondary features never change the result (D-029).
+    panel = ctx.primary_panel
+    entries = [e for e in tol.entries if e.feature in panel.get(e.protocol_id, frozenset({e.feature}))]
     n = len(entries)
     excluded = [e for e in entries if e.limiting in (EXCLUDED_DEFINEDNESS, EXCLUDED_REGIME)]
     limited = Counter(e.limiting for e in entries)
@@ -56,8 +58,11 @@ def write_report(ctx, refs, tol, outcomes, summary, seed) -> Path:
         f"- models: {', '.join(refs)}",
         f"- nominal dt: {ctx.nominal.dt_ms} ms; refinement factors {ctx.factors}",
         f"- mutation families: {', '.join(ctx.cfg['pilot']['mutation_families'])}; seed {seed}",
-        f"- variants: {len(outcomes)} ({summary['cascade']['total_mutants']} mutants, {nt} valid transformations / "
+        f"- variants: {len(outcomes)} ({summary['n_semantic_mutants']} primary semantic mutants, "
+        f"{summary['n_numerical_mutants']} numerical robustness stress tests, {nt} valid transformations / "
         "no-change controls)",
+        f"- excluded operators: {', '.join((ctx.cfg.get('pilot') or {}).get('exclude_operators') or []) or 'none'}",
+        f"- primary feature panel: {sorted(set().union(*panel.values()))}",
     ]
     for mid, r in refs.items():
         m_entries = [e for e in entries if e.model_id == mid]
@@ -67,12 +72,12 @@ def write_report(ctx, refs, tol, outcomes, summary, seed) -> Path:
                      f"{r.structural.libneuroml_strict}; {undefined} of {len(m_entries)} reference (protocol, feature) "
                      f"entries undefined at h and h/2 (detectable only by becoming defined); protocols with zero "
                      f"reference spikes: {', '.join(silent_protocols) or 'none'}")
-    lines += ["", "## Validation cascade (mutants)", "", "```", json.dumps(summary["cascade"], indent=2), "```", "",
-              "## Classes (all variants)", "", "| class | count |", "|---|---|"]
-    lines += [f"| {k} | {v} |" for k, v in sorted(summary["classes"].items())]
-    lines += ["", "## Pilot success criteria (specification)", "",
-              f"1. **At least one admissible mutation passes the canonical protocol and is reproducibly detected by "
-              f"another protocol:** {'MET' if crit1 else 'NOT MET'} ({len(silent)} silent mutant(s)"
+    lines += ["", "## Validation cascade (primary semantic mutants)", "", "```", json.dumps(summary["cascade"], indent=2),
+              "```", "", "## Classes by stratum", "", "| stratum | class | count |", "|---|---|---|"]
+    lines += [f"| {s} | {k} | {v} |" for s, c in sorted(summary["classes_by_stratum"].items()) for k, v in sorted(c.items())]
+    lines += ["", "## Pilot success criteria (specification; primary semantic stratum and primary feature panel)", "",
+              f"1. **At least one admissible semantic mutation passes the canonical protocol and is reproducibly "
+              f"detected by another protocol:** {'MET' if crit1 else 'NOT MET'} ({len(silent)} silent mutant(s)"
               f"{': ' + ', '.join(silent) if silent else ''}).",
               f"2. **Feature extraction stable under numerical refinement:** {'MET' if crit2 else 'NOT MET'} -- "
               f"deterministic re-execution {determinism}; {len(excluded)} of {n} reference (protocol, feature) "
@@ -90,8 +95,23 @@ def write_report(ctx, refs, tol, outcomes, summary, seed) -> Path:
         lines.append("Not all pilot criteria are met. Per the specification: do not manufacture drift. Review the "
                      "failing criterion; if hidden drift does not exist, reframe as an empirical evaluation of existing "
                      "validation adequacy or stop.")
+    num_missed = summary["numerical_missed_by_canonical"]
+    lines += ["", "## Numerical robustness and convergence stress tests (separate analysis; never semantic drift)", "",
+              f"- {summary['n_numerical_mutants']} numerical mutants; cascade: "
+              f"`{json.dumps(summary['cascade_numerical_robustness'])}`",
+              f"- missed by canonical but detected elsewhere: {len(num_missed)}"
+              f"{' (' + ', '.join(num_missed) + ')' if num_missed else ''}. These are numerical sensitivities, "
+              "not hidden semantic drift.",
+              f"- per-feature deviation versus the reference's own h / h/2 / h/4 discretisation error: "
+              f"`numerical_robustness.csv` ({summary['n_numerical_robustness_rows']} rows)",
+              "", "## Secondary exploratory features (reported only; do not change the result above)", "",
+              f"- mutants the primary panel classed as equivalent but a secondary feature detected reproducibly: "
+              f"{len(summary['secondary_primary_miss'])}"
+              f"{' (' + ', '.join(summary['secondary_primary_miss']) + ')' if summary['secondary_primary_miss'] else ''}",
+              "- details: `secondary_feature_report.csv`, `detections_secondary.csv`"]
     lines += ["", "## Files", "",
-              "- `classification.csv`, `detections.csv`, `detection_matrix.csv`, `protocol_costs.csv`",
+              "- `classification.csv` (with `stratum` and `interpretation`), `detections.csv`, `detection_matrix.csv` "
+              "(primary semantic only), `protocol_costs.csv`, `generation.json`",
               "- `tolerances.csv`, `convergence.csv`, `validation_cascade.json`, `false_positives.csv`",
               "- `mutant_audit_sheet.csv` (Milestone 4 exit criterion: a human must audit at least 20 mutants)",
               "- `variants/<variant_id>/diagnostic.md` (Milestone 5 exit criterion: evidence for every detection)",

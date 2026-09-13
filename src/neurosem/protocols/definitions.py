@@ -28,9 +28,10 @@ class ProtocolTemplate:
     kind: str
     description: str
     params: Mapping[str, float]
-    features: tuple[str, ...]
+    features: tuple[str, ...]                 # primary prespecified panel (decides classification)
     implemented: bool = True
     not_implemented_reason: str = ""
+    secondary_features: tuple[str, ...] = ()  # exploratory; extracted and reported, never decide results (D-029)
 
     def instantiate(self, rheobase_nA: float, settle_ms: float) -> ConcreteProtocol:
         if not self.implemented:
@@ -66,8 +67,9 @@ class ProtocolTemplate:
             total, window = s + p["window_ms"] + p["post_ms"], AnalysisWindow(s, s + p["window_ms"])
         else:
             raise ValueError(f"{self.protocol_id}: kind {self.kind!r} is not a batched current-clamp protocol")
+        extracted = tuple(dict.fromkeys([*self.features, *self.secondary_features]))
         return ConcreteProtocol(self.protocol_id, self.kind, tuple(comps), float(total), window,
-                                self.features, rheobase_nA=rh, description=self.description)
+                                extracted, rheobase_nA=rh, description=self.description)
 
 
 # Default catalogue, numbered as in the specification. Parameters are provisional
@@ -119,14 +121,20 @@ def templates_from_config(cfg: Sequence[Mapping[str, Any]] | None) -> tuple[Prot
     defaults = {t.protocol_id: t for t in DEFAULT_TEMPLATES}
     for entry in cfg:
         base = defaults.get(entry["protocol_id"])
+        primary = tuple(entry.get("features", base.features if base else ()))
+        secondary = tuple(entry.get("secondary_features", ()))
+        if set(primary) & set(secondary):
+            raise ValueError(f"{entry['protocol_id']}: features listed as both primary and secondary: "
+                             f"{sorted(set(primary) & set(secondary))}")
         out.append(ProtocolTemplate(
             protocol_id=entry["protocol_id"],
             kind=entry.get("kind", base.kind if base else ""),
             description=entry.get("description", base.description if base else ""),
             params={**(base.params if base else {}), **entry.get("params", {})},
-            features=tuple(entry.get("features", base.features if base else ())),
+            features=primary,
             implemented=entry.get("implemented", base.implemented if base else True),
             not_implemented_reason=entry.get("not_implemented_reason", base.not_implemented_reason if base else ""),
+            secondary_features=secondary,
         ))
     return tuple(out)
 

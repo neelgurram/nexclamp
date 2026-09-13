@@ -1,9 +1,10 @@
-# DRAFT: exploratory pilot iteration 2 (campaign `pilot-v2`). STATUS: draft, NOT RUN.
-# Awaiting Neel (DECISIONS N-14, N-15). Design and evidence: docs/pilot/pilot_v2_design.md.
-# Exploratory/developmental data (D-026); never used for the confirmatory estimate.
+# DRAFT: exploratory pilot iteration 2 (campaign `pilot-v2`). STATUS: approved with modifications
+# (DECISIONS N-14, N-15), NOT RUN. Design: docs/pilot/pilot_v2_design.md.
+# Exploratory/developmental data (D-026): a second development iteration informed by Pilot 1, not
+# independent confirmation, and never used for the confirmatory estimate.
 # features.yaml, tolerances.yaml and agent_policy.yaml in this directory are unchanged copies.
 # Differences from configs/study.yaml are marked "# v2".
-# Run only after approval:
+# Run only after Neel's go-ahead:
 #   NEUROSEM_CONFIG_DIR=configs/pilot_v2_draft neurosem pilot --campaign pilot-v2
 
 study_id: neurosem
@@ -19,6 +20,8 @@ numerics:
   timeout_s: 7200
   java_max_memory: 2G
 
+# Calibration procedure (not a detection protocol): the reference model's rheobase search sets
+# every protocol amplitude. The same search on a variant is the "rheobase" detection measurement (P03).
 rheobase:
   step_duration_ms: 500
   initial_hi_nA: 0.5
@@ -29,27 +32,38 @@ rheobase:
   spike_threshold_mV: -20.0
   fallback_rheobase_nA: 0.1
 
+# Comparator (not one of P03-P09): the simulation shipped with each model.
 canonical:
   protocol_id: P00_canonical
   source: shipped_harness
-  # v2: canonical compared on the battery's feature set where applicable (like-for-like, N-06)
+  # v2: primary panel = battery primary features that apply to a suprathreshold step (like-for-like, N-06)
   features: [spike_count, first_spike_latency, last_isi, adaptation_index, ap_amplitude, ahp_depth]
+  # v2: remaining Pilot 1 canonical features, extracted as secondary exploratory outputs (D-029)
+  secondary_features: [baseline_voltage, mean_frequency, ap_half_width, first_isi, firing_regime]
 
-# v2: 7 protocols (bound 4-8), 8 features (bound 3-8)
+# v2: detection protocols. `features` = PRIMARY prespecified panel (decides every result);
+# `secondary_features` = the rest of each protocol's Pilot 1 feature list, exploratory only (D-029).
+# Primary panel across protocols: 8 features. Primary + secondary: the 18 Pilot 1 features.
 protocols:
-  - protocol_id: P03_rheobase
+  - protocol_id: P03_rheobase         # variant rheobase measurement
   - protocol_id: P04_step_2x
     features: [spike_count, first_spike_latency, last_isi, adaptation_index, ap_amplitude, ahp_depth]
+    secondary_features: [mean_frequency, ap_half_width, first_isi, burst_count, firing_regime]
   - protocol_id: P05_long_step
     features: [spike_count, first_spike_latency, last_isi, adaptation_index, ap_amplitude, ahp_depth]
+    secondary_features: [mean_frequency, ap_half_width, first_isi, burst_count, firing_regime]
   - protocol_id: P06_ramp
     features: [spike_count, first_spike_latency]
+    secondary_features: [mean_frequency, firing_regime]
   - protocol_id: P07_hyperpolarizing_step
     features: [steady_state_voltage, spike_count]
+    secondary_features: [baseline_voltage, voltage_deflection, sag_ratio, minimum_voltage]
   - protocol_id: P08_rebound
     features: [spike_count, first_spike_latency]
+    secondary_features: [maximum_voltage, firing_regime]
   - protocol_id: P09_short_pulse
     features: [spike_count, first_spike_latency, ap_amplitude, ahp_depth]
+    secondary_features: [ap_half_width]
 
 execution:
   workers: 12
@@ -60,10 +74,11 @@ paths:
 
 pilot:
   models: [pospischil2008_rs, pospischil2008_lts, wangbuzsaki1996_wb, nml2_hh_example]   # v2
+  # biophysical + reference = primary semantic stratum; numerical = separate robustness stress tests (N-15, D-030)
   mutation_families: [biophysical, reference, numerical]
-  # v2 (N-15, not yet implemented): exclude wrong_segment_group, solver_config, increase_dt
-  mutants_per_operator: 1            # v2: about 11 mutants per model, about 44 total
-  transforms_per_operator: 1
+  exclude_operators: [wrong_segment_group]   # v2: inert on single-compartment cells (Pilot 1: 4 of 4 equivalent)
+  mutants_per_operator: 1            # v2: dry run gives 32 semantic + 12 numerical = 44 mutants
+  transforms_per_operator: 1         # v2: 8 per model = 32 controls
 
 analysis:
   n_boot: 10000

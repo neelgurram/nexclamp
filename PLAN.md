@@ -199,7 +199,7 @@ The handoff's initial prompt also asks for `PLAN.md`, `REQUIREMENTS.md`, `PRIOR_
 
 **Role (Neel, D-026).** The pilot phase is exploratory and developmental. It is publication-oriented but never pooled with the held-out confirmatory estimate. It stays within the bounds: 2-6 models, 4-8 protocols, 3-8 features, at least 3 families, about 20-60 mutants, and valid-transformation controls. It may run as several iterations. Each iteration is a new, sealed campaign listed in `docs/pilot/PILOT_REGISTER.md`.
 
-**Status: iteration 1 done (exploratory); iteration 2 drafted, awaiting Neel (N-14, N-15).**
+**Status: iteration 1 done (exploratory); iteration 2 approved with modifications, revised, awaiting Neel's go-ahead to run (N-14 to N-16 decided; D-029 to D-032).**
 - **Iteration 1 (`pilot`).**
   - Ran 2026-09-13 17:11-18:55Z at `d323afa` (tag `pilot-v1-code`).
   - Scope: 2 models, 52 mutants, 16 controls.
@@ -208,12 +208,19 @@ The handoff's initial prompt also asks for `PLAN.md`, `REQUIREMENTS.md`, `PRIOR_
   - Preserved and sealed (D-027).
 - **Iteration 2 (`pilot-v2`).**
   - Draft in `docs/pilot/pilot_v2_design.md` and `configs/pilot_v2_draft/`.
-  - Scope: 4 models, 7 protocols, 8 features, about 44 mutants.
+  - Scope:
+    - 4 models (2 repeated, 2 new);
+    - 7 detection protocols plus the canonical comparator and the rheobase calibration;
+    - 8 primary features plus 10 secondary;
+    - 32 primary semantic mutants and 12 numerical stress tests;
+    - 32 controls.
   - Not run.
+  - Numerical mutants are a separate stratum (D-030). Pilot 1's time-step results are reclassified in `docs/pilot/numerical_reclassification.md`.
 
 **Next actions.**
-1. Neel decides N-14 and N-15 (and N-03, N-04, N-07 on pilot evidence).
-2. Implement the operator-exclusion option (N-15), with tests. Then run `pilot-v2` on a clean commit and seal it.
+1. Neel gives the go-ahead for `pilot-v2`, and chooses the second archive location (N-16).
+2. Run `pilot-v2` on a clean commit, then seal, archive and verify it.
+3. Before the freeze, resolve N-17 (a third semantic family) and reassess redundant protocols with both pilots' data.
 3. Further iterations are allowed while the pilot phase lasts. Each gets a new campaign name and is reported.
 4. Neel ends the pilot phase. Then the post-pilot freeze sequence below starts.
 5. Keep valid transformations in the false-positive denominator whatever the battery says about them (P-06).

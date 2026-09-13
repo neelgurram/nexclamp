@@ -151,3 +151,24 @@ Scope that was dropped is recorded openly: 144 second-round candidates at estima
 - It changed no tolerance, feature or protocol in `configs/`.
 
 **Human decisions pending:** N-14 (iteration-2 design), N-15 (numerical family), N-16 (archive storage).
+
+---
+
+## Entry 004: Pilot 2 revision after Neel's N-14, N-15 and N-16 decisions
+
+| Field | Value |
+|---|---|
+| Date | 2026-09-13 |
+| Human instruction | Neel's written decisions on N-14 (approved with modifications), N-15 (separate numerical experiment) and N-16 (redundant private storage) |
+| Tool / model | Claude Code desktop, Claude Opus 5 (`claude-opus-5`), main session only |
+
+**What the AI did**
+- Implemented the primary/secondary feature panels and the semantic/numerical strata with tests.
+- Reanalysed sealed Pilot 1 read-only.
+- Verified the local archive by full extraction and created a Git bundle.
+- Revised the Pilot 2 design and draft config, using a generation-only dry run of mutants with no simulation.
+
+**What the AI did not do**
+- It did not run Pilot 2 or any simulation.
+- It uploaded no data. The second backup location was asked and dismissed, so it stays pending.
+- It accessed no held-out data.

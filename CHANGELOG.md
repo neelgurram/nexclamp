@@ -6,6 +6,22 @@ Versioning from the first tagged release. Decisions referenced as D-xxx are in `
 
 ## [Unreleased]
 
+### Pilot 2 revision: feature panels, numerical stratum, archive verification (2026-09-13)
+
+#### Added
+- `experiments/strata.py`: semantic, numerical-robustness, harness and control strata; `primary_admissible`; `check_identical_numerics`; operator exclusion; primary/secondary detection split; convergence rows against the reference's h, h/2 and h/4 error (D-029, D-030).
+- `secondary_features` for protocols and the canonical harness; `pilot.exclude_operators`.
+- Campaign outputs: `detections_secondary.csv`, `secondary_feature_report.csv`, `numerical_robustness.csv`, `detection_matrix_numerical_robustness.csv`, `validation_cascade_numerical_robustness.json`, `generation.json`.
+- `scripts/numerical_robustness_report.py` and `results/derived/pilot/`, a read-only reanalysis of sealed Pilot 1.
+- `scripts/verify_archive.py`; `results/processed/pilot/ARCHIVE_README.md`, `ARCHIVE_VERIFICATION_local.json`; verified Git bundle (local, Git-ignored).
+- `tests/unit/test_strata.py`.
+- `docs/pilot/numerical_reclassification.md`; D-029 to D-032; N-17.
+
+#### Changed
+- The primary detection matrix, cascade, silent list, pilot criteria, analysis figures and held-out denominator use the semantic stratum and primary feature panel only.
+- Numerical stress tests always run at h, h/2 and h/4.
+- `docs/pilot/pilot_v2_design.md` revised per N-14; `configs/pilot_v2_draft/study.yaml` updated.
+
 ### Pilot role, preservation and bounded iteration 2 (2026-09-13)
 
 #### Added

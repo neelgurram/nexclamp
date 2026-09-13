@@ -217,6 +217,54 @@ Neel: "Do not discard pilot data. Preserve all pilot configurations, raw outputs
   It has not been run.
 - **Canonical features setting.** The canonical harness's compared features are now configurable (`canonical.features`; default unchanged), so iteration 2 can compare the canonical test and the battery like for like.
 
+**D-029 Primary and secondary feature panels; the pilot limits are feasibility guidelines** (Neel, N-14; fixed)
+- **Guidelines, not laws.** The 4-8 protocol and 3-8 feature limits are feasibility guidelines. They must not weaken the study or delete useful measurements.
+- **Four kinds of element, kept distinct:**
+  - primary prespecified measurements;
+  - secondary exploratory measurements;
+  - calibration procedures;
+  - experimental detection protocols.
+- **Primary panel for Pilot 2:** spike count, first-spike latency, last ISI, adaptation index, AP amplitude, AHP depth, steady-state voltage, rheobase. It alone decides classes, the detection matrix, the silent list and the pilot criteria (including the refinement-exclusion criterion).
+- **Secondary panel:** the other 10 of Pilot 1's 18 features, per protocol exactly as in Pilot 1 (`secondary_features` in the config). They are extracted from the same traces and reported in `detections_secondary.csv` and `secondary_feature_report.csv`. They never change a primary result after the data are seen.
+- **Report required.** Pilot 2 reports whether any secondary feature detects a mutant the primary panel misses.
+- **No permanent removal.** No feature is removed for Pilot 1 unhelpfulness. The confirmatory panel is proposed after Pilot 2 and frozen before held-out evaluation.
+- **Pilot 2's status.** It is a second development iteration informed by Pilot 1, not independent confirmation.
+- **Code.** `ProtocolTemplate.secondary_features`, `Context.primary_panel`, `strata.split_primary`. Tests in `tests/unit/test_strata.py`.
+
+**D-030 Numerical-setting mutations are a separate robustness experiment, never semantic drift** (Neel, N-15; fixed)
+- **Primary corpus.** It is the semantic stratum only (biophysical, reference). Time-step, solver, spatial-discretization and recording-resolution changes form the "numerical robustness and convergence stress tests" stratum.
+- **Enforcement.** `strata.primary_admissible` is used by aggregation, analysis and `evaluate_heldout`. Tests prove numerical mutants and controls cannot enter the primary denominator.
+- **Identical settings.** Primary semantic mutants and controls must have no execution overrides and no change to step, solver method or discretisation (`check_identical_numerics`, run before simulation).
+- **Convergence workflow.** Every numerical stress test runs at h, h/2 and h/4. Its deviation is compared with the reference's discretisation error and observed order (`numerical_robustness.csv`). Labels never say semantic drift.
+- **Operator retained.** `increase_dt` stays, and Pilot 1's results stay.
+- **Pilot 1 derived reanalysis** (`docs/pilot/numerical_reclassification.md`, `results/derived/pilot/`):
+  - 0 silent semantic mutants;
+  - all 3 silent mutants were numerical;
+  - semantic paired counts: 19 both, 3 canonical only, 0 battery only;
+  - the unequal-starting-step confound is documented.
+
+**D-031 Pilot archives: redundant private storage now, DOI deposit at release** (Neel, N-16; in progress)
+- **Done:**
+  - archive SHA-256 re-verified;
+  - test extraction with all 5,186 files checked against the manifest (`results/processed/pilot/ARCHIVE_VERIFICATION_local.json`, `scripts/verify_archive.py`);
+  - format, software, command, size, count and dates recorded in `results/processed/pilot/ARCHIVE_README.md`, with restore steps;
+  - full-history Git bundle created and verified, because the repository has no remote.
+- **Not done: the second independent private copy.** The only cloud storage on this machine is a OneDrive signed in under an address not known to be Neel's. When asked where the copy should go, Neel dismissed the question, so nothing has been uploaded (N-16).
+- **At release:**
+  - review licences;
+  - deposit only redistributable content on Zenodo or equivalent (otherwise manifests, hashes and scripts);
+  - link the GitHub release;
+  - keep Pilot 1 labelled exploratory.
+
+**D-032 Pilot 2 protocol taxonomy and the family-count consequence** (provisional; N-17)
+- **Taxonomy:**
+  - the reference rheobase search is a calibration procedure;
+  - variant rheobase (P03) is a detection measurement;
+  - P00 canonical is an additional comparator.
+- **Detection protocols:** 7 distinct (P03-P09; 6 stimulus waveforms plus 1 threshold measurement).
+- **Redundancy in Pilot 1.** P03, P04, P06, P07, P08 and P09 detections were all subsets of P05's. They are kept for Pilot 2 on mechanistic grounds and reassessed before the freeze.
+- **Consequence of D-030.** The primary semantic corpus now has 2 families. Held-out generalisation to an unseen semantic family needs a third family, or a revised aim.
+
 ## Models and licensing
 
 **D-017 Pilot fixtures: Pospischil 2008 RS and LTS** (provisional)
@@ -243,8 +291,9 @@ Model files keep their own licenses: MIT, or LGPL-3.0 for the NeuroML2 HH exampl
 | N-09 | Accept correlated Pospischil cells in the full study, and which curated candidates to add | see `docs/model_curation_candidates.md` when available |
 | N-11 | Report the jNeuroML validator gap (`channelDensityVShift` references are not checked by test 10025) to the NeuroML maintainers? | not reported; outward-facing, needs Neel |
 | N-13 | **Milestone 6 decision.** The pilot met all three formal criteria, but its only silent mutants are numerical-configuration changes (two explained largely by the harness/battery base-step asymmetry). The canonical harness caught every behaviour-changing biophysical and reference edit on the two correlated pilot models. Choose: a second design-frozen pilot on independent models; reframe as an evaluation of existing validation adequacy; or continue as specified | Recommend option 1 or 2 in `docs/pilot/pilot_interpretation.md`, not continuing on the numerical silent mutants. **Update:** Neel's direction (D-026) sets the path: bounded exploratory pilot iterations, then freeze, then one held-out study. Option 1 is taken up as iteration 2 (N-14). Whether the paper leads with silent drift or with validation adequacy stays open until the pilot phase ends. |
-| N-14 | Approve pilot iteration 2 (`docs/pilot/pilot_v2_design.md`): models RS, LTS, Wang-Buzsaki, NeuroML2 HH; protocols P03-P09; 8 features; one site per operator | draft as proposed; not run |
-| N-15 | Numerical family in iteration 2: drop `increase_dt` (silent only through the harness/battery base-step asymmetry) and the inert `wrong_segment_group` and `solver_config`; or apply `increase_dt` as the same absolute step to both; or keep and report separately | drop the three, via an operator-exclusion option still to implement |
-| N-16 | Durable storage for pilot archives (iteration 1: 1.92 GB tar including smoke runs; local and Git-ignored now): external drive, institutional storage, or a restricted Zenodo deposit at release | local only; nothing uploaded (outward-facing) |
+| N-14 | Pilot 2 design | **Decided 2026-09-13: approved with modifications** (D-029, D-032). Revised design in `docs/pilot/pilot_v2_design.md`. **Execution awaits Neel's go-ahead.** |
+| N-15 | Time-step mutation | **Decided: removed from the primary semantic corpus; retained as a separate numerical robustness experiment** (D-030). Implemented and tested. |
+| N-16 | Pilot archive storage | **Decided: private redundant storage now; Zenodo at public release** (D-031). Local copy verified. **Open: location of the second private copy.** OneDrive on this PC is signed in as an account not known to be Neel's; an OSF project needs Neel's login. Nothing uploaded. |
+| N-17 | The primary semantic corpus has 2 families (biophysical, reference) after D-030. Add a third semantic mutation family (for example, kinetic-scheme or morphology edits) before the freeze, or revise the "unseen mutation family" aim | none; needed before preregistration |
 | N-12 | Where the hidden agent-study evaluators live permanently (separate private repository, encrypted archive, or offline), and whether Neel revises them independently, given they were written by the assistant that built NeuroSem | local only, Git-ignored, hashes committed |
 | N-10 | Project name. The audit (`docs/m0_evidence/names/`, independently re-checked) found: no PyPI, conda-forge or GitHub-account conflict, but a 2025 CMAME article with an arXiv preprint and code named "NeuroSEM" (a computational simulation framework); an active GPL-3.0 GitHub project spelled "NeuroSem" in neuroscience and language models; the neuromarketing company NeuroSEM holding neurosem.com since 2013; and heavy overloading of "SEM" in neuroscience | **Recommend renaming before any public release.** Preferred: **PerturbPrint** (package/CLI `perturbprint`); it matches the defined term "perturbation fingerprint" and had zero hits in every source that answered (Zenodo, EUIPO and some rate-limited indexes could not be checked). `docs/NAME_CONFLICT_AUDIT.md` recommends deciding before preregistration and the frozen study, whose raw results are immutable. Runner-up: DriftClamp. Not legal clearance; re-check registries before release. Code keeps the working name `neurosem` until Neel decides (a rename is a mechanical refactor). |

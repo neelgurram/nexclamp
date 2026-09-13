@@ -21,7 +21,7 @@ from neurosem.provenance import REPO_ROOT, utc_now
 def evaluate_heldout(campaign: str, selection_file: Path, reason: str, workers: int | None = None) -> Path:
     from neurosem.analysis import bootstrap, metrics
     from neurosem.experiments import campaign as cp
-    from neurosem.experiments import registry
+    from neurosem.experiments import registry, strata
     from neurosem.schemas import VariantKind
     from neurosem.selection.splits import HeldoutGate
 
@@ -46,7 +46,8 @@ def evaluate_heldout(campaign: str, selection_file: Path, reason: str, workers: 
         raise registry.CampaignError(f"non-held-out models in the confirmatory campaign: {stray}")
     code_commit = registry.check_single_clean_commit(ctx.rec.raw)
 
-    adm = [o for o in outcomes if o.variant.kind is VariantKind.MUTANT and o.klass.admissible]
+    # Primary semantic stratum only: numerical stress tests never enter the confirmatory denominator (D-030).
+    adm = strata.primary_admissible(outcomes)
     sel = set(selection["selected_protocols"])
     import numpy as np
 

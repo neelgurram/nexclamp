@@ -26,7 +26,7 @@ from typing import Any
 import numpy as np
 
 from neurosem import config
-from neurosem.experiments import registry
+from neurosem.experiments import registry, strata
 from neurosem.models import Workspace, load_models, materialize
 from neurosem.protocols.definitions import CANONICAL_FEATURES, CANONICAL_ID, batched, templates_from_config
 from neurosem.provenance import REPO_ROOT, utc_now
@@ -38,7 +38,8 @@ from neurosem.validation.canonical import canonical_protocol
 from neurosem.validation.convergence import ToleranceTable, calibrate, convergence_report
 from neurosem.validation.execution import RunRecorder, TaskError, run_parallel
 from neurosem.validation.fingerprint import (RHEOBASE_ID, Detection, Fingerprint, ToolFailure, build_fingerprint, classify,
-                                             compare, detecting_protocols, save_fingerprint, write_detections)
+                                             compare, detecting_protocols, load_fingerprint, reproducible_keys,
+                                             save_fingerprint, write_detections)
 
 
 @dc.dataclass
@@ -67,8 +68,18 @@ class Context:
 
     @property
     def canonical_features(self) -> tuple[str, ...]:
-        """Features compared on the canonical harness (``canonical.features``; default CANONICAL_FEATURES)."""
-        return tuple((self.cfg.get("canonical") or {}).get("features") or CANONICAL_FEATURES)
+        """Features extracted on the canonical harness: primary ``canonical.features`` (default
+        CANONICAL_FEATURES) followed by exploratory ``canonical.secondary_features``."""
+        c = self.cfg.get("canonical") or {}
+        return tuple(dict.fromkeys([*(c.get("features") or CANONICAL_FEATURES), *(c.get("secondary_features") or ())]))
+
+    @property
+    def primary_panel(self) -> dict[str, frozenset[str]]:
+        """protocol_id -> primary features. Only these decide classifications (D-029)."""
+        c = self.cfg.get("canonical") or {}
+        panel = {t.protocol_id: frozenset(t.features) for t in templates_from_config(self.cfg["protocols"])}
+        panel[CANONICAL_ID] = frozenset(c.get("features") or CANONICAL_FEATURES)
+        return panel
 
     @property
     def settle(self) -> float:
@@ -202,8 +213,13 @@ def generate_stage(ctx: Context, refs: dict[str, RefState], families: Sequence[s
                    n_transforms: int, seed: int) -> list[VariantRecord]:
     from neurosem import mutations, transforms
 
-    mut_ops = [name for name, op in mutations.REGISTRY.items() if getattr(op.family, "value", op.family) in families]
+    excluded = list((ctx.cfg.get("pilot") or {}).get("exclude_operators") or [])
+    mut_ops = strata.select_mutation_operators(families, excluded)
     tr_ops = list(transforms.REGISTRY)
+    (ctx.processed / "generation.json").write_text(json.dumps(
+        {"families": list(families), "operators": mut_ops, "excluded_operators": excluded, "n_per_operator": n_mutants,
+         "transform_operators": tr_ops, "n_per_transform": n_transforms, "seed": seed}, indent=2) + "\n",
+        encoding="utf-8")
     records: list[VariantRecord] = []
     for mid in refs:
         model = refs[mid].ws.model
@@ -235,6 +251,10 @@ class VariantOutcome:
     canonical_detected: bool
     runtime_s: float
     canonical_runs_battery_failed: bool = False   # shipped harness runs, but the model fails when reused
+    stratum: str = ""
+    secondary_h: list[Detection] = dc.field(default_factory=list)          # exploratory features (D-029)
+    secondary_h2: list[Detection] | None = None
+    secondary_reproducible: list[str] = dc.field(default_factory=list)     # "protocol:feature"
 
 
 def _variant_one(ctx: Context, ref: RefState, tol: ToleranceTable, v: VariantRecord) -> VariantOutcome:
@@ -249,26 +269,40 @@ def _variant_one(ctx: Context, ref: RefState, tol: ToleranceTable, v: VariantRec
     if st.valid is None:
         raise ToolFailure(f"validator unavailable for {v.variant_id}")
     (out / "structural.json").write_text(json.dumps(to_jsonable(st), indent=2) + "\n", encoding="utf-8")
+    s = strata.variant_stratum(v)
+    strata.check_identical_numerics(v)       # primary semantic mutants and controls: reference numerics only
     if not st.valid:
         k = classify(False, None, None, [], None)
-        return VariantOutcome(v, False, st.libneuroml_strict, "not_run", k, [], None, [], False, 0.0)
-    fp_h = build_fingerprint(ctx.rec, ws, v, ref.protocols, ref.canonical, ctx.nominal, 1, ctx.rcfg, ctx.settle)
-    save_fingerprint(fp_h, out / "fingerprint_L1.json")
+        return VariantOutcome(v, False, st.libneuroml_strict, "not_run", k, [], None, [], False, 0.0, stratum=s)
+    panel = ctx.primary_panel
+
+    def level(f: int) -> tuple[Fingerprint, list[Detection], list[Detection]]:
+        fp = build_fingerprint(ctx.rec, ws, v, ref.protocols, ref.canonical, ctx.nominal, f, ctx.rcfg, ctx.settle)
+        save_fingerprint(fp, out / f"fingerprint_L{f}.json")
+        prim, sec = strata.split_primary(compare(ref.fps[f], fp, tol) if fp.status is RunStatus.OK else [], panel)
+        return fp, prim, sec
+
+    fp_h, det_h, sec_h = level(1)
     runtime = fp_h.runtime_s
-    det_h = compare(ref.fps[1], fp_h, tol) if fp_h.status is RunStatus.OK else []
-    fp_h2 = det_h2 = None
-    if fp_h.status is RunStatus.OK and det_h:
-        fp_h2 = build_fingerprint(ctx.rec, ws, v, ref.protocols, ref.canonical, ctx.nominal, 2, ctx.rcfg, ctx.settle)
-        save_fingerprint(fp_h2, out / "fingerprint_L2.json")
+    fp_h2 = det_h2 = sec_h2 = None
+    # h/2 confirms reproducibility. It also runs when only secondary features detect (for their report) and for
+    # every numerical stress test (convergence workflow); neither can change the primary class, which uses the
+    # h/2 fingerprint only when the PRIMARY panel detected at h -- exactly the original rule.
+    if fp_h.status is RunStatus.OK and (det_h or sec_h or s == strata.NUMERICAL):
+        fp_h2, det_h2, sec_h2 = level(2)
         runtime += fp_h2.runtime_s
-        det_h2 = compare(ref.fps[2], fp_h2, tol) if fp_h2.status is RunStatus.OK else []
-    k = classify(True, fp_h, fp_h2, det_h, det_h2)
-    write_detections(det_h + (det_h2 or []), out / "detections.csv")
-    dprot = sorted(detecting_protocols(det_h, det_h2)) if k.admissible else []
+        if s == strata.NUMERICAL and fp_h2.status is RunStatus.OK and 4 in ref.fps:
+            runtime += level(4)[0].runtime_s
+    k = classify(True, fp_h, fp_h2 if det_h else None, det_h, det_h2 if det_h else None)
+    write_detections(det_h + ((det_h2 or []) if det_h else []), out / "detections.csv")
+    write_detections(sec_h + (sec_h2 or []), out / "detections_secondary.csv")
+    dprot = sorted(detecting_protocols(det_h, det_h2 if det_h else None)) if k.admissible else []
     split_fate = (fp_h.status is not RunStatus.OK and CANONICAL_ID in fp_h.tables
                   and bool(fp_h.tables[CANONICAL_ID]))
-    outcome = VariantOutcome(v, True, st.libneuroml_strict, fp_h.status.value, k, det_h, det_h2, dprot,
-                             any(d.protocol_id == CANONICAL_ID for d in det_h), round(runtime, 3), split_fate)
+    sec_keys = sorted(f"{p}:{f}" for p, f in reproducible_keys(sec_h, sec_h2))
+    outcome = VariantOutcome(v, True, st.libneuroml_strict, fp_h.status.value, k, det_h, det_h2 if det_h else None,
+                             dprot, any(d.protocol_id == CANONICAL_ID for d in det_h), round(runtime, 3), split_fate,
+                             stratum=s, secondary_h=sec_h, secondary_h2=sec_h2, secondary_reproducible=sec_keys)
     _write_diagnostic(ctx, outcome, fp_h, fp_h2, out / "diagnostic.md")
     return outcome
 
@@ -287,12 +321,34 @@ def load_variant_records(ctx: Context) -> list[VariantRecord]:
 
 
 # --------------------------------------------------------------------------- aggregation
+def _cascade(mutants: Sequence[VariantOutcome]) -> dict[str, int]:
+    return {
+        "total_mutants": len(mutants),
+        "schema_valid": sum(1 for o in mutants if o.structural_valid),
+        "executable": sum(1 for o in mutants if o.klass not in (MutantClass.STRUCTURALLY_INVALID, MutantClass.NON_EXECUTABLE)),
+        "numerically_stable": sum(1 for o in mutants if o.klass not in (MutantClass.STRUCTURALLY_INVALID,
+                                                                         MutantClass.NON_EXECUTABLE,
+                                                                         MutantClass.NUMERICALLY_UNSTABLE)),
+        "non_equivalent": sum(1 for o in mutants if o.klass.admissible),
+        "canonical_survivors_detected_elsewhere": sum(1 for o in mutants if o.klass is MutantClass.SILENT),
+        "equivalent_within_tested_domain": sum(1 for o in mutants if o.klass is MutantClass.EQUIVALENT),
+    }
+
+
+def _stratum(o: VariantOutcome) -> str:
+    return o.stratum or strata.variant_stratum(o.variant)
+
+
 def aggregate(ctx: Context, refs: dict[str, RefState], outcomes: Sequence[VariantOutcome]) -> dict[str, Any]:
+    """Write campaign tables. The primary tables (classification cascade, detection matrix, silent list)
+    cover the semantic stratum only; numerical stress tests and secondary features get their own files."""
     p = ctx.processed
     rows = []
     for o in outcomes:
         v = o.variant
         rows.append({"variant_id": v.variant_id, "model_id": v.model_id, "kind": v.kind.value, "family": v.family,
+                     "stratum": _stratum(o), "interpretation": strata.interpretation(_stratum(o), o.klass),
+                     "secondary_reproducible": ";".join(o.secondary_reproducible),
                      "operator": v.operator, "params": json.dumps(v.params, sort_keys=True), "class": o.klass.value,
                      "admissible": o.klass.admissible, "structural_valid": o.structural_valid,
                      "libneuroml_strict": o.libneuroml_strict, "status_h": o.status_h,
@@ -305,35 +361,58 @@ def aggregate(ctx: Context, refs: dict[str, RefState], outcomes: Sequence[Varian
                      "runtime_s": o.runtime_s})
     _write_rows(p / "classification.csv", rows)
     write_detections([d for o in outcomes for d in o.detections_h + (o.detections_h2 or [])], p / "detections.csv")
+    write_detections([d for o in outcomes for d in o.secondary_h + (o.secondary_h2 or [])],
+                     p / "detections_secondary.csv")
 
-    # Detection matrix over admissible MUTANTS; columns = canonical + battery + rheobase.
+    # Detection matrix over admissible PRIMARY SEMANTIC mutants; columns = canonical + battery + rheobase.
     first_ref = next(iter(refs.values()))
     protocol_ids = [CANONICAL_ID] + [q.protocol_id for q in first_ref.protocols] + [RHEOBASE_ID]
     cost = {pid: float(np.mean([r.fps[1].cell_steps.get(pid, 0) for r in refs.values()])) for pid in protocol_ids}
     from neurosem.selection.matrix import DetectionMatrix
 
-    adm = [o for o in outcomes if o.variant.kind is VariantKind.MUTANT and o.klass.admissible]
-    matrix = DetectionMatrix.from_detected_sets(
-        [o.variant.variant_id for o in adm], protocol_ids,
-        {o.variant.variant_id: set(o.detecting_protocols) for o in adm},
-        {o.variant.variant_id: o.variant.model_id for o in adm}, {o.variant.variant_id: o.variant.family for o in adm},
-        cost)
-    matrix.to_csv(p / "detection_matrix.csv")
+    def write_matrix(adm: Sequence[VariantOutcome], path: Path) -> None:
+        DetectionMatrix.from_detected_sets(
+            [o.variant.variant_id for o in adm], protocol_ids,
+            {o.variant.variant_id: set(o.detecting_protocols) for o in adm},
+            {o.variant.variant_id: o.variant.model_id for o in adm},
+            {o.variant.variant_id: o.variant.family for o in adm}, cost).to_csv(path)
+
+    write_matrix(strata.primary_admissible(outcomes), p / "detection_matrix.csv")
+    mutants_all = [o for o in outcomes if o.variant.kind is VariantKind.MUTANT]
+    numerical = [o for o in mutants_all if _stratum(o) == strata.NUMERICAL]
+    if any(o.klass.admissible for o in numerical):
+        write_matrix([o for o in numerical if o.klass.admissible], p / "detection_matrix_numerical_robustness.csv")
     _write_rows(p / "protocol_costs.csv", [{"protocol_id": k, "mean_cell_steps": v} for k, v in cost.items()])
 
-    mutants = [o for o in outcomes if o.variant.kind is VariantKind.MUTANT]
-    cascade = {
-        "total_mutants": len(mutants),
-        "schema_valid": sum(1 for o in mutants if o.structural_valid),
-        "executable": sum(1 for o in mutants if o.klass not in (MutantClass.STRUCTURALLY_INVALID, MutantClass.NON_EXECUTABLE)),
-        "numerically_stable": sum(1 for o in mutants if o.klass not in (MutantClass.STRUCTURALLY_INVALID,
-                                                                         MutantClass.NON_EXECUTABLE,
-                                                                         MutantClass.NUMERICALLY_UNSTABLE)),
-        "non_equivalent": sum(1 for o in mutants if o.klass.admissible),
-        "canonical_survivors_detected_elsewhere": sum(1 for o in mutants if o.klass is MutantClass.SILENT),
-        "equivalent_within_tested_domain": sum(1 for o in mutants if o.klass is MutantClass.EQUIVALENT),
-    }
+    mutants = [o for o in mutants_all if _stratum(o) == strata.SEMANTIC]
+    cascade = _cascade(mutants)
+    cascade_num = _cascade(numerical)
     (p / "validation_cascade.json").write_text(json.dumps(cascade, indent=2) + "\n", encoding="utf-8")
+    (p / "validation_cascade_numerical_robustness.json").write_text(json.dumps(cascade_num, indent=2) + "\n",
+                                                                     encoding="utf-8")
+
+    # Numerical robustness and convergence stress tests: deviation vs the reference's discretisation error.
+    nr_rows: list[dict] = []
+    for o in numerical:
+        vdir = p / "variants" / o.variant.variant_id
+        var_fps = {f: load_fingerprint(vdir / f"fingerprint_L{f}.json") for f in (1, 2, 4)
+                   if (vdir / f"fingerprint_L{f}.json").is_file()}
+        if var_fps:
+            nr_rows += strata.numerical_robustness_rows(refs[o.variant.model_id].fps, var_fps, o.variant,
+                                                        float(ctx.tcfg["c_refinement"]))
+    _write_rows(p / "numerical_robustness.csv", nr_rows)
+
+    # Secondary exploratory features: reported, never used to change a primary class (D-029).
+    sec_rows = [{"variant_id": o.variant.variant_id, "model_id": o.variant.model_id, "stratum": _stratum(o),
+                 "operator": o.variant.operator, "primary_class": o.klass.value, "primary_admissible": o.klass.admissible,
+                 "primary_detecting_protocols": ";".join(o.detecting_protocols),
+                 "secondary_reproducible": ";".join(o.secondary_reproducible),
+                 "secondary_features": ";".join(sorted({k.split(":", 1)[1] for k in o.secondary_reproducible})),
+                 "secondary_detects_primary_miss": o.klass is MutantClass.EQUIVALENT and bool(o.secondary_reproducible),
+                 "canonical_secondary_only": (CANONICAL_ID not in o.detecting_protocols and
+                                              any(k.startswith(CANONICAL_ID + ":") for k in o.secondary_reproducible))}
+                for o in mutants_all]
+    _write_rows(p / "secondary_feature_report.csv", sec_rows)
 
     transforms_ = [o for o in outcomes if o.variant.kind is not VariantKind.MUTANT]
     fp_rows = [{"variant_id": o.variant.variant_id, "model_id": o.variant.model_id, "kind": o.variant.kind.value,
@@ -344,15 +423,23 @@ def aggregate(ctx: Context, refs: dict[str, RefState], outcomes: Sequence[Varian
     _write_rows(p / "false_positives.csv", fp_rows)
 
     audit = [{"variant_id": o.variant.variant_id, "operator": o.variant.operator, "family": o.variant.family,
-              "edits": json.dumps([dc.asdict(e) for e in o.variant.edits]),
+              "stratum": _stratum(o), "edits": json.dumps([dc.asdict(e) for e in o.variant.edits]),
               "exec_overrides": json.dumps(o.variant.exec_overrides), "assigned_class": o.klass.value,
               "detecting_protocols": ";".join(o.detecting_protocols),
               "human_auditor": "", "edit_matches_label (yes/no)": "", "class_plausible (yes/no)": "", "notes": ""}
-             for o in mutants]
+             for o in mutants_all]
     _write_rows(p / "mutant_audit_sheet.csv", audit)
-    return {"cascade": cascade, "classes": Counter(o.klass.value for o in outcomes),
+    by_stratum: dict[str, Counter] = {}
+    for o in outcomes:
+        by_stratum.setdefault(_stratum(o), Counter())[o.klass.value] += 1
+    return {"cascade": cascade, "cascade_numerical_robustness": cascade_num,
+            "classes": Counter(o.klass.value for o in outcomes), "classes_by_stratum": by_stratum,
             "false_positives": sum(r["false_positive"] for r in fp_rows), "n_transforms": len(fp_rows),
-            "silent": [o.variant.variant_id for o in mutants if o.klass is MutantClass.SILENT]}
+            "silent": [o.variant.variant_id for o in mutants if o.klass is MutantClass.SILENT],
+            "numerical_missed_by_canonical": [o.variant.variant_id for o in numerical if o.klass is MutantClass.SILENT],
+            "secondary_primary_miss": [r["variant_id"] for r in sec_rows if r["secondary_detects_primary_miss"]],
+            "n_semantic_mutants": len(mutants), "n_numerical_mutants": len(numerical),
+            "n_numerical_robustness_rows": len(nr_rows)}
 
 
 def _write_rows(path: Path, rows: Sequence[dict], fieldnames: list[str] | None = None) -> None:

@@ -129,8 +129,14 @@ def analyze_campaign(campaign: str, n_boot: int = 2000, n_perm: int = 2000, draw
     seed = int(cfg["selection"]["seed"])
     draws = int(draws or min(int(cfg["selection"]["random_draws"]), 5000))
     proc, tables, figs = _paths(campaign)
+    from neurosem.experiments import strata
+
     cls = pd.read_csv(proc / "classification.csv")
-    mut = cls[cls["kind"] == "mutant"]
+    if "stratum" not in cls:                 # campaigns aggregated before the semantic/numerical split (D-030)
+        cls["stratum"] = [strata.stratum(k, "" if pd.isna(f) else str(f), "" if pd.isna(o) else str(o))
+                          for k, f, o in zip(cls["kind"], cls["family"], cls["operator"])]
+    # Primary tables and figures cover the semantic stratum only; numerical stress tests are analysed separately.
+    mut = cls[(cls["kind"] == "mutant") & (cls["stratum"] == strata.SEMANTIC)]
     summary: dict[str, Any] = {"campaign": campaign, "created_utc": utc_now(), "in_sample_note": __doc__.split("\n\n")[1],
                                "classes": dict(Counter(cls["class"]))}
     made: list[str] = []
@@ -139,8 +145,10 @@ def analyze_campaign(campaign: str, n_boot: int = 2000, n_perm: int = 2000, draw
     casc.to_csv(tables / "validation_cascade.csv", index=False)
     made += [str(p) for p in figures.fig2_validation_cascade(casc, figs / "fig2_validation_cascade", battery="exhaustive battery")]
 
-    m = DetectionMatrix.from_csv(proc / "detection_matrix.csv")
+    m_all = DetectionMatrix.from_csv(proc / "detection_matrix.csv")
+    m = m_all.take_rows([i for i, mid in enumerate(m_all.mutant_ids) if m_all.family_of[mid] in strata.SEMANTIC_FAMILIES])
     summary["n_admissible_mutants"] = m.n_mutants
+    summary["n_non_semantic_rows_excluded_from_primary_matrix"] = m_all.n_mutants - m.n_mutants
     if m.n_mutants:
         long = pd.DataFrame([{"mutant_id": mid, "model_id": m.model_of[mid], "family": m.family_of[mid], "protocol_id": pid,
                               "detected": bool(m.detected[i, j])}
@@ -195,7 +203,7 @@ def analyze_campaign(campaign: str, n_boot: int = 2000, n_perm: int = 2000, draw
                                                                     fp["model_id"].tolist())
         made += [str(p) for p in figures.fig6_false_positives(fp_cat, sens, figs / "fig6_false_positives")]
 
-    silent = cls[cls["class"] == MutantClass.SILENT.value]
+    silent = cls[(cls["class"] == MutantClass.SILENT.value) & (cls["stratum"] == strata.SEMANTIC)]
     cases = []
     for r in silent.head(3).itertuples():
         det = [p for p in str(r.detecting_protocols).split(";") if p and p != CANONICAL_ID]

@@ -1,5 +1,12 @@
 # Pilot (Milestone 6): what the data do and do not show
 
+> **Update (2026-09-13, D-030).** Numerical-setting mutations are now a separate robustness
+> experiment. Recounted over model-semantic edits only, Pilot 1 has **0 silent mutants**: the
+> canonical harness detected all 22 behaviour-changing semantic mutants, and the battery detected
+> 19 of them. The three "silent" mutants below are reclassified as numerical sensitivities, not
+> semantic drift. See `docs/pilot/numerical_reclassification.md`. The text below is kept as
+> originally written.
+
 *Campaign `pilot`, run 2026-09-13 17:11–18:55 UTC on commit `d323afa`. Two discovery models
 (Pospischil 2008 RS and LTS). Development-stage pilot, in-sample, **not a confirmatory result**.
 Automatic report: `results/processed/pilot/pilot_report.md`. Figures: `results/figures/pilot/`.

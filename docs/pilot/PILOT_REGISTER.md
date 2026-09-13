@@ -23,17 +23,17 @@ features; at least 3 mutation families; about 20-60 mutants; valid-transformatio
 | | `pilot` (iteration 1) | `pilot-v2` (iteration 2) |
 |---|---|---|
 | Role | exploratory_pilot | exploratory_pilot |
-| Status | complete; archived and sealed | **draft, not run** (N-14, N-15) |
+| Status | complete; archived, verified and sealed | **approved with modifications; not run** (N-14, N-15) |
 | Run | 2026-09-13 17:11-18:55 UTC | - |
 | Code | `d323afa` (tag `pilot-v1-code`) | - |
 | Configs (SHA-256) | study `d6371a7f…`, features `7397da03…`, tolerances `9ca05052…` | `configs/pilot_v2_draft/` |
-| Models | 2 (Pospischil 2008 RS, LTS; one source) | 4 proposed (RS, LTS, Wang-Buzsaki, NeuroML2 HH example; three sources) |
-| Protocols | 10: P01, P02, P03 rheobase, P04-P10 (plus canonical harness) | 7 proposed: P03-P09 (plus canonical harness) |
-| Features | 18 | 8 proposed |
-| Families | 3 (biophysical, reference, numerical) | 3 |
-| Mutants | 52 | about 44 proposed |
-| Controls | 16 (12 valid transformations, 4 no-change) | about 32 proposed |
-| Within bounds | **No**: protocols and features exceed them (D-028) | Yes, as drafted |
+| Models | 2 (Pospischil 2008 RS, LTS; one source) | 4: RS and LTS repeated; Wang-Buzsaki and NeuroML2 HH new |
+| Detection protocols | 10: P01, P02, P03 rheobase, P04-P10 (plus canonical comparator) | 7: P03-P09 (plus canonical comparator; reference rheobase is calibration) |
+| Features | 18, all deciding | 8 primary (deciding) plus 10 secondary (exploratory) = the same 18 |
+| Families | 3, all in the primary corpus | 2 semantic (primary) plus numerical as a separate stress test (D-030) |
+| Mutants | 52 (40 semantic, 12 numerical, per the D-030 reanalysis) | 32 semantic plus 12 numerical (dry run) |
+| Controls | 16 (12 valid transformations, 4 no-change) | 32 |
+| Within the feasibility guidelines | protocols and features exceed them (D-028); guidelines, not laws (D-029) | yes |
 
 ## Iteration 1 (`pilot`)
 
@@ -73,6 +73,14 @@ runs `work/smoke/`; logs `work/logs/`. The pilot logs are copied into
 
 **Scope deviation.** 10 protocols and 18 features exceed the bounds. The campaign is kept as
 iteration 1 and is not rerun or discarded (D-028).
+
+**Numerical reclassification (D-030).** Read-only reanalysis in
+`docs/pilot/numerical_reclassification.md` and `results/derived/pilot/`. It found 0 silent
+semantic mutants; the 3 silent mutants were numerical, 2 of them affected by the
+unequal-starting-step confound.
+
+**Archive.** `results/processed/pilot/ARCHIVE_README.md`. The local copy is verified; the second
+private copy is pending (N-16).
 
 ## Iteration 2 (`pilot-v2`)
 
