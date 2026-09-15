@@ -1,14 +1,19 @@
-# DRAFT: exploratory pilot iteration 2 (campaign `pilot-v2`). STATUS: approved with modifications
-# (DECISIONS N-14, N-15), NOT RUN. Design: docs/pilot/pilot_v2_design.md.
+# Neuraxis development pilot: executable settings of docs/PILOT_PROTOCOL_V1.md (campaign `pilot-v2`).
+# STATUS: fixed for PILOT_PROTOCOL_V1. Must agree with the protocol (tests/unit/test_pilot_protocol_v1.py).
 # Exploratory/developmental data (D-026): a second development iteration informed by Pilot 1, not
 # independent confirmation, and never used for the confirmatory estimate.
-# features.yaml, tolerances.yaml and agent_policy.yaml in this directory are unchanged copies.
+# features.yaml, tolerances.yaml and agent_policy.yaml in this directory are unchanged copies of configs/.
 # Differences from configs/study.yaml are marked "# v2".
-# Run only after Neel's go-ahead:
-#   NEUROSEM_CONFIG_DIR=configs/pilot_v2_draft neurosem pilot --campaign pilot-v2
+#   NEUROSEM_CONFIG_DIR=configs/pilot_protocol_v1 neurosem pilot --campaign pilot-v2
 
 study_id: neurosem
-status: draft_pilot_v2                 # v2
+status: fixed_pilot_protocol_v1        # v2
+
+study_metadata:                        # v2: stamped on every run record, table, report and figure
+  project_name: Neuraxis
+  study_phase: development_pilot
+  protocol_version: PILOT_PROTOCOL_V1
+  designation: "Development study informed by Pilot 1; exploratory; not independent confirmation; never pooled with the confirmatory held-out estimate"
 
 simulator: jneuroml
 
@@ -74,6 +79,8 @@ paths:
 
 pilot:
   models: [pospischil2008_rs, pospischil2008_lts, wangbuzsaki1996_wb, nml2_hh_example]   # v2
+  repeated_models: [pospischil2008_rs, pospischil2008_lts]    # v2: used in Pilot 1 (reported separately)
+  new_models: [wangbuzsaki1996_wb, nml2_hh_example]           # v2: independent sources new to Pilot 2
   # biophysical + reference = primary semantic stratum; numerical = separate robustness stress tests (N-15, D-030)
   mutation_families: [biophysical, reference, numerical]
   exclude_operators: [wrong_segment_group]   # v2: inert on single-compartment cells (Pilot 1: 4 of 4 equivalent)

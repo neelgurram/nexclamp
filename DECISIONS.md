@@ -209,7 +209,7 @@ Neel: "Do not discard pilot data. Preserve all pilot configurations, raw outputs
 - **What exceeded the bounds.** Campaign `pilot` used 10 protocols (bound 4-8) and 18 features (bound 3-8). Its 2 models, 3 families, 52 mutants and 16 controls are within the bounds.
 - **Relation to D-024.** This replaces D-024's rationale as the governing scope rule.
 - **What happens to iteration 1.** It is not rerun, trimmed or discarded. It is reported as exploratory iteration 1, with the deviation stated.
-- **Iteration 2.** `docs/pilot/pilot_v2_design.md` and `configs/pilot_v2_draft/` propose:
+- **Iteration 2.** `docs/pilot/pilot_v2_design.md` and `configs/pilot_protocol_v1/` propose:
   - 4 models from three sources;
   - 7 protocols;
   - 8 features;
@@ -265,6 +265,67 @@ Neel: "Do not discard pilot data. Preserve all pilot configurations, raw outputs
 - **Redundancy in Pilot 1.** P03, P04, P06, P07, P08 and P09 detections were all subsets of P05's. They are kept for Pilot 2 on mechanistic grounds and reassessed before the freeze.
 - **Consequence of D-030.** The primary semantic corpus now has 2 families. Held-out generalisation to an unseen semantic family needs a third family, or a revised aim.
 
+**D-033 Project name Neuraxis; study labels on every record** (Neel, 2026-09-14; fixed)
+- **Name.** The project is Neuraxis. Every data record of the development pilot carries `project_name = "Neuraxis"`, `study_phase = "development_pilot"`, `protocol_version = "PILOT_PROTOCOL_V1"` and a designation string ("development study informed by Pilot 1; exploratory").
+- **Where the labels go:**
+  - `run.json` and rheobase records (with `config_sha256`);
+  - classification and all other campaign tables (leading columns);
+  - `detections*.csv`;
+  - cascade and generation JSON;
+  - `STUDY_METADATA.json`;
+  - reports and diagnostics;
+  - every figure (footer);
+  - every prespecified output table.
+- **What still lacks inline labels.** Machine-format files with fixed parsers (`detection_matrix*.csv`, `tolerances.csv`, fingerprint JSON) carry the label through the campaign's `STUDY_METADATA.json`, not inline.
+- **Package name.** The package is still `neurosem`; a rename is a separate mechanical change.
+- **Not yet done.** No name-conflict search has been run for "Neuraxis" (N-10).
+
+**D-034 Replacement archival plan; OSF is an optional later mirror** (Neel, 2026-09-14; fixed)
+- **Pre-run steps, in order:**
+  1. `docs/PILOT_PROTOCOL_V1.md` (written protocol) and `configs/pilot_protocol_v1/` (executable settings), with agreement enforced by `tests/unit/test_pilot_protocol_v1.py`;
+  2. `manifests/pilot_pre_run_sha256.txt` (`scripts/pre_run_manifest.py`);
+  3. a commit pushed to a private GitHub remote, with the push record in `manifests/pilot_pre_run_push_record.json`;
+  4. a compressed pre-run package (`scripts/pre_run_package.py`; no model files or secrets; hash in `manifests/pilot_pre_run_package.json`).
+- **Raw output.** Never overwritten (write-once, content-addressed run IDs, with timestamp, configuration hash, model tree hash and commit per run).
+- **OSF.** OSF failure does not change the scientific design. An after-the-fact OSF upload is never presented as a preregistration completed before data collection.
+- **At publication:**
+  - public GitHub release and `CITATION.cff`;
+  - licence verification;
+  - Zenodo archive with the version DOI recorded;
+  - raw data preserved separately if too large.
+
+**D-035 Fixed pilot matrix, readiness gate, retry policy, stopping rule** (Neel, 2026-09-14; fixed)
+- **What governs.** `docs/PILOT_PROTOCOL_V1.md` sections 8-10 govern Pilot 2.
+- **No additions.** No protocols, mutants, models or repetitions are added because time remains.
+- **Retries.** Only after infrastructure or toolchain aborts, at most 2, same commit and config. Model-attributable outcomes are never retried.
+- **Frozen during a batch.** Thresholds, exclusions and definitions do not change during a batch. Proposals go to `docs/pilot/PILOT_PROTOCOL_V1_DEVIATIONS.md`.
+- **Pre-run deviation.** The run commit is not `633482d`: labelling and scripts were added before the run, with no design change.
+
+**D-036 Formal preregistration through AsPredicted before any held-out run** (Neel, 2026-09-14; fixed)
+- **Draft.** After the pilot is reviewed, `docs/CONFIRMATORY_PREREGISTRATION_DRAFT.md` is prepared in AsPredicted format. It covers every item Neel listed, including disclosure of the pilot data already collected and confirmation that held-out outcomes were not inspected.
+- **Hard stop.** No held-out data run until Neel writes exactly: "THE ASPREDICTED PREREGISTRATION HAS BEEN SUBMITTED AND VERIFIED. BEGIN THE FROZEN HELD-OUT EVALUATION."
+- **Records.** Neel provides the time-stamped PDF and the verification URL.
+
+**D-037 Third model-mutation family: ion-channel kinetics** (Neel, N-17; decided, not implemented)
+- **Taxonomy, set prospectively:**
+  1. static membrane/biophysical parameter mutations;
+  2. ion-channel kinetics mutations (activation/inactivation midpoint shifts, gating-slope changes, gating time-constant scaling, voltage-dependence changes);
+  3. reference or mechanism-composition mutations.
+- **Operator requirements.** Every operator makes one documented change, preserves units and dimensions, yields schema-valid and executable models where intended, has immutable provenance, leaves stimulus, solver and time step unchanged, and is manually inspected on representative examples.
+- **Correctness testing.** Allowed on sacrificial development fixtures.
+- **Selection exclusion.** Its detection matrix is never used to select the final battery. It is labelled "excluded from protocol selection", not "completely unseen by the researchers".
+- **Reclassification.** `scale_gate_time_constant` (currently biophysical) moves to family 2 when the taxonomy is implemented.
+- **Timing.** Implemented after Pilot 2 and before the final freeze; not part of Pilot 2.
+
+**D-038 Pilot 1 is reported only in its corrected form** (Neel, 2026-09-14; fixed)
+- **The corrected facts:**
+  - 22 real model edits;
+  - canonical detected all 22;
+  - battery detected 19;
+  - no hidden semantic drift;
+  - the three previously silent cases were numerical stress cases.
+- **Where the original interpretation may not appear.** `docs/pilot/pilot_interpretation.md` (numerical-only silent cases counted as meeting criterion 1) is not used in any abstract, figure, introduction or publication claim. It stays in the repository only as a historical record, marked superseded.
+
 ## Models and licensing
 
 **D-017 Pilot fixtures: Pospischil 2008 RS and LTS** (provisional)
@@ -280,7 +341,7 @@ Model files keep their own licenses: MIT, or LGPL-3.0 for the NeuroML2 HH exampl
 
 | id | decision | Claude's provisional choice / recommendation |
 |---|---|---|
-| N-01 | Create a GitHub repository (private now, public at release)? | none created |
+| N-01 | Create a GitHub repository (private now, public at release)? | **Decided 2026-09-14: private GitHub remote for the pre-run commit** (D-034); public only at release |
 | N-02 | Discovery / held-out model split and held-out mutation family | pilot models listed as discovery only; no held-out assignment |
 | N-03 | Final tolerance constants (`configs/tolerances.yaml`) after reviewing `tolerances.csv` from the pilot | starting floors, c = 3 |
 | N-04 | Pilot decision thresholds (at most 25% of features excluded; at most 10% false positives) | provisional values in `experiments/pilot.py` |
@@ -293,7 +354,7 @@ Model files keep their own licenses: MIT, or LGPL-3.0 for the NeuroML2 HH exampl
 | N-13 | **Milestone 6 decision.** The pilot met all three formal criteria, but its only silent mutants are numerical-configuration changes (two explained largely by the harness/battery base-step asymmetry). The canonical harness caught every behaviour-changing biophysical and reference edit on the two correlated pilot models. Choose: a second design-frozen pilot on independent models; reframe as an evaluation of existing validation adequacy; or continue as specified | Recommend option 1 or 2 in `docs/pilot/pilot_interpretation.md`, not continuing on the numerical silent mutants. **Update:** Neel's direction (D-026) sets the path: bounded exploratory pilot iterations, then freeze, then one held-out study. Option 1 is taken up as iteration 2 (N-14). Whether the paper leads with silent drift or with validation adequacy stays open until the pilot phase ends. |
 | N-14 | Pilot 2 design | **Decided 2026-09-13: approved with modifications** (D-029, D-032). Revised design in `docs/pilot/pilot_v2_design.md`. **Execution awaits Neel's go-ahead.** |
 | N-15 | Time-step mutation | **Decided: removed from the primary semantic corpus; retained as a separate numerical robustness experiment** (D-030). Implemented and tested. |
-| N-16 | Pilot archive storage | **Decided: private redundant storage now; Zenodo at public release** (D-031). Local copy verified. **Open: location of the second private copy.** OneDrive on this PC is signed in as an account not known to be Neel's; an OSF project needs Neel's login. Nothing uploaded. |
-| N-17 | The primary semantic corpus has 2 families (biophysical, reference) after D-030. Add a third semantic mutation family (for example, kinetic-scheme or morphology edits) before the freeze, or revise the "unseen mutation family" aim | none; needed before preregistration |
+| N-16 | Pilot archive storage | **Decided: private redundant storage now; Zenodo at public release** (D-031). Local copy verified. **Update 2026-09-14:** OSF unavailable; OSF is now an optional later mirror, and the pilot proceeds (D-034). An OSF upload package is staged in `archive/pilot/osf_upload/`. **Still open:** a second independent copy of the 1.92 GB Pilot 1 archive (not blocking). |
+| N-17 | Third model-mutation family | **Decided: ion-channel kinetics** (D-037); to be implemented after Pilot 2 and before the freeze |
 | N-12 | Where the hidden agent-study evaluators live permanently (separate private repository, encrypted archive, or offline), and whether Neel revises them independently, given they were written by the assistant that built NeuroSem | local only, Git-ignored, hashes committed |
-| N-10 | Project name. The audit (`docs/m0_evidence/names/`, independently re-checked) found: no PyPI, conda-forge or GitHub-account conflict, but a 2025 CMAME article with an arXiv preprint and code named "NeuroSEM" (a computational simulation framework); an active GPL-3.0 GitHub project spelled "NeuroSem" in neuroscience and language models; the neuromarketing company NeuroSEM holding neurosem.com since 2013; and heavy overloading of "SEM" in neuroscience | **Recommend renaming before any public release.** Preferred: **PerturbPrint** (package/CLI `perturbprint`); it matches the defined term "perturbation fingerprint" and had zero hits in every source that answered (Zenodo, EUIPO and some rate-limited indexes could not be checked). `docs/NAME_CONFLICT_AUDIT.md` recommends deciding before preregistration and the frozen study, whose raw results are immutable. Runner-up: DriftClamp. Not legal clearance; re-check registries before release. Code keeps the working name `neurosem` until Neel decides (a rename is a mechanical refactor). |
+| N-10 | Project name. The audit (`docs/m0_evidence/names/`, independently re-checked) found: no PyPI, conda-forge or GitHub-account conflict, but a 2025 CMAME article with an arXiv preprint and code named "NeuroSEM" (a computational simulation framework); an active GPL-3.0 GitHub project spelled "NeuroSem" in neuroscience and language models; the neuromarketing company NeuroSEM holding neurosem.com since 2013; and heavy overloading of "SEM" in neuroscience | **Update 2026-09-14: Neel named the project Neuraxis** (D-033). A name-conflict search for "Neuraxis" is still needed before any public release. Earlier recommendation: **PerturbPrint** (package/CLI `perturbprint`); it matches the defined term "perturbation fingerprint" and had zero hits in every source that answered (Zenodo, EUIPO and some rate-limited indexes could not be checked). `docs/NAME_CONFLICT_AUDIT.md` recommends deciding before preregistration and the frozen study, whose raw results are immutable. Runner-up: DriftClamp. Not legal clearance; re-check registries before release. Code keeps the working name `neurosem` until Neel decides (a rename is a mechanical refactor). |

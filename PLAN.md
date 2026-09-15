@@ -207,20 +207,20 @@ The handoff's initial prompt also asks for `PLAN.md`, `REQUIREMENTS.md`, `PRIOR_
   - Outcome: `docs/pilot/pilot_interpretation.md`.
   - Preserved and sealed (D-027).
 - **Iteration 2 (`pilot-v2`).**
-  - Draft in `docs/pilot/pilot_v2_design.md` and `configs/pilot_v2_draft/`.
+  - Draft in `docs/pilot/pilot_v2_design.md` and `configs/pilot_protocol_v1/`.
   - Scope:
     - 4 models (2 repeated, 2 new);
     - 7 detection protocols plus the canonical comparator and the rheobase calibration;
     - 8 primary features plus 10 secondary;
     - 32 primary semantic mutants and 12 numerical stress tests;
     - 32 controls.
-  - Not run.
-  - Numerical mutants are a separate stratum (D-030). Pilot 1's time-step results are reclassified in `docs/pilot/numerical_reclassification.md`.
+  - Governed by `docs/PILOT_PROTOCOL_V1.md` (Neuraxis development pilot; D-033 to D-035). Authorised 2026-09-14 after the technical readiness gate.
+  - Numerical mutants are a separate stratum (D-030). Pilot 1's time-step results are reclassified in `docs/pilot/numerical_reclassification.md`; Pilot 1 is reported only in corrected form (D-038).
 
 **Next actions.**
-1. Neel gives the go-ahead for `pilot-v2`, and chooses the second archive location (N-16).
-2. Run `pilot-v2` on a clean commit, then seal, archive and verify it.
-3. Before the freeze, resolve N-17 (a third semantic family) and reassess redundant protocols with both pilots' data.
+1. Pre-run steps (D-034): protocol, manifest, private push, pre-run package; then the readiness gate.
+2. Run the fixed `pilot-v2` matrix; run the reproducibility check and prespecified outputs; seal, archive, verify; stop for Neel.
+3. Before the freeze, implement the ion-channel kinetics family (D-037), reassess redundant protocols with both pilots' data, and draft `docs/CONFIRMATORY_PREREGISTRATION_DRAFT.md` for AsPredicted (D-036).
 3. Further iterations are allowed while the pilot phase lasts. Each gets a new campaign name and is reported.
 4. Neel ends the pilot phase. Then the post-pilot freeze sequence below starts.
 5. Keep valid transformations in the false-positive denominator whatever the battery says about them (P-06).

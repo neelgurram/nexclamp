@@ -229,6 +229,10 @@ class RunRecord:
     git_dirty: bool
     replicate: int = 0
     message: str = ""
+    project_name: str = ""         # study metadata from the campaign config (empty for records made before it existed)
+    study_phase: str = ""          # e.g. "development_pilot"
+    protocol_version: str = ""     # e.g. "PILOT_PROTOCOL_V1"
+    config_sha256: str = ""        # hash of the study, feature and tolerance config files used
 
 
 def to_jsonable(obj: Any) -> Any:

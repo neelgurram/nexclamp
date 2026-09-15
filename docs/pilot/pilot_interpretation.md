@@ -1,5 +1,10 @@
 # Pilot (Milestone 6): what the data do and do not show
 
+> **SUPERSEDED (D-038). Historical record only.** Do not use this interpretation in any abstract,
+> figure, introduction or publication claim. Corrected Pilot 1 facts: 22 real model edits; the
+> canonical test detected all 22; the battery detected 19; no hidden semantic drift; the three
+> previously silent cases were numerical stress cases.
+>
 > **Update (2026-09-13, D-030).** Numerical-setting mutations are now a separate robustness
 > experiment. Recounted over model-semantic edits only, Pilot 1 has **0 silent mutants**: the
 > canonical harness detected all 22 behaviour-changing semantic mutants, and the battery detected

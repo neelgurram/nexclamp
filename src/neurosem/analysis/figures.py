@@ -34,6 +34,14 @@ from matplotlib.ticker import MaxNLocator
 
 from neurosem.analysis.metrics import as_binary, as_label
 
+_DESIGNATION = ""
+
+
+def set_designation(text: str) -> None:
+    """Footer printed on every figure saved afterwards (study phase, protocol version); empty = none."""
+    global _DESIGNATION
+    _DESIGNATION = text or ""
+
 OKABE_ITO = {
     "black": "#000000",
     "orange": "#E69F00",
@@ -139,6 +147,8 @@ def _save(fig: Figure, out_path: Path | str) -> list[Path]:
     out.parent.mkdir(parents=True, exist_ok=True)
     png = out.parent / f"{out.name}.png"
     pdf = out.parent / f"{out.name}.pdf"
+    if _DESIGNATION:
+        fig.text(0.005, 0.002, textwrap.fill(_DESIGNATION, 180), fontsize=5, ha="left", va="bottom", color="#555555")
     fig.savefig(png, dpi=300)
     fig.savefig(pdf, metadata={"CreationDate": None})
     return [png, pdf]

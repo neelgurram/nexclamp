@@ -1,7 +1,7 @@
 # Pilot 2 (`pilot-v2`): design
 
 *Status: APPROVED WITH MODIFICATIONS by Neel (N-14, N-15); revised as requested; **not run**.
-Awaiting Neel's go-ahead to execute. Configuration: `configs/pilot_v2_draft/study.yaml`.*
+Awaiting Neel's go-ahead to execute. Configuration: `configs/pilot_protocol_v1/study.yaml`.*
 
 *Pilot 2 is a **second development iteration**. Its design was informed by Pilot 1, so it is not
 independent confirmation. Its purpose is to test whether Pilot 1's choices hold up on new cell
@@ -218,7 +218,7 @@ be recorded.
 ## 10. How it will run (only after Neel's go-ahead)
 
 ```bash
-NEUROSEM_CONFIG_DIR=configs/pilot_v2_draft .venv/Scripts/python -m neurosem.cli pilot --campaign pilot-v2
+NEUROSEM_CONFIG_DIR=configs/pilot_protocol_v1 .venv/Scripts/python -m neurosem.cli pilot --campaign pilot-v2
 ```
 
 It must run on a clean commit. When finished, it is sealed with `scripts/archive_campaign.py`,

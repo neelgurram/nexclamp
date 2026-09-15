@@ -47,8 +47,23 @@ def write_report(ctx, refs, tol, outcomes, summary, seed) -> Path:
     crit1 = len(silent) >= 1
     crit2 = all(determinism.values()) and (len(excluded) / n < 0.25 if n else False)
     crit3 = nt > 0 and fp / nt <= 0.1
-    lines = [
-        f"# Pilot report: campaign `{ctx.campaign}`", "",
+    from neurosem import config
+    from neurosem.provenance import git_state
+
+    meta = ctx.meta
+    commit, dirty = git_state()
+    lines = [f"# Pilot report: campaign `{ctx.campaign}`", ""]
+    if meta:
+        lines += [
+            f"- project: **{meta.get('project_name', '')}**; study phase: **{meta.get('study_phase', '')}**; protocol "
+            f"version: **{meta.get('protocol_version', '')}**",
+            f"- designation: {meta.get('designation', '')}",
+            "- findings in this report: **all exploratory; none confirmatory**",
+            f"- analyses specified before the data were generated: yes, in `docs/{meta.get('protocol_version', '')}.md`",
+            f"- software commit at report time: `{commit}` (tree dirty: {dirty}); per-run commits are in each `run.json`",
+            "- deviations: see `docs/pilot/PILOT_PROTOCOL_V1_DEVIATIONS.md`",
+            f"- config set SHA-256: `{config.config_set_sha256()}`", ""]
+    lines += [
         "**EXPLORATORY / DEVELOPMENTAL DATA.** Never pooled with the held-out data for the primary confirmatory "
         "estimate (DECISIONS D-026).", "",
         "*Generated automatically from `results/processed/{0}/`. Development-stage pilot; "

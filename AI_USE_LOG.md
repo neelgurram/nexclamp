@@ -172,3 +172,23 @@ Scope that was dropped is recorded openly: 144 second-round candidates at estima
 - It did not run Pilot 2 or any simulation.
 - It uploaded no data. The second backup location was asked and dismissed, so it stays pending.
 - It accessed no held-out data.
+
+---
+
+## Entry 005: Neuraxis development pilot (PILOT_PROTOCOL_V1)
+
+| Field | Value |
+|---|---|
+| Date | 2026-09-14/15 |
+| Human instruction | Neel's replacement archival plan and authorisation of the development/pilot phase (DECISIONS D-033 to D-038) |
+| Tool / model | Claude Code desktop, Claude Opus 5 (`claude-opus-5`), main session only |
+
+**What the AI did**
+- Wrote the pilot protocol, deviation log, labelling code, prespecified output and reproducibility scripts, the pre-run manifest and package scripts, and their tests.
+- Created a private GitHub repository under the logged-in account and pushed the pre-run commit, as instructed.
+- Ran the technical readiness gate and the fixed pilot matrix. These runs are recorded in `manifests/` and `results/processed/pilot-v2/`.
+
+**What the AI did not do**
+- It did not change the design during the run.
+- It accessed no held-out data.
+- It made no public release or OSF upload.

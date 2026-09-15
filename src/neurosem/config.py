@@ -9,7 +9,7 @@ from typing import Any
 
 import yaml
 
-from neurosem.provenance import REPO_ROOT, sha256_file
+from neurosem.provenance import REPO_ROOT, sha256_file, sha256_json
 from neurosem.schemas import ExecConfig
 
 CONFIG_DIR = REPO_ROOT / "configs"
@@ -67,6 +67,25 @@ def tolerances() -> LoadedConfig:
 
 def agent_policy() -> LoadedConfig:
     return load_yaml(config_dir() / "agent_policy.yaml")
+
+
+STUDY_METADATA_KEYS = ("project_name", "study_phase", "protocol_version", "designation")
+
+
+def study_metadata(cfg: LoadedConfig | None = None) -> dict[str, str]:
+    """Labels stamped on every run record, table, report and figure (``study_metadata`` in study.yaml)."""
+    cfg = cfg or study()
+    m = cfg.get("study_metadata") or {}
+    return {k: str(m[k]) for k in STUDY_METADATA_KEYS if m.get(k) not in (None, "")}
+
+
+def designation_text(cfg: LoadedConfig | None = None) -> str:
+    return " | ".join(f"{k}: {v}" for k, v in study_metadata(cfg).items())
+
+
+def config_set_sha256() -> str:
+    """One hash for the study, feature and tolerance config files currently in use."""
+    return sha256_json({c.path.name: c.sha256 for c in (study(), features(), tolerances())})
 
 
 def nominal_exec(cfg: LoadedConfig | None = None) -> ExecConfig:

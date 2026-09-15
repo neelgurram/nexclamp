@@ -231,10 +231,12 @@ def load_fingerprint(path: Path) -> Fingerprint:
 DETECTION_COLUMNS = [f.name for f in dc.fields(Detection)]
 
 
-def write_detections(dets: Sequence[Detection], path: Path) -> None:
+def write_detections(dets: Sequence[Detection], path: Path, extra: dict[str, str] | None = None) -> None:
+    """Detections CSV; ``extra`` adds constant leading columns (study metadata)."""
+    extra = dict(extra or {})
     path.parent.mkdir(parents=True, exist_ok=True)
     with open(path, "w", newline="", encoding="utf-8") as f:
-        w = csv.DictWriter(f, fieldnames=DETECTION_COLUMNS, lineterminator="\n")
+        w = csv.DictWriter(f, fieldnames=[*extra, *DETECTION_COLUMNS], lineterminator="\n")
         w.writeheader()
         for d in dets:
-            w.writerow({k: ("" if v is None else v) for k, v in dc.asdict(d).items()})
+            w.writerow({**extra, **{k: ("" if v is None else v) for k, v in dc.asdict(d).items()}})

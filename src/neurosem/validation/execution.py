@@ -136,6 +136,8 @@ class RunRecorder:
         self.runs = (work_root or config.work_dir()) / "runs" / campaign
         self.features_cfg = features_cfg if features_cfg is not None else config.features().data
         study = config.study()
+        self.meta = config.study_metadata(study)
+        self.config_sha256 = config.config_set_sha256()
         self.timeout_s = timeout_s or float(study["numerics"]["timeout_s"])
         self.store_traces = store_traces
         self._locks: dict[str, threading.Lock] = {}
@@ -269,7 +271,9 @@ class RunRecorder:
             simulator=self.sim.name, simulator_version=self.sim.version_string(), environment_digest=digest,
             status=status.value, runtime_s=round(result.runtime_s, 3), trace_path=trace_path, trace_sha256=trace_sha,
             feature_path=feature_path, feature_sha256=feature_sha, timestamp_utc=utc_now(), git_commit=commit,
-            git_dirty=dirty, replicate=replicate, message=message[:2000])
+            git_dirty=dirty, replicate=replicate, message=message[:2000],
+            project_name=self.meta.get("project_name", ""), study_phase=self.meta.get("study_phase", ""),
+            protocol_version=self.meta.get("protocol_version", ""), config_sha256=self.config_sha256)
         if prior_rec is None:
             write_immutable_text(run_dir / "run.json", dumps(rec))
             if result.output_tail:
@@ -373,7 +377,8 @@ class RunRecorder:
                       "runtime_s": round(sum(c["runtime_s"] for c in cost), 3), "exec": dc.asdict(exec_eff),
                       "config": dict(rcfg), "settle_ms": settle_ms, "inputs_sha256": sha256_json(payload["inputs"]),
                       "simulator_version": self.sim.version_string(), "environment_digest": digest,
-                      "timestamp_utc": utc_now(), "git_commit": commit, "git_dirty": dirty}
+                      "timestamp_utc": utc_now(), "git_commit": commit, "git_dirty": dirty,
+                      "config_sha256": self.config_sha256, **self.meta}
             write_immutable_text(out_path, json.dumps(record, indent=2, sort_keys=True) + "\n")
             self._discard(stage, search_id, failed=status is not RunStatus.OK)
             return RheobaseOutcome(res, status, search_id, record, False)

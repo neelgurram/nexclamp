@@ -23,10 +23,11 @@ features; at least 3 mutation families; about 20-60 mutants; valid-transformatio
 | | `pilot` (iteration 1) | `pilot-v2` (iteration 2) |
 |---|---|---|
 | Role | exploratory_pilot | exploratory_pilot |
-| Status | complete; archived, verified and sealed | **approved with modifications; not run** (N-14, N-15) |
+| Status | complete; archived, verified and sealed | **governed by `docs/PILOT_PROTOCOL_V1.md`; authorised after the readiness gate** (D-033 to D-035) |
+| Project / phase labels | none (made before labels existed); reported only in corrected form (D-038) | `Neuraxis` / `development_pilot` / `PILOT_PROTOCOL_V1` on every record |
 | Run | 2026-09-13 17:11-18:55 UTC | - |
 | Code | `d323afa` (tag `pilot-v1-code`) | - |
-| Configs (SHA-256) | study `d6371a7f…`, features `7397da03…`, tolerances `9ca05052…` | `configs/pilot_v2_draft/` |
+| Configs (SHA-256) | study `d6371a7f…`, features `7397da03…`, tolerances `9ca05052…` | `configs/pilot_protocol_v1/` |
 | Models | 2 (Pospischil 2008 RS, LTS; one source) | 4: RS and LTS repeated; Wang-Buzsaki and NeuroML2 HH new |
 | Detection protocols | 10: P01, P02, P03 rheobase, P04-P10 (plus canonical comparator) | 7: P03-P09 (plus canonical comparator; reference rheobase is calibration) |
 | Features | 18, all deciding | 8 primary (deciding) plus 10 secondary (exploratory) = the same 18 |

@@ -6,6 +6,19 @@ Versioning from the first tagged release. Decisions referenced as D-xxx are in `
 
 ## [Unreleased]
 
+### Neuraxis PILOT_PROTOCOL_V1 pre-run preparation (2026-09-14/15)
+
+#### Added
+- `docs/PILOT_PROTOCOL_V1.md` (written protocol with an executable-settings block) and `tests/unit/test_pilot_protocol_v1.py` (protocol-config agreement).
+- `docs/pilot/PILOT_PROTOCOL_V1_DEVIATIONS.md`.
+- Study labels: `study_metadata` config block; `project_name`, `study_phase`, `protocol_version` and `config_sha256` in `run.json` and rheobase records; metadata columns in campaign tables and detections; `STUDY_METADATA.json`; labelled reports, diagnostics and figure footers.
+- `experiments/pilot_outputs.py` and `scripts/pilot_outputs.py` (prespecified outputs 2-11), `scripts/reproducibility_check.py`, `scripts/pre_run_manifest.py`, `scripts/pre_run_package.py`; `tests/unit/test_pilot_outputs.py`.
+- D-033 to D-038.
+
+#### Changed
+- `configs/pilot_v2_draft/` renamed to `configs/pilot_protocol_v1/`, with `study_metadata` and repeated/new model lists added. No design value changed.
+- `docs/pilot/pilot_interpretation.md` marked superseded (D-038).
+
 ### Pilot 2 revision: feature panels, numerical stratum, archive verification (2026-09-13)
 
 #### Added

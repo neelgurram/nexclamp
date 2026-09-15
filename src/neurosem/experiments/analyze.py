@@ -126,6 +126,7 @@ def analyze_campaign(campaign: str, n_boot: int = 2000, n_perm: int = 2000, draw
     from neurosem.selection.matrix import DetectionMatrix
 
     cfg = config.study()
+    figures.set_designation(config.designation_text(cfg))
     seed = int(cfg["selection"]["seed"])
     draws = int(draws or min(int(cfg["selection"]["random_draws"]), 5000))
     proc, tables, figs = _paths(campaign)

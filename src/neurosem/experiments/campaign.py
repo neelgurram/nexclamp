@@ -74,6 +74,11 @@ class Context:
         return tuple(dict.fromkeys([*(c.get("features") or CANONICAL_FEATURES), *(c.get("secondary_features") or ())]))
 
     @property
+    def meta(self) -> dict[str, str]:
+        """Study metadata stamped on every table, report and run record (empty if not configured)."""
+        return config.study_metadata(self.cfg)
+
+    @property
     def primary_panel(self) -> dict[str, frozenset[str]]:
         """protocol_id -> primary features. Only these decide classifications (D-029)."""
         c = self.cfg.get("canonical") or {}
@@ -101,7 +106,7 @@ def make_context(campaign: str, workers: int | None = None, role: str = registry
         raise ToolFailure("Java/jNeuroML unavailable: run scripts/bootstrap_java.py")
     fcfg, tcfg = config.features(), config.tolerances()
     processed = results / "processed" / campaign
-    snap = {"campaign": campaign, "role": role, "created_utc": utc_now(),
+    snap = {"campaign": campaign, "role": role, "created_utc": utc_now(), "study_metadata": config.study_metadata(cfg),
             "configs": {p.path.name: p.sha256 for p in (cfg, fcfg, tcfg)}, "simulator": sim.version_info()}
     registry.check_config_snapshot(processed, snap)
     processed.mkdir(parents=True, exist_ok=True)
@@ -110,6 +115,14 @@ def make_context(campaign: str, workers: int | None = None, role: str = registry
     snap_file = processed / "campaign_configs.json"
     if not snap_file.is_file():
         snap_file.write_text(json.dumps(snap, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    meta = config.study_metadata(cfg)
+    if meta:
+        md_file = processed / "STUDY_METADATA.json"
+        md = {**meta, "campaign": campaign, "campaign_role": role, "config_set_sha256": config.config_set_sha256()}
+        if md_file.is_file() and json.loads(md_file.read_text(encoding="utf-8")) != md:
+            raise registry.CampaignError(f"study metadata of campaign {campaign!r} changed ({md_file}); "
+                                         "start a new campaign name")
+        md_file.write_text(json.dumps(md, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     return Context(campaign, cfg, fcfg.data, tcfg.data, sim, RunRecorder(campaign, sim, features_cfg=fcfg.data),
                    workers or int(cfg["execution"]["workers"]), processed,
                    config.work_dir(cfg) / "variants" / campaign)
@@ -204,7 +217,7 @@ def calibrate_stage(ctx: Context, refs: dict[str, RefState]) -> ToleranceTable:
         report += convergence_report(ref.fps)
     table = ToleranceTable(entries)
     table.to_csv(ctx.processed / "tolerances.csv")
-    _write_rows(ctx.processed / "convergence.csv", report)
+    _write_table(ctx.meta, ctx.processed / "convergence.csv", report)
     return table
 
 
@@ -218,7 +231,8 @@ def generate_stage(ctx: Context, refs: dict[str, RefState], families: Sequence[s
     tr_ops = list(transforms.REGISTRY)
     (ctx.processed / "generation.json").write_text(json.dumps(
         {"families": list(families), "operators": mut_ops, "excluded_operators": excluded, "n_per_operator": n_mutants,
-         "transform_operators": tr_ops, "n_per_transform": n_transforms, "seed": seed}, indent=2) + "\n",
+         "transform_operators": tr_ops, "n_per_transform": n_transforms, "seed": seed, "study_metadata": ctx.meta},
+        indent=2) + "\n",
         encoding="utf-8")
     records: list[VariantRecord] = []
     for mid in refs:
@@ -294,8 +308,8 @@ def _variant_one(ctx: Context, ref: RefState, tol: ToleranceTable, v: VariantRec
         if s == strata.NUMERICAL and fp_h2.status is RunStatus.OK and 4 in ref.fps:
             runtime += level(4)[0].runtime_s
     k = classify(True, fp_h, fp_h2 if det_h else None, det_h, det_h2 if det_h else None)
-    write_detections(det_h + ((det_h2 or []) if det_h else []), out / "detections.csv")
-    write_detections(sec_h + (sec_h2 or []), out / "detections_secondary.csv")
+    write_detections(det_h + ((det_h2 or []) if det_h else []), out / "detections.csv", extra=ctx.meta)
+    write_detections(sec_h + (sec_h2 or []), out / "detections_secondary.csv", extra=ctx.meta)
     dprot = sorted(detecting_protocols(det_h, det_h2 if det_h else None)) if k.admissible else []
     split_fate = (fp_h.status is not RunStatus.OK and CANONICAL_ID in fp_h.tables
                   and bool(fp_h.tables[CANONICAL_ID]))
@@ -359,10 +373,10 @@ def aggregate(ctx: Context, refs: dict[str, RefState], outcomes: Sequence[Varian
                      "detecting_protocols": ";".join(o.detecting_protocols),
                      "canonical_runs_but_battery_failed": o.canonical_runs_battery_failed,
                      "runtime_s": o.runtime_s})
-    _write_rows(p / "classification.csv", rows)
-    write_detections([d for o in outcomes for d in o.detections_h + (o.detections_h2 or [])], p / "detections.csv")
+    _write_table(ctx.meta, p /"classification.csv", rows)
+    write_detections([d for o in outcomes for d in o.detections_h + (o.detections_h2 or [])], p / "detections.csv", extra=ctx.meta)
     write_detections([d for o in outcomes for d in o.secondary_h + (o.secondary_h2 or [])],
-                     p / "detections_secondary.csv")
+                     p / "detections_secondary.csv", extra=ctx.meta)
 
     # Detection matrix over admissible PRIMARY SEMANTIC mutants; columns = canonical + battery + rheobase.
     first_ref = next(iter(refs.values()))
@@ -382,14 +396,15 @@ def aggregate(ctx: Context, refs: dict[str, RefState], outcomes: Sequence[Varian
     numerical = [o for o in mutants_all if _stratum(o) == strata.NUMERICAL]
     if any(o.klass.admissible for o in numerical):
         write_matrix([o for o in numerical if o.klass.admissible], p / "detection_matrix_numerical_robustness.csv")
-    _write_rows(p / "protocol_costs.csv", [{"protocol_id": k, "mean_cell_steps": v} for k, v in cost.items()])
+    _write_table(ctx.meta, p /"protocol_costs.csv", [{"protocol_id": k, "mean_cell_steps": v} for k, v in cost.items()])
 
     mutants = [o for o in mutants_all if _stratum(o) == strata.SEMANTIC]
     cascade = _cascade(mutants)
     cascade_num = _cascade(numerical)
-    (p / "validation_cascade.json").write_text(json.dumps(cascade, indent=2) + "\n", encoding="utf-8")
-    (p / "validation_cascade_numerical_robustness.json").write_text(json.dumps(cascade_num, indent=2) + "\n",
-                                                                     encoding="utf-8")
+    (p / "validation_cascade.json").write_text(json.dumps({**cascade, "study_metadata": ctx.meta}, indent=2) + "\n",
+                                               encoding="utf-8")
+    (p / "validation_cascade_numerical_robustness.json").write_text(
+        json.dumps({**cascade_num, "study_metadata": ctx.meta}, indent=2) + "\n", encoding="utf-8")
 
     # Numerical robustness and convergence stress tests: deviation vs the reference's discretisation error.
     nr_rows: list[dict] = []
@@ -400,7 +415,7 @@ def aggregate(ctx: Context, refs: dict[str, RefState], outcomes: Sequence[Varian
         if var_fps:
             nr_rows += strata.numerical_robustness_rows(refs[o.variant.model_id].fps, var_fps, o.variant,
                                                         float(ctx.tcfg["c_refinement"]))
-    _write_rows(p / "numerical_robustness.csv", nr_rows)
+    _write_table(ctx.meta, p /"numerical_robustness.csv", nr_rows)
 
     # Secondary exploratory features: reported, never used to change a primary class (D-029).
     sec_rows = [{"variant_id": o.variant.variant_id, "model_id": o.variant.model_id, "stratum": _stratum(o),
@@ -412,7 +427,7 @@ def aggregate(ctx: Context, refs: dict[str, RefState], outcomes: Sequence[Varian
                  "canonical_secondary_only": (CANONICAL_ID not in o.detecting_protocols and
                                               any(k.startswith(CANONICAL_ID + ":") for k in o.secondary_reproducible))}
                 for o in mutants_all]
-    _write_rows(p / "secondary_feature_report.csv", sec_rows)
+    _write_table(ctx.meta, p /"secondary_feature_report.csv", sec_rows)
 
     transforms_ = [o for o in outcomes if o.variant.kind is not VariantKind.MUTANT]
     fp_rows = [{"variant_id": o.variant.variant_id, "model_id": o.variant.model_id, "kind": o.variant.kind.value,
@@ -420,7 +435,7 @@ def aggregate(ctx: Context, refs: dict[str, RefState], outcomes: Sequence[Varian
                 "detected_at_h_only": bool(o.detections_h) and not o.klass.admissible,
                 "detections": ";".join(sorted({f"{d.protocol_id}:{d.feature}" for d in o.detections_h}))}
                for o in transforms_]
-    _write_rows(p / "false_positives.csv", fp_rows)
+    _write_table(ctx.meta, p /"false_positives.csv", fp_rows)
 
     audit = [{"variant_id": o.variant.variant_id, "operator": o.variant.operator, "family": o.variant.family,
               "stratum": _stratum(o), "edits": json.dumps([dc.asdict(e) for e in o.variant.edits]),
@@ -428,7 +443,7 @@ def aggregate(ctx: Context, refs: dict[str, RefState], outcomes: Sequence[Varian
               "detecting_protocols": ";".join(o.detecting_protocols),
               "human_auditor": "", "edit_matches_label (yes/no)": "", "class_plausible (yes/no)": "", "notes": ""}
              for o in mutants_all]
-    _write_rows(p / "mutant_audit_sheet.csv", audit)
+    _write_table(ctx.meta, p /"mutant_audit_sheet.csv", audit)
     by_stratum: dict[str, Counter] = {}
     for o in outcomes:
         by_stratum.setdefault(_stratum(o), Counter())[o.klass.value] += 1
@@ -452,9 +467,19 @@ def _write_rows(path: Path, rows: Sequence[dict], fieldnames: list[str] | None =
             w.writerow({k: ("" if v is None else v) for k, v in r.items()})
 
 
+def _write_table(meta: dict[str, str], path: Path, rows: Sequence[dict]) -> None:
+    """Result table with the study metadata as leading columns (an empty table keeps one metadata row)."""
+    if meta:
+        rows = [{**meta, **r} for r in rows] if rows else [{**meta, "rows": 0}]
+    _write_rows(path, rows)
+
+
 def _write_diagnostic(ctx: Context, o: VariantOutcome, fp_h: Fingerprint, fp_h2: Fingerprint | None, path: Path) -> None:
     """Per-mutant diagnostic (M5 exit criterion): every detection -> protocol, feature, threshold, evidence."""
-    lines = [f"# {o.variant.variant_id}", "", f"- model: `{o.variant.model_id}`", f"- kind/family/operator: "
+    lines = [f"# {o.variant.variant_id}", ""]
+    if ctx.meta:
+        lines += [f"*{config.designation_text(ctx.cfg)}*", ""]
+    lines += [f"- model: `{o.variant.model_id}`", f"- stratum: {o.stratum}", f"- kind/family/operator: "
              f"{o.variant.kind.value} / {o.variant.family} / {o.variant.operator}",
              f"- parameters: `{json.dumps(o.variant.params, sort_keys=True)}`",
              f"- recorded edits: `{json.dumps([dc.asdict(e) for e in o.variant.edits])}`",
