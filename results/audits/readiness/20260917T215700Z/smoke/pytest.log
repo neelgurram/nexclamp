@@ -1,0 +1,110 @@
+........................................................................ [  6%]
+........................................................................ [ 13%]
+........................................................................ [ 20%]
+........................................................................ [ 27%]
+........................................................................ [ 33%]
+..s.......................F...................F......................... [ 40%]
+........................................................................ [ 47%]
+........................................................................ [ 54%]
+........................................................................ [ 60%]
+................................................................F....... [ 67%]
+........................................................................ [ 74%]
+........................................................................ [ 81%]
+........................................................................ [ 88%]
+........................................................................ [ 94%]
+................
+[pospischil2008_rs] 38 mutants, 23 distinct cell-file validations
+  duplicate_conductance          valid 2/2
+  increase_dt                    valid 2/2
+  omit_include                   valid 1/2
+      m-omit_include-1e5a6df120: ['Test: 10025 (Ion channel in channelDensity should exist) failed! ... Ion channel: LeakConductance in LeakConductance_all not found!', 'Validated 1 files: 0 passed, 1 failed']
+  record_wrong_variable          valid 2/2
+  recording_resolution           valid 2/2
+  scale_capacitance              valid 2/2
+  scale_conductance              valid 2/2
+  scale_gate_time_constant       valid 2/2
+  shift_channel_vshift           valid 2/2
+  shift_initial_voltage          valid 2/2
+  shift_reversal                 valid 2/2
+  sim_length                     valid 2/2
+  solver_config                  valid 2/2
+  stim_amplitude                 valid 2/2
+  stim_duration                  valid 2/2
+  stim_onset                     valid 2/2
+  wrong_channel                  valid 2/2
+  wrong_compatible_component     valid 2/2
+  wrong_segment_group            valid 2/2
+  operators yielding structurally invalid cell files: ['omit_include']
+.
+[pospischil2008_lts] 36 mutants, 21 distinct cell-file validations
+  duplicate_conductance          valid 2/2
+  increase_dt                    valid 2/2
+  omit_include                   valid 1/2
+      m-omit_include-0307bc9abe: ['Test: 10025 (Ion channel in channelDensity should exist) failed! ... Ion channel: IT in IT_all not found!', 'Validated 1 files: 0 passed, 1 failed']
+  record_wrong_variable          valid 2/2
+  recording_resolution           valid 2/2
+  scale_capacitance              valid 2/2
+  scale_conductance              valid 2/2
+  scale_gate_time_constant       valid 2/2
+  shift_initial_voltage          valid 2/2
+  shift_reversal                 valid 2/2
+  sim_length                     valid 2/2
+  solver_config                  valid 2/2
+  stim_amplitude                 valid 2/2
+  stim_duration                  valid 2/2
+  stim_onset                     valid 2/2
+  wrong_channel                  valid 2/2
+  wrong_compatible_component     valid 2/2
+  wrong_segment_group            valid 2/2
+  operators yielding structurally invalid cell files: ['omit_include']
+.
+[solver_config=rk4] max|dv| vs reference = 0.0 mV
+.
+[solver_config=eulertree] max|dv| vs reference = 0.0 mV
+....................................                  [100%]
+================================== FAILURES ===================================
+_____________________ test_load_models_ids_and_inclusion ______________________
+
+all_models = {'pospischil2008_rs': ModelRecord(model_id='pospischil2008_rs', name='Pospischil 2008 regular-spiking (RS) cortical ce...imulation.', inclusion='candidate', inclusion_reason='Correlated with RS/LTS; candidate for the full study only'), ...}
+
+    def test_load_models_ids_and_inclusion(all_models):
+>       assert set(all_models) == EXPECTED_IDS
+E       AssertionError: assert {'acnet2_pyr_...2008_ib', ...} == {'nml2_hh_exa...zsaki1996_wb'}
+E         
+E         Extra items in the left set:
+E         'acnet2_pyr_soma'
+E         'migliore2014_mt_soma'
+E         'osb_hh2_477127614'
+E         Use -v to get more diff
+
+tests\unit\test_models_manifest.py:54: AssertionError
+______________ test_load_yaml_relative_to_config_dir_and_hashed _______________
+
+    def test_load_yaml_relative_to_config_dir_and_hashed():
+        c = config.load_yaml("study.yaml")
+        assert c.path == config.CONFIG_DIR / "study.yaml"
+        assert c.sha256 == sha256_file(config.CONFIG_DIR / "study.yaml")
+>       assert c["study_id"] == "neurosem" and c.get("missing", 7) == 7
+E       AssertionError: assert ('neuron_model...al_validation' == 'neurosem'
+E         
+E         - neurosem
+E         + neuron_model_behavioral_validation)
+
+tests\unit\test_models_manifest.py:229: AssertionError
+_______________ test_model_selection_lists_every_manifest_model _______________
+
+    def test_model_selection_lists_every_manifest_model():
+        text = read("model_selection.md")
+        with open(REPO / "data" / "model_manifest.csv", newline="", encoding="utf-8") as f:
+            for r in csv.DictReader(f):
+>               assert r["model_id"] in text, r["model_id"]
+E               AssertionError: acnet2_pyr_soma
+E               assert 'acnet2_pyr_soma' in '# Model selection\n\n*Status: draft, 2026-09-13. Sources: final specification ("Model selection"),\n`data/model_manif...m that `jnml -validate` stays the structural oracle for the\n   frozen study, and record the exact jNeuroML version.\n'
+
+tests\unit\test_science_docs.py:307: AssertionError
+=========================== short test summary info ===========================
+SKIPPED [1] tests\unit\test_infra_bootstrap_java.py:413: set NEUROSEM_NETWORK_TESTS=1 for live API
+FAILED tests/unit/test_models_manifest.py::test_load_models_ids_and_inclusion
+FAILED tests/unit/test_models_manifest.py::test_load_yaml_relative_to_config_dir_and_hashed
+FAILED tests/unit/test_science_docs.py::test_model_selection_lists_every_manifest_model
+3 failed, 1059 passed, 1 skipped in 2186.60s (0:36:26)

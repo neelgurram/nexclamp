@@ -31,7 +31,12 @@ from neuraxis.schemas import ExecConfig, ModelRecord
 from neuraxis.units import parse
 
 EXPECTED_IDS = {"pospischil2008_rs", "pospischil2008_lts", "pospischil2008_fs", "pospischil2008_ib",
-                "nml2_hh_example", "wangbuzsaki1996_wb"}
+                "nml2_hh_example", "wangbuzsaki1996_wb",
+                # promoted from the curated candidates for Pilot 2 (D-053)
+                "acnet2_pyr_soma", "migliore2014_mt_soma", "osb_hh2_477127614"}
+# Pilot 1 models plus the five Pilot 2 models (D-053); `candidate` and `exclude` stay out.
+EXPECTED_INCLUDED = {"pospischil2008_rs", "pospischil2008_lts", "pospischil2008_fs", "nml2_hh_example",
+                     "acnet2_pyr_soma", "migliore2014_mt_soma", "osb_hh2_477127614"}
 
 
 @pytest.fixture(scope="module")
@@ -53,7 +58,7 @@ def test_manifest_columns_match_dataclass():
 def test_load_models_ids_and_inclusion(all_models):
     assert set(all_models) == EXPECTED_IDS
     included = load_models(include_only=True)
-    assert set(included) == {"pospischil2008_rs", "pospischil2008_lts"}
+    assert set(included) == EXPECTED_INCLUDED
     assert all(m.inclusion in {"include", "exclude", "candidate"} for m in all_models.values())
     assert all(m.inclusion_reason.strip() for m in all_models.values())
 
@@ -226,7 +231,7 @@ def test_load_yaml_relative_to_config_dir_and_hashed():
     c = config.load_yaml("study.yaml")
     assert c.path == config.CONFIG_DIR / "study.yaml"
     assert c.sha256 == sha256_file(config.CONFIG_DIR / "study.yaml")
-    assert c["study_id"] == "neurosem" and c.get("missing", 7) == 7
+    assert c["study_id"] == "neuron_model_behavioral_validation" and c.get("missing", 7) == 7
 
 
 def test_named_loaders():

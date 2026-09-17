@@ -1,0 +1,3140 @@
+$ C:\Users\gurra\NeuroSem\.venv\Scripts\python.exe -m ruff check src tests scripts
+
+RUF100 [*] Unused `noqa` directive (non-enabled: `E402`)
+  --> scripts\archive_campaign.py:28:30
+   |
+26 | sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
+27 |
+28 | from neuraxis import config  # noqa: E402
+   |                              ^^^^^^^^^^^^
+29 | from neuraxis.experiments import registry as reg  # noqa: E402
+30 | from neuraxis.provenance import REPO_ROOT, sha256_file, utc_now  # noqa: E402
+   |
+help: Remove unused `noqa` directive
+   |
+27 |
+   - from neuraxis import config  # noqa: E402
+28 + from neuraxis import config
+29 | from neuraxis.experiments import registry as reg  # noqa: E402
+   |
+
+RUF100 [*] Unused `noqa` directive (non-enabled: `E402`)
+  --> scripts\archive_campaign.py:29:51
+   |
+28 | from neuraxis import config  # noqa: E402
+29 | from neuraxis.experiments import registry as reg  # noqa: E402
+   |                                                   ^^^^^^^^^^^^
+30 | from neuraxis.provenance import REPO_ROOT, sha256_file, utc_now  # noqa: E402
+   |
+help: Remove unused `noqa` directive
+   |
+28 | from neuraxis import config  # noqa: E402
+   - from neuraxis.experiments import registry as reg  # noqa: E402
+29 + from neuraxis.experiments import registry as reg
+30 | from neuraxis.provenance import REPO_ROOT, sha256_file, utc_now  # noqa: E402
+   |
+
+RUF100 [*] Unused `noqa` directive (non-enabled: `E402`)
+  --> scripts\archive_campaign.py:30:66
+   |
+28 | from neuraxis import config  # noqa: E402
+29 | from neuraxis.experiments import registry as reg  # noqa: E402
+30 | from neuraxis.provenance import REPO_ROOT, sha256_file, utc_now  # noqa: E402
+   |                                                                  ^^^^^^^^^^^^
+help: Remove unused `noqa` directive
+   |
+29 | from neuraxis.experiments import registry as reg  # noqa: E402
+   - from neuraxis.provenance import REPO_ROOT, sha256_file, utc_now  # noqa: E402
+30 + from neuraxis.provenance import REPO_ROOT, sha256_file, utc_now
+31 |
+   |
+
+RUF100 [*] Unused `noqa` directive (non-enabled: `E402`)
+  --> scripts\build_manifests.py:28:42
+   |
+26 | sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
+27 |
+28 | from neuraxis.experiments import strata  # noqa: E402
+   |                                          ^^^^^^^^^^^^
+29 | from neuraxis.models import CANDIDATE_MODELS, RAW_MODELS  # noqa: E402
+30 | from neuraxis.protocols.definitions import CANONICAL_ID, DEFAULT_TEMPLATES  # noqa: E402
+   |
+help: Remove unused `noqa` directive
+   |
+27 |
+   - from neuraxis.experiments import strata  # noqa: E402
+28 + from neuraxis.experiments import strata
+29 | from neuraxis.models import CANDIDATE_MODELS, RAW_MODELS  # noqa: E402
+   |
+
+RUF100 [*] Unused `noqa` directive (non-enabled: `E402`)
+  --> scripts\build_manifests.py:29:59
+   |
+28 | from neuraxis.experiments import strata  # noqa: E402
+29 | from neuraxis.models import CANDIDATE_MODELS, RAW_MODELS  # noqa: E402
+   |                                                           ^^^^^^^^^^^^
+30 | from neuraxis.protocols.definitions import CANONICAL_ID, DEFAULT_TEMPLATES  # noqa: E402
+31 | from neuraxis.provenance import REPO_ROOT, sha256_file, tree_sha256, utc_now  # noqa: E402
+   |
+help: Remove unused `noqa` directive
+   |
+28 | from neuraxis.experiments import strata  # noqa: E402
+   - from neuraxis.models import CANDIDATE_MODELS, RAW_MODELS  # noqa: E402
+29 + from neuraxis.models import CANDIDATE_MODELS, RAW_MODELS
+30 | from neuraxis.protocols.definitions import CANONICAL_ID, DEFAULT_TEMPLATES  # noqa: E402
+   |
+
+RUF100 [*] Unused `noqa` directive (non-enabled: `E402`)
+  --> scripts\build_manifests.py:30:77
+   |
+28 | from neuraxis.experiments import strata  # noqa: E402
+29 | from neuraxis.models import CANDIDATE_MODELS, RAW_MODELS  # noqa: E402
+30 | from neuraxis.protocols.definitions import CANONICAL_ID, DEFAULT_TEMPLATES  # noqa: E402
+   |                                                                             ^^^^^^^^^^^^
+31 | from neuraxis.provenance import REPO_ROOT, sha256_file, tree_sha256, utc_now  # noqa: E402
+   |
+help: Remove unused `noqa` directive
+   |
+29 | from neuraxis.models import CANDIDATE_MODELS, RAW_MODELS  # noqa: E402
+   - from neuraxis.protocols.definitions import CANONICAL_ID, DEFAULT_TEMPLATES  # noqa: E402
+30 + from neuraxis.protocols.definitions import CANONICAL_ID, DEFAULT_TEMPLATES
+31 | from neuraxis.provenance import REPO_ROOT, sha256_file, tree_sha256, utc_now  # noqa: E402
+   |
+
+RUF100 [*] Unused `noqa` directive (non-enabled: `E402`)
+  --> scripts\build_manifests.py:31:79
+   |
+29 | from neuraxis.models import CANDIDATE_MODELS, RAW_MODELS  # noqa: E402
+30 | from neuraxis.protocols.definitions import CANONICAL_ID, DEFAULT_TEMPLATES  # noqa: E402
+31 | from neuraxis.provenance import REPO_ROOT, sha256_file, tree_sha256, utc_now  # noqa: E402
+   |                                                                               ^^^^^^^^^^^^
+32 |
+33 | OUT = REPO_ROOT / "manifests"
+   |
+help: Remove unused `noqa` directive
+   |
+30 | from neuraxis.protocols.definitions import CANONICAL_ID, DEFAULT_TEMPLATES  # noqa: E402
+   - from neuraxis.provenance import REPO_ROOT, sha256_file, tree_sha256, utc_now  # noqa: E402
+31 + from neuraxis.provenance import REPO_ROOT, sha256_file, tree_sha256, utc_now
+32 |
+   |
+
+ISC004 Unparenthesized implicit string concatenation in collection
+   --> scripts\build_manifests.py:204:14
+    |
+202 |   def licensing_doc(rows: list[dict]) -> str:
+203 |       lines = ["# Licensing matrix", "",
+204 | /              f"*Generated by `scripts/build_manifests.py` on {utc_now()} from the model manifests and snapshot "
+205 | |              "provenance. Not legal advice; a qualified human review is required before release (LICENSE_AUDIT.md "
+206 | |              "L-11).*", "",
+    | |______________________^
+207 |                "## In plain English", "",
+208 |                "- Neuraxis's own code is provisionally licensed Apache-2.0 (execution plan). Upstream model files keep "
+    |
+help: Did you forget a comma?
+help: Wrap implicitly concatenated strings in parentheses
+
+ISC004 Unparenthesized implicit string concatenation in collection
+   --> scripts\build_manifests.py:208:14
+    |
+206 |                "L-11).*", "",
+207 |                "## In plain English", "",
+208 | /              "- Neuraxis's own code is provisionally licensed Apache-2.0 (execution plan). Upstream model files keep "
+209 | |              "their own licences and are never relicensed.",
+    | |___________________________________________________________^
+210 |                "- Models with an unclear licence are never bundled: a release ships a downloader, the source URL and the "
+211 |                "expected hash instead.",
+    |
+help: Did you forget a comma?
+help: Wrap implicitly concatenated strings in parentheses
+
+ISC004 Unparenthesized implicit string concatenation in collection
+   --> scripts\build_manifests.py:210:14
+    |
+208 |                "- Neuraxis's own code is provisionally licensed Apache-2.0 (execution plan). Upstream model files keep "
+209 |                "their own licences and are never relicensed.",
+210 | /              "- Models with an unclear licence are never bundled: a release ships a downloader, the source URL and the "
+211 | |              "expected hash instead.",
+    | |_____________________________________^
+212 |                "- Copyleft (LGPL) model files may be redistributed only under their own licence, with notices.", "",
+213 |                "## Neuraxis code and documentation", "",
+    |
+help: Did you forget a comma?
+help: Wrap implicitly concatenated strings in parentheses
+
+ISC004 Unparenthesized implicit string concatenation in collection
+   --> scripts\build_manifests.py:215:14
+    |
+213 |                "## Neuraxis code and documentation", "",
+214 |                "| item | licence | status |", "|---|---|---|",
+215 | /              "| Neuraxis source code (`src/`, `scripts/`, `workflows/`, `tests/`) | Apache-2.0 (`LICENSE`) | provisional, "
+216 | |              "subject to compatibility review; replaced BSD-3-Clause (kept in `docs/licensing/`) |",
+    | |___________________________________________________________________________________________________^
+217 |                "| Documentation | not yet chosen (L-02 recommends CC-BY-4.0) | decision pending |",
+218 |                "| Generated data (traces, features, tables) | not yet chosen (L-03) | decision pending |", "",
+    |
+help: Did you forget a comma?
+help: Wrap implicitly concatenated strings in parentheses
+
+ISC004 Unparenthesized implicit string concatenation in collection
+   --> scripts\build_manifests.py:222:15
+    |
+220 |       lines += [f"| {a} | {b} | {c} |" for a, b, c in DEPENDENCIES]
+221 |       lines += ["", "## Upstream models", "",
+222 | /               "| model | source publication | URL @ commit | downloaded | snapshot tree SHA-256 | licence | "
+223 | |               "redistribution | attribution | dependencies |", "|---|---|---|---|---|---|---|---|---|"]
+    | |_____________________________________________________________^
+224 |       for r in rows:
+225 |           deps = r["dependencies"].split(";") if r["dependencies"] else []
+    |
+help: Did you forget a comma?
+help: Wrap implicitly concatenated strings in parentheses
+
+RUF100 [*] Unused `noqa` directive (non-enabled: `E402`)
+  --> scripts\curation_table.py:23:30
+   |
+21 | sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
+22 |
+23 | from neuraxis import config  # noqa: E402
+   |                              ^^^^^^^^^^^^
+24 | from neuraxis.orchestration.curation import CRITERIA  # noqa: E402
+25 | from neuraxis.provenance import REPO_ROOT, git_state, utc_now  # noqa: E402
+   |
+help: Remove unused `noqa` directive
+   |
+22 |
+   - from neuraxis import config  # noqa: E402
+23 + from neuraxis import config
+24 | from neuraxis.orchestration.curation import CRITERIA  # noqa: E402
+   |
+
+RUF100 [*] Unused `noqa` directive (non-enabled: `E402`)
+  --> scripts\curation_table.py:24:55
+   |
+23 | from neuraxis import config  # noqa: E402
+24 | from neuraxis.orchestration.curation import CRITERIA  # noqa: E402
+   |                                                       ^^^^^^^^^^^^
+25 | from neuraxis.provenance import REPO_ROOT, git_state, utc_now  # noqa: E402
+   |
+help: Remove unused `noqa` directive
+   |
+23 | from neuraxis import config  # noqa: E402
+   - from neuraxis.orchestration.curation import CRITERIA  # noqa: E402
+24 + from neuraxis.orchestration.curation import CRITERIA
+25 | from neuraxis.provenance import REPO_ROOT, git_state, utc_now  # noqa: E402
+   |
+
+RUF100 [*] Unused `noqa` directive (non-enabled: `E402`)
+  --> scripts\curation_table.py:25:64
+   |
+23 | from neuraxis import config  # noqa: E402
+24 | from neuraxis.orchestration.curation import CRITERIA  # noqa: E402
+25 | from neuraxis.provenance import REPO_ROOT, git_state, utc_now  # noqa: E402
+   |                                                                ^^^^^^^^^^^^
+26 |
+27 | COLUMNS = ["model_id", "name", "source_family", "decision", "exact_reason", "publication", "license", "license_url",
+   |
+help: Remove unused `noqa` directive
+   |
+24 | from neuraxis.orchestration.curation import CRITERIA  # noqa: E402
+   - from neuraxis.provenance import REPO_ROOT, git_state, utc_now  # noqa: E402
+25 + from neuraxis.provenance import REPO_ROOT, git_state, utc_now
+26 |
+   |
+
+RUF100 [*] Unused `noqa` directive (non-enabled: `E402`)
+  --> scripts\fetch_candidates.py:34:67
+   |
+32 | sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
+33 |
+34 | from neuraxis.provenance import REPO_ROOT, sha256_bytes, utc_now  # noqa: E402
+   |                                                                   ^^^^^^^^^^^^
+35 |
+36 | DEST = REPO_ROOT / "models" / "candidates"
+   |
+help: Remove unused `noqa` directive
+   |
+33 |
+   - from neuraxis.provenance import REPO_ROOT, sha256_bytes, utc_now  # noqa: E402
+34 + from neuraxis.provenance import REPO_ROOT, sha256_bytes, utc_now
+35 |
+   |
+
+PLW1510 `subprocess.run` without explicit `check` argument
+  --> scripts\fetch_candidates.py:43:12
+   |
+42 | def gh_json(path: str):
+43 |     proc = subprocess.run(["gh", "api", path], capture_output=True, text=True, encoding="utf-8")
+   |            ^^^^^^^^^^^^^^
+44 |     if proc.returncode != 0:
+45 |         raise RuntimeError(f"gh api {path}: {proc.stderr.strip()[:300]}")
+   |
+help: Add explicit `check=False`
+
+BLE001 Do not catch blind exception: `Exception`
+   --> scripts\fetch_candidates.py:154:16
+    |
+152 |             r = fetch_row(row, trees, DEST)
+153 |             report.append({**r, "status": "fetched" if not r["errors"] else "fetched with missing includes"})
+154 |         except Exception as exc:  # recorded per model; one bad source does not stop the others
+    |                ^^^^^^^^^
+155 |             report.append({"model_id": row["model_id"], "status": f"failed: {exc}"[:300]})
+156 |     out = REPO_ROOT / "docs" / "m0_evidence" / "model_curation" / f"fetch_{Path(a.csv).stem}.json"
+    |
+
+UP017 [*] Use `datetime.UTC` alias
+   --> scripts\fetch_models.py:148:43
+    |
+146 |         "license_url": src["license_url"],
+147 |         "citation": src["citation"],
+148 |         "downloaded_utc": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"),
+    |                                           ^^^^^^^^^^^^^^^
+149 |         "files": dict(sorted(seen.items())),
+150 |     }
+    |
+help: Convert to `datetime.UTC` alias
+    |
+147 |         "citation": src["citation"],
+    -         "downloaded_utc": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"),
+148 +         "downloaded_utc": dt.datetime.now(dt.UTC).isoformat(timespec="seconds"),
+149 |         "files": dict(sorted(seen.items())),
+    |
+
+RUF100 [*] Unused `noqa` directive (non-enabled: `E402`)
+  --> scripts\kinetics_validation.py:25:55
+   |
+23 | sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
+24 |
+25 | from neuraxis.models import load_models, materialize  # noqa: E402
+   |                                                       ^^^^^^^^^^^^
+26 | from neuraxis.orchestration.kinetics_validation import default_fixtures, validate_fixtures  # noqa: E402
+27 | from neuraxis.provenance import REPO_ROOT  # noqa: E402
+   |
+help: Remove unused `noqa` directive
+   |
+24 |
+   - from neuraxis.models import load_models, materialize  # noqa: E402
+25 + from neuraxis.models import load_models, materialize
+26 | from neuraxis.orchestration.kinetics_validation import default_fixtures, validate_fixtures  # noqa: E402
+   |
+
+RUF100 [*] Unused `noqa` directive (non-enabled: `E402`)
+  --> scripts\kinetics_validation.py:26:93
+   |
+25 | from neuraxis.models import load_models, materialize  # noqa: E402
+26 | from neuraxis.orchestration.kinetics_validation import default_fixtures, validate_fixtures  # noqa: E402
+   |                                                                                             ^^^^^^^^^^^^
+27 | from neuraxis.provenance import REPO_ROOT  # noqa: E402
+   |
+help: Remove unused `noqa` directive
+   |
+25 | from neuraxis.models import load_models, materialize  # noqa: E402
+   - from neuraxis.orchestration.kinetics_validation import default_fixtures, validate_fixtures  # noqa: E402
+26 + from neuraxis.orchestration.kinetics_validation import default_fixtures, validate_fixtures
+27 | from neuraxis.provenance import REPO_ROOT  # noqa: E402
+   |
+
+RUF100 [*] Unused `noqa` directive (non-enabled: `E402`)
+  --> scripts\kinetics_validation.py:27:44
+   |
+25 | from neuraxis.models import load_models, materialize  # noqa: E402
+26 | from neuraxis.orchestration.kinetics_validation import default_fixtures, validate_fixtures  # noqa: E402
+27 | from neuraxis.provenance import REPO_ROOT  # noqa: E402
+   |                                            ^^^^^^^^^^^^
+help: Remove unused `noqa` directive
+   |
+26 | from neuraxis.orchestration.kinetics_validation import default_fixtures, validate_fixtures  # noqa: E402
+   - from neuraxis.provenance import REPO_ROOT  # noqa: E402
+27 + from neuraxis.provenance import REPO_ROOT
+28 |
+   |
+
+RUF100 [*] Unused `noqa` directive (non-enabled: `E402`)
+  --> scripts\numerical_robustness_report.py:30:14
+   |
+28 | sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
+29 |
+30 | import yaml  # noqa: E402
+   |              ^^^^^^^^^^^^
+31 |
+32 | from neuraxis import config  # noqa: E402
+   |
+help: Remove unused `noqa` directive
+   |
+29 |
+   - import yaml  # noqa: E402
+30 + import yaml
+31 |
+   |
+
+RUF100 [*] Unused `noqa` directive (non-enabled: `E402`)
+  --> scripts\numerical_robustness_report.py:32:30
+   |
+30 | import yaml  # noqa: E402
+31 |
+32 | from neuraxis import config  # noqa: E402
+   |                              ^^^^^^^^^^^^
+33 | from neuraxis.experiments import strata  # noqa: E402
+34 | from neuraxis.protocols.definitions import CANONICAL_ID  # noqa: E402
+   |
+help: Remove unused `noqa` directive
+   |
+31 |
+   - from neuraxis import config  # noqa: E402
+32 + from neuraxis import config
+33 | from neuraxis.experiments import strata  # noqa: E402
+   |
+
+RUF100 [*] Unused `noqa` directive (non-enabled: `E402`)
+  --> scripts\numerical_robustness_report.py:33:42
+   |
+32 | from neuraxis import config  # noqa: E402
+33 | from neuraxis.experiments import strata  # noqa: E402
+   |                                          ^^^^^^^^^^^^
+34 | from neuraxis.protocols.definitions import CANONICAL_ID  # noqa: E402
+35 | from neuraxis.provenance import utc_now  # noqa: E402
+   |
+help: Remove unused `noqa` directive
+   |
+32 | from neuraxis import config  # noqa: E402
+   - from neuraxis.experiments import strata  # noqa: E402
+33 + from neuraxis.experiments import strata
+34 | from neuraxis.protocols.definitions import CANONICAL_ID  # noqa: E402
+   |
+
+RUF100 [*] Unused `noqa` directive (non-enabled: `E402`)
+  --> scripts\numerical_robustness_report.py:34:58
+   |
+32 | from neuraxis import config  # noqa: E402
+33 | from neuraxis.experiments import strata  # noqa: E402
+34 | from neuraxis.protocols.definitions import CANONICAL_ID  # noqa: E402
+   |                                                          ^^^^^^^^^^^^
+35 | from neuraxis.provenance import utc_now  # noqa: E402
+36 | from neuraxis.schemas import MutantClass, VariantKind  # noqa: E402
+   |
+help: Remove unused `noqa` directive
+   |
+33 | from neuraxis.experiments import strata  # noqa: E402
+   - from neuraxis.protocols.definitions import CANONICAL_ID  # noqa: E402
+34 + from neuraxis.protocols.definitions import CANONICAL_ID
+35 | from neuraxis.provenance import utc_now  # noqa: E402
+   |
+
+RUF100 [*] Unused `noqa` directive (non-enabled: `E402`)
+  --> scripts\numerical_robustness_report.py:35:42
+   |
+33 | from neuraxis.experiments import strata  # noqa: E402
+34 | from neuraxis.protocols.definitions import CANONICAL_ID  # noqa: E402
+35 | from neuraxis.provenance import utc_now  # noqa: E402
+   |                                          ^^^^^^^^^^^^
+36 | from neuraxis.schemas import MutantClass, VariantKind  # noqa: E402
+37 | from neuraxis.selection.matrix import DetectionMatrix  # noqa: E402
+   |
+help: Remove unused `noqa` directive
+   |
+34 | from neuraxis.protocols.definitions import CANONICAL_ID  # noqa: E402
+   - from neuraxis.provenance import utc_now  # noqa: E402
+35 + from neuraxis.provenance import utc_now
+36 | from neuraxis.schemas import MutantClass, VariantKind  # noqa: E402
+   |
+
+RUF100 [*] Unused `noqa` directive (non-enabled: `E402`)
+  --> scripts\numerical_robustness_report.py:36:56
+   |
+34 | from neuraxis.protocols.definitions import CANONICAL_ID  # noqa: E402
+35 | from neuraxis.provenance import utc_now  # noqa: E402
+36 | from neuraxis.schemas import MutantClass, VariantKind  # noqa: E402
+   |                                                        ^^^^^^^^^^^^
+37 | from neuraxis.selection.matrix import DetectionMatrix  # noqa: E402
+38 | from neuraxis.validation.fingerprint import load_fingerprint  # noqa: E402
+   |
+help: Remove unused `noqa` directive
+   |
+35 | from neuraxis.provenance import utc_now  # noqa: E402
+   - from neuraxis.schemas import MutantClass, VariantKind  # noqa: E402
+36 + from neuraxis.schemas import MutantClass, VariantKind
+37 | from neuraxis.selection.matrix import DetectionMatrix  # noqa: E402
+   |
+
+RUF100 [*] Unused `noqa` directive (non-enabled: `E402`)
+  --> scripts\numerical_robustness_report.py:37:56
+   |
+35 | from neuraxis.provenance import utc_now  # noqa: E402
+36 | from neuraxis.schemas import MutantClass, VariantKind  # noqa: E402
+37 | from neuraxis.selection.matrix import DetectionMatrix  # noqa: E402
+   |                                                        ^^^^^^^^^^^^
+38 | from neuraxis.validation.fingerprint import load_fingerprint  # noqa: E402
+   |
+help: Remove unused `noqa` directive
+   |
+36 | from neuraxis.schemas import MutantClass, VariantKind  # noqa: E402
+   - from neuraxis.selection.matrix import DetectionMatrix  # noqa: E402
+37 + from neuraxis.selection.matrix import DetectionMatrix
+38 | from neuraxis.validation.fingerprint import load_fingerprint  # noqa: E402
+   |
+
+RUF100 [*] Unused `noqa` directive (non-enabled: `E402`)
+  --> scripts\numerical_robustness_report.py:38:63
+   |
+36 | from neuraxis.schemas import MutantClass, VariantKind  # noqa: E402
+37 | from neuraxis.selection.matrix import DetectionMatrix  # noqa: E402
+38 | from neuraxis.validation.fingerprint import load_fingerprint  # noqa: E402
+   |                                                               ^^^^^^^^^^^^
+39 |
+40 | INCREASE_DT_NOTE = ("confound: the canonical harness and the battery started from different base steps "
+   |
+help: Remove unused `noqa` directive
+   |
+37 | from neuraxis.selection.matrix import DetectionMatrix  # noqa: E402
+   - from neuraxis.validation.fingerprint import load_fingerprint  # noqa: E402
+38 + from neuraxis.validation.fingerprint import load_fingerprint
+39 |
+   |
+
+SIM115 Use a context manager for opening files
+  --> scripts\numerical_robustness_report.py:57:31
+   |
+55 |     work_variants = config.work_dir() / "variants" / a.campaign / "mutants"
+56 |
+57 |     cls = list(csv.DictReader(open(proc / "classification.csv", encoding="utf-8")))
+   |                               ^^^^
+58 |     recl, nr_rows = [], []
+59 |     for r in cls:
+   |
+
+RUF100 [*] Unused `noqa` directive (non-enabled: `E402`)
+  --> scripts\pilot2_authorize.py:31:14
+   |
+29 | sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
+30 |
+31 | import yaml  # noqa: E402
+   |              ^^^^^^^^^^^^
+32 |
+33 | from neuraxis import config  # noqa: E402
+   |
+help: Remove unused `noqa` directive
+   |
+30 |
+   - import yaml  # noqa: E402
+31 + import yaml
+32 |
+   |
+
+RUF100 [*] Unused `noqa` directive (non-enabled: `E402`)
+  --> scripts\pilot2_authorize.py:33:30
+   |
+31 | import yaml  # noqa: E402
+32 |
+33 | from neuraxis import config  # noqa: E402
+   |                              ^^^^^^^^^^^^
+34 | from neuraxis.provenance import REPO_ROOT, git_state, sha256_file, utc_now  # noqa: E402
+   |
+help: Remove unused `noqa` directive
+   |
+32 |
+   - from neuraxis import config  # noqa: E402
+33 + from neuraxis import config
+34 | from neuraxis.provenance import REPO_ROOT, git_state, sha256_file, utc_now  # noqa: E402
+   |
+
+RUF100 [*] Unused `noqa` directive (non-enabled: `E402`)
+  --> scripts\pilot2_authorize.py:34:77
+   |
+33 | from neuraxis import config  # noqa: E402
+34 | from neuraxis.provenance import REPO_ROOT, git_state, sha256_file, utc_now  # noqa: E402
+   |                                                                             ^^^^^^^^^^^^
+35 |
+36 | PILOT1_MODELS = ("pospischil2008_rs", "pospischil2008_lts")
+   |
+help: Remove unused `noqa` directive
+   |
+33 | from neuraxis import config  # noqa: E402
+   - from neuraxis.provenance import REPO_ROOT, git_state, sha256_file, utc_now  # noqa: E402
+34 + from neuraxis.provenance import REPO_ROOT, git_state, sha256_file, utc_now
+35 |
+   |
+
+RUF100 [*] Unused `noqa` directive (non-enabled: `E402`)
+  --> scripts\pilot2_prepare.py:31:30
+   |
+29 | sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
+30 |
+31 | from neuraxis import config  # noqa: E402
+   |                              ^^^^^^^^^^^^
+32 | from neuraxis.experiments import strata  # noqa: E402
+33 | from neuraxis.mutations import severity as sev  # noqa: E402
+   |
+help: Remove unused `noqa` directive
+   |
+30 |
+   - from neuraxis import config  # noqa: E402
+31 + from neuraxis import config
+32 | from neuraxis.experiments import strata  # noqa: E402
+   |
+
+RUF100 [*] Unused `noqa` directive (non-enabled: `E402`)
+  --> scripts\pilot2_prepare.py:32:42
+   |
+31 | from neuraxis import config  # noqa: E402
+32 | from neuraxis.experiments import strata  # noqa: E402
+   |                                          ^^^^^^^^^^^^
+33 | from neuraxis.mutations import severity as sev  # noqa: E402
+34 | from neuraxis.orchestration.curation import read_candidates  # noqa: E402
+   |
+help: Remove unused `noqa` directive
+   |
+31 | from neuraxis import config  # noqa: E402
+   - from neuraxis.experiments import strata  # noqa: E402
+32 + from neuraxis.experiments import strata
+33 | from neuraxis.mutations import severity as sev  # noqa: E402
+   |
+
+RUF100 [*] Unused `noqa` directive (non-enabled: `E402`)
+  --> scripts\pilot2_prepare.py:33:49
+   |
+31 | from neuraxis import config  # noqa: E402
+32 | from neuraxis.experiments import strata  # noqa: E402
+33 | from neuraxis.mutations import severity as sev  # noqa: E402
+   |                                                 ^^^^^^^^^^^^
+34 | from neuraxis.orchestration.curation import read_candidates  # noqa: E402
+35 | from neuraxis.protocols.definitions import CANONICAL_ID, templates_from_config  # noqa: E402
+   |
+help: Remove unused `noqa` directive
+   |
+32 | from neuraxis.experiments import strata  # noqa: E402
+   - from neuraxis.mutations import severity as sev  # noqa: E402
+33 + from neuraxis.mutations import severity as sev
+34 | from neuraxis.orchestration.curation import read_candidates  # noqa: E402
+   |
+
+RUF100 [*] Unused `noqa` directive (non-enabled: `E402`)
+  --> scripts\pilot2_prepare.py:34:62
+   |
+32 | from neuraxis.experiments import strata  # noqa: E402
+33 | from neuraxis.mutations import severity as sev  # noqa: E402
+34 | from neuraxis.orchestration.curation import read_candidates  # noqa: E402
+   |                                                              ^^^^^^^^^^^^
+35 | from neuraxis.protocols.definitions import CANONICAL_ID, templates_from_config  # noqa: E402
+36 | from neuraxis.provenance import REPO_ROOT, sha256_file, utc_now  # noqa: E402
+   |
+help: Remove unused `noqa` directive
+   |
+33 | from neuraxis.mutations import severity as sev  # noqa: E402
+   - from neuraxis.orchestration.curation import read_candidates  # noqa: E402
+34 + from neuraxis.orchestration.curation import read_candidates
+35 | from neuraxis.protocols.definitions import CANONICAL_ID, templates_from_config  # noqa: E402
+   |
+
+RUF100 [*] Unused `noqa` directive (non-enabled: `E402`)
+  --> scripts\pilot2_prepare.py:35:81
+   |
+33 | from neuraxis.mutations import severity as sev  # noqa: E402
+34 | from neuraxis.orchestration.curation import read_candidates  # noqa: E402
+35 | from neuraxis.protocols.definitions import CANONICAL_ID, templates_from_config  # noqa: E402
+   |                                                                                 ^^^^^^^^^^^^
+36 | from neuraxis.provenance import REPO_ROOT, sha256_file, utc_now  # noqa: E402
+   |
+help: Remove unused `noqa` directive
+   |
+34 | from neuraxis.orchestration.curation import read_candidates  # noqa: E402
+   - from neuraxis.protocols.definitions import CANONICAL_ID, templates_from_config  # noqa: E402
+35 + from neuraxis.protocols.definitions import CANONICAL_ID, templates_from_config
+36 | from neuraxis.provenance import REPO_ROOT, sha256_file, utc_now  # noqa: E402
+   |
+
+RUF100 [*] Unused `noqa` directive (non-enabled: `E402`)
+  --> scripts\pilot2_prepare.py:36:66
+   |
+34 | from neuraxis.orchestration.curation import read_candidates  # noqa: E402
+35 | from neuraxis.protocols.definitions import CANONICAL_ID, templates_from_config  # noqa: E402
+36 | from neuraxis.provenance import REPO_ROOT, sha256_file, utc_now  # noqa: E402
+   |                                                                  ^^^^^^^^^^^^
+37 |
+38 | SOURCES = ("data/model_manifest.csv", "data/model_candidates.csv", "data/model_candidates_sweep2.csv")
+   |
+help: Remove unused `noqa` directive
+   |
+35 | from neuraxis.protocols.definitions import CANONICAL_ID, templates_from_config  # noqa: E402
+   - from neuraxis.provenance import REPO_ROOT, sha256_file, utc_now  # noqa: E402
+36 + from neuraxis.provenance import REPO_ROOT, sha256_file, utc_now
+37 |
+   |
+
+F841 Local variable `factors` is assigned to but never used
+  --> scripts\pilot2_prepare.py:95:5
+   |
+93 |     # always records (P03_rheobase) even though it is not part of the batched probe simulation.
+94 |     templates = [t for t in templates_from_config(cfg["protocols"]) if t.implemented]
+95 |     factors = [int(f) for f in cfg["numerics"]["refinement_factors"]]
+   |     ^^^^^^^
+96 |     with tempfile.TemporaryDirectory(prefix="neuraxis_pilot2_") as tmp:
+97 |         for mid in pilot["models"]:
+   |
+help: Remove assignment to unused variable `factors`
+
+RUF100 [*] Unused `noqa` directive (non-enabled: `E402`)
+  --> scripts\pilot_outputs.py:17:30
+   |
+15 | sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
+16 |
+17 | from neuraxis import config  # noqa: E402
+   |                              ^^^^^^^^^^^^
+18 | from neuraxis.experiments.pilot_outputs import build_outputs  # noqa: E402
+19 | from neuraxis.provenance import REPO_ROOT  # noqa: E402
+   |
+help: Remove unused `noqa` directive
+   |
+16 |
+   - from neuraxis import config  # noqa: E402
+17 + from neuraxis import config
+18 | from neuraxis.experiments.pilot_outputs import build_outputs  # noqa: E402
+   |
+
+RUF100 [*] Unused `noqa` directive (non-enabled: `E402`)
+  --> scripts\pilot_outputs.py:18:63
+   |
+17 | from neuraxis import config  # noqa: E402
+18 | from neuraxis.experiments.pilot_outputs import build_outputs  # noqa: E402
+   |                                                               ^^^^^^^^^^^^
+19 | from neuraxis.provenance import REPO_ROOT  # noqa: E402
+   |
+help: Remove unused `noqa` directive
+   |
+17 | from neuraxis import config  # noqa: E402
+   - from neuraxis.experiments.pilot_outputs import build_outputs  # noqa: E402
+18 + from neuraxis.experiments.pilot_outputs import build_outputs
+19 | from neuraxis.provenance import REPO_ROOT  # noqa: E402
+   |
+
+RUF100 [*] Unused `noqa` directive (non-enabled: `E402`)
+  --> scripts\pilot_outputs.py:19:44
+   |
+17 | from neuraxis import config  # noqa: E402
+18 | from neuraxis.experiments.pilot_outputs import build_outputs  # noqa: E402
+19 | from neuraxis.provenance import REPO_ROOT  # noqa: E402
+   |                                            ^^^^^^^^^^^^
+help: Remove unused `noqa` directive
+   |
+18 | from neuraxis.experiments.pilot_outputs import build_outputs  # noqa: E402
+   - from neuraxis.provenance import REPO_ROOT  # noqa: E402
+19 + from neuraxis.provenance import REPO_ROOT
+20 |
+   |
+
+RUF100 [*] Unused `noqa` directive (non-enabled: `E402`)
+  --> scripts\pilot_v2_outputs.py:15:30
+   |
+13 | sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
+14 |
+15 | from neuraxis import config  # noqa: E402
+   |                              ^^^^^^^^^^^^
+16 | from neuraxis.experiments.pilot_v2_outputs import build  # noqa: E402
+17 | from neuraxis.provenance import REPO_ROOT  # noqa: E402
+   |
+help: Remove unused `noqa` directive
+   |
+14 |
+   - from neuraxis import config  # noqa: E402
+15 + from neuraxis import config
+16 | from neuraxis.experiments.pilot_v2_outputs import build  # noqa: E402
+   |
+
+RUF100 [*] Unused `noqa` directive (non-enabled: `E402`)
+  --> scripts\pilot_v2_outputs.py:16:58
+   |
+15 | from neuraxis import config  # noqa: E402
+16 | from neuraxis.experiments.pilot_v2_outputs import build  # noqa: E402
+   |                                                          ^^^^^^^^^^^^
+17 | from neuraxis.provenance import REPO_ROOT  # noqa: E402
+   |
+help: Remove unused `noqa` directive
+   |
+15 | from neuraxis import config  # noqa: E402
+   - from neuraxis.experiments.pilot_v2_outputs import build  # noqa: E402
+16 + from neuraxis.experiments.pilot_v2_outputs import build
+17 | from neuraxis.provenance import REPO_ROOT  # noqa: E402
+   |
+
+RUF100 [*] Unused `noqa` directive (non-enabled: `E402`)
+  --> scripts\pilot_v2_outputs.py:17:44
+   |
+15 | from neuraxis import config  # noqa: E402
+16 | from neuraxis.experiments.pilot_v2_outputs import build  # noqa: E402
+17 | from neuraxis.provenance import REPO_ROOT  # noqa: E402
+   |                                            ^^^^^^^^^^^^
+help: Remove unused `noqa` directive
+   |
+16 | from neuraxis.experiments.pilot_v2_outputs import build  # noqa: E402
+   - from neuraxis.provenance import REPO_ROOT  # noqa: E402
+17 + from neuraxis.provenance import REPO_ROOT
+18 |
+   |
+
+RUF100 [*] Unused `noqa` directive (non-enabled: `E402`)
+  --> scripts\pre_run_manifest.py:24:14
+   |
+22 | sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
+23 |
+24 | import yaml  # noqa: E402
+   |              ^^^^^^^^^^^^
+25 |
+26 | from neuraxis.provenance import REPO_ROOT, sha256_bytes, sha256_file  # noqa: E402
+   |
+help: Remove unused `noqa` directive
+   |
+23 |
+   - import yaml  # noqa: E402
+24 + import yaml
+25 |
+   |
+
+RUF100 [*] Unused `noqa` directive (non-enabled: `E402`)
+  --> scripts\pre_run_manifest.py:26:71
+   |
+24 | import yaml  # noqa: E402
+25 |
+26 | from neuraxis.provenance import REPO_ROOT, sha256_bytes, sha256_file  # noqa: E402
+   |                                                                       ^^^^^^^^^^^^
+27 |
+28 | ENVIRONMENT_FILES = ("requirements.lock", "environment.yml", "pyproject.toml", ".tools/jdk_provenance.json", "Dockerfile")
+   |
+help: Remove unused `noqa` directive
+   |
+25 |
+   - from neuraxis.provenance import REPO_ROOT, sha256_bytes, sha256_file  # noqa: E402
+26 + from neuraxis.provenance import REPO_ROOT, sha256_bytes, sha256_file
+27 |
+   |
+
+SIM115 Use a context manager for opening files
+  --> scripts\pre_run_manifest.py:43:63
+   |
+41 |     study = yaml.safe_load((config_dir / "study.yaml").read_text(encoding="utf-8"))
+42 |     wanted = set(study["pilot"]["models"])
+43 |     snapshots = sorted({r["snapshot"] for r in csv.DictReader(open(manifest, encoding="utf-8")) if r["model_id"] in wanted})
+   |                                                               ^^^^
+44 |     for snap in snapshots:
+45 |         root = REPO_ROOT / "models" / "raw" / snap
+   |
+
+RUF100 [*] Unused `noqa` directive (non-enabled: `E402`)
+  --> scripts\pre_run_package.py:23:86
+   |
+21 | sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
+22 |
+23 | from neuraxis.provenance import REPO_ROOT, python_environment, sha256_file, utc_now  # noqa: E402
+   |                                                                                      ^^^^^^^^^^^^
+24 |
+25 | SECRET = re.compile(r"(gho_|ghp_|github_pat_|sk-ant-|AKIA[0-9A-Z]{16}|PRIVATE KEY|password\s*[:=])", re.IGNORECASE)
+   |
+help: Remove unused `noqa` directive
+   |
+22 |
+   - from neuraxis.provenance import REPO_ROOT, python_environment, sha256_file, utc_now  # noqa: E402
+23 + from neuraxis.provenance import REPO_ROOT, python_environment, sha256_file, utc_now
+24 |
+   |
+
+RUF100 [*] Unused `noqa` directive (non-enabled: `E402`)
+  --> scripts\readiness.py:37:30
+   |
+35 | sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
+36 |
+37 | from neuraxis import config  # noqa: E402
+   |                              ^^^^^^^^^^^^
+38 | from neuraxis.provenance import REPO_ROOT, git_state, sha256_file, utc_now  # noqa: E402
+   |
+help: Remove unused `noqa` directive
+   |
+36 |
+   - from neuraxis import config  # noqa: E402
+37 + from neuraxis import config
+38 | from neuraxis.provenance import REPO_ROOT, git_state, sha256_file, utc_now  # noqa: E402
+   |
+
+RUF100 [*] Unused `noqa` directive (non-enabled: `E402`)
+  --> scripts\readiness.py:38:77
+   |
+37 | from neuraxis import config  # noqa: E402
+38 | from neuraxis.provenance import REPO_ROOT, git_state, sha256_file, utc_now  # noqa: E402
+   |                                                                             ^^^^^^^^^^^^
+39 |
+40 | INPUT_PATHS = ("src", "scripts", "tests", "configs", "docs", "manifests", "data", "workflows",
+   |
+help: Remove unused `noqa` directive
+   |
+37 | from neuraxis import config  # noqa: E402
+   - from neuraxis.provenance import REPO_ROOT, git_state, sha256_file, utc_now  # noqa: E402
+38 + from neuraxis.provenance import REPO_ROOT, git_state, sha256_file, utc_now
+39 |
+   |
+
+BLE001 Do not catch blind exception: `Exception`
+  --> scripts\readiness.py:89:12
+   |
+87 |         sim = JNeuroML()
+88 |         out["simulator"] = sim.version_info() if sim.available() else {"available": False}
+89 |     except Exception as exc:  # recorded, never hidden
+   |            ^^^^^^^^^
+90 |         out["simulator"] = {"error": str(exc)}
+91 |     pinned = {}
+   |
+
+RUF100 [*] Unused `noqa` directive (non-enabled: `E402`)
+  --> scripts\reproducibility_check.py:25:50
+   |
+23 | sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
+24 |
+25 | from neuraxis.experiments import campaign as cp  # noqa: E402
+   |                                                  ^^^^^^^^^^^^
+26 | from neuraxis.experiments import registry  # noqa: E402
+27 | from neuraxis.provenance import git_state, utc_now  # noqa: E402
+   |
+help: Remove unused `noqa` directive
+   |
+24 |
+   - from neuraxis.experiments import campaign as cp  # noqa: E402
+25 + from neuraxis.experiments import campaign as cp
+26 | from neuraxis.experiments import registry  # noqa: E402
+   |
+
+RUF100 [*] Unused `noqa` directive (non-enabled: `E402`)
+  --> scripts\reproducibility_check.py:26:44
+   |
+25 | from neuraxis.experiments import campaign as cp  # noqa: E402
+26 | from neuraxis.experiments import registry  # noqa: E402
+   |                                            ^^^^^^^^^^^^
+27 | from neuraxis.provenance import git_state, utc_now  # noqa: E402
+   |
+help: Remove unused `noqa` directive
+   |
+25 | from neuraxis.experiments import campaign as cp  # noqa: E402
+   - from neuraxis.experiments import registry  # noqa: E402
+26 + from neuraxis.experiments import registry
+27 | from neuraxis.provenance import git_state, utc_now  # noqa: E402
+   |
+
+RUF100 [*] Unused `noqa` directive (non-enabled: `E402`)
+  --> scripts\reproducibility_check.py:27:53
+   |
+25 | from neuraxis.experiments import campaign as cp  # noqa: E402
+26 | from neuraxis.experiments import registry  # noqa: E402
+27 | from neuraxis.provenance import git_state, utc_now  # noqa: E402
+   |                                                     ^^^^^^^^^^^^
+28 |
+29 | NOT_EXECUTABLE = ("1_structurally_invalid", "2_non_executable", "3_numerically_unstable")
+   |
+help: Remove unused `noqa` directive
+   |
+26 | from neuraxis.experiments import registry  # noqa: E402
+   - from neuraxis.provenance import git_state, utc_now  # noqa: E402
+27 + from neuraxis.provenance import git_state, utc_now
+28 |
+   |
+
+RUF100 [*] Unused `noqa` directive (non-enabled: `E731`)
+  --> scripts\reproducibility_check.py:49:87
+   |
+47 |     with open(ctx.processed / "classification.csv", encoding="utf-8", newline="") as f:
+48 |         cls = [r for r in csv.DictReader(f) if r["class"] not in NOT_EXECUTABLE]
+49 |     key = lambda r: hashlib.sha256(f"{seed}:{r['variant_id']}".encode()).hexdigest()  # noqa: E731
+   |                                                                                       ^^^^^^^^^^^^
+50 |     chosen = (sorted((r for r in cls if r["kind"] == "mutant"), key=key)[:a.n_mutants] +
+51 |               sorted((r for r in cls if r["kind"] != "mutant"), key=key)[:a.n_controls])
+   |
+help: Remove unused `noqa` directive
+   |
+48 |         cls = [r for r in csv.DictReader(f) if r["class"] not in NOT_EXECUTABLE]
+   -     key = lambda r: hashlib.sha256(f"{seed}:{r['variant_id']}".encode()).hexdigest()  # noqa: E731
+49 +     key = lambda r: hashlib.sha256(f"{seed}:{r['variant_id']}".encode()).hexdigest()
+50 |     chosen = (sorted((r for r in cls if r["kind"] == "mutant"), key=key)[:a.n_mutants] +
+   |
+
+F841 Local variable `t0` is assigned to but never used
+  --> scripts\smoke_jnml.py:36:9
+   |
+34 |         v = sim.validate([ws.cell_path])
+35 |         print(f"\n[{mid}] validate: {v.valid} {v.messages[:2]}")
+36 |         t0 = time.perf_counter()
+   |         ^^
+37 |         can = sim.run_lems(ws.harness_path, [canonical_output(m)])
+38 |         tr = can.traces.get("P00_canonical")
+   |
+help: Remove assignment to unused variable `t0`
+
+RUF100 [*] Unused `noqa` directive (non-enabled: `E402`)
+  --> scripts\verify_archive.py:31:30
+   |
+29 | sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
+30 |
+31 | from neuraxis import config  # noqa: E402
+   |                              ^^^^^^^^^^^^
+32 | from neuraxis.experiments import registry as reg  # noqa: E402
+33 | from neuraxis.provenance import sha256_file, utc_now  # noqa: E402
+   |
+help: Remove unused `noqa` directive
+   |
+30 |
+   - from neuraxis import config  # noqa: E402
+31 + from neuraxis import config
+32 | from neuraxis.experiments import registry as reg  # noqa: E402
+   |
+
+RUF100 [*] Unused `noqa` directive (non-enabled: `E402`)
+  --> scripts\verify_archive.py:32:51
+   |
+31 | from neuraxis import config  # noqa: E402
+32 | from neuraxis.experiments import registry as reg  # noqa: E402
+   |                                                   ^^^^^^^^^^^^
+33 | from neuraxis.provenance import sha256_file, utc_now  # noqa: E402
+   |
+help: Remove unused `noqa` directive
+   |
+31 | from neuraxis import config  # noqa: E402
+   - from neuraxis.experiments import registry as reg  # noqa: E402
+32 + from neuraxis.experiments import registry as reg
+33 | from neuraxis.provenance import sha256_file, utc_now  # noqa: E402
+   |
+
+RUF100 [*] Unused `noqa` directive (non-enabled: `E402`)
+  --> scripts\verify_archive.py:33:55
+   |
+31 | from neuraxis import config  # noqa: E402
+32 | from neuraxis.experiments import registry as reg  # noqa: E402
+33 | from neuraxis.provenance import sha256_file, utc_now  # noqa: E402
+   |                                                       ^^^^^^^^^^^^
+help: Remove unused `noqa` directive
+   |
+32 | from neuraxis.experiments import registry as reg  # noqa: E402
+   - from neuraxis.provenance import sha256_file, utc_now  # noqa: E402
+33 + from neuraxis.provenance import sha256_file, utc_now
+34 |
+   |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> src\neuraxis\experiments\agent.py:24:1
+   |
+22 |   """
+23 |
+24 | / from __future__ import annotations
+25 | |
+26 | | import dataclasses as dc
+27 | | import datetime as dt
+28 | | import difflib
+29 | | import enum
+30 | | import functools
+31 | | import importlib
+32 | | import json
+33 | | import math
+34 | | import os
+35 | | import posixpath
+36 | | import re
+37 | | import shutil
+38 | | import stat
+39 | | import subprocess
+40 | | from collections import Counter
+41 | | from collections.abc import Iterable, Mapping, Sequence
+42 | | from pathlib import Path, PurePosixPath
+43 | | from typing import Any
+44 | | from xml.sax.saxutils import escape as _xml_escape
+45 | | from xml.sax.saxutils import unescape as _xml_unescape
+46 | |
+47 | | import yaml
+48 | | from lxml import etree
+49 | |
+50 | | from neuraxis import units
+51 | | from neuraxis.models import Workspace, load_models, materialize, snapshot_dir
+52 | | from neuraxis.provenance import (REPO_ROOT, git_state, sha256_bytes, sha256_file, sha256_json, tree_manifest,
+53 | |                                  utc_now, write_immutable_text)
+54 | | from neuraxis.schemas import ModelRecord, RunStatus, VariantKind, VariantRecord, dumps, to_jsonable
+   | |___________________________________________________________________________________________________^
+55 |
+56 |   # ----------------------------------------------------------------------------- constants
+   |
+help: Organize imports
+   |
+51 | from neuraxis.models import Workspace, load_models, materialize, snapshot_dir
+   - from neuraxis.provenance import (REPO_ROOT, git_state, sha256_bytes, sha256_file, sha256_json, tree_manifest,
+   -                                  utc_now, write_immutable_text)
+52 + from neuraxis.provenance import (
+53 +     REPO_ROOT,
+54 +     git_state,
+55 +     sha256_bytes,
+56 +     sha256_file,
+57 +     sha256_json,
+58 +     tree_manifest,
+59 +     utc_now,
+60 +     write_immutable_text,
+61 + )
+62 | from neuraxis.schemas import ModelRecord, RunStatus, VariantKind, VariantRecord, dumps, to_jsonable
+   |
+
+UP033 [*] Use `@functools.cache` instead of `@functools.lru_cache(maxsize=None)`
+   --> src\neuraxis\experiments\agent.py:180:21
+    |
+179 | # ----------------------------------------------------------------------------- paths and globs
+180 | @functools.lru_cache(maxsize=None)
+    |                     ^^^^^^^^^^^^^^
+181 | def _glob_regex(pattern: str) -> re.Pattern[str]:
+182 |     """``**/`` = any number of directories, ``**`` = anything, ``*`` / ``?`` stay within one segment."""
+    |
+help: Rewrite with `@functools.cache
+    |
+179 | # ----------------------------------------------------------------------------- paths and globs
+    - @functools.lru_cache(maxsize=None)
+180 + @functools.cache
+181 | def _glob_regex(pattern: str) -> re.Pattern[str]:
+    |
+
+UP037 [*] Remove quotes from type annotation
+   --> src\neuraxis\experiments\agent.py:569:27
+    |
+567 |     require_si_equal: bool = False             # the new value must denote the same physical quantity
+568 |
+569 |     def matches(self, ch: "Change") -> bool:
+    |                           ^^^^^^^^
+570 |         if not glob_match(ch.file, self.file) or ch.kind not in self.change:
+571 |             return False
+    |
+help: Remove quotes
+    |
+568 |
+    -     def matches(self, ch: "Change") -> bool:
+569 +     def matches(self, ch: Change) -> bool:
+570 |         if not glob_match(ch.file, self.file) or ch.kind not in self.change:
+    |
+
+BLE001 Do not catch blind exception: `Exception`
+    --> src\neuraxis\experiments\agent.py:1177:16
+     |
+1175 |         try:
+1176 |             mod = importlib.import_module(modname)
+1177 |         except Exception as exc:  # a registry that fails to import for any reason is unavailable, never guessed
+     |                ^^^^^^^^^
+1178 |             errors.append(f"{modname}: {type(exc).__name__}: {exc}")
+1179 |             continue
+     |
+
+FURB167 [*] Use of regular expression alias `re.S`
+    --> src\neuraxis\experiments\agent.py:1259:106
+     |
+1257 |     le = line_starts[line] if line < len(line_starts) else len(data)
+1258 |     tag_re = re.compile(rb"<(?:[A-Za-z_][\w.\-]*:)?" + re.escape(tag.encode("utf-8")) + rb"(?=[\s/>])")
+1259 |     attr_re = re.compile(rb"(?<=\s)" + re.escape(attribute.encode("utf-8")) + rb"\s*=\s*([\"'])(.*?)\1", re.S)
+     |                                                                                                          ^^^^
+1260 |     found = []
+1261 |     for m in tag_re.finditer(data):
+     |
+help: Replace with `re.DOTALL`
+     |
+1258 |     tag_re = re.compile(rb"<(?:[A-Za-z_][\w.\-]*:)?" + re.escape(tag.encode("utf-8")) + rb"(?=[\s/>])")
+     -     attr_re = re.compile(rb"(?<=\s)" + re.escape(attribute.encode("utf-8")) + rb"\s*=\s*([\"'])(.*?)\1", re.S)
+1259 +     attr_re = re.compile(rb"(?<=\s)" + re.escape(attribute.encode("utf-8")) + rb"\s*=\s*([\"'])(.*?)\1", re.DOTALL)
+1260 |     found = []
+     |
+
+RUF007 Prefer `itertools.pairwise()` over `zip()` when iterating over successive pairs
+    --> src\neuraxis\experiments\agent.py:1303:43
+     |
+1301 |         spans.append((start, end, _xml_escape(str(ch.new), entities).encode("utf-8")))
+1302 |     spans.sort(reverse=True)
+1303 |     for (s1, _e1, _n1), (_s2, e2, _n2) in zip(spans, spans[1:]):
+     |                                           ^^^
+1304 |         if e2 > s1:
+1305 |             raise SeedError(f"{rel}: overlapping attribute edits")
+     |
+help: Replace `zip()` with `itertools.pairwise()`
+
+UP037 [*] Remove quotes from type annotation
+    --> src\neuraxis\experiments\agent.py:1773:51
+     |
+1771 |     @classmethod
+1772 |     def development(cls, results_root: Path, campaign: str = "agent_dev", dt_ms: float = 0.005,
+1773 |                     timeout_s: float = 3600.0) -> "FrozenConfig":
+     |                                                   ^^^^^^^^^^^^^^
+1774 |         """An unfrozen config for developing the harness. It skips every freeze check, behavioural
+1775 |         layers cannot pass without a tolerance table and protocol selection, and every score is
+     |
+help: Remove quotes
+     |
+1772 |     def development(cls, results_root: Path, campaign: str = "agent_dev", dt_ms: float = 0.005,
+     -                     timeout_s: float = 3600.0) -> "FrozenConfig":
+1773 +                     timeout_s: float = 3600.0) -> FrozenConfig:
+1774 |         """An unfrozen config for developing the harness. It skips every freeze check, behavioural
+     |
+
+BLE001 Do not catch blind exception: `Exception`
+    --> src\neuraxis\experiments\agent.py:2321:16
+     |
+2319 |         try:
+2320 |             outcome = getattr(evaluators, layer)(ctx)
+2321 |         except Exception as exc:  # any evaluator failure is recorded as an error, never as a verdict
+     |                ^^^^^^^^^
+2322 |             return LayerOutcome(layer, LayerStatus.ERROR, {"reason": f"{type(exc).__name__}: {exc}"})
+2323 |         if outcome.layer != layer:
+     |
+
+SIM102 Use a single `if` statement instead of nested `if` statements
+    --> src\neuraxis\experiments\agent.py:2441:5
+     |
+2439 |       if log.permissions_sha256 != sha256_json(to_jsonable(log.permissions)):
+2440 |           problems.append("permissions_sha256 does not match the recorded permissions")
+2441 | /     if policy is not None:
+2442 | |         if log.permissions_sha256 != policy.permissions_sha256:
+     | |_______________________________________________________________^
+2443 |               problems.append("permissions differ from the frozen agent policy")
+2444 |       if task is not None:
+     |
+help: Combine `if` statements using `and`
+
+RUF046 [*] Value being cast to `int` is already an integer
+   --> src\neuraxis\experiments\analyze.py:197:65
+    |
+195 |         rows = []
+196 |         for op, g in fp.groupby("operator"):
+197 |             k, n = int(g["false_positive"].astype(bool).sum()), int(len(g))
+    |                                                                 ^^^^^^^^^^^
+198 |             lo, hi = metrics.proportion_ci(k, n)
+199 |             rows.append({"category": op, "n": n, "n_detected": k, "rate": k / n, "ci_low": lo, "ci_high": hi})
+    |
+help: Remove unnecessary `int` call
+    |
+196 |         for op, g in fp.groupby("operator"):
+    -             k, n = int(g["false_positive"].astype(bool).sum()), int(len(g))
+197 +             k, n = int(g["false_positive"].astype(bool).sum()), len(g)
+198 |             lo, hi = metrics.proportion_ci(k, n)
+    |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> src\neuraxis\experiments\campaign.py:16:1
+   |
+14 |   """
+15 |
+16 | / from __future__ import annotations
+17 | |
+18 | | import csv
+19 | | import dataclasses as dc
+20 | | import json
+21 | | from collections import Counter
+22 | | from collections.abc import Sequence
+23 | | from pathlib import Path
+24 | | from typing import Any
+25 | |
+26 | | import numpy as np
+27 | |
+28 | | from neuraxis import config
+29 | | from neuraxis.experiments import registry, strata
+30 | | from neuraxis.models import Workspace, load_models, materialize
+31 | | from neuraxis.protocols.definitions import CANONICAL_FEATURES, CANONICAL_ID, batched, templates_from_config
+32 | | from neuraxis.provenance import utc_now
+33 | | from neuraxis.schemas import (ConcreteProtocol, MutantClass, RunStatus, VariantKind, VariantRecord, dumps, to_jsonable,
+34 | |                               variant_from_dict)
+35 | | from neuraxis.simulators.jneuroml import JNeuroML
+36 | | from neuraxis.validation import structural
+37 | | from neuraxis.validation.canonical import canonical_protocol
+38 | | from neuraxis.validation.convergence import ToleranceTable, calibrate, convergence_report
+39 | | from neuraxis.validation import trace_regression as tr
+40 | | from neuraxis.validation.execution import RunRecorder, TaskError, run_parallel
+41 | | from neuraxis.validation.fingerprint import (RHEOBASE_ID, Detection, Fingerprint, ToolFailure, build_fingerprint, classify,
+42 | |                                              compare, detecting_protocols, load_fingerprint, reproducible_keys,
+43 | |                                              save_fingerprint, write_detections)
+   | |________________________________________________________________________________^
+help: Organize imports
+   |
+32 | from neuraxis.provenance import utc_now
+   - from neuraxis.schemas import (ConcreteProtocol, MutantClass, RunStatus, VariantKind, VariantRecord, dumps, to_jsonable,
+   -                               variant_from_dict)
+33 + from neuraxis.schemas import (
+34 +     ConcreteProtocol,
+35 +     MutantClass,
+36 +     RunStatus,
+37 +     VariantKind,
+38 +     VariantRecord,
+39 +     dumps,
+40 +     to_jsonable,
+41 +     variant_from_dict,
+42 + )
+43 | from neuraxis.simulators.jneuroml import JNeuroML
+44 | from neuraxis.validation import structural
+45 + from neuraxis.validation import trace_regression as tr
+46 | from neuraxis.validation.canonical import canonical_protocol
+47 | from neuraxis.validation.convergence import ToleranceTable, calibrate, convergence_report
+   - from neuraxis.validation import trace_regression as tr
+48 | from neuraxis.validation.execution import RunRecorder, TaskError, run_parallel
+   - from neuraxis.validation.fingerprint import (RHEOBASE_ID, Detection, Fingerprint, ToolFailure, build_fingerprint, classify,
+   -                                              compare, detecting_protocols, load_fingerprint, reproducible_keys,
+   -                                              save_fingerprint, write_detections)
+49 + from neuraxis.validation.fingerprint import (
+50 +     RHEOBASE_ID,
+51 +     Detection,
+52 +     Fingerprint,
+53 +     ToolFailure,
+54 +     build_fingerprint,
+55 +     classify,
+56 +     compare,
+57 +     detecting_protocols,
+58 +     load_fingerprint,
+59 +     reproducible_keys,
+60 +     save_fingerprint,
+61 +     write_detections,
+62 + )
+63 |
+   |
+
+RUF100 [*] Unused `noqa` directive (non-enabled: `ANN001`, `ANN202`)
+   --> src\neuraxis\experiments\campaign.py:262:35
+    |
+260 |         without = int(pcfg.get("sites_without_severity", 1))
+261 |
+262 |         def selector(op, sites):  # noqa: ANN001, ANN202
+    |                                   ^^^^^^^^^^^^^^^^^^^^^^
+263 |             return select_sites(sites, op.name, seed, levels, int(per.get(op.name, per.get("default", 1))), without)
+264 |     records: list[VariantRecord] = []
+    |
+help: Remove unused `noqa` directive
+    |
+261 |
+    -         def selector(op, sites):  # noqa: ANN001, ANN202
+262 +         def selector(op, sites):
+263 |             return select_sites(sites, op.name, seed, levels, int(per.get(op.name, per.get("default", 1))), without)
+    |
+
+PLC0206 Extracting value from dictionary without calling `.items()`
+   --> src\neuraxis\experiments\campaign.py:265:9
+    |
+263 |             return select_sites(sites, op.name, seed, levels, int(per.get(op.name, per.get("default", 1))), without)
+264 |     records: list[VariantRecord] = []
+265 |     for mid in refs:
+    |         ^^^^^^^^^^^
+266 |         model = refs[mid].ws.model
+    |                 ---------
+267 |         # Both generators write to root/<model_id>/<variant_id>/.
+268 |         records += mutations.generate_mutants(model, mut_ops, n_mutants, seed, ctx.variants_root / "mutants",
+    |
+help: Use `for mid, value in refs.items()` instead
+
+ISC004 Unparenthesized implicit string concatenation in collection
+   --> src\neuraxis\experiments\campaign.py:573:78
+    |
+571 |       if ctx.meta:
+572 |           lines += [f"*{config.designation_text(ctx.cfg)}*", ""]
+573 |       lines += [f"- model: `{o.variant.model_id}`", f"- stratum: {o.stratum}", f"- kind/family/operator: "
+    |  ______________________________________________________________________________^
+574 | |              f"{o.variant.kind.value} / {o.variant.family} / {o.variant.operator}",
+    | |__________________________________________________________________________________^
+575 |                f"- parameters: `{json.dumps(o.variant.params, sort_keys=True)}`",
+576 |                f"- recorded edits: `{json.dumps([dc.asdict(e) for e in o.variant.edits])}`",
+    |
+help: Did you forget a comma?
+help: Wrap implicitly concatenated strings in parentheses
+
+ISC004 Unparenthesized implicit string concatenation in collection
+   --> src\neuraxis\experiments\campaign.py:585:19
+    |
+583 |                        f"{'' if d.diff is None else f'{d.diff:.6g}'} | {'' if d.tau is None else f'{d.tau:.6g}'} | "
+584 |                        f"`{d.ref_run_id}` | `{d.var_run_id}` |")
+585 |       lines += ["", "Evidence traces: `results/raw/<campaign>/<run_id>/traces.npz` for the run ids above; features in the "
+    |  ___________________^
+586 | |               "matching `features.json`. A detection counts toward non-equivalence only if the same protocol and feature "
+587 | |               "are detected at h/1 and h/2."]
+    | |____________________________________________^
+588 |       path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+    |
+help: Did you forget a comma?
+help: Wrap implicitly concatenated strings in parentheses
+
+RUF046 [*] Value being cast to `int` is already an integer
+  --> src\neuraxis\experiments\heldout.py:61:41
+   |
+59 |         "campaign": campaign, "campaign_role": registry.CONFIRMATORY_HELDOUT, "code_commit": code_commit,
+60 |         "created_utc": utc_now(), "reason": reason, "selection_file": str(selection_file),
+61 |         "n_heldout_admissible_mutants": int(len(adm)), "heldout_models": list(split.heldout_models),
+   |                                         ^^^^^^^^^^^^^
+62 |         "heldout_families": list(split.heldout_families), "analysis_config": acfg,
+63 |         "primary_endpoint": (bootstrap.paired_comparison(battery, canonical, clusters, int(acfg.get("n_boot", 10000)),
+   |
+help: Remove unnecessary `int` call
+   |
+60 |         "created_utc": utc_now(), "reason": reason, "selection_file": str(selection_file),
+   -         "n_heldout_admissible_mutants": int(len(adm)), "heldout_models": list(split.heldout_models),
+61 +         "n_heldout_admissible_mutants": len(adm), "heldout_models": list(split.heldout_models),
+62 |         "heldout_families": list(split.heldout_families), "analysis_config": acfg,
+   |
+
+ISC004 Unparenthesized implicit string concatenation in collection
+  --> src\neuraxis\experiments\pilot.py:58:13
+   |
+56 |       if meta:
+57 |           lines += [
+58 | /             f"- project: **{meta.get('project_name', '')}**; study phase: **{meta.get('study_phase', '')}**; protocol "
+59 | |             f"version: **{meta.get('protocol_version', '')}**",
+   | |______________________________________________________________^
+60 |               f"- designation: {meta.get('designation', '')}",
+61 |               "- findings in this report: **all exploratory; none confirmatory**",
+   |
+help: Did you forget a comma?
+help: Wrap implicitly concatenated strings in parentheses
+
+ISC004 Unparenthesized implicit string concatenation in collection
+  --> src\neuraxis\experiments\pilot.py:67:9
+   |
+65 |               f"- config set SHA-256: `{config.config_set_sha256()}`", ""]
+66 |       lines += [
+67 | /         "**EXPLORATORY / DEVELOPMENTAL DATA.** Never pooled with the held-out data for the primary confirmatory "
+68 | |         "estimate (DECISIONS D-026).", "",
+   | |_____________________________________^
+69 |           "*Generated automatically from `results/processed/{0}/`. Development-stage pilot; "
+70 |           "not a confirmatory result. Thresholds used below for the pilot decision are provisional and must be "
+   |
+help: Did you forget a comma?
+help: Wrap implicitly concatenated strings in parentheses
+
+UP030 Use implicit references for positional format fields
+  --> src\neuraxis\experiments\pilot.py:69:9
+   |
+67 |           "**EXPLORATORY / DEVELOPMENTAL DATA.** Never pooled with the held-out data for the primary confirmatory "
+68 |           "estimate (DECISIONS D-026).", "",
+69 | /         "*Generated automatically from `results/processed/{0}/`. Development-stage pilot; "
+70 | |         "not a confirmatory result. Thresholds used below for the pilot decision are provisional and must be "
+71 | |         "reviewed by Neel.*".format(ctx.campaign), "",
+   | |_________________________________________________^
+72 |           "## Setup", "",
+73 |           f"- models: {', '.join(refs)}",
+   |
+help: Remove explicit positional indices
+
+UP032 [*] Use f-string instead of `format` call
+  --> src\neuraxis\experiments\pilot.py:69:9
+   |
+67 |           "**EXPLORATORY / DEVELOPMENTAL DATA.** Never pooled with the held-out data for the primary confirmatory "
+68 |           "estimate (DECISIONS D-026).", "",
+69 | /         "*Generated automatically from `results/processed/{0}/`. Development-stage pilot; "
+70 | |         "not a confirmatory result. Thresholds used below for the pilot decision are provisional and must be "
+71 | |         "reviewed by Neel.*".format(ctx.campaign), "",
+   | |_________________________________________________^
+72 |           "## Setup", "",
+73 |           f"- models: {', '.join(refs)}",
+   |
+help: Convert to f-string
+   |
+68 |         "estimate (DECISIONS D-026).", "",
+   -         "*Generated automatically from `results/processed/{0}/`. Development-stage pilot; "
+69 +         f"*Generated automatically from `results/processed/{ctx.campaign}/`. Development-stage pilot; "
+70 |         "not a confirmatory result. Thresholds used below for the pilot decision are provisional and must be "
+   -         "reviewed by Neel.*".format(ctx.campaign), "",
+71 +         "reviewed by Neel.*", "",
+72 |         "## Setup", "",
+   |
+
+ISC004 Unparenthesized implicit string concatenation in collection
+  --> src\neuraxis\experiments\pilot.py:76:9
+   |
+74 |           f"- nominal dt: {ctx.nominal.dt_ms} ms; refinement factors {ctx.factors}",
+75 |           f"- mutation families: {', '.join(ctx.cfg['pilot']['mutation_families'])}; seed {seed}",
+76 | /         f"- variants: {len(outcomes)} ({summary['n_semantic_mutants']} primary semantic mutants, "
+77 | |         f"{summary['n_numerical_mutants']} numerical robustness stress tests, {nt} valid transformations / "
+78 | |         "no-change controls)",
+   | |_____________________________^
+79 |           f"- excluded operators: {', '.join((ctx.cfg.get('pilot') or {}).get('exclude_operators') or []) or 'none'}",
+80 |           f"- primary feature panel: {sorted(set().union(*panel.values()))}",
+   |
+help: Did you forget a comma?
+help: Wrap implicitly concatenated strings in parentheses
+
+ISC004 Unparenthesized implicit string concatenation in collection
+  --> src\neuraxis\experiments\pilot.py:94:15
+   |
+92 |       lines += [f"| {s} | {k} | {v} |" for s, c in sorted(summary["classes_by_stratum"].items()) for k, v in sorted(c.items())]
+93 |       lines += ["", "## Pilot success criteria (specification; primary semantic stratum and primary feature panel)", "",
+94 | /               f"1. **At least one admissible semantic mutation passes the canonical protocol and is reproducibly "
+95 | |               f"detected by another protocol:** {'MET' if crit1 else 'NOT MET'} ({len(silent)} silent mutant(s)"
+96 | |               f"{': ' + ', '.join(silent) if silent else ''}).",
+   | |_______________________________________________________________^
+97 |                 f"2. **Feature extraction stable under numerical refinement:** {'MET' if crit2 else 'NOT MET'} -- "
+98 |                 f"deterministic re-execution {determinism}; {len(excluded)} of {n} reference (protocol, feature) "
+   |
+help: Did you forget a comma?
+help: Wrap implicitly concatenated strings in parentheses
+
+ISC004 Unparenthesized implicit string concatenation in collection
+   --> src\neuraxis\experiments\pilot.py:97:15
+    |
+ 95 |                 f"detected by another protocol:** {'MET' if crit1 else 'NOT MET'} ({len(silent)} silent mutant(s)"
+ 96 |                 f"{': ' + ', '.join(silent) if silent else ''}).",
+ 97 | /               f"2. **Feature extraction stable under numerical refinement:** {'MET' if crit2 else 'NOT MET'} -- "
+ 98 | |               f"deterministic re-execution {determinism}; {len(excluded)} of {n} reference (protocol, feature) "
+ 99 | |               f"tolerance entries excluded because their state or category changed between h and h/2; tolerance "
+100 | |               f"limited by: {dict(limited)}. (Provisional pilot threshold: fewer than 25% excluded.)",
+    | |_____________________________________________________________________________________________________^
+101 |                 f"3. **Valid transformations do not trigger widespread false positives:** {'MET' if crit3 else 'NOT MET'} -- "
+102 |                 f"{fp} of {nt} valid transformations/no-change controls were classified non-equivalent. "
+    |
+help: Did you forget a comma?
+help: Wrap implicitly concatenated strings in parentheses
+
+ISC004 Unparenthesized implicit string concatenation in collection
+   --> src\neuraxis\experiments\pilot.py:101:15
+    |
+ 99 |                 f"tolerance entries excluded because their state or category changed between h and h/2; tolerance "
+100 |                 f"limited by: {dict(limited)}. (Provisional pilot threshold: fewer than 25% excluded.)",
+101 | /               f"3. **Valid transformations do not trigger widespread false positives:** {'MET' if crit3 else 'NOT MET'} -- "
+102 | |               f"{fp} of {nt} valid transformations/no-change controls were classified non-equivalent. "
+103 | |               "(Provisional pilot threshold: at most 10%.)", "",
+    | |___________________________________________________________^
+104 |                 "## Decision guidance", ""]
+105 |       if crit1 and crit2 and crit3:
+    |
+help: Did you forget a comma?
+help: Wrap implicitly concatenated strings in parentheses
+
+ISC004 Unparenthesized implicit string concatenation in collection
+   --> src\neuraxis\experiments\pilot.py:119:23
+    |
+117 |           lines += ["", "## Validation levels (model mutants; B and C kept separate)", "", "| level | count |", "|---|---|"]
+118 |           lines += [f"| {k} | {sum(bool(x.get(k)) for x in lv)} of {len(lv)} |" for k in keys]
+119 |           lines += ["", "Branch classification and all prespecified outputs: `pilot_v2_outputs/` "
+    |  _______________________^
+120 | |                       "(`scripts/pilot_v2_outputs.py`)."]
+    | |________________________________________________________^
+121 |       num_missed = summary["numerical_missed_by_canonical"]
+122 |       lines += ["", "## Numerical robustness and convergence stress tests (separate analysis; never semantic drift)", "",
+    |
+help: Did you forget a comma?
+help: Wrap implicitly concatenated strings in parentheses
+
+ISC004 Unparenthesized implicit string concatenation in collection
+   --> src\neuraxis\experiments\pilot.py:123:15
+    |
+121 |       num_missed = summary["numerical_missed_by_canonical"]
+122 |       lines += ["", "## Numerical robustness and convergence stress tests (separate analysis; never semantic drift)", "",
+123 | /               f"- {summary['n_numerical_mutants']} numerical mutants; cascade: "
+124 | |               f"`{json.dumps(summary['cascade_numerical_robustness'])}`",
+    | |________________________________________________________________________^
+125 |                 f"- missed by canonical but detected elsewhere: {len(num_missed)}"
+126 |                 f"{' (' + ', '.join(num_missed) + ')' if num_missed else ''}. These are numerical sensitivities, "
+    |
+help: Did you forget a comma?
+help: Wrap implicitly concatenated strings in parentheses
+
+ISC004 Unparenthesized implicit string concatenation in collection
+   --> src\neuraxis\experiments\pilot.py:125:15
+    |
+123 |                 f"- {summary['n_numerical_mutants']} numerical mutants; cascade: "
+124 |                 f"`{json.dumps(summary['cascade_numerical_robustness'])}`",
+125 | /               f"- missed by canonical but detected elsewhere: {len(num_missed)}"
+126 | |               f"{' (' + ', '.join(num_missed) + ')' if num_missed else ''}. These are numerical sensitivities, "
+127 | |               "not hidden semantic drift.",
+    | |__________________________________________^
+128 |                 f"- per-feature deviation versus the reference's own h / h/2 / h/4 discretisation error: "
+129 |                 f"`numerical_robustness.csv` ({summary['n_numerical_robustness_rows']} rows)",
+    |
+help: Did you forget a comma?
+help: Wrap implicitly concatenated strings in parentheses
+
+ISC004 Unparenthesized implicit string concatenation in collection
+   --> src\neuraxis\experiments\pilot.py:128:15
+    |
+126 |                 f"{' (' + ', '.join(num_missed) + ')' if num_missed else ''}. These are numerical sensitivities, "
+127 |                 "not hidden semantic drift.",
+128 | /               f"- per-feature deviation versus the reference's own h / h/2 / h/4 discretisation error: "
+129 | |               f"`numerical_robustness.csv` ({summary['n_numerical_robustness_rows']} rows)",
+    | |___________________________________________________________________________________________^
+130 |                 "", "## Secondary exploratory features (reported only; do not change the result above)", "",
+131 |                 f"- mutants the primary panel classed as equivalent but a secondary feature detected reproducibly: "
+    |
+help: Did you forget a comma?
+help: Wrap implicitly concatenated strings in parentheses
+
+ISC004 Unparenthesized implicit string concatenation in collection
+   --> src\neuraxis\experiments\pilot.py:131:15
+    |
+129 |                 f"`numerical_robustness.csv` ({summary['n_numerical_robustness_rows']} rows)",
+130 |                 "", "## Secondary exploratory features (reported only; do not change the result above)", "",
+131 | /               f"- mutants the primary panel classed as equivalent but a secondary feature detected reproducibly: "
+132 | |               f"{len(summary['secondary_primary_miss'])}"
+133 | |               f"{' (' + ', '.join(summary['secondary_primary_miss']) + ')' if summary['secondary_primary_miss'] else ''}",
+    | |_________________________________________________________________________________________________________________________^
+134 |                 "- details: `secondary_feature_report.csv`, `detections_secondary.csv`"]
+135 |       lines += ["", "## Files", "",
+    |
+help: Did you forget a comma?
+help: Wrap implicitly concatenated strings in parentheses
+
+ISC004 Unparenthesized implicit string concatenation in collection
+   --> src\neuraxis\experiments\pilot.py:136:15
+    |
+134 |                 "- details: `secondary_feature_report.csv`, `detections_secondary.csv`"]
+135 |       lines += ["", "## Files", "",
+136 | /               "- `classification.csv` (with `stratum` and `interpretation`), `detections.csv`, `detection_matrix.csv` "
+137 | |               "(primary semantic only), `protocol_costs.csv`, `generation.json`",
+    | |________________________________________________________________________________^
+138 |                 "- `tolerances.csv`, `convergence.csv`, `validation_cascade.json`, `false_positives.csv`",
+139 |                 "- `mutant_audit_sheet.csv` (Milestone 4 exit criterion: a human must audit at least 20 mutants)",
+    |
+help: Did you forget a comma?
+help: Wrap implicitly concatenated strings in parentheses
+
+PLR0124 Name compared with itself, consider replacing `v == v`
+   --> src\neuraxis\experiments\pilot_outputs.py:292:17
+    |
+290 |     except (TypeError, ValueError):
+291 |         return None
+292 |     return v if v == v and v not in (float("inf"), float("-inf")) else None
+    |                 ^
+
+BLE001 Do not catch blind exception: `Exception`
+   --> src\neuraxis\experiments\pilot_outputs.py:378:24
+    |
+376 |                     else:
+377 |                         numerics = "not_applicable (numerical stress test)"
+378 |                 except Exception as exc:  # recorded, not raised: the audit reports every failure
+    |                        ^^^^^^^^^
+379 |                     msg = f"fail: {type(exc).__name__}: {exc}"[:400]
+380 |                     single = msg if single == "not_checked" else single
+    |
+
+RUF100 [*] Unused `noqa` directive (non-enabled: `E731`)
+   --> src\neuraxis\experiments\pilot_outputs.py:429:65
+    |
+427 |     c = CampaignView(processed, repeated, new)
+428 |     out = Path(processed) / "pilot_outputs"
+429 |     t = lambda name, rows: write_table(out / name, rows, meta)  # noqa: E731
+    |                                                                 ^^^^^^^^^^^^
+430 |
+431 |     flow = flow_rows(c)
+    |
+help: Remove unused `noqa` directive
+    |
+428 |     out = Path(processed) / "pilot_outputs"
+    -     t = lambda name, rows: write_table(out / name, rows, meta)  # noqa: E731
+429 +     t = lambda name, rows: write_table(out / name, rows, meta)
+430 |
+    |
+
+ISC004 Unparenthesized implicit string concatenation in collection
+   --> src\neuraxis\experiments\pilot_outputs.py:471:14
+    |
+469 |                f"- Software commits in run records: {prov['git_commits']}; runs with a dirty tree: {prov['runs_with_dirty_tree']}",
+470 |                f"- Deviations: {deviations}", "",
+471 | /              "Files are numbered by the protocol's output list (2 flow counts ... 11 P05 dominance). The executive "
+472 | |              "summary and recommendation are written separately by the researcher.", ""]
+    | |___________________________________________________________________________________^
+473 |       (out / "README.md").write_text("\n".join(lines), encoding="utf-8")
+474 |       return out
+    |
+help: Did you forget a comma?
+help: Wrap implicitly concatenated strings in parentheses
+
+C401 Unnecessary generator (rewrite as a set comprehension)
+   --> src\neuraxis\experiments\pilot_v2_outputs.py:256:46
+    |
+254 |             or (ev["refinement_excluded_fraction"] or 0) >= rules["refinement_excluded_fraction_max"]),
+255 |         "A_hidden_drift_supported": (len(full_conf) >= int(rules["hidden_drift_min_confirmed_full_trace_survivors"])
+256 |                                      and len(set(r["model_id"] for r in full_conf)) >= int(rules["hidden_drift_min_models"])),
+    |                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+257 |         "B_feature_level_insufficiency": len(feat_insuff) >= int(rules["feature_insufficiency_min_cases"]),
+258 |         "C_canonical_adequacy": (ev["canonical_B_or_C_detection_rate"] is not None
+    |
+help: Rewrite as a set comprehension
+
+RUF100 [*] Unused `noqa` directive (non-enabled: `E731`)
+   --> src\neuraxis\experiments\pilot_v2_outputs.py:273:68
+    |
+271 |     c = po.CampaignView(processed, [], [])
+272 |     out = Path(processed) / "pilot_v2_outputs"
+273 |     t = lambda name, rows: po.write_table(out / name, rows, meta)  # noqa: E731
+    |                                                                    ^^^^^^^^^^^^
+274 |     checks = json.loads((processed / "survivor_checks.json").read_text(encoding="utf-8")) \
+275 |         if (processed / "survivor_checks.json").is_file() else {}
+    |
+help: Remove unused `noqa` directive
+    |
+272 |     out = Path(processed) / "pilot_v2_outputs"
+    -     t = lambda name, rows: po.write_table(out / name, rows, meta)  # noqa: E731
+273 +     t = lambda name, rows: po.write_table(out / name, rows, meta)
+274 |     checks = json.loads((processed / "survivor_checks.json").read_text(encoding="utf-8")) \
+    |
+
+RUF100 [*] Unused `noqa` directive (non-enabled: `E731`)
+   --> src\neuraxis\experiments\pilot_v2_outputs.py:277:80
+    |
+275 |         if (processed / "survivor_checks.json").is_file() else {}
+276 |     trace_rep = trace_reproducible(processed)
+277 |     sem = lambda r: c.stratum(r) == strata.SEMANTIC and r["kind"] == "mutant"  # noqa: E731
+    |                                                                                ^^^^^^^^^^^^
+278 |     ctl = lambda r: c.stratum(r) == strata.CONTROL  # noqa: E731
+    |
+help: Remove unused `noqa` directive
+    |
+276 |     trace_rep = trace_reproducible(processed)
+    -     sem = lambda r: c.stratum(r) == strata.SEMANTIC and r["kind"] == "mutant"  # noqa: E731
+277 +     sem = lambda r: c.stratum(r) == strata.SEMANTIC and r["kind"] == "mutant"
+278 |     ctl = lambda r: c.stratum(r) == strata.CONTROL  # noqa: E731
+    |
+
+RUF100 [*] Unused `noqa` directive (non-enabled: `E731`)
+   --> src\neuraxis\experiments\pilot_v2_outputs.py:278:53
+    |
+276 |     trace_rep = trace_reproducible(processed)
+277 |     sem = lambda r: c.stratum(r) == strata.SEMANTIC and r["kind"] == "mutant"  # noqa: E731
+278 |     ctl = lambda r: c.stratum(r) == strata.CONTROL  # noqa: E731
+    |                                                     ^^^^^^^^^^^^
+279 |
+280 |     t("01_validation_level_counts.csv", level_counts(c))
+    |
+help: Remove unused `noqa` directive
+    |
+277 |     sem = lambda r: c.stratum(r) == strata.SEMANTIC and r["kind"] == "mutant"  # noqa: E731
+    -     ctl = lambda r: c.stratum(r) == strata.CONTROL  # noqa: E731
+278 +     ctl = lambda r: c.stratum(r) == strata.CONTROL
+279 |
+    |
+
+B023 Function definition does not bind loop variable `pid`
+   --> src\neuraxis\experiments\strata.py:209:62
+    |
+207 |             def at(fps: Mapping[int, Any], f: int):
+208 |                 fp = fps.get(f)
+209 |                 return None if fp is None else fp.tables.get(pid, {}).get(feat)
+    |                                                              ^^^
+210 |
+211 |             ref = {f: _num(at(ref_fps, f)) for f in (1, 2, 4)}
+    |
+
+B023 Function definition does not bind loop variable `feat`
+   --> src\neuraxis\experiments\strata.py:209:75
+    |
+207 |             def at(fps: Mapping[int, Any], f: int):
+208 |                 fp = fps.get(f)
+209 |                 return None if fp is None else fp.tables.get(pid, {}).get(feat)
+    |                                                                           ^^^^
+210 |
+211 |             ref = {f: _num(at(ref_fps, f)) for f in (1, 2, 4)}
+    |
+
+RUF022 [*] `__all__` is not sorted
+  --> src\neuraxis\features\__init__.py:32:11
+   |
+30 |   )
+31 |
+32 |   __all__ = [
+   |  ___________^
+33 | |     "DEFINED", "NOT_APPLICABLE", "UNDEFINED", "FeatureConfigError", "FeatureTable", "FeatureValue", "REGIME_LABELS",
+34 | |     "align", "decimate", "efel_settings", "extract", "extract_all", "feature_table_from_json", "feature_table_to_json",
+35 | |     "firing_regime", "is_uniform", "max_abs_diff", "pack_traces", "resample", "rmse", "spike_times",
+36 | |     "stored_representation", "uniform_grid", "unpack_traces",
+37 | | ]
+   | |_^
+help: Apply an isort-style sorting to `__all__`
+   |
+32 | __all__ = [
+   -     "DEFINED", "NOT_APPLICABLE", "UNDEFINED", "FeatureConfigError", "FeatureTable", "FeatureValue", "REGIME_LABELS",
+   -     "align", "decimate", "efel_settings", "extract", "extract_all", "feature_table_from_json", "feature_table_to_json",
+   -     "firing_regime", "is_uniform", "max_abs_diff", "pack_traces", "resample", "rmse", "spike_times",
+   -     "stored_representation", "uniform_grid", "unpack_traces",
+33 +     "DEFINED",
+34 +     "NOT_APPLICABLE",
+35 +     "REGIME_LABELS",
+36 +     "UNDEFINED",
+37 +     "FeatureConfigError",
+38 +     "FeatureTable",
+39 +     "FeatureValue",
+40 +     "align",
+41 +     "decimate",
+42 +     "efel_settings",
+43 +     "extract",
+44 +     "extract_all",
+45 +     "feature_table_from_json",
+46 +     "feature_table_to_json",
+47 +     "firing_regime",
+48 +     "is_uniform",
+49 +     "max_abs_diff",
+50 +     "pack_traces",
+51 +     "resample",
+52 +     "rmse",
+53 +     "spike_times",
+54 +     "stored_representation",
+55 +     "uniform_grid",
+56 +     "unpack_traces",
+57 | ]
+   |
+
+TRY004 Prefer `TypeError` exception for invalid type
+   --> src\neuraxis\features\efel_adapter.py:404:13
+    |
+402 |         value = entry["value"]
+403 |         if isinstance(value, bool):
+404 |             raise ValueError(f"feature {key!r}: boolean values are not feature values")
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+405 |         fv = FeatureValue(str(entry["name"]), value, str(entry["state"]), str(entry["unit"]), str(entry["source"]))
+406 |         if fv.name != key:
+    |
+
+TRY004 Prefer `TypeError` exception for invalid type
+  --> src\neuraxis\features\regimes.py:33:9
+   |
+31 |     data = getattr(cfg, "data", cfg)
+32 |     if not isinstance(data, Mapping) or not isinstance(data.get("firing_regime"), Mapping):
+33 |         raise ValueError("feature config has no 'firing_regime' section")
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+34 |     section = data["firing_regime"]
+35 |     labels = tuple(section.get("labels", LABELS))
+   |
+
+RUF046 Value being cast to `int` is already an integer
+   --> src\neuraxis\features\regimes.py:111:16
+    |
+109 |     rc = regime_config(cfg)
+110 |     n = _defined_number(ft, "spike_count")
+111 |     n_spikes = int(round(n)) if n is not None and n >= 0 else int(_window_spike_times(trace, window,
+    |                ^^^^^^^^^^^^^
+112 |                                                                                       rc["threshold_mV"]).size)
+113 |     bursts = _defined_number(ft, "burst_count")
+    |
+help: Remove unnecessary `int` call
+
+RUF046 Value being cast to `int` is already an integer
+   --> src\neuraxis\features\trace_metrics.py:136:9
+    |
+134 |     if not end >= start:
+135 |         raise ValueError("the traces (and window) do not overlap")
+136 |     n = int(math.floor((end - start) / dt_ms + UNIFORM_REL_TOL)) + 1
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+137 |     grid = uniform_grid(start, dt_ms, n)
+138 |     slack = UNIFORM_REL_TOL * dt_ms
+    |
+help: Remove unnecessary `int` call
+
+RUF046 Value being cast to `int` is already an integer
+   --> src\neuraxis\features\trace_metrics.py:181:14
+    |
+179 |         raise ValueError(f"invalid sampling interval {every_ms!r} ms")
+180 |     ratio = every_ms / dt
+181 |     stride = int(round(ratio))
+    |              ^^^^^^^^^^^^^^^^^
+182 |     if stride < 1 or abs(ratio - stride) > UNIFORM_REL_TOL * ratio:
+183 |         raise ValueError(f"sampling interval {every_ms} ms is not a whole multiple of the step {dt} ms")
+    |
+help: Remove unnecessary `int` call
+
+PIE810 Call `endswith` once with a `tuple`
+   --> src\neuraxis\features\trace_metrics.py:261:16
+    |
+259 |         parts: dict[str, set[str]] = {}
+260 |         for key in npz.files:
+261 |             if key.endswith(V_SUFFIX) or key.endswith(T_SUFFIX):
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+262 |                 parts.setdefault(key[: -len(V_SUFFIX)], set()).add(key[-len(V_SUFFIX):])
+263 |             else:
+    |
+help: Merge into a single `endswith` call
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> src\neuraxis\mutations\__init__.py:6:1
+   |
+ 4 |   """
+ 5 |
+ 6 | / from neuraxis.mutations import biophysics, kinetics, numerical, references, stimulus  # noqa: F401  (registration)
+ 7 | | from neuraxis.mutations.base import (
+ 8 | |     GENERATOR_SEED_KEY,
+ 9 | |     REGISTRY,
+10 | |     Inapplicable,
+11 | |     MutationError,
+12 | |     MutationOperator,
+13 | |     Site,
+14 | |     enforce_single_operator,
+15 | |     generate_mutants,
+16 | |     inapplicable_sites,
+17 | |     load_variant,
+18 | |     write_manifest,
+19 | |     xml_changes,
+20 | | )
+   | |_^
+21 |
+22 |   FAMILY_OPERATORS: dict[str, tuple[str, ...]] = {}
+   |
+help: Organize imports
+   |
+5  |
+   - from neuraxis.mutations import biophysics, kinetics, numerical, references, stimulus  # noqa: F401  (registration)
+6  + from neuraxis.mutations import (  # noqa: F401  (registration)
+7  +     biophysics,
+8  +     kinetics,
+9  +     numerical,
+10 +     references,
+11 +     stimulus,
+12 + )
+13 | from neuraxis.mutations.base import (
+   |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> src\neuraxis\mutations\kinetics.py:23:1
+   |
+21 |   """
+22 |
+23 | / from __future__ import annotations
+24 | |
+25 | | from collections.abc import Sequence
+26 | |
+27 | | from neuraxis.models import Workspace
+28 | | from neuraxis.mutations.base import (
+29 | |     Inapplicable,
+30 | |     OperatorBase,
+31 | |     Site,
+32 | |     attribute_site,
+33 | |     cell_rel,
+34 | |     element_children,
+35 | |     expect_set_edits,
+36 | |     is_scaled,
+37 | |     is_shifted,
+38 | |     localname,
+39 | |     locator,
+40 | |     parent_locator,
+41 | |     read_xml,
+42 | |     record_param,
+43 | |     register,
+44 | |     require,
+45 | |     resolve,
+46 | |     scale_quantity,
+47 | |     shift_quantity,
+48 | |     step_name,
+49 | |     transitive_includes,
+50 | | )
+51 | | from neuraxis.mutations.biophysics import CORE_RATES, GATE_TAGS, cell_element, channel_densities, used_channels
+52 | | from neuraxis.schemas import MutationFamily, VariantRecord
+   | |__________________________________________________________^
+53 |
+54 |   MIDPOINT_DELTAS_MV = (-10.0, -5.0, 5.0, 10.0)
+   |
+help: Organize imports
+   |
+50 | )
+   - from neuraxis.mutations.biophysics import CORE_RATES, GATE_TAGS, cell_element, channel_densities, used_channels
+51 + from neuraxis.mutations.biophysics import (
+52 +     CORE_RATES,
+53 +     GATE_TAGS,
+54 +     cell_element,
+55 +     channel_densities,
+56 +     used_channels,
+57 + )
+58 | from neuraxis.schemas import MutationFamily, VariantRecord
+   |
+
+ISC004 Unparenthesized implicit string concatenation in collection
+   --> src\neuraxis\orchestration\curation.py:241:14
+    |
+239 |       fam = Counter(r["source_family"] for r in rows if r["decision"] == "include_eligible")
+240 |       lines = ["# Model curation report", "",
+241 | /              f"*Generated by `neuraxis curate-models` (campaign `{campaign}`, {stamp}). Only reference models were "
+242 | |              "simulated; no mutant was run, so no detection outcome was seen. Criteria are mechanical and "
+243 | |              "decided before any split (`src/neuraxis/orchestration/curation.py`).*", "",
+    | |____________________________________________________________________________________^
+244 |                "## In plain English", "",
+245 |                f"- {len(rows)} candidate models were checked against {len(CRITERIA)} rules.",
+    |
+help: Did you forget a comma?
+help: Wrap implicitly concatenated strings in parentheses
+
+ISC004 Unparenthesized implicit string concatenation in collection
+   --> src\neuraxis\orchestration\curation.py:246:14
+    |
+244 |                "## In plain English", "",
+245 |                f"- {len(rows)} candidate models were checked against {len(CRITERIA)} rules.",
+246 | /              f"- {counts.get('include_eligible', 0)} passed every rule, {counts.get('exclude', 0)} failed at least one, "
+247 | |              f"{counts.get('review', 0)} need a human judgement.",
+    | |_________________________________________________________________^
+248 |                f"- Eligible models come from {len(fam)} distinct sources: {', '.join(sorted(fam)) or 'none'}.", "",
+249 |                "## Criteria", "", "| id | rule |", "|---|---|"]
+    |
+help: Did you forget a comma?
+help: Wrap implicitly concatenated strings in parentheses
+
+ISC004 Unparenthesized implicit string concatenation in collection
+   --> src\neuraxis\orchestration\curation.py:252:33
+    |
+250 |       lines += [f"| {k} | {v} |" for k, v in CRITERIA.items()]
+251 |       lines += ["", f"Runtime budget per variant: {budget_s:.0f} s (nominal plus h/2 fingerprint).", "",
+252 |                 "## Results", "", "| model | source | decision | failed or open criteria | P05 regime | rebound spikes (P08) | "
+    |  _________________________________^
+253 | |               "sag ratio (P07) | rheobase nA | est. s/variant |", "|---|---|---|---|---|---|---|---|---|"]
+    | |________________________________________________________________^
+254 |       for r in sorted(rows, key=lambda x: (x["decision"], x["source_family"], x["model_id"])):
+255 |           lines.append(f"| `{r['model_id']}` | {r['source_family']} | {r['decision']} | {r['reasons'] or '-'} | "
+    |
+help: Did you forget a comma?
+help: Wrap implicitly concatenated strings in parentheses
+
+ISC004 Unparenthesized implicit string concatenation in collection
+   --> src\neuraxis\orchestration\curation.py:258:19
+    |
+256 |                        f"{r['firing_regime_P05']} | {r['rebound_spikes_P08']} | {_fmt(r['sag_ratio_P07'])} | "
+257 |                        f"{_fmt(r['rheobase_nA'])} | {r['estimated_variant_runtime_s']} |")
+258 |       lines += ["", "Full evidence per model: `results/processed/<campaign>/curation/<model_id>.json`; table: "
+    |  ___________________^
+259 | |               "`manifests/models.csv`.", ""]
+    | |_______________________________________^
+260 |       path.parent.mkdir(parents=True, exist_ok=True)
+261 |       path.write_text("\n".join(lines), encoding="utf-8")
+    |
+help: Did you forget a comma?
+help: Wrap implicitly concatenated strings in parentheses
+
+BLE001 Do not catch blind exception: `Exception`
+   --> src\neuraxis\orchestration\kinetics_validation.py:129:28
+    |
+127 |                         enforce_single_operator(ref, var, record)
+128 |                         row["single_change_enforced"] = True
+129 |                     except Exception as exc:  # recorded: this is the check being reported
+    |                            ^^^^^^^^^
+130 |                         row["single_change_enforced"] = f"FAILED: {exc}"
+131 |                     st = structural.check(var, sim, reference=structural.check(ref, sim))
+    |
+
+PLW1510 `subprocess.run` without explicit `check` argument
+   --> src\neuraxis\orchestration\smoke.py:136:16
+    |
+134 |                 step("8_provenance", not missing, **{r.run_id: {"missing_fields": missing}})
+135 |     if run_tests:
+136 |         proc = subprocess.run([sys.executable, "-m", "pytest", *pytest_args, "tests/unit", "tests/integration"],
+    |                ^^^^^^^^^^^^^^
+137 |                               cwd=REPO_ROOT, capture_output=True, text=True)
+138 |         (out_dir / "pytest.log").write_text(proc.stdout + proc.stderr, encoding="utf-8")
+    |
+help: Add explicit `check=False`
+
+ISC004 Unparenthesized implicit string concatenation in collection
+   --> src\neuraxis\orchestration\smoke.py:146:38
+    |
+144 |       (out_dir / "smoke_report.json").write_text(json.dumps(report, indent=2, default=str) + "\n", encoding="utf-8")
+145 |       lines = [f"# Infrastructure smoke test: {'PASSED' if report['passed'] else 'FAILED'}", "",
+146 |                f"*{designation}*", "", f"- created: {report['created_utc']}; commit {report['git']['commit']} "
+    |  ______________________________________^
+147 | |              f"(dirty: {report['git']['dirty']}); Python {report['python']} at `{report['executable']}`", "",
+    | |________________________________________________________________________________________________________^
+148 |                "| step | result |", "|---|---|"]
+149 |       lines += [f"| {k} | {'pass' if v['ok'] else 'FAIL'} |" for k, v in sorted(steps.items())]
+    |
+help: Did you forget a comma?
+help: Wrap implicitly concatenated strings in parentheses
+
+ISC004 Unparenthesized implicit string concatenation in collection
+  --> src\neuraxis\protocols\generate.py:60:9
+   |
+58 |       lines = [
+59 |           '<?xml version="1.0" encoding="UTF-8"?>',
+60 | /         '<neuroml xmlns="http://www.neuroml.org/schema/neuroml2" '
+61 | |         'xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" '
+62 | |         'xsi:schemaLocation="http://www.neuroml.org/schema/neuroml2 '
+63 | |         'https://raw.githubusercontent.com/NeuroML/NeuroML2/master/Schemas/NeuroML2/NeuroML_v2.3.1.xsd" '
+64 | |         'id="ns_probe">',
+   | |________________________^
+65 |           f"    <!-- Generated by NeuroSem. Protocols: {', '.join(p.protocol_id for p in protocols)} -->",
+66 |           f"    <include href={quoteattr(cell_include)}/>",
+   |
+help: Did you forget a comma?
+help: Wrap implicitly concatenated strings in parentheses
+
+ISC004 Unparenthesized implicit string concatenation in collection
+   --> src\neuraxis\protocols\generate.py:110:9
+    |
+108 |           '    <Include file="Simulation.xml"/>',
+109 |           f"    <Include file={quoteattr(net_include)}/>",
+110 | /         f'    <Simulation id="{PROBE_SIM_ID}" length="{format_number(length_ms)}ms" '
+111 | |         f'step="{format_number(exec_cfg.dt_ms)}ms" target="{PROBE_NET_ID}" seed="{seed}">',
+    | |__________________________________________________________________________________________^
+112 |       ]
+113 |       if exec_cfg.integrator_method:
+    |
+help: Did you forget a comma?
+help: Wrap implicitly concatenated strings in parentheses
+
+RUF046 Value being cast to `int` is already an integer
+   --> src\neuraxis\protocols\generate.py:141:13
+    |
+139 |                                       encoding="utf-8")
+140 |     columns = {pid: i + 1 for i, pid in enumerate(ids)}
+141 |     steps = int(round(length / exec_cfg.dt_ms))
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+142 |     return ProbeBundle(cell_dir / lems_name, cell_dir / net_name, OutputSpec(out_name, columns), length,
+143 |                        tuple(ids), steps * len(protocols))
+    |
+help: Remove unnecessary `int` call
+
+UP017 [*] Use `datetime.UTC` alias
+  --> src\neuraxis\provenance.py:22:28
+   |
+21 | def utc_now() -> str:
+22 |     return dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds")
+   |                            ^^^^^^^^^^^^^^^
+help: Convert to `datetime.UTC` alias
+   |
+21 | def utc_now() -> str:
+   -     return dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds")
+22 +     return dt.datetime.now(dt.UTC).isoformat(timespec="seconds")
+23 |
+   |
+
+UP037 [*] Remove quotes from type annotation
+   --> src\neuraxis\schemas.py:117:40
+    |
+115 |     integrator_method: str | None = None     # LEMS <Meta method=...>; None = simulator default
+116 |
+117 |     def with_dt(self, dt_ms: float) -> "ExecConfig":
+    |                                        ^^^^^^^^^^^^
+118 |         return dc.replace(self, dt_ms=dt_ms)
+    |
+help: Remove quotes
+    |
+116 |
+    -     def with_dt(self, dt_ms: float) -> "ExecConfig":
+117 +     def with_dt(self, dt_ms: float) -> ExecConfig:
+118 |         return dc.replace(self, dt_ms=dt_ms)
+    |
+
+PLW1510 `subprocess.run` without explicit `check` argument
+  --> src\neuraxis\simulators\jneuroml.py:89:14
+   |
+87 |             return self._version
+88 |         java, jar = self._require()
+89 |         jv = subprocess.run([str(java), "-version"], capture_output=True, text=True, timeout=60)
+   |              ^^^^^^^^^^^^^^
+90 |         java_version = (jv.stderr or jv.stdout).strip().splitlines()
+91 |         jn = subprocess.run([str(java), "-jar", str(jar), "-v"], capture_output=True, text=True, timeout=120)
+   |
+help: Add explicit `check=False`
+
+PLW1510 `subprocess.run` without explicit `check` argument
+  --> src\neuraxis\simulators\jneuroml.py:91:14
+   |
+89 |         jv = subprocess.run([str(java), "-version"], capture_output=True, text=True, timeout=60)
+90 |         java_version = (jv.stderr or jv.stdout).strip().splitlines()
+91 |         jn = subprocess.run([str(java), "-jar", str(jar), "-v"], capture_output=True, text=True, timeout=120)
+   |              ^^^^^^^^^^^^^^
+92 |         versions = dict(re.findall(r"^\s*(jNeuroML|org\.neuroml\.\w+|jLEMS)\s+v(\S+)", jn.stdout, re.MULTILINE))
+93 |         self._version = {
+   |
+help: Add explicit `check=False`
+
+PLW1510 `subprocess.run` without explicit `check` argument
+   --> src\neuraxis\simulators\jneuroml.py:119:20
+    |
+117 |                *[str(Path(f).resolve()) for f in files]]
+118 |         try:
+119 |             proc = subprocess.run(cmd, capture_output=True, text=True, timeout=timeout_s)
+    |                    ^^^^^^^^^^^^^^
+120 |         except subprocess.TimeoutExpired:
+121 |             return ValidationResult(None, -1, ["validation timed out"], "", self.name)
+    |
+help: Add explicit `check=False`
+
+ISC004 Unparenthesized implicit string concatenation in collection
+   --> src\neuraxis\simulators\jneuroml.py:130:66
+    |
+128 |               if exc and "java" in out.lower():
+129 |                   # jNeuroML crashed while loading an existing file (e.g. a malformed include): a model defect.
+130 |                   return ValidationResult(False, proc.returncode, [f"validator crashed while loading the model: "
+    |  __________________________________________________________________^
+131 | |                                                                  f"{exc.group(0).strip()[:300]}"], out, self.name)
+    | |________________________________________________________________________________________________^
+132 |               return ValidationResult(None, proc.returncode, ["unrecognised validator output"], out, self.name)
+133 |           # Warnings (e.g. "1 passed with warnings", exit 0) are not validity failures.
+    |
+help: Did you forget a comma?
+help: Wrap implicitly concatenated strings in parentheses
+
+PLW1510 `subprocess.run` without explicit `check` argument
+   --> src\neuraxis\simulators\jneuroml.py:157:20
+    |
+155 |         t0 = time.perf_counter()
+156 |         try:
+157 |             proc = subprocess.run(cmd, cwd=cwd, capture_output=True, text=True, timeout=timeout_s)
+    |                    ^^^^^^^^^^^^^^
+158 |         except subprocess.TimeoutExpired:
+159 |             return SimResult(RunStatus.TIMEOUT, -1, time.perf_counter() - t0, {}, cmd, f"timeout after {timeout_s}s")
+    |
+help: Add explicit `check=False`
+
+RUF046 Value being cast to `int` is already an integer
+   --> src\neuraxis\simulators\jneuroml.py:233:25
+    |
+231 |     if sample_every_ms:
+232 |         native = float(np.median(np.diff(t_ms[: min(len(t_ms), 1000)])))
+233 |         stride = max(1, int(round(sample_every_ms / native)))
+    |                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+234 |     out = {}
+235 |     for name, col in columns.items():
+    |
+help: Remove unnecessary `int` call
+
+UP037 [*] Remove quotes from type annotation
+  --> src\neuraxis\units.py:55:32
+   |
+53 |     si: float
+54 |
+55 |     def to(self, unit: str) -> "Quantity":
+   |                                ^^^^^^^^^^
+56 |         return convert(self, unit)
+   |
+help: Remove quotes
+   |
+54 |
+   -     def to(self, unit: str) -> "Quantity":
+55 +     def to(self, unit: str) -> Quantity:
+56 |         return convert(self, unit)
+   |
+
+RUF012 Mutable default value for class attribute
+  --> src\neuraxis\validation\convergence.py:54:15
+   |
+53 | class ToleranceTable:
+54 |     COLUMNS = [f.name for f in dc.fields(TolEntry)]
+   |               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+55 |
+56 |     def __init__(self, entries: list[TolEntry]) -> None:
+   |
+help: Consider initializing in `__init__` or annotating with `typing.ClassVar`
+
+UP037 [*] Remove quotes from type annotation
+  --> src\neuraxis\validation\convergence.py:75:29
+   |
+73 |         return list(self._d.values())
+74 |
+75 |     def merged(self, other: "ToleranceTable") -> "ToleranceTable":
+   |                             ^^^^^^^^^^^^^^^^
+76 |         return ToleranceTable(self.entries + other.entries)
+   |
+help: Remove quotes
+   |
+74 |
+   -     def merged(self, other: "ToleranceTable") -> "ToleranceTable":
+75 +     def merged(self, other: ToleranceTable) -> "ToleranceTable":
+76 |         return ToleranceTable(self.entries + other.entries)
+   |
+
+UP037 [*] Remove quotes from type annotation
+  --> src\neuraxis\validation\convergence.py:75:50
+   |
+73 |         return list(self._d.values())
+74 |
+75 |     def merged(self, other: "ToleranceTable") -> "ToleranceTable":
+   |                                                  ^^^^^^^^^^^^^^^^
+76 |         return ToleranceTable(self.entries + other.entries)
+   |
+help: Remove quotes
+   |
+74 |
+   -     def merged(self, other: "ToleranceTable") -> "ToleranceTable":
+75 +     def merged(self, other: "ToleranceTable") -> ToleranceTable:
+76 |         return ToleranceTable(self.entries + other.entries)
+   |
+
+UP037 [*] Remove quotes from type annotation
+  --> src\neuraxis\validation\convergence.py:88:38
+   |
+87 |     @classmethod
+88 |     def from_csv(cls, path: Path) -> "ToleranceTable":
+   |                                      ^^^^^^^^^^^^^^^^
+89 |         out = []
+90 |         with open(path, newline="", encoding="utf-8") as f:
+   |
+help: Remove quotes
+   |
+87 |     @classmethod
+   -     def from_csv(cls, path: Path) -> "ToleranceTable":
+88 +     def from_csv(cls, path: Path) -> ToleranceTable:
+89 |         out = []
+   |
+
+C408 Unnecessary `dict()` call (rewrite as a literal)
+   --> src\neuraxis\validation\convergence.py:130:20
+    |
+128 |               abs_floor = float(spec.get("abs_floor", 0.0))
+129 |               rel = float(spec.get("rel", 0.0))
+130 |               base = dict(model_id=model_id, protocol_id=pid, feature=feat, kind=kind,
+    |  ____________________^
+131 | |                         f_h=v1.value, f_h2=None if v2 is None else v2.value, f_h4=None if v4 is None else v4.value,
+132 | |                         state_h=v1.state, state_h2="missing" if v2 is None else v2.state)
+    | |_________________________________________________________________________________________^
+133 |               if v2 is None:
+134 |                   entries.append(TolEntry(**base, abs_floor=abs_floor, rel_term=0.0, refine_term=0.0, tau=None, limiting=MISSING))
+    |
+help: Rewrite as a literal
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> src\neuraxis\validation\execution.py:16:1
+   |
+14 |   """
+15 |
+16 | / from __future__ import annotations
+17 | |
+18 | | import concurrent.futures as cf
+19 | | import dataclasses as dc
+20 | | import functools
+21 | | import json
+22 | | import re
+23 | | import shutil
+24 | | import threading
+25 | | import traceback
+26 | | import uuid
+27 | | from collections.abc import Callable, Sequence
+28 | | from pathlib import Path
+29 | | from typing import Any
+30 | |
+31 | | from neuraxis import config
+32 | | from neuraxis.models import Workspace, copy_workspace
+33 | | from neuraxis.protocols import rheobase as rb
+34 | | from neuraxis.protocols.generate import DEFAULT_SEED, canonical_output, group_by_length, harness_step_and_length, write_probe
+35 | | from neuraxis.provenance import (environment_digest, git_state, relpath, sha256_bytes,
+36 | |                                  sha256_file, sha256_json, utc_now, write_immutable, write_immutable_text)
+37 | | from neuraxis.schemas import (ConcreteProtocol, ExecConfig, RunRecord, RunStatus, Trace, VariantKind, VariantRecord,
+38 | |                               dumps)
+39 | | from neuraxis.simulators.base import Simulator
+40 | | from neuraxis import units
+   | |__________________________^
+41 |
+42 |   _INCLUDE_RE = re.compile(r'<(?:include\s+href|Include\s+file)\s*=\s*"([^"]+)"', re.IGNORECASE)
+   |
+help: Organize imports
+   |
+30 |
+   - from neuraxis import config
+31 + from neuraxis import config, units
+32 | from neuraxis.models import Workspace, copy_workspace
+33 | from neuraxis.protocols import rheobase as rb
+   - from neuraxis.protocols.generate import DEFAULT_SEED, canonical_output, group_by_length, harness_step_and_length, write_probe
+   - from neuraxis.provenance import (environment_digest, git_state, relpath, sha256_bytes,
+   -                                  sha256_file, sha256_json, utc_now, write_immutable, write_immutable_text)
+   - from neuraxis.schemas import (ConcreteProtocol, ExecConfig, RunRecord, RunStatus, Trace, VariantKind, VariantRecord,
+   -                               dumps)
+34 + from neuraxis.protocols.generate import (
+35 +     DEFAULT_SEED,
+36 +     canonical_output,
+37 +     group_by_length,
+38 +     harness_step_and_length,
+39 +     write_probe,
+40 + )
+41 + from neuraxis.provenance import (
+42 +     environment_digest,
+43 +     git_state,
+44 +     relpath,
+45 +     sha256_bytes,
+46 +     sha256_file,
+47 +     sha256_json,
+48 +     utc_now,
+49 +     write_immutable,
+50 +     write_immutable_text,
+51 + )
+52 + from neuraxis.schemas import (
+53 +     ConcreteProtocol,
+54 +     ExecConfig,
+55 +     RunRecord,
+56 +     RunStatus,
+57 +     Trace,
+58 +     VariantKind,
+59 +     VariantRecord,
+60 +     dumps,
+61 + )
+62 | from neuraxis.simulators.base import Simulator
+   - from neuraxis import units
+63 |
+   |
+
+PIE810 Call `startswith` once with a `tuple`
+  --> src\neuraxis\validation\execution.py:92:16
+   |
+90 |             continue
+91 |         for inc in _INCLUDE_RE.findall(p.read_text(encoding="utf-8", errors="replace")):
+92 |             if inc.startswith(("http://", "https://")) or Path(inc).name in _BUILTIN or inc.startswith("NeuroML2CoreTypes/"):
+   |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+93 |                 continue
+94 |             stack.append((p.parent / inc).resolve())
+   |
+help: Merge into a single `startswith` call
+
+RUF046 Value being cast to `int` is already an integer
+  --> src\neuraxis\validation\fingerprint.py:90:17
+   |
+88 |     for r in battery.records:
+89 |         runtime += r.runtime_s
+90 |         steps = int(round(r.duration_ms / r.dt_ms))
+   |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+91 |         for pid in r.protocol_ids:
+92 |             run_ids[pid] = r.run_id
+   |
+help: Remove unnecessary `int` call
+
+RUF046 Value being cast to `int` is already an integer
+   --> src\neuraxis\validation\fingerprint.py:103:34
+    |
+101 |             runtime += r.runtime_s
+102 |             run_ids[CANONICAL_ID] = r.run_id
+103 |             cost[CANONICAL_ID] = int(round(r.duration_ms / r.dt_ms))
+    |                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+104 |
+105 |     rheo = None
+    |
+help: Remove unnecessary `int` call
+
+C408 Unnecessary `dict()` call (rewrite as a literal)
+   --> src\neuraxis\validation\fingerprint.py:142:22
+    |
+140 |               if vv is None:
+141 |                   continue
+142 |               common = dict(variant_id=var.variant_id, model_id=var.model_id, level_factor=var.level_factor,
+    |  ______________________^
+143 | |                           protocol_id=pid, feature=feat, ref_value=rv.value, var_value=vv.value,
+144 | |                           ref_run_id=ref.run_ids.get(pid, ""), var_run_id=var.run_ids.get(pid, ""))
+    | |___________________________________________________________________________________________________^
+145 |               r_def, v_def = rv.state == "defined", vv.state == "defined"
+146 |               if r_def != v_def:
+    |
+help: Rewrite as a literal
+
+BLE001 Do not catch blind exception: `Exception`
+   --> src\neuraxis\validation\structural.py:118:12
+    |
+116 |     except ValueError as exc:
+117 |         return False, [str(exc)[:1000]]
+118 |     except Exception as exc:  # parse errors, missing includes: still "not strictly valid"
+    |            ^^^^^^^^^
+119 |         return False, [f"{type(exc).__name__}: {str(exc)[:1000]}"]
+    |
+
+C408 Unnecessary `dict()` call (rewrite as a literal)
+   --> src\neuraxis\validation\trace_regression.py:101:18
+    |
+ 99 |             continue
+100 |         a, b = ref[pid], var[pid]
+101 |         common = dict(variant_id=variant_id, model_id=model_id, level_factor=level_factor, protocol_id=pid)
+    |                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+102 |         rm = trace_metrics.rmse(a, b, _dt(a))
+103 |         if rm > t.tau_rmse:
+    |
+help: Rewrite as a literal
+
+RUF100 [*] Unused `noqa` directive (non-enabled: `ANN001`)
+  --> src\neurosem\__init__.py:24:37
+   |
+22 |         self._spec = None
+23 |
+24 |     def create_module(self, spec):  # noqa: ANN001
+   |                                     ^^^^^^^^^^^^^^
+25 |         module = importlib.import_module(self.target)
+26 |         self._spec = module.__spec__
+   |
+help: Remove unused `noqa` directive
+   |
+23 |
+   -     def create_module(self, spec):  # noqa: ANN001
+24 +     def create_module(self, spec):
+25 |         module = importlib.import_module(self.target)
+   |
+
+RUF100 [*] Unused `noqa` directive (non-enabled: `ANN001`)
+  --> src\neurosem\__init__.py:29:45
+   |
+27 |         return module
+28 |
+29 |     def exec_module(self, module) -> None:  # noqa: ANN001
+   |                                             ^^^^^^^^^^^^^^
+30 |         module.__spec__ = self._spec          # the import system overwrote it with the alias spec
+   |
+help: Remove unused `noqa` directive
+   |
+28 |
+   -     def exec_module(self, module) -> None:  # noqa: ANN001
+29 +     def exec_module(self, module) -> None:
+30 |         module.__spec__ = self._spec          # the import system overwrote it with the alias spec
+   |
+
+RUF100 [*] Unused `noqa` directive (non-enabled: `ANN001`)
+  --> src\neurosem\__init__.py:34:66
+   |
+33 | class _AliasFinder(importlib.abc.MetaPathFinder):
+34 |     def find_spec(self, fullname: str, path=None, target=None):  # noqa: ANN001
+   |                                                                  ^^^^^^^^^^^^^^
+35 |         if not fullname.startswith(_OLD + "."):
+36 |             return None
+   |
+help: Remove unused `noqa` directive
+   |
+33 | class _AliasFinder(importlib.abc.MetaPathFinder):
+   -     def find_spec(self, fullname: str, path=None, target=None):  # noqa: ANN001
+34 +     def find_spec(self, fullname: str, path=None, target=None):
+35 |         if not fullname.startswith(_OLD + "."):
+   |
+
+RUF100 [*] Unused `noqa` directive (non-enabled: `E402`)
+  --> src\neurosem\__init__.py:43:26
+   |
+41 |     sys.meta_path.insert(0, _AliasFinder())
+42 |
+43 | import neuraxis as _pkg  # noqa: E402
+   |                          ^^^^^^^^^^^^
+44 |
+45 | __path__: list[str] = []          # submodules are resolved by _AliasFinder
+   |
+help: Remove unused `noqa` directive
+   |
+42 |
+   - import neuraxis as _pkg  # noqa: E402
+43 + import neuraxis as _pkg
+44 |
+   |
+
+RUF046 Value being cast to `int` is already an integer
+  --> tests\integration\test_probe_battery.py:90:13
+   |
+88 |     for pid in battery["protos"]:
+89 |         tr = _trace(battery, pid)
+90 |         n = int(round(SETTLE / DT)) - 1
+   |             ^^^^^^^^^^^^^^^^^^^^^^^
+91 |         assert np.array_equal(tr.v_mV[:n], base.v_mV[:n]), pid
+   |
+help: Remove unnecessary `int` call
+
+RUF046 Value being cast to `int` is already an integer
+   --> tests\integration\test_probe_battery.py:117:9
+    |
+115 | def test_deflection_direction_follows_stimulus_sign(battery):
+116 |     base = _trace(battery, "P01_baseline")
+117 |     k = int(round((SETTLE + 1.0) / DT))                     # 1 ms after onset
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+118 |     for pid, sign in [("P02_weak_step", 1), ("P04_step_2x", 1), ("P09_short_pulse", 1),
+119 |                       ("P07_hyperpolarizing_step", -1), ("P08_rebound", -1)]:
+    |
+help: Remove unnecessary `int` call
+
+RUF046 Value being cast to `int` is already an integer
+   --> tests\integration\test_probe_battery.py:122:11
+    |
+120 |         dv = _trace(battery, pid).v_mV[k] - base.v_mV[k]
+121 |         assert np.sign(dv) == sign and abs(dv) > 0.01, (pid, dv)
+122 |     k20 = int(round((SETTLE + 50.0) / DT))
+    |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+123 |     assert _trace(battery, "P06_ramp").v_mV[k20] - base.v_mV[k20] > 0.05
+    |
+help: Remove unnecessary `int` call
+
+RUF046 Value being cast to `int` is already an integer
+   --> tests\integration\test_probe_battery.py:148:13
+    |
+146 |     tr = _trace(battery, pid)
+147 |     end = c.delay_ms + c.duration_ms
+148 |     i_end = int(round(end / DT))
+    |             ^^^^^^^^^^^^^^^^^^^^
+149 |     assert tr.v_mV[i_end] < tr.v_mV[0] - 1.0                                   # hyperpolarised during the step
+150 |     assert tr.v_mV[i_end + int(round(20.0 / DT))] > tr.v_mV[i_end] + 1.0        # current removed at step end
+    |
+help: Remove unnecessary `int` call
+
+RUF046 Value being cast to `int` is already an integer
+   --> tests\integration\test_probe_battery.py:150:28
+    |
+148 |     i_end = int(round(end / DT))
+149 |     assert tr.v_mV[i_end] < tr.v_mV[0] - 1.0                                   # hyperpolarised during the step
+150 |     assert tr.v_mV[i_end + int(round(20.0 / DT))] > tr.v_mV[i_end] + 1.0        # current removed at step end
+    |                            ^^^^^^^^^^^^^^^^^^^^^
+151 |     if pid == "P08_rebound":
+152 |         assert p.window.start_ms == end and p.window.end_ms == p.total_ms
+    |
+help: Remove unnecessary `int` call
+
+RUF046 Value being cast to `int` is already an integer
+   --> tests\integration\test_probe_battery.py:163:38
+    |
+161 |     i_peak = int(np.argmax(tr.v_mV))
+162 |     assert c.delay_ms < tr.t_ms[i_peak] <= p.window.end_ms                     # peak response after onset, in window
+163 |     assert tr.v_mV[i_peak] > tr.v_mV[int(round(SETTLE / DT)) - 1] + 5.0
+    |                                      ^^^^^^^^^^^^^^^^^^^^^^^
+164 |     assert tr.v_mV[tr.t_ms < SETTLE].max() < -60.0                             # nothing happens before onset
+165 |     assert tr.v_mV[-1] < tr.v_mV[i_peak] - 5.0                                 # current off: response decays
+    |
+help: Remove unnecessary `int` call
+
+RUF059 Unpacked variable `ref` is never used
+  --> tests\integration\test_run_recorder.py:71:18
+   |
+70 | def test_build_error_is_recorded_and_not_retried(tmp_path, sim, rs_ws):
+71 |     rec, protos, ref, _ = _setup(tmp_path, sim, rs_ws)
+   |                  ^^^
+72 |     cell = rs_ws.cell_path
+73 |     cell.write_text(cell.read_text(encoding="utf-8").replace('ionChannel="Kd"', 'ionChannel="Kdx"'), encoding="utf-8")
+   |
+help: Prefix it with an underscore or any other dummy variable pattern
+
+C408 Unnecessary `dict()` call (rewrite as a literal)
+   --> tests\unit\test_agent_harness.py:298:10
+    |
+297 | def test_prepare_trial_is_deterministic_and_refuses_unsafe_locations(tmp_path, policy, models):
+298 |     kw = dict(private_root=tmp_path / "private", policy=policy, models=models, allow_dirty=True)
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+299 |     a = agent.prepare_trial(T05, tmp_path / "trials" / "a", **kw)
+300 |     b = agent.prepare_trial(T05, tmp_path / "trials" / "b", **kw)
+    |
+help: Rewrite as a literal
+
+FURB167 [*] Use of regular expression alias `re.M`
+   --> tests\unit\test_agent_harness.py:545:68
+    |
+543 |                      ("model/NeuroML2/cells/RS/inputs.dat", "file_added")}
+544 |     patch = agent.make_patch(base, d, policy.ignore_paths)
+545 |     assert re.search(r'^-.*condDensity="0\.07 mS_per_cm2"', patch, re.M)
+    |                                                                    ^^^^
+546 |     assert re.search(r'^\+.*condDensity="0\.14 mS_per_cm2"', patch, re.M)
+547 |     assert "scratch/notes.txt" not in patch and "RS.dat" not in patch
+    |
+help: Replace with `re.MULTILINE`
+    |
+544 |     patch = agent.make_patch(base, d, policy.ignore_paths)
+    -     assert re.search(r'^-.*condDensity="0\.07 mS_per_cm2"', patch, re.M)
+545 +     assert re.search(r'^-.*condDensity="0\.07 mS_per_cm2"', patch, re.MULTILINE)
+546 |     assert re.search(r'^\+.*condDensity="0\.14 mS_per_cm2"', patch, re.M)
+    |
+
+FURB167 [*] Use of regular expression alias `re.M`
+   --> tests\unit\test_agent_harness.py:546:69
+    |
+544 |     patch = agent.make_patch(base, d, policy.ignore_paths)
+545 |     assert re.search(r'^-.*condDensity="0\.07 mS_per_cm2"', patch, re.M)
+546 |     assert re.search(r'^\+.*condDensity="0\.14 mS_per_cm2"', patch, re.M)
+    |                                                                     ^^^^
+547 |     assert "scratch/notes.txt" not in patch and "RS.dat" not in patch
+    |
+help: Replace with `re.MULTILINE`
+    |
+545 |     assert re.search(r'^-.*condDensity="0\.07 mS_per_cm2"', patch, re.M)
+    -     assert re.search(r'^\+.*condDensity="0\.14 mS_per_cm2"', patch, re.M)
+546 +     assert re.search(r'^\+.*condDensity="0\.14 mS_per_cm2"', patch, re.MULTILINE)
+547 |     assert "scratch/notes.txt" not in patch and "RS.dat" not in patch
+    |
+
+RUF100 [*] Unused `noqa` directive (non-enabled: `E731`)
+   --> tests\unit\test_agent_harness.py:554:98
+    |
+552 |     exp = _export(T06, tmp_path, policy, models)
+553 |     d, base = exp.trial_dir, exp.private_dir / "baseline"
+554 |     run = lambda: [agent.evaluate_assertion(a, d, base).passed for a in hidden[T06].assertions]  # noqa: E731
+    |                                                                                                  ^^^^^^^^^^^^
+555 |     assert run() == [False, True]
+556 |     _replace(d / RS_CELL, 'condDensity="0.07 mS_per_cm2"', 'condDensity="1.4 S_per_m2"')
+    |
+help: Remove unused `noqa` directive
+    |
+553 |     d, base = exp.trial_dir, exp.private_dir / "baseline"
+    -     run = lambda: [agent.evaluate_assertion(a, d, base).passed for a in hidden[T06].assertions]  # noqa: E731
+554 +     run = lambda: [agent.evaluate_assertion(a, d, base).passed for a in hidden[T06].assertions]
+555 |     assert run() == [False, True]
+    |
+
+RUF100 [*] Unused `noqa` directive (non-enabled: `E731`)
+   --> tests\unit\test_agent_harness.py:564:92
+    |
+562 | def test_answer_assertions_normalize_paths(tmp_path, hidden):
+563 |     specs = hidden["t09_behaviour_diagnosis"].assertions
+564 |     run = lambda: [agent.evaluate_assertion(a, tmp_path, tmp_path).passed for a in specs]  # noqa: E731
+    |                                                                                            ^^^^^^^^^^^^
+565 |     assert run() == [False, False, False]
+566 |     answer = tmp_path / "diagnosis.yaml"
+    |
+help: Remove unused `noqa` directive
+    |
+563 |     specs = hidden["t09_behaviour_diagnosis"].assertions
+    -     run = lambda: [agent.evaluate_assertion(a, tmp_path, tmp_path).passed for a in specs]  # noqa: E731
+564 +     run = lambda: [agent.evaluate_assertion(a, tmp_path, tmp_path).passed for a in specs]
+565 |     assert run() == [False, False, False]
+    |
+
+FURB167 [*] Use of regular expression alias `re.S`
+   --> tests\unit\test_agent_harness.py:583:79
+    |
+581 |     (model_root / "examples" / "channels").mkdir()
+582 |     includes = []
+583 |     for m in re.finditer(r'<ionChannelHH id="(\w+)".*?</ionChannelHH>', text, re.S):
+    |                                                                               ^^^^
+584 |         (model_root / "examples" / "channels" / f"{m.group(1)}.channel.nml").write_text(
+585 |             '<?xml version="1.0" encoding="UTF-8"?>\n<neuroml xmlns="http://www.neuroml.org/schema/neuroml2" '
+    |
+help: Replace with `re.DOTALL`
+    |
+582 |     includes = []
+    -     for m in re.finditer(r'<ionChannelHH id="(\w+)".*?</ionChannelHH>', text, re.S):
+583 +     for m in re.finditer(r'<ionChannelHH id="(\w+)".*?</ionChannelHH>', text, re.DOTALL):
+584 |         (model_root / "examples" / "channels" / f"{m.group(1)}.channel.nml").write_text(
+    |
+
+FURB167 [*] Use of regular expression alias `re.S`
+   --> tests\unit\test_agent_harness.py:588:80
+    |
+586 |             f'id="{m.group(1)}_file">\n    {m.group(0)}\n</neuroml>\n', encoding="utf-8")
+587 |         includes.append(f'    <include href="channels/{m.group(1)}.channel.nml"/>')
+588 |     text = re.sub(r'<ionChannelHH id="\w+".*?</ionChannelHH>', "", text, flags=re.S)
+    |                                                                                ^^^^
+589 |     text = text.replace('id="NML2_SingleCompHHCell">', 'id="NML2_SingleCompHHCell">\n' + "\n".join(includes), 1)
+590 |     cell.write_text(text, encoding="utf-8")
+    |
+help: Replace with `re.DOTALL`
+    |
+587 |         includes.append(f'    <include href="channels/{m.group(1)}.channel.nml"/>')
+    -     text = re.sub(r'<ionChannelHH id="\w+".*?</ionChannelHH>', "", text, flags=re.S)
+588 +     text = re.sub(r'<ionChannelHH id="\w+".*?</ionChannelHH>', "", text, flags=re.DOTALL)
+589 |     text = text.replace('id="NML2_SingleCompHHCell">', 'id="NML2_SingleCompHHCell">\n' + "\n".join(includes), 1)
+    |
+
+C408 Unnecessary `dict()` call (rewrite as a literal)
+   --> tests\unit\test_agent_harness.py:827:10
+    |
+825 |     monkeypatch.setattr(agent, "source_state", lambda repo, paths: dict(dirty))
+826 |     exp = _export(T06, tmp_path, policy, models)
+827 |     kw = dict(private_dir=exp.private_dir, evaluators=_StubEvaluators(), policy=policy, models=models)
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+828 |     with pytest.raises(agent.FrozenConfigError, match="needs a frozen evaluation config"):
+829 |         agent.score_trial(T06, exp.trial_dir, None, **kw)
+    |
+help: Rewrite as a literal
+
+C408 Unnecessary `dict()` call (rewrite as a literal)
+   --> tests\unit\test_agent_harness.py:842:10
+    |
+840 |     frozen = dc.replace(agent.FrozenConfig.development(tmp_path / "results"), provisional=False,
+841 |                         evaluator_git_commit="a" * 40, **agent.freeze_hashes())
+842 |     kw = dict(private_dir=exp.private_dir, evaluators=_StubEvaluators(), policy=policy, models=models)
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+843 |     score = agent.score_trial(T06, exp.trial_dir, frozen, **kw)
+844 |     assert score.provisional is False and score.model_changed is False
+    |
+help: Rewrite as a literal
+
+C408 Unnecessary `dict()` call (rewrite as a literal)
+   --> tests\unit\test_agent_harness.py:893:31
+    |
+891 |     assert agent.validate_trial_log(_log(task, policy), task=task, policy=policy, export_record=record) == []
+892 |     cases = {
+893 |         "human intervention": dict(human_interventions=[{"utc": "2026-09-13T10:05:00+00:00", "action": "answered"}]),
+    |                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+894 |         "prompt hash": dict(prompt_sha256="0" * 64),
+895 |         "budget": dict(budget={**task.budget, "max_turns": 5}),
+    |
+help: Rewrite as a literal
+
+C408 Unnecessary `dict()` call (rewrite as a literal)
+   --> tests\unit\test_agent_harness.py:894:24
+    |
+892 |     cases = {
+893 |         "human intervention": dict(human_interventions=[{"utc": "2026-09-13T10:05:00+00:00", "action": "answered"}]),
+894 |         "prompt hash": dict(prompt_sha256="0" * 64),
+    |                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+895 |         "budget": dict(budget={**task.budget, "max_turns": 5}),
+896 |         "clean export": dict(export_content_sha256="d" * 64),
+    |
+help: Rewrite as a literal
+
+C408 Unnecessary `dict()` call (rewrite as a literal)
+   --> tests\unit\test_agent_harness.py:895:19
+    |
+893 |         "human intervention": dict(human_interventions=[{"utc": "2026-09-13T10:05:00+00:00", "action": "answered"}]),
+894 |         "prompt hash": dict(prompt_sha256="0" * 64),
+895 |         "budget": dict(budget={**task.budget, "max_turns": 5}),
+    |                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+896 |         "clean export": dict(export_content_sha256="d" * 64),
+897 |         "fresh, non-resumed": dict(session={"fresh_session": True, "resumed": True, "command_line": [],
+    |
+help: Rewrite as a literal
+
+C408 Unnecessary `dict()` call (rewrite as a literal)
+   --> tests\unit\test_agent_harness.py:896:25
+    |
+894 |         "prompt hash": dict(prompt_sha256="0" * 64),
+895 |         "budget": dict(budget={**task.budget, "max_turns": 5}),
+896 |         "clean export": dict(export_content_sha256="d" * 64),
+    |                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+897 |         "fresh, non-resumed": dict(session={"fresh_session": True, "resumed": True, "command_line": [],
+898 |                                              "environment_id": "vm"}),
+    |
+help: Rewrite as a literal
+
+C408 Unnecessary `dict()` call (rewrite as a literal)
+   --> tests\unit\test_agent_harness.py:897:31
+    |
+895 |           "budget": dict(budget={**task.budget, "max_turns": 5}),
+896 |           "clean export": dict(export_content_sha256="d" * 64),
+897 |           "fresh, non-resumed": dict(session={"fresh_session": True, "resumed": True, "command_line": [],
+    |  _______________________________^
+898 | |                                              "environment_id": "vm"}),
+    | |_____________________________________________________________________^
+899 |           "YYYY-MM-DD": dict(access_date="13/09/2026"),
+900 |           "real calendar date": dict(access_date="2026-13-45"),
+    |
+help: Rewrite as a literal
+
+C408 Unnecessary `dict()` call (rewrite as a literal)
+   --> tests\unit\test_agent_harness.py:899:23
+    |
+897 |         "fresh, non-resumed": dict(session={"fresh_session": True, "resumed": True, "command_line": [],
+898 |                                              "environment_id": "vm"}),
+899 |         "YYYY-MM-DD": dict(access_date="13/09/2026"),
+    |                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+900 |         "real calendar date": dict(access_date="2026-13-45"),
+901 |         "logs must be": dict(logs=[{"path": "session.log"}]),
+    |
+help: Rewrite as a literal
+
+C408 Unnecessary `dict()` call (rewrite as a literal)
+   --> tests\unit\test_agent_harness.py:900:31
+    |
+898 |                                              "environment_id": "vm"}),
+899 |         "YYYY-MM-DD": dict(access_date="13/09/2026"),
+900 |         "real calendar date": dict(access_date="2026-13-45"),
+    |                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+901 |         "logs must be": dict(logs=[{"path": "session.log"}]),
+902 |         "costs.source": dict(costs={"usd": 1.0, "input_tokens": 1, "output_tokens": 1}),
+    |
+help: Rewrite as a literal
+
+C408 Unnecessary `dict()` call (rewrite as a literal)
+   --> tests\unit\test_agent_harness.py:901:25
+    |
+899 |         "YYYY-MM-DD": dict(access_date="13/09/2026"),
+900 |         "real calendar date": dict(access_date="2026-13-45"),
+901 |         "logs must be": dict(logs=[{"path": "session.log"}]),
+    |                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+902 |         "costs.source": dict(costs={"usd": 1.0, "input_tokens": 1, "output_tokens": 1}),
+903 |         "permissions": dict(permissions={**policy.permissions, "network": "allowed"}),
+    |
+help: Rewrite as a literal
+
+C408 Unnecessary `dict()` call (rewrite as a literal)
+   --> tests\unit\test_agent_harness.py:902:25
+    |
+900 |         "real calendar date": dict(access_date="2026-13-45"),
+901 |         "logs must be": dict(logs=[{"path": "session.log"}]),
+902 |         "costs.source": dict(costs={"usd": 1.0, "input_tokens": 1, "output_tokens": 1}),
+    |                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+903 |         "permissions": dict(permissions={**policy.permissions, "network": "allowed"}),
+904 |     }
+    |
+help: Rewrite as a literal
+
+C408 Unnecessary `dict()` call (rewrite as a literal)
+   --> tests\unit\test_agent_harness.py:903:24
+    |
+901 |         "logs must be": dict(logs=[{"path": "session.log"}]),
+902 |         "costs.source": dict(costs={"usd": 1.0, "input_tokens": 1, "output_tokens": 1}),
+903 |         "permissions": dict(permissions={**policy.permissions, "network": "allowed"}),
+    |                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+904 |     }
+905 |     for needle, over in cases.items():
+    |
+help: Rewrite as a literal
+
+C408 Unnecessary `dict()` call (rewrite as a literal)
+   --> tests\unit\test_agent_harness.py:923:10
+    |
+921 |                patch_sha256=sha256_file(rec / "patch.diff"),
+922 |                logs=[{"path": "session.log", "sha256": sha256_file(rec / "session.log")}])
+923 |     kw = dict(task=task, policy=policy, root=rec, private_dir=exp.private_dir, trial_dir=exp.trial_dir)
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+924 |     assert agent.validate_trial_log(log, **kw) == []
+925 |     (rec / "session.log").write_bytes(b"edited later\n")
+    |
+help: Rewrite as a literal
+
+PLW1510 `subprocess.run` without explicit `check` argument
+   --> tests\unit\test_agent_harness.py:977:10
+    |
+975 |     exp = _export(T05, tmp_path, policy, models)
+976 |     cmd = [sys.executable, str(exp.trial_dir / "public_tests" / agent.PUBLIC_RUNNER)]
+977 |     ok = subprocess.run(cmd, cwd=exp.trial_dir, capture_output=True, text=True, env=_runner_env(sim), timeout=600)
+    |          ^^^^^^^^^^^^^^
+978 |     assert ok.returncode == 0, ok.stdout + ok.stderr
+979 |     assert "ALL PUBLIC CHECKS PASSED" in ok.stdout
+    |
+help: Add explicit `check=False`
+
+PLW1510 `subprocess.run` without explicit `check` argument
+   --> tests\unit\test_agent_harness.py:983:11
+    |
+981 |     assert agent.semantic_diff(base, exp.trial_dir, policy.ignore_paths) == []     # checks ran in scratch/
+982 |     _replace(exp.trial_dir / HH_CELL, 'condDensity="120.0 mS_per_cm2"', 'condDensity="120.0 S_per_m2"')
+983 |     bad = subprocess.run(cmd, cwd=exp.trial_dir, capture_output=True, text=True, env=_runner_env(sim), timeout=600)
+    |           ^^^^^^^^^^^^^^
+984 |     assert bad.returncode == 1 and "[FAIL] canonical reference" in bad.stdout, bad.stdout
+    |
+help: Add explicit `check=False`
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> tests\unit\test_convergence_fingerprint.py:3:1
+   |
+ 1 |   """Tolerance rule, detection and six-way classification on synthetic fingerprints."""
+ 2 |
+ 3 | / from __future__ import annotations
+ 4 | |
+ 5 | | import math
+ 6 | | from collections import namedtuple
+ 7 | |
+ 8 | | import pytest
+ 9 | |
+10 | | from neuraxis.protocols.definitions import CANONICAL_ID
+11 | | from neuraxis.schemas import MutantClass, RunStatus
+12 | | from neuraxis.validation.convergence import (EXCLUDED_DEFINEDNESS, EXCLUDED_REGIME, MISSING, ToleranceTable, calibrate,
+13 | |                                              convergence_report)
+14 | | from neuraxis.validation.fingerprint import Detection, Fingerprint, ToolFailure, classify, compare, detecting_protocols
+   | |_______________________________________________________________________________________________________________________^
+15 |
+16 |   FV = namedtuple("FV", "name value state unit source")
+   |
+help: Organize imports
+   |
+11 | from neuraxis.schemas import MutantClass, RunStatus
+   - from neuraxis.validation.convergence import (EXCLUDED_DEFINEDNESS, EXCLUDED_REGIME, MISSING, ToleranceTable, calibrate,
+   -                                              convergence_report)
+   - from neuraxis.validation.fingerprint import Detection, Fingerprint, ToolFailure, classify, compare, detecting_protocols
+12 + from neuraxis.validation.convergence import (
+13 +     EXCLUDED_DEFINEDNESS,
+14 +     EXCLUDED_REGIME,
+15 +     MISSING,
+16 +     ToleranceTable,
+17 +     calibrate,
+18 +     convergence_report,
+19 + )
+20 + from neuraxis.validation.fingerprint import (
+21 +     Detection,
+22 +     Fingerprint,
+23 +     ToolFailure,
+24 +     classify,
+25 +     compare,
+26 +     detecting_protocols,
+27 + )
+28 |
+   |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> tests\unit\test_efel_adapter.py:3:1
+   |
+ 1 |   """Unit tests for features.efel_adapter on synthetic traces, with real eFEL 5.7.34 calls."""
+ 2 |
+ 3 | / from __future__ import annotations
+ 4 | |
+ 5 | | import copy
+ 6 | | import json
+ 7 | | import warnings
+ 8 | | from concurrent.futures import ThreadPoolExecutor
+ 9 | |
+10 | | import efel
+11 | | import numpy as np
+12 | | import pytest
+13 | |
+14 | | from neuraxis.config import features as load_features_config
+15 | | from neuraxis.features.efel_adapter import (
+16 | |     DEFINED,
+17 | |     NOT_APPLICABLE,
+18 | |     UNDEFINED,
+19 | |     FeatureConfigError,
+20 | |     FeatureValue,
+21 | |     effective_settings,
+22 | |     efel_settings,
+23 | |     extract,
+24 | |     extract_all,
+25 | |     feature_table_from_json,
+26 | |     feature_table_to_json,
+27 | |     is_hyperpolarizing,
+28 | | )
+29 | | from neuraxis.features.regimes import LABELS
+30 | | from neuraxis.features.trace_metrics import pack_traces, stored_representation, uniform_grid, unpack_traces
+31 | | from neuraxis.protocols.definitions import SPIKING
+32 | | from neuraxis.schemas import AnalysisWindow, ConcreteProtocol, StimulusComponent, Trace
+   | |_______________________________________________________________________________________^
+33 |
+34 |   DT, S0, S1, TOTAL = 0.025, 200.0, 600.0, 700.0
+   |
+help: Organize imports
+   |
+20 |     FeatureValue,
+21 +     efel_settings,
+22 |     effective_settings,
+   -     efel_settings,
+23 |     extract,
+   |
+
+RUF046 Value being cast to `int` is already an integer
+  --> tests\unit\test_efel_adapter.py:45:34
+   |
+44 | def grid() -> np.ndarray:
+45 |     return uniform_grid(0.0, DT, int(round(TOTAL / DT)) + 1)
+   |                                  ^^^^^^^^^^^^^^^^^^^^^^
+help: Remove unnecessary `int` call
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> tests\unit\test_execution_canonical.py:3:1
+   |
+ 1 |   """Execution helpers, canonical protocol parsing and harness refinement on real fixtures."""
+ 2 |
+ 3 | / from __future__ import annotations
+ 4 | |
+ 5 | | import pytest
+ 6 | |
+ 7 | | from neuraxis.schemas import ExecConfig, RunStatus, VariantKind, VariantRecord
+ 8 | | from neuraxis.validation.canonical import canonical_protocol, refine_harness_step
+ 9 | | from neuraxis.validation.execution import (TaskError, apply_overrides, effective_workspace, inputs_manifest,
+10 | |                                            reachable_files, run_parallel, worst_status)
+11 | | from neuraxis.validation.structural import harness_nml_files
+   | |____________________________________________________________^
+help: Organize imports
+   |
+8  | from neuraxis.validation.canonical import canonical_protocol, refine_harness_step
+   - from neuraxis.validation.execution import (TaskError, apply_overrides, effective_workspace, inputs_manifest,
+   -                                            reachable_files, run_parallel, worst_status)
+9  + from neuraxis.validation.execution import (
+10 +     TaskError,
+11 +     apply_overrides,
+12 +     effective_workspace,
+13 +     inputs_manifest,
+14 +     reachable_files,
+15 +     run_parallel,
+16 +     worst_status,
+17 + )
+18 | from neuraxis.validation.structural import harness_nml_files
+   |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> tests\unit\test_kinetics_operators.py:6:1
+   |
+ 4 |   """
+ 5 |
+ 6 | / from __future__ import annotations
+ 7 | |
+ 8 | | import pytest
+ 9 | |
+10 | | from neuraxis.models import copy_workspace
+11 | | from neuraxis.mutations import REGISTRY
+12 | | from neuraxis.mutations.base import (
+13 | |     MutationError,
+14 | |     element_children,
+15 | |     enforce_single_operator,
+16 | |     localname,
+17 | |     read_xml,
+18 | |     resolve,
+19 | | )
+20 | | from neuraxis.experiments import strata
+21 | | from neuraxis.schemas import Edit, MutationFamily, VariantKind, VariantRecord
+   | |_____________________________________________________________________________^
+22 |
+23 |   KINETICS = ("shift_gate_midpoint", "scale_gate_slope", "shift_forward_rate_midpoint", "shift_channel_vshift")
+   |
+help: Organize imports
+   |
+9  |
+10 + from neuraxis.experiments import strata
+11 | from neuraxis.models import copy_workspace
+--------------------------------------------------------------------------------
+20 | )
+   - from neuraxis.experiments import strata
+21 | from neuraxis.schemas import Edit, MutationFamily, VariantKind, VariantRecord
+   |
+
+SIM115 Use a context manager for opening files
+   --> tests\unit\test_models_manifest.py:120:32
+    |
+118 |     p = tmp_path / "m.csv"
+119 |     write_models(list(all_models.values()), p)
+120 |     rows = list(csv.DictReader(open(p, newline="", encoding="utf-8")))
+    |                                ^^^^
+121 |     cols = [c for c in MANIFEST_COLUMNS if c != "cell_id"]
+122 |     with open(p, "w", newline="", encoding="utf-8") as f:
+    |
+
+UP012 [*] Unnecessary UTF-8 `encoding` argument to `encode`
+   --> tests\unit\test_provenance.py:188:30
+    |
+186 |     p = tmp_path / "note.txt"
+187 |     digest = write_immutable_text(p, "ÂµV drift âœ“")
+188 |     assert p.read_bytes() == "ÂµV drift âœ“".encode("utf-8")
+    |                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+189 |     assert digest == sha256_bytes("ÂµV drift âœ“".encode("utf-8"))
+190 |     assert write_immutable_text(p, "ÂµV drift âœ“") == digest
+    |
+help: Remove unnecessary `encoding` argument
+    |
+187 |     digest = write_immutable_text(p, "ÂµV drift âœ“")
+    -     assert p.read_bytes() == "ÂµV drift âœ“".encode("utf-8")
+188 +     assert p.read_bytes() == "ÂµV drift âœ“".encode()
+189 |     assert digest == sha256_bytes("ÂµV drift âœ“".encode("utf-8"))
+    |
+
+UP012 [*] Unnecessary UTF-8 `encoding` argument to `encode`
+   --> tests\unit\test_provenance.py:189:35
+    |
+187 |     digest = write_immutable_text(p, "ÂµV drift âœ“")
+188 |     assert p.read_bytes() == "ÂµV drift âœ“".encode("utf-8")
+189 |     assert digest == sha256_bytes("ÂµV drift âœ“".encode("utf-8"))
+    |                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+190 |     assert write_immutable_text(p, "ÂµV drift âœ“") == digest
+    |
+help: Remove unnecessary `encoding` argument
+    |
+188 |     assert p.read_bytes() == "ÂµV drift âœ“".encode("utf-8")
+    -     assert digest == sha256_bytes("ÂµV drift âœ“".encode("utf-8"))
+189 +     assert digest == sha256_bytes("ÂµV drift âœ“".encode())
+190 |     assert write_immutable_text(p, "ÂµV drift âœ“") == digest
+    |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> tests\unit\test_run_record_fields.py:3:1
+   |
+ 1 |   """Execution-plan run records: required fields, output streams, and retry-safe tool failures."""
+ 2 |
+ 3 | / from __future__ import annotations
+ 4 | |
+ 5 | | import json
+ 6 | |
+ 7 | | import numpy as np
+ 8 | |
+ 9 | | from neuraxis.schemas import RUN_RECORD_REQUIRED_FIELDS, RunStatus, SimResult, Trace, VariantKind, VariantRecord
+10 | | from neuraxis.validation.canonical import canonical_protocol
+11 | | from neuraxis.validation.execution import RunRecorder
+   | |_____________________________________________________^
+help: Organize imports
+   |
+8  |
+   - from neuraxis.schemas import RUN_RECORD_REQUIRED_FIELDS, RunStatus, SimResult, Trace, VariantKind, VariantRecord
+9  + from neuraxis.schemas import (
+10 +     RUN_RECORD_REQUIRED_FIELDS,
+11 +     RunStatus,
+12 +     SimResult,
+13 +     Trace,
+14 +     VariantKind,
+15 +     VariantRecord,
+16 + )
+17 | from neuraxis.validation.canonical import canonical_protocol
+   |
+
+C408 Unnecessary `dict()` call (rewrite as a literal)
+   --> tests\unit\test_science_docs.py:139:10
+    |
+137 |       settle = float(cfg["numerics"]["settle_ms"])
+138 |       dt = float(cfg["numerics"]["dt_nominal_ms"])
+139 |       kw = dict(hi_nA=rh["initial_hi_nA"], grid=rh["grid"], rounds=rh["rounds"], expand=rh["expand"],
+    |  __________^
+140 | |               max_hi_nA=rh["max_hi_nA"])
+    | |________________________________________^
+141 |       per_sim = int(rh["grid"]) * round((settle + float(rh["step_duration_ms"])) / dt)
+142 |       worst = search(_fake_counter(0.97 * rh["max_hi_nA"]), **kw)     # brackets in the last grid, refines fully
+    |
+help: Rewrite as a literal
+
+RUF046 Value being cast to `int` is already an integer
+  --> tests\unit\test_trace_metrics.py:32:30
+   |
+30 |                t0: float = 0.0) -> Trace:
+31 |     """Sine wave whose upward zero-offset crossings are at known times k / f."""
+32 |     t = uniform_grid(t0, dt, int(round(total / dt)) + 1)
+   |                              ^^^^^^^^^^^^^^^^^^^^^^
+33 |     return Trace(t, offset + amp * np.sin(2 * np.pi * freq_hz * t / 1000.0))
+   |
+help: Remove unnecessary `int` call
+
+Found 186 errors.
+[*] 91 fixable with the `--fix` option (70 hidden fixes can be enabled with the `--unsafe-fixes` option).
+
+--- stderr ---
+

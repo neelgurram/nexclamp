@@ -65,19 +65,29 @@ NeuroSem adds fields the pipeline needs: `snapshot`, `cell_file`, `cell_id`,
 `harness_lems`, `harness_output_file`, `harness_v_column`, `temperature` and
 `source_family`. Models that share a `source_family` are treated as correlated.
 
-## 3. Current manifest (2026-09-13)
+## 3. Current manifest (updated 2026-09-17)
 
-Two models are included for the pilot. The other four are candidates, either for the
-full study or as fixtures.
+Seven models are included: the two Pilot 1 fixtures and the five Pilot 2 models, which were
+promoted from the curated candidates after passing all thirteen curation criteria in campaign
+`curation-v3` (D-053, `docs/MODEL_CURATION_FINAL_TABLE.md`). `pospischil2008_ib` stays a
+candidate; `wangbuzsaki1996_wb` is excluded from the primary study (D-051).
 
 | model_id | inclusion | source_family | snapshot (commit) | license (as recorded) |
 |---|---|---|---|---|
 | `pospischil2008_rs` | **include** (pilot fixture 1) | pospischil2008 | PospischilEtAl2008@049081c3 | MIT (NeuroML2 directory) |
 | `pospischil2008_lts` | **include** (pilot fixture 2) | pospischil2008 | PospischilEtAl2008@049081c3 | MIT (NeuroML2 directory) |
-| `pospischil2008_fs` | candidate | pospischil2008 | PospischilEtAl2008@049081c3 | MIT (NeuroML2 directory) |
+| `pospischil2008_fs` | **include** (Pilot 2) | pospischil2008 | PospischilEtAl2008@049081c3 | MIT (NeuroML2 directory) |
+| `nml2_hh_example` | **include** (Pilot 2) | neuroml2_examples | NeuroML2@a5f5dadc | LGPL-3.0 |
+| `acnet2_pyr_soma` | **include** (Pilot 2) | acnet2_traub1991 | NeuroML2@a5f5dadc | LGPL-3.0 (LICENSE.lesser) |
+| `migliore2014_mt_soma` | **include** (Pilot 2) | migliore2014 | MiglioreEtAl14_OlfactoryBulb3D@eaad1c8f | MIT |
+| `osb_hh2_477127614` | **include** (Pilot 2) | osb_allen_hh2 | MultiscaleISN@f0783475 | MIT (OSB LICENSE, no exceptions stated) |
 | `pospischil2008_ib` | candidate | pospischil2008 | PospischilEtAl2008@049081c3 | MIT (NeuroML2 directory) |
-| `nml2_hh_example` | candidate | neuroml2_examples | NeuroML2@a5f5dadc | LGPL-3.0 |
-| `wangbuzsaki1996_wb` | candidate | wangbuzsaki1996 | WangBuzsaki1996@c5322844 | MIT (NeuroML2 directory) |
+| `wangbuzsaki1996_wb` | **exclude** (D-051) | wangbuzsaki1996 | WangBuzsaki1996@c5322844 | MIT (NeuroML2 directory) |
+
+Licence caveats recorded for two Pilot 2 models: `acnet2_pyr_soma` carries the NeuroML2
+repository's LGPL-3.0 while its originating publication states no licence of its own, and
+`osb_hh2_477127614` is MIT in its OSB repository but was tuned to Allen Cell Types Database data,
+whose own terms apply to that data rather than to the NeuroML file.
 
 Model contents and shipped canonical harness, read from the pinned files:
 
