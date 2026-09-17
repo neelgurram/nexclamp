@@ -80,3 +80,35 @@ def test_successful_record_carries_every_required_field(hh_ws, tmp_path, monkeyp
     # a cached reload verifies the stored streams against the record
     again = rec.run_canonical(hh_ws, _variant(hh_ws), canonical_protocol(hh_ws))
     assert again.cached and sim.calls == 1
+
+
+def test_cached_runs_are_reused_only_under_an_identical_cache_key(hh_ws, tmp_path):
+    """Model hash, generation code/version, simulator and Java build, config, step, recording and temperature."""
+    from neuraxis.validation import execution as ex
+
+    proto = canonical_protocol(hh_ws)
+    sim = FakeSim([RunStatus.OK])
+    rec = RunRecorder("c", sim, results_root=tmp_path / "res", work_root=tmp_path / "work")
+    first = rec.run_canonical(hh_ws, _variant(hh_ws), proto)
+    assert sim.calls == 1 and first.records[0].cache_key_sha256
+    assert rec.run_canonical(hh_ws, _variant(hh_ws), proto).cached and sim.calls == 1     # identical: reused
+
+    class OtherJava(FakeSim):
+        def version_info(self):
+            return {"jar_sha256": "fake-jar", "simulator": "fake", "java_version": "other-build"}
+
+    sim2 = OtherJava([RunStatus.OK])
+    rec2 = RunRecorder("c", sim2, results_root=tmp_path / "res", work_root=tmp_path / "work")
+    second = rec2.run_canonical(hh_ws, _variant(hh_ws), proto)
+    assert sim2.calls == 1 and second.records[0].run_id != first.records[0].run_id       # different Java: re-simulated
+
+    monkey = ex.GENERATION_VERSION
+    try:
+        ex.GENERATION_VERSION = monkey + 1
+        sim3 = FakeSim([RunStatus.OK])
+        rec3 = RunRecorder("c", sim3, results_root=tmp_path / "res", work_root=tmp_path / "work")
+        third = rec3.run_canonical(hh_ws, _variant(hh_ws), proto)
+        assert sim3.calls == 1 and third.records[0].run_id != first.records[0].run_id    # new generation version
+        assert third.records[0].generation_version == monkey + 1
+    finally:
+        ex.GENERATION_VERSION = monkey

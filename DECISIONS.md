@@ -399,6 +399,24 @@ Neel: "Do not discard pilot data. Preserve all pilot configurations, raw outputs
 - **Evidence.** `docs/KINETICS_OPERATOR_VALIDATION.md`, `results/audits/kinetics_validation/`.
 - **Pilot 2 scope.** A limited prespecified subset may enter Pilot 2 once validated.
 
+**D-050 Planned public name: PerturbPrint; one canonical namespace later** (Neel, 2026-09-17)
+- **Public name.** PerturbPrint, subject to the completed name audit. Neuraxis is not used publicly.
+- **Internal identifier.** `neuron_model_behavioral_validation`, permanent and independent of branding.
+- **Rename timing.** No repository-wide rename while curation or tests run. The controlled plan is `docs/RENAME_PLAN.md`.
+- **Namespace.** One canonical package namespace is recommended (`perturbprint`), with no permanent `neurosem`/`neuraxis` aliases. The only documented compatibility need is the Git-ignored hidden agent-study material, which can be updated in the same commit; Neel chooses whether to keep the `neurosem` alias until his evaluator review (N-12).
+- **Preserved by the plan.** Git history, raw result paths, recorded metadata, prior names in the record, and every hash.
+
+**D-051 Wang-Buzsáki excluded from the primary study; kept as a documented candidate** (Neel, 2026-09-17; fixed)
+- **Excluded** because inclusion would need a model-specific schema exception or a manual repair (criterion C04).
+- **Not repaired.** It is never hand-fixed and then used as an ordinary primary model.
+- **Kept in the manifest** with the exclusion reason, the exact validator output, provenance, licence status and potential exploratory use (`data/model_manifest.csv`, `docs/WANG_BUZSAKI_DECISION_PACKET.md`).
+- **Exploratory use** is allowed only as a prespecified, separately reported sensitivity analysis.
+
+**D-052 Cache key for reusing a stored simulation** (Neel, 2026-09-17; fixed)
+- **Key contents.** Model tree hash, the digest and version of the simulation-generation code, protocol configuration, the config-set hash, simulator and Java build, jar hash, time step and execution settings, recording variable, temperature, and the full input manifest.
+- **Effect.** Any difference gives a different run id, so the run is repeated instead of reused. `cache_key_sha256`, `generation_version`, `generation_code_digest` and `java_version` are stored in every run record and re-checked before reuse.
+- **Invalidation.** The temperature-field correction (X-19) changes generated inputs, so affected entries are invalid by construction. Curation restarted as `curation-v3`; curation v1 and the partial v2 are preserved.
+
 ## Models and licensing
 
 **D-017 Pilot fixtures: Pospischil 2008 RS and LTS** (provisional)

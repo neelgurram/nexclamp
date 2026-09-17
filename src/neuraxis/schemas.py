@@ -256,6 +256,12 @@ class RunRecord:
     stderr_sha256: str = ""
     trace_hash: str = ""
     feature_hash: str = ""
+    # Cache identity: a stored run is reused only when this key matches (model hash, generation code and
+    # version, protocol configuration, simulator and Java build, time step, recording variable, temperature).
+    cache_key_sha256: str = ""
+    generation_version: int | None = None
+    generation_code_digest: str = ""
+    java_version: str = ""
 
 
 # Fields every successful run record must carry (checked by the infrastructure smoke test).

@@ -24,7 +24,7 @@ from neuraxis.experiments import pilot_outputs as po
 from neuraxis.experiments import strata
 
 LEVELS = ("A_basic_pass", "B_canonical_feature", "C_canonical_trace", "D_multi_protocol", "E_full_battery")
-BRANCH_RULES = {  # prespecified before Pilot 2 data (PILOT_PROTOCOL_V2 section 10)
+BRANCH_RULES: dict[str, Any] = {  # prespecified before Pilot 2 data (PILOT_PROTOCOL_V2 section 10)
     "control_false_positive_rate_max": 0.10,
     "unconfirmed_survivor_fraction_max": 0.50,
     "refinement_excluded_fraction_max": 0.25,
@@ -147,7 +147,7 @@ def convergence_rows(processed: Path) -> list[dict]:
     return out
 
 
-def classify_branch(c: po.CampaignView, processed: Path, rules: Mapping[str, float] = BRANCH_RULES) -> dict:
+def classify_branch(c: po.CampaignView, processed: Path, rules: Mapping[str, Any] = BRANCH_RULES) -> dict:
     sem = [r for r in c.cls if c.stratum(r) == strata.SEMANTIC and r["kind"] == "mutant"]
     ctl = [r for r in c.cls if c.stratum(r) == strata.CONTROL]
     adm = [r for r in sem if _flag(r, "A_basic_pass") and _flag(r, "E_full_battery")]
@@ -176,9 +176,9 @@ def classify_branch(c: po.CampaignView, processed: Path, rules: Mapping[str, flo
             or broken_controls
             or (feat_surv and len(unconfirmed) / len(feat_surv) > rules["unconfirmed_survivor_fraction_max"])
             or (ev["refinement_excluded_fraction"] or 0) >= rules["refinement_excluded_fraction_max"]),
-        "A_hidden_drift_supported": (len(full_conf) >= rules["hidden_drift_min_confirmed_full_trace_survivors"]
-                                     and len(ev["confirmed_full_trace_survivor_models"]) >= rules["hidden_drift_min_models"]),
-        "B_feature_level_insufficiency": len(feat_insuff) >= rules["feature_insufficiency_min_cases"],
+        "A_hidden_drift_supported": (len(full_conf) >= int(rules["hidden_drift_min_confirmed_full_trace_survivors"])
+                                     and len(set(r["model_id"] for r in full_conf)) >= int(rules["hidden_drift_min_models"])),
+        "B_feature_level_insufficiency": len(feat_insuff) >= int(rules["feature_insufficiency_min_cases"]),
         "C_canonical_adequacy": (ev["canonical_B_or_C_detection_rate"] is not None
                                  and ev["canonical_B_or_C_detection_rate"] >= rules["canonical_adequacy_min_detection"]),
     }
@@ -189,7 +189,7 @@ def classify_branch(c: po.CampaignView, processed: Path, rules: Mapping[str, flo
             "note": "Rules fixed in PILOT_PROTOCOL_V2 before data; branch A is never forced."}
 
 
-def build(processed: Path, raw_dir: Path, work_variants_dir: Path, work_runs_dir: Path | None, figures_dir: Path,
+def build(processed: Path, raw_dir: Path, work_variants_dir: Path, work_runs_dir: Path, figures_dir: Path,
           meta: Mapping[str, str], seed: int, deviations_file: Path | None = None) -> Path:
     meta = dict(meta)
     c = po.CampaignView(processed, [], [])
@@ -222,7 +222,7 @@ def build(processed: Path, raw_dir: Path, work_variants_dir: Path, work_runs_dir
     t("10_detection_matrix_complete.csv", complete_matrix(c, trace_rep))
     rng = random.Random(seed)
     pool = sorted(r["variant_id"] for r in c.cls)
-    sample = set(rng.sample(pool, min(BRANCH_RULES["audit_sample_size"], len(pool))))
+    sample = set(rng.sample(pool, min(int(BRANCH_RULES["audit_sample_size"]), len(pool))))
     audit = {r["variant_id"]: r for r in po.audit_rows(c, work_variants_dir)}
     t("11_random_audit_cases.csv", [{**case_table(c, [c.by_id[v]], checks)[0],
                                      **{k: audit.get(v, {}).get(k, "") for k in

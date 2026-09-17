@@ -26,8 +26,9 @@ def evaluate_heldout(campaign: str, selection_file: Path, reason: str, workers: 
 
     # Pilot and discovery data never enter the confirmatory estimate (D-026); the campaign is
     # fresh, runs on the frozen configs/ only, and on one clean commit (D-025).
-    if not config.uses_default_config_dir():
-        raise registry.CampaignError(f"held-out evaluation must use configs/ (unset {config.CONFIG_DIR_ENV})")
+    if not (config.uses_default_config_dir() and config.uses_default_study_config()):
+        raise registry.CampaignError(f"held-out evaluation must use configs/study.yaml (unset {config.CONFIG_DIR_ENV} "
+                                     f"and {config.STUDY_CONFIG_ENV})")
     registry.assert_confirmatory_fresh(campaign, config.results_dir())
     gate = HeldoutGate(REPO_ROOT, REPO_ROOT / "configs" / "FROZEN.lock", reason)
     split = gate.split()

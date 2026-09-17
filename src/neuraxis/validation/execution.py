@@ -52,6 +52,20 @@ class ReproducibilityError(RuntimeError):
     """A re-simulation produced different bytes than the immutable record."""
 
 
+# Bumped whenever simulation generation changes in a way that could alter generated inputs or outcomes.
+GENERATION_VERSION = 2          # 2: candidate temperature fields normalised (deviation X-19)
+# Source files that write or read the simulator's inputs and outputs. A change here invalidates caches.
+_GENERATION_SOURCES = ("protocols/generate.py", "protocols/definitions.py", "protocols/rheobase.py",
+                       "simulators/jneuroml.py", "validation/canonical.py", "validation/execution.py")
+
+
+@functools.lru_cache(maxsize=1)
+def generation_code_digest() -> str:
+    """Digest of the code that generates and runs simulations (never reuse a cache across such changes)."""
+    root = Path(__file__).resolve().parents[1]
+    return sha256_json({rel: sha256_file(root / rel) for rel in _GENERATION_SOURCES})
+
+
 @functools.lru_cache(maxsize=1)
 def feature_code_digest() -> str:
     """Digest of the feature-extraction source, so changed feature code never reuses stale features."""
@@ -140,6 +154,7 @@ class RunRecorder:
         self.meta = config.study_metadata(study)
         self.config_sha256 = config.config_set_sha256()
         self.timeout_s = timeout_s or float(study["numerics"]["timeout_s"])
+        self.git_commit = git_state()[0]
         self.store_traces = store_traces
         self._locks: dict[str, threading.Lock] = {}
         self._locks_guard = threading.Lock()
@@ -175,6 +190,19 @@ class RunRecorder:
     def _jar_sha(self) -> str:
         return self.sim.version_info().get("jar_sha256", "unknown")
 
+    def cache_context(self) -> dict[str, Any]:
+        """Everything besides the simulation inputs that a cached run must match before it is reused.
+
+        A cached simulation is identified by the hash of its whole payload, so any difference here
+        (generation code, simulator or Java build, configuration) yields a different run id and the
+        run is repeated rather than reused.
+        """
+        v = self.sim.version_info()
+        return {"generation_version": GENERATION_VERSION, "generation_code": generation_code_digest(),
+                "simulator": self.sim.name, "simulator_version": self.sim.version_string(),
+                "java_version": v.get("java_version", "unknown"), "jar_sha256": v.get("jar_sha256", "unknown"),
+                "config_sha256": self.config_sha256}
+
     def _run_id(self, payload: dict) -> str:
         return "r-" + sha256_json(payload)[:20]
 
@@ -203,7 +231,8 @@ class RunRecorder:
             write_immutable_text(run_dir / f"efel_warnings_{key}.txt", "\n".join(warnings) + "\n")
         return tables, relpath(path), sha, len(warnings)
 
-    def _load_cached(self, run_dir: Path, protocols: Sequence[ConcreteProtocol], need_traces: bool = False) -> RunOutput | None:
+    def _load_cached(self, run_dir: Path, protocols: Sequence[ConcreteProtocol], need_traces: bool = False,
+                     cache_key: str = "") -> RunOutput | None:
         """Return a cached run, or None when it must be (re-)simulated.
 
         Features for the current features key are loaded from Git-tracked JSON even when the
@@ -216,6 +245,9 @@ class RunRecorder:
         if not rj.is_file():
             return None
         rec = RunRecord(**json.loads(rj.read_text(encoding="utf-8")))
+        if cache_key and rec.cache_key_sha256 and rec.cache_key_sha256 != cache_key:
+            # Cannot happen while the run id is the payload hash; checked anyway before any reuse.
+            raise ReproducibilityError(f"{rec.run_id}: cached run does not match the current cache key")
         if rec.status == RunStatus.TOOL_FAILURE.value:
             # Legacy record of a toolchain failure: preserve it beside the run and allow the retry.
             keep = run_dir / "_tool_failures" / f"legacy_run_{uuid.uuid4().hex}.json"
@@ -247,7 +279,8 @@ class RunRecorder:
         return None
 
     def _finish(self, *, run_id: str, run_kind: str, stage: Workspace, variant: VariantRecord, protocols: Sequence[ConcreteProtocol],
-                dt_ms: float, duration_ms: float, result, replicate: int, started_utc: str = "") -> RunOutput:
+                dt_ms: float, duration_ms: float, result, replicate: int, started_utc: str = "",
+                cache_key: str = "") -> RunOutput:
         from neuraxis.features import trace_metrics
 
         run_dir = self.raw / run_id
@@ -308,6 +341,8 @@ class RunRecorder:
                                else None),
             protocol_id=";".join(p.protocol_id for p in protocols), time_step_ms=dt_ms,
             configuration_hash=self.config_sha256, start_time=started_utc, end_time=utc_now(),
+            cache_key_sha256=cache_key, generation_version=GENERATION_VERSION,
+            generation_code_digest=generation_code_digest(), java_version=self.sim.version_info().get("java_version", ""),
             runtime_seconds=round(result.runtime_s, 3), stdout_path=streams["stdout"][0],
             stderr_path=streams["stderr"][0], stdout_sha256=streams["stdout"][1], stderr_sha256=streams["stderr"][1],
             trace_hash=trace_sha, feature_hash=feature_sha)
@@ -334,10 +369,11 @@ class RunRecorder:
         bundle = write_probe(stage, group, exec_eff, tag=f"battery_{int(group[0].total_ms)}")
         payload = {"kind": "probe", "inputs": inputs_manifest(bundle.lems_file, stage.root),
                    "protocols": [dc.asdict(p) for p in group], "exec": dc.asdict(exec_eff), "jar": self._jar_sha(),
-                   "replicate": replicate}
+                   "replicate": replicate, "model_hash": variant.tree_sha256, "temperature": stage.model.temperature,
+                   "recording": dc.asdict(bundle.output), "cache": self.cache_context()}
         run_id = self._run_id(payload)
         with self._lock(run_id):
-            cached = self._load_cached(self.raw / run_id, group, need_traces)
+            cached = self._load_cached(self.raw / run_id, group, need_traces, cache_key=sha256_json(payload))
             if cached is not None:
                 shutil.rmtree(stage.root, ignore_errors=True)
                 return cached
@@ -346,7 +382,8 @@ class RunRecorder:
                 result = self.sim.run_lems(bundle.lems_file, [bundle.output], timeout_s=self.timeout_s,
                                            sample_every_ms=exec_eff.sample_every_ms)
                 return self._finish(run_id=run_id, run_kind="probe", stage=stage, variant=variant, protocols=group,
-                                    dt_ms=exec_eff.dt_ms, duration_ms=bundle.length_ms, result=result, replicate=replicate, started_utc=started)
+                                    dt_ms=exec_eff.dt_ms, duration_ms=bundle.length_ms, result=result, replicate=replicate, started_utc=started,
+                                    cache_key=sha256_json(payload))
             except Exception:
                 if stage.root.exists():
                     self._discard(stage, run_id, failed=True)
@@ -364,10 +401,13 @@ class RunRecorder:
         sample_every = variant.exec_overrides.get("sample_every_ms")
         payload = {"kind": "canonical", "inputs": inputs_manifest(stage.harness_path, stage.root),
                    "protocol": dc.asdict(canonical_proto), "sample_every_ms": sample_every, "jar": self._jar_sha(),
-                   "replicate": replicate}
+                   "replicate": replicate, "model_hash": variant.tree_sha256, "temperature": stage.model.temperature,
+                   "recording": dc.asdict(canonical_output(ws.model)), "level_factor": level_factor,
+                   "cache": self.cache_context()}
         run_id = self._run_id(payload)
         with self._lock(run_id):
-            cached = self._load_cached(self.raw / run_id, [canonical_proto], need_traces)
+            cached = self._load_cached(self.raw / run_id, [canonical_proto], need_traces,
+                                       cache_key=sha256_json(payload))
             if cached is not None:
                 shutil.rmtree(stage.root, ignore_errors=True)
                 return cached
@@ -377,7 +417,8 @@ class RunRecorder:
                                            sample_every_ms=sample_every)
                 return self._finish(run_id=run_id, run_kind="canonical", stage=stage, variant=variant,
                                     protocols=[canonical_proto], dt_ms=dt_ms, duration_ms=canonical_proto.total_ms,
-                                    result=result, replicate=replicate, started_utc=started)
+                                    result=result, replicate=replicate, started_utc=started,
+                                    cache_key=sha256_json(payload))
             except Exception:
                 if stage.root.exists():
                     self._discard(stage, run_id, failed=True)
@@ -391,7 +432,8 @@ class RunRecorder:
         stage = self._stage(effective_workspace(ws, variant))
         payload = {"kind": "rheobase", "inputs": inputs_manifest(stage.cell_path, stage.root),
                    "cell_id": stage.model.cell_id, "temperature": stage.model.temperature, "exec": dc.asdict(exec_eff),
-                   "rheobase": dict(rcfg), "settle_ms": settle_ms, "jar": self._jar_sha()}
+                   "rheobase": dict(rcfg), "settle_ms": settle_ms, "jar": self._jar_sha(),
+                   "model_hash": variant.tree_sha256, "cache": self.cache_context()}
         search_id = "s-" + sha256_json(payload)[:20]
         out_path = self.raw / search_id / "rheobase.json"
         with self._lock(search_id):
@@ -416,7 +458,8 @@ class RunRecorder:
                 return RheobaseOutcome(res, status, search_id, {"cost": cost}, False)
             record = {"search_id": search_id, "execution_id": uuid.uuid4().hex, "start_time": started,
                       "end_time": utc_now(), "model_hash": variant.tree_sha256, "protocol_id": "P03_rheobase",
-                      "configuration_hash": self.config_sha256, "campaign": self.campaign, "model_id": variant.model_id,
+                      "configuration_hash": self.config_sha256, "cache_key_sha256": sha256_json(payload),
+                      "generation_version": GENERATION_VERSION, "generation_code_digest": generation_code_digest(), "campaign": self.campaign, "model_id": variant.model_id,
                       "variant_id": variant.variant_id, "variant_tree_sha256": variant.tree_sha256, "status": status.value,
                       "result": dc.asdict(res), "cost": cost, "cell_steps": sum(c["cell_steps"] for c in cost),
                       "runtime_s": round(sum(c["runtime_s"] for c in cost), 3), "exec": dc.asdict(exec_eff),

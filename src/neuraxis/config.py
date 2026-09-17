@@ -9,7 +9,7 @@ from typing import Any
 
 import yaml
 
-from neuraxis.provenance import REPO_ROOT, sha256_file, sha256_json
+from neuraxis.provenance import REPO_ROOT, env_var, sha256_file, sha256_json
 from neuraxis.schemas import ExecConfig
 
 CONFIG_DIR = REPO_ROOT / "configs"
@@ -54,8 +54,24 @@ def load_yaml(path: Path | str) -> LoadedConfig:
     return LoadedConfig(p, sha256_file(p), data)
 
 
+STUDY_CONFIG_ENV = "NEURAXIS_STUDY_CONFIG"     # a single frozen study file, e.g. configs/pilot2_frozen.yaml
+
+
+def study_config_path() -> Path:
+    """The study configuration in use: ``NEURAXIS_STUDY_CONFIG`` if set, else ``<config dir>/study.yaml``."""
+    override = env_var("STUDY_CONFIG")
+    if not override:
+        return config_dir() / "study.yaml"
+    p = Path(override)
+    return p if p.is_absolute() else REPO_ROOT / p
+
+
+def uses_default_study_config() -> bool:
+    return study_config_path().resolve() == (CONFIG_DIR / "study.yaml").resolve()
+
+
 def study() -> LoadedConfig:
-    return load_yaml(config_dir() / "study.yaml")
+    return load_yaml(study_config_path())
 
 
 def features() -> LoadedConfig:
