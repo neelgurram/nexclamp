@@ -15,19 +15,19 @@ import efel
 import numpy as np
 import pytest
 
-from neurosem.config import features as load_features_config
-from neurosem.features.efel_adapter import (
+from neuraxis.config import features as load_features_config
+from neuraxis.features.efel_adapter import (
     DEFINED,
     extract_all,
     feature_table_from_json,
     feature_table_to_json,
 )
-from neurosem.features.regimes import LABELS
-from neurosem.features.trace_metrics import is_uniform, pack_traces, stored_representation, unpack_traces
-from neurosem.models import materialize
-from neurosem.protocols.definitions import SPIKING
-from neurosem.protocols.generate import write_probe
-from neurosem.schemas import AnalysisWindow, ConcreteProtocol, ExecConfig, RunStatus, StimulusComponent
+from neuraxis.features.regimes import LABELS
+from neuraxis.features.trace_metrics import is_uniform, pack_traces, stored_representation, unpack_traces
+from neuraxis.models import materialize
+from neuraxis.protocols.definitions import SPIKING
+from neuraxis.protocols.generate import write_probe
+from neuraxis.schemas import AnalysisWindow, ConcreteProtocol, ExecConfig, RunStatus, StimulusComponent
 
 pytestmark = pytest.mark.jnml
 

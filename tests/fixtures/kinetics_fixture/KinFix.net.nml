@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Neuraxis kinetics-operator validation fixture: network with one cell and one current step (Apache-2.0). -->
+<neuroml xmlns="http://www.neuroml.org/schema/neuroml2"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://www.neuroml.org/schema/neuroml2 https://raw.github.com/NeuroML/NeuroML2/development/Schemas/NeuroML2/NeuroML_v2.3.1.xsd"
+         id="KinFixNet">
+    <include href="KinFix.cell.nml"/>
+    <pulseGenerator id="stim" delay="100ms" duration="200ms" amplitude="0.08nA"/>
+    <network id="net1">
+        <population id="pop" component="kinfix" size="1"/>
+        <explicitInput target="pop[0]" input="stim"/>
+    </network>
+</neuroml>

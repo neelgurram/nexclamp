@@ -1,0 +1,2054 @@
+{
+  "audit": "Brand-name candidate search for the neuron_model_behavioral_validation study",
+  "date": "2026-09-16",
+  "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch",
+  "disclaimer": "Not legal trademark clearance. A zero means only that the source returned nothing for that query at that time.",
+  "rules_followed": "Read-only queries. No accounts, logins, registrations or reservations.",
+  "controls": [
+    {
+      "check": "PyPI JSON efel",
+      "result": "HTTP 200"
+    },
+    {
+      "check": "conda-forge numpy",
+      "result": "HTTP 200 (efel is not on conda-forge: 404, so numpy is the control)"
+    },
+    {
+      "check": "npm react",
+      "result": "HTTP 200"
+    },
+    {
+      "check": "GitHub users efel",
+      "result": "HTTP 200"
+    },
+    {
+      "check": "Zenodo q=neuroml",
+      "result": "19 records"
+    },
+    {
+      "check": "GitLab projects search=neuroml",
+      "result": "6 projects"
+    },
+    {
+      "check": "arXiv all:neuroml",
+      "result": "totalResults 2"
+    },
+    {
+      "check": "Europe PMC query=neuroml",
+      "result": "hitCount 256"
+    },
+    {
+      "check": "PubMed",
+      "result": "no separate control; the isospike query returned 9, showing the endpoint answered"
+    },
+    {
+      "check": "USPTO wordmark match 'google'",
+      "result": "194 (same as earlier audits)"
+    },
+    {
+      "check": "USPTO query_string 'neuraxis*'",
+      "result": "4 (matches the Neuraxis audit)"
+    },
+    {
+      "check": "USPTO match_phrase 'blue print'",
+      "result": "35"
+    },
+    {
+      "check": "RDAP google.com / wikipedia.org",
+      "result": "200 / 200"
+    }
+  ],
+  "candidates": [
+    {
+      "name": "perturbprint",
+      "meaning": "perturbation + fingerprint; the project's own defined term 'perturbation fingerprint'",
+      "risk_rating": "low",
+      "sources": [
+        {
+          "source": "PyPI JSON API",
+          "query_or_url": "https://pypi.org/pypi/perturbprint/json ; https://pypi.org/pypi/perturb-print/json ; https://pypi.org/pypi/perturb_print/json",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 0,
+          "relevant_hits": [],
+          "notes": "All HTTP 404. PyPI names are case-insensitive, so mixed-case spellings are covered.",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "conda-forge",
+          "query_or_url": "https://api.anaconda.org/package/conda-forge/perturbprint",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 0,
+          "relevant_hits": [],
+          "notes": "HTTP 404",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "npm",
+          "query_or_url": "https://registry.npmjs.org/perturbprint ; https://registry.npmjs.org/perturb-print ; https://registry.npmjs.org/perturb_print",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 0,
+          "relevant_hits": [],
+          "notes": "All HTTP 404",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "GitHub user/org",
+          "query_or_url": "https://api.github.com/users/perturbprint",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 0,
+          "relevant_hits": [],
+          "notes": "HTTP 404 (login unclaimed)",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "GitHub repository search",
+          "query_or_url": "https://api.github.com/search/repositories?q=perturbprint&per_page=30",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 0,
+          "relevant_hits": [],
+          "notes": "",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "GitHub code search",
+          "query_or_url": "https://api.github.com/search/code?q=perturbprint",
+          "date": "2026-09-16",
+          "answered": false,
+          "hit_count": null,
+          "relevant_hits": [],
+          "notes": "Not run: needs a login (HTTP 401 in the earlier audits).",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "GitLab",
+          "query_or_url": "https://gitlab.com/api/v4/projects?search=perturbprint",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 0,
+          "relevant_hits": [],
+          "notes": "Public projects only",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "Zenodo",
+          "query_or_url": "https://zenodo.org/api/records?q=perturbprint&size=10",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 0,
+          "relevant_hits": [],
+          "notes": "",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "arXiv",
+          "query_or_url": "https://export.arxiv.org/api/query?search_query=all:perturbprint&max_results=5",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 0,
+          "relevant_hits": [],
+          "notes": "",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "PubMed",
+          "query_or_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=perturbprint",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 0,
+          "relevant_hits": [],
+          "notes": "PubMed reported the phrase was not found.",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "bioRxiv + IEEE Xplore (WebSearch with allowed_domains; native keyword search not used)",
+          "query_or_url": "PerturbPrint OR DriftClamp OR SpikeParity OR EphysPrint neuron model (allowed_domains biorxiv.org, ieeexplore.ieee.org)",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 0,
+          "relevant_hits": [],
+          "notes": "Combined OR query; no result contained the name. The tool may not honour OR, so this is weak evidence.",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "General web (WebSearch tool)",
+          "query_or_url": "\"PerturbPrint\"",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 0,
+          "relevant_hits": [
+            {
+              "name": "no exact match",
+              "what": "Only near names from single-cell biology: PerturBase, PerturbNet, PerturbDiff, GPerturb (Perturb-seq field)"
+            }
+          ],
+          "notes": "The tool found no page using the exact term.",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "USPTO (tmsearch backend, undocumented, same method as earlier audits)",
+          "query_or_url": "POST https://tmsearch.uspto.gov/prod-stage-v1-0-0/tmsearch: match wordmark 'perturbprint'; query_string 'perturbprint*'; match_phrase 'perturb print'",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 0,
+          "relevant_hits": [],
+          "notes": "Exact 0, wildcard 0, two-word phrase 0. The tmsearch.uspto.gov web UI itself is a JavaScript app and was not used.",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "Trademark web search (WebSearch)",
+          "query_or_url": "\"PerturbPrint\" OR \"DriftClamp\" OR \"SpikeParity\" OR \"EphysPrint\" trademark",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 0,
+          "relevant_hits": [],
+          "notes": "No mark found; only generic pages and unrelated ephys tools.",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "EUIPO eSearch",
+          "query_or_url": "not queried",
+          "date": "2026-09-16",
+          "answered": false,
+          "hit_count": null,
+          "relevant_hits": [],
+          "notes": "In today's Neuraxis audit EUIPO, TMview and WIPO were JavaScript apps with no results in the HTML, and UK IPO ignored the query. Needs a manual browser check.",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "TMview",
+          "query_or_url": "not queried",
+          "date": "2026-09-16",
+          "answered": false,
+          "hit_count": null,
+          "relevant_hits": [],
+          "notes": "In today's Neuraxis audit EUIPO, TMview and WIPO were JavaScript apps with no results in the HTML, and UK IPO ignored the query. Needs a manual browser check.",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "WIPO Global Brand Database",
+          "query_or_url": "not queried",
+          "date": "2026-09-16",
+          "answered": false,
+          "hit_count": null,
+          "relevant_hits": [],
+          "notes": "In today's Neuraxis audit EUIPO, TMview and WIPO were JavaScript apps with no results in the HTML, and UK IPO ignored the query. Needs a manual browser check.",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "UK IPO",
+          "query_or_url": "not queried",
+          "date": "2026-09-16",
+          "answered": false,
+          "hit_count": null,
+          "relevant_hits": [],
+          "notes": "In today's Neuraxis audit EUIPO, TMview and WIPO were JavaScript apps with no results in the HTML, and UK IPO ignored the query. Needs a manual browser check.",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "Domains via RDAP (extra)",
+          "query_or_url": "https://rdap.verisign.com/com/v1/domain/perturbprint.com ; https://rdap.publicinterestregistry.org/rdap/domain/perturbprint.org",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": null,
+          "relevant_hits": [],
+          "notes": ".com HTTP 404 (no record), .org HTTP 404 (no record). A 404 is a hint, not proof of availability.",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "Google Scholar (curl, browser user agent)",
+          "query_or_url": "https://scholar.google.com/scholar?q=%22perturbprint%22",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 0,
+          "relevant_hits": [],
+          "notes": "Page said the search did not match any articles.",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "Europe PMC (extra)",
+          "query_or_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=perturbprint&format=json",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 0,
+          "relevant_hits": [],
+          "notes": "",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "USPTO near marks (extra)",
+          "query_or_url": "query_string 'perturb*' on wordmark",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 5,
+          "relevant_hits": [
+            {
+              "name": "PERTURBO, Reg. No. 6249150 (serial 88946000)",
+              "what": "LIVE. California Institute of Technology, class 9, downloadable software for computing electron scattering (physics). Shares only the PERTURB- stem."
+            },
+            {
+              "name": "PERTURBAGEN",
+              "what": "DEAD"
+            }
+          ],
+          "notes": "",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        }
+      ]
+    },
+    {
+      "name": "driftclamp",
+      "meaning": "clamp (hold fixed) behavioural drift after a model transformation",
+      "risk_rating": "low-medium",
+      "sources": [
+        {
+          "source": "PyPI JSON API",
+          "query_or_url": "https://pypi.org/pypi/driftclamp/json ; https://pypi.org/pypi/drift-clamp/json",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 0,
+          "relevant_hits": [],
+          "notes": "All HTTP 404. PyPI names are case-insensitive, so mixed-case spellings are covered.",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "conda-forge",
+          "query_or_url": "https://api.anaconda.org/package/conda-forge/driftclamp",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 0,
+          "relevant_hits": [],
+          "notes": "HTTP 404",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "npm",
+          "query_or_url": "https://registry.npmjs.org/driftclamp ; https://registry.npmjs.org/drift-clamp",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 0,
+          "relevant_hits": [],
+          "notes": "All HTTP 404",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "GitHub user/org",
+          "query_or_url": "https://api.github.com/users/driftclamp",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 0,
+          "relevant_hits": [],
+          "notes": "HTTP 404 (login unclaimed)",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "GitHub repository search",
+          "query_or_url": "https://api.github.com/search/repositories?q=driftclamp&per_page=30",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 0,
+          "relevant_hits": [],
+          "notes": "",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "GitHub code search",
+          "query_or_url": "https://api.github.com/search/code?q=driftclamp",
+          "date": "2026-09-16",
+          "answered": false,
+          "hit_count": null,
+          "relevant_hits": [],
+          "notes": "Not run: needs a login (HTTP 401 in the earlier audits).",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "GitLab",
+          "query_or_url": "https://gitlab.com/api/v4/projects?search=driftclamp",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 0,
+          "relevant_hits": [],
+          "notes": "Public projects only",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "Zenodo",
+          "query_or_url": "https://zenodo.org/api/records?q=driftclamp&size=10",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 0,
+          "relevant_hits": [],
+          "notes": "",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "arXiv",
+          "query_or_url": "https://export.arxiv.org/api/query?search_query=all:driftclamp&max_results=5",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 0,
+          "relevant_hits": [],
+          "notes": "",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "PubMed",
+          "query_or_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=driftclamp",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 0,
+          "relevant_hits": [],
+          "notes": "PubMed reported the phrase was not found.",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "bioRxiv + IEEE Xplore (WebSearch with allowed_domains; native keyword search not used)",
+          "query_or_url": "PerturbPrint OR DriftClamp OR SpikeParity OR EphysPrint neuron model (allowed_domains biorxiv.org, ieeexplore.ieee.org)",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 0,
+          "relevant_hits": [],
+          "notes": "Combined OR query; no result contained the name. The tool may not honour OR, so this is weak evidence.",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "General web (WebSearch tool)",
+          "query_or_url": "\"DriftClamp\" OR \"drift clamp\" software",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 0,
+          "relevant_hits": [
+            {
+              "name": "no exact match",
+              "what": "Unrelated: DriftAline and DriftGuard (controller stick-drift apps), Drift HQ clamps (car parts)"
+            }
+          ],
+          "notes": "",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "USPTO (tmsearch backend, undocumented, same method as earlier audits)",
+          "query_or_url": "POST https://tmsearch.uspto.gov/prod-stage-v1-0-0/tmsearch: match wordmark 'driftclamp'; query_string 'driftclamp*'; match_phrase 'drift clamp'",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 0,
+          "relevant_hits": [],
+          "notes": "Exact 0, wildcard 0, two-word phrase 0. The tmsearch.uspto.gov web UI itself is a JavaScript app and was not used.",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "Trademark web search (WebSearch)",
+          "query_or_url": "\"PerturbPrint\" OR \"DriftClamp\" OR \"SpikeParity\" OR \"EphysPrint\" trademark",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 0,
+          "relevant_hits": [],
+          "notes": "No mark found; only generic pages and unrelated ephys tools.",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "EUIPO eSearch",
+          "query_or_url": "not queried",
+          "date": "2026-09-16",
+          "answered": false,
+          "hit_count": null,
+          "relevant_hits": [],
+          "notes": "In today's Neuraxis audit EUIPO, TMview and WIPO were JavaScript apps with no results in the HTML, and UK IPO ignored the query. Needs a manual browser check.",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "TMview",
+          "query_or_url": "not queried",
+          "date": "2026-09-16",
+          "answered": false,
+          "hit_count": null,
+          "relevant_hits": [],
+          "notes": "In today's Neuraxis audit EUIPO, TMview and WIPO were JavaScript apps with no results in the HTML, and UK IPO ignored the query. Needs a manual browser check.",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "WIPO Global Brand Database",
+          "query_or_url": "not queried",
+          "date": "2026-09-16",
+          "answered": false,
+          "hit_count": null,
+          "relevant_hits": [],
+          "notes": "In today's Neuraxis audit EUIPO, TMview and WIPO were JavaScript apps with no results in the HTML, and UK IPO ignored the query. Needs a manual browser check.",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "UK IPO",
+          "query_or_url": "not queried",
+          "date": "2026-09-16",
+          "answered": false,
+          "hit_count": null,
+          "relevant_hits": [],
+          "notes": "In today's Neuraxis audit EUIPO, TMview and WIPO were JavaScript apps with no results in the HTML, and UK IPO ignored the query. Needs a manual browser check.",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "Domains via RDAP (extra)",
+          "query_or_url": "https://rdap.verisign.com/com/v1/domain/driftclamp.com ; https://rdap.publicinterestregistry.org/rdap/domain/driftclamp.org",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": null,
+          "relevant_hits": [],
+          "notes": ".com HTTP 404 (no record), .org HTTP 404 (no record). A 404 is a hint, not proof of availability.",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "Google Scholar (curl, browser user agent)",
+          "query_or_url": "https://scholar.google.com/scholar?q=%22driftclamp%22",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 0,
+          "relevant_hits": [],
+          "notes": "Page said the search did not match any articles.",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "Europe PMC (extra)",
+          "query_or_url": "query=driftclamp",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 0,
+          "relevant_hits": [],
+          "notes": "",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "GitHub code search (earlier audit, not re-run)",
+          "query_or_url": "https://api.github.com/search/code?q=driftclamp",
+          "date": "2026-09-16",
+          "answered": false,
+          "hit_count": null,
+          "relevant_hits": [],
+          "notes": "Needs a login. NAME_CONFLICT_AUDIT.md recorded 102 code identifiers, e.g. a C helper DriftClamp in Hexlord/project-drift.",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "USPTO near marks (extra)",
+          "query_or_url": "query_string 'driftcl*' on wordmark",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 1,
+          "relevant_hits": [
+            {
+              "name": "DRIFTCLIP, Reg. No. 2538352",
+              "what": "LIVE. The Steel Network, Inc., class 6, metal construction connectors"
+            }
+          ],
+          "notes": "",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        }
+      ]
+    },
+    {
+      "name": "spikeparity",
+      "meaning": "the transformed model's spiking stays at parity with the original",
+      "risk_rating": "low",
+      "sources": [
+        {
+          "source": "PyPI JSON API",
+          "query_or_url": "https://pypi.org/pypi/spikeparity/json ; https://pypi.org/pypi/spike-parity/json",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 0,
+          "relevant_hits": [],
+          "notes": "All HTTP 404. PyPI names are case-insensitive, so mixed-case spellings are covered.",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "conda-forge",
+          "query_or_url": "https://api.anaconda.org/package/conda-forge/spikeparity",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 0,
+          "relevant_hits": [],
+          "notes": "HTTP 404",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "npm",
+          "query_or_url": "https://registry.npmjs.org/spikeparity ; https://registry.npmjs.org/spike-parity",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 0,
+          "relevant_hits": [],
+          "notes": "All HTTP 404",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "GitHub user/org",
+          "query_or_url": "https://api.github.com/users/spikeparity",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 0,
+          "relevant_hits": [],
+          "notes": "HTTP 404 (login unclaimed)",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "GitHub repository search",
+          "query_or_url": "https://api.github.com/search/repositories?q=spikeparity&per_page=30",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 0,
+          "relevant_hits": [],
+          "notes": "",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "GitHub code search",
+          "query_or_url": "https://api.github.com/search/code?q=spikeparity",
+          "date": "2026-09-16",
+          "answered": false,
+          "hit_count": null,
+          "relevant_hits": [],
+          "notes": "Not run: needs a login (HTTP 401 in the earlier audits).",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "GitLab",
+          "query_or_url": "https://gitlab.com/api/v4/projects?search=spikeparity",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 0,
+          "relevant_hits": [],
+          "notes": "Public projects only",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "Zenodo",
+          "query_or_url": "https://zenodo.org/api/records?q=spikeparity&size=10",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 0,
+          "relevant_hits": [],
+          "notes": "",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "arXiv",
+          "query_or_url": "https://export.arxiv.org/api/query?search_query=all:spikeparity&max_results=5",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 0,
+          "relevant_hits": [],
+          "notes": "",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "PubMed",
+          "query_or_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=spikeparity",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 0,
+          "relevant_hits": [],
+          "notes": "PubMed reported the phrase was not found.",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "bioRxiv + IEEE Xplore (WebSearch with allowed_domains; native keyword search not used)",
+          "query_or_url": "PerturbPrint OR DriftClamp OR SpikeParity OR EphysPrint neuron model (allowed_domains biorxiv.org, ieeexplore.ieee.org)",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 0,
+          "relevant_hits": [],
+          "notes": "Combined OR query; no result contained the name. The tool may not honour OR, so this is weak evidence.",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "General web (WebSearch tool)",
+          "query_or_url": "\"SpikeParity\" OR \"spike parity\" neuron",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 0,
+          "relevant_hits": [
+            {
+              "name": "'spike parity' as an informal phrase",
+              "url": "https://arxiv.org/pdf/2508.16792",
+              "what": "Neuromorphic papers plot spike rates against a parity line (e.g. Drosophila connectome on Loihi 2). Descriptive use, not a named tool."
+            }
+          ],
+          "notes": "",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "USPTO (tmsearch backend, undocumented, same method as earlier audits)",
+          "query_or_url": "POST https://tmsearch.uspto.gov/prod-stage-v1-0-0/tmsearch: match wordmark 'spikeparity'; query_string 'spikeparity*'; match_phrase 'spike parity'",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 0,
+          "relevant_hits": [],
+          "notes": "Exact 0, wildcard 0, two-word phrase 0. The tmsearch.uspto.gov web UI itself is a JavaScript app and was not used.",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "Trademark web search (WebSearch)",
+          "query_or_url": "\"PerturbPrint\" OR \"DriftClamp\" OR \"SpikeParity\" OR \"EphysPrint\" trademark",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 0,
+          "relevant_hits": [],
+          "notes": "No mark found; only generic pages and unrelated ephys tools.",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "EUIPO eSearch",
+          "query_or_url": "not queried",
+          "date": "2026-09-16",
+          "answered": false,
+          "hit_count": null,
+          "relevant_hits": [],
+          "notes": "In today's Neuraxis audit EUIPO, TMview and WIPO were JavaScript apps with no results in the HTML, and UK IPO ignored the query. Needs a manual browser check.",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "TMview",
+          "query_or_url": "not queried",
+          "date": "2026-09-16",
+          "answered": false,
+          "hit_count": null,
+          "relevant_hits": [],
+          "notes": "In today's Neuraxis audit EUIPO, TMview and WIPO were JavaScript apps with no results in the HTML, and UK IPO ignored the query. Needs a manual browser check.",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "WIPO Global Brand Database",
+          "query_or_url": "not queried",
+          "date": "2026-09-16",
+          "answered": false,
+          "hit_count": null,
+          "relevant_hits": [],
+          "notes": "In today's Neuraxis audit EUIPO, TMview and WIPO were JavaScript apps with no results in the HTML, and UK IPO ignored the query. Needs a manual browser check.",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "UK IPO",
+          "query_or_url": "not queried",
+          "date": "2026-09-16",
+          "answered": false,
+          "hit_count": null,
+          "relevant_hits": [],
+          "notes": "In today's Neuraxis audit EUIPO, TMview and WIPO were JavaScript apps with no results in the HTML, and UK IPO ignored the query. Needs a manual browser check.",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "Domains via RDAP (extra)",
+          "query_or_url": "https://rdap.verisign.com/com/v1/domain/spikeparity.com ; https://rdap.publicinterestregistry.org/rdap/domain/spikeparity.org",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": null,
+          "relevant_hits": [],
+          "notes": ".com HTTP 404 (no record), .org HTTP 404 (no record). A 404 is a hint, not proof of availability.",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "Google Scholar (curl, browser user agent)",
+          "query_or_url": "https://scholar.google.com/scholar?q=%22spikeparity%22",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 0,
+          "relevant_hits": [],
+          "notes": "Page said the search did not match any articles.",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "Europe PMC (extra)",
+          "query_or_url": "query=spikeparity",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 0,
+          "relevant_hits": [],
+          "notes": "",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "Crossref (extra)",
+          "query_or_url": "query.bibliographic=spikeparity ; query.bibliographic=spike%20parity",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 0,
+          "relevant_hits": [],
+          "notes": "'spikeparity' 0. The two-word fuzzy query returned 59,085 loose matches (either word anywhere): noise, not usage.",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "USPTO near marks (extra)",
+          "query_or_url": "query_string 'spikepar*' and '*parity' on wordmark",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 128,
+          "relevant_hits": [
+            {
+              "name": "PARITY, Reg. No. 7583273",
+              "what": "LIVE. Parity Inc. (Canada), classes 9, 35-38, 41, 42; building-monitoring software"
+            },
+            {
+              "name": "PARITY, Reg. No. 6784601",
+              "what": "LIVE. Artless Devices LLC, class 9"
+            }
+          ],
+          "notes": "'spikepar*' = 0. 128 marks end in PARITY, so the word is crowded, but no SPIKE + PARITY mark exists.",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        }
+      ]
+    },
+    {
+      "name": "isospike",
+      "meaning": "iso (same) + spike",
+      "risk_rating": "high",
+      "sources": [
+        {
+          "source": "PyPI JSON API",
+          "query_or_url": "https://pypi.org/pypi/isospike/json ; https://pypi.org/pypi/iso-spike/json",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 0,
+          "relevant_hits": [],
+          "notes": "All HTTP 404. PyPI names are case-insensitive, so mixed-case spellings are covered.",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "conda-forge",
+          "query_or_url": "https://api.anaconda.org/package/conda-forge/isospike",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 0,
+          "relevant_hits": [],
+          "notes": "HTTP 404",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "npm",
+          "query_or_url": "https://registry.npmjs.org/isospike ; https://registry.npmjs.org/iso-spike",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 0,
+          "relevant_hits": [],
+          "notes": "All HTTP 404",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "GitHub user/org",
+          "query_or_url": "https://api.github.com/users/isospike",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 0,
+          "relevant_hits": [],
+          "notes": "HTTP 404 (login unclaimed)",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "GitHub repository search",
+          "query_or_url": "https://api.github.com/search/repositories?q=isospike&per_page=30",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 1,
+          "relevant_hits": [
+            {
+              "name": "thisisjohnc/isospike",
+              "url": "https://github.com/thisisjohnc/isospike",
+              "what": "Double-spike data reduction in Python (isotope geochemistry). 0 stars, created 2020-02-03, last push 2021-05-06"
+            }
+          ],
+          "notes": "",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "GitHub code search",
+          "query_or_url": "https://api.github.com/search/code?q=isospike",
+          "date": "2026-09-16",
+          "answered": false,
+          "hit_count": null,
+          "relevant_hits": [],
+          "notes": "Not run: needs a login (HTTP 401 in the earlier audits).",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "GitLab",
+          "query_or_url": "https://gitlab.com/api/v4/projects?search=isospike",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 0,
+          "relevant_hits": [],
+          "notes": "Public projects only",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "Zenodo",
+          "query_or_url": "https://zenodo.org/api/records?q=isospike&size=10",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 0,
+          "relevant_hits": [],
+          "notes": "",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "arXiv",
+          "query_or_url": "https://export.arxiv.org/api/query?search_query=all:isospike&max_results=5",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 1,
+          "relevant_hits": [
+            {
+              "name": "arXiv 1802.05376",
+              "what": "Extensive numerical study and circuitry implementation of the Watt governor model (nonlinear dynamics, 2018)"
+            }
+          ],
+          "notes": "",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "PubMed",
+          "query_or_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=isospike",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 9,
+          "relevant_hits": [],
+          "notes": "Translated to \"isospike\"[All Fields]; see PubMed detail.",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "bioRxiv + IEEE Xplore (WebSearch with allowed_domains; native keyword search not used)",
+          "query_or_url": "TwinTrace OR ClampPrint OR Voltprint OR isospike (allowed_domains biorxiv.org, ieeexplore.ieee.org)",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 0,
+          "relevant_hits": [],
+          "notes": "Combined OR query; no result contained the name. The tool may not honour OR, so this is weak evidence.",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "General web (WebSearch tool)",
+          "query_or_url": "\"isospike\" diagram dynamics",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": null,
+          "relevant_hits": [
+            {
+              "name": "isospike diagram",
+              "what": "Established nonlinear-dynamics technique that maps the number of spikes (peaks) per period over parameter planes; used for oscillators, chemical reactions, population models (Chaos, Phys Rev E, PCCP, Nonlinear Dynamics)"
+            }
+          ],
+          "notes": "Many results; the tool gives no count.",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "USPTO (tmsearch backend, undocumented, same method as earlier audits)",
+          "query_or_url": "POST https://tmsearch.uspto.gov/prod-stage-v1-0-0/tmsearch: match wordmark 'isospike'; query_string 'isospike*'; match_phrase 'iso spike'",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 0,
+          "relevant_hits": [],
+          "notes": "Exact 0, wildcard 0, two-word phrase 0. The tmsearch.uspto.gov web UI itself is a JavaScript app and was not used.",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "Trademark web search (WebSearch)",
+          "query_or_url": "not run for this name",
+          "date": "2026-09-16",
+          "answered": false,
+          "hit_count": null,
+          "relevant_hits": [],
+          "notes": "",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "EUIPO eSearch",
+          "query_or_url": "not queried",
+          "date": "2026-09-16",
+          "answered": false,
+          "hit_count": null,
+          "relevant_hits": [],
+          "notes": "In today's Neuraxis audit EUIPO, TMview and WIPO were JavaScript apps with no results in the HTML, and UK IPO ignored the query. Needs a manual browser check.",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "TMview",
+          "query_or_url": "not queried",
+          "date": "2026-09-16",
+          "answered": false,
+          "hit_count": null,
+          "relevant_hits": [],
+          "notes": "In today's Neuraxis audit EUIPO, TMview and WIPO were JavaScript apps with no results in the HTML, and UK IPO ignored the query. Needs a manual browser check.",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "WIPO Global Brand Database",
+          "query_or_url": "not queried",
+          "date": "2026-09-16",
+          "answered": false,
+          "hit_count": null,
+          "relevant_hits": [],
+          "notes": "In today's Neuraxis audit EUIPO, TMview and WIPO were JavaScript apps with no results in the HTML, and UK IPO ignored the query. Needs a manual browser check.",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "UK IPO",
+          "query_or_url": "not queried",
+          "date": "2026-09-16",
+          "answered": false,
+          "hit_count": null,
+          "relevant_hits": [],
+          "notes": "In today's Neuraxis audit EUIPO, TMview and WIPO were JavaScript apps with no results in the HTML, and UK IPO ignored the query. Needs a manual browser check.",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "Domains via RDAP (extra)",
+          "query_or_url": "https://rdap.verisign.com/com/v1/domain/isospike.com ; https://rdap.publicinterestregistry.org/rdap/domain/isospike.org",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": null,
+          "relevant_hits": [],
+          "notes": ".com HTTP 404 (no record), .org HTTP 200 (registered). A 404 is a hint, not proof of availability.",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "Google Scholar (curl, browser user agent)",
+          "query_or_url": "https://scholar.google.com/scholar?q=%22isospike%22",
+          "date": "2026-09-16",
+          "answered": false,
+          "hit_count": null,
+          "relevant_hits": [],
+          "notes": "HTTP 200, but the page held a 'Sorry' notice and no parsable results (probably rate-limited after several queries). Not assessed.",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "Crossref (extra)",
+          "query_or_url": "query.bibliographic=isospike",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 2,
+          "relevant_hits": [],
+          "notes": "Titles not printed because of a local console encoding error.",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "PubMed detail",
+          "query_or_url": "esummary.fcgi for the 9 PMIDs",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 9,
+          "relevant_hits": [
+            {
+              "name": "PMIDs 42065906, 40920110, 39752203, 39621467, 36932612, 36859227, 34972329, 32966443, 32752617",
+              "what": "Chaos (7), Phys Rev E (1), Phys Chem Chem Phys (1), 2020-2026: nonlinear-dynamics papers that use isospike diagrams"
+            }
+          ],
+          "notes": "",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        }
+      ]
+    },
+    {
+      "name": "ephysprint",
+      "meaning": "electrophysiology (ephys) + fingerprint",
+      "risk_rating": "medium",
+      "sources": [
+        {
+          "source": "PyPI JSON API",
+          "query_or_url": "https://pypi.org/pypi/ephysprint/json ; https://pypi.org/pypi/ephys-print/json",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 0,
+          "relevant_hits": [],
+          "notes": "All HTTP 404. PyPI names are case-insensitive, so mixed-case spellings are covered.",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "conda-forge",
+          "query_or_url": "https://api.anaconda.org/package/conda-forge/ephysprint",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 0,
+          "relevant_hits": [],
+          "notes": "HTTP 404",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "npm",
+          "query_or_url": "https://registry.npmjs.org/ephysprint ; https://registry.npmjs.org/ephys-print",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 0,
+          "relevant_hits": [],
+          "notes": "All HTTP 404",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "GitHub user/org",
+          "query_or_url": "https://api.github.com/users/ephysprint",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 0,
+          "relevant_hits": [],
+          "notes": "HTTP 404 (login unclaimed)",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "GitHub repository search",
+          "query_or_url": "https://api.github.com/search/repositories?q=ephysprint&per_page=30",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 0,
+          "relevant_hits": [],
+          "notes": "",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "GitHub code search",
+          "query_or_url": "https://api.github.com/search/code?q=ephysprint",
+          "date": "2026-09-16",
+          "answered": false,
+          "hit_count": null,
+          "relevant_hits": [],
+          "notes": "Not run: needs a login (HTTP 401 in the earlier audits).",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "GitLab",
+          "query_or_url": "https://gitlab.com/api/v4/projects?search=ephysprint",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 0,
+          "relevant_hits": [],
+          "notes": "Public projects only",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "Zenodo",
+          "query_or_url": "https://zenodo.org/api/records?q=ephysprint&size=10",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 0,
+          "relevant_hits": [],
+          "notes": "",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "arXiv",
+          "query_or_url": "https://export.arxiv.org/api/query?search_query=all:ephysprint&max_results=5",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 0,
+          "relevant_hits": [],
+          "notes": "",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "PubMed",
+          "query_or_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=ephysprint",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 0,
+          "relevant_hits": [],
+          "notes": "PubMed reported the phrase was not found.",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "bioRxiv + IEEE Xplore (WebSearch with allowed_domains; native keyword search not used)",
+          "query_or_url": "PerturbPrint OR DriftClamp OR SpikeParity OR EphysPrint neuron model (allowed_domains biorxiv.org, ieeexplore.ieee.org)",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 0,
+          "relevant_hits": [],
+          "notes": "Combined OR query; no result contained the name. The tool may not honour OR, so this is weak evidence.",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "General web (WebSearch tool)",
+          "query_or_url": "\"EphysPrint\" OR \"ephys print\"",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 0,
+          "relevant_hits": [
+            {
+              "name": "no exact match",
+              "what": "Only Open Ephys and PeyracheLab ephys_preprocessing pages"
+            }
+          ],
+          "notes": "",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "USPTO (tmsearch backend, undocumented, same method as earlier audits)",
+          "query_or_url": "POST https://tmsearch.uspto.gov/prod-stage-v1-0-0/tmsearch: match wordmark 'ephysprint'; query_string 'ephysprint*'; match_phrase 'ephys print'",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 0,
+          "relevant_hits": [],
+          "notes": "Exact 0, wildcard 0, two-word phrase 0. The tmsearch.uspto.gov web UI itself is a JavaScript app and was not used.",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "Trademark web search (WebSearch)",
+          "query_or_url": "\"PerturbPrint\" OR \"DriftClamp\" OR \"SpikeParity\" OR \"EphysPrint\" trademark",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 0,
+          "relevant_hits": [],
+          "notes": "No mark found; only generic pages and unrelated ephys tools.",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "EUIPO eSearch",
+          "query_or_url": "not queried",
+          "date": "2026-09-16",
+          "answered": false,
+          "hit_count": null,
+          "relevant_hits": [],
+          "notes": "In today's Neuraxis audit EUIPO, TMview and WIPO were JavaScript apps with no results in the HTML, and UK IPO ignored the query. Needs a manual browser check.",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "TMview",
+          "query_or_url": "not queried",
+          "date": "2026-09-16",
+          "answered": false,
+          "hit_count": null,
+          "relevant_hits": [],
+          "notes": "In today's Neuraxis audit EUIPO, TMview and WIPO were JavaScript apps with no results in the HTML, and UK IPO ignored the query. Needs a manual browser check.",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "WIPO Global Brand Database",
+          "query_or_url": "not queried",
+          "date": "2026-09-16",
+          "answered": false,
+          "hit_count": null,
+          "relevant_hits": [],
+          "notes": "In today's Neuraxis audit EUIPO, TMview and WIPO were JavaScript apps with no results in the HTML, and UK IPO ignored the query. Needs a manual browser check.",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "UK IPO",
+          "query_or_url": "not queried",
+          "date": "2026-09-16",
+          "answered": false,
+          "hit_count": null,
+          "relevant_hits": [],
+          "notes": "In today's Neuraxis audit EUIPO, TMview and WIPO were JavaScript apps with no results in the HTML, and UK IPO ignored the query. Needs a manual browser check.",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "Domains via RDAP (extra)",
+          "query_or_url": "https://rdap.verisign.com/com/v1/domain/ephysprint.com ; https://rdap.publicinterestregistry.org/rdap/domain/ephysprint.org",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": null,
+          "relevant_hits": [],
+          "notes": ".com HTTP 404 (no record), .org HTTP 404 (no record). A 404 is a hint, not proof of availability.",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "Google Scholar (curl, browser user agent)",
+          "query_or_url": "https://scholar.google.com/scholar?q=%22ephysprint%22",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 0,
+          "relevant_hits": [],
+          "notes": "Page said the search did not match any articles.",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "Europe PMC (extra)",
+          "query_or_url": "query=ephysprint",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 0,
+          "relevant_hits": [],
+          "notes": "",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "Crossref (extra)",
+          "query_or_url": "query.bibliographic=ephysprint",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 0,
+          "relevant_hits": [],
+          "notes": "",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "USPTO near marks (extra)",
+          "query_or_url": "query_string 'ephys*' on wordmark",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 25,
+          "relevant_hits": [
+            {
+              "name": "OPEN EPHYS, Reg. No. 6592187 (serial 90526002)",
+              "what": "LIVE. Open Ephys, Incorporated (Massachusetts), classes 9 and 42, electrophysiology hardware and software. Same field; shares the EPHYS element."
+            }
+          ],
+          "notes": "Other EPHYS* marks are medical-practice or unrelated.",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        }
+      ]
+    },
+    {
+      "name": "twintrace",
+      "meaning": "two models (twins) producing matching voltage traces",
+      "risk_rating": "high",
+      "sources": [
+        {
+          "source": "PyPI JSON API",
+          "query_or_url": "https://pypi.org/pypi/twintrace/json ; https://pypi.org/pypi/twin-trace/json",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 0,
+          "relevant_hits": [],
+          "notes": "All HTTP 404. PyPI names are case-insensitive, so mixed-case spellings are covered.",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "conda-forge",
+          "query_or_url": "https://api.anaconda.org/package/conda-forge/twintrace",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 0,
+          "relevant_hits": [],
+          "notes": "HTTP 404",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "npm",
+          "query_or_url": "https://registry.npmjs.org/twintrace ; https://registry.npmjs.org/twin-trace",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 0,
+          "relevant_hits": [],
+          "notes": "All HTTP 404",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "GitHub user/org",
+          "query_or_url": "https://api.github.com/users/twintrace",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 1,
+          "relevant_hits": [],
+          "notes": "HTTP 200 (login taken)",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "GitHub repository search",
+          "query_or_url": "https://api.github.com/search/repositories?q=twintrace&per_page=30",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 6,
+          "relevant_hits": [
+            {
+              "name": "melanielavabre/TwinTrace",
+              "what": "Description just 'TwinTrace', 2022"
+            },
+            {
+              "name": "adfras/twintrace_lite",
+              "what": "'TwinTrace lite demonstrator', created 2025-09-28"
+            },
+            {
+              "name": "jagadish-pattanaik/twintraceai",
+              "what": "No description, created 2026-08-30"
+            },
+            {
+              "name": "Alireezaad/TwinTrace",
+              "what": "Distributed tracing and observability demo, created 2025-08-22"
+            },
+            {
+              "name": "vanshikatiwari19/TwinTrace",
+              "what": "No description, created 2026-03-21"
+            },
+            {
+              "name": "melanieIdalko/TwinTrace",
+              "what": "No description, 2022"
+            }
+          ],
+          "notes": "",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "GitHub code search",
+          "query_or_url": "https://api.github.com/search/code?q=twintrace",
+          "date": "2026-09-16",
+          "answered": false,
+          "hit_count": null,
+          "relevant_hits": [],
+          "notes": "Not run: needs a login (HTTP 401 in the earlier audits).",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "GitLab",
+          "query_or_url": "https://gitlab.com/api/v4/projects?search=twintrace",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 0,
+          "relevant_hits": [],
+          "notes": "Public projects only",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "Zenodo",
+          "query_or_url": "https://zenodo.org/api/records?q=twintrace&size=10",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 0,
+          "relevant_hits": [],
+          "notes": "",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "arXiv",
+          "query_or_url": "https://export.arxiv.org/api/query?search_query=all:twintrace&max_results=5",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 0,
+          "relevant_hits": [],
+          "notes": "",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "PubMed",
+          "query_or_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=twintrace",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 0,
+          "relevant_hits": [],
+          "notes": "PubMed reported the phrase was not found.",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "bioRxiv + IEEE Xplore (WebSearch with allowed_domains; native keyword search not used)",
+          "query_or_url": "TwinTrace OR ClampPrint OR Voltprint OR isospike (allowed_domains biorxiv.org, ieeexplore.ieee.org)",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 0,
+          "relevant_hits": [],
+          "notes": "Combined OR query; no result contained the name. The tool may not honour OR, so this is weak evidence.",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "General web (WebSearch tool)",
+          "query_or_url": "\"TwinTrace\"",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": null,
+          "relevant_hits": [
+            {
+              "name": "TwinTrace - Duplicate File Remover",
+              "url": "https://apps.microsoft.com/detail/9nmnn12vj1h8",
+              "what": "Windows app on the Microsoft Store (free, with paid features)"
+            },
+            {
+              "name": "TwinTRACE project",
+              "url": "https://customcells.com/twintrace-digitalising-battery-cell-production-for-sustainable-innovation/",
+              "what": "German digital-twin battery-cell production project (CustomCells, Fraunhofer IPA, acp systems)"
+            }
+          ],
+          "notes": "Several live commercial and industrial uses.",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "USPTO (tmsearch backend, undocumented, same method as earlier audits)",
+          "query_or_url": "POST https://tmsearch.uspto.gov/prod-stage-v1-0-0/tmsearch: match wordmark 'twintrace'; query_string 'twintrace*'; match_phrase 'twin trace'",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 1,
+          "relevant_hits": [],
+          "notes": "Exact 0, wildcard 0, two-word phrase 1 (dead mark, see detail). The tmsearch.uspto.gov web UI itself is a JavaScript app and was not used.",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "Trademark web search (WebSearch)",
+          "query_or_url": "not run for this name",
+          "date": "2026-09-16",
+          "answered": false,
+          "hit_count": null,
+          "relevant_hits": [],
+          "notes": "",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "EUIPO eSearch",
+          "query_or_url": "not queried",
+          "date": "2026-09-16",
+          "answered": false,
+          "hit_count": null,
+          "relevant_hits": [],
+          "notes": "In today's Neuraxis audit EUIPO, TMview and WIPO were JavaScript apps with no results in the HTML, and UK IPO ignored the query. Needs a manual browser check.",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "TMview",
+          "query_or_url": "not queried",
+          "date": "2026-09-16",
+          "answered": false,
+          "hit_count": null,
+          "relevant_hits": [],
+          "notes": "In today's Neuraxis audit EUIPO, TMview and WIPO were JavaScript apps with no results in the HTML, and UK IPO ignored the query. Needs a manual browser check.",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "WIPO Global Brand Database",
+          "query_or_url": "not queried",
+          "date": "2026-09-16",
+          "answered": false,
+          "hit_count": null,
+          "relevant_hits": [],
+          "notes": "In today's Neuraxis audit EUIPO, TMview and WIPO were JavaScript apps with no results in the HTML, and UK IPO ignored the query. Needs a manual browser check.",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "UK IPO",
+          "query_or_url": "not queried",
+          "date": "2026-09-16",
+          "answered": false,
+          "hit_count": null,
+          "relevant_hits": [],
+          "notes": "In today's Neuraxis audit EUIPO, TMview and WIPO were JavaScript apps with no results in the HTML, and UK IPO ignored the query. Needs a manual browser check.",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "Domains via RDAP (extra)",
+          "query_or_url": "https://rdap.verisign.com/com/v1/domain/twintrace.com ; https://rdap.publicinterestregistry.org/rdap/domain/twintrace.org",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": null,
+          "relevant_hits": [],
+          "notes": ".com HTTP 200 (registered), .org HTTP 404 (no record). twintrace.com registered 2025-10-02, expires 2026-10-02. A 404 is a hint, not proof of availability.",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "GitHub user detail",
+          "query_or_url": "https://api.github.com/users/twintrace",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 1,
+          "relevant_hits": [
+            {
+              "name": "TwinTrace (user)",
+              "what": "Personal account created 2025-06-05, 2 public repos"
+            }
+          ],
+          "notes": "",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "Google Scholar (curl, browser user agent)",
+          "query_or_url": "https://scholar.google.com/scholar?q=%22twintrace%22",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 0,
+          "relevant_hits": [],
+          "notes": "Page said the search did not match any articles.",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "Crossref (extra)",
+          "query_or_url": "query.bibliographic=twintrace",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 0,
+          "relevant_hits": [],
+          "notes": "",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "USPTO two-word detail",
+          "query_or_url": "match_phrase 'twin trace' on wordmark",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 1,
+          "relevant_hits": [
+            {
+              "name": "TWIN TRACE, Reg. No. 2574959 (serial 75734004)",
+              "what": "DEAD (cancelled 2009-03-07, Section 8). Ela Medical (France), class 10, pacemaker sensors."
+            }
+          ],
+          "notes": "",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        }
+      ]
+    },
+    {
+      "name": "clampprint",
+      "meaning": "clamp protocols + fingerprint",
+      "risk_rating": "medium",
+      "sources": [
+        {
+          "source": "PyPI JSON API",
+          "query_or_url": "https://pypi.org/pypi/clampprint/json ; https://pypi.org/pypi/clamp-print/json",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 0,
+          "relevant_hits": [],
+          "notes": "All HTTP 404. PyPI names are case-insensitive, so mixed-case spellings are covered.",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "conda-forge",
+          "query_or_url": "https://api.anaconda.org/package/conda-forge/clampprint",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 0,
+          "relevant_hits": [],
+          "notes": "HTTP 404",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "npm",
+          "query_or_url": "https://registry.npmjs.org/clampprint ; https://registry.npmjs.org/clamp-print",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 0,
+          "relevant_hits": [],
+          "notes": "All HTTP 404",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "GitHub user/org",
+          "query_or_url": "https://api.github.com/users/clampprint",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 0,
+          "relevant_hits": [],
+          "notes": "HTTP 404 (login unclaimed)",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "GitHub repository search",
+          "query_or_url": "https://api.github.com/search/repositories?q=clampprint&per_page=30",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 0,
+          "relevant_hits": [],
+          "notes": "",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "GitHub code search",
+          "query_or_url": "https://api.github.com/search/code?q=clampprint",
+          "date": "2026-09-16",
+          "answered": false,
+          "hit_count": null,
+          "relevant_hits": [],
+          "notes": "Not run: needs a login (HTTP 401 in the earlier audits).",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "GitLab",
+          "query_or_url": "https://gitlab.com/api/v4/projects?search=clampprint",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 0,
+          "relevant_hits": [],
+          "notes": "Public projects only",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "Zenodo",
+          "query_or_url": "https://zenodo.org/api/records?q=clampprint&size=10",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 0,
+          "relevant_hits": [],
+          "notes": "",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "arXiv",
+          "query_or_url": "https://export.arxiv.org/api/query?search_query=all:clampprint&max_results=5",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 0,
+          "relevant_hits": [],
+          "notes": "",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "PubMed",
+          "query_or_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=clampprint",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 0,
+          "relevant_hits": [],
+          "notes": "PubMed reported the phrase was not found.",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "bioRxiv + IEEE Xplore (WebSearch with allowed_domains; native keyword search not used)",
+          "query_or_url": "TwinTrace OR ClampPrint OR Voltprint OR isospike (allowed_domains biorxiv.org, ieeexplore.ieee.org)",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 0,
+          "relevant_hits": [],
+          "notes": "Combined OR query; no result contained the name. The tool may not honour OR, so this is weak evidence.",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "General web (WebSearch tool)",
+          "query_or_url": "\"ClampPrint\"",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": null,
+          "relevant_hits": [
+            {
+              "name": "'Clamp print in place' 3D models",
+              "what": "MakerWorld, Printables and MyMiniFactory 3D-printable clamp models dominate; no software named ClampPrint"
+            }
+          ],
+          "notes": "",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "USPTO (tmsearch backend, undocumented, same method as earlier audits)",
+          "query_or_url": "POST https://tmsearch.uspto.gov/prod-stage-v1-0-0/tmsearch: match wordmark 'clampprint'; query_string 'clampprint*'; match_phrase 'clamp print'",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 0,
+          "relevant_hits": [],
+          "notes": "Exact 0, wildcard 0, two-word phrase 0. The tmsearch.uspto.gov web UI itself is a JavaScript app and was not used.",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "Trademark web search (WebSearch)",
+          "query_or_url": "not run for this name",
+          "date": "2026-09-16",
+          "answered": false,
+          "hit_count": null,
+          "relevant_hits": [],
+          "notes": "",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "EUIPO eSearch",
+          "query_or_url": "not queried",
+          "date": "2026-09-16",
+          "answered": false,
+          "hit_count": null,
+          "relevant_hits": [],
+          "notes": "In today's Neuraxis audit EUIPO, TMview and WIPO were JavaScript apps with no results in the HTML, and UK IPO ignored the query. Needs a manual browser check.",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "TMview",
+          "query_or_url": "not queried",
+          "date": "2026-09-16",
+          "answered": false,
+          "hit_count": null,
+          "relevant_hits": [],
+          "notes": "In today's Neuraxis audit EUIPO, TMview and WIPO were JavaScript apps with no results in the HTML, and UK IPO ignored the query. Needs a manual browser check.",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "WIPO Global Brand Database",
+          "query_or_url": "not queried",
+          "date": "2026-09-16",
+          "answered": false,
+          "hit_count": null,
+          "relevant_hits": [],
+          "notes": "In today's Neuraxis audit EUIPO, TMview and WIPO were JavaScript apps with no results in the HTML, and UK IPO ignored the query. Needs a manual browser check.",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "UK IPO",
+          "query_or_url": "not queried",
+          "date": "2026-09-16",
+          "answered": false,
+          "hit_count": null,
+          "relevant_hits": [],
+          "notes": "In today's Neuraxis audit EUIPO, TMview and WIPO were JavaScript apps with no results in the HTML, and UK IPO ignored the query. Needs a manual browser check.",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "Domains via RDAP (extra)",
+          "query_or_url": "https://rdap.verisign.com/com/v1/domain/clampprint.com ; https://rdap.publicinterestregistry.org/rdap/domain/clampprint.org",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": null,
+          "relevant_hits": [],
+          "notes": ".com HTTP 404 (no record), .org HTTP 404 (no record). A 404 is a hint, not proof of availability.",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "Google Scholar (curl, browser user agent)",
+          "query_or_url": "https://scholar.google.com/scholar?q=%22clampprint%22",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 0,
+          "relevant_hits": [],
+          "notes": "Page said the search did not match any articles.",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "Crossref (extra)",
+          "query_or_url": "query.bibliographic=clampprint",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 0,
+          "relevant_hits": [],
+          "notes": "",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "USPTO near marks (extra)",
+          "query_or_url": "query_string 'clampp*' on wordmark",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 1,
+          "relevant_hits": [
+            {
+              "name": "CLAMPPOD",
+              "what": "DEAD"
+            }
+          ],
+          "notes": "",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        }
+      ]
+    },
+    {
+      "name": "voltprint",
+      "meaning": "voltage + fingerprint",
+      "risk_rating": "medium-high",
+      "sources": [
+        {
+          "source": "PyPI JSON API",
+          "query_or_url": "https://pypi.org/pypi/voltprint/json ; https://pypi.org/pypi/volt-print/json",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 0,
+          "relevant_hits": [],
+          "notes": "All HTTP 404. PyPI names are case-insensitive, so mixed-case spellings are covered.",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "conda-forge",
+          "query_or_url": "https://api.anaconda.org/package/conda-forge/voltprint",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 0,
+          "relevant_hits": [],
+          "notes": "HTTP 404",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "npm",
+          "query_or_url": "https://registry.npmjs.org/voltprint ; https://registry.npmjs.org/volt-print",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 0,
+          "relevant_hits": [],
+          "notes": "All HTTP 404",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "GitHub user/org",
+          "query_or_url": "https://api.github.com/users/voltprint",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 0,
+          "relevant_hits": [],
+          "notes": "HTTP 404 (login unclaimed)",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "GitHub repository search",
+          "query_or_url": "https://api.github.com/search/repositories?q=voltprint&per_page=30",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 2,
+          "relevant_hits": [
+            {
+              "name": "Mihir-Null/Voltprint",
+              "what": "Program that measures PC power consumption, created 2022-10-07"
+            },
+            {
+              "name": "s93msa/voltprintsheets",
+              "what": "No description, created 2026-03-15"
+            }
+          ],
+          "notes": "",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "GitHub code search",
+          "query_or_url": "https://api.github.com/search/code?q=voltprint",
+          "date": "2026-09-16",
+          "answered": false,
+          "hit_count": null,
+          "relevant_hits": [],
+          "notes": "Not run: needs a login (HTTP 401 in the earlier audits).",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "GitLab",
+          "query_or_url": "https://gitlab.com/api/v4/projects?search=voltprint",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 0,
+          "relevant_hits": [],
+          "notes": "Public projects only",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "Zenodo",
+          "query_or_url": "https://zenodo.org/api/records?q=voltprint&size=10",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 0,
+          "relevant_hits": [],
+          "notes": "",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "arXiv",
+          "query_or_url": "https://export.arxiv.org/api/query?search_query=all:voltprint&max_results=5",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 0,
+          "relevant_hits": [],
+          "notes": "",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "PubMed",
+          "query_or_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=voltprint",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 0,
+          "relevant_hits": [],
+          "notes": "PubMed reported the phrase was not found.",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "bioRxiv + IEEE Xplore (WebSearch with allowed_domains; native keyword search not used)",
+          "query_or_url": "TwinTrace OR ClampPrint OR Voltprint OR isospike (allowed_domains biorxiv.org, ieeexplore.ieee.org)",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 0,
+          "relevant_hits": [],
+          "notes": "Combined OR query; no result contained the name. The tool may not honour OR, so this is weak evidence.",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "General web (WebSearch tool)",
+          "query_or_url": "\"Voltprint\"",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": null,
+          "relevant_hits": [
+            {
+              "name": "VoltPrints (Etsy shop)",
+              "url": "https://www.etsy.com/shop/VoltPrints",
+              "what": "3D-printed gaming accessories"
+            },
+            {
+              "name": "Volt Print / 3D Volt Print",
+              "what": "Instagram @voltprint_ (post dated 2026-02-09) and Facebook @voltprint3d"
+            }
+          ],
+          "notes": "Small commercial uses in 3D printing.",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "USPTO (tmsearch backend, undocumented, same method as earlier audits)",
+          "query_or_url": "POST https://tmsearch.uspto.gov/prod-stage-v1-0-0/tmsearch: match wordmark 'voltprint'; query_string 'voltprint*'; match_phrase 'volt print'",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 0,
+          "relevant_hits": [],
+          "notes": "Exact 0, wildcard 0, two-word phrase 0. The tmsearch.uspto.gov web UI itself is a JavaScript app and was not used.",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "Trademark web search (WebSearch)",
+          "query_or_url": "not run for this name",
+          "date": "2026-09-16",
+          "answered": false,
+          "hit_count": null,
+          "relevant_hits": [],
+          "notes": "",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "EUIPO eSearch",
+          "query_or_url": "not queried",
+          "date": "2026-09-16",
+          "answered": false,
+          "hit_count": null,
+          "relevant_hits": [],
+          "notes": "In today's Neuraxis audit EUIPO, TMview and WIPO were JavaScript apps with no results in the HTML, and UK IPO ignored the query. Needs a manual browser check.",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "TMview",
+          "query_or_url": "not queried",
+          "date": "2026-09-16",
+          "answered": false,
+          "hit_count": null,
+          "relevant_hits": [],
+          "notes": "In today's Neuraxis audit EUIPO, TMview and WIPO were JavaScript apps with no results in the HTML, and UK IPO ignored the query. Needs a manual browser check.",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "WIPO Global Brand Database",
+          "query_or_url": "not queried",
+          "date": "2026-09-16",
+          "answered": false,
+          "hit_count": null,
+          "relevant_hits": [],
+          "notes": "In today's Neuraxis audit EUIPO, TMview and WIPO were JavaScript apps with no results in the HTML, and UK IPO ignored the query. Needs a manual browser check.",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "UK IPO",
+          "query_or_url": "not queried",
+          "date": "2026-09-16",
+          "answered": false,
+          "hit_count": null,
+          "relevant_hits": [],
+          "notes": "In today's Neuraxis audit EUIPO, TMview and WIPO were JavaScript apps with no results in the HTML, and UK IPO ignored the query. Needs a manual browser check.",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "Domains via RDAP (extra)",
+          "query_or_url": "https://rdap.verisign.com/com/v1/domain/voltprint.com ; https://rdap.publicinterestregistry.org/rdap/domain/voltprint.org",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": null,
+          "relevant_hits": [],
+          "notes": ".com HTTP 200 (registered), .org HTTP 404 (no record). voltprint.com registered 2026-03-28. A 404 is a hint, not proof of availability.",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "Google Scholar (curl, browser user agent)",
+          "query_or_url": "https://scholar.google.com/scholar?q=%22voltprint%22",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 0,
+          "relevant_hits": [],
+          "notes": "Page said the search did not match any articles.",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        },
+        {
+          "source": "Crossref (extra)",
+          "query_or_url": "query.bibliographic=voltprint",
+          "date": "2026-09-16",
+          "answered": true,
+          "hit_count": 0,
+          "relevant_hits": [],
+          "notes": "",
+          "timing": "run 2026-09-17 02:01-02:25 UTC (2026-09-16 local); curl from Git Bash, unauthenticated, unless the source says WebSearch"
+        }
+      ]
+    }
+  ]
+}

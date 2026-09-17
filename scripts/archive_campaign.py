@@ -25,9 +25,9 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
-from neurosem import config  # noqa: E402
-from neurosem.experiments import registry as reg  # noqa: E402
-from neurosem.provenance import REPO_ROOT, sha256_file, utc_now  # noqa: E402
+from neuraxis import config  # noqa: E402
+from neuraxis.experiments import registry as reg  # noqa: E402
+from neuraxis.provenance import REPO_ROOT, sha256_file, utc_now  # noqa: E402
 
 
 def main(argv: list[str] | None = None) -> int:

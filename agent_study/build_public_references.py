@@ -13,9 +13,9 @@ from __future__ import annotations
 import argparse
 import sys
 
-from neurosem.experiments import agent
-from neurosem.provenance import REPO_ROOT
-from neurosem.simulators.jneuroml import JNeuroML
+from neuraxis.experiments import agent
+from neuraxis.provenance import REPO_ROOT
+from neuraxis.simulators.jneuroml import JNeuroML
 
 
 def main(argv: list[str] | None = None) -> int:

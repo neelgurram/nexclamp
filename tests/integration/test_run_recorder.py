@@ -7,15 +7,15 @@ import json
 
 import pytest
 
-from neurosem.protocols.definitions import DEFAULT_TEMPLATES
-from neurosem.schemas import ExecConfig, RunStatus, VariantKind, VariantRecord
-from neurosem.validation.execution import RunRecorder
+from neuraxis.protocols.definitions import DEFAULT_TEMPLATES
+from neuraxis.schemas import ExecConfig, RunStatus, VariantKind, VariantRecord
+from neuraxis.validation.execution import RunRecorder
 
 pytestmark = pytest.mark.jnml
 
 
 def _setup(tmp_path, sim, rs_ws):
-    from neurosem import config
+    from neuraxis import config
 
     fcfg = config.features().data
     rec = RunRecorder("t", sim, results_root=tmp_path / "results", work_root=tmp_path / "work", features_cfg=fcfg,

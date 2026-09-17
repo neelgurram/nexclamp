@@ -1,4 +1,4 @@
-"""Tests for neurosem.protocols.rheobase.search and count_upward_crossings on fake spike counters.
+"""Tests for neuraxis.protocols.rheobase.search and count_upward_crossings on fake spike counters.
 
 Expected brackets are derived by hand with a grid of 11 points (10 intervals) so every
 refinement divides the bracket by exactly 10 and the decimal boundaries are obvious:
@@ -13,7 +13,7 @@ from collections.abc import Sequence
 import numpy as np
 import pytest
 
-from neurosem.protocols.rheobase import RheobaseResult, count_upward_crossings, search
+from neuraxis.protocols.rheobase import RheobaseResult, count_upward_crossings, search
 
 ABS = 1e-12
 

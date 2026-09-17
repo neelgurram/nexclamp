@@ -1,4 +1,4 @@
-"""Unit tests for neurosem.transforms on the real pinned NeuroML snapshots (no Java needed).
+"""Unit tests for neuraxis.transforms on the real pinned NeuroML snapshots (no Java needed).
 
 Checks that matter scientifically are done with code that does not reuse the module under
 test: semantic comparisons parse files with lxml directly, exact SI values are recomputed
@@ -17,19 +17,19 @@ from pathlib import Path
 import pytest
 from lxml import etree
 
-from neurosem.models import materialize
-from neurosem.provenance import tree_manifest
-from neurosem.schemas import VariantKind, variant_from_dict
-from neurosem.transforms import (
+from neuraxis.models import materialize
+from neuraxis.provenance import tree_manifest
+from neuraxis.schemas import VariantKind, variant_from_dict
+from neuraxis.transforms import (
     MANIFEST_COLUMNS,
     REGISTRY,
     apply_model_overrides,
     generate_transforms,
     write_manifest,
 )
-from neurosem.transforms.formatting import XmlDoc, model_files, scan
-from neurosem.transforms.identifiers import rewrite_path
-from neurosem.transforms.units import (
+from neuraxis.transforms.formatting import XmlDoc, model_files, scan
+from neuraxis.transforms.identifiers import rewrite_path
+from neuraxis.transforms.units import (
     convert_literal,
     core_units,
     format_decimal,
@@ -396,7 +396,7 @@ def test_rename_never_touches_default_segment_group_and_sites_are_unique(workspa
 
 
 def test_rewrite_path_grammar():
-    from neurosem.transforms.identifiers import Definition
+    from neuraxis.transforms.identifiers import Definition
 
     d = Definition("channelDensity", "Na_all", "f", "/l", None, "RS", None, None)
     pops, dens = {"CG_RS": "RS"}, {("RS", "Na_all"): "Na"}

@@ -3,7 +3,7 @@
 This guide gives exact commands to rebuild the environment on Windows and Linux, and says plainly
 what has and has not been verified. NeuroSem is pre-pilot: there are **no scientific results to
 reproduce yet**. The pipeline commands (`neurosem validate-models`, `pilot`, `reproduce-paper`) exist
-in `src/neurosem/cli.py`; what was checked about them is listed below and in the last section.
+in `src/neuraxis/cli.py`; what was checked about them is listed below and in the last section.
 
 ## What was verified, where (2026-09-13)
 
@@ -198,7 +198,7 @@ and exit 0. The same one-liner printed that and exited 0 on the Windows developm
 
 ## Pipeline commands
 
-Defined in `docs/ARCHITECTURE.md` §3.9 and implemented in `src/neurosem/cli.py`:
+Defined in `docs/ARCHITECTURE.md` §3.9 and implemented in `src/neuraxis/cli.py`:
 
 ```bash
 neurosem validate-models

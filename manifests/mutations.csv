@@ -1,0 +1,24 @@
+operator,family,analysis_stratum,taxonomy_class,excluded_from_protocol_selection,exec_override_keys,description,module
+scale_capacitance,biophysical,primary_semantic,1_static_membrane_biophysical,False,,Multiply the specific membrane capacitance by a factor.,neuraxis.mutations.biophysics
+scale_conductance,biophysical,primary_semantic,1_static_membrane_biophysical,False,,Multiply the conductance density of one channel density by a factor.,neuraxis.mutations.biophysics
+scale_gate_time_constant,biophysical,primary_semantic,"1_static_membrane_biophysical (kinetic parameter; used in Pilot 1, so kept out of the held-out kinetics family)",False,,"Scale all rates of one gate by k (tau -> tau/k, steady state unchanged).",neuraxis.mutations.biophysics
+shift_initial_voltage,biophysical,primary_semantic,1_static_membrane_biophysical,False,,Shift the cell's initial membrane potential.,neuraxis.mutations.biophysics
+shift_reversal,biophysical,primary_semantic,1_static_membrane_biophysical,False,,Shift the reversal potential of one channel density.,neuraxis.mutations.biophysics
+wrong_segment_group,biophysical,primary_semantic,1_static_membrane_biophysical,False,,"Move one channel density to another existing segment group (absent attribute = ""all"").",neuraxis.mutations.biophysics
+scale_gate_slope,kinetics,primary_semantic,2_ion_channel_kinetics,True,,Multiply one gate's voltage-dependence scale (slope) by k.,neuraxis.mutations.kinetics
+shift_channel_vshift,kinetics,primary_semantic,2_ion_channel_kinetics,True,,Shift ``vShift`` of one ``channelDensityVShift`` by d mV (the channel's whole voltage dependence).,neuraxis.mutations.kinetics
+shift_forward_rate_midpoint,kinetics,primary_semantic,2_ion_channel_kinetics,True,,Shift only the forward (opening) rate midpoint of one rate gate by d mV.,neuraxis.mutations.kinetics
+shift_gate_midpoint,kinetics,primary_semantic,2_ion_channel_kinetics,True,,Shift one gate's voltage dependence (core rate/steady-state midpoints) by d mV.,neuraxis.mutations.kinetics
+increase_dt,numerical,numerical_robustness,numerical_robustness,False,dt_factor,Multiply the integration time step of every run (harness and battery) by a factor.,neuraxis.mutations.numerical
+recording_resolution,numerical,numerical_robustness,numerical_robustness,False,sample_every_ms,Post-hoc output sampling (``exec_overrides.sample_every_ms``); no file is edited.,neuraxis.mutations.numerical
+reduce_spatial_discretization,numerical,numerical_robustness,numerical_robustness,False,,Coarsen ``numberInternalDivisions`` segment-group properties of multicompartment cells.,neuraxis.mutations.numerical
+solver_config,numerical,numerical_robustness,numerical_robustness,False,integrator_method,Request another LEMS integration method through <Meta>.,neuraxis.mutations.numerical
+duplicate_conductance,reference,primary_semantic,3_reference_mechanism_composition,False,,Insert a copy of one channel density (new id) directly after the original.,neuraxis.mutations.references
+omit_include,reference,primary_semantic,3_reference_mechanism_composition,False,,Remove one <include> from the model.,neuraxis.mutations.references
+wrong_channel,reference,primary_semantic,3_reference_mechanism_composition,False,,Point one channel density at a different existing ion channel.,neuraxis.mutations.references
+wrong_compatible_component,reference,primary_semantic,3_reference_mechanism_composition,False,,Replace one component reference with another component of a compatible type.,neuraxis.mutations.references
+record_wrong_variable,stimulus,harness_stimulus,harness_stimulus,False,,Point the canonical voltage column at another state path already recorded or displayed by the harness.,neuraxis.mutations.stimulus
+sim_length,stimulus,harness_stimulus,harness_stimulus,False,,Change the shipped harness simulation length.,neuraxis.mutations.stimulus
+stim_amplitude,stimulus,harness_stimulus,harness_stimulus,False,,Change the amplitude of the shipped harness stimulus.,neuraxis.mutations.stimulus
+stim_duration,stimulus,harness_stimulus,harness_stimulus,False,,Change the duration of the shipped harness stimulus.,neuraxis.mutations.stimulus
+stim_onset,stimulus,harness_stimulus,harness_stimulus,False,,Change the onset (delay) of the shipped harness stimulus.,neuraxis.mutations.stimulus

@@ -1,0 +1,81 @@
+{
+  "model": {
+    "model_id": "nml2_hh_example",
+    "name": "NeuroML2 single-compartment Hodgkin-Huxley example cell",
+    "snapshot": "NeuroML2@a5f5dadc",
+    "cell_file": "examples/NML2_SingleCompHHCell.nml",
+    "cell_id": "hhcell",
+    "harness_lems": "LEMSexamples/LEMS_NML2_Ex5_DetCell.xml",
+    "harness_output_file": "results/ex5_v.dat",
+    "harness_v_column": "1",
+    "temperature": "",
+    "source_family": "neuroml2_examples",
+    "citation": "Hodgkin AL, Huxley AF (1952). A quantitative description of membrane current and its application to conduction and excitation in nerve. J Physiol 117(4):500-544. doi:10.1113/jphysiol.1952.sp004764 (NeuroML2 teaching implementation)",
+    "source_url": "https://github.com/NeuroML/NeuroML2",
+    "commit": "a5f5dadccd23606e683eaa0dd58dd2c3b2a7ed58",
+    "license": "LGPL-3.0",
+    "license_url": "https://github.com/NeuroML/NeuroML2/blob/a5f5dadccd23606e683eaa0dd58dd2c3b2a7ed58/LICENSE.lesser",
+    "download_date": "2026-09-13",
+    "simulator": "jNeuroML",
+    "expected_behavior": "Classic HH squid axon kinetics on a 1000 um2 soma; regular tonic firing; no adaptation or rebound currents.",
+    "inclusion": "candidate",
+    "inclusion_reason": "Independent source; fast smoke-test fixture; LGPL obligations for redistributed mutants to be decided"
+  },
+  "criteria": {
+    "C01_provenance": true,
+    "C02_reuse_rights": true,
+    "C03_files_present": true,
+    "C04_validation": true,
+    "C05_executes": true,
+    "C06_trace_interpretable": true,
+    "C07_recording_location": true,
+    "C08_responds_to_current": true,
+    "C09_deterministic": true,
+    "C10_refinement_stable": true,
+    "C11_runtime": false,
+    "C12_operators": true,
+    "C13_protocols_compatible": true
+  },
+  "decision": "exclude",
+  "reasons": [
+    "C11_runtime"
+  ],
+  "evidence": {
+    "model_id": "nml2_hh_example",
+    "snapshot": "NeuroML2@a5f5dadc",
+    "ion_channels": [
+      "kChan",
+      "naChan",
+      "passiveChan"
+    ],
+    "validation_errors": [],
+    "canonical_status": "ok",
+    "canonical_v_range_mV": [
+      -76.11799621582031,
+      39.85807800292969
+    ],
+    "rheobase_status": "ok",
+    "rheobase_nA": 0.022436992008742575,
+    "fingerprint_status": [
+      "ok",
+      "ok"
+    ],
+    "spikes_P04": 1.0,
+    "spikes_P05": 1.0,
+    "firing_regime_P05": "single_spike",
+    "rebound_spikes_P08": 1.0,
+    "sag_ratio_P07": 0.34640087069052167,
+    "refinement_excluded": "0/64",
+    "estimated_variant_runtime_s": 465.9,
+    "semantic_operators_with_site": [
+      "duplicate_conductance",
+      "scale_capacitance",
+      "scale_conductance",
+      "scale_gate_time_constant",
+      "shift_initial_voltage",
+      "shift_reversal",
+      "wrong_channel",
+      "wrong_segment_group"
+    ]
+  }
+}

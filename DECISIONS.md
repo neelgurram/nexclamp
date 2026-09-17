@@ -183,7 +183,7 @@ Now enforced in code: `evaluate_heldout` calls `registry.check_single_clean_comm
   - generalisation to unseen models;
   - generalisation to an unseen mutation family.
 
-*Enforcement* (`src/neurosem/experiments/registry.py`, tests in `tests/unit/test_campaign_registry.py`):
+*Enforcement* (`src/neuraxis/experiments/registry.py`, tests in `tests/unit/test_campaign_registry.py`):
 - every campaign has a permanent role (`exploratory_pilot`, `discovery`, `confirmatory_heldout`) in `results/campaign_registry.json`;
 - `evaluate_heldout` refuses:
   - a campaign registered as exploratory or discovery;
@@ -325,6 +325,79 @@ Neel: "Do not discard pilot data. Preserve all pilot configurations, raw outputs
   - no hidden semantic drift;
   - the three previously silent cases were numerical stress cases.
 - **Where the original interpretation may not appear.** `docs/pilot/pilot_interpretation.md` (numerical-only silent cases counted as meeting criterion 1) is not used in any abstract, figure, introduction or publication claim. It stays in the repository only as a historical record, marked superseded.
+
+**D-039 The Neuraxis execution plan is the controlling specification; the package is renamed** (Neel, 2026-09-16; fixed)
+- **Controlling document.** `docs/handoff/NEURAXIS_EXECUTION_PLAN.pdf` (SHA-256 `2ae2a2ce…2ddd`) controls further work. Conflicts with earlier plans are resolved in `docs/DEVIATION_LOG.md` (X-01 to X-17).
+- **Package.** `src/neurosem/` became `src/neuraxis/`. `neurosem` stays an import alias returning the same module objects, and the `neurosem` command and `NEUROSEM_*` environment variables still work.
+- **Unchanged.** Feature-source labels and the `neurosem:` feature-config key stay, to keep hashed configs and recorded provenance.
+
+**D-040 Run records follow the execution plan; tool failures never block retries** (fixed)
+- **New fields:** `execution_id`, `model_hash`, `base_model_hash`, `mutation_id`, `transformation_id`, `protocol_id`, `time_step_ms`, `configuration_hash`, `start_time`, `end_time`, `runtime_seconds`, stdout and stderr paths with their hashes, `trace_hash`, `feature_hash`.
+- **Run identity.** `run_id` stays the content address of the inputs; `execution_id` identifies each execution.
+- **Cache verification.** Cached runs are reused only after their stored trace and output-stream hashes verify.
+- **Tool failures.** They are kept in `_tool_failures/` and never become the run record.
+
+**D-041 Mechanical model curation** (fixed)
+- **Criteria.** `neuraxis curate-models` applies the plan's inclusion and exclusion criteria (C01-C13) using reference simulations only, before any split. Exclusions are logged and never depend on results.
+- **Candidates.** Candidate snapshots live in `models/candidates/`.
+
+**D-042 Ion-channel kinetics family implemented; excluded from protocol selection in code** (fixed, scope pending R-05)
+- **Operators:** `shift_gate_midpoint`, `scale_gate_slope`, `shift_forward_rate_midpoint`, `shift_channel_vshift` (family `kinetics`, semantic stratum).
+- **Selection exclusion.** `strata.SELECTION_EXCLUDED_FAMILIES` removes the family from `select-protocols`.
+- **Correctness tests.** Run on development fixtures only; no detection data were made.
+- **`scale_gate_time_constant`.** Recommended to stay in the biophysical development family because its Pilot 1 outcomes were inspected. This withdraws D-037's plan to move it, pending Neel.
+
+**D-043 Code licence Apache-2.0, provisional** (plan directive; replaces D-018 provisionally)
+- **Change.** `LICENSE` is the official Apache-2.0 text, and the previous BSD-3-Clause text is in `docs/licensing/`.
+- **Pending.** Compatibility review L-01 and L-11.
+
+**D-044 Internal study identifier; no final brand without approval** (Neel, 2026-09-17; fixed)
+- **Identifier.** The study's internal identifier is `neuron_model_behavioral_validation` (`configs/study.yaml` `study_id`, `study_metadata.study_id`, `run.json` `study_id`), independent of branding.
+- **Name.** Neuraxis is not publicly released or registered while the live NEURAXIS trademarks stand. The package rename stays on the current branch; no further large rename for now.
+- **Brand rule.** No package publication, public repository, DOI, preregistration or manuscript title uses a final brand until Neel approves it. Options are in `docs/NAME_DECISION_PACKET.md`.
+
+**D-045 Wang–Buzsáki undecided; decision packet** (Neel, 2026-09-17)
+- **Status.** Neither included nor excluded yet.
+- **Recommendation.** `docs/WANG_BUZSAKI_DECISION_PACKET.md` recommends exclusion from the primary analysis (validation exception needing a model-specific exception or manual repair), with an optional prespecified exploratory sensitivity analysis.
+- **Pilot 2 default.** Pilot 2 leaves it out of the primary model set.
+
+**D-046 Two-sided research question** (Neel, 2026-09-17; fixed)
+- **Question.** "How much scientific protection does canonical regression provide for transformed neuronal models, and under what conditions do additional perturbation protocols provide unique information?"
+- **No dependence on drift.** The study does not depend on finding silent drift.
+
+**D-047 Canonical baseline audit and validation levels A-E** (Neel, 2026-09-17; fixed)
+- **Audit.** `docs/CANONICAL_BASELINE_AUDIT.md` records that Pilot 1's canonical test was a feature-level regression: 11 features on the shipped stimulus, refinement-calibrated tolerances, exact firing regime, no full-trace or full spike-time comparison.
+- **Levels.** From Pilot 2 on, results are reported at five levels:
+  - A: basic validation;
+  - B: canonical feature regression;
+  - C: canonical full-trace regression (whole-trace RMSE, spike count, spike timing, thresholds from reference h versus h/2; `validation/trace_regression.py`);
+  - D: multi-protocol perturbation testing;
+  - E: full candidate battery.
+- **B and C** are never merged.
+- **Survivors.** Every apparent canonical survivor is re-checked at h/4.
+
+**D-048 Pilot 2 redefined: PILOT_PROTOCOL_V2** (Neel, 2026-09-17)
+- **Matrix:**
+  - 4-6 models not used in Pilot 1;
+  - 6-10 protocols;
+  - 4-6 interpretable mutation families with two prespecified severity levels (`mutations/severity.py`);
+  - about 15-25 variants per model;
+  - at least 5 valid transformations per model;
+  - refinement checks for survivors.
+- **Fixed rules.** Branch rules A-D are fixed before data (`experiments/pilot_v2_outputs.py` `BRANCH_RULES`).
+- **After Pilot 2, stop.** No expansion, no development campaign, no held-out access, no preregistration, no result claims, no threshold tuning.
+- **Supersedes V1.** PILOT_PROTOCOL_V1 is superseded without having run.
+
+**D-049 Kinetics mutations: gate before study use** (Neel, 2026-09-17)
+- **Conditions.** Kinetics operators enter a study only after all of the following:
+  - unit tests;
+  - simulation integration tests;
+  - documentation of the affected equations and elements;
+  - confirmation that nothing else changed;
+  - inspectable before/after outputs;
+  - an atomic/compound classification.
+- **Evidence.** `docs/KINETICS_OPERATOR_VALIDATION.md`, `results/audits/kinetics_validation/`.
+- **Pilot 2 scope.** A limited prespecified subset may enter Pilot 2 once validated.
 
 ## Models and licensing
 

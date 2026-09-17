@@ -6,9 +6,9 @@ import numpy as np
 import pandas as pd
 import pytest
 
-from neurosem.analysis import figures as F
-from neurosem.analysis import metrics as M
-from neurosem.schemas import MutantClass as MC
+from neuraxis.analysis import figures as F
+from neuraxis.analysis import metrics as M
+from neuraxis.schemas import MutantClass as MC
 
 PNG_MAGIC = b"\x89PNG\r\n\x1a\n"
 
@@ -175,7 +175,7 @@ def test_fig3_detection_heatmap(tmp_path):
 
 
 def test_fig3_accepts_enum_families_and_object_detected_column(tmp_path, monkeypatch):
-    from neurosem.schemas import MutationFamily as MF
+    from neuraxis.schemas import MutationFamily as MF
 
     det = _detections()
     det["family"] = det["family"].map(MF)

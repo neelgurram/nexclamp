@@ -39,7 +39,7 @@ manifest. Repeated and new models are reported separately.
 | Detection protocols (7) | `P03_rheobase` (variant rheobase measurement); `P04_step_2x` (2x rheobase, 500 ms); `P05_long_step` (1.5x, 2000 ms); `P06_ramp` (0 to 3x over 1000 ms); `P07_hyperpolarizing_step` (−1x, 500 ms); `P08_rebound` (−2x for 500 ms, then 300 ms after release); `P09_short_pulse` (10x for 3 ms, 60 ms window) |
 
 All timing is in whole milliseconds, with a 300 ms settle period before each stimulus. Parameters
-are the defaults in `src/neurosem/protocols/definitions.py` at the pre-run commit.
+are the defaults in `src/neuraxis/protocols/definitions.py` at the pre-run commit.
 
 ## 4. Features
 

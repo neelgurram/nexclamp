@@ -1,4 +1,4 @@
-"""Integration tests for neurosem.simulators.jneuroml against the real jNeuroML jar.
+"""Integration tests for neuraxis.simulators.jneuroml against the real jNeuroML jar.
 
 Every failure mode is produced with a real file where that is possible (schema error,
 bad reference, missing include, a genuine numerical blow-up). The out-of-bound output
@@ -15,12 +15,12 @@ from pathlib import Path
 import numpy as np
 import pytest
 
-from neurosem.models import copy_workspace
-from neurosem.protocols.generate import write_probe
-from neurosem.schemas import AnalysisWindow, ConcreteProtocol, ExecConfig, RunStatus, StimulusComponent, Trace
-from neurosem.simulators import jneuroml as jmod
-from neurosem.simulators.base import PHYSICAL_V_BOUND_MV, OutputSpec
-from neurosem.simulators.jneuroml import JNeuroML, ToolUnavailable, find_jar, find_java, load_dat
+from neuraxis.models import copy_workspace
+from neuraxis.protocols.generate import write_probe
+from neuraxis.schemas import AnalysisWindow, ConcreteProtocol, ExecConfig, RunStatus, StimulusComponent, Trace
+from neuraxis.simulators import jneuroml as jmod
+from neuraxis.simulators.base import PHYSICAL_V_BOUND_MV, OutputSpec
+from neuraxis.simulators.jneuroml import JNeuroML, ToolUnavailable, find_jar, find_java, load_dat
 
 RS_OUT = OutputSpec("RS.dat", {"v": 1})
 
@@ -173,7 +173,7 @@ def test_validate_missing_file_is_not_reported_valid(sim, rs_ws):
 # ---------------------------------------------------------------------------------------- runs
 @pytest.fixture(scope="module")
 def short_run(tmp_path_factory, sim, models):
-    from neurosem.models import materialize
+    from neuraxis.models import materialize
 
     ws = materialize(models["pospischil2008_rs"], tmp_path_factory.mktemp("rs_short") / "rs")
     lems = _shorten_harness(ws)

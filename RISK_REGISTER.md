@@ -21,7 +21,7 @@ used as evidence.*
 - **Sources.** Critique issues come from `docs/m0_evidence/critique/<LENS>.json`. Only issues the skeptic
   (`<LENS>.skeptic.json`) upheld or softened are used, with the skeptic's revised severity and revised
   recommendation. All 67 issues across the five lenses were upheld (33) or softened (34); none was rejected.
-  Implementation findings come from `DECISIONS.md`, `docs/build_notes/*.md` and the code under `src/neurosem/`.
+  Implementation findings come from `DECISIONS.md`, `docs/build_notes/*.md` and the code under `src/neuraxis/`.
 - **Severity.** Where a critique issue is linked, severity is the highest skeptic-revised severity among the
   linked issues. For implementation-only findings: high likelihood with high impact gives high; medium with
   high, or high with medium, gives medium unless the impact is study-level; otherwise low.
@@ -65,7 +65,7 @@ Key: **Yes** = implemented with file evidence · **Partly** = some parts impleme
 | issue (revised sev.) | handoff assumption, short | addressed? | evidence |
 |---|---|---|---|
 | INTEG-01 (low) | Journal is "IEEE/ACM TCBB"; only IEEE Access fees matter | No (not needed before pilot) | Venue facts not yet in `DECISIONS.md`; handoff says do not commit to a venue before the pilot |
-| INTEG-03 (low) | Only "substantive" AI use must be disclosed | Partly | `AI_USE_LOG.md`, `docs/ai_disclosure.md` exist; per-artefact provenance column not added |
+| INTEG-03 (low) | Only "substantive" AI use must be disclosed | Partly | `AI_USE_LOG.md`, `docs/AI_DISCLOSURE.md` exist; per-artefact provenance column not added |
 
 ### Uncertain
 
@@ -75,13 +75,13 @@ Key: **Yes** = implemented with file evidence · **Partly** = some parts impleme
 | INTEG-02 (medium) | A CIBCB conference route can be checked later | No | Cost against the zero budget not recorded in `DECISIONS.md` |
 | NUM-01 (medium) | jNeuroML integration method is a non-issue | Yes | `docs/build_notes/core.md` ("jLEMS ignores Meta", first-order evidence); `configs/study.yaml` `numerics` comment; D-007 |
 | NUM-04 (low) | Refinement runs share an identical stimulus timing | Partly | `docs/build_notes/core.md` (pulse onsets visible within 2 dt); switch-step logging per dt not implemented |
-| SWT-06 (low) | Single-fault detection transfers to real multi-edit changes | No (claim scope) | Primary study is single-fault by design (`docs/mutation_catalog.md`) |
+| SWT-06 (low) | Single-fault detection transfers to real multi-edit changes | No (claim scope) | Primary study is single-fault by design (`docs/MUTATION_CATALOG.md`) |
 
 ### Infeasible or technically infeasible
 
 | issue (revised sev.) | handoff assumption, short | addressed? | evidence |
 |---|---|---|---|
-| STATS-03 (high) | Cluster bootstrap with 4-6 held-out models gives a meaningful CI and test | Partly | `docs/statistical_plan.md` s.4.2-4.4 states the limits; `analysis/bootstrap.py:246,278` implement two-sided tests only; the one-sided preregistered sign-flip test is not implemented |
+| STATS-03 (high) | Cluster bootstrap with 4-6 held-out models gives a meaningful CI and test | Partly | `docs/STATISTICAL_ANALYSIS_PLAN.md` s.4.2-4.4 states the limits; `analysis/bootstrap.py:246,278` implement two-sided tests only; the one-sided preregistered sign-flip test is not implemented |
 | NUM-07 (high) | Docker and Java are readily available on the laptop | Partly | Portable Temurin in `.tools/` (D-004); direct jar call (D-005); `docs/REPRODUCING.md:17` "Dockerfile never built" |
 | INTEG-04 (high) | Hidden tests stay hidden if not public and trials start from a clean commit | Partly | `.gitignore:28,31`; `agent_study/HIDDEN_MANIFEST.sha256` (D-022); exports without Git history (`docs/build_notes/agent-study.md`); OS-level isolation left to a human |
 | INTEG-12 (high) | One student can curate 12-16 licensed models and 100-160 mutants, with no calendar | Partly | Manifest has 6 models, 2 included (`docs/model_selection.md` s.3); curation screen (above); no calendar or stop date |
@@ -95,9 +95,9 @@ Key: **Yes** = implemented with file evidence · **Partly** = some parts impleme
 
 | issue (revised sev.) | handoff assumption, short | addressed? | evidence |
 |---|---|---|---|
-| STATS-01, NEURO-05, SWT-01 (high) | Battery-defined admissibility is a neutral denominator; exhaustive battery is a comparator | Partly | `docs/statistical_plan.md` s.3 lists the consequences; canonical is not a selection candidate (`experiments/discovery.py:31`); cascade reporting planned; "full candidate battery (labelling upper bound)" renaming not done |
-| STATS-04 (high) | Exact McNemar is appropriate for the paired comparison | Partly | Reported as supporting only (`docs/statistical_plan.md` s.4.3); canonical not force-included (`discovery.py:31`) |
-| STATS-05, SWT-10 (high) | False-positive rate on battery-verified transforms is unbiased and informative | Partly | Plan forbids filtering transforms on battery results (`docs/statistical_plan.md` S3); near-null controls not implemented; formatting transforms were bit-identical in development (`docs/build_notes/transforms.md` s.5) |
+| STATS-01, NEURO-05, SWT-01 (high) | Battery-defined admissibility is a neutral denominator; exhaustive battery is a comparator | Partly | `docs/STATISTICAL_ANALYSIS_PLAN.md` s.3 lists the consequences; canonical is not a selection candidate (`experiments/discovery.py:31`); cascade reporting planned; "full candidate battery (labelling upper bound)" renaming not done |
+| STATS-04 (high) | Exact McNemar is appropriate for the paired comparison | Partly | Reported as supporting only (`docs/STATISTICAL_ANALYSIS_PLAN.md` s.4.3); canonical not force-included (`discovery.py:31`) |
+| STATS-05, SWT-10 (high) | False-positive rate on battery-verified transforms is unbiased and informative | Partly | Plan forbids filtering transforms on battery results (`docs/STATISTICAL_ANALYSIS_PLAN.md` S3); near-null controls not implemented; formatting transforms were bit-identical in development (`docs/build_notes/transforms.md` s.5) |
 | STATS-06 (high, underspecified) | Battery vs canonical isolates the value of added stimuli | Yes (primary), Neel (secondary OMV) | Same features and tolerances for canonical (D-008, D-021); N-06 open |
 | STATS-08 (high) | Greedy coverage on curated mutants transfers without curation bias | Partly | Seeded generation, documented grids (`docs/build_notes/mutations.md` s.3); tie-break `[cost, protocol_id]` (`configs/study.yaml`); magnitude grid not preregistered |
 | STATS-10, NUM-02, SWT-04 (high) | Numerical mutants are ordinary faults and could be the held-out family | Partly | x2 factor removed, grid x4/x10/x20 (D-021, `mutations/numerical.py:77`); numerical still a discovery and pilot family (`data/splits/discovery_families.txt`, `configs/study.yaml` `pilot`) |
@@ -128,11 +128,11 @@ residual · owner · trigger or monitoring signal · evidence.
 - **Category.** statistics
 - **Likelihood: high.** The manifest has 3 source families. The candidate pool would give 7 families, and 4 of those hold only 1-2 models.
 - **Impact: high.** The primary generalisation claim (RQ4) could be uninterpretable.
-- **Mitigation.** Implemented: `source_family` column and family-level sensitivity clustering (`docs/model_selection.md` s.2, `docs/statistical_plan.md` s.2); exact enumeration of sign patterns (`analysis/bootstrap.py:37,291`); 7 new candidates from 4 families (`docs/model_curation_candidates.md` s.1). Not implemented: a preregistered one-sided exact sign-flip test (STATS-03; `bootstrap.py:278` is two-sided); a group rule hashed before splitting (STATS-02); simulation-based precision analysis after the pilot.
+- **Mitigation.** Implemented: `source_family` column and family-level sensitivity clustering (`docs/model_selection.md` s.2, `docs/STATISTICAL_ANALYSIS_PLAN.md` s.2); exact enumeration of sign patterns (`analysis/bootstrap.py:37,291`); 7 new candidates from 4 families (`docs/model_curation_candidates.md` s.1). Not implemented: a preregistered one-sided exact sign-flip test (STATS-03; `bootstrap.py:278` is two-sided); a group rule hashed before splitting (STATS-02); simulation-based precision analysis after the pilot.
 - **Residual: high.**
 - **Owner.** Neel (N-02, N-09); implementation for the one-sided test.
 - **Trigger.** Fewer than 6 independent held-out groups at split freeze. If fewer than about 3-4, preregister held-out results as descriptive or exploratory (STATS-02, INTEG-12).
-- **Evidence.** STATS-02, STATS-03, NEURO-07, INTEG-12 (`docs/m0_evidence/critique/`); `docs/statistical_plan.md` s.4.2, s.4.4, s.9.1; `docs/model_curation_candidates.md` s.1.
+- **Evidence.** STATS-02, STATS-03, NEURO-07, INTEG-12 (`docs/m0_evidence/critique/`); `docs/STATISTICAL_ANALYSIS_PLAN.md` s.4.2, s.4.4, s.9.1; `docs/model_curation_candidates.md` s.1.
 
 #### R-02 Correlated Pospischil fixtures **PIVOT P5**
 - **Description.** RS, LTS, FS and IB share one paper, repository, commit and byte-identical Na, Kd, IM and Leak channel files. A channel-file mutant is nearly the same experiment in sibling cells. A Pospischil cell in held-out is not an unseen model if a sibling is in discovery. Both pilot fixtures are Pospischil cells.
@@ -161,18 +161,18 @@ residual · owner · trigger or monitoring signal · evidence.
 - **Category.** numerics
 - **Likelihood: high.** Observed in the development probe.
 - **Impact: high.** The result could depend on one unstable model, or on dt.
-- **Mitigation.** Implemented: nominal h = 0.005 ms with h/2 and h/4 (D-007); exclusion rule (D-014); per-model results required (`docs/statistical_plan.md` s.4.1). Not implemented: model inclusion criterion "reference converges on all candidate protocols" (SWT-13 recommendation 3).
+- **Mitigation.** Implemented: nominal h = 0.005 ms with h/2 and h/4 (D-007); exclusion rule (D-014); per-model results required (`docs/STATISTICAL_ANALYSIS_PLAN.md` s.4.1). Not implemented: model inclusion criterion "reference converges on all candidate protocols" (SWT-13 recommendation 3).
 - **Residual: medium.**
 - **Owner.** Neel (N-03); implementation for reporting.
 - **Trigger.** In the pilot, a single model contributes most silent mutants, or LTS features are mostly `refinement`-limited.
-- **Evidence.** `docs/pilot/dt_probe.md`; D-007; `docs/statistical_plan.md` s.9.6; NUM-01.
+- **Evidence.** `docs/pilot/dt_probe.md`; D-007; `docs/STATISTICAL_ANALYSIS_PLAN.md` s.9.6; NUM-01.
 
 #### R-05 Numerical mutants are circular with tolerance calibration **PIVOT P6**
 - **Description.** A dt-multiplier mutant is detected or not largely according to c, the floors and the multiplier, not protocol informativeness. Pooling such mutants in the detection matrix biases greedy selection. Making them the held-out family leaks calibration information.
 - **Category.** scientific validity
 - **Likelihood: high.** `numerical` is listed in `data/splits/discovery_families.txt` and in `configs/study.yaml` `pilot.mutation_families`.
 - **Impact: high.** Biases selection and the primary pooled denominator.
-- **Mitigation.** Implemented: factor 2 removed (never admissible, `docs/mutation_catalog.md` s.5.2); grid x4, x10, x20 (`mutations/numerical.py:77`, D-021); `recording_resolution` is configuration-only (D-009). Not implemented: separate numerical-robustness analysis outside the primary denominator and outside held-out family choice (NUM-02, STATS-10, SWT-04).
+- **Mitigation.** Implemented: factor 2 removed (never admissible, `docs/MUTATION_CATALOG.md` s.5.2); grid x4, x10, x20 (`mutations/numerical.py:77`, D-021); `recording_resolution` is configuration-only (D-009). Not implemented: separate numerical-robustness analysis outside the primary denominator and outside held-out family choice (NUM-02, STATS-10, SWT-04).
 - **Residual: high.**
 - **Owner.** Neel.
 - **Trigger.** Pilot detection matrix shows numerical mutants covering a large share of rows.
@@ -183,7 +183,7 @@ residual · owner · trigger or monitoring signal · evidence.
 - **Category.** statistics
 - **Likelihood: high.** Development probes were bitwise identical for every compared transform.
 - **Impact: high.** "False positives remain high" cannot be judged either way.
-- **Mitigation.** Implemented: transforms verified independently, never filtered on battery outcome (`docs/statistical_plan.md` S3; `docs/build_notes/science-docs.md` s.7); byte-preserving edits (`docs/build_notes/transforms.md` s.3); pilot threshold ≤ 10% (`experiments/pilot.py:46`, provisional, N-04). Not implemented: near-null controls (h/8, 1e-9 perturbations, second-platform rerun); false positives per comparison and per battery size (SWT-10).
+- **Mitigation.** Implemented: transforms verified independently, never filtered on battery outcome (`docs/STATISTICAL_ANALYSIS_PLAN.md` S3; `docs/build_notes/science-docs.md` s.7); byte-preserving edits (`docs/build_notes/transforms.md` s.3); pilot threshold ≤ 10% (`experiments/pilot.py:46`, provisional, N-04). Not implemented: near-null controls (h/8, 1e-9 perturbations, second-platform rerun); false positives per comparison and per battery size (SWT-10).
 - **Residual: high.**
 - **Owner.** Neel (N-04); implementation.
 - **Trigger.** All pilot transforms bit-identical, giving 0/n with no information about tolerance scale.
@@ -249,11 +249,11 @@ residual · owner · trigger or monitoring signal · evidence.
 - **Category.** statistics
 - **Likelihood: medium.**
 - **Impact: high.**
-- **Mitigation.** Implemented: draft plan with a single primary comparison and no confirmatory secondaries (`docs/statistical_plan.md` s.4.5, s.5, s.10); `docs/preregistration_draft.md`; provisional `budget_k: 4`, B, n_perm and seed (`configs/study.yaml`); freeze lock mechanism (`configs/FROZEN.lock` via `HeldoutGate`). Not implemented: two-stage embargoed OSF registration (INTEG-09, STATS-13); fixed-sequence hierarchy (STATS-12).
+- **Mitigation.** Implemented: draft plan with a single primary comparison and no confirmatory secondaries (`docs/STATISTICAL_ANALYSIS_PLAN.md` s.4.5, s.5, s.10); `docs/PREREGISTRATION_DRAFT.md`; provisional `budget_k: 4`, B, n_perm and seed (`configs/study.yaml`); freeze lock mechanism (`configs/FROZEN.lock` via `HeldoutGate`). Not implemented: two-stage embargoed OSF registration (INTEG-09, STATS-13); fixed-sequence hierarchy (STATS-12).
 - **Residual: high.**
 - **Owner.** Neel.
 - **Trigger.** Any held-out mutant generated before a stage-1 registration exists.
-- **Evidence.** STATS-12, STATS-13, INTEG-09; `docs/statistical_plan.md` s.10.
+- **Evidence.** STATS-12, STATS-13, INTEG-09; `docs/STATISTICAL_ANALYSIS_PLAN.md` s.10.
 
 #### R-13 Outcome-dependent mutant curation and magnitude grid **PIVOT P3**
 - **Description.** "Carefully curated admissible mutants", combined with admissibility defined by detection, allows keep or drop decisions after outcomes are seen. The magnitude grid and τ jointly control the denominator. Several magnitudes of the same parameter create subsumed mutants. Models with more admissible mutants dominate greedy coverage.
@@ -271,7 +271,7 @@ residual · owner · trigger or monitoring signal · evidence.
 - **Category.** scientific validity
 - **Likelihood: high.** By design.
 - **Impact: medium-high.** Misleading absolute claims if not labelled.
-- **Mitigation.** Implemented: consequences stated (`docs/statistical_plan.md` s.3); fixed and re-derived denominators in sensitivity (s.7); canonical not a selection candidate (`experiments/discovery.py:31`). Not implemented: relabelling the exhaustive battery as a "labelling upper bound"; optional frozen extension set.
+- **Mitigation.** Implemented: consequences stated (`docs/STATISTICAL_ANALYSIS_PLAN.md` s.3); fixed and re-derived denominators in sensitivity (s.7); canonical not a selection candidate (`experiments/discovery.py:31`). Not implemented: relabelling the exhaustive battery as a "labelling upper bound"; optional frozen extension set.
 - **Residual: medium.**
 - **Owner.** Neel (wording); implementation (reports).
 - **Trigger.** Any report or draft presenting exhaustive-battery detection as a finding.
@@ -282,7 +282,7 @@ residual · owner · trigger or monitoring signal · evidence.
 - **Category.** statistics
 - **Likelihood: medium.**
 - **Impact: medium-high.**
-- **Mitigation.** Implemented: McNemar is supporting only (`docs/statistical_plan.md` s.4.3); canonical excluded from candidates (`experiments/discovery.py:31`); cluster bootstrap primary. Not decided: whether to augment or replace (STATS-04).
+- **Mitigation.** Implemented: McNemar is supporting only (`docs/STATISTICAL_ANALYSIS_PLAN.md` s.4.3); canonical excluded from candidates (`experiments/discovery.py:31`); cluster bootstrap primary. Not decided: whether to augment or replace (STATS-04).
 - **Residual: medium.**
 - **Owner.** Neel.
 - **Trigger.** A draft report citing McNemar p as primary evidence.
@@ -315,7 +315,7 @@ residual · owner · trigger or monitoring signal · evidence.
 - **Category.** scientific validity
 - **Likelihood: high.** Structural.
 - **Impact: medium.** Direction is against the hypothesis, but it distorts P1.
-- **Mitigation.** Implemented: excluded from pilot families (D-009; `data/splits/discovery_families.txt`); stimulus-only mutants reuse the reference battery (D-012). Not decided: exclude from the primary population, or report both (`docs/statistical_plan.md` S4).
+- **Mitigation.** Implemented: excluded from pilot families (D-009; `data/splits/discovery_families.txt`); stimulus-only mutants reuse the reference battery (D-012). Not decided: exclude from the primary population, or report both (`docs/STATISTICAL_ANALYSIS_PLAN.md` S4).
 - **Residual: low-medium.**
 - **Owner.** Neel.
 - **Trigger.** Stimulus family added to discovery or held-out lists.
@@ -361,7 +361,7 @@ residual · owner · trigger or monitoring signal · evidence.
 - **Category.** scientific validity
 - **Likelihood: high.**
 - **Impact: medium.** Inflates "crash" counts and hides a real canonical miss.
-- **Mitigation.** Implemented: worst-status classification with a flag (D-020; `campaign.py:285`). Not decided: intended class (`docs/statistical_plan.md` s.8, decision 9).
+- **Mitigation.** Implemented: worst-status classification with a flag (D-020; `campaign.py:285`). Not decided: intended class (`docs/STATISTICAL_ANALYSIS_PLAN.md` s.8, decision 9).
 - **Residual: medium.**
 - **Owner.** Neel.
 - **Trigger.** Pilot shows `canonical_runs_but_battery_failed` mutants.
@@ -372,18 +372,18 @@ residual · owner · trigger or monitoring signal · evidence.
 - **Category.** scientific validity
 - **Likelihood: high.**
 - **Impact: medium.**
-- **Mitigation.** Implemented: class 4 excluded from N and reported per operator (`docs/mutation_catalog.md` s.5.1); no sites for spatial discretisation in single-compartment cells (`docs/build_notes/mutations.md` s.2); Meta no-op pinned by test (`docs/build_notes/core.md`, "jLEMS ignores Meta"). Not implemented: mark by-construction-equivalent operators inapplicable (NEURO-04); static dead-element check (SWT-02). Unverified: the skeptic's source reading says `eulertree` changes the jLEMS path, but executed runs were bit-identical for RS and LTS.
+- **Mitigation.** Implemented: class 4 excluded from N and reported per operator (`docs/MUTATION_CATALOG.md` s.5.1); no sites for spatial discretisation in single-compartment cells (`docs/build_notes/mutations.md` s.2); Meta no-op pinned by test (`docs/build_notes/core.md`, "jLEMS ignores Meta"). Not implemented: mark by-construction-equivalent operators inapplicable (NEURO-04); static dead-element check (SWT-02). Unverified: the skeptic's source reading says `eulertree` changes the jLEMS path, but executed runs were bit-identical for RS and LTS.
 - **Residual: medium.**
 - **Owner.** Implementation; Neel.
 - **Trigger.** Class 4 above half of pilot mutants for an operator.
-- **Evidence.** SWT-02, NEURO-04; `docs/mutation_catalog.md` s.5.1.
+- **Evidence.** SWT-02, NEURO-04; `docs/MUTATION_CATALOG.md` s.5.1.
 
 #### R-24 Random baselines and the "cannot beat random" outcome **PIVOT P3**
 - **Description.** A dense or redundant detection matrix leaves greedy no room to beat random. Treatment of canonical, prerequisites and ties changes the baselines. Relabelling a loss as a "ceiling effect" after the data are seen would be post hoc.
 - **Category.** statistics
 - **Likelihood: medium.**
 - **Impact: high** if it triggers P3; the specification gaps themselves are medium.
-- **Mitigation.** Implemented: count-matched uses the actual battery size, with shortfall recorded (`experiments/discovery.py:34`; `docs/build_notes/selection.md` s.3.1); runtime-matched random-order first fit (s.3.2); enumeration when small (`docs/statistical_plan.md` s.6); cost in cell-steps (D-015). Not implemented: preregistered ceiling criterion; exact optimum and greedy gap report (SWT-07); redundancy-collapsed score.
+- **Mitigation.** Implemented: count-matched uses the actual battery size, with shortfall recorded (`experiments/discovery.py:34`; `docs/build_notes/selection.md` s.3.1); runtime-matched random-order first fit (s.3.2); enumeration when small (`docs/STATISTICAL_ANALYSIS_PLAN.md` s.6); cost in cell-steps (D-015). Not implemented: preregistered ceiling criterion; exact optimum and greedy gap report (SWT-07); redundancy-collapsed score.
 - **Residual: medium.**
 - **Owner.** Neel; implementation.
 - **Trigger.** Discovery expected random coverage close to greedy coverage.
@@ -453,7 +453,7 @@ residual · owner · trigger or monitoring signal · evidence.
 - **Residual: low-medium.**
 - **Owner.** Implementation.
 - **Trigger.** `shift_initial_voltage` mutants detected in LTS baseline features.
-- **Evidence.** NEURO-06; `docs/mutation_catalog.md` (shift_initial_voltage row).
+- **Evidence.** NEURO-06; `docs/MUTATION_CATALOG.md` (shift_initial_voltage row).
 
 #### R-31 Container provenance
 - **Description.** Inside the image there is no `git`, so the commit would be unknown and the run marked dirty. An image cannot know its own digest.
@@ -594,7 +594,7 @@ residual · owner · trigger or monitoring signal · evidence.
 - **Category.** tooling
 - **Likelihood: low.**
 - **Impact: low.**
-- **Mitigation.** Implemented: cost = simulated cell-steps, including the whole rheobase search, with wall time recorded (D-015; `selection/matrix.py` `cell_step_costs`). Open: P03 and canonical charging (`docs/statistical_plan.md` s.10.7).
+- **Mitigation.** Implemented: cost = simulated cell-steps, including the whole rheobase search, with wall time recorded (D-015; `selection/matrix.py` `cell_step_costs`). Open: P03 and canonical charging (`docs/STATISTICAL_ANALYSIS_PLAN.md` s.10.7).
 - **Residual: low.**
 - **Owner.** Neel.
 - **Trigger.** None before freeze.
@@ -616,7 +616,7 @@ residual · owner · trigger or monitoring signal · evidence.
 - **Category.** integrity
 - **Likelihood: medium.**
 - **Impact: low.**
-- **Mitigation.** Implemented: `AI_USE_LOG.md`, `docs/ai_disclosure.md`; no public release without Neel (D-003). Not implemented: provenance column, N-01 notes.
+- **Mitigation.** Implemented: `AI_USE_LOG.md`, `docs/AI_DISCLOSURE.md`; no public release without Neel (D-003). Not implemented: provenance column, N-01 notes.
 - **Residual: low.**
 - **Owner.** Neel.
 - **Trigger.** Submission planning.
@@ -631,6 +631,6 @@ residual · owner · trigger or monitoring signal · evidence.
 - **Container fallbacks** (`provenance.py:68,87`) have never run inside a real container. CI has never run.
 - **OMV `compare_arrays` semantics** as a detection oracle were not checked (STATS-06, INTEG-08 skeptics).
 - **Licensed model shortfall** is uncertain: NeuroML-DB per-model licenses were not examined (NEURO-07).
-- **`docs/statistical_plan.md` contradicts itself.** Section 2 says 1 − DR_canonical equals the silent-survival rate since D-021. Section 4.1 still says "DR_canonical is not 1 - silent-survival rate". `docs/build_notes/science-docs.md` s.10 describes the pre-D-021 mismatch.
+- **`docs/STATISTICAL_ANALYSIS_PLAN.md` contradicts itself.** Section 2 says 1 − DR_canonical equals the silent-survival rate since D-021. Section 4.1 still says "DR_canonical is not 1 - silent-survival rate". `docs/build_notes/science-docs.md` s.10 describes the pre-D-021 mismatch.
 - **Stale build notes.** `docs/build_notes/features.md` item 11 still cites a 250 mV bound; the code uses 10 V (`simulators/base.py:20`). `docs/build_notes/mutations.md` s.3 lists `increase_dt` x2 and x5; the code uses x4, x10, x20 (`mutations/numerical.py:77`). `docs/build_notes/core.md` s.2 describes the old `BUILD_ERROR` behaviour, which `jneuroml.py:166-176` has replaced.
 - **Milestone 6 pilot** outcomes were not read. Every "trigger" that names a pilot output is still to be checked when the pilot finishes.

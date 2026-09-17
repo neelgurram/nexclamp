@@ -7,8 +7,8 @@ import tarfile
 
 import pytest
 
-from neurosem import config
-from neurosem.experiments import registry as reg
+from neuraxis import config
+from neuraxis.experiments import registry as reg
 
 
 def _run(raw, name, commit="abc", dirty=False):

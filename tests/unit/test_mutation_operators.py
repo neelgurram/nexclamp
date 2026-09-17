@@ -6,9 +6,9 @@ import dataclasses as dc
 
 import pytest
 
-from neurosem.models import copy_workspace
-from neurosem.mutations import FAMILY_OPERATORS, REGISTRY, MutationError, enforce_single_operator
-from neurosem.mutations.base import (
+from neuraxis.models import copy_workspace
+from neuraxis.mutations import FAMILY_OPERATORS, REGISTRY, MutationError, enforce_single_operator
+from neuraxis.mutations.base import (
     Site,
     element_children,
     localname,
@@ -20,8 +20,8 @@ from neurosem.mutations.base import (
     snippet,
     write_xml,
 )
-from neurosem.mutations.biophysics import ScaleGateTimeConstant
-from neurosem.schemas import Edit, MutationFamily, VariantKind, VariantRecord
+from neuraxis.mutations.biophysics import ScaleGateTimeConstant
+from neuraxis.schemas import Edit, MutationFamily, VariantKind, VariantRecord
 
 BINDING = {
     "stimulus": {"stim_amplitude", "stim_onset", "stim_duration", "sim_length", "record_wrong_variable"},
@@ -29,6 +29,7 @@ BINDING = {
                     "shift_initial_voltage", "wrong_segment_group"},
     "reference": {"wrong_channel", "omit_include", "duplicate_conductance", "wrong_compatible_component"},
     "numerical": {"increase_dt", "solver_config", "reduce_spatial_discretization", "recording_resolution"},
+    "kinetics": {"shift_gate_midpoint", "scale_gate_slope", "shift_forward_rate_midpoint", "shift_channel_vshift"},
 }
 RS_MP = "/neuroml[@id='RS']/cell[@id='RS']/biophysicalProperties[@id='biophys']/membraneProperties[1]"
 LEMS_NS = "{http://www.neuroml.org/lems/0.7.2}"
@@ -105,7 +106,7 @@ def test_stim_onset_and_duration(lts_ws, tmp_path):
 
 
 def test_stim_onset_skips_negative_delays(models, tmp_path):
-    from neurosem.models import materialize
+    from neuraxis.models import materialize
     wb = materialize(models["wangbuzsaki1996_wb"], tmp_path / "wb")     # delay="0ms"
     assert sorted(s.params["shift_ms"] for s in REGISTRY["stim_onset"].sites(wb)) == [2.0, 10.0, 50.0]
 

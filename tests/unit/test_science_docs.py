@@ -13,15 +13,15 @@ from pathlib import Path
 
 import pytest
 
-from neurosem import config
-from neurosem.protocols.definitions import CANONICAL_FEATURES, batched, templates_from_config
-from neurosem.protocols.generate import group_by_length
-from neurosem.protocols.rheobase import search
+from neuraxis import config
+from neuraxis.protocols.definitions import CANONICAL_FEATURES, batched, templates_from_config
+from neuraxis.protocols.generate import group_by_length
+from neuraxis.protocols.rheobase import search
 
 REPO = Path(__file__).resolve().parents[2]
 DOCS = REPO / "docs"
-DOC_NAMES = ("glossary.md", "model_selection.md", "protocol_catalog.md", "mutation_catalog.md",
-             "statistical_plan.md", "ai_disclosure.md", "preregistration_draft.md", "neel_learning_guide.md")
+DOC_NAMES = ("glossary.md", "model_selection.md", "PROTOCOL_CATALOG.md", "MUTATION_CATALOG.md",
+             "STATISTICAL_ANALYSIS_PLAN.md", "AI_DISCLOSURE.md", "PREREGISTRATION_DRAFT.md", "neel_learning_guide.md")
 
 
 def read(name: str) -> str:
@@ -50,7 +50,7 @@ def _study():
 
 
 def test_protocol_catalog_mentions_every_template_and_feature():
-    text = read("protocol_catalog.md")
+    text = read("PROTOCOL_CATALOG.md")
     templates = templates_from_config(_study().get("protocols"))
     for t in templates:
         assert t.protocol_id in text, t.protocol_id
@@ -71,7 +71,7 @@ def test_protocol_catalog_timing_table_matches_code():
     settle = float(cfg["numerics"]["settle_ms"])
     dt = float(cfg["numerics"]["dt_nominal_ms"])
     rows = {}
-    for line in read("protocol_catalog.md").splitlines():
+    for line in read("PROTOCOL_CATALOG.md").splitlines():
         m = _ROW.match(line)
         if m:
             rows[m.group(1)] = tuple(int(m.group(i).replace(",", "")) for i in range(2, 6))
@@ -102,7 +102,7 @@ def test_protocol_catalog_cost_table_matches_code():
     dt = float(cfg["numerics"]["dt_nominal_ms"])
     templates = templates_from_config(cfg.get("protocols"))
     by_short = {t.protocol_id[:3]: t for t in templates}
-    section = _section(read("protocol_catalog.md"), "## 6. Cost measure", "## 7.")
+    section = _section(read("PROTOCOL_CATALOG.md"), "## 6. Cost measure", "## 7.")
 
     seen = set()
     for line in section.splitlines():
@@ -145,7 +145,7 @@ def test_protocol_catalog_rheobase_cost_matches_search():
     not_found = search(_fake_counter(None), **kw)
     assert spontaneous.status == "spontaneous" and not_found.status == "not_found"
 
-    section = _section(read("protocol_catalog.md"), "## 6. Cost measure", "## 7.")
+    section = _section(read("PROTOCOL_CATALOG.md"), "## 6. Cost measure", "## 7.")
     m = re.search(r"^\| P03 rheobase search \| ([\d,]+) per simulation; 1-(\d+) simulations \| up to ([\d,]+) "
                   r"\(1 if spontaneous, 2-(\d+) if ok, (\d+) if not found\) \|", section, re.MULTILINE)
     assert m, "P03 cost row not found"
@@ -154,7 +154,7 @@ def test_protocol_catalog_rheobase_cost_matches_search():
     assert _int(m.group(3)) == per_sim * worst.n_simulations
     assert spontaneous.n_simulations == 1
     assert int(m.group(5)) == not_found.n_simulations
-    text = _norm(read("protocol_catalog.md"))
+    text = _norm(read("PROTOCOL_CATALOG.md"))
     assert f"exactly {not_found.n_simulations} if nothing spikes up to {rh['max_hi_nA']:g} nA" in text
     assert f"up to {worst.n_simulations} simulations, or {per_sim * worst.n_simulations:,} cell-steps" in text
 
@@ -175,14 +175,14 @@ def test_quoted_config_values_match_configs():
     mults = ", ".join(_g(m) for m in tol["sensitivity_multipliers"])
     factors = ", ".join(str(f) for f in num["refinement_factors"])
     expected = {
-        "statistical_plan.md": [
+        "STATISTICAL_ANALYSIS_PLAN.md": [
             f"k = {sel['budget_k']} in `configs/study.yaml`",
             f"`selection.seed` = {sel['seed']}",
             f"`random_draws` = {sel['random_draws']}",
             f"`sensitivity_multipliers` = [{mults}]",
             f"seed {cfg['analysis']['seed']} from `configs/study.yaml`",
         ],
-        "preregistration_draft.md": [
+        "PREREGISTRATION_DRAFT.md": [
             f"`selection.budget_k: {sel['budget_k']}`",
             f"{sel['random_draws']} draws, seed {sel['seed']}",
             f"Current provisional: {_g(num['timeout_s'])} s.",
@@ -192,11 +192,11 @@ def test_quoted_config_values_match_configs():
             f"Current provisional: settle {_g(num['settle_ms'])} ms",
             f"seed {cfg['analysis']['seed']}, ci 0.95",
         ],
-        "mutation_catalog.md": [
+        "MUTATION_CATALOG.md": [
             f"`mutants_per_operator: {pilot['mutants_per_operator']}`",
             f"`transforms_per_operator: {pilot['transforms_per_operator']}`",
         ],
-        "protocol_catalog.md": [
+        "PROTOCOL_CATALOG.md": [
             f"`grid` = {rh['grid']} cells",
             f"s = {_g(num['settle_ms'])} ms settling, then a {_g(rh['step_duration_ms'])} ms step",
             f"upward crossings of {_g(rh['spike_threshold_mV'])} mV",
@@ -215,19 +215,19 @@ def test_quoted_config_values_match_configs():
 
 def test_quoted_heldout_bootstrap_resamples_match_code():
     """B, n_perm and the seed come from configs/study.yaml `analysis`; the docs must quote those values."""
-    src = (REPO / "src" / "neurosem" / "experiments" / "heldout.py").read_text(encoding="utf-8")
-    assert 'acfg.get("n_boot"' in src and 'acfg.get("n_perm"' in src and "paired_comparison(" in src,         "heldout.py bootstrap call changed; update statistical_plan.md and preregistration_draft.md"
+    src = (REPO / "src" / "neuraxis" / "experiments" / "heldout.py").read_text(encoding="utf-8")
+    assert 'acfg.get("n_boot"' in src and 'acfg.get("n_perm"' in src and "paired_comparison(" in src,         "heldout.py bootstrap call changed; update STATISTICAL_ANALYSIS_PLAN.md and PREREGISTRATION_DRAFT.md"
     acfg = _study()["analysis"]
-    for name in ("statistical_plan.md", "preregistration_draft.md"):
+    for name in ("STATISTICAL_ANALYSIS_PLAN.md", "PREREGISTRATION_DRAFT.md"):
         text = _norm(read(name))
         assert f"B = {acfg['n_boot']}" in text and "configs/study.yaml" in text, name
 
 
 def test_detection_rule_matches_heldout_code():
     """The documented primary-endpoint rule is the one heldout.py applies (reproducible detection)."""
-    src = (REPO / "src" / "neurosem" / "experiments" / "heldout.py").read_text(encoding="utf-8")
+    src = (REPO / "src" / "neuraxis" / "experiments" / "heldout.py").read_text(encoding="utf-8")
     assert "set(o.detecting_protocols)" in src and "CANONICAL_ID in o.detecting_protocols" in src
-    for name in ("statistical_plan.md", "preregistration_draft.md"):
+    for name in ("STATISTICAL_ANALYSIS_PLAN.md", "PREREGISTRATION_DRAFT.md"):
         text = _norm(read(name))
         assert "detected at h and at h/2" in text or "detected at h and h/2" in text or "at h and at h/2" in text, name
         assert "Option A (recommended)" not in text, name
@@ -236,7 +236,7 @@ def test_detection_rule_matches_heldout_code():
 def test_protocol_catalog_fingerprint_size_matches_code():
     templates = [t for t in templates_from_config(_study().get("protocols")) if t.implemented]
     n = sum(len(t.features) for t in templates) + len(CANONICAL_FEATURES)
-    assert f"{n} entries per model" in read("protocol_catalog.md")
+    assert f"{n} entries per model" in read("PROTOCOL_CATALOG.md")
 
 
 def _architecture_section(start: str, stop: str) -> str:
@@ -253,13 +253,13 @@ def test_mutation_catalog_covers_every_operator_and_transform():
     tr_section = _architecture_section("### 3.5", "### 3.6")
     for name in transforms:
         assert f"`{name}`" in tr_section, name
-    catalog = read("mutation_catalog.md")
+    catalog = read("MUTATION_CATALOG.md")
     for name in operators + transforms:
         assert f"`{name}`" in catalog, name
 
 
 def test_statistical_plan_covers_endpoints_and_methods():
-    text = read("statistical_plan.md").lower()
+    text = read("STATISTICAL_ANALYSIS_PLAN.md").lower()
     for phrase in ["primary hypothesis", "primary endpoint", "cost-matched random", "silent-survival rate",
                    "false-positive rate", "by mutation family", "exhaustive-battery coverage",
                    "runtime and simulations per detected mutant", "agent-task success", "cluster bootstrap",
@@ -269,7 +269,7 @@ def test_statistical_plan_covers_endpoints_and_methods():
 
 
 def test_preregistration_draft_covers_every_required_item_with_blanks():
-    text = read("preregistration_draft.md")
+    text = read("PREREGISTRATION_DRAFT.md")
     lower = text.lower()
     for item in ["primary hypothesis", "primary endpoint", "inclusion and exclusion rules",
                  "model and mutation splits", "canonical protocol", "candidate protocols", "tolerance policy",
@@ -281,7 +281,7 @@ def test_preregistration_draft_covers_every_required_item_with_blanks():
 
 
 def test_preregistration_draft_does_not_assign_heldout_models():
-    text = read("preregistration_draft.md")
+    text = read("PREREGISTRATION_DRAFT.md")
     with open(REPO / "data" / "model_manifest.csv", newline="", encoding="utf-8") as f:
         model_ids = [r["model_id"] for r in csv.DictReader(f)]
     for mid in model_ids:
@@ -308,6 +308,6 @@ def test_model_selection_lists_every_manifest_model():
 
 
 def test_ai_disclosure_points_to_log():
-    text = read("ai_disclosure.md")
+    text = read("AI_DISCLOSURE.md")
     assert "AI_USE_LOG.md" in text
     assert (REPO / "AI_USE_LOG.md").is_file()

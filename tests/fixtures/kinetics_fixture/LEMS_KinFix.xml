@@ -1,0 +1,13 @@
+<Lems>
+    <!-- Neuraxis kinetics-operator validation fixture harness (Apache-2.0). -->
+    <Target component="sim1"/>
+    <Include file="Cells.xml"/>
+    <Include file="Networks.xml"/>
+    <Include file="Simulation.xml"/>
+    <Include file="KinFix.net.nml"/>
+    <Simulation id="sim1" length="400ms" step="0.01ms" target="net1">
+        <OutputFile id="of" fileName="kinfix_v.dat">
+            <OutputColumn id="v" quantity="pop[0]/v"/>
+        </OutputFile>
+    </Simulation>
+</Lems>

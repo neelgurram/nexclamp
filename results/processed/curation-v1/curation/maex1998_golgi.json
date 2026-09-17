@@ -1,0 +1,56 @@
+{
+  "model": {
+    "model_id": "maex1998_golgi",
+    "name": "Maex and De Schutter 1998 cerebellar Golgi cell (Golgi_98)",
+    "snapshot": "GranCellLayer@cee86047",
+    "cell_file": "NeuroML2/Golgi_98.cell.nml",
+    "cell_id": "Golgi_98",
+    "harness_lems": "",
+    "harness_output_file": "",
+    "harness_v_column": "",
+    "temperature": "32.0 degC",
+    "source_family": "maex1998",
+    "citation": "Maex R, De Schutter E (1998). Synchronization of Golgi and Granule Cell Firing in a Detailed Network Model of the Cerebellar Granule Cell Layer. Journal of Neurophysiology 80(5):2521-2537. doi:10.1152/jn.1998.80.5.2521",
+    "source_url": "https://github.com/OpenSourceBrain/GranCellLayer",
+    "commit": "cee8604721c8654c24d3c69cedc07edb9679d935",
+    "license": "MIT",
+    "license_url": "https://github.com/OpenSourceBrain/GranCellLayer/blob/cee8604721c8654c24d3c69cedc07edb9679d935/LICENSE",
+    "download_date": "2026-09-13",
+    "simulator": "jNeuroML",
+    "expected_behavior": "Single compartment (30 um); NaF, KDr, KA, KCa, CaHVA (Nernst), H, Ca pool. Screening (run 2026-09-13T16:00:56+00:00_aa8fa6a0): spontaneous pacemaking ~7 Hz (ISI CV 0.002); strong spike-frequency adaptation under depolarisation (ISI last/first 3.3 at +0.2 nA, 3.5 at +0.15 nA 2 s); 3-4 rebound spikes after hyperpolarisation. Sag ratio undefined (spike in the pre-step baseline window). At -0.1 nA V recovers 12.5 mV from its late trough; with Ih blocked there is no recovery and V ends at -162 mV instead of -75 mV, so Ih strongly limits hyperpolarisation. Ih-block runs at -0.2 and -0.3 nA aborted in jLEMS.",
+    "inclusion": "candidate",
+    "inclusion_reason": "Recommended candidate for the independent-source adapting model. Ih is functionally large in the block control but a sag ratio is not established. Decisions needed: no single-cell harness shipped; spontaneous activity makes rheobase normalisation fall back to 0.1 nA. Same family as maex1998_granule."
+  },
+  "criteria": {
+    "C01_provenance": true,
+    "C02_reuse_rights": true,
+    "C03_files_present": false,
+    "C04_validation": null,
+    "C05_executes": null,
+    "C06_trace_interpretable": null,
+    "C07_recording_location": null,
+    "C08_responds_to_current": null,
+    "C09_deterministic": null,
+    "C10_refinement_stable": null,
+    "C11_runtime": null,
+    "C12_operators": null,
+    "C13_protocols_compatible": null
+  },
+  "decision": "exclude",
+  "reasons": [
+    "C03_files_present"
+  ],
+  "evidence": {
+    "model_id": "maex1998_golgi",
+    "snapshot": "GranCellLayer@cee86047",
+    "ion_channels": [
+      "GolgiPassiveCond",
+      "Golgi_CaHVA_CML",
+      "Golgi_H_CML",
+      "Golgi_KA_CML",
+      "Golgi_KCa_CML",
+      "Golgi_KDr_CML",
+      "Golgi_NaF_CML"
+    ]
+  }
+}

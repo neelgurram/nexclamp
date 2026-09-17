@@ -1,0 +1,15 @@
+protocol_id,role,kind,description,params,features,implemented,not_implemented_reason
+P00_canonical,comparator (canonical regression test),shipped_harness,"the simulation shipped with each model, run unchanged",{},,True,
+REF_RHEOBASE_CALIBRATION,calibration procedure,rheobase_search,rheobase search on the reference model; sets every stimulus amplitude,"{""see"": ""configs/study.yaml rheobase""}",,True,
+P01_baseline,detection protocol,baseline,Zero-current baseline,"{""duration_ms"": 700}",baseline_voltage;steady_state_voltage;spike_count;firing_regime,True,
+P02_weak_step,detection protocol,step,Weak depolarising step (0.5 x rheobase),"{""duration_ms"": 500, ""multiple"": 0.5, ""post_ms"": 200}",baseline_voltage;steady_state_voltage;voltage_deflection;spike_count,True,
+P03_rheobase,detection measurement,rheobase,"Rheobase search (500 ms steps, bracketing grid)","{""duration_ms"": 500, ""post_ms"": 0}",rheobase,True,
+P04_step_2x,detection protocol,step,Step at 2 x rheobase,"{""duration_ms"": 500, ""multiple"": 2.0, ""post_ms"": 200}",spike_count;mean_frequency;first_spike_latency;ap_amplitude;ap_half_width;ahp_depth;first_isi;last_isi;adaptation_index;burst_count;firing_regime,True,
+P05_long_step,detection protocol,step,"Long suprathreshold step (1.5 x rheobase, 2 s)","{""duration_ms"": 2000, ""multiple"": 1.5, ""post_ms"": 200}",spike_count;mean_frequency;first_spike_latency;ap_amplitude;ap_half_width;ahp_depth;first_isi;last_isi;adaptation_index;burst_count;firing_regime,True,
+P06_ramp,detection protocol,ramp,Depolarising ramp 0 -> 3 x rheobase over 1 s,"{""duration_ms"": 1000, ""finish_multiple"": 3.0, ""post_ms"": 200}",spike_count;first_spike_latency;mean_frequency;firing_regime,True,
+P07_hyperpolarizing_step,detection protocol,step,Hyperpolarising step (-1 x rheobase),"{""duration_ms"": 500, ""multiple"": -1.0, ""post_ms"": 200}",baseline_voltage;steady_state_voltage;voltage_deflection;sag_ratio;minimum_voltage,True,
+P08_rebound,detection protocol,rebound,"Hyperpolarisation (-2 x rheobase, 500 ms) then release","{""duration_ms"": 500, ""multiple"": 2.0, ""post_window_ms"": 300}",spike_count;first_spike_latency;maximum_voltage;firing_regime,True,
+P09_short_pulse,detection protocol,short_pulse,"Short suprathreshold pulse (3 ms, 10 x rheobase)","{""multiple"": 10.0, ""post_ms"": 140, ""pulse_ms"": 3, ""window_ms"": 60}",spike_count;first_spike_latency;ap_amplitude;ap_half_width;ahp_depth,True,
+P10_paired_pulses,detection protocol,paired_pulse,"Paired pulses (3 ms, 10 x rheobase, 20 ms apart)","{""interval_ms"": 20, ""multiple"": 10.0, ""post_ms"": 120, ""pulse_ms"": 3, ""window_ms"": 80}",spike_count;first_spike_latency;first_isi;ap_amplitude,True,
+P11_chirp,detection protocol,chirp,Deterministic chirp,{},,False,NeuroML v2.3.1 core inputs have no chirp type (sineGenerator has a fixed period); deferred as the specification allows
+P12_frozen_noise,detection protocol,frozen_noise,Frozen pseudo-random waveform,{},,False,no core arbitrary-waveform input; later extension per specification

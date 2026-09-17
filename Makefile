@@ -3,7 +3,7 @@
 # commands. On Windows without make, run the equivalent commands in docs/REPRODUCING.md.
 # This Makefile has never been executed: GNU make is not installed on the authoring machine.
 #
-# validate-models, pilot and reproduce-paper call the `neurosem` CLI (src/neurosem/cli.py,
+# validate-models, pilot and reproduce-paper call the `neurosem` CLI (src/neuraxis/cli.py,
 # docs/ARCHITECTURE.md section 3.9). On 2026-09-13 their argument parsing was checked with
 # `neurosem <command> --help`; pilot and reproduce-paper were not run.
 #

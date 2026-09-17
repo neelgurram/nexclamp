@@ -17,7 +17,7 @@ shows how NeuroSem checks each one.
 | 2 | License permitting intended use and redistribution, or handled without redistribution | License text read at the pinned commit before download; recorded in `license`, `license_url` and `PROVENANCE.json` |
 | 3 | Passes current NeuroML validation | `jnml -validate` (jNeuroML 0.14.0) is authoritative; libNeuroML 0.6.7 check recorded as informational (section 6) |
 | 4 | Executes deterministically in the frozen environment | Repeated runs must give the same conclusions within predeclared tolerance (Milestone 2 exit test) |
-| 5 | Completes candidate protocols within practical runtime | Cost in cell-steps per protocol (`docs/protocol_catalog.md`) plus measured wall time |
+| 5 | Completes candidate protocols within practical runtime | Cost in cell-steps per protocol (`docs/PROTOCOL_CATALOG.md`) plus measured wall time |
 | 6 | Produces interpretable voltage output | Harness has a membrane-voltage `OutputColumn` (`harness_v_column`) |
 | 7 | Responds meaningfully to current injection | Rheobase search returns status `ok` (not `not_found`), and the reference is not spontaneously active |
 | 8 | Scientific provenance to a publication or established repository | `citation` verified against Crossref/PubMed in M0 evidence |
@@ -149,7 +149,7 @@ Consequences:
    same kinetics across all four cells. Detection outcomes across them are therefore
    expected to correlate.
 2. Statistical clustering must allow for this. The planned cluster is the base model, and
-   a sensitivity analysis clusters by `source_family` (`docs/statistical_plan.md`).
+   a sensitivity analysis clusters by `source_family` (`docs/STATISTICAL_ANALYSIS_PLAN.md`).
 3. **A Pospischil cell in the held-out set is not an unseen model** if another Pospischil
    cell is in the discovery set. Doing so would overstate generalisation. How to split
    source families is a decision for Neel, made before any split file is created.

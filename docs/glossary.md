@@ -85,7 +85,7 @@ models remain to form one.
 
 **Preregistration.** A time-stamped, frozen statement of hypotheses, endpoints, rules and
 analyses written before the final data are seen. NeuroSem's draft is
-`docs/preregistration_draft.md`.
+`docs/PREREGISTRATION_DRAFT.md`.
 
 **`configs/FROZEN.lock`.** The planned file of hashes that fixes configuration and split
 files at preregistration. The held-out gate refuses to open held-out data unless the

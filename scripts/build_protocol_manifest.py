@@ -1,7 +1,7 @@
 """Generate ``data/protocol_manifest.csv`` from the protocol templates.
 
 The manifest is a *derived* file: the single source of truth is the template catalogue in
-``src/neurosem/protocols/definitions.py`` as overridden by ``configs/study.yaml``. Writing
+``src/neuraxis/protocols/definitions.py`` as overridden by ``configs/study.yaml``. Writing
 it out as a table lets reviewers (and the preregistration) see exactly which candidate
 protocols exist without reading code, and ``--check`` lets tests fail when someone edits a
 template but forgets to regenerate the table.
@@ -32,16 +32,16 @@ from collections.abc import Sequence
 from pathlib import Path
 from typing import Any
 
-from neurosem import config
-from neurosem.protocols.definitions import ProtocolTemplate, templates_from_config
-from neurosem.provenance import REPO_ROOT
+from neuraxis import config
+from neuraxis.protocols.definitions import ProtocolTemplate, templates_from_config
+from neuraxis.provenance import REPO_ROOT
 
 COLUMNS = ("protocol_id", "kind", "description", "params_json", "features", "implemented",
            "not_implemented_reason")
 DEFAULT_OUTPUT = REPO_ROOT / "data" / "protocol_manifest.csv"
 FEATURE_SEP = ";"
 # Kinds that code can run: the batched kinds handled by ProtocolTemplate.instantiate in
-# src/neurosem/protocols/definitions.py, plus the rheobase search (protocols/rheobase.py).
+# src/neuraxis/protocols/definitions.py, plus the rheobase search (protocols/rheobase.py).
 IMPLEMENTED_KINDS = frozenset({"baseline", "step", "ramp", "rebound", "short_pulse", "paired_pulse", "rheobase"})
 
 

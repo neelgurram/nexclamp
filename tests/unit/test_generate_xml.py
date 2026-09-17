@@ -1,4 +1,4 @@
-"""Tests for neurosem.protocols.generate: probe network / LEMS XML, probe bundles and harness parsing.
+"""Tests for neuraxis.protocols.generate: probe network / LEMS XML, probe bundles and harness parsing.
 
 Generated networks are checked two ways without Java: structurally with lxml, and
 against NeuroML_v2.3.1.xsd shipped inside the installed libNeuroML (the schema version
@@ -14,9 +14,9 @@ from pathlib import Path
 import pytest
 from lxml import etree
 
-from neurosem.models import load_models, snapshot_dir
-from neurosem.protocols.definitions import DEFAULT_TEMPLATES, batched
-from neurosem.protocols.generate import (
+from neuraxis.models import load_models, snapshot_dir
+from neuraxis.protocols.definitions import DEFAULT_TEMPLATES, batched
+from neuraxis.protocols.generate import (
     DEFAULT_SEED,
     PROBE_NET_ID,
     PROBE_SIM_ID,
@@ -29,9 +29,9 @@ from neurosem.protocols.generate import (
     population_id,
     write_probe,
 )
-from neurosem.schemas import AnalysisWindow, ConcreteProtocol, ExecConfig, StimulusComponent
-from neurosem.simulators.base import OutputSpec
-from neurosem.units import parse
+from neuraxis.schemas import AnalysisWindow, ConcreteProtocol, ExecConfig, StimulusComponent
+from neuraxis.simulators.base import OutputSpec
+from neuraxis.units import parse
 
 NML = "{http://www.neuroml.org/schema/neuroml2}"
 MODELS = load_models()

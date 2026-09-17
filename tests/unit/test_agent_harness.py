@@ -1,7 +1,7 @@
 """Milestone 9 agent-study harness: task files, isolation of exports, scoring, trial logs.
 
-No agent is started by these tests. Tests that seed faults need neurosem.mutations and
-neurosem.transforms and are skipped (with the import error) when either registry is missing.
+No agent is started by these tests. Tests that seed faults need neuraxis.mutations and
+neuraxis.transforms and are skipped (with the import error) when either registry is missing.
 Exports are made with ``allow_dirty=True`` (development-only) unless a test controls the Git
 state, because the working tree under test is not necessarily committed.
 """
@@ -24,10 +24,10 @@ import numpy as np
 import pytest
 import yaml
 
-from neurosem import units
-from neurosem.experiments import agent
-from neurosem.models import materialize
-from neurosem.provenance import ImmutableWriteError, sha256_file, sha256_json
+from neuraxis import units
+from neuraxis.experiments import agent
+from neuraxis.models import materialize
+from neuraxis.provenance import ImmutableWriteError, sha256_file, sha256_json
 
 REPO = Path(__file__).resolve().parents[2]
 S = agent.LayerStatus
@@ -89,7 +89,7 @@ def _require_registries():
         agent.load_operator_registry("mutations")
         agent.load_operator_registry("transforms")
     except agent.OperatorsUnavailable as exc:
-        pytest.skip(f"seeded-fault export needs neurosem.mutations and neurosem.transforms: {exc}")
+        pytest.skip(f"seeded-fault export needs neuraxis.mutations and neuraxis.transforms: {exc}")
 
 
 # ----------------------------------------------------------------------------- task and hidden specs
@@ -205,15 +205,15 @@ def test_policy_documents_mandatory_exclusions_and_exports_no_framework(policy):
     ".git/HEAD", "sub/.git/config", "agent_study/hidden/t01_unit_repair/hidden_checks.yaml",
     "agent_study/tasks/t01_unit_repair/task.yaml", "docs/m0_evidence/tools/efel.verify.json", "results/raw/c/r/run.json",
     "work/tmp/a.txt", "data/splits/heldout/any_name.txt", "models/raw/X/PROVENANCE.json",
-    "src/neurosem/experiments/agent.py", "tests/unit/test_agent_harness.py", "configs/agent_policy.yaml",
-    "src/neurosem/__pycache__/x.cpython-312.pyc", "docs/agent_study_protocol.md",
+    "src/neuraxis/experiments/agent.py", "tests/unit/test_agent_harness.py", "configs/agent_policy.yaml",
+    "src/neuraxis/__pycache__/x.cpython-312.pyc", "docs/agent_study_protocol.md",
 ])
 def test_mandatory_exclusions(rel):
     assert agent.is_mandatory_excluded(rel)
 
 
 def test_ordinary_files_are_not_excluded():
-    for rel in ("README.md", "src/neurosem/units.py", "docs/ARCHITECTURE.md", "data/model_manifest.csv"):
+    for rel in ("README.md", "src/neuraxis/units.py", "docs/ARCHITECTURE.md", "data/model_manifest.csv"):
         assert not agent.is_mandatory_excluded(rel)
 
 
@@ -221,15 +221,15 @@ def test_export_tree_never_exports_hidden_material_even_if_everything_is_include
     src = tmp_path / "repo"
     files = {".git/HEAD": "ref", "nested/.git/config": "x", "agent_study/hidden/t01_x/hidden_checks.yaml": "secret",
              "agent_study/tasks/t01_x/task.yaml": "seed", "docs/m0_evidence/a.json": "{}", "results/raw/r.json": "{}",
-             "work/tmp/a.txt": "a", "configs/agent_policy.yaml": "p", "src/neurosem/experiments/agent.py": "code",
-             "tests/unit/test_x.py": "t", "README.md": "readme", "src/neurosem/core.py": "core",
+             "work/tmp/a.txt": "a", "configs/agent_policy.yaml": "p", "src/neuraxis/experiments/agent.py": "code",
+             "tests/unit/test_x.py": "t", "README.md": "readme", "src/neuraxis/core.py": "core",
              "docs/ARCHITECTURE.md": "arch"}
     for rel, text in files.items():
         (src / rel).parent.mkdir(parents=True, exist_ok=True)
         (src / rel).write_text(text, encoding="utf-8")
     out = tmp_path / "out"
     copied = agent.export_tree(src, out, include=("**",))
-    assert set(copied) == {"README.md", "src/neurosem/core.py", "docs/ARCHITECTURE.md"}
+    assert set(copied) == {"README.md", "src/neuraxis/core.py", "docs/ARCHITECTURE.md"}
     assert agent.list_files(out) == sorted(copied)
     for rel, digest in copied.items():
         assert sha256_file(out / rel) == digest == sha256_file(src / rel)
@@ -851,7 +851,7 @@ def test_frozen_scoring_checks_export_record_and_evaluator_state(tmp_path, polic
     state.update(commit="b" * 40)                         # evaluator moved on after the freeze
     with pytest.raises(agent.FrozenConfigError, match="evaluator is at commit"):
         agent.score_trial(T06, exp.trial_dir, frozen, **kw)
-    state.update(commit="a" * 40, clean=False, dirty_paths=["src/neurosem/experiments/agent.py"])
+    state.update(commit="a" * 40, clean=False, dirty_paths=["src/neuraxis/experiments/agent.py"])
     dev = _export(T06, tmp_path, policy, models, name="dev", allow_dirty=True)
     state.update(clean=True, dirty_paths=[])
     with pytest.raises(agent.FrozenConfigError, match="development-only"):
@@ -951,7 +951,7 @@ def _runner_module():
 
 def test_public_runner_is_standalone_and_matches_reference_spike_detection(tmp_path):
     source = (agent.PUBLIC_COMMON_DIR / agent.PUBLIC_RUNNER).read_text(encoding="utf-8")
-    assert "import neurosem" not in source and "from neurosem" not in source
+    assert "import neuraxis" not in source and "from neuraxis" not in source
     assert not any(m in source for m in agent.LEAK_MARKERS)
     runner = _runner_module()
     t = np.arange(0.0, 200.0, 0.01)
@@ -990,8 +990,8 @@ def _synthetic_canonical_tolerances(path: Path, model_id: str) -> Path:
     Numeric tolerance 1e-3 (feature units): tighter than any physiological change, looser than
     floating-point noise between SI-equal spellings. Synthetic values for the harness test only.
     """
-    from neurosem.protocols.definitions import CANONICAL_FEATURES, CANONICAL_ID
-    from neurosem.validation.convergence import TolEntry, ToleranceTable
+    from neuraxis.protocols.definitions import CANONICAL_FEATURES, CANONICAL_ID
+    from neuraxis.validation.convergence import TolEntry, ToleranceTable
 
     entries = [TolEntry(model_id, CANONICAL_ID, f, "categorical" if f == "firing_regime" else "numeric", None, None, None,
                         "defined", "defined", 0.0, 0.0, 0.0, None if f == "firing_regime" else 1e-3, "abs_floor",
@@ -1040,7 +1040,7 @@ def test_score_trial_real_layers_on_hh_unit_conversion(sim, tmp_path, policy, mo
 
 @pytest.mark.jnml
 def test_refactored_hh_model_validates_and_reproduces_reference(sim, tmp_path, policy, models):
-    from neurosem.simulators.base import OutputSpec
+    from neuraxis.simulators.base import OutputSpec
 
     exp = _export("t04_include_refactor", tmp_path, policy, models)
     _refactor_hh_channels(exp.trial_dir / "model")

@@ -1,4 +1,4 @@
-"""Tests for neurosem.units: parsing, SI conversion and XSD-safe formatting of NeuroML quantities.
+"""Tests for neuraxis.units: parsing, SI conversion and XSD-safe formatting of NeuroML quantities.
 
 The expected SI factors below are written out from first principles (e.g. 1 mS/cm2 =
 1e-3 S / 1e-4 m2 = 10 S/m2), not copied from the module, so a wrong table entry fails.
@@ -17,8 +17,8 @@ from pathlib import Path
 import pytest
 from lxml import etree
 
-from neurosem import units
-from neurosem.units import UNITS, Quantity, convert, format_number, format_quantity, parse, same_si, units_for
+from neuraxis import units
+from neuraxis.units import UNITS, Quantity, convert, format_number, format_quantity, parse, same_si, units_for
 
 XS = "{http://www.w3.org/2001/XMLSchema}"
 

@@ -1,4 +1,4 @@
-"""Tests for neurosem.provenance: hashes, tree manifests, environment digests and immutable writes."""
+"""Tests for neuraxis.provenance: hashes, tree manifests, environment digests and immutable writes."""
 
 from __future__ import annotations
 
@@ -11,8 +11,8 @@ from pathlib import Path
 
 import pytest
 
-from neurosem import provenance as prov
-from neurosem.provenance import (
+from neuraxis import provenance as prov
+from neuraxis.provenance import (
     ImmutableWriteError,
     environment_digest,
     git_state,
@@ -238,4 +238,4 @@ def test_utc_now_is_iso_utc():
 
 def test_repo_root_points_at_repository():
     assert (prov.REPO_ROOT / "pyproject.toml").is_file()
-    assert (prov.REPO_ROOT / "src" / "neurosem" / "provenance.py").is_file()
+    assert (prov.REPO_ROOT / "src" / "neuraxis" / "provenance.py").is_file()

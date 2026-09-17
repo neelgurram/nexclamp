@@ -1,0 +1,646 @@
+[
+  {
+    "source": "PyPI JSON API",
+    "query_or_url": "https://pypi.org/pypi/neuraxis/json ; https://pypi.org/pypi/neur-axis/json ; https://pypi.org/simple/neuraxis/",
+    "method": "curl HTTP status",
+    "date": "2026-09-16",
+    "answered": true,
+    "hit_count": 0,
+    "relevant_hits": [],
+    "conflict_assessment": "none",
+    "notes": "All HTTP 404. Positive control https://pypi.org/pypi/efel/json returned 200. PyPI normalises NeurAxis/neuraxis to the same project name.",
+    "timing": "run 2026-09-17 01:14-01:18 UTC (2026-09-16 local); curl from Git Bash unless method says WebSearch/WebFetch"
+  },
+  {
+    "source": "PyPI web search",
+    "query_or_url": "https://pypi.org/search/?q=neuraxis",
+    "method": "curl",
+    "date": "2026-09-16",
+    "answered": false,
+    "hit_count": null,
+    "relevant_hits": [],
+    "conflict_assessment": "not assessed",
+    "notes": "HTTP 200 but the page was a JavaScript bot-check shell (about 3 KB) with no results; not a valid search result.",
+    "timing": "run 2026-09-17 01:14-01:18 UTC (2026-09-16 local); curl from Git Bash unless method says WebSearch/WebFetch"
+  },
+  {
+    "source": "conda-forge (anaconda.org API)",
+    "query_or_url": "https://api.anaconda.org/package/conda-forge/neuraxis",
+    "method": "curl HTTP status",
+    "date": "2026-09-16",
+    "answered": true,
+    "hit_count": 0,
+    "relevant_hits": [],
+    "conflict_assessment": "none",
+    "notes": "HTTP 404; control numpy returned 200.",
+    "timing": "run 2026-09-17 01:14-01:18 UTC (2026-09-16 local); curl from Git Bash unless method says WebSearch/WebFetch"
+  },
+  {
+    "source": "npm registry (extra)",
+    "query_or_url": "https://registry.npmjs.org/neuraxis",
+    "method": "curl HTTP status",
+    "date": "2026-09-16",
+    "answered": true,
+    "hit_count": 0,
+    "relevant_hits": [],
+    "conflict_assessment": "none",
+    "notes": "HTTP 404.",
+    "timing": "run 2026-09-17 01:14-01:18 UTC (2026-09-16 local); curl from Git Bash unless method says WebSearch/WebFetch"
+  },
+  {
+    "source": "crates.io (extra)",
+    "query_or_url": "https://crates.io/api/v1/crates?q=neuraxis ; https://crates.io/api/v1/crates/markdown-neuraxis",
+    "method": "curl",
+    "date": "2026-09-16",
+    "answered": true,
+    "hit_count": 0,
+    "relevant_hits": [],
+    "conflict_assessment": "none",
+    "notes": "Search total 0; no markdown-neuraxis crate.",
+    "timing": "run 2026-09-17 01:14-01:18 UTC (2026-09-16 local); curl from Git Bash unless method says WebSearch/WebFetch"
+  },
+  {
+    "source": "CRAN via crandb (extra)",
+    "query_or_url": "https://crandb.r-pkg.org/neuraxis",
+    "method": "curl",
+    "date": "2026-09-16",
+    "answered": true,
+    "hit_count": 0,
+    "relevant_hits": [],
+    "conflict_assessment": "none",
+    "notes": "HTTP 404 not_found.",
+    "timing": "run 2026-09-17 01:14-01:18 UTC (2026-09-16 local); curl from Git Bash unless method says WebSearch/WebFetch"
+  },
+  {
+    "source": "Read the Docs (extra)",
+    "query_or_url": "https://readthedocs.org/api/v3/projects/neuraxis/",
+    "method": "curl",
+    "date": "2026-09-16",
+    "answered": true,
+    "hit_count": 0,
+    "relevant_hits": [],
+    "conflict_assessment": "none",
+    "notes": "HTTP 404.",
+    "timing": "run 2026-09-17 01:14-01:18 UTC (2026-09-16 local); curl from Git Bash unless method says WebSearch/WebFetch"
+  },
+  {
+    "source": "GitHub user/org name",
+    "query_or_url": "https://api.github.com/users/neuraxis",
+    "method": "curl (unauthenticated)",
+    "date": "2026-09-16",
+    "answered": true,
+    "hit_count": 0,
+    "relevant_hits": [],
+    "conflict_assessment": "none",
+    "notes": "HTTP 404: the exact login 'neuraxis' is unclaimed.",
+    "timing": "run 2026-09-17 01:14-01:18 UTC (2026-09-16 local); curl from Git Bash unless method says WebSearch/WebFetch"
+  },
+  {
+    "source": "GitHub user search",
+    "query_or_url": "https://api.github.com/search/users?q=neuraxis",
+    "method": "curl (unauthenticated)",
+    "date": "2026-09-16",
+    "answered": true,
+    "hit_count": 8,
+    "relevant_hits": [
+      {
+        "name": "Neuraxis-Labs (organisation)",
+        "url": "https://github.com/Neuraxis-Labs",
+        "what": "Org created 2026-08-27; hosts TSFM-Robustness-Benchmark, a robustness testing tool for time-series foundation models (repo created 2026-07-12, pushed 2026-09-16, 2 stars, no licence)",
+        "field": "ML software testing",
+        "active": "yes"
+      },
+      {
+        "name": "neuraxisltd (organisation)",
+        "url": "https://github.com/neuraxisltd",
+        "what": "Empty org, created 2019-07-21, 0 public repos",
+        "field": "unknown",
+        "active": "no visible activity"
+      },
+      {
+        "name": "NULLWORKS-systems (organisation, matched on profile text)",
+        "url": "https://github.com/NULLWORKS-systems",
+        "what": "Org 'NULLWORKS', created 2026-09-05, blog nullworks.systems",
+        "field": "unknown",
+        "active": "yes"
+      },
+      {
+        "name": "Neuraxis1, neuraxistechnologies-dotcom, neuraxisproleo, NeuraxisOfficial, neuraxispro (users)",
+        "url": "https://github.com/Neuraxis1",
+        "what": "Personal accounts with 0-1 public repos",
+        "field": "unknown",
+        "active": "minimal"
+      }
+    ],
+    "conflict_assessment": "low",
+    "notes": "Account-name overlap only.",
+    "timing": "run 2026-09-17 01:14-01:18 UTC (2026-09-16 local); curl from Git Bash unless method says WebSearch/WebFetch"
+  },
+  {
+    "source": "GitHub repository search",
+    "query_or_url": "https://api.github.com/search/repositories?q=neuraxis&per_page=100",
+    "method": "curl (unauthenticated)",
+    "date": "2026-09-16",
+    "answered": true,
+    "hit_count": 20,
+    "relevant_hits": [
+      {
+        "name": "timabell/markdown-neuraxis",
+        "url": "https://github.com/timabell/markdown-neuraxis",
+        "what": "Markdown personal-knowledge tool, Rust, 46 stars, pushed 2026-08-13",
+        "field": "productivity software",
+        "active": "yes"
+      },
+      {
+        "name": "bstBizEra/neuraxis",
+        "url": "https://github.com/bstBizEra/neuraxis",
+        "what": "Python repo, created 2026-09-15, pushed 2026-09-16, no description; PR titles found by web search mention conformance suites",
+        "field": "governance / conformance software",
+        "active": "yes, brand new"
+      },
+      {
+        "name": "MAHAD6798/NEURAXIS.AI",
+        "url": "https://github.com/MAHAD6798/NEURAXIS.AI",
+        "what": "'NeurAxis.AI' disease-diagnostics Streamlit app built from course-style algorithms, MIT, 2 stars, created and last pushed 2026-06-06",
+        "field": "medical AI (demo)",
+        "active": "single-day project"
+      },
+      {
+        "name": "parasdahal/neuraxis",
+        "url": "https://github.com/parasdahal/neuraxis",
+        "what": "ML-as-a-service platform, PHP, archived, 2017",
+        "field": "ML platform",
+        "active": "no (archived)"
+      },
+      {
+        "name": "ARUN18-lang/Neuraxis and ARUN18-lang/Neuraxis-customer-portal",
+        "url": "https://github.com/ARUN18-lang/Neuraxis",
+        "what": "Landing page and KYC portal for a 'Neuraxis' technology studio, 2026",
+        "field": "web/tech services",
+        "active": "yes"
+      },
+      {
+        "name": "richasinha12/neuraxis-ai, rdgsc/neuraxis-agents, pmrinal2005/neuraxis, gangj277/neuraxis-landing, seeenkkkk/Neuraxis-web",
+        "url": "https://github.com/richasinha12/neuraxis-ai",
+        "what": "AI consulting, agent and landing-page projects, 2026, 0 stars",
+        "field": "AI services",
+        "active": "mixed"
+      },
+      {
+        "name": "Others: shivansh090/Neuraxis, CFCMedia/neuraxis2, athgrivas/Neuraxis, hanghangaidoudou/neuraxislink, badhusha2000/Neuraxis-, crazyhorse-69/web-projects, shivansh090/DemoNeuraxisApi, CFCMedia/neuraxis-assets, clempty/neuraxis-vault-registry",
+        "url": "https://github.com/search?q=neuraxis&type=repositories",
+        "what": "Small or empty repos",
+        "field": "various",
+        "active": "mostly inactive"
+      }
+    ],
+    "conflict_assessment": "low-medium",
+    "notes": "incomplete_results=false. No repository is a neuroscience modelling tool, but the name is popular for AI/tech branding: 15 of the 20 repos were created in 2025-2026.",
+    "timing": "run 2026-09-17 01:14-01:18 UTC (2026-09-16 local); curl from Git Bash unless method says WebSearch/WebFetch"
+  },
+  {
+    "source": "GitHub repository search, phrase variant",
+    "query_or_url": "https://api.github.com/search/repositories?q=%22neur-axis%22",
+    "method": "curl (unauthenticated)",
+    "date": "2026-09-16",
+    "answered": true,
+    "hit_count": 12,
+    "relevant_hits": [
+      {
+        "name": "WangQian-NUSLiuLab/NeuroAxis",
+        "url": "https://github.com/WangQian-NUSLiuLab/NeuroAxis",
+        "what": "No description; spelled NeuroAxis",
+        "field": "unknown (lab account)",
+        "active": "unknown"
+      }
+    ],
+    "conflict_assessment": "low",
+    "notes": "Tokenised matches (NeuraAxis, NeuroAxis, NeuralAxis, neural-axis). None spelled Neuraxis.",
+    "timing": "run 2026-09-17 01:14-01:18 UTC (2026-09-16 local); curl from Git Bash unless method says WebSearch/WebFetch"
+  },
+  {
+    "source": "GitHub code search",
+    "query_or_url": "https://api.github.com/search/code?q=neuraxis",
+    "method": "curl (unauthenticated)",
+    "date": "2026-09-16",
+    "answered": false,
+    "hit_count": null,
+    "relevant_hits": [],
+    "conflict_assessment": "not assessed",
+    "notes": "HTTP 401: code search requires authentication; not run (no login used).",
+    "timing": "run 2026-09-17 01:14-01:18 UTC (2026-09-16 local); curl from Git Bash unless method says WebSearch/WebFetch"
+  },
+  {
+    "source": "GitLab projects and groups",
+    "query_or_url": "https://gitlab.com/api/v4/projects?search=neuraxis&per_page=100 ; https://gitlab.com/api/v4/groups?search=neuraxis",
+    "method": "curl (unauthenticated)",
+    "date": "2026-09-16",
+    "answered": true,
+    "hit_count": 0,
+    "relevant_hits": [],
+    "conflict_assessment": "none",
+    "notes": "Both returned empty lists (public projects/groups only).",
+    "timing": "run 2026-09-17 01:14-01:18 UTC (2026-09-16 local); curl from Git Bash unless method says WebSearch/WebFetch"
+  },
+  {
+    "source": "Zenodo",
+    "query_or_url": "https://zenodo.org/api/records?q=neuraxis&size=25 ; https://zenodo.org/api/records?q=title:neuraxis&size=25",
+    "method": "curl",
+    "date": "2026-09-16",
+    "answered": true,
+    "hit_count": 15,
+    "relevant_hits": [
+      {
+        "name": "Anatomical uses only, e.g. 'Calcifying pseudoneoplasm of the neuraxis (CAPNON) ...'",
+        "url": "https://doi.org/10.5281/zenodo.3605545",
+        "what": "Case reports and papers using the anatomical term",
+        "field": "clinical neuroscience",
+        "active": "n/a"
+      }
+    ],
+    "conflict_assessment": "none",
+    "notes": "15 records (title-only query: 3), all anatomical or incidental; no software or dataset named Neuraxis. A first attempt with size=50 returned HTTP 400 (unauthenticated page-size limit is 25) and was repeated with size=25.",
+    "timing": "run 2026-09-17 01:14-01:18 UTC (2026-09-16 local); curl from Git Bash unless method says WebSearch/WebFetch"
+  },
+  {
+    "source": "arXiv API",
+    "query_or_url": "https://export.arxiv.org/api/query?search_query=all:neuraxis&max_results=50 ; https://export.arxiv.org/api/query?search_query=ti:neuraxis&max_results=50",
+    "method": "curl",
+    "date": "2026-09-16",
+    "answered": true,
+    "hit_count": 0,
+    "relevant_hits": [],
+    "conflict_assessment": "none",
+    "notes": "totalResults 0 for both.",
+    "timing": "run 2026-09-17 01:14-01:18 UTC (2026-09-16 local); curl from Git Bash unless method says WebSearch/WebFetch"
+  },
+  {
+    "source": "arXiv web search",
+    "query_or_url": "https://arxiv.org/search/?query=neuraxis&searchtype=all",
+    "method": "curl",
+    "date": "2026-09-16",
+    "answered": true,
+    "hit_count": 0,
+    "relevant_hits": [],
+    "conflict_assessment": "none",
+    "notes": "Page states the query returned no results.",
+    "timing": "run 2026-09-17 01:14-01:18 UTC (2026-09-16 local); curl from Git Bash unless method says WebSearch/WebFetch"
+  },
+  {
+    "source": "PubMed (E-utilities)",
+    "query_or_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=neuraxis%5Btiab%5D&retmode=json",
+    "method": "curl",
+    "date": "2026-09-16",
+    "answered": true,
+    "hit_count": 2092,
+    "relevant_hits": [
+      {
+        "name": "Presumed anatomical usage (records not screened)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/?term=neuraxis%5Btiab%5D",
+        "what": "Title/abstract uses of the word; the Crossref, Europe PMC and Zenodo samples of the same literature were all anatomical",
+        "field": "biomedicine",
+        "active": "n/a"
+      }
+    ],
+    "conflict_assessment": "none as a name conflict; high search noise",
+    "notes": "2,092 title/abstract records, not individually screened. The unqualified term 'neuraxis' is mapped by PubMed to MeSH 'central nervous system' (1,794,764 records).",
+    "timing": "run 2026-09-17 01:14-01:18 UTC (2026-09-16 local); curl from Git Bash unless method says WebSearch/WebFetch"
+  },
+  {
+    "source": "Europe PMC preprints (bioRxiv supplement, extra)",
+    "query_or_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=neuraxis%20AND%20SRC:PPR&format=json&pageSize=50",
+    "method": "curl",
+    "date": "2026-09-16",
+    "answered": true,
+    "hit_count": 49,
+    "relevant_hits": [
+      {
+        "name": "Anatomical usage, e.g. 'Functional Gradients of the Neuraxis ...' (Research Square 2026)",
+        "url": "https://doi.org/10.21203/rs.3.rs-10155262/v1",
+        "what": "bioRxiv / Research Square preprints using the anatomical term",
+        "field": "neuroscience",
+        "active": "n/a"
+      }
+    ],
+    "conflict_assessment": "none",
+    "notes": "The first 30 titles screened were all anatomical. Europe PMC all-sources query (https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=neuraxis&format=json) hitCount 7,670.",
+    "timing": "run 2026-09-17 01:14-01:18 UTC (2026-09-16 local); curl from Git Bash unless method says WebSearch/WebFetch"
+  },
+  {
+    "source": "bioRxiv",
+    "query_or_url": "WebSearch: neuraxis site:biorxiv.org",
+    "method": "WebSearch",
+    "date": "2026-09-16",
+    "answered": true,
+    "hit_count": 9,
+    "relevant_hits": [
+      {
+        "name": "Anatomical usage, e.g. NTS nutrient-sensing preprint (2020)",
+        "url": "https://www.biorxiv.org/content/10.1101/2020.06.23.167494v1.full",
+        "what": "Preprints using the anatomical term",
+        "field": "neuroscience",
+        "active": "n/a"
+      }
+    ],
+    "conflict_assessment": "none",
+    "notes": "The bioRxiv API (https://api.biorxiv.org) has no keyword search, so a site-restricted web search plus Europe PMC preprints were used.",
+    "timing": "run 2026-09-17 01:14-01:18 UTC (2026-09-16 local); curl from Git Bash unless method says WebSearch/WebFetch"
+  },
+  {
+    "source": "Crossref (extra)",
+    "query_or_url": "https://api.crossref.org/works?query.bibliographic=neuraxis&rows=30",
+    "method": "curl",
+    "date": "2026-09-16",
+    "answered": true,
+    "hit_count": 294,
+    "relevant_hits": [
+      {
+        "name": "Reference entries titled 'Neuraxis' (OED, Encyclopedia of Pain, Encyclopedia of Neuroscience)",
+        "url": "https://doi.org/10.1007/978-3-540-29678-2_3805",
+        "what": "Definitions of the anatomical term",
+        "field": "neuroscience",
+        "active": "n/a"
+      }
+    ],
+    "conflict_assessment": "none as a name conflict; high search noise",
+    "notes": "Top 30 all anatomical. Crossref relevance matching is fuzzy, so 294 is not an exact-word count.",
+    "timing": "run 2026-09-17 01:14-01:18 UTC (2026-09-16 local); curl from Git Bash unless method says WebSearch/WebFetch"
+  },
+  {
+    "source": "DataCite (extra)",
+    "query_or_url": "https://api.datacite.org/dois?query=neuraxis&page%5Bsize%5D=50",
+    "method": "curl",
+    "date": "2026-09-16",
+    "answered": true,
+    "hit_count": 123,
+    "relevant_hits": [
+      {
+        "name": "VirtualFlyBrain/geppetto-vfb v2.2.10.4",
+        "url": "https://doi.org/10.5281/zenodo.22798104",
+        "what": "Software release matching the word somewhere in its metadata (why was not inspected)",
+        "field": "neuroscience software",
+        "active": "yes"
+      }
+    ],
+    "conflict_assessment": "none",
+    "notes": "The other 49 screened hits are theses and articles using the anatomical term.",
+    "timing": "run 2026-09-17 01:14-01:18 UTC (2026-09-16 local); curl from Git Bash unless method says WebSearch/WebFetch"
+  },
+  {
+    "source": "OpenAlex (extra)",
+    "query_or_url": "https://api.openalex.org/works?search=neuraxis&per-page=5",
+    "method": "curl",
+    "date": "2026-09-16",
+    "answered": true,
+    "hit_count": 9866,
+    "relevant_hits": [],
+    "conflict_assessment": "none as a name conflict; high search noise",
+    "notes": "Count only; results not screened. Search includes stemming.",
+    "timing": "run 2026-09-17 01:14-01:18 UTC (2026-09-16 local); curl from Git Bash unless method says WebSearch/WebFetch"
+  },
+  {
+    "source": "Google Scholar",
+    "query_or_url": "https://scholar.google.com/scholar?q=%22neuraxis%22+software",
+    "method": "curl",
+    "date": "2026-09-16",
+    "answered": false,
+    "hit_count": null,
+    "relevant_hits": [],
+    "conflict_assessment": "not assessed",
+    "notes": "Blocked: the page said the system cannot perform the operation now. Google Scholar itself was not searched.",
+    "timing": "run 2026-09-17 01:14-01:18 UTC (2026-09-16 local); curl from Git Bash unless method says WebSearch/WebFetch"
+  },
+  {
+    "source": "Google Scholar substitute (web search)",
+    "query_or_url": "WebSearch: \"Neuraxis\" site:scholar.google.com OR \"Neuraxis\" software neuroscience tool ; \"Neuraxis\" toolbox OR framework OR \"open-source\" neuron model",
+    "method": "WebSearch",
+    "date": "2026-09-16",
+    "answered": true,
+    "hit_count": null,
+    "relevant_hits": [],
+    "conflict_assessment": "none for research software",
+    "notes": "No neuroscience research tool named Neuraxis found; results were other toolboxes and NeurAxis, Inc.",
+    "timing": "run 2026-09-17 01:14-01:18 UTC (2026-09-16 local); curl from Git Bash unless method says WebSearch/WebFetch"
+  },
+  {
+    "source": "IEEE Xplore",
+    "query_or_url": "WebSearch: neuraxis site:ieeexplore.ieee.org",
+    "method": "WebSearch",
+    "date": "2026-09-16",
+    "answered": true,
+    "hit_count": 9,
+    "relevant_hits": [
+      {
+        "name": "'In Vivo Intrathecal Tracer Dispersion in Cynomolgus Monkey Validates Wide Biodistribution Along Neuraxis'",
+        "url": "https://ieeexplore.ieee.org/document/8770104/",
+        "what": "Anatomical usage",
+        "field": "biomedical engineering",
+        "active": "n/a"
+      }
+    ],
+    "conflict_assessment": "none",
+    "notes": "All IEEE hits used the anatomical term or were unrelated. IEEE's own search API needs a key and was not used.",
+    "timing": "run 2026-09-17 01:14-01:18 UTC (2026-09-16 local); curl from Git Bash unless method says WebSearch/WebFetch"
+  },
+  {
+    "source": "General web: companies",
+    "query_or_url": "WebSearch: \"Neuraxis\" company ; \"NeurAxis\" neuromodulation IB-Stim ; \"Neuraxis Ltd\" OR \"Neuraxis GmbH\" OR \"Neuraxis Labs\" OR \"Neuraxis Technologies\"",
+    "method": "WebSearch",
+    "date": "2026-09-16",
+    "answered": true,
+    "hit_count": null,
+    "relevant_hits": [
+      {
+        "name": "NeurAxis, Inc. (NYSE American: NRXS)",
+        "url": "https://neuraxis.com/",
+        "what": "Publicly listed medical-technology company in Carmel, Indiana. Sells IB-Stim, an FDA-cleared percutaneous electrical nerve field stimulation device. Renamed from Innovative Health Solutions in March 2022; listed August 2023. A GlobeNewswire release dated 2026-09-16 announces payer coverage.",
+        "field": "neurotech / medical devices (neuromodulation)",
+        "active": "yes, very active"
+      },
+      {
+        "name": "neuraxis IT Solutions GmbH",
+        "url": "https://tracxn.com/d/legal-entities/germany/neuraxis-it-solutions-gmbh/__X5xF1CMWXB_lY3BZygebv496vXECXD0PWJa-UW4YOeE",
+        "what": "German private company, incorporated 2016-03-10, Graefelfing; reported active (Tracxn summary via web search; German register not checked)",
+        "field": "IT services",
+        "active": "reported active"
+      },
+      {
+        "name": "Neuraxis (neuraxismed.com), now hypoflo",
+        "url": "https://neuraxismed.com/",
+        "what": "Holding page says Neuraxis is now hypoflo. Possibly the Michigan Neuraxis, LLC of the abandoned 2018 US application (link not confirmed)",
+        "field": "medical devices",
+        "active": "renamed"
+      }
+    ],
+    "conflict_assessment": "high",
+    "notes": "NeurAxis, Inc. dominates web results for the name and works in neuromodulation, close to the project's field.",
+    "timing": "run 2026-09-17 01:14-01:18 UTC (2026-09-16 local); curl from Git Bash unless method says WebSearch/WebFetch"
+  },
+  {
+    "source": "General web: software",
+    "query_or_url": "WebSearch: \"neuraxis\" software OR python OR github OR platform ; \"Neuraxis\" AI OR neurotech OR startup -NRXS",
+    "method": "WebSearch",
+    "date": "2026-09-16",
+    "answered": true,
+    "hit_count": null,
+    "relevant_hits": [
+      {
+        "name": "markdown-neuraxis, bstBizEra/neuraxis, Neuraxis-Labs/TSFM-Robustness-Benchmark, parasdahal/neuraxis",
+        "url": "https://github.com/timabell/markdown-neuraxis",
+        "what": "See GitHub rows",
+        "field": "software",
+        "active": "mixed"
+      }
+    ],
+    "conflict_assessment": "low-medium",
+    "notes": "Also surfaced near-names Neuraxle/Neuraxio (AutoML library) and NeuraX (CLI assistant).",
+    "timing": "run 2026-09-17 01:14-01:18 UTC (2026-09-16 local); curl from Git Bash unless method says WebSearch/WebFetch"
+  },
+  {
+    "source": "Domains (extra)",
+    "query_or_url": "RDAP: https://rdap.verisign.com/com/v1/domain/neuraxis.com ; https://rdap.publicinterestregistry.org/rdap/domain/neuraxis.org ; https://rdap.org/domain/neuraxis.io ; https://rdap.org/domain/neuraxis.ai",
+    "method": "curl",
+    "date": "2026-09-16",
+    "answered": true,
+    "hit_count": 2,
+    "relevant_hits": [
+      {
+        "name": "neuraxis.com",
+        "url": "https://neuraxis.com/",
+        "what": "Registered 1998-07-22, expires 2027-07-21, registrar locks; serves NeurAxis, Inc.",
+        "field": "company site",
+        "active": "yes"
+      },
+      {
+        "name": "neuraxis.org",
+        "url": "https://neuraxis.org/",
+        "what": "Registered 2002-02-21, expires 2028-02-21; holder not identified",
+        "field": "unknown",
+        "active": "registered"
+      }
+    ],
+    "conflict_assessment": "medium",
+    "notes": "neuraxis.io: rdap.org 404, which is not meaningful for .io (see earlier audit). neuraxis.ai: rdap.org redirect returned an empty body; status not determined.",
+    "timing": "run 2026-09-17 01:14-01:18 UTC (2026-09-16 local); curl from Git Bash unless method says WebSearch/WebFetch"
+  },
+  {
+    "source": "USPTO (US federal trademarks)",
+    "query_or_url": "POST https://tmsearch.uspto.gov/prod-stage-v1-0-0/tmsearch with wordmark match 'neuraxis', and query_string 'neuraxis* OR neur-axis* OR neuroaxis*' on the wordmark field (undocumented backend of the tmsearch web app, same method as the NeuroSem audit)",
+    "method": "curl POST (no login)",
+    "date": "2026-09-16",
+    "answered": true,
+    "hit_count": 4,
+    "relevant_hits": [
+      {
+        "name": "NEURAXIS, US Reg. No. 7715671 (serial 97327951)",
+        "url": "https://tsdr.uspto.gov/#caseNumber=97327951&caseType=SERIAL_NO&searchType=statusSearch",
+        "what": "LIVE. Filed 2022-03-24, registered 2025-03-04. Owner Neuraxis, Inc. Class 10: nerve stimulator apparatus",
+        "field": "medical devices / neuromodulation",
+        "active": "live"
+      },
+      {
+        "name": "NEURAXIS, US Reg. No. 7715689 (serial 97356330)",
+        "url": "https://tsdr.uspto.gov/#caseNumber=97356330&caseType=SERIAL_NO&searchType=statusSearch",
+        "what": "LIVE. Filed 2022-04-11, registered 2025-03-04. Owner Neuraxis, Inc. Class 10. The company's 10-K lists a word mark and a stylized mark.",
+        "field": "medical devices / neuromodulation",
+        "active": "live"
+      },
+      {
+        "name": "NEURAXIS, serial 87791864",
+        "url": "https://tsdr.uspto.gov/#caseNumber=87791864&caseType=SERIAL_NO&searchType=statusSearch",
+        "what": "DEAD. Neuraxis, LLC (Michigan). Class 10 medical devices. Abandoned 2019-06-12",
+        "field": "medical devices",
+        "active": "dead"
+      },
+      {
+        "name": "NEURAXIS, serial 74429400",
+        "url": "https://tsdr.uspto.gov/#caseNumber=74429400&caseType=SERIAL_NO&searchType=statusSearch",
+        "what": "DEAD. NeuroDelivery Technology, Inc. Class 10 epidural and spinal needles. Abandoned 1994-11-25",
+        "field": "medical devices",
+        "active": "dead"
+      },
+      {
+        "name": "Similar marks: NEUROAXISS (serial 99715168, live application, Class 10, filed 2026-03-20); NEUROAXIS (serial 99562753, live application, Class 5, filed 2025-12-23); NEUROAXIS HEALTH (reg 5659700, dead); NEUROAXIS (serial 78930109, dead)",
+        "url": "https://tmsearch.uspto.gov/",
+        "what": "Similar-looking marks",
+        "field": "health / medical",
+        "active": "mixed"
+      }
+    ],
+    "conflict_assessment": "high",
+    "notes": "Exact wordmark query: 4 records; wildcard query: 8. Control 'google' on the same endpoint: 194. The live marks cover Class 10 goods, not Class 9/42 software, but the owner is a listed neurotech company. The FY2023 10-K also records a July 2022 trademark agreement related to the company name (terms not given): https://www.sec.gov/Archives/edgar/data/1933567/000149315224014832/form10-k.htm (WebFetch summary).",
+    "timing": "run 2026-09-17 01:14-01:18 UTC (2026-09-16 local); curl from Git Bash unless method says WebSearch/WebFetch"
+  },
+  {
+    "source": "EUIPO eSearch",
+    "query_or_url": "https://euipo.europa.eu/eSearch/#basic/1+1+1+1/100+100+100+100/neuraxis",
+    "method": "curl",
+    "date": "2026-09-16",
+    "answered": false,
+    "hit_count": null,
+    "relevant_hits": [],
+    "conflict_assessment": "not assessed",
+    "notes": "JavaScript application; the fetched HTML had no results. Not verified.",
+    "timing": "run 2026-09-17 01:14-01:18 UTC (2026-09-16 local); curl from Git Bash unless method says WebSearch/WebFetch"
+  },
+  {
+    "source": "TMview (EU and national offices)",
+    "query_or_url": "https://www.tmdn.org/tmview/#/tmview/results?page=1&pageSize=30&criteria=C&basicSearch=neuraxis",
+    "method": "curl",
+    "date": "2026-09-16",
+    "answered": false,
+    "hit_count": null,
+    "relevant_hits": [],
+    "conflict_assessment": "not assessed",
+    "notes": "JavaScript application (531-byte shell). Not verified.",
+    "timing": "run 2026-09-17 01:14-01:18 UTC (2026-09-16 local); curl from Git Bash unless method says WebSearch/WebFetch"
+  },
+  {
+    "source": "WIPO Global Brand Database",
+    "query_or_url": "https://branddb.wipo.int/en/similarname/results?... (brandName=neuraxis, strategy Simple)",
+    "method": "curl",
+    "date": "2026-09-16",
+    "answered": false,
+    "hit_count": null,
+    "relevant_hits": [],
+    "conflict_assessment": "not assessed",
+    "notes": "JavaScript application (1.7 KB shell) with no results in the HTML. Not verified, so any Madrid-system extension of the US marks is unknown.",
+    "timing": "run 2026-09-17 01:14-01:18 UTC (2026-09-16 local); curl from Git Bash unless method says WebSearch/WebFetch"
+  },
+  {
+    "source": "UK IPO",
+    "query_or_url": "https://trademarks.ipo.gov.uk/ipo-tmtext/page/Results?searchType=text&wordMarkText=neuraxis",
+    "method": "curl",
+    "date": "2026-09-16",
+    "answered": false,
+    "hit_count": null,
+    "relevant_hits": [],
+    "conflict_assessment": "not assessed",
+    "notes": "The page reported 0 marks, but the control query 'google' with the same URL also reported 0, so the URL parameters were ignored. Treated as not searched.",
+    "timing": "run 2026-09-17 01:14-01:18 UTC (2026-09-16 local); curl from Git Bash unless method says WebSearch/WebFetch"
+  },
+  {
+    "source": "Web search for EU/WIPO/UK marks",
+    "query_or_url": "WebSearch: \"NEURAXIS\" EUIPO OR WIPO OR \"UK IPO\" trade mark",
+    "method": "WebSearch",
+    "date": "2026-09-16",
+    "answered": true,
+    "hit_count": null,
+    "relevant_hits": [],
+    "conflict_assessment": "not assessed",
+    "notes": "Only generic office pages returned; no mark found and none ruled out.",
+    "timing": "run 2026-09-17 01:14-01:18 UTC (2026-09-16 local); curl from Git Bash unless method says WebSearch/WebFetch"
+  },
+  {
+    "source": "Alternative names spot re-check (extra)",
+    "query_or_url": "https://pypi.org/pypi/<n>/json ; https://api.anaconda.org/package/conda-forge/<n> ; https://api.github.com/users/<n> ; https://api.github.com/search/repositories?q=<n> ; USPTO wordmark query_string '<n>*' ; n = perturbprint, driftclamp",
+    "method": "curl",
+    "date": "2026-09-16",
+    "answered": true,
+    "hit_count": 0,
+    "relevant_hits": [],
+    "conflict_assessment": "none",
+    "notes": "Both names: PyPI 404, conda-forge 404, GitHub user 404, repositories 0, USPTO 0 (about 01:17 UTC). Literature, web and non-US trademark sources were not re-run for them today.",
+    "timing": "run 2026-09-17 01:14-01:18 UTC (2026-09-16 local); curl from Git Bash unless method says WebSearch/WebFetch"
+  }
+]

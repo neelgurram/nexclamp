@@ -7,11 +7,11 @@ import copy
 import numpy as np
 import pytest
 
-from neurosem.config import features as load_features_config
-from neurosem.features.efel_adapter import DEFINED, NOT_APPLICABLE, UNDEFINED, FeatureValue
-from neurosem.features.regimes import LABELS, depolarization_block, firing_regime, regime_config
-from neurosem.features.trace_metrics import uniform_grid
-from neurosem.schemas import AnalysisWindow, Trace
+from neuraxis.config import features as load_features_config
+from neuraxis.features.efel_adapter import DEFINED, NOT_APPLICABLE, UNDEFINED, FeatureValue
+from neuraxis.features.regimes import LABELS, depolarization_block, firing_regime, regime_config
+from neuraxis.features.trace_metrics import uniform_grid
+from neuraxis.schemas import AnalysisWindow, Trace
 
 WINDOW = AnalysisWindow(200.0, 600.0)
 

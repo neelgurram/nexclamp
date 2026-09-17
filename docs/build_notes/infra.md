@@ -32,7 +32,7 @@ Everything below is a request or observation for other owners; no core file was 
 
 ## Observations (no action required from infra)
 
-- `pyproject.toml` says exact pins are in `requirements.lock` "(see DEPENDENCY_AUDIT.md)"; that file does
+- `pyproject.toml` says exact pins are in `requirements.lock` "(see docs/DEPENDENCY_AUDIT.md)"; that file does
   not exist in the repository at the time of writing.
 - The editable install is required, not just convenient: `provenance.REPO_ROOT` is
   `Path(__file__).parents[2]`, which only points at the repository when the package is imported from

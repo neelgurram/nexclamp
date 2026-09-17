@@ -9,8 +9,8 @@ from fractions import Fraction
 import numpy as np
 import pytest
 
-from neurosem.config import study
-from neurosem.selection.greedy import (
+from neuraxis.config import study
+from neuraxis.selection.greedy import (
     BUDGET_REL_TOL,
     count_matched_sets,
     greedy_cost_sensitive,
@@ -20,7 +20,7 @@ from neurosem.selection.greedy import (
     runtime_matched_sets,
     selection_settings,
 )
-from neurosem.selection.matrix import DetectionMatrix
+from neuraxis.selection.matrix import DetectionMatrix
 
 
 def mk(rows_by_protocol: dict[str, set[int]], n: int, cost: dict[str, float] | None = None) -> DetectionMatrix:

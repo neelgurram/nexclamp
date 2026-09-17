@@ -13,11 +13,11 @@ from collections import defaultdict
 import numpy as np
 import pytest
 
-from neurosem.models import copy_workspace, materialize
-from neurosem.mutations import REGISTRY, enforce_single_operator, generate_mutants, load_variant
-from neurosem.mutations.base import cell_rel, harness_simulation, read_xml, transitive_includes, write_xml
-from neurosem.provenance import sha256_file, sha256_json
-from neurosem.simulators.base import OutputSpec
+from neuraxis.models import copy_workspace, materialize
+from neuraxis.mutations import REGISTRY, enforce_single_operator, generate_mutants, load_variant
+from neuraxis.mutations.base import cell_rel, harness_simulation, read_xml, transitive_includes, write_xml
+from neuraxis.provenance import sha256_file, sha256_json
+from neuraxis.simulators.base import OutputSpec
 
 PILOT = ["pospischil2008_rs", "pospischil2008_lts"]
 
@@ -35,7 +35,8 @@ def test_mutants_validate_and_pass_enforcement(model_id, models, sim, tmp_path, 
     assert ref_result.valid is True, ref_result.raw_output
 
     records = generate_mutants(models[model_id], sorted(REGISTRY), 2, 20260913, tmp_path / "variants")
-    assert {r.family for r in records} == {"stimulus", "biophysical", "reference", "numerical"}
+    base = {"stimulus", "biophysical", "reference", "numerical"}
+    assert base <= {r.family for r in records} <= base | {"kinetics"}   # kinetics only where a core gate or vShift exists
 
     cache = {_validation_key(ref): ref_result}
     report: dict[str, list[tuple[str, bool, list[str]]]] = defaultdict(list)

@@ -6,6 +6,26 @@ Versioning from the first tagged release. Decisions referenced as D-xxx are in `
 
 ## [Unreleased]
 
+### Neuraxis execution-plan build (2026-09-16)
+
+Controlling specification: `docs/handoff/NEURAXIS_EXECUTION_PLAN.pdf` (D-039). Conflicts and resolutions are recorded in `docs/DEVIATION_LOG.md`.
+
+#### Changed
+- Package renamed `neurosem` to `neuraxis` (`src/neuraxis/`); `neurosem` remains an alias module and command. Version is 0.2.0.dev0; `NEURAXIS_*` environment variables take precedence over `NEUROSEM_*`.
+- Code licence is now Apache-2.0, provisionally (D-043); the BSD-3-Clause text is kept in `docs/licensing/`.
+- Documents renamed to the plan's names; `DEPENDENCY_AUDIT.md` moved to `docs/`.
+- Default `configs/study.yaml` gained `study_metadata` (Neuraxis, development).
+
+#### Added
+- Run records carry the plan's fields; output streams are stored and hash-verified; toolchain failures are kept in `_tool_failures/` and never block a retry (D-040).
+- `neuraxis curate-models` (criteria C01-C13, reference simulations only; D-041) and candidate-snapshot lookup in `models/candidates/`.
+- `neuraxis smoke-test` (the plan's nine infrastructure checks).
+- Ion-channel kinetics mutation family: `shift_gate_midpoint`, `scale_gate_slope`, `shift_forward_rate_midpoint`, `shift_channel_vshift`; excluded from protocol selection in code (D-042).
+- Workflows: `curate_models`, `run_references`, `generate_variants`, `run_development`, `freeze_study`, `run_heldout` (requires the exact AsPredicted authorisation sentence, URL and PDF), `lock_primary_results`, `run_robustness`, `run_agent_study`, `reproduce_manuscript`, `smoke_test`.
+- `scripts/build_manifests.py`: `manifests/` (protocols, mutations with taxonomy class, transformations, splits, model sources, per-snapshot hashes) and `docs/LICENSING_MATRIX.md`.
+- Documents: `CURRENT_REPOSITORY_STATE`, `SPECIFICATION_GAP_ANALYSIS`, `PRIOR_ART_MATRIX` (36 works, 5 verification packets), `NAME_AUDIT`, `PLAIN_LANGUAGE_OVERVIEW`, `DEVELOPMENT_PROTOCOL`, `FEATURE_CATALOG`, `DEVIATION_LOG`, `DECISIONS_REQUIRED`, `MODEL_CURATION_REPORT`; manuscript skeletons; D-039 to D-043.
+- Tests: `test_kinetics_operators.py`, `test_run_record_fields.py`, `tests/regression/test_pilot1_corrected_facts.py`.
+
 ### Neuraxis PILOT_PROTOCOL_V1 pre-run preparation (2026-09-14/15)
 
 #### Added

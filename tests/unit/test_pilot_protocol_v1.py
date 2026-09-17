@@ -7,8 +7,8 @@ import re
 import pytest
 import yaml
 
-from neurosem import config
-from neurosem.provenance import REPO_ROOT
+from neuraxis import config
+from neuraxis.provenance import REPO_ROOT
 
 PROTOCOL = REPO_ROOT / "docs" / "PILOT_PROTOCOL_V1.md"
 CONFIG_DIR = REPO_ROOT / "configs" / "pilot_protocol_v1"

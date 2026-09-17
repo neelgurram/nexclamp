@@ -300,7 +300,7 @@ Eleven `.mep` files are tracked (`git ls-files models | grep .mep`).
 The carve-out wording says "Code located there". A `.mep` file is YAML holding spike times (for
 example `.test.RS.spikes.mep`: five spike times). Whether "code" covers such a data file is not stated.
 The conservative reading, used by the verifier and the skeptic, is that it does. NeuroSem's code does
-not read any `.mep` file (`grep -rn "\.mep" src/neurosem`: no hits); the files are kept only as
+not read any `.mep` file (`grep -rn "\.mep" src/neuraxis`: no hits); the files are kept only as
 provenance. The NEURO and INTEG skeptic verdicts recommend not vendoring them, and referencing them by
 URL plus hash instead.
 

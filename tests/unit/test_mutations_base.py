@@ -11,8 +11,8 @@ import zlib
 import numpy as np
 import pytest
 
-from neurosem.models import copy_workspace, materialize
-from neurosem.mutations import (
+from neuraxis.models import copy_workspace, materialize
+from neuraxis.mutations import (
     REGISTRY,
     MutationError,
     enforce_single_operator,
@@ -21,7 +21,7 @@ from neurosem.mutations import (
     write_manifest,
     xml_changes,
 )
-from neurosem.mutations.base import (
+from neuraxis.mutations.base import (
     choose_sites,
     format_decimal,
     harness_simulation,
@@ -33,8 +33,8 @@ from neurosem.mutations.base import (
     shift_quantity,
     write_xml,
 )
-from neurosem.provenance import sha256_file
-from neurosem.schemas import Edit, VariantKind, dumps
+from neuraxis.provenance import sha256_file
+from neuraxis.schemas import Edit, VariantKind, dumps
 
 RS = "pospischil2008_rs"
 IT_FILE = "NeuroML2/channels/IT/IT.channel.nml"
@@ -279,7 +279,7 @@ def test_enforcement_rejects_edits_in_two_elements(models, rs_ws, tmp_path):
 
 
 def _record(ws, operator, family, **kw):
-    from neurosem.schemas import VariantRecord
+    from neuraxis.schemas import VariantRecord
     return VariantRecord(variant_id="t", model_id=ws.model.model_id, kind=VariantKind.MUTANT, family=family,
                          operator=operator, **kw)
 

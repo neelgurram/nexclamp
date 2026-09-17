@@ -5,7 +5,7 @@ Refuses to run unless configs/FROZEN.lock matches the preregistered files; every
 
 import sys
 
-from neurosem.cli import main
+from neuraxis.cli import main
 
 if __name__ == "__main__":
     sys.exit(main(["evaluate-heldout", *sys.argv[1:]]))

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Neuraxis sacrificial development fixture for kinetics-operator validation (Apache-2.0).
+     A single-compartment Hodgkin-Huxley-type cell written for testing only; it is not a study model.
+     Standard HH rate forms; potassium activation uses a time-course gate so that both the
+     rate-gate and steady-state mechanisms of the kinetics operators are exercised. -->
+<neuroml xmlns="http://www.neuroml.org/schema/neuroml2"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://www.neuroml.org/schema/neuroml2 https://raw.github.com/NeuroML/NeuroML2/development/Schemas/NeuroML2/NeuroML_v2.3.1.xsd"
+         id="KinFix">
+
+    <ionChannelHH id="leakChan" conductance="10pS"/>
+
+    <ionChannelHH id="naChan" conductance="10pS" species="na">
+        <gateHHrates id="m" instances="3">
+            <forwardRate type="HHExpLinearRate" rate="1per_ms" midpoint="-40mV" scale="10mV"/>
+            <reverseRate type="HHExpRate" rate="4per_ms" midpoint="-65mV" scale="-18mV"/>
+        </gateHHrates>
+        <gateHHrates id="h" instances="1">
+            <forwardRate type="HHExpRate" rate="0.07per_ms" midpoint="-65mV" scale="-20mV"/>
+            <reverseRate type="HHSigmoidRate" rate="1per_ms" midpoint="-35mV" scale="10mV"/>
+        </gateHHrates>
+    </ionChannelHH>
+
+    <ionChannelHH id="kChan" conductance="10pS" species="k">
+        <gateHHtauInf id="n" instances="4">
+            <timeCourse type="fixedTimeCourse" tau="4ms"/>
+            <steadyState type="HHSigmoidVariable" rate="1" midpoint="-50mV" scale="10mV"/>
+        </gateHHtauInf>
+    </ionChannelHH>
+
+    <cell id="kinfix">
+        <morphology id="morph1">
+            <segment id="0" name="soma">
+                <proximal x="0" y="0" z="0" diameter="17.841242"/>
+                <distal x="0" y="0" z="0" diameter="17.841242"/>
+            </segment>
+            <segmentGroup id="soma_group">
+                <member segment="0"/>
+            </segmentGroup>
+        </morphology>
+        <biophysicalProperties id="bioPhys1">
+            <membraneProperties>
+                <channelDensity id="leak" ionChannel="leakChan" condDensity="3.0 S_per_m2" erev="-54.3mV" ion="non_specific"/>
+                <channelDensity id="naChans" ionChannel="naChan" condDensity="120.0 mS_per_cm2" erev="50.0 mV" ion="na"/>
+                <channelDensity id="kChans" ionChannel="kChan" condDensity="360 S_per_m2" erev="-77mV" ion="k"/>
+                <spikeThresh value="-20mV"/>
+                <specificCapacitance value="1.0 uF_per_cm2"/>
+                <initMembPotential value="-65mV"/>
+            </membraneProperties>
+            <intracellularProperties>
+                <resistivity value="0.03 kohm_cm"/>
+            </intracellularProperties>
+        </biophysicalProperties>
+    </cell>
+</neuroml>

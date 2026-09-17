@@ -2,7 +2,7 @@
 
 This log records every substantive use of generative AI in NeuroSem. IEEE requires that
 the selected venue's AI-disclosure policy be followed. That policy is verified in
-`DEPENDENCY_AUDIT.md` / `PRIOR_ART_AUDIT.md` and must be re-checked at submission. Only
+`docs/DEPENDENCY_AUDIT.md` / `PRIOR_ART_AUDIT.md` and must be re-checked at submission. Only
 humans are authors, and the human author is responsible for all content.
 
 **Two roles of AI in this project must never be mixed:**
@@ -111,7 +111,7 @@ Every change came with updated or new tests. The full suite was run before commi
 
 On Neel's instruction ("Try again") the remaining work was redone without workflow orchestration, using individual background subagents:
 - `REQUIREMENTS.md`, `RISK_REGISTER.md` and `PLAN.md` were written;
-- `LICENSE_AUDIT.md` and `DEPENDENCY_AUDIT.md` were fact-checked and fixed;
+- `LICENSE_AUDIT.md` and `docs/DEPENDENCY_AUDIT.md` were fact-checked and fixed;
 - three deep-read batches covered all 73 second-round candidates estimated at closeness 3;
 - one novelty stress test covered the closest verified works.
 
@@ -192,3 +192,38 @@ Scope that was dropped is recorded openly: 144 second-round candidates at estima
 - It did not change the design during the run.
 - It accessed no held-out data.
 - It made no public release or OSF upload.
+
+---
+
+## Entry 006: Neuraxis execution-plan build
+
+| Field | Value |
+|---|---|
+| Date | 2026-09-16 |
+| Human instruction | Neel attached "Neuraxis: Complete Claude Code Experiment and Publication Execution Plan" and asked to build it out on top of the existing work |
+| Tool / model | Claude Code desktop, Claude Opus 5 (`claude-opus-5`); three background research subagents (name audit, prior-art matrix, model-curation sweep) |
+
+**What the AI did**
+- Inventoried the repository.
+- Renamed the package.
+- Extended run records and fixed retry handling.
+- Implemented model curation, the infrastructure smoke test and the kinetics mutation family, with tests.
+- Wrote the workflows, manifests and required documents.
+- **Name audit subagent:** searched package indexes, GitHub, GitLab, literature databases and the USPTO.
+- **Prior-art subagent:** built a 36-row matrix and read the full texts of the five closest works.
+- **Curation subagent:** searched OpenSourceBrain for further licensed models.
+- Ran the clean-environment smoke test and model curation (reference simulations only).
+
+**What the AI did not do**
+- It generated no mutant results.
+- It did not run Pilot 2.
+- It accessed no held-out data.
+- It made no public release, did not use OSF, and did not upload anything.
+
+**Human verification required**
+- Name decision.
+- The five prior-art packets.
+- Licence review.
+- The Wang–Buzsáki decision.
+- Mutant audits.
+

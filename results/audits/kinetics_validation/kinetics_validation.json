@@ -1,0 +1,1421 @@
+{
+  "created_utc": "2026-09-17T02:17:01+00:00",
+  "operators": [
+    "shift_gate_midpoint",
+    "scale_gate_slope",
+    "shift_forward_rate_midpoint",
+    "shift_channel_vshift"
+  ],
+  "rows": [
+    {
+      "fixture": "kinetics_fixture",
+      "operator": "shift_gate_midpoint",
+      "site": 0,
+      "params": {
+        "mechanism": "rates",
+        "channel": "naChan",
+        "gate": "m",
+        "delta_mV": -10.0,
+        "changes": [
+          {
+            "locator": "/neuroml[@id='KinFix']/ionChannelHH[@id='naChan']/gateHHrates[@id='m']/forwardRate[1]",
+            "attribute": "midpoint",
+            "old": "-40mV",
+            "new": "-50mV"
+          },
+          {
+            "locator": "/neuroml[@id='KinFix']/ionChannelHH[@id='naChan']/gateHHrates[@id='m']/reverseRate[1]",
+            "attribute": "midpoint",
+            "old": "-65mV",
+            "new": "-75mV"
+          }
+        ]
+      },
+      "atomicity": "compound (2 attributes of one gate, one documented change)",
+      "edits": [
+        {
+          "file": "KinFix.cell.nml",
+          "locator": "/neuroml[@id='KinFix']/ionChannelHH[@id='naChan']/gateHHrates[@id='m']/forwardRate[1]",
+          "attribute": "midpoint",
+          "old": "-40mV",
+          "new": "-50mV"
+        },
+        {
+          "file": "KinFix.cell.nml",
+          "locator": "/neuroml[@id='KinFix']/ionChannelHH[@id='naChan']/gateHHrates[@id='m']/reverseRate[1]",
+          "attribute": "midpoint",
+          "old": "-65mV",
+          "new": "-75mV"
+        }
+      ],
+      "element_types": [
+        "HHExpLinearRate",
+        "HHExpRate"
+      ],
+      "affected_equations": [
+        "r(V) = rate * exp((V - midpoint) / scale)",
+        "r(V) = rate * x / (1 - exp(-x)), x = (V - midpoint) / scale"
+      ],
+      "exec_overrides": {},
+      "harness_unchanged": true,
+      "single_change_enforced": true,
+      "schema_valid": true,
+      "simulation_status": "ok",
+      "max_abs_dv_mV": 118.63164901733398,
+      "spikes_before_after": [
+        38,
+        50
+      ],
+      "plot": "plots/kinetics_fixture_shift_gate_midpoint_0.png",
+      "passed": true
+    },
+    {
+      "fixture": "kinetics_fixture",
+      "operator": "shift_gate_midpoint",
+      "site": 1,
+      "params": {
+        "mechanism": "rates",
+        "channel": "naChan",
+        "gate": "m",
+        "delta_mV": -5.0,
+        "changes": [
+          {
+            "locator": "/neuroml[@id='KinFix']/ionChannelHH[@id='naChan']/gateHHrates[@id='m']/forwardRate[1]",
+            "attribute": "midpoint",
+            "old": "-40mV",
+            "new": "-45mV"
+          },
+          {
+            "locator": "/neuroml[@id='KinFix']/ionChannelHH[@id='naChan']/gateHHrates[@id='m']/reverseRate[1]",
+            "attribute": "midpoint",
+            "old": "-65mV",
+            "new": "-70mV"
+          }
+        ]
+      },
+      "atomicity": "compound (2 attributes of one gate, one documented change)",
+      "edits": [
+        {
+          "file": "KinFix.cell.nml",
+          "locator": "/neuroml[@id='KinFix']/ionChannelHH[@id='naChan']/gateHHrates[@id='m']/forwardRate[1]",
+          "attribute": "midpoint",
+          "old": "-40mV",
+          "new": "-45mV"
+        },
+        {
+          "file": "KinFix.cell.nml",
+          "locator": "/neuroml[@id='KinFix']/ionChannelHH[@id='naChan']/gateHHrates[@id='m']/reverseRate[1]",
+          "attribute": "midpoint",
+          "old": "-65mV",
+          "new": "-70mV"
+        }
+      ],
+      "element_types": [
+        "HHExpLinearRate",
+        "HHExpRate"
+      ],
+      "affected_equations": [
+        "r(V) = rate * exp((V - midpoint) / scale)",
+        "r(V) = rate * x / (1 - exp(-x)), x = (V - midpoint) / scale"
+      ],
+      "exec_overrides": {},
+      "harness_unchanged": true,
+      "single_change_enforced": true,
+      "schema_valid": true,
+      "simulation_status": "ok",
+      "max_abs_dv_mV": 120.22308731079102,
+      "spikes_before_after": [
+        38,
+        45
+      ],
+      "plot": "plots/kinetics_fixture_shift_gate_midpoint_1.png",
+      "passed": true
+    },
+    {
+      "fixture": "kinetics_fixture",
+      "operator": "shift_gate_midpoint",
+      "site": 2,
+      "params": {
+        "mechanism": "rates",
+        "channel": "naChan",
+        "gate": "m",
+        "delta_mV": 5.0,
+        "changes": [
+          {
+            "locator": "/neuroml[@id='KinFix']/ionChannelHH[@id='naChan']/gateHHrates[@id='m']/forwardRate[1]",
+            "attribute": "midpoint",
+            "old": "-40mV",
+            "new": "-35mV"
+          },
+          {
+            "locator": "/neuroml[@id='KinFix']/ionChannelHH[@id='naChan']/gateHHrates[@id='m']/reverseRate[1]",
+            "attribute": "midpoint",
+            "old": "-65mV",
+            "new": "-60mV"
+          }
+        ]
+      },
+      "atomicity": "compound (2 attributes of one gate, one documented change)",
+      "edits": [
+        {
+          "file": "KinFix.cell.nml",
+          "locator": "/neuroml[@id='KinFix']/ionChannelHH[@id='naChan']/gateHHrates[@id='m']/forwardRate[1]",
+          "attribute": "midpoint",
+          "old": "-40mV",
+          "new": "-35mV"
+        },
+        {
+          "file": "KinFix.cell.nml",
+          "locator": "/neuroml[@id='KinFix']/ionChannelHH[@id='naChan']/gateHHrates[@id='m']/reverseRate[1]",
+          "attribute": "midpoint",
+          "old": "-65mV",
+          "new": "-60mV"
+        }
+      ],
+      "element_types": [
+        "HHExpLinearRate",
+        "HHExpRate"
+      ],
+      "affected_equations": [
+        "r(V) = rate * exp((V - midpoint) / scale)",
+        "r(V) = rate * x / (1 - exp(-x)), x = (V - midpoint) / scale"
+      ],
+      "exec_overrides": {},
+      "harness_unchanged": true,
+      "single_change_enforced": true,
+      "schema_valid": true,
+      "simulation_status": "ok",
+      "max_abs_dv_mV": 105.94428634643555,
+      "spikes_before_after": [
+        38,
+        1
+      ],
+      "plot": "plots/kinetics_fixture_shift_gate_midpoint_2.png",
+      "passed": true
+    },
+    {
+      "fixture": "kinetics_fixture",
+      "operator": "shift_gate_midpoint",
+      "site": 3,
+      "params": {
+        "mechanism": "rates",
+        "channel": "naChan",
+        "gate": "m",
+        "delta_mV": 10.0,
+        "changes": [
+          {
+            "locator": "/neuroml[@id='KinFix']/ionChannelHH[@id='naChan']/gateHHrates[@id='m']/forwardRate[1]",
+            "attribute": "midpoint",
+            "old": "-40mV",
+            "new": "-30mV"
+          },
+          {
+            "locator": "/neuroml[@id='KinFix']/ionChannelHH[@id='naChan']/gateHHrates[@id='m']/reverseRate[1]",
+            "attribute": "midpoint",
+            "old": "-65mV",
+            "new": "-55mV"
+          }
+        ]
+      },
+      "atomicity": "compound (2 attributes of one gate, one documented change)",
+      "edits": [
+        {
+          "file": "KinFix.cell.nml",
+          "locator": "/neuroml[@id='KinFix']/ionChannelHH[@id='naChan']/gateHHrates[@id='m']/forwardRate[1]",
+          "attribute": "midpoint",
+          "old": "-40mV",
+          "new": "-30mV"
+        },
+        {
+          "file": "KinFix.cell.nml",
+          "locator": "/neuroml[@id='KinFix']/ionChannelHH[@id='naChan']/gateHHrates[@id='m']/reverseRate[1]",
+          "attribute": "midpoint",
+          "old": "-65mV",
+          "new": "-55mV"
+        }
+      ],
+      "element_types": [
+        "HHExpLinearRate",
+        "HHExpRate"
+      ],
+      "affected_equations": [
+        "r(V) = rate * exp((V - midpoint) / scale)",
+        "r(V) = rate * x / (1 - exp(-x)), x = (V - midpoint) / scale"
+      ],
+      "exec_overrides": {},
+      "harness_unchanged": true,
+      "single_change_enforced": true,
+      "schema_valid": true,
+      "simulation_status": "ok",
+      "max_abs_dv_mV": 107.13629150390625,
+      "spikes_before_after": [
+        38,
+        0
+      ],
+      "plot": "plots/kinetics_fixture_shift_gate_midpoint_3.png",
+      "passed": true
+    },
+    {
+      "fixture": "kinetics_fixture",
+      "operator": "shift_gate_midpoint",
+      "site": 4,
+      "params": {
+        "mechanism": "rates",
+        "channel": "naChan",
+        "gate": "h",
+        "delta_mV": -10.0,
+        "changes": [
+          {
+            "locator": "/neuroml[@id='KinFix']/ionChannelHH[@id='naChan']/gateHHrates[@id='h']/forwardRate[1]",
+            "attribute": "midpoint",
+            "old": "-65mV",
+            "new": "-75mV"
+          },
+          {
+            "locator": "/neuroml[@id='KinFix']/ionChannelHH[@id='naChan']/gateHHrates[@id='h']/reverseRate[1]",
+            "attribute": "midpoint",
+            "old": "-35mV",
+            "new": "-45mV"
+          }
+        ]
+      },
+      "atomicity": "compound (2 attributes of one gate, one documented change)",
+      "edits": [
+        {
+          "file": "KinFix.cell.nml",
+          "locator": "/neuroml[@id='KinFix']/ionChannelHH[@id='naChan']/gateHHrates[@id='h']/forwardRate[1]",
+          "attribute": "midpoint",
+          "old": "-65mV",
+          "new": "-75mV"
+        },
+        {
+          "file": "KinFix.cell.nml",
+          "locator": "/neuroml[@id='KinFix']/ionChannelHH[@id='naChan']/gateHHrates[@id='h']/reverseRate[1]",
+          "attribute": "midpoint",
+          "old": "-35mV",
+          "new": "-45mV"
+        }
+      ],
+      "element_types": [
+        "HHExpRate",
+        "HHSigmoidRate"
+      ],
+      "affected_equations": [
+        "r(V) = rate * exp((V - midpoint) / scale)",
+        "r(V) = rate / (1 + exp((midpoint - V) / scale))"
+      ],
+      "exec_overrides": {},
+      "harness_unchanged": true,
+      "single_change_enforced": true,
+      "schema_valid": true,
+      "simulation_status": "ok",
+      "max_abs_dv_mV": 104.22900390625,
+      "spikes_before_after": [
+        38,
+        2
+      ],
+      "plot": "plots/kinetics_fixture_shift_gate_midpoint_4.png",
+      "passed": true
+    },
+    {
+      "fixture": "kinetics_fixture",
+      "operator": "shift_gate_midpoint",
+      "site": 5,
+      "params": {
+        "mechanism": "rates",
+        "channel": "naChan",
+        "gate": "h",
+        "delta_mV": -5.0,
+        "changes": [
+          {
+            "locator": "/neuroml[@id='KinFix']/ionChannelHH[@id='naChan']/gateHHrates[@id='h']/forwardRate[1]",
+            "attribute": "midpoint",
+            "old": "-65mV",
+            "new": "-70mV"
+          },
+          {
+            "locator": "/neuroml[@id='KinFix']/ionChannelHH[@id='naChan']/gateHHrates[@id='h']/reverseRate[1]",
+            "attribute": "midpoint",
+            "old": "-35mV",
+            "new": "-40mV"
+          }
+        ]
+      },
+      "atomicity": "compound (2 attributes of one gate, one documented change)",
+      "edits": [
+        {
+          "file": "KinFix.cell.nml",
+          "locator": "/neuroml[@id='KinFix']/ionChannelHH[@id='naChan']/gateHHrates[@id='h']/forwardRate[1]",
+          "attribute": "midpoint",
+          "old": "-65mV",
+          "new": "-70mV"
+        },
+        {
+          "file": "KinFix.cell.nml",
+          "locator": "/neuroml[@id='KinFix']/ionChannelHH[@id='naChan']/gateHHrates[@id='h']/reverseRate[1]",
+          "attribute": "midpoint",
+          "old": "-35mV",
+          "new": "-40mV"
+        }
+      ],
+      "element_types": [
+        "HHExpRate",
+        "HHSigmoidRate"
+      ],
+      "affected_equations": [
+        "r(V) = rate * exp((V - midpoint) / scale)",
+        "r(V) = rate / (1 + exp((midpoint - V) / scale))"
+      ],
+      "exec_overrides": {},
+      "harness_unchanged": true,
+      "single_change_enforced": true,
+      "schema_valid": true,
+      "simulation_status": "ok",
+      "max_abs_dv_mV": 118.65376281738281,
+      "spikes_before_after": [
+        38,
+        37
+      ],
+      "plot": "plots/kinetics_fixture_shift_gate_midpoint_5.png",
+      "passed": true
+    },
+    {
+      "fixture": "kinetics_fixture",
+      "operator": "shift_gate_midpoint",
+      "site": 6,
+      "params": {
+        "mechanism": "rates",
+        "channel": "naChan",
+        "gate": "h",
+        "delta_mV": 5.0,
+        "changes": [
+          {
+            "locator": "/neuroml[@id='KinFix']/ionChannelHH[@id='naChan']/gateHHrates[@id='h']/forwardRate[1]",
+            "attribute": "midpoint",
+            "old": "-65mV",
+            "new": "-60mV"
+          },
+          {
+            "locator": "/neuroml[@id='KinFix']/ionChannelHH[@id='naChan']/gateHHrates[@id='h']/reverseRate[1]",
+            "attribute": "midpoint",
+            "old": "-35mV",
+            "new": "-30mV"
+          }
+        ]
+      },
+      "atomicity": "compound (2 attributes of one gate, one documented change)",
+      "edits": [
+        {
+          "file": "KinFix.cell.nml",
+          "locator": "/neuroml[@id='KinFix']/ionChannelHH[@id='naChan']/gateHHrates[@id='h']/forwardRate[1]",
+          "attribute": "midpoint",
+          "old": "-65mV",
+          "new": "-60mV"
+        },
+        {
+          "file": "KinFix.cell.nml",
+          "locator": "/neuroml[@id='KinFix']/ionChannelHH[@id='naChan']/gateHHrates[@id='h']/reverseRate[1]",
+          "attribute": "midpoint",
+          "old": "-35mV",
+          "new": "-30mV"
+        }
+      ],
+      "element_types": [
+        "HHExpRate",
+        "HHSigmoidRate"
+      ],
+      "affected_equations": [
+        "r(V) = rate * exp((V - midpoint) / scale)",
+        "r(V) = rate / (1 + exp((midpoint - V) / scale))"
+      ],
+      "exec_overrides": {},
+      "harness_unchanged": true,
+      "single_change_enforced": true,
+      "schema_valid": true,
+      "simulation_status": "ok",
+      "max_abs_dv_mV": 104.97088623046875,
+      "spikes_before_after": [
+        38,
+        38
+      ],
+      "plot": "plots/kinetics_fixture_shift_gate_midpoint_6.png",
+      "passed": true
+    },
+    {
+      "fixture": "kinetics_fixture",
+      "operator": "shift_gate_midpoint",
+      "site": 7,
+      "params": {
+        "mechanism": "rates",
+        "channel": "naChan",
+        "gate": "h",
+        "delta_mV": 10.0,
+        "changes": [
+          {
+            "locator": "/neuroml[@id='KinFix']/ionChannelHH[@id='naChan']/gateHHrates[@id='h']/forwardRate[1]",
+            "attribute": "midpoint",
+            "old": "-65mV",
+            "new": "-55mV"
+          },
+          {
+            "locator": "/neuroml[@id='KinFix']/ionChannelHH[@id='naChan']/gateHHrates[@id='h']/reverseRate[1]",
+            "attribute": "midpoint",
+            "old": "-35mV",
+            "new": "-25mV"
+          }
+        ]
+      },
+      "atomicity": "compound (2 attributes of one gate, one documented change)",
+      "edits": [
+        {
+          "file": "KinFix.cell.nml",
+          "locator": "/neuroml[@id='KinFix']/ionChannelHH[@id='naChan']/gateHHrates[@id='h']/forwardRate[1]",
+          "attribute": "midpoint",
+          "old": "-65mV",
+          "new": "-55mV"
+        },
+        {
+          "file": "KinFix.cell.nml",
+          "locator": "/neuroml[@id='KinFix']/ionChannelHH[@id='naChan']/gateHHrates[@id='h']/reverseRate[1]",
+          "attribute": "midpoint",
+          "old": "-35mV",
+          "new": "-25mV"
+        }
+      ],
+      "element_types": [
+        "HHExpRate",
+        "HHSigmoidRate"
+      ],
+      "affected_equations": [
+        "r(V) = rate * exp((V - midpoint) / scale)",
+        "r(V) = rate / (1 + exp((midpoint - V) / scale))"
+      ],
+      "exec_overrides": {},
+      "harness_unchanged": true,
+      "single_change_enforced": true,
+      "schema_valid": true,
+      "simulation_status": "ok",
+      "max_abs_dv_mV": 113.74040222167969,
+      "spikes_before_after": [
+        38,
+        38
+      ],
+      "plot": "plots/kinetics_fixture_shift_gate_midpoint_7.png",
+      "passed": true
+    },
+    {
+      "fixture": "kinetics_fixture",
+      "operator": "shift_gate_midpoint",
+      "site": 8,
+      "params": {
+        "mechanism": "steady_state",
+        "channel": "kChan",
+        "gate": "n",
+        "delta_mV": -10.0,
+        "changes": [
+          {
+            "locator": "/neuroml[@id='KinFix']/ionChannelHH[@id='kChan']/gateHHtauInf[@id='n']/steadyState[1]",
+            "attribute": "midpoint",
+            "old": "-50mV",
+            "new": "-60mV"
+          }
+        ]
+      },
+      "atomicity": "atomic (one attribute of one element)",
+      "edits": [
+        {
+          "file": "KinFix.cell.nml",
+          "locator": "/neuroml[@id='KinFix']/ionChannelHH[@id='kChan']/gateHHtauInf[@id='n']/steadyState[1]",
+          "attribute": "midpoint",
+          "old": "-50mV",
+          "new": "-60mV"
+        }
+      ],
+      "element_types": [
+        "HHSigmoidVariable"
+      ],
+      "affected_equations": [
+        "x_inf(V) = rate / (1 + exp((midpoint - V) / scale))"
+      ],
+      "exec_overrides": {},
+      "harness_unchanged": true,
+      "single_change_enforced": true,
+      "schema_valid": true,
+      "simulation_status": "ok",
+      "max_abs_dv_mV": 115.50266647338867,
+      "spikes_before_after": [
+        38,
+        1
+      ],
+      "plot": "plots/kinetics_fixture_shift_gate_midpoint_8.png",
+      "passed": true
+    },
+    {
+      "fixture": "kinetics_fixture",
+      "operator": "shift_gate_midpoint",
+      "site": 9,
+      "params": {
+        "mechanism": "steady_state",
+        "channel": "kChan",
+        "gate": "n",
+        "delta_mV": -5.0,
+        "changes": [
+          {
+            "locator": "/neuroml[@id='KinFix']/ionChannelHH[@id='kChan']/gateHHtauInf[@id='n']/steadyState[1]",
+            "attribute": "midpoint",
+            "old": "-50mV",
+            "new": "-55mV"
+          }
+        ]
+      },
+      "atomicity": "atomic (one attribute of one element)",
+      "edits": [
+        {
+          "file": "KinFix.cell.nml",
+          "locator": "/neuroml[@id='KinFix']/ionChannelHH[@id='kChan']/gateHHtauInf[@id='n']/steadyState[1]",
+          "attribute": "midpoint",
+          "old": "-50mV",
+          "new": "-55mV"
+        }
+      ],
+      "element_types": [
+        "HHSigmoidVariable"
+      ],
+      "affected_equations": [
+        "x_inf(V) = rate / (1 + exp((midpoint - V) / scale))"
+      ],
+      "exec_overrides": {},
+      "harness_unchanged": true,
+      "single_change_enforced": true,
+      "schema_valid": true,
+      "simulation_status": "ok",
+      "max_abs_dv_mV": 110.28279876708984,
+      "spikes_before_after": [
+        38,
+        18
+      ],
+      "plot": "plots/kinetics_fixture_shift_gate_midpoint_9.png",
+      "passed": true
+    },
+    {
+      "fixture": "kinetics_fixture",
+      "operator": "shift_gate_midpoint",
+      "site": 10,
+      "params": {
+        "mechanism": "steady_state",
+        "channel": "kChan",
+        "gate": "n",
+        "delta_mV": 5.0,
+        "changes": [
+          {
+            "locator": "/neuroml[@id='KinFix']/ionChannelHH[@id='kChan']/gateHHtauInf[@id='n']/steadyState[1]",
+            "attribute": "midpoint",
+            "old": "-50mV",
+            "new": "-45mV"
+          }
+        ]
+      },
+      "atomicity": "atomic (one attribute of one element)",
+      "edits": [
+        {
+          "file": "KinFix.cell.nml",
+          "locator": "/neuroml[@id='KinFix']/ionChannelHH[@id='kChan']/gateHHtauInf[@id='n']/steadyState[1]",
+          "attribute": "midpoint",
+          "old": "-50mV",
+          "new": "-45mV"
+        }
+      ],
+      "element_types": [
+        "HHSigmoidVariable"
+      ],
+      "affected_equations": [
+        "x_inf(V) = rate / (1 + exp((midpoint - V) / scale))"
+      ],
+      "exec_overrides": {},
+      "harness_unchanged": true,
+      "single_change_enforced": true,
+      "schema_valid": true,
+      "simulation_status": "ok",
+      "max_abs_dv_mV": 120.34376525878906,
+      "spikes_before_after": [
+        38,
+        41
+      ],
+      "plot": "plots/kinetics_fixture_shift_gate_midpoint_10.png",
+      "passed": true
+    },
+    {
+      "fixture": "kinetics_fixture",
+      "operator": "shift_gate_midpoint",
+      "site": 11,
+      "params": {
+        "mechanism": "steady_state",
+        "channel": "kChan",
+        "gate": "n",
+        "delta_mV": 10.0,
+        "changes": [
+          {
+            "locator": "/neuroml[@id='KinFix']/ionChannelHH[@id='kChan']/gateHHtauInf[@id='n']/steadyState[1]",
+            "attribute": "midpoint",
+            "old": "-50mV",
+            "new": "-40mV"
+          }
+        ]
+      },
+      "atomicity": "atomic (one attribute of one element)",
+      "edits": [
+        {
+          "file": "KinFix.cell.nml",
+          "locator": "/neuroml[@id='KinFix']/ionChannelHH[@id='kChan']/gateHHtauInf[@id='n']/steadyState[1]",
+          "attribute": "midpoint",
+          "old": "-50mV",
+          "new": "-40mV"
+        }
+      ],
+      "element_types": [
+        "HHSigmoidVariable"
+      ],
+      "affected_equations": [
+        "x_inf(V) = rate / (1 + exp((midpoint - V) / scale))"
+      ],
+      "exec_overrides": {},
+      "harness_unchanged": true,
+      "single_change_enforced": true,
+      "schema_valid": true,
+      "simulation_status": "ok",
+      "max_abs_dv_mV": 121.41985321044922,
+      "spikes_before_after": [
+        38,
+        43
+      ],
+      "plot": "plots/kinetics_fixture_shift_gate_midpoint_11.png",
+      "passed": true
+    },
+    {
+      "fixture": "kinetics_fixture",
+      "operator": "scale_gate_slope",
+      "site": 0,
+      "params": {
+        "mechanism": "rates",
+        "channel": "naChan",
+        "gate": "m",
+        "factor": 0.8,
+        "changes": [
+          {
+            "locator": "/neuroml[@id='KinFix']/ionChannelHH[@id='naChan']/gateHHrates[@id='m']/forwardRate[1]",
+            "attribute": "scale",
+            "old": "10mV",
+            "new": "8mV"
+          },
+          {
+            "locator": "/neuroml[@id='KinFix']/ionChannelHH[@id='naChan']/gateHHrates[@id='m']/reverseRate[1]",
+            "attribute": "scale",
+            "old": "-18mV",
+            "new": "-14.4mV"
+          }
+        ]
+      },
+      "atomicity": "compound (2 attributes of one gate, one documented change)",
+      "edits": [
+        {
+          "file": "KinFix.cell.nml",
+          "locator": "/neuroml[@id='KinFix']/ionChannelHH[@id='naChan']/gateHHrates[@id='m']/forwardRate[1]",
+          "attribute": "scale",
+          "old": "10mV",
+          "new": "8mV"
+        },
+        {
+          "file": "KinFix.cell.nml",
+          "locator": "/neuroml[@id='KinFix']/ionChannelHH[@id='naChan']/gateHHrates[@id='m']/reverseRate[1]",
+          "attribute": "scale",
+          "old": "-18mV",
+          "new": "-14.4mV"
+        }
+      ],
+      "element_types": [
+        "HHExpLinearRate",
+        "HHExpRate"
+      ],
+      "affected_equations": [
+        "r(V) = rate * exp((V - midpoint) / scale)",
+        "r(V) = rate * x / (1 - exp(-x)), x = (V - midpoint) / scale"
+      ],
+      "exec_overrides": {},
+      "harness_unchanged": true,
+      "single_change_enforced": true,
+      "schema_valid": true,
+      "simulation_status": "ok",
+      "max_abs_dv_mV": 119.34122848510742,
+      "spikes_before_after": [
+        38,
+        33
+      ],
+      "plot": "plots/kinetics_fixture_scale_gate_slope_0.png",
+      "passed": true
+    },
+    {
+      "fixture": "kinetics_fixture",
+      "operator": "scale_gate_slope",
+      "site": 1,
+      "params": {
+        "mechanism": "rates",
+        "channel": "naChan",
+        "gate": "m",
+        "factor": 1.25,
+        "changes": [
+          {
+            "locator": "/neuroml[@id='KinFix']/ionChannelHH[@id='naChan']/gateHHrates[@id='m']/forwardRate[1]",
+            "attribute": "scale",
+            "old": "10mV",
+            "new": "12.5mV"
+          },
+          {
+            "locator": "/neuroml[@id='KinFix']/ionChannelHH[@id='naChan']/gateHHrates[@id='m']/reverseRate[1]",
+            "attribute": "scale",
+            "old": "-18mV",
+            "new": "-22.5mV"
+          }
+        ]
+      },
+      "atomicity": "compound (2 attributes of one gate, one documented change)",
+      "edits": [
+        {
+          "file": "KinFix.cell.nml",
+          "locator": "/neuroml[@id='KinFix']/ionChannelHH[@id='naChan']/gateHHrates[@id='m']/forwardRate[1]",
+          "attribute": "scale",
+          "old": "10mV",
+          "new": "12.5mV"
+        },
+        {
+          "file": "KinFix.cell.nml",
+          "locator": "/neuroml[@id='KinFix']/ionChannelHH[@id='naChan']/gateHHrates[@id='m']/reverseRate[1]",
+          "attribute": "scale",
+          "old": "-18mV",
+          "new": "-22.5mV"
+        }
+      ],
+      "element_types": [
+        "HHExpLinearRate",
+        "HHExpRate"
+      ],
+      "affected_equations": [
+        "r(V) = rate * exp((V - midpoint) / scale)",
+        "r(V) = rate * x / (1 - exp(-x)), x = (V - midpoint) / scale"
+      ],
+      "exec_overrides": {},
+      "harness_unchanged": true,
+      "single_change_enforced": true,
+      "schema_valid": true,
+      "simulation_status": "ok",
+      "max_abs_dv_mV": 118.63053512573242,
+      "spikes_before_after": [
+        38,
+        42
+      ],
+      "plot": "plots/kinetics_fixture_scale_gate_slope_1.png",
+      "passed": true
+    },
+    {
+      "fixture": "kinetics_fixture",
+      "operator": "scale_gate_slope",
+      "site": 2,
+      "params": {
+        "mechanism": "rates",
+        "channel": "naChan",
+        "gate": "h",
+        "factor": 0.8,
+        "changes": [
+          {
+            "locator": "/neuroml[@id='KinFix']/ionChannelHH[@id='naChan']/gateHHrates[@id='h']/forwardRate[1]",
+            "attribute": "scale",
+            "old": "-20mV",
+            "new": "-16mV"
+          },
+          {
+            "locator": "/neuroml[@id='KinFix']/ionChannelHH[@id='naChan']/gateHHrates[@id='h']/reverseRate[1]",
+            "attribute": "scale",
+            "old": "10mV",
+            "new": "8mV"
+          }
+        ]
+      },
+      "atomicity": "compound (2 attributes of one gate, one documented change)",
+      "edits": [
+        {
+          "file": "KinFix.cell.nml",
+          "locator": "/neuroml[@id='KinFix']/ionChannelHH[@id='naChan']/gateHHrates[@id='h']/forwardRate[1]",
+          "attribute": "scale",
+          "old": "-20mV",
+          "new": "-16mV"
+        },
+        {
+          "file": "KinFix.cell.nml",
+          "locator": "/neuroml[@id='KinFix']/ionChannelHH[@id='naChan']/gateHHrates[@id='h']/reverseRate[1]",
+          "attribute": "scale",
+          "old": "10mV",
+          "new": "8mV"
+        }
+      ],
+      "element_types": [
+        "HHExpRate",
+        "HHSigmoidRate"
+      ],
+      "affected_equations": [
+        "r(V) = rate * exp((V - midpoint) / scale)",
+        "r(V) = rate / (1 + exp((midpoint - V) / scale))"
+      ],
+      "exec_overrides": {},
+      "harness_unchanged": true,
+      "single_change_enforced": true,
+      "schema_valid": true,
+      "simulation_status": "ok",
+      "max_abs_dv_mV": 120.17734146118164,
+      "spikes_before_after": [
+        38,
+        38
+      ],
+      "plot": "plots/kinetics_fixture_scale_gate_slope_2.png",
+      "passed": true
+    },
+    {
+      "fixture": "kinetics_fixture",
+      "operator": "scale_gate_slope",
+      "site": 3,
+      "params": {
+        "mechanism": "rates",
+        "channel": "naChan",
+        "gate": "h",
+        "factor": 1.25,
+        "changes": [
+          {
+            "locator": "/neuroml[@id='KinFix']/ionChannelHH[@id='naChan']/gateHHrates[@id='h']/forwardRate[1]",
+            "attribute": "scale",
+            "old": "-20mV",
+            "new": "-25mV"
+          },
+          {
+            "locator": "/neuroml[@id='KinFix']/ionChannelHH[@id='naChan']/gateHHrates[@id='h']/reverseRate[1]",
+            "attribute": "scale",
+            "old": "10mV",
+            "new": "12.5mV"
+          }
+        ]
+      },
+      "atomicity": "compound (2 attributes of one gate, one documented change)",
+      "edits": [
+        {
+          "file": "KinFix.cell.nml",
+          "locator": "/neuroml[@id='KinFix']/ionChannelHH[@id='naChan']/gateHHrates[@id='h']/forwardRate[1]",
+          "attribute": "scale",
+          "old": "-20mV",
+          "new": "-25mV"
+        },
+        {
+          "file": "KinFix.cell.nml",
+          "locator": "/neuroml[@id='KinFix']/ionChannelHH[@id='naChan']/gateHHrates[@id='h']/reverseRate[1]",
+          "attribute": "scale",
+          "old": "10mV",
+          "new": "12.5mV"
+        }
+      ],
+      "element_types": [
+        "HHExpRate",
+        "HHSigmoidRate"
+      ],
+      "affected_equations": [
+        "r(V) = rate * exp((V - midpoint) / scale)",
+        "r(V) = rate / (1 + exp((midpoint - V) / scale))"
+      ],
+      "exec_overrides": {},
+      "harness_unchanged": true,
+      "single_change_enforced": true,
+      "schema_valid": true,
+      "simulation_status": "ok",
+      "max_abs_dv_mV": 116.59988784790039,
+      "spikes_before_after": [
+        38,
+        36
+      ],
+      "plot": "plots/kinetics_fixture_scale_gate_slope_3.png",
+      "passed": true
+    },
+    {
+      "fixture": "kinetics_fixture",
+      "operator": "scale_gate_slope",
+      "site": 4,
+      "params": {
+        "mechanism": "steady_state",
+        "channel": "kChan",
+        "gate": "n",
+        "factor": 0.8,
+        "changes": [
+          {
+            "locator": "/neuroml[@id='KinFix']/ionChannelHH[@id='kChan']/gateHHtauInf[@id='n']/steadyState[1]",
+            "attribute": "scale",
+            "old": "10mV",
+            "new": "8mV"
+          }
+        ]
+      },
+      "atomicity": "atomic (one attribute of one element)",
+      "edits": [
+        {
+          "file": "KinFix.cell.nml",
+          "locator": "/neuroml[@id='KinFix']/ionChannelHH[@id='kChan']/gateHHtauInf[@id='n']/steadyState[1]",
+          "attribute": "scale",
+          "old": "10mV",
+          "new": "8mV"
+        }
+      ],
+      "element_types": [
+        "HHSigmoidVariable"
+      ],
+      "affected_equations": [
+        "x_inf(V) = rate / (1 + exp((midpoint - V) / scale))"
+      ],
+      "exec_overrides": {},
+      "harness_unchanged": true,
+      "single_change_enforced": true,
+      "schema_valid": true,
+      "simulation_status": "ok",
+      "max_abs_dv_mV": 118.76715850830078,
+      "spikes_before_after": [
+        38,
+        40
+      ],
+      "plot": "plots/kinetics_fixture_scale_gate_slope_4.png",
+      "passed": true
+    },
+    {
+      "fixture": "kinetics_fixture",
+      "operator": "scale_gate_slope",
+      "site": 5,
+      "params": {
+        "mechanism": "steady_state",
+        "channel": "kChan",
+        "gate": "n",
+        "factor": 1.25,
+        "changes": [
+          {
+            "locator": "/neuroml[@id='KinFix']/ionChannelHH[@id='kChan']/gateHHtauInf[@id='n']/steadyState[1]",
+            "attribute": "scale",
+            "old": "10mV",
+            "new": "12.5mV"
+          }
+        ]
+      },
+      "atomicity": "atomic (one attribute of one element)",
+      "edits": [
+        {
+          "file": "KinFix.cell.nml",
+          "locator": "/neuroml[@id='KinFix']/ionChannelHH[@id='kChan']/gateHHtauInf[@id='n']/steadyState[1]",
+          "attribute": "scale",
+          "old": "10mV",
+          "new": "12.5mV"
+        }
+      ],
+      "element_types": [
+        "HHSigmoidVariable"
+      ],
+      "affected_equations": [
+        "x_inf(V) = rate / (1 + exp((midpoint - V) / scale))"
+      ],
+      "exec_overrides": {},
+      "harness_unchanged": true,
+      "single_change_enforced": true,
+      "schema_valid": true,
+      "simulation_status": "ok",
+      "max_abs_dv_mV": 119.01358032226562,
+      "spikes_before_after": [
+        38,
+        34
+      ],
+      "plot": "plots/kinetics_fixture_scale_gate_slope_5.png",
+      "passed": true
+    },
+    {
+      "fixture": "kinetics_fixture",
+      "operator": "shift_forward_rate_midpoint",
+      "site": 0,
+      "params": {
+        "mechanism": "forward_rate",
+        "channel": "naChan",
+        "gate": "m",
+        "delta_mV": -5.0,
+        "changes": [
+          {
+            "locator": "/neuroml[@id='KinFix']/ionChannelHH[@id='naChan']/gateHHrates[@id='m']/forwardRate[1]",
+            "attribute": "midpoint",
+            "old": "-40mV",
+            "new": "-45mV"
+          }
+        ]
+      },
+      "atomicity": "atomic (one attribute of one element)",
+      "edits": [
+        {
+          "file": "KinFix.cell.nml",
+          "locator": "/neuroml[@id='KinFix']/ionChannelHH[@id='naChan']/gateHHrates[@id='m']/forwardRate[1]",
+          "attribute": "midpoint",
+          "old": "-40mV",
+          "new": "-45mV"
+        }
+      ],
+      "element_types": [
+        "HHExpLinearRate"
+      ],
+      "affected_equations": [
+        "r(V) = rate * x / (1 - exp(-x)), x = (V - midpoint) / scale"
+      ],
+      "exec_overrides": {},
+      "harness_unchanged": true,
+      "single_change_enforced": true,
+      "schema_valid": true,
+      "simulation_status": "ok",
+      "max_abs_dv_mV": 120.0200080871582,
+      "spikes_before_after": [
+        38,
+        42
+      ],
+      "plot": "plots/kinetics_fixture_shift_forward_rate_midpoint_0.png",
+      "passed": true
+    },
+    {
+      "fixture": "kinetics_fixture",
+      "operator": "shift_forward_rate_midpoint",
+      "site": 1,
+      "params": {
+        "mechanism": "forward_rate",
+        "channel": "naChan",
+        "gate": "m",
+        "delta_mV": 5.0,
+        "changes": [
+          {
+            "locator": "/neuroml[@id='KinFix']/ionChannelHH[@id='naChan']/gateHHrates[@id='m']/forwardRate[1]",
+            "attribute": "midpoint",
+            "old": "-40mV",
+            "new": "-35mV"
+          }
+        ]
+      },
+      "atomicity": "atomic (one attribute of one element)",
+      "edits": [
+        {
+          "file": "KinFix.cell.nml",
+          "locator": "/neuroml[@id='KinFix']/ionChannelHH[@id='naChan']/gateHHrates[@id='m']/forwardRate[1]",
+          "attribute": "midpoint",
+          "old": "-40mV",
+          "new": "-35mV"
+        }
+      ],
+      "element_types": [
+        "HHExpLinearRate"
+      ],
+      "affected_equations": [
+        "r(V) = rate * x / (1 - exp(-x)), x = (V - midpoint) / scale"
+      ],
+      "exec_overrides": {},
+      "harness_unchanged": true,
+      "single_change_enforced": true,
+      "schema_valid": true,
+      "simulation_status": "ok",
+      "max_abs_dv_mV": 119.19207000732422,
+      "spikes_before_after": [
+        38,
+        30
+      ],
+      "plot": "plots/kinetics_fixture_shift_forward_rate_midpoint_1.png",
+      "passed": true
+    },
+    {
+      "fixture": "kinetics_fixture",
+      "operator": "shift_forward_rate_midpoint",
+      "site": 2,
+      "params": {
+        "mechanism": "forward_rate",
+        "channel": "naChan",
+        "gate": "h",
+        "delta_mV": -5.0,
+        "changes": [
+          {
+            "locator": "/neuroml[@id='KinFix']/ionChannelHH[@id='naChan']/gateHHrates[@id='h']/forwardRate[1]",
+            "attribute": "midpoint",
+            "old": "-65mV",
+            "new": "-70mV"
+          }
+        ]
+      },
+      "atomicity": "atomic (one attribute of one element)",
+      "edits": [
+        {
+          "file": "KinFix.cell.nml",
+          "locator": "/neuroml[@id='KinFix']/ionChannelHH[@id='naChan']/gateHHrates[@id='h']/forwardRate[1]",
+          "attribute": "midpoint",
+          "old": "-65mV",
+          "new": "-70mV"
+        }
+      ],
+      "element_types": [
+        "HHExpRate"
+      ],
+      "affected_equations": [
+        "r(V) = rate * exp((V - midpoint) / scale)"
+      ],
+      "exec_overrides": {},
+      "harness_unchanged": true,
+      "single_change_enforced": true,
+      "schema_valid": true,
+      "simulation_status": "ok",
+      "max_abs_dv_mV": 116.6865005493164,
+      "spikes_before_after": [
+        38,
+        37
+      ],
+      "plot": "plots/kinetics_fixture_shift_forward_rate_midpoint_2.png",
+      "passed": true
+    },
+    {
+      "fixture": "kinetics_fixture",
+      "operator": "shift_forward_rate_midpoint",
+      "site": 3,
+      "params": {
+        "mechanism": "forward_rate",
+        "channel": "naChan",
+        "gate": "h",
+        "delta_mV": 5.0,
+        "changes": [
+          {
+            "locator": "/neuroml[@id='KinFix']/ionChannelHH[@id='naChan']/gateHHrates[@id='h']/forwardRate[1]",
+            "attribute": "midpoint",
+            "old": "-65mV",
+            "new": "-60mV"
+          }
+        ]
+      },
+      "atomicity": "atomic (one attribute of one element)",
+      "edits": [
+        {
+          "file": "KinFix.cell.nml",
+          "locator": "/neuroml[@id='KinFix']/ionChannelHH[@id='naChan']/gateHHrates[@id='h']/forwardRate[1]",
+          "attribute": "midpoint",
+          "old": "-65mV",
+          "new": "-60mV"
+        }
+      ],
+      "element_types": [
+        "HHExpRate"
+      ],
+      "affected_equations": [
+        "r(V) = rate * exp((V - midpoint) / scale)"
+      ],
+      "exec_overrides": {},
+      "harness_unchanged": true,
+      "single_change_enforced": true,
+      "schema_valid": true,
+      "simulation_status": "ok",
+      "max_abs_dv_mV": 115.85827255249023,
+      "spikes_before_after": [
+        38,
+        38
+      ],
+      "plot": "plots/kinetics_fixture_shift_forward_rate_midpoint_3.png",
+      "passed": true
+    },
+    {
+      "fixture": "kinetics_fixture",
+      "operator": "shift_channel_vshift",
+      "site": null,
+      "status": "no_site",
+      "inapplicable": []
+    },
+    {
+      "fixture": "pospischil2008_rs",
+      "operator": "shift_gate_midpoint",
+      "site": null,
+      "status": "no_site",
+      "inapplicable": [
+        {
+          "operator": "shift_gate_midpoint",
+          "file": "NeuroML2/channels/Kd/Kd.channel.nml",
+          "locator": "/neuroml[@id='Kd']/ionChannel[@id='Kd']/gate[@id='n']",
+          "reason": "rates Kd_n_alpha_rate/Kd_n_beta_rate are not core rate types with 'midpoint'"
+        },
+        {
+          "operator": "shift_gate_midpoint",
+          "file": "NeuroML2/channels/IM/IM.channel.nml",
+          "locator": "/neuroml[@id='IM']/ionChannel[@id='IM']/gate[@id='p']",
+          "reason": "gate type gateHHtauInf has no core rate or steady state with 'midpoint'"
+        },
+        {
+          "operator": "shift_gate_midpoint",
+          "file": "NeuroML2/channels/Na/Na.channel.nml",
+          "locator": "/neuroml[@id='Na']/ionChannel[@id='Na']/gate[@id='m']",
+          "reason": "rates Na_m_alpha_rate/Na_m_beta_rate are not core rate types with 'midpoint'"
+        },
+        {
+          "operator": "shift_gate_midpoint",
+          "file": "NeuroML2/channels/Na/Na.channel.nml",
+          "locator": "/neuroml[@id='Na']/ionChannel[@id='Na']/gate[@id='h']",
+          "reason": "rates Na_h_alpha_rate/Na_h_beta_rate are not core rate types with 'midpoint'"
+        }
+      ]
+    },
+    {
+      "fixture": "pospischil2008_rs",
+      "operator": "scale_gate_slope",
+      "site": null,
+      "status": "no_site",
+      "inapplicable": [
+        {
+          "operator": "scale_gate_slope",
+          "file": "NeuroML2/channels/Kd/Kd.channel.nml",
+          "locator": "/neuroml[@id='Kd']/ionChannel[@id='Kd']/gate[@id='n']",
+          "reason": "rates Kd_n_alpha_rate/Kd_n_beta_rate are not core rate types with 'scale'"
+        },
+        {
+          "operator": "scale_gate_slope",
+          "file": "NeuroML2/channels/IM/IM.channel.nml",
+          "locator": "/neuroml[@id='IM']/ionChannel[@id='IM']/gate[@id='p']",
+          "reason": "gate type gateHHtauInf has no core rate or steady state with 'scale'"
+        },
+        {
+          "operator": "scale_gate_slope",
+          "file": "NeuroML2/channels/Na/Na.channel.nml",
+          "locator": "/neuroml[@id='Na']/ionChannel[@id='Na']/gate[@id='m']",
+          "reason": "rates Na_m_alpha_rate/Na_m_beta_rate are not core rate types with 'scale'"
+        },
+        {
+          "operator": "scale_gate_slope",
+          "file": "NeuroML2/channels/Na/Na.channel.nml",
+          "locator": "/neuroml[@id='Na']/ionChannel[@id='Na']/gate[@id='h']",
+          "reason": "rates Na_h_alpha_rate/Na_h_beta_rate are not core rate types with 'scale'"
+        }
+      ]
+    },
+    {
+      "fixture": "pospischil2008_rs",
+      "operator": "shift_forward_rate_midpoint",
+      "site": null,
+      "status": "no_site",
+      "inapplicable": [
+        {
+          "operator": "shift_forward_rate_midpoint",
+          "file": "NeuroML2/channels/Kd/Kd.channel.nml",
+          "locator": "/neuroml[@id='Kd']/ionChannel[@id='Kd']/gate[@id='n']",
+          "reason": "rates Kd_n_alpha_rate/Kd_n_beta_rate are not core rate types with 'midpoint'"
+        },
+        {
+          "operator": "shift_forward_rate_midpoint",
+          "file": "NeuroML2/channels/IM/IM.channel.nml",
+          "locator": "/neuroml[@id='IM']/ionChannel[@id='IM']/gate[@id='p']",
+          "reason": "not a rate gate (no forward and reverse rate)"
+        },
+        {
+          "operator": "shift_forward_rate_midpoint",
+          "file": "NeuroML2/channels/Na/Na.channel.nml",
+          "locator": "/neuroml[@id='Na']/ionChannel[@id='Na']/gate[@id='m']",
+          "reason": "rates Na_m_alpha_rate/Na_m_beta_rate are not core rate types with 'midpoint'"
+        },
+        {
+          "operator": "shift_forward_rate_midpoint",
+          "file": "NeuroML2/channels/Na/Na.channel.nml",
+          "locator": "/neuroml[@id='Na']/ionChannel[@id='Na']/gate[@id='h']",
+          "reason": "rates Na_h_alpha_rate/Na_h_beta_rate are not core rate types with 'midpoint'"
+        }
+      ]
+    },
+    {
+      "fixture": "pospischil2008_rs",
+      "operator": "shift_channel_vshift",
+      "site": 0,
+      "params": {
+        "element_id": "Na_all",
+        "channel": "Na",
+        "delta_mV": -5.0,
+        "changes": [
+          {
+            "locator": "/neuroml[@id='RS']/cell[@id='RS']/biophysicalProperties[@id='biophys']/membraneProperties[1]/channelDensityVShift[@id='Na_all']",
+            "attribute": "vShift",
+            "old": "0mV",
+            "new": "-5mV"
+          }
+        ]
+      },
+      "atomicity": "atomic (one attribute of one element)",
+      "edits": [
+        {
+          "file": "NeuroML2/cells/RS/RS.cell.nml",
+          "locator": "/neuroml[@id='RS']/cell[@id='RS']/biophysicalProperties[@id='biophys']/membraneProperties[1]/channelDensityVShift[@id='Na_all']",
+          "attribute": "vShift",
+          "old": "0mV",
+          "new": "-5mV"
+        }
+      ],
+      "element_types": [
+        "channelDensityVShift"
+      ],
+      "affected_equations": [
+        "vShift is passed to the channel; only gates whose own definitions read vShift use it (NeuroML core ionChannelVShift: 'The exact usage of vShift ... is determined by the individual gates'); core HH rate types do not read it"
+      ],
+      "exec_overrides": {},
+      "harness_unchanged": true,
+      "single_change_enforced": true,
+      "schema_valid": true,
+      "simulation_status": "ok",
+      "max_abs_dv_mV": 114.87462997436523,
+      "spikes_before_after": [
+        5,
+        13
+      ],
+      "plot": "plots/pospischil2008_rs_shift_channel_vshift_0.png",
+      "passed": true
+    },
+    {
+      "fixture": "pospischil2008_rs",
+      "operator": "shift_channel_vshift",
+      "site": 1,
+      "params": {
+        "element_id": "Na_all",
+        "channel": "Na",
+        "delta_mV": 5.0,
+        "changes": [
+          {
+            "locator": "/neuroml[@id='RS']/cell[@id='RS']/biophysicalProperties[@id='biophys']/membraneProperties[1]/channelDensityVShift[@id='Na_all']",
+            "attribute": "vShift",
+            "old": "0mV",
+            "new": "5mV"
+          }
+        ]
+      },
+      "atomicity": "atomic (one attribute of one element)",
+      "edits": [
+        {
+          "file": "NeuroML2/cells/RS/RS.cell.nml",
+          "locator": "/neuroml[@id='RS']/cell[@id='RS']/biophysicalProperties[@id='biophys']/membraneProperties[1]/channelDensityVShift[@id='Na_all']",
+          "attribute": "vShift",
+          "old": "0mV",
+          "new": "5mV"
+        }
+      ],
+      "element_types": [
+        "channelDensityVShift"
+      ],
+      "affected_equations": [
+        "vShift is passed to the channel; only gates whose own definitions read vShift use it (NeuroML core ionChannelVShift: 'The exact usage of vShift ... is determined by the individual gates'); core HH rate types do not read it"
+      ],
+      "exec_overrides": {},
+      "harness_unchanged": true,
+      "single_change_enforced": true,
+      "schema_valid": true,
+      "simulation_status": "ok",
+      "max_abs_dv_mV": 96.23366165161133,
+      "spikes_before_after": [
+        5,
+        0
+      ],
+      "plot": "plots/pospischil2008_rs_shift_channel_vshift_1.png",
+      "passed": true
+    }
+  ],
+  "all_sites_passed": true
+}

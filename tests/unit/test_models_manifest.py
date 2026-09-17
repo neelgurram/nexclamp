@@ -1,4 +1,4 @@
-"""Tests for neurosem.models (manifest, workspaces) and neurosem.config (hashed YAML configuration).
+"""Tests for neuraxis.models (manifest, workspaces) and neuraxis.config (hashed YAML configuration).
 
 Manifest rows are checked against the pinned snapshot files themselves, so a typo in a
 cell id, harness path or output column name fails here rather than deep inside a run.
@@ -10,13 +10,12 @@ import csv
 import dataclasses as dc
 import re
 import stat
-from pathlib import Path
 
 import pytest
 from lxml import etree
 
-from neurosem import config
-from neurosem.models import (
+from neuraxis import config
+from neuraxis.models import (
     MANIFEST_COLUMNS,
     MODEL_MANIFEST,
     RAW_MODELS,
@@ -27,9 +26,9 @@ from neurosem.models import (
     snapshot_dir,
     write_models,
 )
-from neurosem.provenance import REPO_ROOT, sha256_file, tree_manifest, tree_sha256, write_immutable
-from neurosem.schemas import ExecConfig, ModelRecord
-from neurosem.units import parse
+from neuraxis.provenance import REPO_ROOT, sha256_file, tree_manifest, tree_sha256, write_immutable
+from neuraxis.schemas import ExecConfig, ModelRecord
+from neuraxis.units import parse
 
 EXPECTED_IDS = {"pospischil2008_rs", "pospischil2008_lts", "pospischil2008_fs", "pospischil2008_ib",
                 "nml2_hh_example", "wangbuzsaki1996_wb"}

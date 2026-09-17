@@ -57,7 +57,7 @@ absent. Pilot 2 runs every numerical stress test at h, h/2 and h/4.
 
 ## What changed in the code
 
-- `src/neurosem/experiments/strata.py` assigns each variant to a stratum: primary semantic,
+- `src/neuraxis/experiments/strata.py` assigns each variant to a stratum: primary semantic,
   numerical robustness, harness stimulus, or control.
 - The primary detection matrix, cascade, silent list, pilot criteria, analysis figures and the
   held-out denominator use the semantic stratum only (`primary_admissible`). Numerical mutants get

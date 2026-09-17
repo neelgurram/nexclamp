@@ -510,7 +510,7 @@ def run(args: argparse.Namespace) -> int:
         pinned_sha256=args.expect_sha256, java_version_output=version_out))
     print(f"wrote     {prov}")
     if java_home(extracted) != extracted or dest != (REPO_ROOT / ".tools").resolve():
-        # neurosem.simulators.jneuroml.find_java only globs .tools/jdk-*/bin/java.
+        # neuraxis.simulators.jneuroml.find_java only globs .tools/jdk-*/bin/java.
         print(f"hint      set NEUROSEM_JAVA={java}")
     return 0
 

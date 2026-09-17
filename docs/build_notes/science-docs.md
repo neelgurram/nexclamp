@@ -15,7 +15,7 @@ and model files, not from simulation results.
 - The h/2 comparison is therefore |f_ref(h) - f_ref(h/2)|. That is at most tau / c, with
   c = 3, so it is never detected at h/2 and never class 5 or 6.
 - Suggestion: use factors of 4 or more, or document the family as numerical-sensitivity
-  only. See `docs/mutation_catalog.md` section 5.2.
+  only. See `docs/MUTATION_CATALOG.md` section 5.2.
 
 ## 2. `record_wrong_variable` may be classified as numerically unstable
 
@@ -51,7 +51,7 @@ and model files, not from simulation results.
   defined for a single spike: it returned about -9.8 mV on an artificial one-spike trace.
   So `min_spikes: 2` removes the feature, not eFEL.
 - Options: set `min_spikes: 1` for `ahp_depth`, or remove it from P09.
-- See `docs/protocol_catalog.md` section 5.
+- See `docs/PROTOCOL_CATALOG.md` section 5.
 
 ## 6. Canonical windows with no baseline
 
@@ -98,8 +98,8 @@ and model files, not from simulation results.
 - So take a mutant whose canonical detection at h does not reproduce at h/2, and which some
   battery protocol detects reproducibly. It is class 5, yet it counts as a canonical miss
   in the primary endpoint. 1 - DR_canonical can therefore exceed the silent-survival rate.
-- No code change is requested here. `docs/statistical_plan.md` section 2 and
-  `docs/preregistration_draft.md` sections 2 and 10 now document the implemented rule and
+- No code change is requested here. `docs/STATISTICAL_ANALYSIS_PLAN.md` section 2 and
+  `docs/PREREGISTRATION_DRAFT.md` sections 2 and 10 now document the implemented rule and
   this gap. Analysis should report the number of such mutants, using the
   `canonical_detected_h` matrix column.
 - If Neel wants the two to agree, one of them has to change. Either `classify` switches to

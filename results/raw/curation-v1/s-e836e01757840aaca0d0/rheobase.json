@@ -1,0 +1,149 @@
+{
+  "campaign": "curation-v1",
+  "cell_steps": 7680000,
+  "config": {
+    "expand": 4.0,
+    "fallback_rheobase_nA": 0.1,
+    "grid": 12,
+    "initial_hi_nA": 0.5,
+    "max_hi_nA": 32.0,
+    "rounds": 4,
+    "spike_threshold_mV": -20.0,
+    "step_duration_ms": 500
+  },
+  "config_sha256": "dccce3c072369db856a9d71efced8f0323a5ffbbcd1c27721a26a7669faf85c8",
+  "configuration_hash": "dccce3c072369db856a9d71efced8f0323a5ffbbcd1c27721a26a7669faf85c8",
+  "cost": [
+    {
+      "cell_steps": 1920000,
+      "runtime_s": 0.9383465999999316,
+      "status": "build_error",
+      "tag": "rheo_1"
+    },
+    {
+      "cell_steps": 1920000,
+      "runtime_s": 0.8572426000027917,
+      "status": "build_error",
+      "tag": "rheo_2"
+    },
+    {
+      "cell_steps": 1920000,
+      "runtime_s": 0.685120399997686,
+      "status": "build_error",
+      "tag": "rheo_3"
+    },
+    {
+      "cell_steps": 1920000,
+      "runtime_s": 0.7096639000083087,
+      "status": "build_error",
+      "tag": "rheo_4"
+    }
+  ],
+  "designation": "Development data; exploratory; never pooled with the confirmatory held-out estimate",
+  "end_time": "2026-09-17T02:05:09+00:00",
+  "environment_digest": "2f191cf0933dfd096ccd4411a4ea7667d45f20ce3832b6348d35e7f30dfcdfe6",
+  "exec": {
+    "dt_ms": 0.005,
+    "integrator_method": null,
+    "sample_every_ms": null
+  },
+  "execution_id": "09bfa1cdbf9b4d428b4bf15efac6193f",
+  "git_commit": "c46e10a3841bdda04b7f1b18104ceb76efc50839",
+  "git_dirty": true,
+  "inputs_sha256": "0b534b2d2b2fc060b82681e199f4e6cc31d72d1b1ee1b623cea0e7ddc572003a",
+  "model_hash": "8be0427f06e692ef4d164e75e72fa67cfdea7aa6f0f6a52c6893df6f350e580b",
+  "model_id": "osb_hh2_477127614",
+  "project_name": "Neuraxis",
+  "protocol_id": "P03_rheobase",
+  "protocol_version": "DEVELOPMENT_DEFAULTS",
+  "result": {
+    "history": [
+      {
+        "amplitudes_nA": [
+          0.0,
+          0.045454545454545456,
+          0.09090909090909091,
+          0.13636363636363635,
+          0.18181818181818182,
+          0.2272727272727273,
+          0.2727272727272727,
+          0.3181818181818182,
+          0.36363636363636365,
+          0.4090909090909091,
+          0.4545454545454546,
+          0.5
+        ],
+        "counts": null,
+        "note": "initial grid failed to simulate; retrying with a smaller upper amplitude"
+      },
+      {
+        "amplitudes_nA": [
+          0.0,
+          0.011363636363636364,
+          0.022727272727272728,
+          0.03409090909090909,
+          0.045454545454545456,
+          0.05681818181818182,
+          0.06818181818181818,
+          0.07954545454545454,
+          0.09090909090909091,
+          0.10227272727272728,
+          0.11363636363636365,
+          0.125
+        ],
+        "counts": null,
+        "note": "initial grid failed to simulate; retrying with a smaller upper amplitude"
+      },
+      {
+        "amplitudes_nA": [
+          0.0,
+          0.002840909090909091,
+          0.005681818181818182,
+          0.008522727272727272,
+          0.011363636363636364,
+          0.014204545454545456,
+          0.017045454545454544,
+          0.019886363636363636,
+          0.022727272727272728,
+          0.02556818181818182,
+          0.02840909090909091,
+          0.03125
+        ],
+        "counts": null,
+        "note": "initial grid failed to simulate; retrying with a smaller upper amplitude"
+      },
+      {
+        "amplitudes_nA": [
+          0.0,
+          0.0007102272727272727,
+          0.0014204545454545455,
+          0.002130681818181818,
+          0.002840909090909091,
+          0.003551136363636364,
+          0.004261363636363636,
+          0.004971590909090909,
+          0.005681818181818182,
+          0.006392045454545455,
+          0.007102272727272728,
+          0.0078125
+        ],
+        "counts": null
+      }
+    ],
+    "lower_nA": null,
+    "n_simulations": 4,
+    "rheobase_nA": null,
+    "status": "error",
+    "upper_nA": null
+  },
+  "runtime_s": 3.19,
+  "search_id": "s-e836e01757840aaca0d0",
+  "settle_ms": 300.0,
+  "simulator_version": "jNeuroML 0.14.0 / jLEMS 0.12.0",
+  "start_time": "2026-09-17T02:05:06+00:00",
+  "status": "build_error",
+  "study_phase": "development",
+  "timestamp_utc": "2026-09-17T02:05:09+00:00",
+  "variant_id": "osb_hh2_477127614__reference",
+  "variant_tree_sha256": "8be0427f06e692ef4d164e75e72fa67cfdea7aa6f0f6a52c6893df6f350e580b"
+}

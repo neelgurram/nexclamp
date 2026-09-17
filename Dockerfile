@@ -31,7 +31,7 @@ LABEL org.opencontainers.image.title="NeuroSem" \
       org.opencontainers.image.licenses="BSD-3-Clause" \
       org.opencontainers.image.revision="${GIT_COMMIT}"
 
-# PROVENANCE: the image has no git or .git. neurosem.provenance.git_state() falls back to
+# PROVENANCE: the image has no git or .git. neuraxis.provenance.git_state() falls back to
 # NEUROSEM_GIT_COMMIT (set below from the GIT_COMMIT build argument, like the OCI revision label) and
 # reports dirty=True, because the tree cannot be checked. Build with --build-arg GIT_COMMIT=<sha>, and
 # pass -e NEUROSEM_CONTAINER_IMAGE=<repo@sha256:...> at run time so the image enters the environment
@@ -72,7 +72,7 @@ COPY requirements.lock ./
 RUN python -m pip install pip==26.2.1 \
  && python -m pip install -r requirements.lock
 
-# 3) Project source, editable install (neurosem.provenance.REPO_ROOT resolves to the source
+# 3) Project source, editable install (neuraxis.provenance.REPO_ROOT resolves to the source
 #    tree, which is where configs/, data/ and models/ live). The build backend (setuptools>=69)
 #    is fetched by pip's build isolation and is not pinned; it is build-time only.
 COPY . .
@@ -84,6 +84,6 @@ RUN python -m pip install --no-deps -e . \
 USER neurosem
 
 # Build-time smoke check: the jNeuroML jar from pyNeuroML and the pinned JRE are found and run.
-RUN python -c "from neurosem.simulators.jneuroml import JNeuroML; s = JNeuroML(); assert s.available(), 'Java or jNeuroML jar missing'; print(s.java, s.jar); print(s.version_string())"
+RUN python -c "from neuraxis.simulators.jneuroml import JNeuroML; s = JNeuroML(); assert s.available(), 'Java or jNeuroML jar missing'; print(s.java, s.jar); print(s.version_string())"
 
 CMD ["python", "-m", "pytest", "-q"]

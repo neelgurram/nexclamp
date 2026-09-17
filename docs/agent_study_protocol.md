@@ -5,7 +5,7 @@ specification ("Claude Code experiment"). It is a secondary study. In the manusc
 belongs in a subsection titled *Application to AI-assisted neuronal-model transformation*,
 and Claude must not appear in the paper title.
 
-The harness (`src/neurosem/experiments/agent.py`) only prepares and scores trials. It never
+The harness (`src/neuraxis/experiments/agent.py`) only prepares and scores trials. It never
 starts an agent. Every trial is started by a person, following the steps below.
 
 **Status: provisional.** Budgets, the public spike-time tolerance, the runtime threshold of
@@ -63,7 +63,7 @@ decided and recorded at step 1, before any trial runs.
    exports and scoring run from a clean checkout of that tag (for example a separate
    `git worktree`): `prepare_trial` refuses uncommitted inputs, and `score_trial` refuses to
    run when the evaluator is not at the frozen commit or has uncommitted changes in
-   `src/neurosem`, `agent_study` or `configs`. Do not commit to that checkout until every
+   `src/neuraxis`, `agent_study` or `configs`. Do not commit to that checkout until every
    trial is scored.
 5. Write `frozen_agent_eval.yaml` (schema `neurosem-agent-frozen/1`) **outside version
    control** (under `results/agent_study/<study>/`) with these fields: `campaign`,

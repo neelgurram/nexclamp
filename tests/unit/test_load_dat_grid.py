@@ -5,7 +5,7 @@ from __future__ import annotations
 import numpy as np
 import pytest
 
-from neurosem.simulators.jneuroml import load_dat, regularize_time
+from neuraxis.simulators.jneuroml import load_dat, regularize_time
 
 
 def test_label_jitter_is_replaced_by_exact_grid(tmp_path):

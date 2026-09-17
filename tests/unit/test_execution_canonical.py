@@ -4,11 +4,11 @@ from __future__ import annotations
 
 import pytest
 
-from neurosem.schemas import ExecConfig, RunStatus, VariantKind, VariantRecord
-from neurosem.validation.canonical import canonical_protocol, refine_harness_step
-from neurosem.validation.execution import (TaskError, apply_overrides, effective_workspace, inputs_manifest,
+from neuraxis.schemas import ExecConfig, RunStatus, VariantKind, VariantRecord
+from neuraxis.validation.canonical import canonical_protocol, refine_harness_step
+from neuraxis.validation.execution import (TaskError, apply_overrides, effective_workspace, inputs_manifest,
                                            reachable_files, run_parallel, worst_status)
-from neurosem.validation.structural import harness_nml_files
+from neuraxis.validation.structural import harness_nml_files
 
 
 def test_reachable_files_follow_includes_and_skip_core_types(rs_ws):
@@ -76,7 +76,7 @@ def test_harness_nml_files(rs_ws, hh_ws):
 
 @pytest.mark.jnml
 def test_structural_check_reference_and_broken_reference(rs_ws, lts_ws, sim):
-    from neurosem.validation.structural import check
+    from neuraxis.validation.structural import check
 
     r = check(rs_ws, sim)
     assert r.valid is True and r.libneuroml_strict is True and not r.baseline_errors

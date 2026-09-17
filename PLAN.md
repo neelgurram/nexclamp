@@ -58,24 +58,24 @@ The handoff's initial prompt also asks for `PLAN.md`, `REQUIREMENTS.md`, `PRIOR_
 
 | Handoff M0 item | Where it stands |
 |---|---|
-| 1. Separate reused from new functionality | `DEPENDENCY_AUDIT.md` section 5 (see "Separation" below) |
-| 2. Verify NeuroML, LEMS, pyNeuroML, jNeuroML, OMV, SciUnit/NeuronUnit, eFEL from primary sources | `DEPENDENCY_AUDIT.md`; `docs/m0_evidence/tools/*.research.json` with `*.verify.json` |
+| 1. Separate reused from new functionality | `docs/DEPENDENCY_AUDIT.md` section 5 (see "Separation" below) |
+| 2. Verify NeuroML, LEMS, pyNeuroML, jNeuroML, OMV, SciUnit/NeuronUnit, eFEL from primary sources | `docs/DEPENDENCY_AUDIT.md`; `docs/m0_evidence/tools/*.research.json` with `*.verify.json` |
 | 3. Name conflicts | `docs/NAME_CONFLICT_AUDIT.md`; `docs/m0_evidence/names/` |
 | 4. Prior-art sweep and novelty matrix | `PRIOR_ART_AUDIT.md` and `docs/novelty_matrix.csv` (335 verified works; novelty stress test); evidence in `docs/m0_evidence/prior_art/` |
 | 5. Outdated, uncertain, infeasible or weak assumptions | `RISK_REGISTER.md` section "Handoff assumptions" (from `docs/m0_evidence/critique/` with skeptic verdicts) |
 | 6. Two fixtures, provenance and license verified before download | `docs/m0_evidence/fixtures/`, `docs/model_selection.md`; "Fixture models" below |
-| 7. Exact environment setup commands | `docs/REPRODUCING.md`, `DEPENDENCY_AUDIT.md` section 6 |
+| 7. Exact environment setup commands | `docs/REPRODUCING.md`, `docs/DEPENDENCY_AUDIT.md` section 6 |
 | 8. Milestones as a plan with exit tests | this file |
 | 9. Every decision needing Neel's approval | `DECISIONS.md` and "Decisions requiring Neel's approval" below |
 
 **Exit tests.**
-1. Every file named above exists: `ls PLAN.md REQUIREMENTS.md PRIOR_ART_AUDIT.md docs/novelty_matrix.csv DEPENDENCY_AUDIT.md LICENSE_AUDIT.md RISK_REGISTER.md DECISIONS.md CHANGELOG.md AI_USE_LOG.md docs/NAME_CONFLICT_AUDIT.md`.
+1. Every file named above exists: `ls PLAN.md REQUIREMENTS.md PRIOR_ART_AUDIT.md docs/novelty_matrix.csv docs/DEPENDENCY_AUDIT.md LICENSE_AUDIT.md RISK_REGISTER.md DECISIONS.md CHANGELOG.md AI_USE_LOG.md docs/NAME_CONFLICT_AUDIT.md`.
 2. `docs/novelty_matrix.csv` has the spec's columns (citation, year, model type, mutations, multiple stimuli, electrophysiology features, protocol optimisation, held-out evaluation, AI transformations, software availability, distinction from NeuroSem), with a URL per row.
 3. Neel spot-checks the closest-prior-work citations (required by `AI_USE_LOG.md` Entry 001).
 4. The audits are committed, and Neel's approval is recorded in `DECISIONS.md`.
 
 **Status: done except human step.**
-- All documents exist and are committed: `PLAN.md`, `REQUIREMENTS.md`, `PRIOR_ART_AUDIT.md`, `docs/novelty_matrix.csv`, `DEPENDENCY_AUDIT.md`, `LICENSE_AUDIT.md`, `docs/NAME_CONFLICT_AUDIT.md`, `RISK_REGISTER.md`, `DECISIONS.md`, `CHANGELOG.md`, `AI_USE_LOG.md`.
+- All documents exist and are committed: `PLAN.md`, `REQUIREMENTS.md`, `PRIOR_ART_AUDIT.md`, `docs/novelty_matrix.csv`, `docs/DEPENDENCY_AUDIT.md`, `LICENSE_AUDIT.md`, `docs/NAME_CONFLICT_AUDIT.md`, `RISK_REGISTER.md`, `DECISIONS.md`, `CHANGELOG.md`, `AI_USE_LOG.md`.
 - Each audit was fact-checked by an independent agent and corrected (`AI_USE_LOG.md`).
 - Known limits of the prior-art sweep are in `PRIOR_ART_AUDIT.md` section 7 (Web of Science/Scopus not searched, rate-limited APIs, 144 screened-but-unread candidates).
 - The M0 approval stop: Neel's instruction "keep going, and build out the entire thing" was taken as approval to build M1-M7, with integrity gates kept (D-003). The M0 documents themselves have not yet been reviewed by Neel.
@@ -99,9 +99,9 @@ The handoff's initial prompt also asks for `PLAN.md`, `REQUIREMENTS.md`, `PRIOR_
 
 | Deliverable | State | Evidence |
 |---|---|---|
-| Python package | built | `pyproject.toml`, `src/neurosem/`, editable install `neurosem 0.1.0.dev0` |
+| Python package | built | `pyproject.toml`, `src/neuraxis/`, editable install `neurosem 0.1.0.dev0` |
 | Frozen dependencies | built; fresh Windows install verified | `requirements.lock` (75 pins); `docs/REPRODUCING.md` verification table |
-| jNeuroML execution | works on this machine | `src/neurosem/simulators/jneuroml.py`; jNeuroML 0.14.0 / jLEMS 0.12.0, Temurin 21.0.12.1+1 in `.tools/` (D-004, D-005); `tests/integration/test_jneuroml_adapter.py` |
+| jNeuroML execution | works on this machine | `src/neuraxis/simulators/jneuroml.py`; jNeuroML 0.14.0 / jLEMS 0.12.0, Temurin 21.0.12.1+1 in `.tools/` (D-004, D-005); `tests/integration/test_jneuroml_adapter.py` |
 | eFEL | installed and version-guarded | eFEL 5.7.34; `configs/features.yaml` pins it |
 | Docker | **written, never built** (Docker is not installed; this is Windows 11 Home) | `Dockerfile`; build context only emulated |
 | CI | **written, never run** (no GitHub remote) | `.github/workflows/ci.yml` |
@@ -109,7 +109,7 @@ The handoff's initial prompt also asks for `PLAN.md`, `REQUIREMENTS.md`, `PRIOR_
 
 - The clean-install exit command has **not** been run and logged. `neurosem validate-models --models pospischil2008_rs` ran once in the emulated Docker context (`docs/REPRODUCING.md`). `work/smoke/` holds RS and LTS scratch folders from a smoke run, but no log was saved.
 - `Makefile` and `environment.yml` were never executed (make and conda are not installed).
-- Stale text: the Dockerfile "PROVENANCE GAP" comment and the matching `docs/REPRODUCING.md` warning predate `d323afa`, which added the `NEUROSEM_GIT_COMMIT` fallback (`DEPENDENCY_AUDIT.md` section 6.4).
+- Stale text: the Dockerfile "PROVENANCE GAP" comment and the matching `docs/REPRODUCING.md` warning predate `d323afa`, which added the `NEUROSEM_GIT_COMMIT` fallback (`docs/DEPENDENCY_AUDIT.md` section 6.4).
 
 **Next actions.**
 1. Run exit steps 1-2 in a fresh venv and keep the log (after the pilot finishes, so the two runs do not compete for the CPU).
@@ -148,7 +148,7 @@ The handoff's initial prompt also asks for `PLAN.md`, `REQUIREMENTS.md`, `PRIOR_
 **Status: in progress.**
 - Implemented: P01-P10 (baseline, weak step, rheobase, 2x step, long step, ramp, hyperpolarising step, rebound, short pulse, paired pulses). P11 chirp and P12 frozen noise raise "not implemented" by design (spec: only if stable, or later). Code: `protocols/definitions.py`, `protocols/generate.py`, `protocols/rheobase.py`.
 - Independent tests exist: integer-millisecond edges on every refinement grid, windows, linear amplitude scaling with rheobase, schema-valid generated XML, and on real jLEMS runs the exact pulse onset, ramp onset, paired-pulse timing, deflection sign and release repolarisation (`tests/integration/test_probe_battery.py`). The battery test uses an assumed 0.1 nA rheobase at dt 0.025 ms, so it checks timing, not firing (`docs/build_notes/core.md`).
-- **Visual verification: not done.** No plotting code exists in `src/neurosem/protocols`, `src/neurosem/validation`, `scripts/` or `tests/`.
+- **Visual verification: not done.** No plotting code exists in `src/neuraxis/protocols`, `src/neuraxis/validation`, `scripts/` or `tests/`.
 - Known open issue (N-07): on LTS (rheobase about 0.039 nA) the short pulses and the ramp evoke no spikes, and the rebound protocol showed no rebound depolarisation in a smoke run (D-010).
 
 **Next actions.** Produce the plots in exit test 2. Neel reviews them together with N-07, using discovery data only.
@@ -234,7 +234,7 @@ Nothing here starts until Neel ends the pilot phase. Each step is a commit, and 
 |---|---|---|---|
 | 1 | Software version | annotated tag on a clean commit; the held-out campaign must run on exactly that commit | `registry.check_single_clean_commit` in `evaluate_heldout`; tag check still to add |
 | 2 | Model eligibility rules | preregistration section 4.1; `data/model_manifest.csv` | `configs/FROZEN.lock` (manifest entry still to add to the lock's required entries) |
-| 3 | Mutation definitions | operator code at the tag; `docs/mutation_catalog.md`; operator selection in `configs/study.yaml` | tag + lock |
+| 3 | Mutation definitions | operator code at the tag; `docs/MUTATION_CATALOG.md`; operator selection in `configs/study.yaml` | tag + lock |
 | 4 | Feature definitions | `configs/features.yaml`; per-protocol and canonical feature lists in `configs/study.yaml` | lock |
 | 5 | Tolerances | `configs/tolerances.yaml` with `status: frozen` (N-03) | lock |
 | 6 | Canonical protocol | `canonical` block of `configs/study.yaml` (N-06) | lock |
@@ -267,13 +267,13 @@ Nothing here starts until Neel ends the pilot phase. Each step is a commit, and 
 **Deliverables (spec).** Preregistration; frozen configurations and hashes; full execution logs; statistical analysis; robustness and ablation analyses.
 
 **Exit tests.**
-1. The preregistration is registered with a timestamp in the registry Neel chooses. Every `[NEEL DECISION REQUIRED]` field in `docs/preregistration_draft.md` (on 85 lines today, counted with `grep -c`) is filled by Neel.
+1. The preregistration is registered with a timestamp in the registry Neel chooses. Every `[NEEL DECISION REQUIRED]` field in `docs/PREREGISTRATION_DRAFT.md` (on 85 lines today, counted with `grep -c`) is filled by Neel.
 2. `configs/FROZEN.lock` exists at exactly that path, in `sha256  path` format, covering `data/splits/SPLITS.sha256`, `configs/study.yaml` and every other `configs/*.yaml`. All hashes match. `configs/study.yaml` says `status: frozen`, if P-09 adds that rule.
 3. `neurosem evaluate-heldout --campaign <c> --selection <frozen selection JSON> --reason "<reason>"` opens the gate once and appends to `results/heldout_access.log`.
 4. `neurosem analyze --campaign <c>` and `neurosem reproduce-paper --campaign <c>` rebuild every table and figure from raw and processed results.
 
 **Status: gated by design (D-003).**
-- Exists: `docs/preregistration_draft.md` (draft), `docs/statistical_plan.md` (draft), `analysis/metrics.py`, `analysis/bootstrap.py` (cluster bootstrap, exact McNemar, cluster sign-flip), `experiments/heldout.py`, `experiments/analyze.py` (tolerance sensitivity).
+- Exists: `docs/PREREGISTRATION_DRAFT.md` (draft), `docs/STATISTICAL_ANALYSIS_PLAN.md` (draft), `analysis/metrics.py`, `analysis/bootstrap.py` (cluster bootstrap, exact McNemar, cluster sign-flip), `experiments/heldout.py`, `experiments/analyze.py` (tolerance sensitivity).
 - Absent: `configs/FROZEN.lock`, a registered preregistration, full-study runs. `configs/study.yaml` says `status: provisional`.
 
 **Next actions.** Only after M6 "continue" and M7's frozen split: curate 12-16 models, fill the preregistration, freeze, then run once.
@@ -289,7 +289,7 @@ Nothing here starts until Neel ends the pilot phase. Each step is a commit, and 
 4. Every patch is audited by hand after scoring. Transcripts, patches, costs and versions are logged under `results/agent_study/`.
 
 **Status: gated by design. The harness is built; no trials exist.**
-- Built: nine task definitions `agent_study/tasks/t01-t09`, the shared public runner, hidden evaluator specs in `agent_study/hidden/` (Git-ignored; hashes committed, D-022), `configs/agent_policy.yaml` (provisional), `docs/agent_study_protocol.md`, `src/neurosem/experiments/agent.py`, `tests/unit/test_agent_harness.py`.
+- Built: nine task definitions `agent_study/tasks/t01-t09`, the shared public runner, hidden evaluator specs in `agent_study/hidden/` (Git-ignored; hashes committed, D-022), `configs/agent_policy.yaml` (provisional), `docs/agent_study_protocol.md`, `src/neuraxis/experiments/agent.py`, `tests/unit/test_agent_harness.py`.
 - `results/agent_study/` does not exist.
 - D-003: the assistant that built the evaluators does not run the trials.
 - Nine tasks are one per task type, not a sample. The spec plans 20-30 tasks.
@@ -303,7 +303,7 @@ Nothing here starts until Neel ends the pilot phase. Each step is a commit, and 
 **Exit tests.** The public repository exists under the chosen name; a tagged release has a DOI; `neurosem reproduce-paper` regenerates every table and figure from the archive on the reference platform; the manuscript and supplement exist; the licensing checklist (L-01 to L-11) is closed.
 
 **Status: not started.**
-- Groundwork only: `CITATION.cff` (validated against CFF 1.2.0), `docs/REPRODUCING.md` (environment only), `docs/ai_disclosure.md`.
+- Groundwork only: `CITATION.cff` (validated against CFF 1.2.0), `docs/REPRODUCING.md` (environment only), `docs/AI_DISCLOSURE.md`.
 - No `manuscript/` directory, no remote, no release.
 - The spec's repository tree also lists `tests/regression/`, `tests/fixtures/`, `results/tables/` and `results/figures/`; these do not exist yet.
 
@@ -313,7 +313,7 @@ Nothing here starts until Neel ends the pilot phase. Each step is a commit, and 
 
 ## Separation of reused and new functionality
 
-The full table is in `DEPENDENCY_AUDIT.md` section 5. In short:
+The full table is in `docs/DEPENDENCY_AUDIT.md` section 5. In short:
 - **Reused, not claimed as new:** NeuroML v2 and LEMS; `jnml -validate` and jLEMS simulation in the jNeuroML jar; libNeuroML validation; eFEL feature algorithms; mutation testing, metamorphic testing, greedy set cover and standard statistics as general methods; GitHub Actions and Docker.
 - **Code written for NeuroSem:** the relative structural oracle, the direct-jar adapter and status taxonomy, protocol generation and rheobase normalisation, the eFEL adapter with three feature states, tolerance calibration by refinement, single-fault NeuroML/LEMS mutation operators and valid transformations, fingerprints and the detection matrix, split and leakage barriers, and clustered statistics.
 - "Written for NeuroSem" is not a novelty claim. Novelty is judged only by the prior-art audit, which is not written yet (M0).
@@ -345,7 +345,7 @@ Spec M0 item 6. Details: `docs/model_selection.md`, `docs/m0_evidence/fixtures/f
 ## Environment setup
 
 - Exact commands, and what was and was not verified on each route: `docs/REPRODUCING.md`.
-- Versions, pitfalls, lock regeneration and evidence: `DEPENDENCY_AUDIT.md` sections 2, 6 and 7.
+- Versions, pitfalls, lock regeneration and evidence: `docs/DEPENDENCY_AUDIT.md` sections 2, 6 and 7.
 - The verified route is Windows 11 with CPython 3.12.10 and a portable Temurin JDK. Linux, Docker, CI, make and conda are written down but not run.
 
 Windows sequence (from `docs/REPRODUCING.md`):
@@ -439,7 +439,7 @@ Every subcommand below was checked with `C:/Users/gurra/NeuroSem/.venv/Scripts/n
 - Whatever the choice, re-check registries, GitHub, USPTO and the sources that failed (Semantic Scholar, Zenodo, OpenAlex, EUIPO, WIPO) just before release. The audit is not legal clearance.
 - The audit's claim that a rename is "mechanical" is unverified. A trial rename in a scratch copy followed by the test suite would confirm it.
 
-### D. Raised in build notes, `DEPENDENCY_AUDIT.md` and `docs/model_selection.md`, not yet in `DECISIONS.md`
+### D. Raised in build notes, `docs/DEPENDENCY_AUDIT.md` and `docs/model_selection.md`, not yet in `DECISIONS.md`
 
 The P-xx labels are local to this plan.
 
@@ -454,8 +454,8 @@ The P-xx labels are local to this plan.
 | P-07 | Held-out bootstrap B, permutations and seed now come from `configs/study.yaml` `analysis` (10000 / 10000 / 20260913; read by `experiments/heldout.py`). Confirm the values and freeze them with the preregistration | `science-docs.md` item 10; DECISIONS D-021 |
 | P-08 | Depolarisation-block voltage: one fixed -40 mV for all models, or per model / relative to threshold or rest | `docs/build_notes/features.md` |
 | P-09 | Should `HeldoutGate` also require `status: frozen` in `configs/study.yaml`? | `docs/build_notes/selection.md` section 4 |
-| P-10 | Reference platform for frozen-study data (WSL 2 Ubuntu, Docker on Linux, GitHub Linux runners, other). Docker Desktop's documented WSL 2 backend requirements do not list Windows 11 Home. | `DEPENDENCY_AUDIT.md` section 8; [C:NUM-07] |
-| P-11 | Hashed universal lock file vs plain `pip freeze`; exact Temurin build in CI; Python 3.14 as a secondary CI job | `DEPENDENCY_AUDIT.md` section 8 |
+| P-10 | Reference platform for frozen-study data (WSL 2 Ubuntu, Docker on Linux, GitHub Linux runners, other). Docker Desktop's documented WSL 2 backend requirements do not list Windows 11 Home. | `docs/DEPENDENCY_AUDIT.md` section 8; [C:NUM-07] |
+| P-11 | Hashed universal lock file vs plain `pip freeze`; exact Temurin build in CI; Python 3.14 as a secondary CI job | `docs/DEPENDENCY_AUDIT.md` section 8 |
 | P-12 | Confirm greedy early stop with a recorded `shortfall` (rather than filling to k with zero-gain protocols) | `selection.md` section 3.1 |
 | P-13 | Models without a shipped single-cell harness (Maex 1998 granule and Golgi): author a canonical harness as a preregistered deviation, or exclude them from the canonical comparison | `docs/build_notes/model-curation.md` section 5 |
 | P-14 | Sag gap: keep searching for a licensed single-compartment Ih model, report sag as uninformative, or drop sag from the diversity goals | `docs/model_selection.md` section 7 |
@@ -463,4 +463,4 @@ The P-xx labels are local to this plan.
 
 ### E. Preregistration fields
 
-`docs/preregistration_draft.md` has `[NEEL DECISION REQUIRED]` markers on 85 lines (`grep -c`): registry, frozen commit and hashes, budget k, effect size, inclusion rules, splits, protocol parameters, tolerance constants, statistical decision rule, handling of undefined features and crashes, sample-size rules, and others. Many overlap with the rows above. All must be filled by Neel before M8.
+`docs/PREREGISTRATION_DRAFT.md` has `[NEEL DECISION REQUIRED]` markers on 85 lines (`grep -c`): registry, frozen commit and hashes, budget k, effect size, inclusion rules, splits, protocol parameters, tolerance constants, statistical decision rule, handling of undefined features and crashes, sample-size rules, and others. Many overlap with the rows above. All must be filled by Neel before M8.

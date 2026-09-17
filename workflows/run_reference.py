@@ -5,7 +5,7 @@ Equivalent to ``neurosem run-reference``. Example: python workflows/run_referenc
 
 import sys
 
-from neurosem.cli import main
+from neuraxis.cli import main
 
 if __name__ == "__main__":
     sys.exit(main(["run-reference", *sys.argv[1:]]))

@@ -13,12 +13,12 @@ import time
 
 import numpy as np
 
-from neurosem import config
-from neurosem.models import load_models, materialize
-from neurosem.protocols import rheobase as rb
-from neurosem.protocols.definitions import batched, templates_from_config
-from neurosem.protocols.generate import canonical_output, group_by_length, write_probe
-from neurosem.simulators.jneuroml import JNeuroML
+from neuraxis import config
+from neuraxis.models import load_models, materialize
+from neuraxis.protocols import rheobase as rb
+from neuraxis.protocols.definitions import batched, templates_from_config
+from neuraxis.protocols.generate import canonical_output, group_by_length, write_probe
+from neuraxis.simulators.jneuroml import JNeuroML
 
 
 def main(model_ids: list[str]) -> int:

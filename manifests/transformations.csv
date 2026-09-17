@@ -1,0 +1,9 @@
+operator,kind,description,module
+add_comments,no_change_control,Insert XML comments inside the root element of one file (a no-change control).,neuraxis.transforms.formatting
+explicit_default,valid_transform,"Write out an attribute that is omitted, using the default declared for it in the XSD.",neuraxis.transforms.units
+factor_file,valid_transform,Move one top-level component into a new included file.,neuraxis.transforms.factoring
+numeric_literal_format,valid_transform,Rewrite one numeric literal in a numerically identical spelling.,neuraxis.transforms.units
+rename_identifier,valid_transform,Rename one identifier and update every reference (attributes and instance paths).,neuraxis.transforms.identifiers
+reorder_independent,valid_transform,Permute a run of same-name sibling elements whose order has no meaning.,neuraxis.transforms.factoring
+unit_conversion,valid_transform,"Rewrite one quantity in another unit allowed by the XSD pattern of its type, exactly.",neuraxis.transforms.units
+xml_formatting,no_change_control,Change insignificant whitespace or attribute order in one file (a no-change control).,neuraxis.transforms.formatting

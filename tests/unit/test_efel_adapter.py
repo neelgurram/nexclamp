@@ -11,8 +11,8 @@ import efel
 import numpy as np
 import pytest
 
-from neurosem.config import features as load_features_config
-from neurosem.features.efel_adapter import (
+from neuraxis.config import features as load_features_config
+from neuraxis.features.efel_adapter import (
     DEFINED,
     NOT_APPLICABLE,
     UNDEFINED,
@@ -26,10 +26,10 @@ from neurosem.features.efel_adapter import (
     feature_table_to_json,
     is_hyperpolarizing,
 )
-from neurosem.features.regimes import LABELS
-from neurosem.features.trace_metrics import pack_traces, stored_representation, uniform_grid, unpack_traces
-from neurosem.protocols.definitions import SPIKING
-from neurosem.schemas import AnalysisWindow, ConcreteProtocol, StimulusComponent, Trace
+from neuraxis.features.regimes import LABELS
+from neuraxis.features.trace_metrics import pack_traces, stored_representation, uniform_grid, unpack_traces
+from neuraxis.protocols.definitions import SPIKING
+from neuraxis.schemas import AnalysisWindow, ConcreteProtocol, StimulusComponent, Trace
 
 DT, S0, S1, TOTAL = 0.025, 200.0, 600.0, 700.0
 SUBTHRESHOLD = ("baseline_voltage", "steady_state_voltage", "voltage_deflection", "sag_ratio", "minimum_voltage",

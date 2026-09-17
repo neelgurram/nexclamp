@@ -1,4 +1,4 @@
-"""Unit tests for neurosem.analysis.metrics (hand-computed values and scipy cross-checks)."""
+"""Unit tests for neuraxis.analysis.metrics (hand-computed values and scipy cross-checks)."""
 
 from __future__ import annotations
 
@@ -9,8 +9,8 @@ import pandas as pd
 import pytest
 from scipy.stats import binomtest
 
-from neurosem.analysis import metrics as M
-from neurosem.schemas import MutantClass as MC
+from neuraxis.analysis import metrics as M
+from neuraxis.schemas import MutantClass as MC
 
 # --------------------------------------------------------------------------- paired counts / rates
 
@@ -190,7 +190,7 @@ def test_by_family_counts_and_intervals():
 
 
 def test_by_family_writes_enum_labels_by_value():
-    from neurosem.schemas import MutationFamily as MF
+    from neuraxis.schemas import MutationFamily as MF
 
     fams = [MF.BIOPHYSICAL, MF.BIOPHYSICAL, MF.REFERENCE]
     df = M.by_family({"selected": np.array([1, 0, 1], dtype=bool)}, fams, clusters=["m1", "m2", "m1"])

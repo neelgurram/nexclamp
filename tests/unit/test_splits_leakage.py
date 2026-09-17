@@ -17,20 +17,20 @@ from pathlib import Path
 import numpy as np
 import pytest
 
-import neurosem.selection
-import neurosem.selection.splits as splits_module
-from neurosem.config import study
-from neurosem.provenance import sha256_file
-from neurosem.schemas import dumps
-from neurosem.selection.greedy import (
+import neuraxis.selection
+import neuraxis.selection.splits as splits_module
+from neuraxis.config import study
+from neuraxis.provenance import sha256_file
+from neuraxis.schemas import dumps
+from neuraxis.selection.greedy import (
     greedy_cost_sensitive,
     greedy_max_coverage,
     random_count_matched,
     random_runtime_matched,
     selection_settings,
 )
-from neurosem.selection.matrix import DetectionMatrix
-from neurosem.selection.splits import (
+from neuraxis.selection.matrix import DetectionMatrix
+from neuraxis.selection.splits import (
     ACCESS_LOG_FILE,
     DISCOVERY_FAMILIES_FILE,
     DISCOVERY_FILES,
@@ -221,7 +221,7 @@ def test_discovery_selection_end_to_end_never_touches_heldout(tmp_path, heldout_
 
 
 def test_import_and_discovery_selection_in_fresh_interpreter(tmp_path, repo_root):
-    """Import-time behaviour too: the guard is installed before neurosem.selection is imported."""
+    """Import-time behaviour too: the guard is installed before neuraxis.selection is imported."""
     root = make_root(tmp_path)
     freeze_splits(root)
     matrix_csv = root / "matrix.csv"
@@ -231,8 +231,8 @@ def test_import_and_discovery_selection_in_fresh_interpreter(tmp_path, repo_root
         attempts = []
         install({str(root / HELDOUT_DIR)!r}, attempts, setattr)
         assert not any(k.startswith("neurosem") for k in sys.modules)
-        import neurosem.selection.matrix, neurosem.selection.greedy
-        from neurosem.selection import (DetectionMatrix, discovery_view, greedy_max_coverage,
+        import neuraxis.selection.matrix, neuraxis.selection.greedy
+        from neuraxis.selection import (DetectionMatrix, discovery_view, greedy_max_coverage,
                                         random_count_matched, random_runtime_matched)
         view = discovery_view(pathlib.Path({str(root)!r}), require_frozen=True)
         m = view.filter_matrix(DetectionMatrix.from_csv({str(matrix_csv)!r}))
@@ -255,7 +255,7 @@ def test_import_and_discovery_selection_in_fresh_interpreter(tmp_path, repo_root
 
 
 # ---------------------------------------------------------------------- (2) static tests
-SELECTION_DIR = Path(neurosem.selection.__file__).parent
+SELECTION_DIR = Path(neuraxis.selection.__file__).parent
 # Every spelling in use: the directory name, identifiers, and the specification's prose.
 HELDOUT_WORD = re.compile(r"held[-_ ]?out", re.IGNORECASE)
 
@@ -359,7 +359,7 @@ def test_filter_matrix_accepts_discovery_rows_and_returns_a_copy(tmp_path):
     view = discovery_view(root)
     assert not view.frozen
     assert view.families == ("biophysical", "reference")
-    assert view.excluded_families == ("stimulus", "numerical")
+    assert view.excluded_families == ("stimulus", "numerical", "kinetics")
     m = synthetic_matrix()
     out = view.filter_matrix(m)
     assert out == m and out is not m
@@ -382,7 +382,7 @@ def test_filter_matrix_raises_on_any_non_discovery_row(tmp_path, model, family):
 
 def test_discovery_view_built_from_contract_fields_is_usable():
     """ARCHITECTURE.md constructs DiscoveryView(models, excluded_families); families are then derived."""
-    view = DiscoveryView(("disc_a", "disc_b"), ("stimulus", "numerical"))
+    view = DiscoveryView(("disc_a", "disc_b"), ("stimulus", "numerical", "kinetics"))
     assert view.families == ("biophysical", "reference")
     m = synthetic_matrix()
     assert view.filter_matrix(m) == m
@@ -601,7 +601,7 @@ def test_repository_discovery_split_is_the_provisional_pilot(repo_root, models):
     view = discovery_view(repo_root)
     assert view.models == ("pospischil2008_rs", "pospischil2008_lts")
     assert view.families == ("biophysical", "reference", "numerical")
-    assert view.excluded_families == ("stimulus",)
+    assert view.excluded_families == ("stimulus", "kinetics")
     for mid in view.models:
         assert models[mid].inclusion == "include"
     for rel in DISCOVERY_FILES:

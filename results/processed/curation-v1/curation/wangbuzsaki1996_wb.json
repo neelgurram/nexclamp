@@ -1,0 +1,86 @@
+{
+  "model": {
+    "model_id": "wangbuzsaki1996_wb",
+    "name": "Wang and Buzsaki 1996 hippocampal interneuron",
+    "snapshot": "WangBuzsaki1996@c5322844",
+    "cell_file": "NeuroML2/LEMS/WangBuzsaki.cell.nml",
+    "cell_id": "wb1",
+    "harness_lems": "NeuroML2/LEMS/LEMS_WangBuzsaki.xml",
+    "harness_output_file": "wangbuzsaki.dat",
+    "harness_v_column": "1",
+    "temperature": "37 degC",
+    "source_family": "wangbuzsaki1996",
+    "citation": "Wang X-J, Buzsaki G (1996). Gamma oscillation by synaptic inhibition in a hippocampal interneuronal network model. J Neurosci 16(20):6402-6413. doi:10.1523/jneurosci.16-20-06402.1996",
+    "source_url": "https://github.com/OpenSourceBrain/WangBuzsaki1996",
+    "commit": "c532284492c3e421a7f8e88b3090af8ffee8cf6a",
+    "license": "MIT (NeuroML2 directory)",
+    "license_url": "https://github.com/OpenSourceBrain/WangBuzsaki1996/blob/c532284492c3e421a7f8e88b3090af8ffee8cf6a/LICENSE",
+    "download_date": "2026-09-13",
+    "simulator": "jNeuroML",
+    "expected_behavior": "Single compartment; instantaneous Na activation (custom gate type); fast tonic non-adapting firing.",
+    "inclusion": "candidate",
+    "inclusion_reason": "Independent source; candidate for the full study"
+  },
+  "criteria": {
+    "C01_provenance": true,
+    "C02_reuse_rights": true,
+    "C03_files_present": true,
+    "C04_validation": false,
+    "C05_executes": true,
+    "C06_trace_interpretable": true,
+    "C07_recording_location": true,
+    "C08_responds_to_current": true,
+    "C09_deterministic": true,
+    "C10_refinement_stable": true,
+    "C11_runtime": false,
+    "C12_operators": true,
+    "C13_protocols_compatible": true
+  },
+  "decision": "exclude",
+  "reasons": [
+    "C04_validation",
+    "C11_runtime"
+  ],
+  "evidence": {
+    "model_id": "wangbuzsaki1996_wb",
+    "snapshot": "WangBuzsaki1996@c5322844",
+    "ion_channels": [
+      "k_chan",
+      "leak",
+      "na_chan"
+    ],
+    "validation_errors": [
+      "File: C:\\Users\\gurra\\NeuroSem\\work\\variants\\curation-v1\\wangbuzsaki1996_wb\\reference\\NeuroML2\\LEMS\\WangBuzsaki.cell.nml is not valid against the schema: /Schemas/NeuroML2/NeuroML_v2.3.1.xsd!!",
+      "Error when parsing against Schema (class org.xml.sax.SAXParseException):",
+      "Validated 2 files: 1 passed, 1 failed"
+    ],
+    "canonical_status": "ok",
+    "canonical_v_range_mV": [
+      -70.0,
+      30.81344985961914
+    ],
+    "rheobase_status": "ok",
+    "rheobase_nA": 0.00017075336384126768,
+    "fingerprint_status": [
+      "ok",
+      "ok"
+    ],
+    "spikes_P04": 10.0,
+    "spikes_P05": 28.0,
+    "firing_regime_P05": "tonic",
+    "rebound_spikes_P08": 0.0,
+    "sag_ratio_P07": 7.697487779773684e-08,
+    "refinement_excluded": "0/64",
+    "estimated_variant_runtime_s": 481.8,
+    "semantic_operators_with_site": [
+      "duplicate_conductance",
+      "scale_capacitance",
+      "scale_conductance",
+      "scale_gate_time_constant",
+      "shift_initial_voltage",
+      "shift_reversal",
+      "wrong_channel",
+      "wrong_segment_group"
+    ]
+  }
+}

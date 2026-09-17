@@ -29,11 +29,11 @@ from pathlib import Path
 import numpy as np
 import pytest
 
-from neurosem.models import materialize
-from neurosem.protocols.generate import write_probe
-from neurosem.provenance import tree_manifest
-from neurosem.schemas import AnalysisWindow, ConcreteProtocol, ExecConfig, StimulusComponent
-from neurosem.transforms import REGISTRY, apply_model_overrides, generate_transforms
+from neuraxis.models import materialize
+from neuraxis.protocols.generate import write_probe
+from neuraxis.provenance import tree_manifest
+from neuraxis.schemas import AnalysisWindow, ConcreteProtocol, ExecConfig, StimulusComponent
+from neuraxis.transforms import REGISTRY, apply_model_overrides, generate_transforms
 
 pytestmark = pytest.mark.jnml
 
@@ -59,7 +59,7 @@ def generated(tmp_path_factory, models):
 
 
 def _variant_ws(root: Path, pristine, record):
-    from neurosem.models import Workspace
+    from neuraxis.models import Workspace
 
     return Workspace(root / "variants" / record.model_id / record.variant_id, pristine.model)
 

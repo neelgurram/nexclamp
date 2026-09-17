@@ -648,7 +648,7 @@ cells go under the microscope. Mixing the two roles would ruin the experiment.
 - **[File fact]** `AI_USE_LOG.md` Entry 001 records Claude Code (Claude Opus 5) doing the
   Milestone 0 audit.
 - Later software and these documents were also AI-assisted and still need log entries
-  (`docs/ai_disclosure.md`).
+  (`docs/AI_DISCLOSURE.md`).
 - **[File fact]** No agent-as-subject trial exists.
 - **[Expectation]** Any future claim is limited to "the evaluated Claude Code
   configuration", never to coding agents in general.

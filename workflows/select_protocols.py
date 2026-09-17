@@ -2,7 +2,7 @@
 
 import sys
 
-from neurosem.cli import main
+from neuraxis.cli import main
 
 if __name__ == "__main__":
     sys.exit(main(["select-protocols", *sys.argv[1:]]))

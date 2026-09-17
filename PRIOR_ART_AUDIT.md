@@ -88,7 +88,7 @@ The specification's novelty boundary is confirmed by verified works (examples; t
 
 | Established capability | Verified examples |
 |---|---|
-| Standard neuron-model representation, validation and simulation | NeuroML/LEMS, pyNeuroML and jNeuroML (see `DEPENDENCY_AUDIT.md`); OSB Model Validation (OMV; Marin and Gleeson) |
+| Standard neuron-model representation, validation and simulation | NeuroML/LEMS, pyNeuroML and jNeuroML (see `docs/DEPENDENCY_AUDIT.md`); OSB Model Validation (OMV; Marin and Gleeson) |
 | Regression tests against saved traces or spike times | OMV (tolerance-based comparison of NeuroML model outputs in continuous integration) |
 | Testing neuron models against experimental features across many protocols | NeuronUnit (Gerkin et al.), HippoUnit (Sáray et al. 2021), Appukuttan and Davison 2022 |
 | Multi-protocol, rheobase-scaled electrophysiological characterisation of NeuroML models | NeuroML-DB (Birgiolas et al. 2023) |

@@ -1,6 +1,6 @@
 # Name-conflict audit: "NeuroSem"
 
-Milestone 0 deliverable: the name-conflict search (spec, "Milestone 0: Audit"). Written 2026-09-13 on branch `m0-audit`; counts were measured at about 17:07 UTC against the working tree at commit `d323afa` (which differs from `3cdb957` only in `AI_USE_LOG.md` and `src/neurosem/provenance.py`). The project name is Neel's decision, logged as DECISIONS.md **N-10**.
+Milestone 0 deliverable: the name-conflict search (spec, "Milestone 0: Audit"). Written 2026-09-13 on branch `m0-audit`; counts were measured at about 17:07 UTC against the working tree at commit `d323afa` (which differs from `3cdb957` only in `AI_USE_LOG.md` and `src/neuraxis/provenance.py`). The project name is Neel's decision, logged as DECISIONS.md **N-10**.
 
 ## In plain English
 
@@ -216,7 +216,7 @@ Six names got full checks. Scores are copied from `name_search.json`. That file 
 
 ### 7.1 What the name is attached to today (measured 2026-09-13)
 
-The first search advised renaming "before Milestone 1 creates the package (src/neurosem/, CLI 'neurosem', CITATION.cff)". That window has passed. `src/neurosem/__init__.py` was first committed in `de693e1` (2026-09-13) and `CITATION.cff` in `3cdb957` (2026-09-13). The command `git log --diff-filter=A --format="%h %ad %s" --date=short -- <path>` shows this.
+The first search advised renaming "before Milestone 1 creates the package (src/neuraxis/, CLI 'neurosem', CITATION.cff)". That window has passed. `src/neuraxis/__init__.py` was first committed in `de693e1` (2026-09-13) and `CITATION.cff` in `3cdb957` (2026-09-13). The command `git log --diff-filter=A --format="%h %ad %s" --date=short -- <path>` shows this.
 
 Counts are case-insensitive matches of `neurosem` in the working-tree contents of git-tracked files. `.venv`, `.git`, `work/` and the untracked `results/` are excluded unless stated. Base command:
 
@@ -231,7 +231,7 @@ git ls-files -- <path> | xargs -r grep -Ili neurosem | wc -l     # files
 | `docs/m0_evidence/` | 1,376 | 86 | **Keep unchanged.** These are dated audit records. |
 | `docs/handoff/` (handoff and spec, text and PDF) | 54 | 2 (text extracts) | **Keep unchanged.** These are authoritative inputs. |
 | **Everything else (rename candidates)** | **778** | **157** | See rows below |
-| `src/` (package directory `src/neurosem/`) | 264 | 45 | Directory name, imports, docstrings |
+| `src/` (package directory `src/neuraxis/`) | 264 | 45 | Directory name, imports, docstrings |
 | `tests/` | 208 | 35 | Imports, patch targets |
 | Python import lines, all tracked `.py` | 359 lines | 86 files | `from neurosem ...` / `import neurosem`. 69 of the lines are indented (lazy imports inside functions). |
 | `agent_study/` | 37 | 28 | Task and prompt files |
@@ -249,7 +249,7 @@ git ls-files -- <path> | xargs -r grep -Ili neurosem | wc -l     # files
 
 Other places the name is attached:
 
-- **CLI.** `pyproject.toml` `[project.scripts] neurosem = "neurosem.cli:main"` and `argparse.ArgumentParser(prog="neurosem", ...)` at `src/neurosem/cli.py:148`. The spec's suggested commands also use the `neurosem` prefix (`NEUROSEM_FINAL_SPEC.extracted.md`, line 759), and its repository tree is rooted at `neurosem/` (line 529).
+- **CLI.** `pyproject.toml` `[project.scripts] neurosem = "neurosem.cli:main"` and `argparse.ArgumentParser(prog="neurosem", ...)` at `src/neuraxis/cli.py:148`. The spec's suggested commands also use the `neurosem` prefix (`NEUROSEM_FINAL_SPEC.extracted.md`, line 759), and its repository tree is rooted at `neurosem/` (line 529).
 - **Environment variables.** Six distinct names (`NEUROSEM_CONTAINER_IMAGE`, `NEUROSEM_FEATURES`, `NEUROSEM_GIT_COMMIT`, `NEUROSEM_JAVA`, `NEUROSEM_JNML_JAR`, `NEUROSEM_NETWORK_TESTS`), used in 12 tracked files.
 - **Schema and label identifiers** in tracked src, configs, tests, agent_study, workflows and scripts. Examples: `neurosem-public-checks/` (10), `neurosem-agent-task/` (10), `neurosem-public-reference/` (9), `neurosem-agent-policy/` (2), `neurosem-trial-log/`, `neurosem-trial-export/`, `neurosem-hidden-checks/`, `neurosem-agent-frozen/`, and the feature labels `neurosem:firing_regime` and `neurosem:rheobase`.
 - **Installed package.** `.venv/Scripts/python -m pip show neurosem` reports `Name: neurosem`, `Version: 0.1.0.dev0`. A rename needs a reinstall.
@@ -306,5 +306,5 @@ N-10 records the rename recommendation (PerturbPrint preferred, DriftClamp runne
 - `docs/handoff/NEUROSEM_FINAL_SPEC.extracted.md` (lines 154, 529, 758, 759, 762-766)
 - `docs/handoff/NEUROSEM_CLAUDE_HANDOFF.extracted.md` (lines 49, 210, 280)
 - `docs/glossary.md` (line 40)
-- `pyproject.toml`, `CITATION.cff`, `src/neurosem/cli.py`, `Dockerfile`, `Makefile`, `environment.yml`, `configs/*.yaml`, `.github/workflows/ci.yml`
+- `pyproject.toml`, `CITATION.cff`, `src/neuraxis/cli.py`, `Dockerfile`, `Makefile`, `environment.yml`, `configs/*.yaml`, `.github/workflows/ci.yml`
 - Scratch outputs from today's checks: `work/tmp/m0docs/name_conflict_audit/` (`gh_repo_neurosem.json`, `gh_repo_perturbprint.json`, `gh_repo_driftclamp.json`, `vafaei.json`, `rdap_neurosem_com.json`)
