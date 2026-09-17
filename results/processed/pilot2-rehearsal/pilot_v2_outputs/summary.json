@@ -1,0 +1,85 @@
+{
+  "study_metadata": {
+    "study_id": "neuron_model_behavioral_validation",
+    "project_name": "Neuraxis",
+    "study_phase": "development_pilot",
+    "protocol_version": "PILOT2_PROTOCOL_REHEARSAL",
+    "designation": "Infrastructure rehearsal of the analysis pipeline on a Pilot 1 model; not study data; never reported as a result and never pooled with anything"
+  },
+  "branch": {
+    "primary_branch": "C_canonical_adequacy",
+    "flags": {
+      "D_pipeline_uncertainty": false,
+      "A_hidden_drift_supported": false,
+      "B_feature_level_insufficiency": false,
+      "C_canonical_adequacy": true
+    },
+    "evidence": {
+      "n_semantic_mutants": 8,
+      "n_E_admissible": 8,
+      "n_controls": 8,
+      "control_false_positives": 0,
+      "control_false_positive_rate": 0.0,
+      "controls_not_passing_basic_validation": 0,
+      "feature_level_survivors": 0,
+      "feature_survivors_unconfirmed_h4": 0,
+      "confirmed_full_trace_survivors": 0,
+      "confirmed_full_trace_survivor_models": [],
+      "feature_survivors_detected_by_canonical_trace": 0,
+      "refinement_excluded_fraction": 0.0,
+      "canonical_B_or_C_detection_rate": 1.0
+    },
+    "rules": {
+      "control_false_positive_rate_max": 0.1,
+      "unconfirmed_survivor_fraction_max": 0.5,
+      "refinement_excluded_fraction_max": 0.25,
+      "hidden_drift_min_confirmed_full_trace_survivors": 2,
+      "hidden_drift_min_models": 2,
+      "feature_insufficiency_min_cases": 2,
+      "canonical_adequacy_min_detection": 0.95,
+      "audit_sample_size": 20
+    },
+    "precedence": [
+      "D_pipeline_uncertainty",
+      "A_hidden_drift_supported",
+      "B_feature_level_insufficiency",
+      "C_canonical_adequacy",
+      "indeterminate"
+    ],
+    "note": "Rules fixed in PILOT2_PROTOCOL before data; branch A is never forced."
+  },
+  "provenance": {
+    "run_records": 55,
+    "git_commits": {
+      "49c86785cba7031b2dbda9a0b5a5c2e5fe60772c": 55
+    },
+    "runs_with_dirty_tree": 55,
+    "metadata_combinations": {
+      "Neuraxis | development_pilot | PILOT2_PROTOCOL_REHEARSAL": 55
+    },
+    "failed_run_scratch_dirs": []
+  },
+  "audit_sample": [
+    "m-scale_capacitance-4f76868f28",
+    "m-scale_capacitance-ed0bebd0d7",
+    "m-scale_conductance-a5d53b94c4",
+    "m-scale_conductance-fb5b76f07d",
+    "m-scale_gate_time_constant-539d21838f",
+    "m-scale_gate_time_constant-99809ff67e",
+    "m-shift_reversal-80b6724096",
+    "m-shift_reversal-93e4e5a5cc",
+    "pospischil2008_rs__add_comments__000",
+    "pospischil2008_rs__explicit_default__000",
+    "pospischil2008_rs__factor_file__000",
+    "pospischil2008_rs__numeric_literal_format__000",
+    "pospischil2008_rs__rename_identifier__000",
+    "pospischil2008_rs__reorder_independent__000",
+    "pospischil2008_rs__unit_conversion__000",
+    "pospischil2008_rs__xml_formatting__000"
+  ],
+  "reporting": {
+    "findings": "exploratory (development pilot); none confirmatory",
+    "analyses_prespecified": "yes: PILOT2_PROTOCOL sections 9-10, fixed before data",
+    "deviations": "# Pilot 2 deviations from `docs/PILOT2_PROTOCOL.md`\n\n*Every departure from the frozen protocol, written down when it happens and before anything is\nre-run. Campaign `pilot2`; protocol version `PILOT2_PROTOCOL`.*\n\n| # | date (UTC) | what the protocol says | what was done | why | effect on the analysis |\n|---|---|---|---|---|---|\n| - | - | - | none recorded: the campaign has not been executed | - | - |"
+  }
+}

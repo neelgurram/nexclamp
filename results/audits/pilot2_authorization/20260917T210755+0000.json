@@ -1,0 +1,385 @@
+{
+  "created_utc": "2026-09-17T21:07:55+00:00",
+  "commit": "49c86785cba7031b2dbda9a0b5a5c2e5fe60772c",
+  "tree_dirty": true,
+  "curation_campaign": "curation-v3",
+  "pilot_config": "configs/pilot2_frozen.yaml",
+  "selected_models": [
+    "acnet2_pyr_soma",
+    "migliore2014_mt_soma",
+    "nml2_hh_example",
+    "osb_hh2_477127614",
+    "pospischil2008_fs"
+  ],
+  "eligible_new_models": [
+    "acnet2_pyr_soma",
+    "migliore2014_gc_soma",
+    "migliore2014_mt_soma",
+    "nml2_hh_example",
+    "osb_hh2_477127614",
+    "pospischil2008_fs"
+  ],
+  "checks": [
+    {
+      "id": "C1_eligible_new_models",
+      "requirement": "at least four eligible models not used in Pilot 1",
+      "passed": true,
+      "evidence": {
+        "eligible": [
+          "acnet2_pyr_soma",
+          "migliore2014_gc_soma",
+          "migliore2014_mt_soma",
+          "nml2_hh_example",
+          "osb_hh2_477127614",
+          "pospischil2008_fs",
+          "pospischil2008_rs"
+        ],
+        "new": [
+          "acnet2_pyr_soma",
+          "migliore2014_gc_soma",
+          "migliore2014_mt_soma",
+          "nml2_hh_example",
+          "osb_hh2_477127614",
+          "pospischil2008_fs"
+        ]
+      }
+    },
+    {
+      "id": "C1b_selected_models_are_eligible_and_new",
+      "requirement": "every selected model is eligible and was not used in Pilot 1",
+      "passed": true,
+      "evidence": {
+        "selected": [
+          "acnet2_pyr_soma",
+          "migliore2014_mt_soma",
+          "nml2_hh_example",
+          "osb_hh2_477127614",
+          "pospischil2008_fs"
+        ],
+        "not_eligible_or_repeated": []
+      }
+    },
+    {
+      "id": "C4_provenance_and_licensing",
+      "requirement": "provenance and licensing recorded and clear for every included model",
+      "passed": true,
+      "evidence": {
+        "acnet2_pyr_soma": {
+          "license": "LGPL-3.0 (LICENSE.lesser)",
+          "license_url": "https://github.com/NeuroML/NeuroML2/blob/a5f5dadccd23606e683eaa0dd58dd2c3b2a7ed58/LICENSE.lesser",
+          "citation_recorded": true,
+          "commit": "a5f5dadccd23606e683eaa0dd58dd2c3b2a7ed58",
+          "C01_provenance": true,
+          "C02_reuse_rights": true
+        },
+        "migliore2014_mt_soma": {
+          "license": "MIT",
+          "license_url": "https://github.com/OpenSourceBrain/MiglioreEtAl14_OlfactoryBulb3D/blob/eaad1c8f4afc9a19ff7b2492c150e8b42cc18edf/LICENSE",
+          "citation_recorded": true,
+          "commit": "eaad1c8f4afc9a19ff7b2492c150e8b42cc18edf",
+          "C01_provenance": true,
+          "C02_reuse_rights": true
+        },
+        "nml2_hh_example": {
+          "license": "LGPL-3.0",
+          "license_url": "https://github.com/NeuroML/NeuroML2/blob/a5f5dadccd23606e683eaa0dd58dd2c3b2a7ed58/LICENSE.lesser",
+          "citation_recorded": true,
+          "commit": "a5f5dadccd23606e683eaa0dd58dd2c3b2a7ed58",
+          "C01_provenance": true,
+          "C02_reuse_rights": true
+        },
+        "osb_hh2_477127614": {
+          "license": "MIT (OSB LICENSE, no exceptions stated)",
+          "license_url": "https://github.com/OpenSourceBrain/MultiscaleISN/blob/f07834754d68263a03b6ab8d66b72f2049c6daf6/LICENSE",
+          "citation_recorded": true,
+          "commit": "f07834754d68263a03b6ab8d66b72f2049c6daf6",
+          "C01_provenance": true,
+          "C02_reuse_rights": true
+        },
+        "pospischil2008_fs": {
+          "license": "MIT (NeuroML2 directory)",
+          "license_url": "https://github.com/OpenSourceBrain/PospischilEtAl2008/blob/049081c39357d9e7c478b63ef7b10f374d1c50f4/LICENSE",
+          "citation_recorded": true,
+          "commit": "049081c39357d9e7c478b63ef7b10f374d1c50f4",
+          "C01_provenance": true,
+          "C02_reuse_rights": true
+        }
+      }
+    },
+    {
+      "id": "C2_test_suite",
+      "requirement": "the complete post-change test suite passes",
+      "passed": false,
+      "evidence": {
+        "error": "no readiness record under results/audits/readiness/"
+      }
+    },
+    {
+      "id": "C3_smoke_test",
+      "requirement": "a clean end-to-end smoke test at this commit",
+      "passed": false,
+      "evidence": {
+        "record": "results/audits/smoke_test/20260917T0143Z/smoke_report.json",
+        "passed": true,
+        "git": {
+          "commit": "c46e10a3841bdda04b7f1b18104ceb76efc50839",
+          "dirty": true
+        },
+        "head_commit": "49c86785cba7031b2dbda9a0b5a5c2e5fe60772c",
+        "steps": {
+          "1_load_models": {
+            "ok": true,
+            "detail": {
+              "pospischil2008_rs": "loaded",
+              "nml2_hh_example": "loaded"
+            }
+          },
+          "2_validate": {
+            "ok": true,
+            "detail": {
+              "pospischil2008_rs": {
+                "valid": true,
+                "files": [
+                  "NeuroML2/cells/RS/RS.cell.nml",
+                  "NeuroML2/channels/IM/IM.channel.nml",
+                  "NeuroML2/channels/Kd/Kd.channel.nml",
+                  "NeuroML2/channels/Leak/Leak.channel.nml",
+                  "NeuroML2/channels/Na/Na.channel.nml",
+                  "NeuroML2/cells/RS/RS.net.nml"
+                ]
+              },
+              "nml2_hh_example": {
+                "valid": true,
+                "files": [
+                  "examples/NML2_SingleCompHHCell.nml"
+                ]
+              }
+            }
+          },
+          "3_current_clamp": {
+            "ok": true,
+            "detail": {
+              "pospischil2008_rs": {
+                "status": "ok",
+                "rheobase_nA": 0.5606515948364182
+              },
+              "nml2_hh_example": {
+                "status": "ok",
+                "rheobase_nA": 0.022436992008742575
+              }
+            }
+          },
+          "4_traces_saved": {
+            "ok": true,
+            "detail": {
+              "pospischil2008_rs": {
+                "trace_files": [
+                  "r-185493481fbbcebb8915"
+                ],
+                "complete_length": true
+              },
+              "nml2_hh_example": {
+                "trace_files": [
+                  "r-4101a29149ba584d7f10"
+                ],
+                "complete_length": true
+              }
+            }
+          },
+          "5_features": {
+            "ok": true,
+            "detail": {
+              "pospischil2008_rs": {
+                "P04_step_2x": {
+                  "spike_count": {
+                    "name": "spike_count",
+                    "value": 22.0,
+                    "state": "defined",
+                    "unit": "1",
+                    "source": "efel:spike_count_stimint[scalar]"
+                  },
+                  "first_spike_latency": {
+                    "name": "first_spike_latency",
+                    "value": 10.689999999862437,
+                    "state": "defined",
+                    "unit": "ms",
+                    "source": "efel:time_to_first_spike[scalar]"
+                  },
+                  "mean_frequency": {
+                    "name": "mean_frequency",
+                    "value": 44.11292909854356,
+                    "state": "defined",
+                    "unit": "Hz",
+                    "source": "efel:mean_frequency[scalar]"
+                  }
+                }
+              },
+              "nml2_hh_example": {
+                "P04_step_2x": {
+                  "spike_count": {
+                    "name": "spike_count",
+                    "value": 1.0,
+                    "state": "defined",
+                    "unit": "1",
+                    "source": "efel:spike_count_stimint[scalar]"
+                  },
+                  "first_spike_latency": {
+                    "name": "first_spike_latency",
+                    "value": 3.5399999998689395,
+                    "state": "defined",
+                    "unit": "ms",
+                    "source": "efel:time_to_first_spike[scalar]"
+                  },
+                  "mean_frequency": {
+                    "name": "mean_frequency",
+                    "value": null,
+                    "state": "not_applicable",
+                    "unit": "Hz",
+                    "source": "efel:mean_frequency[scalar]"
+                  }
+                }
+              }
+            }
+          },
+          "6_diagnostic_plots": {
+            "ok": true,
+            "detail": {
+              "pospischil2008_rs:P04_step_2x": "results\\audits\\smoke_test\\20260917T0143Z\\plots\\pospischil2008_rs_P04_step_2x.png",
+              "nml2_hh_example:P04_step_2x": "results\\audits\\smoke_test\\20260917T0143Z\\plots\\nml2_hh_example_P04_step_2x.png"
+            }
+          },
+          "7_reproducible": {
+            "ok": true,
+            "detail": {
+              "pospischil2008_rs": {
+                "max_abs_diff_mV": {
+                  "P04_step_2x": 0.0
+                },
+                "tolerance_mV": 1e-06,
+                "distinct_run_ids": [
+                  "r-185493481fbbcebb8915",
+                  "r-0b2abbfbc5b2a8d51bfe"
+                ]
+              },
+              "nml2_hh_example": {
+                "max_abs_diff_mV": {
+                  "P04_step_2x": 0.0
+                },
+                "tolerance_mV": 1e-06,
+                "distinct_run_ids": [
+                  "r-4101a29149ba584d7f10",
+                  "r-e383780d1c352bc40322"
+                ]
+              }
+            }
+          },
+          "8_provenance": {
+            "ok": true,
+            "detail": {
+              "r-185493481fbbcebb8915": {
+                "missing_fields": []
+              },
+              "r-0b2abbfbc5b2a8d51bfe": {
+                "missing_fields": []
+              },
+              "r-4101a29149ba584d7f10": {
+                "missing_fields": []
+              },
+              "r-e383780d1c352bc40322": {
+                "missing_fields": []
+              }
+            }
+          },
+          "9_tests": {
+            "ok": true,
+            "detail": {
+              "exit_code": 0,
+              "summary": [
+                "1016 passed, 1 skipped in 782.54s (0:13:02)"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "C5_operators_validated",
+      "requirement": "the mutation operators pass their validation tests",
+      "passed": true,
+      "evidence": {
+        "kinetics_validation": {
+          "all_sites_passed": true,
+          "sites": 24,
+          "models": [
+            "kinetics_fixture",
+            "pospischil2008_rs"
+          ]
+        }
+      }
+    },
+    {
+      "id": "C6_pre_run_files_committed",
+      "requirement": "the pre-run files are committed and their hashes match",
+      "passed": false,
+      "evidence": {
+        "untracked": [
+          "docs/PILOT2_PROTOCOL.md",
+          "configs/pilot2_frozen.yaml",
+          "manifests/PILOT2_MODELS.csv",
+          "manifests/PILOT2_VARIANTS.csv",
+          "manifests/PILOT2_EXPERIMENT_MATRIX.csv",
+          "manifests/PILOT2_PRE_RUN.sha256"
+        ],
+        "modified": [
+          "configs/pilot2_frozen.yaml",
+          "docs/PILOT2_PROTOCOL.md",
+          "manifests/PILOT2_EXPERIMENT_MATRIX.csv",
+          "manifests/PILOT2_MODELS.csv",
+          "manifests/PILOT2_PRE_RUN.sha256",
+          "manifests/PILOT2_VARIANTS.csv"
+        ],
+        "stale_hashes": [
+          "data/model_manifest.csv",
+          "scripts/kinetics_validation.py",
+          "scripts/pilot_v2_outputs.py",
+          "src/neuraxis/experiments/campaign.py",
+          "src/neuraxis/experiments/pilot.py",
+          "src/neuraxis/experiments/pilot_v2_outputs.py",
+          "src/neuraxis/experiments/strata.py",
+          "src/neuraxis/models.py",
+          "src/neuraxis/mutations/severity.py",
+          "src/neuraxis/orchestration/curation.py",
+          "src/neuraxis/validation/trace_regression.py",
+          "tests/integration/test_pilot_v2_pipeline.py",
+          "tests/unit/test_pilot_v2_outputs.py",
+          "tests/unit/test_validation_levels.py"
+        ],
+        "n_stale": 14
+      }
+    },
+    {
+      "id": "C7_heldout_isolated",
+      "requirement": "no selected model or source repository is in the held-out pool",
+      "passed": true,
+      "evidence": {
+        "heldout_models": [],
+        "clashing_models": [],
+        "clashing_sources": [],
+        "pilot2_raw_already_exists": false
+      }
+    },
+    {
+      "id": "C8_pilot1_raw_unchanged",
+      "requirement": "every archived Pilot 1 raw file still has its recorded hash",
+      "passed": true,
+      "evidence": {
+        "files_checked": 2689,
+        "missing": 0,
+        "changed": 0,
+        "examples": []
+      }
+    }
+  ],
+  "authorized": false,
+  "note": "Automatic authorisation under Neel's 2026-09-17 conditions. Any failed condition stops the run and is reported; nothing is launched by this script."
+}

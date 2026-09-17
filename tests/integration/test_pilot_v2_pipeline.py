@@ -1,4 +1,4 @@
-"""End-to-end PILOT_PROTOCOL_V2 pipeline on a tiny matrix (one Pilot 1 development model, temporary results).
+"""End-to-end PILOT2_PROTOCOL pipeline on a tiny matrix (one Pilot 1 development model, temporary results).
 
 Exercises reference trace calibration, validation levels A-E, severity-stratified generation, survivor
 re-checks and the Pilot 2 output builder. It writes only under pytest's temporary directory.

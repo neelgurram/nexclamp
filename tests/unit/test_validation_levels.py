@@ -1,4 +1,4 @@
-"""Full-trace regression, severity levels and analysis families (PILOT_PROTOCOL_V2)."""
+"""Full-trace regression, severity levels and analysis families (PILOT2_PROTOCOL)."""
 
 from __future__ import annotations
 

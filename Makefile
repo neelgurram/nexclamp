@@ -24,6 +24,7 @@ SETUP_PYTHON ?= python3.12
 endif
 PYTHON ?= $(VENV_BIN)/python
 NEUROSEM ?= $(VENV_BIN)/neurosem
+CURATION ?= curation-v3
 CAMPAIGN ?= pilot
 IMAGE ?= neurosem:dev
 PYTEST_ARGS ?=
@@ -48,6 +49,11 @@ help:
 	@echo "  docker-build     docker build -t $(IMAGE) ."
 	@echo "  docker-test      run the test suite inside $(IMAGE)"
 	@echo "  lint             ruff check src tests scripts"
+	@echo "  readiness        full readiness sequence (suite, lint, types, clean env, smoke, hashes, CLI)"
+	@echo "  curation-table   final curation table from a finished curation campaign"
+	@echo "  pilot2-prepare   regenerate the frozen Pilot 2 matrix and its pre-run hashes"
+	@echo "  pilot2-authorize check every Pilot 2 launch condition (never launches)"
+	@echo "  pilot2           run the frozen Pilot 2 campaign (only after pilot2-authorize passes)"
 
 setup:
 	test -d "$(VENV)" || { $(SETUP_PYTHON) $(REQUIRE_PY312) && $(SETUP_PYTHON) -m venv "$(VENV)"; }
@@ -83,3 +89,18 @@ docker-test:
 
 lint:
 	$(PYTHON) -m ruff check src tests scripts
+
+readiness:
+	$(PYTHON) scripts/readiness.py
+
+curation-table:
+	$(PYTHON) scripts/curation_table.py --curation $(CURATION)
+
+pilot2-prepare:
+	NEURAXIS_STUDY_CONFIG=configs/pilot2_frozen.yaml $(PYTHON) scripts/pilot2_prepare.py --curation $(CURATION)
+
+pilot2-authorize:
+	$(PYTHON) scripts/pilot2_authorize.py --curation $(CURATION)
+
+pilot2: pilot2-authorize
+	NEURAXIS_STUDY_CONFIG=configs/pilot2_frozen.yaml $(PYTHON) -m neuraxis pilot --campaign pilot2

@@ -10,8 +10,11 @@ changed.*
 - Most of the testing machine already exists and is tested: over 1,000 automated tests pass.
 - One small practice run (Pilot 1) was done on two related model cells. Its data are locked and
   unchanged. It showed no hidden behaviour change from real model edits.
-- A second practice run (Pilot 2) is designed but has not run. It stopped at a readiness check
-  because one model file (Wang–Buzsáki) breaks the NeuroML schema.
+- A second practice run (Pilot 2) is fully specified and frozen but has not run. Its protocol,
+  configuration and exact variant list are written down and hashed before execution
+  (`docs/PILOT2_PROTOCOL.md`, `configs/pilot2_frozen.yaml`, `manifests/PILOT2_*`), and a gate script
+  checks every launch condition (`scripts/pilot2_authorize.py`). Wang–Buzsáki is excluded (D-051);
+  the five Pilot 2 models come from five different papers and none was used in Pilot 1 (D-053).
 - No held-out ("exam") data have been created or looked at.
 - The project was called NeuroSem; it is now Neuraxis. Old names stay where changing them would
   damage the record of what was done.
@@ -31,7 +34,7 @@ changed.*
 | Selection and leakage barriers | `selection/` (greedy, random baselines, `HeldoutGate`) | verified; split not assigned |
 | Analysis and figures | `analysis/`, `experiments/analyze.py`, `experiments/pilot_outputs.py` | verified on synthetic data; figures drawn for Pilot 1 |
 | Agent-study harness | `experiments/agent.py`, `agent_study/` (hidden checks Git-ignored) | built; no trials run; hidden checks need independent review (N-12) |
-| Configuration | `configs/study.yaml`, `features.yaml`, `tolerances.yaml`, `agent_policy.yaml`; `configs/pilot_protocol_v1/` | provisional; not frozen |
+| Configuration | `configs/study.yaml`, `features.yaml`, `tolerances.yaml`, `agent_policy.yaml`; `configs/pilot_protocol_v1/` (superseded); `configs/pilot2_frozen.yaml` | provisional except the frozen Pilot 2 settings; the study itself is not frozen |
 | Models | `models/raw/` (Pospischil 2008, NeuroML2 HH, Wang–Buzsáki), `models/candidates/` (Prinz, Maex, Smith, Migliore, Solinas, Pinsky–Rinzel); `data/model_manifest.csv`, `data/model_candidates.csv` | commit-pinned, hash-verified; licences audited (`LICENSE_AUDIT.md`) |
 | Environment | `requirements.lock`, `pyproject.toml`, `environment.yml`, `.tools/` JDK, `Dockerfile`, `Makefile`, `.github/workflows` | lock and venv verified; Docker never built (no Docker on this machine); CI never run (no remote) |
 | Audits and plans | `DEPENDENCY_AUDIT.md`, `LICENSE_AUDIT.md`, `PRIOR_ART_AUDIT.md`, `docs/novelty_matrix.csv` (335 works), `docs/NAME_CONFLICT_AUDIT.md`, `RISK_REGISTER.md`, `REQUIREMENTS.md`, `PLAN.md`, `DECISIONS.md` (D-001 to D-038) | written and fact-checked; Neel's review pending |

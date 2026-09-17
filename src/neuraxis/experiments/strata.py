@@ -44,7 +44,7 @@ NUMERICAL_OPERATORS = frozenset({"increase_dt", "solver_config", "reduce_spatial
 NUMERIC_ATTRIBUTES = frozenset({"step", "method", "numberInternalDivisions"})
 
 
-# Prespecified, scientifically interpretable analysis families (PILOT_PROTOCOL_V2).
+# Prespecified, scientifically interpretable analysis families (PILOT2_PROTOCOL).
 ANALYSIS_FAMILY = {
     "scale_conductance": "maximal_conductance",
     "shift_reversal": "reversal_potential",

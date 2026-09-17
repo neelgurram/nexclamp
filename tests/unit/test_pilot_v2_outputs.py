@@ -8,7 +8,7 @@ import json
 from neuraxis.experiments import pilot_outputs as po
 from neuraxis.experiments import pilot_v2_outputs as p2
 
-META = {"project_name": "Neuraxis", "study_phase": "development_pilot", "protocol_version": "PILOT_PROTOCOL_V2"}
+META = {"project_name": "Neuraxis", "study_phase": "development_pilot", "protocol_version": "PILOT2_PROTOCOL"}
 
 
 def _write(path, rows):
@@ -81,6 +81,52 @@ def test_outputs_keep_b_and_c_separate_and_are_labelled(tmp_path):
     assert (allm["B_canonical_feature"], allm["C_canonical_trace"], allm["feature_level_canonical_survivors"]) == ("1", "1", "1")
     assert [r["variant_id"] for r in po.read_csv(out / "07_valid_transformation_false_positives.csv")] == ["t1"]
     assert len(po.read_csv(out / "11_random_audit_cases.csv")) == 20
-    assert all(r["protocol_version"] == "PILOT_PROTOCOL_V2" for f in out.glob("*.csv") for r in po.read_csv(f))
+    assert all(r["protocol_version"] == "PILOT2_PROTOCOL" for f in out.glob("*.csv") for r in po.read_csv(f))
     assert json.loads((out / "summary.json").read_text())["branch"]["primary_branch"] in (
         "B_feature_level_insufficiency", "C_canonical_adequacy", "D_pipeline_uncertainty", "indeterminate")
+
+
+def _detect(vid, protocol, feature="spike_count"):
+    """Reproducible detection rows (h and h/2) for one variant and protocol."""
+    return [{"variant_id": vid, "level_factor": f, "protocol_id": protocol, "feature": feature} for f in (1, 2)]
+
+
+def test_unique_protocol_contribution_counts_only_single_protocol_detections(tmp_path):
+    rows = [_row("only_p04", "m1", *SEM, d=True, e=True), _row("both", "m1", *SEM, b=True, d=True, e=True),
+            _row("t1", "m1", *CTL)]
+    p = _campaign(tmp_path, rows)
+    _write(p / "detections.csv", _detect("only_p04", "P04_step_2x") + _detect("both", "P04_step_2x")
+           + _detect("both", "P00_canonical"))
+    c = po.CampaignView(p, [], [])
+    table = {r["protocol_id"]: r for r in p2.unique_protocol_contribution(c, {})}
+    assert table["P04_step_2x"]["n_detected_only_by_this_protocol"] == 1
+    assert table["P04_step_2x"]["variant_ids"] == "only_p04"
+    assert table["P00_canonical"]["n_detected_only_by_this_protocol"] == 0
+
+
+def test_kinetics_results_are_split_into_atomic_and_compound(tmp_path):
+    KIN = ("mutant", "kinetics", "shift_gate_midpoint", "5_non_equivalent", "primary_semantic")
+    rows = [_row("atom", "m1", *KIN, d=True, e=True, af="gating_voltage_dependence"),
+            _row("comp", "m1", *KIN, d=True, e=True, af="gating_voltage_dependence"),
+            _row("bio", "m1", *SEM, d=True, e=True)]
+    p = _campaign(tmp_path, rows)
+    _write(p / "mutation_manifest.csv", [{"variant_id": "atom", "edits": json.dumps([{"attribute": "midpoint"}])},
+                                         {"variant_id": "comp", "edits": json.dumps([{"attribute": "midpoint"}] * 3)}])
+    out = {r["variant_id"]: r for r in p2.kinetics_atomic_vs_compound(po.CampaignView(p, [], []), {}, {})}
+    assert set(out) == {"atom", "comp"}                       # biophysical variants are not kinetics
+    assert out["atom"]["edit_kind"] == "atomic" and out["comp"]["edit_kind"] == "compound"
+    assert out["comp"]["n_edits"] == 3
+
+
+def test_uncertain_cases_are_listed_rather_than_forced_into_a_class(tmp_path):
+    rows = [_row("unconfirmed", "m1", *SEM, d=True, e=True, conf="False"),
+            _row("broken", "m1", "mutant", "biophysical", "wrong_channel", "2_non_executable", "primary_semantic",
+                 a=False),
+            _row("fp", "m1", *CTL, e=True), _row("clean", "m1", *SEM, b=True, d=True, e=True)]
+    rows[2]["class"] = "5_non_equivalent"                     # a control classified non-equivalent
+    p = _campaign(tmp_path, rows)
+    out = {r["variant_id"]: r["uncertainty"] for r in p2.uncertain_cases(po.CampaignView(p, [], []), {}, {})}
+    assert "clean" not in out
+    assert "not confirmed at h/4" in out["unconfirmed"]
+    assert "not analysable" in out["broken"]
+    assert "false positive" in out["fp"]

@@ -1,0 +1,87 @@
+{
+  "model": {
+    "model_id": "migliore2005_ca1_soma",
+    "name": "Migliore et al. 2005 CA1 pyramidal cell, soma only (SomaOnly_allCml)",
+    "snapshot": "CA1PyramidalCell@b854fd29",
+    "cell_file": "neuroConstruct/generatedNeuroML2/SomaOnly_allCml.cell.nml",
+    "cell_id": "SomaOnly_allCml",
+    "harness_lems": "neuroConstruct/generatedNeuroML2/LEMS_CA1PyramidalCell.xml",
+    "harness_output_file": "CG_CML_0.0.dat",
+    "harness_v_column": "1",
+    "temperature": "35.0 degC",
+    "source_family": "migliore2005",
+    "citation": "Migliore M, Ferrante M, Ascoli GA (2005). Signal Propagation in Oblique Dendrites of CA1 Pyramidal Cells. Journal of Neurophysiology 94(6):4145-4155. doi:10.1152/jn.00521.2005",
+    "source_url": "https://github.com/OpenSourceBrain/CA1PyramidalCell",
+    "commit": "b854fd29bc6643c7b2e5b2d59b63b0998c0dff32",
+    "license": "MIT (OSB LICENSE, no exceptions)",
+    "license_url": "https://github.com/OpenSourceBrain/CA1PyramidalCell/blob/b854fd29bc6643c7b2e5b2d59b63b0998c0dff32/LICENSE",
+    "download_date": "2026-09-16",
+    "simulator": "jNeuroML",
+    "expected_behavior": "Single compartment (7.49 x 7.49 um) taken from the multicompartment CA1 cell (\"Only soma of more detailed cell\"). hd (Ih, erev -30 mV) 0.05, kad 30, kap 30, kdr 10, na3 25, nax 125, pasCA1 0.0357 mS/cm2; no Ca. Harness: +0.038 nA 20-80 ms. Shipped reference for the jNeuroML OMV test (.test.mep): 4 spikes 25.4-80.2 ms, ISI about 18.3 ms throughout (tonic, non-adapting). Not simulated in this sweep.",
+    "inclusion": "candidate",
+    "inclusion_reason": "MIT; jNeuroML OMV test (check-runs: jNeuroML success). Independent family with strong A-type K (kap/kad) and a small Ih. Short harness (100 ms, 4 spikes) is a weak canonical test; very small soma, so the rheobase search needs a small-cell bracket. The nax channel lineage overlaps Migliore et al. 2014 (same lab): consider grouping with migliore2014 when splitting."
+  },
+  "criteria": {
+    "C01_provenance": true,
+    "C02_reuse_rights": true,
+    "C03_files_present": true,
+    "C04_validation": true,
+    "C05_executes": true,
+    "C06_trace_interpretable": true,
+    "C07_recording_location": true,
+    "C08_responds_to_current": true,
+    "C09_deterministic": true,
+    "C10_refinement_stable": true,
+    "C11_runtime": false,
+    "C12_operators": true,
+    "C13_protocols_compatible": true
+  },
+  "decision": "exclude",
+  "reasons": [
+    "C11_runtime"
+  ],
+  "evidence": {
+    "model_id": "migliore2005_ca1_soma",
+    "snapshot": "CA1PyramidalCell@b854fd29",
+    "ion_channels": [
+      "hd__vhalflmin73",
+      "kad",
+      "kap",
+      "kdr",
+      "na3",
+      "nax",
+      "pasCA1"
+    ],
+    "validation_errors": [],
+    "canonical_status": "ok",
+    "canonical_v_range_mV": [
+      -81.94358825683594,
+      46.41101837158203
+    ],
+    "rheobase_status": "ok",
+    "rheobase_nA": 0.0005805614370603101,
+    "fingerprint_status": [
+      "ok",
+      "ok"
+    ],
+    "spikes_P04": 13.0,
+    "spikes_P05": 39.0,
+    "firing_regime_P05": "tonic",
+    "rebound_spikes_P08": 0.0,
+    "sag_ratio_P07": 0.16766044061549787,
+    "refinement_excluded": "0/64",
+    "estimated_variant_runtime_s": 2448.7,
+    "semantic_operators_with_site": [
+      "duplicate_conductance",
+      "omit_include",
+      "scale_capacitance",
+      "scale_conductance",
+      "scale_gate_time_constant",
+      "shift_initial_voltage",
+      "shift_reversal",
+      "wrong_channel",
+      "wrong_compatible_component",
+      "wrong_segment_group"
+    ]
+  }
+}

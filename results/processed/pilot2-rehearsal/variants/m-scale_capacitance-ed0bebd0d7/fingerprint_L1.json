@@ -1,0 +1,393 @@
+{
+  "cell_steps": {
+    "P00_canonical": 1000000,
+    "P03_rheobase": 9600000,
+    "P04_step_2x": 200000,
+    "P07_hyperpolarizing_step": 200000
+  },
+  "dt_ms": 0.005,
+  "level_factor": 1,
+  "messages": [],
+  "model_id": "pospischil2008_rs",
+  "rheobase": {
+    "history": [
+      {
+        "amplitudes_nA": [
+          0.0,
+          0.045454545454545456,
+          0.09090909090909091,
+          0.13636363636363635,
+          0.18181818181818182,
+          0.2272727272727273,
+          0.2727272727272727,
+          0.3181818181818182,
+          0.36363636363636365,
+          0.4090909090909091,
+          0.4545454545454546,
+          0.5
+        ],
+        "counts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "amplitudes_nA": [
+          0.5,
+          0.6363636363636364,
+          0.7727272727272727,
+          0.9090909090909091,
+          1.0454545454545454,
+          1.1818181818181817,
+          1.3181818181818181,
+          1.4545454545454546,
+          1.5909090909090908,
+          1.727272727272727,
+          1.8636363636363635,
+          2.0
+        ],
+        "counts": [
+          0,
+          2,
+          8,
+          15,
+          24,
+          34,
+          42,
+          50,
+          58,
+          65,
+          72,
+          78
+        ]
+      },
+      {
+        "amplitudes_nA": [
+          0.5,
+          0.512396694214876,
+          0.5247933884297521,
+          0.5371900826446281,
+          0.5495867768595041,
+          0.5619834710743802,
+          0.5743801652892562,
+          0.5867768595041323,
+          0.5991735537190083,
+          0.6115702479338843,
+          0.6239669421487604,
+          0.6363636363636364
+        ],
+        "counts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          2,
+          2
+        ]
+      },
+      {
+        "amplitudes_nA": [
+          0.5495867768595041,
+          0.5507137490608565,
+          0.5518407212622088,
+          0.5529676934635612,
+          0.5540946656649136,
+          0.555221637866266,
+          0.5563486100676183,
+          0.5574755822689706,
+          0.558602554470323,
+          0.5597295266716754,
+          0.5608564988730278,
+          0.5619834710743802
+        ],
+        "counts": [
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "amplitudes_nA": [
+          0.5495867768595041,
+          0.5496892288778088,
+          0.5497916808961136,
+          0.5498941329144184,
+          0.5499965849327231,
+          0.5500990369510279,
+          0.5502014889693326,
+          0.5503039409876375,
+          0.5504063930059422,
+          0.5505088450242469,
+          0.5506112970425517,
+          0.5507137490608565
+        ],
+        "counts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    ],
+    "lower_nA": 0.5499965849327231,
+    "n_simulations": 5,
+    "rheobase_nA": 0.5500990369510279,
+    "status": "ok",
+    "upper_nA": 0.5500990369510279
+  },
+  "run_ids": {
+    "P00_canonical": "r-08f6da33ee512f51ff87",
+    "P03_rheobase": "s-0e2f58db2ceb951b6280",
+    "P04_step_2x": "r-f3a9e13b176edb6b1f9b",
+    "P07_hyperpolarizing_step": "r-f3a9e13b176edb6b1f9b"
+  },
+  "runtime_s": 458.231,
+  "status": "ok",
+  "tables": {
+    "P00_canonical": {
+      "adaptation_index": {
+        "name": "adaptation_index",
+        "source": "efel:adaptation_index2[scalar]",
+        "state": "defined",
+        "unit": "1",
+        "value": 0.2902588210488157
+      },
+      "ahp_depth": {
+        "name": "ahp_depth",
+        "source": "efel:AHP_depth[first]",
+        "state": "defined",
+        "unit": "mV",
+        "value": -5.570929758721462
+      },
+      "ap_amplitude": {
+        "name": "ap_amplitude",
+        "source": "efel:AP_amplitude[first]",
+        "state": "defined",
+        "unit": "mV",
+        "value": 92.17206192133324
+      },
+      "ap_half_width": {
+        "name": "ap_half_width",
+        "source": "efel:AP_duration_half_width[first]",
+        "state": "defined",
+        "unit": "ms",
+        "value": 0.6599999999993997
+      },
+      "baseline_voltage": {
+        "name": "baseline_voltage",
+        "source": "efel:voltage_base[scalar]",
+        "state": "defined",
+        "unit": "mV",
+        "value": -70.57610393269857
+      },
+      "firing_regime": {
+        "name": "firing_regime",
+        "source": "neurosem:firing_regime",
+        "state": "defined",
+        "unit": "",
+        "value": "adapting"
+      },
+      "first_isi": {
+        "name": "first_isi",
+        "source": "efel:all_ISI_values[first]",
+        "state": "defined",
+        "unit": "ms",
+        "value": 16.439999999985048
+      },
+      "first_spike_latency": {
+        "name": "first_spike_latency",
+        "source": "efel:time_to_first_spike[scalar]",
+        "state": "defined",
+        "unit": "ms",
+        "value": 10.569999999862546
+      },
+      "last_isi": {
+        "name": "last_isi",
+        "source": "efel:all_ISI_values[last]",
+        "state": "defined",
+        "unit": "ms",
+        "value": 142.6599999998703
+      },
+      "mean_frequency": {
+        "name": "mean_frequency",
+        "source": "efel:mean_frequency[scalar]",
+        "state": "defined",
+        "unit": "Hz",
+        "value": 16.92047377328714
+      },
+      "spike_count": {
+        "name": "spike_count",
+        "source": "efel:spike_count_stimint[scalar]",
+        "state": "defined",
+        "unit": "1",
+        "value": 6.0
+      }
+    },
+    "P03_rheobase": {
+      "rheobase": {
+        "name": "rheobase",
+        "source": "neurosem:rheobase[ok]",
+        "state": "defined",
+        "unit": "nA",
+        "value": 0.5500990369510279
+      }
+    },
+    "P04_step_2x": {
+      "adaptation_index": {
+        "name": "adaptation_index",
+        "source": "efel:adaptation_index2[scalar]",
+        "state": "defined",
+        "unit": "1",
+        "value": 0.015764896565685395
+      },
+      "ahp_depth": {
+        "name": "ahp_depth",
+        "source": "efel:AHP_depth[first]",
+        "state": "defined",
+        "unit": "mV",
+        "value": -5.095107182822687
+      },
+      "ap_amplitude": {
+        "name": "ap_amplitude",
+        "source": "efel:AP_amplitude[first]",
+        "state": "defined",
+        "unit": "mV",
+        "value": 93.0271301279322
+      },
+      "ap_half_width": {
+        "name": "ap_half_width",
+        "source": "efel:AP_duration_half_width[first]",
+        "state": "defined",
+        "unit": "ms",
+        "value": 0.6599999999993997
+      },
+      "burst_count": {
+        "name": "burst_count",
+        "source": "efel:strict_burst_number[scalar]",
+        "state": "defined",
+        "unit": "1",
+        "value": 1.0
+      },
+      "firing_regime": {
+        "name": "firing_regime",
+        "source": "neurosem:firing_regime",
+        "state": "defined",
+        "unit": "",
+        "value": "tonic"
+      },
+      "first_isi": {
+        "name": "first_isi",
+        "source": "efel:all_ISI_values[first]",
+        "state": "defined",
+        "unit": "ms",
+        "value": 8.539999999992233
+      },
+      "first_spike_latency": {
+        "name": "first_spike_latency",
+        "source": "efel:time_to_first_spike[scalar]",
+        "state": "defined",
+        "unit": "ms",
+        "value": 5.5499999998671115
+      },
+      "last_isi": {
+        "name": "last_isi",
+        "source": "efel:all_ISI_values[last]",
+        "state": "defined",
+        "unit": "ms",
+        "value": 20.729999999981146
+      },
+      "mean_frequency": {
+        "name": "mean_frequency",
+        "source": "efel:mean_frequency[scalar]",
+        "state": "defined",
+        "unit": "Hz",
+        "value": 60.438071817172954
+      },
+      "spike_count": {
+        "name": "spike_count",
+        "source": "efel:spike_count_stimint[scalar]",
+        "state": "defined",
+        "unit": "1",
+        "value": 29.0
+      }
+    },
+    "P07_hyperpolarizing_step": {
+      "baseline_voltage": {
+        "name": "baseline_voltage",
+        "source": "efel:voltage_base[scalar]",
+        "state": "defined",
+        "unit": "mV",
+        "value": -70.57610405985514
+      },
+      "minimum_voltage": {
+        "name": "minimum_voltage",
+        "source": "efel:minimum_voltage[scalar]",
+        "state": "defined",
+        "unit": "mV",
+        "value": -89.50081634521484
+      },
+      "sag_ratio": {
+        "name": "sag_ratio",
+        "source": "efel:sag_ratio1[scalar]",
+        "state": "defined",
+        "unit": "1",
+        "value": 0.005513939695152429
+      },
+      "spike_count": {
+        "name": "spike_count",
+        "source": "efel:spike_count_stimint[scalar]",
+        "state": "defined",
+        "unit": "1",
+        "value": 0.0
+      },
+      "steady_state_voltage": {
+        "name": "steady_state_voltage",
+        "source": "efel:steady_state_voltage_stimend[scalar]",
+        "state": "defined",
+        "unit": "mV",
+        "value": -89.39646662292526
+      },
+      "voltage_deflection": {
+        "name": "voltage_deflection",
+        "source": "efel:voltage_deflection_vb_ssse[scalar]",
+        "state": "defined",
+        "unit": "mV",
+        "value": -18.82036256307012
+      }
+    }
+  },
+  "variant_id": "m-scale_capacitance-ed0bebd0d7"
+}

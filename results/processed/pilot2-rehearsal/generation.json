@@ -1,0 +1,42 @@
+{
+  "families": [
+    "biophysical"
+  ],
+  "operators": [
+    "scale_conductance",
+    "shift_reversal",
+    "scale_capacitance",
+    "scale_gate_time_constant"
+  ],
+  "excluded_operators": [
+    "wrong_segment_group",
+    "shift_initial_voltage"
+  ],
+  "n_per_operator": 1,
+  "transform_operators": [
+    "unit_conversion",
+    "xml_formatting",
+    "add_comments",
+    "numeric_literal_format",
+    "rename_identifier",
+    "factor_file",
+    "reorder_independent",
+    "explicit_default"
+  ],
+  "n_per_transform": 1,
+  "seed": 20260917,
+  "study_metadata": {
+    "study_id": "neuron_model_behavioral_validation",
+    "project_name": "Neuraxis",
+    "study_phase": "development_pilot",
+    "protocol_version": "PILOT2_PROTOCOL_REHEARSAL",
+    "designation": "Infrastructure rehearsal of the analysis pipeline on a Pilot 1 model; not study data; never reported as a result and never pooled with anything"
+  },
+  "severity_levels": [
+    "mild",
+    "strong"
+  ],
+  "sites_per_severity": {
+    "default": 1
+  }
+}

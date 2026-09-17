@@ -2,7 +2,7 @@
 
 Complements the feature comparison with three checks of the complete recorded voltage trace of
 each protocol, each with a threshold calibrated on the unedited reference at h and h/2
-(PILOT_PROTOCOL_V2, "Validation levels"):
+(PILOT2_PROTOCOL, "Validation levels"):
 
 - ``trace_rmse``: root-mean-square voltage difference over the whole trace, detected when it
   exceeds tau_rmse = max(RMSE_FLOOR_MV, c * RMSE(ref_h, ref_h/2));

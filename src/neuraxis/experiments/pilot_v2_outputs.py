@@ -1,4 +1,4 @@
-"""Prespecified Pilot 2 outputs and branch classification (docs/PILOT_PROTOCOL_V2.md sections 9-10).
+"""Prespecified Pilot 2 outputs and branch classification (docs/PILOT2_PROTOCOL.md sections 9-10).
 
 Reads a finished campaign run with ``validation_levels.enabled``. It simulates nothing and changes no
 threshold, exclusion or class. Validation levels:
@@ -24,7 +24,7 @@ from neuraxis.experiments import pilot_outputs as po
 from neuraxis.experiments import strata
 
 LEVELS = ("A_basic_pass", "B_canonical_feature", "C_canonical_trace", "D_multi_protocol", "E_full_battery")
-BRANCH_RULES: dict[str, Any] = {  # prespecified before Pilot 2 data (PILOT_PROTOCOL_V2 section 10)
+BRANCH_RULES: dict[str, Any] = {  # prespecified before Pilot 2 data (PILOT2_PROTOCOL section 10)
     "control_false_positive_rate_max": 0.10,
     "unconfirmed_survivor_fraction_max": 0.50,
     "refinement_excluded_fraction_max": 0.25,
@@ -147,6 +147,82 @@ def convergence_rows(processed: Path) -> list[dict]:
     return out
 
 
+def unique_protocol_contribution(c: po.CampaignView, trace_rep: Mapping[str, set]) -> list[dict]:
+    """Per protocol: the admissible primary-semantic mutants that **only** it detected.
+
+    A variant counts for a protocol when that protocol is the single protocol with a reproducible
+    detection of it, by a primary feature or by full-trace regression. Secondary features are
+    reported separately and never enter this table.
+    """
+    detectors: dict[str, set[str]] = defaultdict(set)
+    for r in c.cls:
+        if c.stratum(r) != strata.SEMANTIC or r["kind"] != "mutant" or not c.flags(r)["admissible"]:
+            continue
+        vid = r["variant_id"]
+        prot = {p for p, _ in c.rep.get(vid, set())} | {p for p, _ in trace_rep.get(vid, set())}
+        if len(prot) == 1:
+            detectors[next(iter(prot))].add(vid)
+    rows = []
+    for pid in c.protocols:
+        only = sorted(detectors.get(pid, set()))
+        rows.append({"protocol_id": pid, "is_canonical": pid == po.CANONICAL_ID,
+                     "n_detected_only_by_this_protocol": len(only),
+                     "models": ";".join(sorted({c.by_id[v]["model_id"] for v in only})),
+                     "analysis_families": ";".join(sorted({c.by_id[v].get("analysis_family", "") for v in only})),
+                     "variant_ids": ";".join(only)})
+    return rows
+
+
+def kinetics_atomic_vs_compound(c: po.CampaignView, trace_rep: Mapping[str, set],
+                                checks: Mapping[str, Any]) -> list[dict]:
+    """Kinetics variants split into atomic and compound edits; the two are never pooled.
+
+    Atomic: one rate expression of one gate. Compound: several expressions of one gate, or a
+    channel-level shift. The split comes from the recorded edits in ``mutation_manifest.csv``.
+    """
+    edits = {r["variant_id"]: r.get("edits", "") for r in po.read_csv(c.processed / "mutation_manifest.csv")}
+    rows = []
+    for r in c.cls:
+        if r.get("family") != "kinetics":
+            continue
+        vid = r["variant_id"]
+        try:
+            n_edits = len(json.loads(edits.get(vid) or "[]"))
+        except (ValueError, TypeError):
+            n_edits = 0
+        kind = "atomic" if n_edits == 1 else ("compound" if n_edits > 1 else "unrecorded")
+        rows.append({**c.base(r), "analysis_family": r.get("analysis_family", ""), "severity": r.get("severity", ""),
+                     "edit_kind": kind, "n_edits": n_edits,
+                     **{lv: _flag(r, lv) for lv in LEVELS},
+                     "reproducible_trace": ";".join(sorted(f"{p}:{m}" for p, m in trace_rep.get(vid, set()))),
+                     "survivor_confirmed_h4": checks.get(vid, {}).get("confirmed", ""),
+                     "note": "atomic and compound kinetics results are reported separately, never pooled"})
+    return rows
+
+
+def uncertain_cases(c: po.CampaignView, trace_rep: Mapping[str, set], checks: Mapping[str, Any]) -> list[dict]:
+    """Cases that must not be forced into a class, listed explicitly with the reason."""
+    rows = []
+    for r in c.cls:
+        vid, reasons = r["variant_id"], []
+        f = c.flags(r)
+        if r["kind"] == "mutant" and not f["stable"]:
+            reasons.append(f"not analysable: class {r['class']}")
+        if po.truthy(r.get("canonical_runs_but_battery_failed")):
+            reasons.append("canonical ran but the battery failed (split fate)")
+        if _flag(r, "feature_level_canonical_survivor") and not po.truthy(r.get("survivor_confirmed_h4")):
+            reasons.append("apparent canonical survivor not confirmed at h/4")
+        if int(r.get("n_detections_h") or 0) and not (c.rep.get(vid) or trace_rep.get(vid)):
+            reasons.append("detected at h but not reproduced at h/2")
+        if c.stratum(r) == strata.CONTROL and f["admissible"]:
+            reasons.append("valid transformation classified non-equivalent (false positive)")
+        if reasons:
+            rows.append({**c.base(r), "analysis_family": r.get("analysis_family", ""),
+                         "severity": r.get("severity", ""), "uncertainty": "; ".join(reasons),
+                         "refinement_check": json.dumps(checks.get(vid, {}), default=str)})
+    return rows
+
+
 def classify_branch(c: po.CampaignView, processed: Path, rules: Mapping[str, Any] = BRANCH_RULES) -> dict:
     sem = [r for r in c.cls if c.stratum(r) == strata.SEMANTIC and r["kind"] == "mutant"]
     ctl = [r for r in c.cls if c.stratum(r) == strata.CONTROL]
@@ -186,7 +262,7 @@ def classify_branch(c: po.CampaignView, processed: Path, rules: Mapping[str, Any
     primary = next((k for k in order if flags[k]), "indeterminate")
     return {"primary_branch": primary, "flags": flags, "evidence": ev, "rules": dict(rules),
             "precedence": order + ["indeterminate"],
-            "note": "Rules fixed in PILOT_PROTOCOL_V2 before data; branch A is never forced."}
+            "note": "Rules fixed in PILOT2_PROTOCOL before data; branch A is never forced."}
 
 
 def build(processed: Path, raw_dir: Path, work_variants_dir: Path, work_runs_dir: Path, figures_dir: Path,
@@ -236,12 +312,15 @@ def build(processed: Path, raw_dir: Path, work_variants_dir: Path, work_runs_dir
     t("12_canonical_survival_trace_plots.csv", plots)
     failed_ctl = _rows(c, lambda r: ctl(r) and (_flag(r, "E_full_battery") or not _flag(r, "A_basic_pass")))
     t("13_failed_valid_transformations.csv", case_table(c, failed_ctl, checks))
+    t("14_unique_protocol_contribution.csv", unique_protocol_contribution(c, trace_rep))
+    t("15_kinetics_atomic_vs_compound.csv", kinetics_atomic_vs_compound(c, trace_rep, checks))
+    t("16_uncertain_cases.csv", uncertain_cases(c, trace_rep, checks))
     branch = classify_branch(c, processed)
     deviations = (Path(deviations_file).read_text(encoding="utf-8").strip()
                   if deviations_file and Path(deviations_file).is_file() else "No deviation log file found.")
     summary = {"study_metadata": meta, "branch": branch, "provenance": prov, "audit_sample": sorted(sample),
                "reporting": {"findings": "exploratory (development pilot); none confirmatory",
-                             "analyses_prespecified": "yes: PILOT_PROTOCOL_V2 sections 9-10, fixed before data",
+                             "analyses_prespecified": "yes: PILOT2_PROTOCOL sections 9-10, fixed before data",
                              "deviations": deviations}}
     (out / "summary.json").write_text(json.dumps(summary, indent=2, default=str) + "\n", encoding="utf-8")
     return out

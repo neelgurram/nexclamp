@@ -61,7 +61,7 @@ def write_report(ctx, refs, tol, outcomes, summary, seed) -> Path:
             "- findings in this report: **all exploratory; none confirmatory**",
             f"- analyses specified before the data were generated: yes, in `docs/{meta.get('protocol_version', '')}.md`",
             f"- software commit at report time: `{commit}` (tree dirty: {dirty}); per-run commits are in each `run.json`",
-            "- deviations: see `docs/pilot/PILOT_PROTOCOL_V1_DEVIATIONS.md`",
+            f"- deviations: see `docs/pilot/{meta.get('protocol_version', '')}_DEVIATIONS.md`",
             f"- config set SHA-256: `{config.config_set_sha256()}`", ""]
     lines += [
         "**EXPLORATORY / DEVELOPMENTAL DATA.** Never pooled with the held-out data for the primary confirmatory "

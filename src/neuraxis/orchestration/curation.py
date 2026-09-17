@@ -21,7 +21,7 @@ from typing import Any
 
 import numpy as np
 
-from neuraxis.models import MANIFEST_COLUMNS, materialize
+from neuraxis.models import MANIFEST_COLUMNS, materialize, normalise_fields
 from neuraxis.protocols.definitions import CANONICAL_ID, batched, templates_from_config
 from neuraxis.provenance import git_state, utc_now
 from neuraxis.schemas import ModelRecord, RunStatus
@@ -58,11 +58,7 @@ def read_candidates(paths: Iterable[Path]) -> list[ModelRecord]:
         with open(path, newline="", encoding="utf-8") as f:
             for row in csv.DictReader(f):
                 if row.get("model_id") and row["model_id"] not in out:
-                    fields = {k: (row.get(k) or "").strip() for k in MANIFEST_COLUMNS}
-                    col = re.match(r"\d+", fields["harness_v_column"])   # some sweep rows append a note
-                    fields["harness_v_column"] = col.group(0) if col else fields["harness_v_column"]
-                    temp = re.match(r"\s*([-+]?\d+(?:\.\d+)?\s*degC)", fields["temperature"])
-                    fields["temperature"] = temp.group(1) if temp else fields["temperature"]
+                    fields = normalise_fields({k: (row.get(k) or "").strip() for k in MANIFEST_COLUMNS})
                     out[row["model_id"]] = ModelRecord(**fields)
     return list(out.values())
 

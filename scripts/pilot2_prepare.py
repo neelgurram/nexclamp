@@ -32,7 +32,7 @@ from neuraxis import config  # noqa: E402
 from neuraxis.experiments import strata  # noqa: E402
 from neuraxis.mutations import severity as sev  # noqa: E402
 from neuraxis.orchestration.curation import read_candidates  # noqa: E402
-from neuraxis.protocols.definitions import CANONICAL_ID, batched, templates_from_config  # noqa: E402
+from neuraxis.protocols.definitions import CANONICAL_ID, templates_from_config  # noqa: E402
 from neuraxis.provenance import REPO_ROOT, sha256_file, utc_now  # noqa: E402
 
 SOURCES = ("data/model_manifest.csv", "data/model_candidates.csv", "data/model_candidates_sweep2.csv")
@@ -89,7 +89,9 @@ def main(argv: list[str] | None = None) -> int:
     levels = list(pilot.get("severity_levels") or [])
     per = dict(pilot.get("sites_per_severity") or {})
     variants, matrix = [], []
-    templates = batched(templates_from_config(cfg["protocols"]))
+    # Every configured protocol runs, including the rheobase measurement, which the fingerprint
+    # always records (P03_rheobase) even though it is not part of the batched probe simulation.
+    templates = [t for t in templates_from_config(cfg["protocols"]) if t.implemented]
     factors = [int(f) for f in cfg["numerics"]["refinement_factors"]]
     with tempfile.TemporaryDirectory(prefix="neuraxis_pilot2_") as tmp:
         for mid in pilot["models"]:

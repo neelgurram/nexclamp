@@ -76,7 +76,7 @@ class Context:
 
     @property
     def levels_enabled(self) -> bool:
-        """Validation levels A-E with full-trace regression (``validation_levels.enabled``; PILOT_PROTOCOL_V2)."""
+        """Validation levels A-E with full-trace regression (``validation_levels.enabled``; PILOT2_PROTOCOL)."""
         return bool((self.cfg.get("validation_levels") or {}).get("enabled"))
 
     @property

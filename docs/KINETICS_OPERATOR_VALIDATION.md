@@ -67,10 +67,40 @@ These are operator-correctness data on development fixtures, not study data.*
   therefore exist mainly in models built on core HH gates, and `shift_channel_vshift` only where a
   channel reads `vShift`. Pilot 2 records the applicable sites per model.
 
-## 5. Pilot 2 use (PILOT_PROTOCOL_V2)
+## 5. Pilot 2 use (PILOT2_PROTOCOL)
 
-- **Included subset:** `shift_gate_midpoint` (mild ±5 mV, strong ±10 mV) and `shift_channel_vshift`
-  (±5 mV, mild).
-- **Held back:** `scale_gate_slope` and `shift_forward_rate_midpoint` are validated but excluded from
-  Pilot 2, to keep the kinetics family limited and prespecified.
+*Revised 2026-09-17, before any Pilot 2 data existed (D-054).* All four validated operators enter
+Pilot 2. The earlier plan held `scale_gate_slope` and `shift_forward_rate_midpoint` back; that would
+have removed the only **atomic** operator, and with it the atomic-versus-compound report Neel
+requires. The family is still a limited, prespecified subset: 4 of 23 operators and 12 of the 88
+primary semantic mutants, and it remains "excluded from protocol selection".
+
+- **Included:** `shift_gate_midpoint` (mild ±5 mV, strong ±10 mV), `scale_gate_slope` (×0.8, ×1.25),
+  `shift_forward_rate_midpoint` (±5 mV), `shift_channel_vshift` (±5 mV). Only `shift_gate_midpoint`
+  has strong-severity sites; the magnitude sets of the other three are mild by construction, which is
+  recorded rather than adjusted after the fact.
+- **Atomicity, as recorded:** atomic = one attribute of one element (`shift_forward_rate_midpoint`,
+  `shift_channel_vshift`); compound = several attributes forming one documented change of one gate
+  (`shift_gate_midpoint`, `scale_gate_slope`). `shift_channel_vshift` is atomic as an edit but
+  channel-wide in effect; scope is reported beside atomicity.
+
+### Per-model applicability on the Pilot 2 models
+
+*Run 2026-09-17, `scripts/kinetics_validation.py --only-models --models … --max-sites 6`; evidence in
+`results/audits/kinetics_pilot2/` (48 sites, plots per site). Eligible sites first, validated sites in
+brackets. **All 48 sites passed.***
+
+| model | shift_gate_midpoint | scale_gate_slope | shift_forward_rate_midpoint | shift_channel_vshift | max abs dV from reference |
+|---|---|---|---|---|---|
+| `acnet2_pyr_soma` | 16 (6) | 8 (6) | 8 (6) | no `channelDensityVShift` | 118 mV |
+| `migliore2014_mt_soma` | 8 (6) | 4 (4) | gate has a steady-state element; a forward-only shift would be overridden | no `channelDensityVShift` | 109 mV |
+| `nml2_hh_example` | 12 (6) | 6 (6) | 6 (6) | no `channelDensityVShift` | 112 mV |
+| `osb_hh2_477127614` | `gateHHtauInf` has no core midpoint | no core `scale` | not a rate gate | 2 (2) | 99 mV |
+| `pospischil2008_fs` | Kd rates are custom LEMS types | same | same | no `channelDensityVShift` | not applicable |
+
+**Inapplicability is not a model failure.** It is a property of how the model encodes its channels:
+a custom LEMS rate type simply has no core midpoint or slope parameter to change. The reason is
+recorded per gate, and `pospischil2008_fs` stays a full Pilot 2 model through the other five
+analysis families.
+
 - **Status:** the family stays "excluded from protocol selection".

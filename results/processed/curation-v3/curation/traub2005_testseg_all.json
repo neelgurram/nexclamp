@@ -1,0 +1,110 @@
+{
+  "model": {
+    "model_id": "traub2005_testseg_all",
+    "name": "Traub et al. 2005 channel test cell with almost all channels in one compartment (TestSeg_all)",
+    "snapshot": "Thalamocortical@5d1c9aea",
+    "cell_file": "neuroConstruct/generatedNeuroML2/TestSeg_all.cell.nml",
+    "cell_id": "TestSeg_all",
+    "harness_lems": "neuroConstruct/generatedNeuroML2/LEMS_Thalamocortical.xml",
+    "harness_output_file": "CG_CML_0.0.dat",
+    "harness_v_column": "1",
+    "temperature": "6.3 degC",
+    "source_family": "traub2005",
+    "citation": "Traub RD, Contreras D, Cunningham MO, Murray H, LeBeau FEN, Roopun A, Bibbig A, Wilent WB, Higley MJ, Whittington MA (2005). Single-Column Thalamocortical Network Model Exhibiting Gamma Oscillations, Sleep Spindles, and Epileptogenic Bursts. Journal of Neurophysiology 93(4):2194-2232. doi:10.1152/jn.00983.2004",
+    "source_url": "https://github.com/OpenSourceBrain/Thalamocortical",
+    "commit": "5d1c9aea16598092b6a2e75974465b9f4cd7ccc7",
+    "license": "GPL-2.0 (LICENSE preamble: applies to everything except directories Neuron, Fortran_ifc and Fortran_g77, which carry a cite-on-use condition)",
+    "license_url": "https://github.com/OpenSourceBrain/Thalamocortical/blob/5d1c9aea16598092b6a2e75974465b9f4cd7ccc7/LICENSE",
+    "download_date": "2026-09-16",
+    "simulator": "jNeuroML",
+    "expected_behavior": "Single segment (d 20 um), \"with almost all of the ChannelML mechanisms\": the TestSeg_test2 channels plus ar (anomalous rectifier, Ih-like) 0.25, cal 0.5, cat 0.05, cat_a 0.05, kahp/kahp_deeppyr/kahp_slower 0.033 each, kc/kc_fast 2.0 mS/cm2 and a cad Ca pool. Harness: +0.08 nA 20-80 ms. Shipped reference for the jNeuroML OMV test (neuroConstruct/generatedNeuroML2/.test.mep, times in s): 4 spikes at 22.9, 46.3, 53.8 and 77.5 ms (intervals 23.5, 7.5, 23.7 ms). A copy at NeuroML2/cells/TestSeg_all.cell.nml has another harness, NeuroML2/test/LEMS_ChannelTest.xml (dt 0.01 ms; jNeuroML_NEURON test only). Not simulated in this sweep.",
+    "inclusion": "candidate",
+    "inclusion_reason": "Richest channel mix in the sweep (Ih-like ar, T- and L-type Ca, AHP and C-type K) in one compartment, with a jNeuroML OMV reference. Caveats as traub2005_testseg2: artificial test cell, GPL-2.0, same family (never split the two). The very small dt (0.0005 ms) makes the canonical run slow."
+  },
+  "criteria": {
+    "C01_provenance": true,
+    "C02_reuse_rights": true,
+    "C03_files_present": true,
+    "C04_validation": true,
+    "C05_executes": true,
+    "C06_trace_interpretable": true,
+    "C07_recording_location": true,
+    "C08_responds_to_current": true,
+    "C09_deterministic": true,
+    "C10_refinement_stable": true,
+    "C11_runtime": false,
+    "C12_operators": true,
+    "C13_protocols_compatible": true
+  },
+  "decision": "exclude",
+  "reasons": [
+    "C11_runtime"
+  ],
+  "evidence": {
+    "model_id": "traub2005_testseg_all",
+    "snapshot": "Thalamocortical@5d1c9aea",
+    "ion_channels": [
+      "ar__m00_25",
+      "cal",
+      "cat",
+      "cat_a",
+      "k2",
+      "ka",
+      "ka_ib",
+      "kahp",
+      "kahp_deeppyr",
+      "kahp_slower",
+      "kc",
+      "kc_fast",
+      "kdr",
+      "kdr_fs",
+      "km",
+      "naf",
+      "naf2",
+      "naf_tcr",
+      "nap",
+      "napf",
+      "napf_spinstell",
+      "napf_tcr",
+      "pas"
+    ],
+    "validation_errors": [
+      "File: C:\\Users\\gurra\\NeuroSem\\work\\variants\\curation-v3\\traub2005_testseg_all\\reference\\neuroConstruct\\generatedNeuroML2\\cad__beta0_03__phi300000.nml is not valid against the schema: /Schemas/NeuroML2/NeuroML_v2.3.1.xsd!!",
+      "Error when parsing against Schema (class org.xml.sax.SAXParseException):",
+      "cvc-complex-type.2.4.a: Invalid content was found starting with element '{\"http://www.neuroml.org/schema/neuroml2\":fixedFactorConcentrationModelTraub}'.",
+      "File: C:\\Users\\gurra\\NeuroSem\\work\\variants\\curation-v3\\traub2005_testseg_all\\reference\\neuroConstruct\\generatedNeuroML2\\kc.channel.nml is not valid against the schema: /Schemas/NeuroML2/NeuroML_v2.3.1.xsd!!",
+      "Error when parsing against Schema (class org.xml.sax.SAXParseException):",
+      "cvc-complex-type.2.4.a: Invalid content was found starting with element '{\"http://www.neuroml.org/schema/neuroml2\":baseConductanceScalingCaDependent}'."
+    ],
+    "canonical_status": "ok",
+    "canonical_v_range_mV": [
+      -71.75819396972656,
+      24.956567764282227
+    ],
+    "rheobase_status": "ok",
+    "rheobase_nA": 0.06143706031008811,
+    "fingerprint_status": [
+      "ok",
+      "ok"
+    ],
+    "spikes_P04": 51.0,
+    "spikes_P05": 83.0,
+    "firing_regime_P05": "tonic",
+    "rebound_spikes_P08": 0.0,
+    "sag_ratio_P07": 0.43305858007842846,
+    "refinement_excluded": "0/64",
+    "estimated_variant_runtime_s": 4114.5,
+    "semantic_operators_with_site": [
+      "duplicate_conductance",
+      "omit_include",
+      "scale_capacitance",
+      "scale_conductance",
+      "scale_gate_time_constant",
+      "shift_initial_voltage",
+      "shift_reversal",
+      "wrong_channel",
+      "wrong_compatible_component",
+      "wrong_segment_group"
+    ]
+  }
+}

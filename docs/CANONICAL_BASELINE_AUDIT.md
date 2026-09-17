@@ -107,7 +107,7 @@ pending):
    all 22 real model edits". That is not the same as full-trace or spike-time regression, and not
    the same as execution-only checking.
 
-## 5. Consequences for Pilot 2 (PILOT_PROTOCOL_V2)
+## 5. Consequences for Pilot 2 (PILOT2_PROTOCOL)
 
 Pilot 2 reports five validation levels separately:
 

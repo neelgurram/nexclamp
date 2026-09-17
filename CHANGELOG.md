@@ -6,6 +6,25 @@ Versioning from the first tagged release. Decisions referenced as D-xxx are in `
 
 ## [Unreleased]
 
+### Pilot 2 prespecification (2026-09-17)
+
+#### Added
+- `docs/PILOT2_PROTOCOL.md`: the frozen Pilot 2 protocol (models, protocols, mutation families, severities, thresholds, exclusions, retries, stopping rules, validation levels A-E, outputs, branch rules), with an executable-settings block.
+- `configs/pilot2_frozen.yaml`: the executable settings, loaded through `NEURAXIS_STUDY_CONFIG`.
+- `manifests/PILOT2_MODELS.csv`, `PILOT2_VARIANTS.csv`, `PILOT2_EXPERIMENT_MATRIX.csv`, `PILOT2_PRE_RUN.sha256`: the fixed matrix and its pre-run hashes (`scripts/pilot2_prepare.py`).
+- `tests/unit/test_pilot2_protocol.py`: the written protocol, the configuration and the prepared matrix must agree.
+- `docs/pilot/PILOT2_PROTOCOL_DEVIATIONS.md`: the (empty) deviation record for the campaign.
+- `scripts/curation_table.py`, `docs/MODEL_CURATION_FINAL_TABLE.md` and `manifests/CURATION_FINAL_TABLE.csv`: every candidate attempted, with its decision, exact failing criterion, publication, licence, validation, execution, current response, response type, runtime, convergence and mutation-operator applicability.
+- `scripts/kinetics_validation.py --models`: per-model kinetics applicability and operator correctness on named models, not only the development fixtures.
+- `tests/unit/test_model_manifest_fields.py`: manifest fields that reach generated simulation files must be machine-readable.
+- Prespecified Pilot 2 outputs 14-16: unique protocol contribution (variants only one protocol detected), kinetics results split into atomic and compound edits, and uncertain cases listed instead of forced into a class.
+- `scripts/readiness.py` (the eight-step final readiness sequence, recorded under `results/audits/readiness/`) and `scripts/pilot2_authorize.py` (Neel's automatic-authorisation conditions; refuses a stale or dirty readiness record).
+
+#### Changed
+- The protocol version for Pilot 2 is `PILOT2_PROTOCOL`; code and documents that referred to `PILOT_PROTOCOL_V2` now name `docs/PILOT2_PROTOCOL.md`. The pilot report derives its deviations path from the recorded protocol version.
+- `scripts/pilot2_prepare.py` plans every configured protocol, including the rheobase measurement that the fingerprint always records.
+- The five Pilot 2 models are promoted into `data/model_manifest.csv` with `inclusion = include` and the D-053 reason; `load_models` and the curation reader share one field-normalisation function, so free-text notes can no longer reach a generated simulation file (X-19).
+
 ### Neuraxis execution-plan build (2026-09-16)
 
 Controlling specification: `docs/handoff/NEURAXIS_EXECUTION_PLAN.pdf` (D-039). Conflicts and resolutions are recorded in `docs/DEVIATION_LOG.md`.

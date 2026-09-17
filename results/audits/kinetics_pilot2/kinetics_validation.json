@@ -1,0 +1,3190 @@
+{
+  "created_utc": "2026-09-17T21:19:14+00:00",
+  "operators": [
+    "shift_gate_midpoint",
+    "scale_gate_slope",
+    "shift_forward_rate_midpoint",
+    "shift_channel_vshift"
+  ],
+  "rows": [
+    {
+      "fixture": "acnet2_pyr_soma",
+      "operator": "shift_gate_midpoint",
+      "site": 0,
+      "params": {
+        "mechanism": "rates",
+        "channel": "Ca_pyr",
+        "gate": "m",
+        "delta_mV": -10.0,
+        "changes": [
+          {
+            "locator": "/neuroml[@id='Ca_pyr']/ionChannel[@id='Ca_pyr']/gate[@id='m']/forwardRate[1]",
+            "attribute": "midpoint",
+            "old": "5e-03V",
+            "new": "-5e-3V"
+          },
+          {
+            "locator": "/neuroml[@id='Ca_pyr']/ionChannel[@id='Ca_pyr']/gate[@id='m']/reverseRate[1]",
+            "attribute": "midpoint",
+            "old": "-8.9e-3V",
+            "new": "-1.89e-2V"
+          }
+        ]
+      },
+      "atomicity": "compound (2 attributes of one gate, one documented change)",
+      "edits": [
+        {
+          "file": "LEMSexamples/morphologies/Ca_pyr.channel.nml",
+          "locator": "/neuroml[@id='Ca_pyr']/ionChannel[@id='Ca_pyr']/gate[@id='m']/forwardRate[1]",
+          "attribute": "midpoint",
+          "old": "5e-03V",
+          "new": "-5e-3V"
+        },
+        {
+          "file": "LEMSexamples/morphologies/Ca_pyr.channel.nml",
+          "locator": "/neuroml[@id='Ca_pyr']/ionChannel[@id='Ca_pyr']/gate[@id='m']/reverseRate[1]",
+          "attribute": "midpoint",
+          "old": "-8.9e-3V",
+          "new": "-1.89e-2V"
+        }
+      ],
+      "element_types": [
+        "HHSigmoidRate",
+        "HHExpLinearRate"
+      ],
+      "affected_equations": [
+        "r(V) = rate * x / (1 - exp(-x)), x = (V - midpoint) / scale",
+        "r(V) = rate / (1 + exp((midpoint - V) / scale))"
+      ],
+      "exec_overrides": {},
+      "harness_unchanged": true,
+      "single_change_enforced": true,
+      "schema_valid": true,
+      "simulation_status": "ok",
+      "max_abs_dv_mV": 114.56957244873047,
+      "spikes_before_after": [
+        8,
+        5
+      ],
+      "plot": "plots/acnet2_pyr_soma_shift_gate_midpoint_0.png",
+      "passed": true
+    },
+    {
+      "fixture": "acnet2_pyr_soma",
+      "operator": "shift_gate_midpoint",
+      "site": 1,
+      "params": {
+        "mechanism": "rates",
+        "channel": "Ca_pyr",
+        "gate": "m",
+        "delta_mV": -5.0,
+        "changes": [
+          {
+            "locator": "/neuroml[@id='Ca_pyr']/ionChannel[@id='Ca_pyr']/gate[@id='m']/forwardRate[1]",
+            "attribute": "midpoint",
+            "old": "5e-03V",
+            "new": "0V"
+          },
+          {
+            "locator": "/neuroml[@id='Ca_pyr']/ionChannel[@id='Ca_pyr']/gate[@id='m']/reverseRate[1]",
+            "attribute": "midpoint",
+            "old": "-8.9e-3V",
+            "new": "-1.39e-2V"
+          }
+        ]
+      },
+      "atomicity": "compound (2 attributes of one gate, one documented change)",
+      "edits": [
+        {
+          "file": "LEMSexamples/morphologies/Ca_pyr.channel.nml",
+          "locator": "/neuroml[@id='Ca_pyr']/ionChannel[@id='Ca_pyr']/gate[@id='m']/forwardRate[1]",
+          "attribute": "midpoint",
+          "old": "5e-03V",
+          "new": "0V"
+        },
+        {
+          "file": "LEMSexamples/morphologies/Ca_pyr.channel.nml",
+          "locator": "/neuroml[@id='Ca_pyr']/ionChannel[@id='Ca_pyr']/gate[@id='m']/reverseRate[1]",
+          "attribute": "midpoint",
+          "old": "-8.9e-3V",
+          "new": "-1.39e-2V"
+        }
+      ],
+      "element_types": [
+        "HHSigmoidRate",
+        "HHExpLinearRate"
+      ],
+      "affected_equations": [
+        "r(V) = rate * x / (1 - exp(-x)), x = (V - midpoint) / scale",
+        "r(V) = rate / (1 + exp((midpoint - V) / scale))"
+      ],
+      "exec_overrides": {},
+      "harness_unchanged": true,
+      "single_change_enforced": true,
+      "schema_valid": true,
+      "simulation_status": "ok",
+      "max_abs_dv_mV": 115.1088638305664,
+      "spikes_before_after": [
+        8,
+        6
+      ],
+      "plot": "plots/acnet2_pyr_soma_shift_gate_midpoint_1.png",
+      "passed": true
+    },
+    {
+      "fixture": "acnet2_pyr_soma",
+      "operator": "shift_gate_midpoint",
+      "site": 2,
+      "params": {
+        "mechanism": "rates",
+        "channel": "Ca_pyr",
+        "gate": "m",
+        "delta_mV": 5.0,
+        "changes": [
+          {
+            "locator": "/neuroml[@id='Ca_pyr']/ionChannel[@id='Ca_pyr']/gate[@id='m']/forwardRate[1]",
+            "attribute": "midpoint",
+            "old": "5e-03V",
+            "new": "1e-2V"
+          },
+          {
+            "locator": "/neuroml[@id='Ca_pyr']/ionChannel[@id='Ca_pyr']/gate[@id='m']/reverseRate[1]",
+            "attribute": "midpoint",
+            "old": "-8.9e-3V",
+            "new": "-3.9e-3V"
+          }
+        ]
+      },
+      "atomicity": "compound (2 attributes of one gate, one documented change)",
+      "edits": [
+        {
+          "file": "LEMSexamples/morphologies/Ca_pyr.channel.nml",
+          "locator": "/neuroml[@id='Ca_pyr']/ionChannel[@id='Ca_pyr']/gate[@id='m']/forwardRate[1]",
+          "attribute": "midpoint",
+          "old": "5e-03V",
+          "new": "1e-2V"
+        },
+        {
+          "file": "LEMSexamples/morphologies/Ca_pyr.channel.nml",
+          "locator": "/neuroml[@id='Ca_pyr']/ionChannel[@id='Ca_pyr']/gate[@id='m']/reverseRate[1]",
+          "attribute": "midpoint",
+          "old": "-8.9e-3V",
+          "new": "-3.9e-3V"
+        }
+      ],
+      "element_types": [
+        "HHSigmoidRate",
+        "HHExpLinearRate"
+      ],
+      "affected_equations": [
+        "r(V) = rate * x / (1 - exp(-x)), x = (V - midpoint) / scale",
+        "r(V) = rate / (1 + exp((midpoint - V) / scale))"
+      ],
+      "exec_overrides": {},
+      "harness_unchanged": true,
+      "single_change_enforced": true,
+      "schema_valid": true,
+      "simulation_status": "ok",
+      "max_abs_dv_mV": 116.23139190673828,
+      "spikes_before_after": [
+        8,
+        10
+      ],
+      "plot": "plots/acnet2_pyr_soma_shift_gate_midpoint_2.png",
+      "passed": true
+    },
+    {
+      "fixture": "acnet2_pyr_soma",
+      "operator": "shift_gate_midpoint",
+      "site": 3,
+      "params": {
+        "mechanism": "rates",
+        "channel": "Ca_pyr",
+        "gate": "m",
+        "delta_mV": 10.0,
+        "changes": [
+          {
+            "locator": "/neuroml[@id='Ca_pyr']/ionChannel[@id='Ca_pyr']/gate[@id='m']/forwardRate[1]",
+            "attribute": "midpoint",
+            "old": "5e-03V",
+            "new": "1.5e-2V"
+          },
+          {
+            "locator": "/neuroml[@id='Ca_pyr']/ionChannel[@id='Ca_pyr']/gate[@id='m']/reverseRate[1]",
+            "attribute": "midpoint",
+            "old": "-8.9e-3V",
+            "new": "1.1e-3V"
+          }
+        ]
+      },
+      "atomicity": "compound (2 attributes of one gate, one documented change)",
+      "edits": [
+        {
+          "file": "LEMSexamples/morphologies/Ca_pyr.channel.nml",
+          "locator": "/neuroml[@id='Ca_pyr']/ionChannel[@id='Ca_pyr']/gate[@id='m']/forwardRate[1]",
+          "attribute": "midpoint",
+          "old": "5e-03V",
+          "new": "1.5e-2V"
+        },
+        {
+          "file": "LEMSexamples/morphologies/Ca_pyr.channel.nml",
+          "locator": "/neuroml[@id='Ca_pyr']/ionChannel[@id='Ca_pyr']/gate[@id='m']/reverseRate[1]",
+          "attribute": "midpoint",
+          "old": "-8.9e-3V",
+          "new": "1.1e-3V"
+        }
+      ],
+      "element_types": [
+        "HHSigmoidRate",
+        "HHExpLinearRate"
+      ],
+      "affected_equations": [
+        "r(V) = rate * x / (1 - exp(-x)), x = (V - midpoint) / scale",
+        "r(V) = rate / (1 + exp((midpoint - V) / scale))"
+      ],
+      "exec_overrides": {},
+      "harness_unchanged": true,
+      "single_change_enforced": true,
+      "schema_valid": true,
+      "simulation_status": "ok",
+      "max_abs_dv_mV": 115.16946792602539,
+      "spikes_before_after": [
+        8,
+        13
+      ],
+      "plot": "plots/acnet2_pyr_soma_shift_gate_midpoint_3.png",
+      "passed": true
+    },
+    {
+      "fixture": "acnet2_pyr_soma",
+      "operator": "shift_gate_midpoint",
+      "site": 4,
+      "params": {
+        "mechanism": "rates",
+        "channel": "Kdr_pyr",
+        "gate": "n",
+        "delta_mV": -10.0,
+        "changes": [
+          {
+            "locator": "/neuroml[@id='Kdr_pyr']/ionChannel[@id='Kdr_pyr']/gate[@id='n']/forwardRate[1]",
+            "attribute": "midpoint",
+            "old": "-2.49e-2V",
+            "new": "-3.49e-2V"
+          },
+          {
+            "locator": "/neuroml[@id='Kdr_pyr']/ionChannel[@id='Kdr_pyr']/gate[@id='n']/reverseRate[1]",
+            "attribute": "midpoint",
+            "old": "-4e-2V",
+            "new": "-5e-2V"
+          }
+        ]
+      },
+      "atomicity": "compound (2 attributes of one gate, one documented change)",
+      "edits": [
+        {
+          "file": "LEMSexamples/morphologies/Kdr_pyr.channel.nml",
+          "locator": "/neuroml[@id='Kdr_pyr']/ionChannel[@id='Kdr_pyr']/gate[@id='n']/forwardRate[1]",
+          "attribute": "midpoint",
+          "old": "-2.49e-2V",
+          "new": "-3.49e-2V"
+        },
+        {
+          "file": "LEMSexamples/morphologies/Kdr_pyr.channel.nml",
+          "locator": "/neuroml[@id='Kdr_pyr']/ionChannel[@id='Kdr_pyr']/gate[@id='n']/reverseRate[1]",
+          "attribute": "midpoint",
+          "old": "-4e-2V",
+          "new": "-5e-2V"
+        }
+      ],
+      "element_types": [
+        "HHExpLinearRate",
+        "HHExpRate"
+      ],
+      "affected_equations": [
+        "r(V) = rate * exp((V - midpoint) / scale)",
+        "r(V) = rate * x / (1 - exp(-x)), x = (V - midpoint) / scale"
+      ],
+      "exec_overrides": {},
+      "harness_unchanged": true,
+      "single_change_enforced": true,
+      "schema_valid": true,
+      "simulation_status": "ok",
+      "max_abs_dv_mV": 110.18176651000977,
+      "spikes_before_after": [
+        8,
+        3
+      ],
+      "plot": "plots/acnet2_pyr_soma_shift_gate_midpoint_4.png",
+      "passed": true
+    },
+    {
+      "fixture": "acnet2_pyr_soma",
+      "operator": "shift_gate_midpoint",
+      "site": 5,
+      "params": {
+        "mechanism": "rates",
+        "channel": "Kdr_pyr",
+        "gate": "n",
+        "delta_mV": -5.0,
+        "changes": [
+          {
+            "locator": "/neuroml[@id='Kdr_pyr']/ionChannel[@id='Kdr_pyr']/gate[@id='n']/forwardRate[1]",
+            "attribute": "midpoint",
+            "old": "-2.49e-2V",
+            "new": "-2.99e-2V"
+          },
+          {
+            "locator": "/neuroml[@id='Kdr_pyr']/ionChannel[@id='Kdr_pyr']/gate[@id='n']/reverseRate[1]",
+            "attribute": "midpoint",
+            "old": "-4e-2V",
+            "new": "-4.5e-2V"
+          }
+        ]
+      },
+      "atomicity": "compound (2 attributes of one gate, one documented change)",
+      "edits": [
+        {
+          "file": "LEMSexamples/morphologies/Kdr_pyr.channel.nml",
+          "locator": "/neuroml[@id='Kdr_pyr']/ionChannel[@id='Kdr_pyr']/gate[@id='n']/forwardRate[1]",
+          "attribute": "midpoint",
+          "old": "-2.49e-2V",
+          "new": "-2.99e-2V"
+        },
+        {
+          "file": "LEMSexamples/morphologies/Kdr_pyr.channel.nml",
+          "locator": "/neuroml[@id='Kdr_pyr']/ionChannel[@id='Kdr_pyr']/gate[@id='n']/reverseRate[1]",
+          "attribute": "midpoint",
+          "old": "-4e-2V",
+          "new": "-4.5e-2V"
+        }
+      ],
+      "element_types": [
+        "HHExpLinearRate",
+        "HHExpRate"
+      ],
+      "affected_equations": [
+        "r(V) = rate * exp((V - midpoint) / scale)",
+        "r(V) = rate * x / (1 - exp(-x)), x = (V - midpoint) / scale"
+      ],
+      "exec_overrides": {},
+      "harness_unchanged": true,
+      "single_change_enforced": true,
+      "schema_valid": true,
+      "simulation_status": "ok",
+      "max_abs_dv_mV": 115.86695861816406,
+      "spikes_before_after": [
+        8,
+        7
+      ],
+      "plot": "plots/acnet2_pyr_soma_shift_gate_midpoint_5.png",
+      "passed": true
+    },
+    {
+      "fixture": "acnet2_pyr_soma",
+      "operator": "scale_gate_slope",
+      "site": 0,
+      "params": {
+        "mechanism": "rates",
+        "channel": "Ca_pyr",
+        "gate": "m",
+        "factor": 0.8,
+        "changes": [
+          {
+            "locator": "/neuroml[@id='Ca_pyr']/ionChannel[@id='Ca_pyr']/gate[@id='m']/forwardRate[1]",
+            "attribute": "scale",
+            "old": "0.01389V",
+            "new": "0.011112V"
+          },
+          {
+            "locator": "/neuroml[@id='Ca_pyr']/ionChannel[@id='Ca_pyr']/gate[@id='m']/reverseRate[1]",
+            "attribute": "scale",
+            "old": "-0.005V",
+            "new": "-0.004V"
+          }
+        ]
+      },
+      "atomicity": "compound (2 attributes of one gate, one documented change)",
+      "edits": [
+        {
+          "file": "LEMSexamples/morphologies/Ca_pyr.channel.nml",
+          "locator": "/neuroml[@id='Ca_pyr']/ionChannel[@id='Ca_pyr']/gate[@id='m']/forwardRate[1]",
+          "attribute": "scale",
+          "old": "0.01389V",
+          "new": "0.011112V"
+        },
+        {
+          "file": "LEMSexamples/morphologies/Ca_pyr.channel.nml",
+          "locator": "/neuroml[@id='Ca_pyr']/ionChannel[@id='Ca_pyr']/gate[@id='m']/reverseRate[1]",
+          "attribute": "scale",
+          "old": "-0.005V",
+          "new": "-0.004V"
+        }
+      ],
+      "element_types": [
+        "HHSigmoidRate",
+        "HHExpLinearRate"
+      ],
+      "affected_equations": [
+        "r(V) = rate * x / (1 - exp(-x)), x = (V - midpoint) / scale",
+        "r(V) = rate / (1 + exp((midpoint - V) / scale))"
+      ],
+      "exec_overrides": {},
+      "harness_unchanged": true,
+      "single_change_enforced": true,
+      "schema_valid": true,
+      "simulation_status": "ok",
+      "max_abs_dv_mV": 115.8750991821289,
+      "spikes_before_after": [
+        8,
+        9
+      ],
+      "plot": "plots/acnet2_pyr_soma_scale_gate_slope_0.png",
+      "passed": true
+    },
+    {
+      "fixture": "acnet2_pyr_soma",
+      "operator": "scale_gate_slope",
+      "site": 1,
+      "params": {
+        "mechanism": "rates",
+        "channel": "Ca_pyr",
+        "gate": "m",
+        "factor": 1.25,
+        "changes": [
+          {
+            "locator": "/neuroml[@id='Ca_pyr']/ionChannel[@id='Ca_pyr']/gate[@id='m']/forwardRate[1]",
+            "attribute": "scale",
+            "old": "0.01389V",
+            "new": "0.0173625V"
+          },
+          {
+            "locator": "/neuroml[@id='Ca_pyr']/ionChannel[@id='Ca_pyr']/gate[@id='m']/reverseRate[1]",
+            "attribute": "scale",
+            "old": "-0.005V",
+            "new": "-0.00625V"
+          }
+        ]
+      },
+      "atomicity": "compound (2 attributes of one gate, one documented change)",
+      "edits": [
+        {
+          "file": "LEMSexamples/morphologies/Ca_pyr.channel.nml",
+          "locator": "/neuroml[@id='Ca_pyr']/ionChannel[@id='Ca_pyr']/gate[@id='m']/forwardRate[1]",
+          "attribute": "scale",
+          "old": "0.01389V",
+          "new": "0.0173625V"
+        },
+        {
+          "file": "LEMSexamples/morphologies/Ca_pyr.channel.nml",
+          "locator": "/neuroml[@id='Ca_pyr']/ionChannel[@id='Ca_pyr']/gate[@id='m']/reverseRate[1]",
+          "attribute": "scale",
+          "old": "-0.005V",
+          "new": "-0.00625V"
+        }
+      ],
+      "element_types": [
+        "HHSigmoidRate",
+        "HHExpLinearRate"
+      ],
+      "affected_equations": [
+        "r(V) = rate * x / (1 - exp(-x)), x = (V - midpoint) / scale",
+        "r(V) = rate / (1 + exp((midpoint - V) / scale))"
+      ],
+      "exec_overrides": {},
+      "harness_unchanged": true,
+      "single_change_enforced": true,
+      "schema_valid": true,
+      "simulation_status": "ok",
+      "max_abs_dv_mV": 116.98194122314453,
+      "spikes_before_after": [
+        8,
+        7
+      ],
+      "plot": "plots/acnet2_pyr_soma_scale_gate_slope_1.png",
+      "passed": true
+    },
+    {
+      "fixture": "acnet2_pyr_soma",
+      "operator": "scale_gate_slope",
+      "site": 2,
+      "params": {
+        "mechanism": "rates",
+        "channel": "Kdr_pyr",
+        "gate": "n",
+        "factor": 0.8,
+        "changes": [
+          {
+            "locator": "/neuroml[@id='Kdr_pyr']/ionChannel[@id='Kdr_pyr']/gate[@id='n']/forwardRate[1]",
+            "attribute": "scale",
+            "old": "0.005V",
+            "new": "0.004V"
+          },
+          {
+            "locator": "/neuroml[@id='Kdr_pyr']/ionChannel[@id='Kdr_pyr']/gate[@id='n']/reverseRate[1]",
+            "attribute": "scale",
+            "old": "-0.04V",
+            "new": "-0.032V"
+          }
+        ]
+      },
+      "atomicity": "compound (2 attributes of one gate, one documented change)",
+      "edits": [
+        {
+          "file": "LEMSexamples/morphologies/Kdr_pyr.channel.nml",
+          "locator": "/neuroml[@id='Kdr_pyr']/ionChannel[@id='Kdr_pyr']/gate[@id='n']/forwardRate[1]",
+          "attribute": "scale",
+          "old": "0.005V",
+          "new": "0.004V"
+        },
+        {
+          "file": "LEMSexamples/morphologies/Kdr_pyr.channel.nml",
+          "locator": "/neuroml[@id='Kdr_pyr']/ionChannel[@id='Kdr_pyr']/gate[@id='n']/reverseRate[1]",
+          "attribute": "scale",
+          "old": "-0.04V",
+          "new": "-0.032V"
+        }
+      ],
+      "element_types": [
+        "HHExpLinearRate",
+        "HHExpRate"
+      ],
+      "affected_equations": [
+        "r(V) = rate * exp((V - midpoint) / scale)",
+        "r(V) = rate * x / (1 - exp(-x)), x = (V - midpoint) / scale"
+      ],
+      "exec_overrides": {},
+      "harness_unchanged": true,
+      "single_change_enforced": true,
+      "schema_valid": true,
+      "simulation_status": "ok",
+      "max_abs_dv_mV": 115.70621109008789,
+      "spikes_before_after": [
+        8,
+        11
+      ],
+      "plot": "plots/acnet2_pyr_soma_scale_gate_slope_2.png",
+      "passed": true
+    },
+    {
+      "fixture": "acnet2_pyr_soma",
+      "operator": "scale_gate_slope",
+      "site": 3,
+      "params": {
+        "mechanism": "rates",
+        "channel": "Kdr_pyr",
+        "gate": "n",
+        "factor": 1.25,
+        "changes": [
+          {
+            "locator": "/neuroml[@id='Kdr_pyr']/ionChannel[@id='Kdr_pyr']/gate[@id='n']/forwardRate[1]",
+            "attribute": "scale",
+            "old": "0.005V",
+            "new": "0.00625V"
+          },
+          {
+            "locator": "/neuroml[@id='Kdr_pyr']/ionChannel[@id='Kdr_pyr']/gate[@id='n']/reverseRate[1]",
+            "attribute": "scale",
+            "old": "-0.04V",
+            "new": "-0.05V"
+          }
+        ]
+      },
+      "atomicity": "compound (2 attributes of one gate, one documented change)",
+      "edits": [
+        {
+          "file": "LEMSexamples/morphologies/Kdr_pyr.channel.nml",
+          "locator": "/neuroml[@id='Kdr_pyr']/ionChannel[@id='Kdr_pyr']/gate[@id='n']/forwardRate[1]",
+          "attribute": "scale",
+          "old": "0.005V",
+          "new": "0.00625V"
+        },
+        {
+          "file": "LEMSexamples/morphologies/Kdr_pyr.channel.nml",
+          "locator": "/neuroml[@id='Kdr_pyr']/ionChannel[@id='Kdr_pyr']/gate[@id='n']/reverseRate[1]",
+          "attribute": "scale",
+          "old": "-0.04V",
+          "new": "-0.05V"
+        }
+      ],
+      "element_types": [
+        "HHExpLinearRate",
+        "HHExpRate"
+      ],
+      "affected_equations": [
+        "r(V) = rate * exp((V - midpoint) / scale)",
+        "r(V) = rate * x / (1 - exp(-x)), x = (V - midpoint) / scale"
+      ],
+      "exec_overrides": {},
+      "harness_unchanged": true,
+      "single_change_enforced": true,
+      "schema_valid": true,
+      "simulation_status": "ok",
+      "max_abs_dv_mV": 116.86552810668945,
+      "spikes_before_after": [
+        8,
+        5
+      ],
+      "plot": "plots/acnet2_pyr_soma_scale_gate_slope_3.png",
+      "passed": true
+    },
+    {
+      "fixture": "acnet2_pyr_soma",
+      "operator": "scale_gate_slope",
+      "site": 4,
+      "params": {
+        "mechanism": "rates",
+        "channel": "Na_pyr",
+        "gate": "m",
+        "factor": 0.8,
+        "changes": [
+          {
+            "locator": "/neuroml[@id='Na_pyr']/ionChannel[@id='Na_pyr']/gate[@id='m']/forwardRate[1]",
+            "attribute": "scale",
+            "old": "0.004V",
+            "new": "0.0032V"
+          },
+          {
+            "locator": "/neuroml[@id='Na_pyr']/ionChannel[@id='Na_pyr']/gate[@id='m']/reverseRate[1]",
+            "attribute": "scale",
+            "old": "-0.005V",
+            "new": "-0.004V"
+          }
+        ]
+      },
+      "atomicity": "compound (2 attributes of one gate, one documented change)",
+      "edits": [
+        {
+          "file": "LEMSexamples/morphologies/Na_pyr.channel.nml",
+          "locator": "/neuroml[@id='Na_pyr']/ionChannel[@id='Na_pyr']/gate[@id='m']/forwardRate[1]",
+          "attribute": "scale",
+          "old": "0.004V",
+          "new": "0.0032V"
+        },
+        {
+          "file": "LEMSexamples/morphologies/Na_pyr.channel.nml",
+          "locator": "/neuroml[@id='Na_pyr']/ionChannel[@id='Na_pyr']/gate[@id='m']/reverseRate[1]",
+          "attribute": "scale",
+          "old": "-0.005V",
+          "new": "-0.004V"
+        }
+      ],
+      "element_types": [
+        "HHExpLinearRate",
+        "HHExpLinearRate"
+      ],
+      "affected_equations": [
+        "r(V) = rate * x / (1 - exp(-x)), x = (V - midpoint) / scale"
+      ],
+      "exec_overrides": {},
+      "harness_unchanged": true,
+      "single_change_enforced": true,
+      "schema_valid": true,
+      "simulation_status": "ok",
+      "max_abs_dv_mV": 118.23781204223633,
+      "spikes_before_after": [
+        8,
+        5
+      ],
+      "plot": "plots/acnet2_pyr_soma_scale_gate_slope_4.png",
+      "passed": true
+    },
+    {
+      "fixture": "acnet2_pyr_soma",
+      "operator": "scale_gate_slope",
+      "site": 5,
+      "params": {
+        "mechanism": "rates",
+        "channel": "Na_pyr",
+        "gate": "m",
+        "factor": 1.25,
+        "changes": [
+          {
+            "locator": "/neuroml[@id='Na_pyr']/ionChannel[@id='Na_pyr']/gate[@id='m']/forwardRate[1]",
+            "attribute": "scale",
+            "old": "0.004V",
+            "new": "0.005V"
+          },
+          {
+            "locator": "/neuroml[@id='Na_pyr']/ionChannel[@id='Na_pyr']/gate[@id='m']/reverseRate[1]",
+            "attribute": "scale",
+            "old": "-0.005V",
+            "new": "-0.00625V"
+          }
+        ]
+      },
+      "atomicity": "compound (2 attributes of one gate, one documented change)",
+      "edits": [
+        {
+          "file": "LEMSexamples/morphologies/Na_pyr.channel.nml",
+          "locator": "/neuroml[@id='Na_pyr']/ionChannel[@id='Na_pyr']/gate[@id='m']/forwardRate[1]",
+          "attribute": "scale",
+          "old": "0.004V",
+          "new": "0.005V"
+        },
+        {
+          "file": "LEMSexamples/morphologies/Na_pyr.channel.nml",
+          "locator": "/neuroml[@id='Na_pyr']/ionChannel[@id='Na_pyr']/gate[@id='m']/reverseRate[1]",
+          "attribute": "scale",
+          "old": "-0.005V",
+          "new": "-0.00625V"
+        }
+      ],
+      "element_types": [
+        "HHExpLinearRate",
+        "HHExpLinearRate"
+      ],
+      "affected_equations": [
+        "r(V) = rate * x / (1 - exp(-x)), x = (V - midpoint) / scale"
+      ],
+      "exec_overrides": {},
+      "harness_unchanged": true,
+      "single_change_enforced": true,
+      "schema_valid": true,
+      "simulation_status": "ok",
+      "max_abs_dv_mV": 116.10822677612305,
+      "spikes_before_after": [
+        8,
+        16
+      ],
+      "plot": "plots/acnet2_pyr_soma_scale_gate_slope_5.png",
+      "passed": true
+    },
+    {
+      "fixture": "acnet2_pyr_soma",
+      "operator": "shift_forward_rate_midpoint",
+      "site": 0,
+      "params": {
+        "mechanism": "forward_rate",
+        "channel": "Ca_pyr",
+        "gate": "m",
+        "delta_mV": -5.0,
+        "changes": [
+          {
+            "locator": "/neuroml[@id='Ca_pyr']/ionChannel[@id='Ca_pyr']/gate[@id='m']/forwardRate[1]",
+            "attribute": "midpoint",
+            "old": "5e-03V",
+            "new": "0V"
+          }
+        ]
+      },
+      "atomicity": "atomic (one attribute of one element)",
+      "edits": [
+        {
+          "file": "LEMSexamples/morphologies/Ca_pyr.channel.nml",
+          "locator": "/neuroml[@id='Ca_pyr']/ionChannel[@id='Ca_pyr']/gate[@id='m']/forwardRate[1]",
+          "attribute": "midpoint",
+          "old": "5e-03V",
+          "new": "0V"
+        }
+      ],
+      "element_types": [
+        "HHSigmoidRate"
+      ],
+      "affected_equations": [
+        "r(V) = rate / (1 + exp((midpoint - V) / scale))"
+      ],
+      "exec_overrides": {},
+      "harness_unchanged": true,
+      "single_change_enforced": true,
+      "schema_valid": true,
+      "simulation_status": "ok",
+      "max_abs_dv_mV": 113.30611419677734,
+      "spikes_before_after": [
+        8,
+        7
+      ],
+      "plot": "plots/acnet2_pyr_soma_shift_forward_rate_midpoint_0.png",
+      "passed": true
+    },
+    {
+      "fixture": "acnet2_pyr_soma",
+      "operator": "shift_forward_rate_midpoint",
+      "site": 1,
+      "params": {
+        "mechanism": "forward_rate",
+        "channel": "Ca_pyr",
+        "gate": "m",
+        "delta_mV": 5.0,
+        "changes": [
+          {
+            "locator": "/neuroml[@id='Ca_pyr']/ionChannel[@id='Ca_pyr']/gate[@id='m']/forwardRate[1]",
+            "attribute": "midpoint",
+            "old": "5e-03V",
+            "new": "1e-2V"
+          }
+        ]
+      },
+      "atomicity": "atomic (one attribute of one element)",
+      "edits": [
+        {
+          "file": "LEMSexamples/morphologies/Ca_pyr.channel.nml",
+          "locator": "/neuroml[@id='Ca_pyr']/ionChannel[@id='Ca_pyr']/gate[@id='m']/forwardRate[1]",
+          "attribute": "midpoint",
+          "old": "5e-03V",
+          "new": "1e-2V"
+        }
+      ],
+      "element_types": [
+        "HHSigmoidRate"
+      ],
+      "affected_equations": [
+        "r(V) = rate / (1 + exp((midpoint - V) / scale))"
+      ],
+      "exec_overrides": {},
+      "harness_unchanged": true,
+      "single_change_enforced": true,
+      "schema_valid": true,
+      "simulation_status": "ok",
+      "max_abs_dv_mV": 115.74618148803711,
+      "spikes_before_after": [
+        8,
+        9
+      ],
+      "plot": "plots/acnet2_pyr_soma_shift_forward_rate_midpoint_1.png",
+      "passed": true
+    },
+    {
+      "fixture": "acnet2_pyr_soma",
+      "operator": "shift_forward_rate_midpoint",
+      "site": 2,
+      "params": {
+        "mechanism": "forward_rate",
+        "channel": "Kdr_pyr",
+        "gate": "n",
+        "delta_mV": -5.0,
+        "changes": [
+          {
+            "locator": "/neuroml[@id='Kdr_pyr']/ionChannel[@id='Kdr_pyr']/gate[@id='n']/forwardRate[1]",
+            "attribute": "midpoint",
+            "old": "-2.49e-2V",
+            "new": "-2.99e-2V"
+          }
+        ]
+      },
+      "atomicity": "atomic (one attribute of one element)",
+      "edits": [
+        {
+          "file": "LEMSexamples/morphologies/Kdr_pyr.channel.nml",
+          "locator": "/neuroml[@id='Kdr_pyr']/ionChannel[@id='Kdr_pyr']/gate[@id='n']/forwardRate[1]",
+          "attribute": "midpoint",
+          "old": "-2.49e-2V",
+          "new": "-2.99e-2V"
+        }
+      ],
+      "element_types": [
+        "HHExpLinearRate"
+      ],
+      "affected_equations": [
+        "r(V) = rate * x / (1 - exp(-x)), x = (V - midpoint) / scale"
+      ],
+      "exec_overrides": {},
+      "harness_unchanged": true,
+      "single_change_enforced": true,
+      "schema_valid": true,
+      "simulation_status": "ok",
+      "max_abs_dv_mV": 112.85229110717773,
+      "spikes_before_after": [
+        8,
+        7
+      ],
+      "plot": "plots/acnet2_pyr_soma_shift_forward_rate_midpoint_2.png",
+      "passed": true
+    },
+    {
+      "fixture": "acnet2_pyr_soma",
+      "operator": "shift_forward_rate_midpoint",
+      "site": 3,
+      "params": {
+        "mechanism": "forward_rate",
+        "channel": "Kdr_pyr",
+        "gate": "n",
+        "delta_mV": 5.0,
+        "changes": [
+          {
+            "locator": "/neuroml[@id='Kdr_pyr']/ionChannel[@id='Kdr_pyr']/gate[@id='n']/forwardRate[1]",
+            "attribute": "midpoint",
+            "old": "-2.49e-2V",
+            "new": "-1.99e-2V"
+          }
+        ]
+      },
+      "atomicity": "atomic (one attribute of one element)",
+      "edits": [
+        {
+          "file": "LEMSexamples/morphologies/Kdr_pyr.channel.nml",
+          "locator": "/neuroml[@id='Kdr_pyr']/ionChannel[@id='Kdr_pyr']/gate[@id='n']/forwardRate[1]",
+          "attribute": "midpoint",
+          "old": "-2.49e-2V",
+          "new": "-1.99e-2V"
+        }
+      ],
+      "element_types": [
+        "HHExpLinearRate"
+      ],
+      "affected_equations": [
+        "r(V) = rate * x / (1 - exp(-x)), x = (V - midpoint) / scale"
+      ],
+      "exec_overrides": {},
+      "harness_unchanged": true,
+      "single_change_enforced": true,
+      "schema_valid": true,
+      "simulation_status": "ok",
+      "max_abs_dv_mV": 117.89810562133789,
+      "spikes_before_after": [
+        8,
+        8
+      ],
+      "plot": "plots/acnet2_pyr_soma_shift_forward_rate_midpoint_3.png",
+      "passed": true
+    },
+    {
+      "fixture": "acnet2_pyr_soma",
+      "operator": "shift_forward_rate_midpoint",
+      "site": 4,
+      "params": {
+        "mechanism": "forward_rate",
+        "channel": "Na_pyr",
+        "gate": "m",
+        "delta_mV": -5.0,
+        "changes": [
+          {
+            "locator": "/neuroml[@id='Na_pyr']/ionChannel[@id='Na_pyr']/gate[@id='m']/forwardRate[1]",
+            "attribute": "midpoint",
+            "old": "-4.69e-2V",
+            "new": "-5.19e-2V"
+          }
+        ]
+      },
+      "atomicity": "atomic (one attribute of one element)",
+      "edits": [
+        {
+          "file": "LEMSexamples/morphologies/Na_pyr.channel.nml",
+          "locator": "/neuroml[@id='Na_pyr']/ionChannel[@id='Na_pyr']/gate[@id='m']/forwardRate[1]",
+          "attribute": "midpoint",
+          "old": "-4.69e-2V",
+          "new": "-5.19e-2V"
+        }
+      ],
+      "element_types": [
+        "HHExpLinearRate"
+      ],
+      "affected_equations": [
+        "r(V) = rate * x / (1 - exp(-x)), x = (V - midpoint) / scale"
+      ],
+      "exec_overrides": {},
+      "harness_unchanged": true,
+      "single_change_enforced": true,
+      "schema_valid": true,
+      "simulation_status": "ok",
+      "max_abs_dv_mV": 116.7237663269043,
+      "spikes_before_after": [
+        8,
+        18
+      ],
+      "plot": "plots/acnet2_pyr_soma_shift_forward_rate_midpoint_4.png",
+      "passed": true
+    },
+    {
+      "fixture": "acnet2_pyr_soma",
+      "operator": "shift_forward_rate_midpoint",
+      "site": 5,
+      "params": {
+        "mechanism": "forward_rate",
+        "channel": "Na_pyr",
+        "gate": "m",
+        "delta_mV": 5.0,
+        "changes": [
+          {
+            "locator": "/neuroml[@id='Na_pyr']/ionChannel[@id='Na_pyr']/gate[@id='m']/forwardRate[1]",
+            "attribute": "midpoint",
+            "old": "-4.69e-2V",
+            "new": "-4.19e-2V"
+          }
+        ]
+      },
+      "atomicity": "atomic (one attribute of one element)",
+      "edits": [
+        {
+          "file": "LEMSexamples/morphologies/Na_pyr.channel.nml",
+          "locator": "/neuroml[@id='Na_pyr']/ionChannel[@id='Na_pyr']/gate[@id='m']/forwardRate[1]",
+          "attribute": "midpoint",
+          "old": "-4.69e-2V",
+          "new": "-4.19e-2V"
+        }
+      ],
+      "element_types": [
+        "HHExpLinearRate"
+      ],
+      "affected_equations": [
+        "r(V) = rate * x / (1 - exp(-x)), x = (V - midpoint) / scale"
+      ],
+      "exec_overrides": {},
+      "harness_unchanged": true,
+      "single_change_enforced": true,
+      "schema_valid": true,
+      "simulation_status": "ok",
+      "max_abs_dv_mV": 114.58401107788086,
+      "spikes_before_after": [
+        8,
+        5
+      ],
+      "plot": "plots/acnet2_pyr_soma_shift_forward_rate_midpoint_5.png",
+      "passed": true
+    },
+    {
+      "fixture": "acnet2_pyr_soma",
+      "operator": "shift_channel_vshift",
+      "site": null,
+      "status": "no_site",
+      "inapplicable": []
+    },
+    {
+      "fixture": "migliore2014_mt_soma",
+      "operator": "shift_gate_midpoint",
+      "site": 0,
+      "params": {
+        "mechanism": "rates_and_steady_state",
+        "channel": "kamt",
+        "gate": "m",
+        "delta_mV": -10.0,
+        "changes": [
+          {
+            "locator": "/neuroml[@id='kamt']/ionChannel[@id='kamt']/gate[@id='m']/forwardRate[1]",
+            "attribute": "midpoint",
+            "old": "-45mV",
+            "new": "-55mV"
+          },
+          {
+            "locator": "/neuroml[@id='kamt']/ionChannel[@id='kamt']/gate[@id='m']/reverseRate[1]",
+            "attribute": "midpoint",
+            "old": "-45mV",
+            "new": "-55mV"
+          },
+          {
+            "locator": "/neuroml[@id='kamt']/ionChannel[@id='kamt']/gate[@id='m']/steadyState[1]",
+            "attribute": "midpoint",
+            "old": "17.5mV",
+            "new": "7.5mV"
+          }
+        ]
+      },
+      "atomicity": "compound (3 attributes of one gate, one documented change)",
+      "edits": [
+        {
+          "file": "NeuroML2/Channels/kamt.channel.nml",
+          "locator": "/neuroml[@id='kamt']/ionChannel[@id='kamt']/gate[@id='m']/forwardRate[1]",
+          "attribute": "midpoint",
+          "old": "-45mV",
+          "new": "-55mV"
+        },
+        {
+          "file": "NeuroML2/Channels/kamt.channel.nml",
+          "locator": "/neuroml[@id='kamt']/ionChannel[@id='kamt']/gate[@id='m']/reverseRate[1]",
+          "attribute": "midpoint",
+          "old": "-45mV",
+          "new": "-55mV"
+        },
+        {
+          "file": "NeuroML2/Channels/kamt.channel.nml",
+          "locator": "/neuroml[@id='kamt']/ionChannel[@id='kamt']/gate[@id='m']/steadyState[1]",
+          "attribute": "midpoint",
+          "old": "17.5mV",
+          "new": "7.5mV"
+        }
+      ],
+      "element_types": [
+        "HHExpRate",
+        "HHExpRate",
+        "HHSigmoidVariable"
+      ],
+      "affected_equations": [
+        "r(V) = rate * exp((V - midpoint) / scale)",
+        "x_inf(V) = rate / (1 + exp((midpoint - V) / scale))"
+      ],
+      "exec_overrides": {},
+      "harness_unchanged": true,
+      "single_change_enforced": true,
+      "schema_valid": true,
+      "simulation_status": "ok",
+      "max_abs_dv_mV": 91.86864471435547,
+      "spikes_before_after": [
+        1,
+        1
+      ],
+      "plot": "plots/migliore2014_mt_soma_shift_gate_midpoint_0.png",
+      "passed": true
+    },
+    {
+      "fixture": "migliore2014_mt_soma",
+      "operator": "shift_gate_midpoint",
+      "site": 1,
+      "params": {
+        "mechanism": "rates_and_steady_state",
+        "channel": "kamt",
+        "gate": "m",
+        "delta_mV": -5.0,
+        "changes": [
+          {
+            "locator": "/neuroml[@id='kamt']/ionChannel[@id='kamt']/gate[@id='m']/forwardRate[1]",
+            "attribute": "midpoint",
+            "old": "-45mV",
+            "new": "-50mV"
+          },
+          {
+            "locator": "/neuroml[@id='kamt']/ionChannel[@id='kamt']/gate[@id='m']/reverseRate[1]",
+            "attribute": "midpoint",
+            "old": "-45mV",
+            "new": "-50mV"
+          },
+          {
+            "locator": "/neuroml[@id='kamt']/ionChannel[@id='kamt']/gate[@id='m']/steadyState[1]",
+            "attribute": "midpoint",
+            "old": "17.5mV",
+            "new": "12.5mV"
+          }
+        ]
+      },
+      "atomicity": "compound (3 attributes of one gate, one documented change)",
+      "edits": [
+        {
+          "file": "NeuroML2/Channels/kamt.channel.nml",
+          "locator": "/neuroml[@id='kamt']/ionChannel[@id='kamt']/gate[@id='m']/forwardRate[1]",
+          "attribute": "midpoint",
+          "old": "-45mV",
+          "new": "-50mV"
+        },
+        {
+          "file": "NeuroML2/Channels/kamt.channel.nml",
+          "locator": "/neuroml[@id='kamt']/ionChannel[@id='kamt']/gate[@id='m']/reverseRate[1]",
+          "attribute": "midpoint",
+          "old": "-45mV",
+          "new": "-50mV"
+        },
+        {
+          "file": "NeuroML2/Channels/kamt.channel.nml",
+          "locator": "/neuroml[@id='kamt']/ionChannel[@id='kamt']/gate[@id='m']/steadyState[1]",
+          "attribute": "midpoint",
+          "old": "17.5mV",
+          "new": "12.5mV"
+        }
+      ],
+      "element_types": [
+        "HHExpRate",
+        "HHExpRate",
+        "HHSigmoidVariable"
+      ],
+      "affected_equations": [
+        "r(V) = rate * exp((V - midpoint) / scale)",
+        "x_inf(V) = rate / (1 + exp((midpoint - V) / scale))"
+      ],
+      "exec_overrides": {},
+      "harness_unchanged": true,
+      "single_change_enforced": true,
+      "schema_valid": true,
+      "simulation_status": "ok",
+      "max_abs_dv_mV": 82.54999923706055,
+      "spikes_before_after": [
+        1,
+        1
+      ],
+      "plot": "plots/migliore2014_mt_soma_shift_gate_midpoint_1.png",
+      "passed": true
+    },
+    {
+      "fixture": "migliore2014_mt_soma",
+      "operator": "shift_gate_midpoint",
+      "site": 2,
+      "params": {
+        "mechanism": "rates_and_steady_state",
+        "channel": "kamt",
+        "gate": "m",
+        "delta_mV": 5.0,
+        "changes": [
+          {
+            "locator": "/neuroml[@id='kamt']/ionChannel[@id='kamt']/gate[@id='m']/forwardRate[1]",
+            "attribute": "midpoint",
+            "old": "-45mV",
+            "new": "-40mV"
+          },
+          {
+            "locator": "/neuroml[@id='kamt']/ionChannel[@id='kamt']/gate[@id='m']/reverseRate[1]",
+            "attribute": "midpoint",
+            "old": "-45mV",
+            "new": "-40mV"
+          },
+          {
+            "locator": "/neuroml[@id='kamt']/ionChannel[@id='kamt']/gate[@id='m']/steadyState[1]",
+            "attribute": "midpoint",
+            "old": "17.5mV",
+            "new": "22.5mV"
+          }
+        ]
+      },
+      "atomicity": "compound (3 attributes of one gate, one documented change)",
+      "edits": [
+        {
+          "file": "NeuroML2/Channels/kamt.channel.nml",
+          "locator": "/neuroml[@id='kamt']/ionChannel[@id='kamt']/gate[@id='m']/forwardRate[1]",
+          "attribute": "midpoint",
+          "old": "-45mV",
+          "new": "-40mV"
+        },
+        {
+          "file": "NeuroML2/Channels/kamt.channel.nml",
+          "locator": "/neuroml[@id='kamt']/ionChannel[@id='kamt']/gate[@id='m']/reverseRate[1]",
+          "attribute": "midpoint",
+          "old": "-45mV",
+          "new": "-40mV"
+        },
+        {
+          "file": "NeuroML2/Channels/kamt.channel.nml",
+          "locator": "/neuroml[@id='kamt']/ionChannel[@id='kamt']/gate[@id='m']/steadyState[1]",
+          "attribute": "midpoint",
+          "old": "17.5mV",
+          "new": "22.5mV"
+        }
+      ],
+      "element_types": [
+        "HHExpRate",
+        "HHExpRate",
+        "HHSigmoidVariable"
+      ],
+      "affected_equations": [
+        "r(V) = rate * exp((V - midpoint) / scale)",
+        "x_inf(V) = rate / (1 + exp((midpoint - V) / scale))"
+      ],
+      "exec_overrides": {},
+      "harness_unchanged": true,
+      "single_change_enforced": true,
+      "schema_valid": true,
+      "simulation_status": "ok",
+      "max_abs_dv_mV": 75.31527709960938,
+      "spikes_before_after": [
+        1,
+        1
+      ],
+      "plot": "plots/migliore2014_mt_soma_shift_gate_midpoint_2.png",
+      "passed": true
+    },
+    {
+      "fixture": "migliore2014_mt_soma",
+      "operator": "shift_gate_midpoint",
+      "site": 3,
+      "params": {
+        "mechanism": "rates_and_steady_state",
+        "channel": "kamt",
+        "gate": "m",
+        "delta_mV": 10.0,
+        "changes": [
+          {
+            "locator": "/neuroml[@id='kamt']/ionChannel[@id='kamt']/gate[@id='m']/forwardRate[1]",
+            "attribute": "midpoint",
+            "old": "-45mV",
+            "new": "-35mV"
+          },
+          {
+            "locator": "/neuroml[@id='kamt']/ionChannel[@id='kamt']/gate[@id='m']/reverseRate[1]",
+            "attribute": "midpoint",
+            "old": "-45mV",
+            "new": "-35mV"
+          },
+          {
+            "locator": "/neuroml[@id='kamt']/ionChannel[@id='kamt']/gate[@id='m']/steadyState[1]",
+            "attribute": "midpoint",
+            "old": "17.5mV",
+            "new": "27.5mV"
+          }
+        ]
+      },
+      "atomicity": "compound (3 attributes of one gate, one documented change)",
+      "edits": [
+        {
+          "file": "NeuroML2/Channels/kamt.channel.nml",
+          "locator": "/neuroml[@id='kamt']/ionChannel[@id='kamt']/gate[@id='m']/forwardRate[1]",
+          "attribute": "midpoint",
+          "old": "-45mV",
+          "new": "-35mV"
+        },
+        {
+          "file": "NeuroML2/Channels/kamt.channel.nml",
+          "locator": "/neuroml[@id='kamt']/ionChannel[@id='kamt']/gate[@id='m']/reverseRate[1]",
+          "attribute": "midpoint",
+          "old": "-45mV",
+          "new": "-35mV"
+        },
+        {
+          "file": "NeuroML2/Channels/kamt.channel.nml",
+          "locator": "/neuroml[@id='kamt']/ionChannel[@id='kamt']/gate[@id='m']/steadyState[1]",
+          "attribute": "midpoint",
+          "old": "17.5mV",
+          "new": "27.5mV"
+        }
+      ],
+      "element_types": [
+        "HHExpRate",
+        "HHExpRate",
+        "HHSigmoidVariable"
+      ],
+      "affected_equations": [
+        "r(V) = rate * exp((V - midpoint) / scale)",
+        "x_inf(V) = rate / (1 + exp((midpoint - V) / scale))"
+      ],
+      "exec_overrides": {},
+      "harness_unchanged": true,
+      "single_change_enforced": true,
+      "schema_valid": true,
+      "simulation_status": "ok",
+      "max_abs_dv_mV": 105.50315856933594,
+      "spikes_before_after": [
+        1,
+        2
+      ],
+      "plot": "plots/migliore2014_mt_soma_shift_gate_midpoint_3.png",
+      "passed": true
+    },
+    {
+      "fixture": "migliore2014_mt_soma",
+      "operator": "shift_gate_midpoint",
+      "site": 4,
+      "params": {
+        "mechanism": "rates_and_steady_state",
+        "channel": "kamt",
+        "gate": "h",
+        "delta_mV": -10.0,
+        "changes": [
+          {
+            "locator": "/neuroml[@id='kamt']/ionChannel[@id='kamt']/gate[@id='h']/forwardRate[1]",
+            "attribute": "midpoint",
+            "old": "-70mV",
+            "new": "-80mV"
+          },
+          {
+            "locator": "/neuroml[@id='kamt']/ionChannel[@id='kamt']/gate[@id='h']/reverseRate[1]",
+            "attribute": "midpoint",
+            "old": "-70mV",
+            "new": "-80mV"
+          },
+          {
+            "locator": "/neuroml[@id='kamt']/ionChannel[@id='kamt']/gate[@id='h']/steadyState[1]",
+            "attribute": "midpoint",
+            "old": "-41.7mV",
+            "new": "-51.7mV"
+          }
+        ]
+      },
+      "atomicity": "compound (3 attributes of one gate, one documented change)",
+      "edits": [
+        {
+          "file": "NeuroML2/Channels/kamt.channel.nml",
+          "locator": "/neuroml[@id='kamt']/ionChannel[@id='kamt']/gate[@id='h']/forwardRate[1]",
+          "attribute": "midpoint",
+          "old": "-70mV",
+          "new": "-80mV"
+        },
+        {
+          "file": "NeuroML2/Channels/kamt.channel.nml",
+          "locator": "/neuroml[@id='kamt']/ionChannel[@id='kamt']/gate[@id='h']/reverseRate[1]",
+          "attribute": "midpoint",
+          "old": "-70mV",
+          "new": "-80mV"
+        },
+        {
+          "file": "NeuroML2/Channels/kamt.channel.nml",
+          "locator": "/neuroml[@id='kamt']/ionChannel[@id='kamt']/gate[@id='h']/steadyState[1]",
+          "attribute": "midpoint",
+          "old": "-41.7mV",
+          "new": "-51.7mV"
+        }
+      ],
+      "element_types": [
+        "HHExpRate",
+        "HHExpRate",
+        "HHSigmoidVariable"
+      ],
+      "affected_equations": [
+        "r(V) = rate * exp((V - midpoint) / scale)",
+        "x_inf(V) = rate / (1 + exp((midpoint - V) / scale))"
+      ],
+      "exec_overrides": {},
+      "harness_unchanged": true,
+      "single_change_enforced": true,
+      "schema_valid": true,
+      "simulation_status": "ok",
+      "max_abs_dv_mV": 39.73659586906433,
+      "spikes_before_after": [
+        1,
+        1
+      ],
+      "plot": "plots/migliore2014_mt_soma_shift_gate_midpoint_4.png",
+      "passed": true
+    },
+    {
+      "fixture": "migliore2014_mt_soma",
+      "operator": "shift_gate_midpoint",
+      "site": 5,
+      "params": {
+        "mechanism": "rates_and_steady_state",
+        "channel": "kamt",
+        "gate": "h",
+        "delta_mV": -5.0,
+        "changes": [
+          {
+            "locator": "/neuroml[@id='kamt']/ionChannel[@id='kamt']/gate[@id='h']/forwardRate[1]",
+            "attribute": "midpoint",
+            "old": "-70mV",
+            "new": "-75mV"
+          },
+          {
+            "locator": "/neuroml[@id='kamt']/ionChannel[@id='kamt']/gate[@id='h']/reverseRate[1]",
+            "attribute": "midpoint",
+            "old": "-70mV",
+            "new": "-75mV"
+          },
+          {
+            "locator": "/neuroml[@id='kamt']/ionChannel[@id='kamt']/gate[@id='h']/steadyState[1]",
+            "attribute": "midpoint",
+            "old": "-41.7mV",
+            "new": "-46.7mV"
+          }
+        ]
+      },
+      "atomicity": "compound (3 attributes of one gate, one documented change)",
+      "edits": [
+        {
+          "file": "NeuroML2/Channels/kamt.channel.nml",
+          "locator": "/neuroml[@id='kamt']/ionChannel[@id='kamt']/gate[@id='h']/forwardRate[1]",
+          "attribute": "midpoint",
+          "old": "-70mV",
+          "new": "-75mV"
+        },
+        {
+          "file": "NeuroML2/Channels/kamt.channel.nml",
+          "locator": "/neuroml[@id='kamt']/ionChannel[@id='kamt']/gate[@id='h']/reverseRate[1]",
+          "attribute": "midpoint",
+          "old": "-70mV",
+          "new": "-75mV"
+        },
+        {
+          "file": "NeuroML2/Channels/kamt.channel.nml",
+          "locator": "/neuroml[@id='kamt']/ionChannel[@id='kamt']/gate[@id='h']/steadyState[1]",
+          "attribute": "midpoint",
+          "old": "-41.7mV",
+          "new": "-46.7mV"
+        }
+      ],
+      "element_types": [
+        "HHExpRate",
+        "HHExpRate",
+        "HHSigmoidVariable"
+      ],
+      "affected_equations": [
+        "r(V) = rate * exp((V - midpoint) / scale)",
+        "x_inf(V) = rate / (1 + exp((midpoint - V) / scale))"
+      ],
+      "exec_overrides": {},
+      "harness_unchanged": true,
+      "single_change_enforced": true,
+      "schema_valid": true,
+      "simulation_status": "ok",
+      "max_abs_dv_mV": 14.493465423583984,
+      "spikes_before_after": [
+        1,
+        1
+      ],
+      "plot": "plots/migliore2014_mt_soma_shift_gate_midpoint_5.png",
+      "passed": true
+    },
+    {
+      "fixture": "migliore2014_mt_soma",
+      "operator": "scale_gate_slope",
+      "site": 0,
+      "params": {
+        "mechanism": "rates_and_steady_state",
+        "channel": "kamt",
+        "gate": "m",
+        "factor": 0.8,
+        "changes": [
+          {
+            "locator": "/neuroml[@id='kamt']/ionChannel[@id='kamt']/gate[@id='m']/forwardRate[1]",
+            "attribute": "scale",
+            "old": "10mV",
+            "new": "8mV"
+          },
+          {
+            "locator": "/neuroml[@id='kamt']/ionChannel[@id='kamt']/gate[@id='m']/reverseRate[1]",
+            "attribute": "scale",
+            "old": "13.33333333mV",
+            "new": "10.666666664mV"
+          },
+          {
+            "locator": "/neuroml[@id='kamt']/ionChannel[@id='kamt']/gate[@id='m']/steadyState[1]",
+            "attribute": "scale",
+            "old": "14mV",
+            "new": "11.2mV"
+          }
+        ]
+      },
+      "atomicity": "compound (3 attributes of one gate, one documented change)",
+      "edits": [
+        {
+          "file": "NeuroML2/Channels/kamt.channel.nml",
+          "locator": "/neuroml[@id='kamt']/ionChannel[@id='kamt']/gate[@id='m']/forwardRate[1]",
+          "attribute": "scale",
+          "old": "10mV",
+          "new": "8mV"
+        },
+        {
+          "file": "NeuroML2/Channels/kamt.channel.nml",
+          "locator": "/neuroml[@id='kamt']/ionChannel[@id='kamt']/gate[@id='m']/reverseRate[1]",
+          "attribute": "scale",
+          "old": "13.33333333mV",
+          "new": "10.666666664mV"
+        },
+        {
+          "file": "NeuroML2/Channels/kamt.channel.nml",
+          "locator": "/neuroml[@id='kamt']/ionChannel[@id='kamt']/gate[@id='m']/steadyState[1]",
+          "attribute": "scale",
+          "old": "14mV",
+          "new": "11.2mV"
+        }
+      ],
+      "element_types": [
+        "HHExpRate",
+        "HHExpRate",
+        "HHSigmoidVariable"
+      ],
+      "affected_equations": [
+        "r(V) = rate * exp((V - midpoint) / scale)",
+        "x_inf(V) = rate / (1 + exp((midpoint - V) / scale))"
+      ],
+      "exec_overrides": {},
+      "harness_unchanged": true,
+      "single_change_enforced": true,
+      "schema_valid": true,
+      "simulation_status": "ok",
+      "max_abs_dv_mV": 104.88448333740234,
+      "spikes_before_after": [
+        1,
+        2
+      ],
+      "plot": "plots/migliore2014_mt_soma_scale_gate_slope_0.png",
+      "passed": true
+    },
+    {
+      "fixture": "migliore2014_mt_soma",
+      "operator": "scale_gate_slope",
+      "site": 1,
+      "params": {
+        "mechanism": "rates_and_steady_state",
+        "channel": "kamt",
+        "gate": "m",
+        "factor": 1.25,
+        "changes": [
+          {
+            "locator": "/neuroml[@id='kamt']/ionChannel[@id='kamt']/gate[@id='m']/forwardRate[1]",
+            "attribute": "scale",
+            "old": "10mV",
+            "new": "12.5mV"
+          },
+          {
+            "locator": "/neuroml[@id='kamt']/ionChannel[@id='kamt']/gate[@id='m']/reverseRate[1]",
+            "attribute": "scale",
+            "old": "13.33333333mV",
+            "new": "16.6666666625mV"
+          },
+          {
+            "locator": "/neuroml[@id='kamt']/ionChannel[@id='kamt']/gate[@id='m']/steadyState[1]",
+            "attribute": "scale",
+            "old": "14mV",
+            "new": "17.5mV"
+          }
+        ]
+      },
+      "atomicity": "compound (3 attributes of one gate, one documented change)",
+      "edits": [
+        {
+          "file": "NeuroML2/Channels/kamt.channel.nml",
+          "locator": "/neuroml[@id='kamt']/ionChannel[@id='kamt']/gate[@id='m']/forwardRate[1]",
+          "attribute": "scale",
+          "old": "10mV",
+          "new": "12.5mV"
+        },
+        {
+          "file": "NeuroML2/Channels/kamt.channel.nml",
+          "locator": "/neuroml[@id='kamt']/ionChannel[@id='kamt']/gate[@id='m']/reverseRate[1]",
+          "attribute": "scale",
+          "old": "13.33333333mV",
+          "new": "16.6666666625mV"
+        },
+        {
+          "file": "NeuroML2/Channels/kamt.channel.nml",
+          "locator": "/neuroml[@id='kamt']/ionChannel[@id='kamt']/gate[@id='m']/steadyState[1]",
+          "attribute": "scale",
+          "old": "14mV",
+          "new": "17.5mV"
+        }
+      ],
+      "element_types": [
+        "HHExpRate",
+        "HHExpRate",
+        "HHSigmoidVariable"
+      ],
+      "affected_equations": [
+        "r(V) = rate * exp((V - midpoint) / scale)",
+        "x_inf(V) = rate / (1 + exp((midpoint - V) / scale))"
+      ],
+      "exec_overrides": {},
+      "harness_unchanged": true,
+      "single_change_enforced": true,
+      "schema_valid": true,
+      "simulation_status": "ok",
+      "max_abs_dv_mV": 108.76999282836914,
+      "spikes_before_after": [
+        1,
+        1
+      ],
+      "plot": "plots/migliore2014_mt_soma_scale_gate_slope_1.png",
+      "passed": true
+    },
+    {
+      "fixture": "migliore2014_mt_soma",
+      "operator": "scale_gate_slope",
+      "site": 2,
+      "params": {
+        "mechanism": "rates_and_steady_state",
+        "channel": "kamt",
+        "gate": "h",
+        "factor": 0.8,
+        "changes": [
+          {
+            "locator": "/neuroml[@id='kamt']/ionChannel[@id='kamt']/gate[@id='h']/forwardRate[1]",
+            "attribute": "scale",
+            "old": "5mV",
+            "new": "4mV"
+          },
+          {
+            "locator": "/neuroml[@id='kamt']/ionChannel[@id='kamt']/gate[@id='h']/reverseRate[1]",
+            "attribute": "scale",
+            "old": "5.05050505mV",
+            "new": "4.04040404mV"
+          },
+          {
+            "locator": "/neuroml[@id='kamt']/ionChannel[@id='kamt']/gate[@id='h']/steadyState[1]",
+            "attribute": "scale",
+            "old": "-6mV",
+            "new": "-4.8mV"
+          }
+        ]
+      },
+      "atomicity": "compound (3 attributes of one gate, one documented change)",
+      "edits": [
+        {
+          "file": "NeuroML2/Channels/kamt.channel.nml",
+          "locator": "/neuroml[@id='kamt']/ionChannel[@id='kamt']/gate[@id='h']/forwardRate[1]",
+          "attribute": "scale",
+          "old": "5mV",
+          "new": "4mV"
+        },
+        {
+          "file": "NeuroML2/Channels/kamt.channel.nml",
+          "locator": "/neuroml[@id='kamt']/ionChannel[@id='kamt']/gate[@id='h']/reverseRate[1]",
+          "attribute": "scale",
+          "old": "5.05050505mV",
+          "new": "4.04040404mV"
+        },
+        {
+          "file": "NeuroML2/Channels/kamt.channel.nml",
+          "locator": "/neuroml[@id='kamt']/ionChannel[@id='kamt']/gate[@id='h']/steadyState[1]",
+          "attribute": "scale",
+          "old": "-6mV",
+          "new": "-4.8mV"
+        }
+      ],
+      "element_types": [
+        "HHExpRate",
+        "HHExpRate",
+        "HHSigmoidVariable"
+      ],
+      "affected_equations": [
+        "r(V) = rate * exp((V - midpoint) / scale)",
+        "x_inf(V) = rate / (1 + exp((midpoint - V) / scale))"
+      ],
+      "exec_overrides": {},
+      "harness_unchanged": true,
+      "single_change_enforced": true,
+      "schema_valid": true,
+      "simulation_status": "ok",
+      "max_abs_dv_mV": 7.12286376953125,
+      "spikes_before_after": [
+        1,
+        1
+      ],
+      "plot": "plots/migliore2014_mt_soma_scale_gate_slope_2.png",
+      "passed": true
+    },
+    {
+      "fixture": "migliore2014_mt_soma",
+      "operator": "scale_gate_slope",
+      "site": 3,
+      "params": {
+        "mechanism": "rates_and_steady_state",
+        "channel": "kamt",
+        "gate": "h",
+        "factor": 1.25,
+        "changes": [
+          {
+            "locator": "/neuroml[@id='kamt']/ionChannel[@id='kamt']/gate[@id='h']/forwardRate[1]",
+            "attribute": "scale",
+            "old": "5mV",
+            "new": "6.25mV"
+          },
+          {
+            "locator": "/neuroml[@id='kamt']/ionChannel[@id='kamt']/gate[@id='h']/reverseRate[1]",
+            "attribute": "scale",
+            "old": "5.05050505mV",
+            "new": "6.3131313125mV"
+          },
+          {
+            "locator": "/neuroml[@id='kamt']/ionChannel[@id='kamt']/gate[@id='h']/steadyState[1]",
+            "attribute": "scale",
+            "old": "-6mV",
+            "new": "-7.5mV"
+          }
+        ]
+      },
+      "atomicity": "compound (3 attributes of one gate, one documented change)",
+      "edits": [
+        {
+          "file": "NeuroML2/Channels/kamt.channel.nml",
+          "locator": "/neuroml[@id='kamt']/ionChannel[@id='kamt']/gate[@id='h']/forwardRate[1]",
+          "attribute": "scale",
+          "old": "5mV",
+          "new": "6.25mV"
+        },
+        {
+          "file": "NeuroML2/Channels/kamt.channel.nml",
+          "locator": "/neuroml[@id='kamt']/ionChannel[@id='kamt']/gate[@id='h']/reverseRate[1]",
+          "attribute": "scale",
+          "old": "5.05050505mV",
+          "new": "6.3131313125mV"
+        },
+        {
+          "file": "NeuroML2/Channels/kamt.channel.nml",
+          "locator": "/neuroml[@id='kamt']/ionChannel[@id='kamt']/gate[@id='h']/steadyState[1]",
+          "attribute": "scale",
+          "old": "-6mV",
+          "new": "-7.5mV"
+        }
+      ],
+      "element_types": [
+        "HHExpRate",
+        "HHExpRate",
+        "HHSigmoidVariable"
+      ],
+      "affected_equations": [
+        "r(V) = rate * exp((V - midpoint) / scale)",
+        "x_inf(V) = rate / (1 + exp((midpoint - V) / scale))"
+      ],
+      "exec_overrides": {},
+      "harness_unchanged": true,
+      "single_change_enforced": true,
+      "schema_valid": true,
+      "simulation_status": "ok",
+      "max_abs_dv_mV": 12.59139633178711,
+      "spikes_before_after": [
+        1,
+        1
+      ],
+      "plot": "plots/migliore2014_mt_soma_scale_gate_slope_3.png",
+      "passed": true
+    },
+    {
+      "fixture": "migliore2014_mt_soma",
+      "operator": "shift_forward_rate_midpoint",
+      "site": null,
+      "status": "no_site",
+      "inapplicable": [
+        {
+          "operator": "shift_forward_rate_midpoint",
+          "file": "NeuroML2/Channels/kamt.channel.nml",
+          "locator": "/neuroml[@id='kamt']/ionChannel[@id='kamt']/gate[@id='m']",
+          "reason": "gate has a steady-state element; a forward-only shift would be overridden"
+        },
+        {
+          "operator": "shift_forward_rate_midpoint",
+          "file": "NeuroML2/Channels/kamt.channel.nml",
+          "locator": "/neuroml[@id='kamt']/ionChannel[@id='kamt']/gate[@id='h']",
+          "reason": "gate has a steady-state element; a forward-only shift would be overridden"
+        },
+        {
+          "operator": "shift_forward_rate_midpoint",
+          "file": "NeuroML2/Channels/kdrmt.channel.nml",
+          "locator": "/neuroml[@id='kdrmt']/ionChannel[@id='kdrmt']/gate[@id='m']",
+          "reason": "rates kdrmt_m_alpha_rate/kdrmt_m_beta_rate are not core rate types with 'midpoint'"
+        },
+        {
+          "operator": "shift_forward_rate_midpoint",
+          "file": "NeuroML2/Channels/nax__sh10.channel.nml",
+          "locator": "/neuroml[@id='nax__sh10']/ionChannel[@id='nax__sh10']/gate[@id='m']",
+          "reason": "rates nax__sh10_m_alpha_rate/nax__sh10_m_beta_rate are not core rate types with 'midpoint'"
+        },
+        {
+          "operator": "shift_forward_rate_midpoint",
+          "file": "NeuroML2/Channels/nax__sh10.channel.nml",
+          "locator": "/neuroml[@id='nax__sh10']/ionChannel[@id='nax__sh10']/gate[@id='h']",
+          "reason": "rates nax__sh10_h_alpha_rate/nax__sh10_h_beta_rate are not core rate types with 'midpoint'"
+        }
+      ]
+    },
+    {
+      "fixture": "migliore2014_mt_soma",
+      "operator": "shift_channel_vshift",
+      "site": null,
+      "status": "no_site",
+      "inapplicable": []
+    },
+    {
+      "fixture": "nml2_hh_example",
+      "operator": "shift_gate_midpoint",
+      "site": 0,
+      "params": {
+        "mechanism": "rates",
+        "channel": "naChan",
+        "gate": "m",
+        "delta_mV": -10.0,
+        "changes": [
+          {
+            "locator": "/neuroml[@id='NML2_SingleCompHHCell']/ionChannelHH[@id='naChan']/gateHHrates[@id='m']/forwardRate[1]",
+            "attribute": "midpoint",
+            "old": "-40mV",
+            "new": "-50mV"
+          },
+          {
+            "locator": "/neuroml[@id='NML2_SingleCompHHCell']/ionChannelHH[@id='naChan']/gateHHrates[@id='m']/reverseRate[1]",
+            "attribute": "midpoint",
+            "old": "-65mV",
+            "new": "-75mV"
+          }
+        ]
+      },
+      "atomicity": "compound (2 attributes of one gate, one documented change)",
+      "edits": [
+        {
+          "file": "examples/NML2_SingleCompHHCell.nml",
+          "locator": "/neuroml[@id='NML2_SingleCompHHCell']/ionChannelHH[@id='naChan']/gateHHrates[@id='m']/forwardRate[1]",
+          "attribute": "midpoint",
+          "old": "-40mV",
+          "new": "-50mV"
+        },
+        {
+          "file": "examples/NML2_SingleCompHHCell.nml",
+          "locator": "/neuroml[@id='NML2_SingleCompHHCell']/ionChannelHH[@id='naChan']/gateHHrates[@id='m']/reverseRate[1]",
+          "attribute": "midpoint",
+          "old": "-65mV",
+          "new": "-75mV"
+        }
+      ],
+      "element_types": [
+        "HHExpLinearRate",
+        "HHExpRate"
+      ],
+      "affected_equations": [
+        "r(V) = rate * exp((V - midpoint) / scale)",
+        "r(V) = rate * x / (1 - exp(-x)), x = (V - midpoint) / scale"
+      ],
+      "exec_overrides": {},
+      "harness_unchanged": true,
+      "single_change_enforced": true,
+      "schema_valid": true,
+      "simulation_status": "ok",
+      "max_abs_dv_mV": 109.26360702514648,
+      "spikes_before_after": [
+        7,
+        30
+      ],
+      "plot": "plots/nml2_hh_example_shift_gate_midpoint_0.png",
+      "passed": true
+    },
+    {
+      "fixture": "nml2_hh_example",
+      "operator": "shift_gate_midpoint",
+      "site": 1,
+      "params": {
+        "mechanism": "rates",
+        "channel": "naChan",
+        "gate": "m",
+        "delta_mV": -5.0,
+        "changes": [
+          {
+            "locator": "/neuroml[@id='NML2_SingleCompHHCell']/ionChannelHH[@id='naChan']/gateHHrates[@id='m']/forwardRate[1]",
+            "attribute": "midpoint",
+            "old": "-40mV",
+            "new": "-45mV"
+          },
+          {
+            "locator": "/neuroml[@id='NML2_SingleCompHHCell']/ionChannelHH[@id='naChan']/gateHHrates[@id='m']/reverseRate[1]",
+            "attribute": "midpoint",
+            "old": "-65mV",
+            "new": "-70mV"
+          }
+        ]
+      },
+      "atomicity": "compound (2 attributes of one gate, one documented change)",
+      "edits": [
+        {
+          "file": "examples/NML2_SingleCompHHCell.nml",
+          "locator": "/neuroml[@id='NML2_SingleCompHHCell']/ionChannelHH[@id='naChan']/gateHHrates[@id='m']/forwardRate[1]",
+          "attribute": "midpoint",
+          "old": "-40mV",
+          "new": "-45mV"
+        },
+        {
+          "file": "examples/NML2_SingleCompHHCell.nml",
+          "locator": "/neuroml[@id='NML2_SingleCompHHCell']/ionChannelHH[@id='naChan']/gateHHrates[@id='m']/reverseRate[1]",
+          "attribute": "midpoint",
+          "old": "-65mV",
+          "new": "-70mV"
+        }
+      ],
+      "element_types": [
+        "HHExpLinearRate",
+        "HHExpRate"
+      ],
+      "affected_equations": [
+        "r(V) = rate * exp((V - midpoint) / scale)",
+        "r(V) = rate * x / (1 - exp(-x)), x = (V - midpoint) / scale"
+      ],
+      "exec_overrides": {},
+      "harness_unchanged": true,
+      "single_change_enforced": true,
+      "schema_valid": true,
+      "simulation_status": "ok",
+      "max_abs_dv_mV": 108.97344970703125,
+      "spikes_before_after": [
+        7,
+        23
+      ],
+      "plot": "plots/nml2_hh_example_shift_gate_midpoint_1.png",
+      "passed": true
+    },
+    {
+      "fixture": "nml2_hh_example",
+      "operator": "shift_gate_midpoint",
+      "site": 2,
+      "params": {
+        "mechanism": "rates",
+        "channel": "naChan",
+        "gate": "m",
+        "delta_mV": 5.0,
+        "changes": [
+          {
+            "locator": "/neuroml[@id='NML2_SingleCompHHCell']/ionChannelHH[@id='naChan']/gateHHrates[@id='m']/forwardRate[1]",
+            "attribute": "midpoint",
+            "old": "-40mV",
+            "new": "-35mV"
+          },
+          {
+            "locator": "/neuroml[@id='NML2_SingleCompHHCell']/ionChannelHH[@id='naChan']/gateHHrates[@id='m']/reverseRate[1]",
+            "attribute": "midpoint",
+            "old": "-65mV",
+            "new": "-60mV"
+          }
+        ]
+      },
+      "atomicity": "compound (2 attributes of one gate, one documented change)",
+      "edits": [
+        {
+          "file": "examples/NML2_SingleCompHHCell.nml",
+          "locator": "/neuroml[@id='NML2_SingleCompHHCell']/ionChannelHH[@id='naChan']/gateHHrates[@id='m']/forwardRate[1]",
+          "attribute": "midpoint",
+          "old": "-40mV",
+          "new": "-35mV"
+        },
+        {
+          "file": "examples/NML2_SingleCompHHCell.nml",
+          "locator": "/neuroml[@id='NML2_SingleCompHHCell']/ionChannelHH[@id='naChan']/gateHHrates[@id='m']/reverseRate[1]",
+          "attribute": "midpoint",
+          "old": "-65mV",
+          "new": "-60mV"
+        }
+      ],
+      "element_types": [
+        "HHExpLinearRate",
+        "HHExpRate"
+      ],
+      "affected_equations": [
+        "r(V) = rate * exp((V - midpoint) / scale)",
+        "r(V) = rate * x / (1 - exp(-x)), x = (V - midpoint) / scale"
+      ],
+      "exec_overrides": {},
+      "harness_unchanged": true,
+      "single_change_enforced": true,
+      "schema_valid": true,
+      "simulation_status": "ok",
+      "max_abs_dv_mV": 95.59040832519531,
+      "spikes_before_after": [
+        7,
+        0
+      ],
+      "plot": "plots/nml2_hh_example_shift_gate_midpoint_2.png",
+      "passed": true
+    },
+    {
+      "fixture": "nml2_hh_example",
+      "operator": "shift_gate_midpoint",
+      "site": 3,
+      "params": {
+        "mechanism": "rates",
+        "channel": "naChan",
+        "gate": "m",
+        "delta_mV": 10.0,
+        "changes": [
+          {
+            "locator": "/neuroml[@id='NML2_SingleCompHHCell']/ionChannelHH[@id='naChan']/gateHHrates[@id='m']/forwardRate[1]",
+            "attribute": "midpoint",
+            "old": "-40mV",
+            "new": "-30mV"
+          },
+          {
+            "locator": "/neuroml[@id='NML2_SingleCompHHCell']/ionChannelHH[@id='naChan']/gateHHrates[@id='m']/reverseRate[1]",
+            "attribute": "midpoint",
+            "old": "-65mV",
+            "new": "-55mV"
+          }
+        ]
+      },
+      "atomicity": "compound (2 attributes of one gate, one documented change)",
+      "edits": [
+        {
+          "file": "examples/NML2_SingleCompHHCell.nml",
+          "locator": "/neuroml[@id='NML2_SingleCompHHCell']/ionChannelHH[@id='naChan']/gateHHrates[@id='m']/forwardRate[1]",
+          "attribute": "midpoint",
+          "old": "-40mV",
+          "new": "-30mV"
+        },
+        {
+          "file": "examples/NML2_SingleCompHHCell.nml",
+          "locator": "/neuroml[@id='NML2_SingleCompHHCell']/ionChannelHH[@id='naChan']/gateHHrates[@id='m']/reverseRate[1]",
+          "attribute": "midpoint",
+          "old": "-65mV",
+          "new": "-55mV"
+        }
+      ],
+      "element_types": [
+        "HHExpLinearRate",
+        "HHExpRate"
+      ],
+      "affected_equations": [
+        "r(V) = rate * exp((V - midpoint) / scale)",
+        "r(V) = rate * x / (1 - exp(-x)), x = (V - midpoint) / scale"
+      ],
+      "exec_overrides": {},
+      "harness_unchanged": true,
+      "single_change_enforced": true,
+      "schema_valid": true,
+      "simulation_status": "ok",
+      "max_abs_dv_mV": 97.37583541870117,
+      "spikes_before_after": [
+        7,
+        0
+      ],
+      "plot": "plots/nml2_hh_example_shift_gate_midpoint_3.png",
+      "passed": true
+    },
+    {
+      "fixture": "nml2_hh_example",
+      "operator": "shift_gate_midpoint",
+      "site": 4,
+      "params": {
+        "mechanism": "rates",
+        "channel": "naChan",
+        "gate": "h",
+        "delta_mV": -10.0,
+        "changes": [
+          {
+            "locator": "/neuroml[@id='NML2_SingleCompHHCell']/ionChannelHH[@id='naChan']/gateHHrates[@id='h']/forwardRate[1]",
+            "attribute": "midpoint",
+            "old": "-65mV",
+            "new": "-75mV"
+          },
+          {
+            "locator": "/neuroml[@id='NML2_SingleCompHHCell']/ionChannelHH[@id='naChan']/gateHHrates[@id='h']/reverseRate[1]",
+            "attribute": "midpoint",
+            "old": "-35mV",
+            "new": "-45mV"
+          }
+        ]
+      },
+      "atomicity": "compound (2 attributes of one gate, one documented change)",
+      "edits": [
+        {
+          "file": "examples/NML2_SingleCompHHCell.nml",
+          "locator": "/neuroml[@id='NML2_SingleCompHHCell']/ionChannelHH[@id='naChan']/gateHHrates[@id='h']/forwardRate[1]",
+          "attribute": "midpoint",
+          "old": "-65mV",
+          "new": "-75mV"
+        },
+        {
+          "file": "examples/NML2_SingleCompHHCell.nml",
+          "locator": "/neuroml[@id='NML2_SingleCompHHCell']/ionChannelHH[@id='naChan']/gateHHrates[@id='h']/reverseRate[1]",
+          "attribute": "midpoint",
+          "old": "-35mV",
+          "new": "-45mV"
+        }
+      ],
+      "element_types": [
+        "HHExpRate",
+        "HHSigmoidRate"
+      ],
+      "affected_equations": [
+        "r(V) = rate * exp((V - midpoint) / scale)",
+        "r(V) = rate / (1 + exp((midpoint - V) / scale))"
+      ],
+      "exec_overrides": {},
+      "harness_unchanged": true,
+      "single_change_enforced": true,
+      "schema_valid": true,
+      "simulation_status": "ok",
+      "max_abs_dv_mV": 92.12603187561035,
+      "spikes_before_after": [
+        7,
+        1
+      ],
+      "plot": "plots/nml2_hh_example_shift_gate_midpoint_4.png",
+      "passed": true
+    },
+    {
+      "fixture": "nml2_hh_example",
+      "operator": "shift_gate_midpoint",
+      "site": 5,
+      "params": {
+        "mechanism": "rates",
+        "channel": "naChan",
+        "gate": "h",
+        "delta_mV": -5.0,
+        "changes": [
+          {
+            "locator": "/neuroml[@id='NML2_SingleCompHHCell']/ionChannelHH[@id='naChan']/gateHHrates[@id='h']/forwardRate[1]",
+            "attribute": "midpoint",
+            "old": "-65mV",
+            "new": "-70mV"
+          },
+          {
+            "locator": "/neuroml[@id='NML2_SingleCompHHCell']/ionChannelHH[@id='naChan']/gateHHrates[@id='h']/reverseRate[1]",
+            "attribute": "midpoint",
+            "old": "-35mV",
+            "new": "-40mV"
+          }
+        ]
+      },
+      "atomicity": "compound (2 attributes of one gate, one documented change)",
+      "edits": [
+        {
+          "file": "examples/NML2_SingleCompHHCell.nml",
+          "locator": "/neuroml[@id='NML2_SingleCompHHCell']/ionChannelHH[@id='naChan']/gateHHrates[@id='h']/forwardRate[1]",
+          "attribute": "midpoint",
+          "old": "-65mV",
+          "new": "-70mV"
+        },
+        {
+          "file": "examples/NML2_SingleCompHHCell.nml",
+          "locator": "/neuroml[@id='NML2_SingleCompHHCell']/ionChannelHH[@id='naChan']/gateHHrates[@id='h']/reverseRate[1]",
+          "attribute": "midpoint",
+          "old": "-35mV",
+          "new": "-40mV"
+        }
+      ],
+      "element_types": [
+        "HHExpRate",
+        "HHSigmoidRate"
+      ],
+      "affected_equations": [
+        "r(V) = rate * exp((V - midpoint) / scale)",
+        "r(V) = rate / (1 + exp((midpoint - V) / scale))"
+      ],
+      "exec_overrides": {},
+      "harness_unchanged": true,
+      "single_change_enforced": true,
+      "schema_valid": true,
+      "simulation_status": "ok",
+      "max_abs_dv_mV": 91.66021728515625,
+      "spikes_before_after": [
+        7,
+        1
+      ],
+      "plot": "plots/nml2_hh_example_shift_gate_midpoint_5.png",
+      "passed": true
+    },
+    {
+      "fixture": "nml2_hh_example",
+      "operator": "scale_gate_slope",
+      "site": 0,
+      "params": {
+        "mechanism": "rates",
+        "channel": "naChan",
+        "gate": "m",
+        "factor": 0.8,
+        "changes": [
+          {
+            "locator": "/neuroml[@id='NML2_SingleCompHHCell']/ionChannelHH[@id='naChan']/gateHHrates[@id='m']/forwardRate[1]",
+            "attribute": "scale",
+            "old": "10mV",
+            "new": "8mV"
+          },
+          {
+            "locator": "/neuroml[@id='NML2_SingleCompHHCell']/ionChannelHH[@id='naChan']/gateHHrates[@id='m']/reverseRate[1]",
+            "attribute": "scale",
+            "old": "-18mV",
+            "new": "-14.4mV"
+          }
+        ]
+      },
+      "atomicity": "compound (2 attributes of one gate, one documented change)",
+      "edits": [
+        {
+          "file": "examples/NML2_SingleCompHHCell.nml",
+          "locator": "/neuroml[@id='NML2_SingleCompHHCell']/ionChannelHH[@id='naChan']/gateHHrates[@id='m']/forwardRate[1]",
+          "attribute": "scale",
+          "old": "10mV",
+          "new": "8mV"
+        },
+        {
+          "file": "examples/NML2_SingleCompHHCell.nml",
+          "locator": "/neuroml[@id='NML2_SingleCompHHCell']/ionChannelHH[@id='naChan']/gateHHrates[@id='m']/reverseRate[1]",
+          "attribute": "scale",
+          "old": "-18mV",
+          "new": "-14.4mV"
+        }
+      ],
+      "element_types": [
+        "HHExpLinearRate",
+        "HHExpRate"
+      ],
+      "affected_equations": [
+        "r(V) = rate * exp((V - midpoint) / scale)",
+        "r(V) = rate * x / (1 - exp(-x)), x = (V - midpoint) / scale"
+      ],
+      "exec_overrides": {},
+      "harness_unchanged": true,
+      "single_change_enforced": true,
+      "schema_valid": true,
+      "simulation_status": "ok",
+      "max_abs_dv_mV": 91.94503402709961,
+      "spikes_before_after": [
+        7,
+        1
+      ],
+      "plot": "plots/nml2_hh_example_scale_gate_slope_0.png",
+      "passed": true
+    },
+    {
+      "fixture": "nml2_hh_example",
+      "operator": "scale_gate_slope",
+      "site": 1,
+      "params": {
+        "mechanism": "rates",
+        "channel": "naChan",
+        "gate": "m",
+        "factor": 1.25,
+        "changes": [
+          {
+            "locator": "/neuroml[@id='NML2_SingleCompHHCell']/ionChannelHH[@id='naChan']/gateHHrates[@id='m']/forwardRate[1]",
+            "attribute": "scale",
+            "old": "10mV",
+            "new": "12.5mV"
+          },
+          {
+            "locator": "/neuroml[@id='NML2_SingleCompHHCell']/ionChannelHH[@id='naChan']/gateHHrates[@id='m']/reverseRate[1]",
+            "attribute": "scale",
+            "old": "-18mV",
+            "new": "-22.5mV"
+          }
+        ]
+      },
+      "atomicity": "compound (2 attributes of one gate, one documented change)",
+      "edits": [
+        {
+          "file": "examples/NML2_SingleCompHHCell.nml",
+          "locator": "/neuroml[@id='NML2_SingleCompHHCell']/ionChannelHH[@id='naChan']/gateHHrates[@id='m']/forwardRate[1]",
+          "attribute": "scale",
+          "old": "10mV",
+          "new": "12.5mV"
+        },
+        {
+          "file": "examples/NML2_SingleCompHHCell.nml",
+          "locator": "/neuroml[@id='NML2_SingleCompHHCell']/ionChannelHH[@id='naChan']/gateHHrates[@id='m']/reverseRate[1]",
+          "attribute": "scale",
+          "old": "-18mV",
+          "new": "-22.5mV"
+        }
+      ],
+      "element_types": [
+        "HHExpLinearRate",
+        "HHExpRate"
+      ],
+      "affected_equations": [
+        "r(V) = rate * exp((V - midpoint) / scale)",
+        "r(V) = rate * x / (1 - exp(-x)), x = (V - midpoint) / scale"
+      ],
+      "exec_overrides": {},
+      "harness_unchanged": true,
+      "single_change_enforced": true,
+      "schema_valid": true,
+      "simulation_status": "ok",
+      "max_abs_dv_mV": 105.76884460449219,
+      "spikes_before_after": [
+        7,
+        19
+      ],
+      "plot": "plots/nml2_hh_example_scale_gate_slope_1.png",
+      "passed": true
+    },
+    {
+      "fixture": "nml2_hh_example",
+      "operator": "scale_gate_slope",
+      "site": 2,
+      "params": {
+        "mechanism": "rates",
+        "channel": "naChan",
+        "gate": "h",
+        "factor": 0.8,
+        "changes": [
+          {
+            "locator": "/neuroml[@id='NML2_SingleCompHHCell']/ionChannelHH[@id='naChan']/gateHHrates[@id='h']/forwardRate[1]",
+            "attribute": "scale",
+            "old": "-20mV",
+            "new": "-16mV"
+          },
+          {
+            "locator": "/neuroml[@id='NML2_SingleCompHHCell']/ionChannelHH[@id='naChan']/gateHHrates[@id='h']/reverseRate[1]",
+            "attribute": "scale",
+            "old": "10mV",
+            "new": "8mV"
+          }
+        ]
+      },
+      "atomicity": "compound (2 attributes of one gate, one documented change)",
+      "edits": [
+        {
+          "file": "examples/NML2_SingleCompHHCell.nml",
+          "locator": "/neuroml[@id='NML2_SingleCompHHCell']/ionChannelHH[@id='naChan']/gateHHrates[@id='h']/forwardRate[1]",
+          "attribute": "scale",
+          "old": "-20mV",
+          "new": "-16mV"
+        },
+        {
+          "file": "examples/NML2_SingleCompHHCell.nml",
+          "locator": "/neuroml[@id='NML2_SingleCompHHCell']/ionChannelHH[@id='naChan']/gateHHrates[@id='h']/reverseRate[1]",
+          "attribute": "scale",
+          "old": "10mV",
+          "new": "8mV"
+        }
+      ],
+      "element_types": [
+        "HHExpRate",
+        "HHSigmoidRate"
+      ],
+      "affected_equations": [
+        "r(V) = rate * exp((V - midpoint) / scale)",
+        "r(V) = rate / (1 + exp((midpoint - V) / scale))"
+      ],
+      "exec_overrides": {},
+      "harness_unchanged": true,
+      "single_change_enforced": true,
+      "schema_valid": true,
+      "simulation_status": "ok",
+      "max_abs_dv_mV": 106.0042724609375,
+      "spikes_before_after": [
+        7,
+        7
+      ],
+      "plot": "plots/nml2_hh_example_scale_gate_slope_2.png",
+      "passed": true
+    },
+    {
+      "fixture": "nml2_hh_example",
+      "operator": "scale_gate_slope",
+      "site": 3,
+      "params": {
+        "mechanism": "rates",
+        "channel": "naChan",
+        "gate": "h",
+        "factor": 1.25,
+        "changes": [
+          {
+            "locator": "/neuroml[@id='NML2_SingleCompHHCell']/ionChannelHH[@id='naChan']/gateHHrates[@id='h']/forwardRate[1]",
+            "attribute": "scale",
+            "old": "-20mV",
+            "new": "-25mV"
+          },
+          {
+            "locator": "/neuroml[@id='NML2_SingleCompHHCell']/ionChannelHH[@id='naChan']/gateHHrates[@id='h']/reverseRate[1]",
+            "attribute": "scale",
+            "old": "10mV",
+            "new": "12.5mV"
+          }
+        ]
+      },
+      "atomicity": "compound (2 attributes of one gate, one documented change)",
+      "edits": [
+        {
+          "file": "examples/NML2_SingleCompHHCell.nml",
+          "locator": "/neuroml[@id='NML2_SingleCompHHCell']/ionChannelHH[@id='naChan']/gateHHrates[@id='h']/forwardRate[1]",
+          "attribute": "scale",
+          "old": "-20mV",
+          "new": "-25mV"
+        },
+        {
+          "file": "examples/NML2_SingleCompHHCell.nml",
+          "locator": "/neuroml[@id='NML2_SingleCompHHCell']/ionChannelHH[@id='naChan']/gateHHrates[@id='h']/reverseRate[1]",
+          "attribute": "scale",
+          "old": "10mV",
+          "new": "12.5mV"
+        }
+      ],
+      "element_types": [
+        "HHExpRate",
+        "HHSigmoidRate"
+      ],
+      "affected_equations": [
+        "r(V) = rate * exp((V - midpoint) / scale)",
+        "r(V) = rate / (1 + exp((midpoint - V) / scale))"
+      ],
+      "exec_overrides": {},
+      "harness_unchanged": true,
+      "single_change_enforced": true,
+      "schema_valid": true,
+      "simulation_status": "ok",
+      "max_abs_dv_mV": 91.5639419555664,
+      "spikes_before_after": [
+        7,
+        1
+      ],
+      "plot": "plots/nml2_hh_example_scale_gate_slope_3.png",
+      "passed": true
+    },
+    {
+      "fixture": "nml2_hh_example",
+      "operator": "scale_gate_slope",
+      "site": 4,
+      "params": {
+        "mechanism": "rates",
+        "channel": "kChan",
+        "gate": "n",
+        "factor": 0.8,
+        "changes": [
+          {
+            "locator": "/neuroml[@id='NML2_SingleCompHHCell']/ionChannelHH[@id='kChan']/gateHHrates[@id='n']/forwardRate[1]",
+            "attribute": "scale",
+            "old": "10mV",
+            "new": "8mV"
+          },
+          {
+            "locator": "/neuroml[@id='NML2_SingleCompHHCell']/ionChannelHH[@id='kChan']/gateHHrates[@id='n']/reverseRate[1]",
+            "attribute": "scale",
+            "old": "-80mV",
+            "new": "-64mV"
+          }
+        ]
+      },
+      "atomicity": "compound (2 attributes of one gate, one documented change)",
+      "edits": [
+        {
+          "file": "examples/NML2_SingleCompHHCell.nml",
+          "locator": "/neuroml[@id='NML2_SingleCompHHCell']/ionChannelHH[@id='kChan']/gateHHrates[@id='n']/forwardRate[1]",
+          "attribute": "scale",
+          "old": "10mV",
+          "new": "8mV"
+        },
+        {
+          "file": "examples/NML2_SingleCompHHCell.nml",
+          "locator": "/neuroml[@id='NML2_SingleCompHHCell']/ionChannelHH[@id='kChan']/gateHHrates[@id='n']/reverseRate[1]",
+          "attribute": "scale",
+          "old": "-80mV",
+          "new": "-64mV"
+        }
+      ],
+      "element_types": [
+        "HHExpLinearRate",
+        "HHExpRate"
+      ],
+      "affected_equations": [
+        "r(V) = rate * exp((V - midpoint) / scale)",
+        "r(V) = rate * x / (1 - exp(-x)), x = (V - midpoint) / scale"
+      ],
+      "exec_overrides": {},
+      "harness_unchanged": true,
+      "single_change_enforced": true,
+      "schema_valid": true,
+      "simulation_status": "ok",
+      "max_abs_dv_mV": 106.49794960021973,
+      "spikes_before_after": [
+        7,
+        8
+      ],
+      "plot": "plots/nml2_hh_example_scale_gate_slope_4.png",
+      "passed": true
+    },
+    {
+      "fixture": "nml2_hh_example",
+      "operator": "scale_gate_slope",
+      "site": 5,
+      "params": {
+        "mechanism": "rates",
+        "channel": "kChan",
+        "gate": "n",
+        "factor": 1.25,
+        "changes": [
+          {
+            "locator": "/neuroml[@id='NML2_SingleCompHHCell']/ionChannelHH[@id='kChan']/gateHHrates[@id='n']/forwardRate[1]",
+            "attribute": "scale",
+            "old": "10mV",
+            "new": "12.5mV"
+          },
+          {
+            "locator": "/neuroml[@id='NML2_SingleCompHHCell']/ionChannelHH[@id='kChan']/gateHHrates[@id='n']/reverseRate[1]",
+            "attribute": "scale",
+            "old": "-80mV",
+            "new": "-100mV"
+          }
+        ]
+      },
+      "atomicity": "compound (2 attributes of one gate, one documented change)",
+      "edits": [
+        {
+          "file": "examples/NML2_SingleCompHHCell.nml",
+          "locator": "/neuroml[@id='NML2_SingleCompHHCell']/ionChannelHH[@id='kChan']/gateHHrates[@id='n']/forwardRate[1]",
+          "attribute": "scale",
+          "old": "10mV",
+          "new": "12.5mV"
+        },
+        {
+          "file": "examples/NML2_SingleCompHHCell.nml",
+          "locator": "/neuroml[@id='NML2_SingleCompHHCell']/ionChannelHH[@id='kChan']/gateHHrates[@id='n']/reverseRate[1]",
+          "attribute": "scale",
+          "old": "-80mV",
+          "new": "-100mV"
+        }
+      ],
+      "element_types": [
+        "HHExpLinearRate",
+        "HHExpRate"
+      ],
+      "affected_equations": [
+        "r(V) = rate * exp((V - midpoint) / scale)",
+        "r(V) = rate * x / (1 - exp(-x)), x = (V - midpoint) / scale"
+      ],
+      "exec_overrides": {},
+      "harness_unchanged": true,
+      "single_change_enforced": true,
+      "schema_valid": true,
+      "simulation_status": "ok",
+      "max_abs_dv_mV": 91.93365859985352,
+      "spikes_before_after": [
+        7,
+        1
+      ],
+      "plot": "plots/nml2_hh_example_scale_gate_slope_5.png",
+      "passed": true
+    },
+    {
+      "fixture": "nml2_hh_example",
+      "operator": "shift_forward_rate_midpoint",
+      "site": 0,
+      "params": {
+        "mechanism": "forward_rate",
+        "channel": "naChan",
+        "gate": "m",
+        "delta_mV": -5.0,
+        "changes": [
+          {
+            "locator": "/neuroml[@id='NML2_SingleCompHHCell']/ionChannelHH[@id='naChan']/gateHHrates[@id='m']/forwardRate[1]",
+            "attribute": "midpoint",
+            "old": "-40mV",
+            "new": "-45mV"
+          }
+        ]
+      },
+      "atomicity": "atomic (one attribute of one element)",
+      "edits": [
+        {
+          "file": "examples/NML2_SingleCompHHCell.nml",
+          "locator": "/neuroml[@id='NML2_SingleCompHHCell']/ionChannelHH[@id='naChan']/gateHHrates[@id='m']/forwardRate[1]",
+          "attribute": "midpoint",
+          "old": "-40mV",
+          "new": "-45mV"
+        }
+      ],
+      "element_types": [
+        "HHExpLinearRate"
+      ],
+      "affected_equations": [
+        "r(V) = rate * x / (1 - exp(-x)), x = (V - midpoint) / scale"
+      ],
+      "exec_overrides": {},
+      "harness_unchanged": true,
+      "single_change_enforced": true,
+      "schema_valid": true,
+      "simulation_status": "ok",
+      "max_abs_dv_mV": 110.43896102905273,
+      "spikes_before_after": [
+        7,
+        20
+      ],
+      "plot": "plots/nml2_hh_example_shift_forward_rate_midpoint_0.png",
+      "passed": true
+    },
+    {
+      "fixture": "nml2_hh_example",
+      "operator": "shift_forward_rate_midpoint",
+      "site": 1,
+      "params": {
+        "mechanism": "forward_rate",
+        "channel": "naChan",
+        "gate": "m",
+        "delta_mV": 5.0,
+        "changes": [
+          {
+            "locator": "/neuroml[@id='NML2_SingleCompHHCell']/ionChannelHH[@id='naChan']/gateHHrates[@id='m']/forwardRate[1]",
+            "attribute": "midpoint",
+            "old": "-40mV",
+            "new": "-35mV"
+          }
+        ]
+      },
+      "atomicity": "atomic (one attribute of one element)",
+      "edits": [
+        {
+          "file": "examples/NML2_SingleCompHHCell.nml",
+          "locator": "/neuroml[@id='NML2_SingleCompHHCell']/ionChannelHH[@id='naChan']/gateHHrates[@id='m']/forwardRate[1]",
+          "attribute": "midpoint",
+          "old": "-40mV",
+          "new": "-35mV"
+        }
+      ],
+      "element_types": [
+        "HHExpLinearRate"
+      ],
+      "affected_equations": [
+        "r(V) = rate * x / (1 - exp(-x)), x = (V - midpoint) / scale"
+      ],
+      "exec_overrides": {},
+      "harness_unchanged": true,
+      "single_change_enforced": true,
+      "schema_valid": true,
+      "simulation_status": "ok",
+      "max_abs_dv_mV": 91.99210548400879,
+      "spikes_before_after": [
+        7,
+        1
+      ],
+      "plot": "plots/nml2_hh_example_shift_forward_rate_midpoint_1.png",
+      "passed": true
+    },
+    {
+      "fixture": "nml2_hh_example",
+      "operator": "shift_forward_rate_midpoint",
+      "site": 2,
+      "params": {
+        "mechanism": "forward_rate",
+        "channel": "naChan",
+        "gate": "h",
+        "delta_mV": -5.0,
+        "changes": [
+          {
+            "locator": "/neuroml[@id='NML2_SingleCompHHCell']/ionChannelHH[@id='naChan']/gateHHrates[@id='h']/forwardRate[1]",
+            "attribute": "midpoint",
+            "old": "-65mV",
+            "new": "-70mV"
+          }
+        ]
+      },
+      "atomicity": "atomic (one attribute of one element)",
+      "edits": [
+        {
+          "file": "examples/NML2_SingleCompHHCell.nml",
+          "locator": "/neuroml[@id='NML2_SingleCompHHCell']/ionChannelHH[@id='naChan']/gateHHrates[@id='h']/forwardRate[1]",
+          "attribute": "midpoint",
+          "old": "-65mV",
+          "new": "-70mV"
+        }
+      ],
+      "element_types": [
+        "HHExpRate"
+      ],
+      "affected_equations": [
+        "r(V) = rate * exp((V - midpoint) / scale)"
+      ],
+      "exec_overrides": {},
+      "harness_unchanged": true,
+      "single_change_enforced": true,
+      "schema_valid": true,
+      "simulation_status": "ok",
+      "max_abs_dv_mV": 91.75249099731445,
+      "spikes_before_after": [
+        7,
+        1
+      ],
+      "plot": "plots/nml2_hh_example_shift_forward_rate_midpoint_2.png",
+      "passed": true
+    },
+    {
+      "fixture": "nml2_hh_example",
+      "operator": "shift_forward_rate_midpoint",
+      "site": 3,
+      "params": {
+        "mechanism": "forward_rate",
+        "channel": "naChan",
+        "gate": "h",
+        "delta_mV": 5.0,
+        "changes": [
+          {
+            "locator": "/neuroml[@id='NML2_SingleCompHHCell']/ionChannelHH[@id='naChan']/gateHHrates[@id='h']/forwardRate[1]",
+            "attribute": "midpoint",
+            "old": "-65mV",
+            "new": "-60mV"
+          }
+        ]
+      },
+      "atomicity": "atomic (one attribute of one element)",
+      "edits": [
+        {
+          "file": "examples/NML2_SingleCompHHCell.nml",
+          "locator": "/neuroml[@id='NML2_SingleCompHHCell']/ionChannelHH[@id='naChan']/gateHHrates[@id='h']/forwardRate[1]",
+          "attribute": "midpoint",
+          "old": "-65mV",
+          "new": "-60mV"
+        }
+      ],
+      "element_types": [
+        "HHExpRate"
+      ],
+      "affected_equations": [
+        "r(V) = rate * exp((V - midpoint) / scale)"
+      ],
+      "exec_overrides": {},
+      "harness_unchanged": true,
+      "single_change_enforced": true,
+      "schema_valid": true,
+      "simulation_status": "ok",
+      "max_abs_dv_mV": 105.62686157226562,
+      "spikes_before_after": [
+        7,
+        7
+      ],
+      "plot": "plots/nml2_hh_example_shift_forward_rate_midpoint_3.png",
+      "passed": true
+    },
+    {
+      "fixture": "nml2_hh_example",
+      "operator": "shift_forward_rate_midpoint",
+      "site": 4,
+      "params": {
+        "mechanism": "forward_rate",
+        "channel": "kChan",
+        "gate": "n",
+        "delta_mV": -5.0,
+        "changes": [
+          {
+            "locator": "/neuroml[@id='NML2_SingleCompHHCell']/ionChannelHH[@id='kChan']/gateHHrates[@id='n']/forwardRate[1]",
+            "attribute": "midpoint",
+            "old": "-55mV",
+            "new": "-60mV"
+          }
+        ]
+      },
+      "atomicity": "atomic (one attribute of one element)",
+      "edits": [
+        {
+          "file": "examples/NML2_SingleCompHHCell.nml",
+          "locator": "/neuroml[@id='NML2_SingleCompHHCell']/ionChannelHH[@id='kChan']/gateHHrates[@id='n']/forwardRate[1]",
+          "attribute": "midpoint",
+          "old": "-55mV",
+          "new": "-60mV"
+        }
+      ],
+      "element_types": [
+        "HHExpLinearRate"
+      ],
+      "affected_equations": [
+        "r(V) = rate * x / (1 - exp(-x)), x = (V - midpoint) / scale"
+      ],
+      "exec_overrides": {},
+      "harness_unchanged": true,
+      "single_change_enforced": true,
+      "schema_valid": true,
+      "simulation_status": "ok",
+      "max_abs_dv_mV": 94.58036231994629,
+      "spikes_before_after": [
+        7,
+        1
+      ],
+      "plot": "plots/nml2_hh_example_shift_forward_rate_midpoint_4.png",
+      "passed": true
+    },
+    {
+      "fixture": "nml2_hh_example",
+      "operator": "shift_forward_rate_midpoint",
+      "site": 5,
+      "params": {
+        "mechanism": "forward_rate",
+        "channel": "kChan",
+        "gate": "n",
+        "delta_mV": 5.0,
+        "changes": [
+          {
+            "locator": "/neuroml[@id='NML2_SingleCompHHCell']/ionChannelHH[@id='kChan']/gateHHrates[@id='n']/forwardRate[1]",
+            "attribute": "midpoint",
+            "old": "-55mV",
+            "new": "-50mV"
+          }
+        ]
+      },
+      "atomicity": "atomic (one attribute of one element)",
+      "edits": [
+        {
+          "file": "examples/NML2_SingleCompHHCell.nml",
+          "locator": "/neuroml[@id='NML2_SingleCompHHCell']/ionChannelHH[@id='kChan']/gateHHrates[@id='n']/forwardRate[1]",
+          "attribute": "midpoint",
+          "old": "-55mV",
+          "new": "-50mV"
+        }
+      ],
+      "element_types": [
+        "HHExpLinearRate"
+      ],
+      "affected_equations": [
+        "r(V) = rate * x / (1 - exp(-x)), x = (V - midpoint) / scale"
+      ],
+      "exec_overrides": {},
+      "harness_unchanged": true,
+      "single_change_enforced": true,
+      "schema_valid": true,
+      "simulation_status": "ok",
+      "max_abs_dv_mV": 112.32957458496094,
+      "spikes_before_after": [
+        7,
+        19
+      ],
+      "plot": "plots/nml2_hh_example_shift_forward_rate_midpoint_5.png",
+      "passed": true
+    },
+    {
+      "fixture": "nml2_hh_example",
+      "operator": "shift_channel_vshift",
+      "site": null,
+      "status": "no_site",
+      "inapplicable": []
+    },
+    {
+      "fixture": "osb_hh2_477127614",
+      "operator": "shift_gate_midpoint",
+      "site": null,
+      "status": "no_site",
+      "inapplicable": [
+        {
+          "operator": "shift_gate_midpoint",
+          "file": "cells/HH2/IM.channel.nml",
+          "locator": "/neuroml[@id='IM']/ionChannel[@id='IM']/gate[@id='p']",
+          "reason": "gate type gateHHtauInf has no core rate or steady state with 'midpoint'"
+        },
+        {
+          "operator": "shift_gate_midpoint",
+          "file": "cells/HH2/Kd.channel.nml",
+          "locator": "/neuroml[@id='Kd']/ionChannel[@id='Kd']/gate[@id='n']",
+          "reason": "rates Kd_n_alpha_rate/Kd_n_beta_rate are not core rate types with 'midpoint'"
+        },
+        {
+          "operator": "shift_gate_midpoint",
+          "file": "cells/HH2/Na.channel.nml",
+          "locator": "/neuroml[@id='Na']/ionChannel[@id='Na']/gate[@id='m']",
+          "reason": "rates Na_m_alpha_rate/Na_m_beta_rate are not core rate types with 'midpoint'"
+        },
+        {
+          "operator": "shift_gate_midpoint",
+          "file": "cells/HH2/Na.channel.nml",
+          "locator": "/neuroml[@id='Na']/ionChannel[@id='Na']/gate[@id='h']",
+          "reason": "rates Na_h_alpha_rate/Na_h_beta_rate are not core rate types with 'midpoint'"
+        },
+        {
+          "operator": "shift_gate_midpoint",
+          "file": "cells/HH2/IL.channel.nml",
+          "locator": "/neuroml[@id='IL']/ionChannel[@id='IL']/gate[@id='q']",
+          "reason": "rates IL_q_alpha_rate/IL_q_beta_rate are not core rate types with 'midpoint'"
+        },
+        {
+          "operator": "shift_gate_midpoint",
+          "file": "cells/HH2/IL.channel.nml",
+          "locator": "/neuroml[@id='IL']/ionChannel[@id='IL']/gate[@id='r']",
+          "reason": "rates IL_r_alpha_rate/IL_r_beta_rate are not core rate types with 'midpoint'"
+        }
+      ]
+    },
+    {
+      "fixture": "osb_hh2_477127614",
+      "operator": "scale_gate_slope",
+      "site": null,
+      "status": "no_site",
+      "inapplicable": [
+        {
+          "operator": "scale_gate_slope",
+          "file": "cells/HH2/IM.channel.nml",
+          "locator": "/neuroml[@id='IM']/ionChannel[@id='IM']/gate[@id='p']",
+          "reason": "gate type gateHHtauInf has no core rate or steady state with 'scale'"
+        },
+        {
+          "operator": "scale_gate_slope",
+          "file": "cells/HH2/Kd.channel.nml",
+          "locator": "/neuroml[@id='Kd']/ionChannel[@id='Kd']/gate[@id='n']",
+          "reason": "rates Kd_n_alpha_rate/Kd_n_beta_rate are not core rate types with 'scale'"
+        },
+        {
+          "operator": "scale_gate_slope",
+          "file": "cells/HH2/Na.channel.nml",
+          "locator": "/neuroml[@id='Na']/ionChannel[@id='Na']/gate[@id='m']",
+          "reason": "rates Na_m_alpha_rate/Na_m_beta_rate are not core rate types with 'scale'"
+        },
+        {
+          "operator": "scale_gate_slope",
+          "file": "cells/HH2/Na.channel.nml",
+          "locator": "/neuroml[@id='Na']/ionChannel[@id='Na']/gate[@id='h']",
+          "reason": "rates Na_h_alpha_rate/Na_h_beta_rate are not core rate types with 'scale'"
+        },
+        {
+          "operator": "scale_gate_slope",
+          "file": "cells/HH2/IL.channel.nml",
+          "locator": "/neuroml[@id='IL']/ionChannel[@id='IL']/gate[@id='q']",
+          "reason": "rates IL_q_alpha_rate/IL_q_beta_rate are not core rate types with 'scale'"
+        },
+        {
+          "operator": "scale_gate_slope",
+          "file": "cells/HH2/IL.channel.nml",
+          "locator": "/neuroml[@id='IL']/ionChannel[@id='IL']/gate[@id='r']",
+          "reason": "rates IL_r_alpha_rate/IL_r_beta_rate are not core rate types with 'scale'"
+        }
+      ]
+    },
+    {
+      "fixture": "osb_hh2_477127614",
+      "operator": "shift_forward_rate_midpoint",
+      "site": null,
+      "status": "no_site",
+      "inapplicable": [
+        {
+          "operator": "shift_forward_rate_midpoint",
+          "file": "cells/HH2/IM.channel.nml",
+          "locator": "/neuroml[@id='IM']/ionChannel[@id='IM']/gate[@id='p']",
+          "reason": "not a rate gate (no forward and reverse rate)"
+        },
+        {
+          "operator": "shift_forward_rate_midpoint",
+          "file": "cells/HH2/Kd.channel.nml",
+          "locator": "/neuroml[@id='Kd']/ionChannel[@id='Kd']/gate[@id='n']",
+          "reason": "rates Kd_n_alpha_rate/Kd_n_beta_rate are not core rate types with 'midpoint'"
+        },
+        {
+          "operator": "shift_forward_rate_midpoint",
+          "file": "cells/HH2/Na.channel.nml",
+          "locator": "/neuroml[@id='Na']/ionChannel[@id='Na']/gate[@id='m']",
+          "reason": "rates Na_m_alpha_rate/Na_m_beta_rate are not core rate types with 'midpoint'"
+        },
+        {
+          "operator": "shift_forward_rate_midpoint",
+          "file": "cells/HH2/Na.channel.nml",
+          "locator": "/neuroml[@id='Na']/ionChannel[@id='Na']/gate[@id='h']",
+          "reason": "rates Na_h_alpha_rate/Na_h_beta_rate are not core rate types with 'midpoint'"
+        },
+        {
+          "operator": "shift_forward_rate_midpoint",
+          "file": "cells/HH2/IL.channel.nml",
+          "locator": "/neuroml[@id='IL']/ionChannel[@id='IL']/gate[@id='q']",
+          "reason": "rates IL_q_alpha_rate/IL_q_beta_rate are not core rate types with 'midpoint'"
+        },
+        {
+          "operator": "shift_forward_rate_midpoint",
+          "file": "cells/HH2/IL.channel.nml",
+          "locator": "/neuroml[@id='IL']/ionChannel[@id='IL']/gate[@id='r']",
+          "reason": "rates IL_r_alpha_rate/IL_r_beta_rate are not core rate types with 'midpoint'"
+        }
+      ]
+    },
+    {
+      "fixture": "osb_hh2_477127614",
+      "operator": "shift_channel_vshift",
+      "site": 0,
+      "params": {
+        "element_id": "Na_all",
+        "channel": "Na",
+        "delta_mV": -5.0,
+        "changes": [
+          {
+            "locator": "/neuroml[@id='HH2_477127614']/cell[@id='HH2_477127614']/biophysicalProperties[@id='biophys']/membraneProperties[1]/channelDensityVShift[@id='Na_all']",
+            "attribute": "vShift",
+            "old": "1.79919861049 mV",
+            "new": "-3.20080138951 mV"
+          }
+        ]
+      },
+      "atomicity": "atomic (one attribute of one element)",
+      "edits": [
+        {
+          "file": "cells/HH2/HH2_477127614.cell.nml",
+          "locator": "/neuroml[@id='HH2_477127614']/cell[@id='HH2_477127614']/biophysicalProperties[@id='biophys']/membraneProperties[1]/channelDensityVShift[@id='Na_all']",
+          "attribute": "vShift",
+          "old": "1.79919861049 mV",
+          "new": "-3.20080138951 mV"
+        }
+      ],
+      "element_types": [
+        "channelDensityVShift"
+      ],
+      "affected_equations": [
+        "vShift is passed to the channel; only gates whose own definitions read vShift use it (NeuroML core ionChannelVShift: 'The exact usage of vShift ... is determined by the individual gates'); core HH rate types do not read it"
+      ],
+      "exec_overrides": {},
+      "harness_unchanged": true,
+      "single_change_enforced": true,
+      "schema_valid": true,
+      "simulation_status": "ok",
+      "max_abs_dv_mV": 99.35188674926758,
+      "spikes_before_after": [
+        28,
+        41
+      ],
+      "plot": "plots/osb_hh2_477127614_shift_channel_vshift_0.png",
+      "passed": true
+    },
+    {
+      "fixture": "osb_hh2_477127614",
+      "operator": "shift_channel_vshift",
+      "site": 1,
+      "params": {
+        "element_id": "Na_all",
+        "channel": "Na",
+        "delta_mV": 5.0,
+        "changes": [
+          {
+            "locator": "/neuroml[@id='HH2_477127614']/cell[@id='HH2_477127614']/biophysicalProperties[@id='biophys']/membraneProperties[1]/channelDensityVShift[@id='Na_all']",
+            "attribute": "vShift",
+            "old": "1.79919861049 mV",
+            "new": "6.79919861049 mV"
+          }
+        ]
+      },
+      "atomicity": "atomic (one attribute of one element)",
+      "edits": [
+        {
+          "file": "cells/HH2/HH2_477127614.cell.nml",
+          "locator": "/neuroml[@id='HH2_477127614']/cell[@id='HH2_477127614']/biophysicalProperties[@id='biophys']/membraneProperties[1]/channelDensityVShift[@id='Na_all']",
+          "attribute": "vShift",
+          "old": "1.79919861049 mV",
+          "new": "6.79919861049 mV"
+        }
+      ],
+      "element_types": [
+        "channelDensityVShift"
+      ],
+      "affected_equations": [
+        "vShift is passed to the channel; only gates whose own definitions read vShift use it (NeuroML core ionChannelVShift: 'The exact usage of vShift ... is determined by the individual gates'); core HH rate types do not read it"
+      ],
+      "exec_overrides": {},
+      "harness_unchanged": true,
+      "single_change_enforced": true,
+      "schema_valid": true,
+      "simulation_status": "ok",
+      "max_abs_dv_mV": 74.97419738769531,
+      "spikes_before_after": [
+        28,
+        0
+      ],
+      "plot": "plots/osb_hh2_477127614_shift_channel_vshift_1.png",
+      "passed": true
+    },
+    {
+      "fixture": "pospischil2008_fs",
+      "operator": "shift_gate_midpoint",
+      "site": null,
+      "status": "no_site",
+      "inapplicable": [
+        {
+          "operator": "shift_gate_midpoint",
+          "file": "NeuroML2/channels/Kd/Kd.channel.nml",
+          "locator": "/neuroml[@id='Kd']/ionChannel[@id='Kd']/gate[@id='n']",
+          "reason": "rates Kd_n_alpha_rate/Kd_n_beta_rate are not core rate types with 'midpoint'"
+        },
+        {
+          "operator": "shift_gate_midpoint",
+          "file": "NeuroML2/channels/Na/Na.channel.nml",
+          "locator": "/neuroml[@id='Na']/ionChannel[@id='Na']/gate[@id='m']",
+          "reason": "rates Na_m_alpha_rate/Na_m_beta_rate are not core rate types with 'midpoint'"
+        },
+        {
+          "operator": "shift_gate_midpoint",
+          "file": "NeuroML2/channels/Na/Na.channel.nml",
+          "locator": "/neuroml[@id='Na']/ionChannel[@id='Na']/gate[@id='h']",
+          "reason": "rates Na_h_alpha_rate/Na_h_beta_rate are not core rate types with 'midpoint'"
+        }
+      ]
+    },
+    {
+      "fixture": "pospischil2008_fs",
+      "operator": "scale_gate_slope",
+      "site": null,
+      "status": "no_site",
+      "inapplicable": [
+        {
+          "operator": "scale_gate_slope",
+          "file": "NeuroML2/channels/Kd/Kd.channel.nml",
+          "locator": "/neuroml[@id='Kd']/ionChannel[@id='Kd']/gate[@id='n']",
+          "reason": "rates Kd_n_alpha_rate/Kd_n_beta_rate are not core rate types with 'scale'"
+        },
+        {
+          "operator": "scale_gate_slope",
+          "file": "NeuroML2/channels/Na/Na.channel.nml",
+          "locator": "/neuroml[@id='Na']/ionChannel[@id='Na']/gate[@id='m']",
+          "reason": "rates Na_m_alpha_rate/Na_m_beta_rate are not core rate types with 'scale'"
+        },
+        {
+          "operator": "scale_gate_slope",
+          "file": "NeuroML2/channels/Na/Na.channel.nml",
+          "locator": "/neuroml[@id='Na']/ionChannel[@id='Na']/gate[@id='h']",
+          "reason": "rates Na_h_alpha_rate/Na_h_beta_rate are not core rate types with 'scale'"
+        }
+      ]
+    },
+    {
+      "fixture": "pospischil2008_fs",
+      "operator": "shift_forward_rate_midpoint",
+      "site": null,
+      "status": "no_site",
+      "inapplicable": [
+        {
+          "operator": "shift_forward_rate_midpoint",
+          "file": "NeuroML2/channels/Kd/Kd.channel.nml",
+          "locator": "/neuroml[@id='Kd']/ionChannel[@id='Kd']/gate[@id='n']",
+          "reason": "rates Kd_n_alpha_rate/Kd_n_beta_rate are not core rate types with 'midpoint'"
+        },
+        {
+          "operator": "shift_forward_rate_midpoint",
+          "file": "NeuroML2/channels/Na/Na.channel.nml",
+          "locator": "/neuroml[@id='Na']/ionChannel[@id='Na']/gate[@id='m']",
+          "reason": "rates Na_m_alpha_rate/Na_m_beta_rate are not core rate types with 'midpoint'"
+        },
+        {
+          "operator": "shift_forward_rate_midpoint",
+          "file": "NeuroML2/channels/Na/Na.channel.nml",
+          "locator": "/neuroml[@id='Na']/ionChannel[@id='Na']/gate[@id='h']",
+          "reason": "rates Na_h_alpha_rate/Na_h_beta_rate are not core rate types with 'midpoint'"
+        }
+      ]
+    },
+    {
+      "fixture": "pospischil2008_fs",
+      "operator": "shift_channel_vshift",
+      "site": null,
+      "status": "no_site",
+      "inapplicable": []
+    }
+  ],
+  "all_sites_passed": true
+}

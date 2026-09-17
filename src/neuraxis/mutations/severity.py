@@ -1,4 +1,4 @@
-"""Prespecified mutation severity levels (PILOT_PROTOCOL_V2).
+"""Prespecified mutation severity levels (PILOT2_PROTOCOL).
 
 A site's severity comes only from its recorded magnitude, never from any result:
 - multiplicative faults (``factor``): **mild** if |ln k| <= ln 1.25 (0.8 to 1.25),

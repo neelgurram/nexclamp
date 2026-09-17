@@ -1,0 +1,83 @@
+{
+  "model": {
+    "model_id": "acnet2_pyr_soma",
+    "name": "ACnet2 (Beeman) pyramidal cell soma with Traub 1991 channels (pyr_soma_m_in_b_in)",
+    "snapshot": "NeuroML2@a5f5dadc",
+    "cell_file": "LEMSexamples/morphologies/pyr_soma_m_in_b_in.cell.nml",
+    "cell_id": "pyr_soma_m_in_b_in",
+    "harness_lems": "LEMSexamples/morphologies/LEMS_m_in_b_in.xml",
+    "harness_output_file": "pyramidal_soma_0.dat",
+    "harness_v_column": "1",
+    "temperature": "6.3 degC",
+    "source_family": "acnet2_traub1991",
+    "citation": "Beeman D (2013). A modeling study of cortical waves in primary auditory cortex. BMC Neuroscience 14(Suppl 1):P23. doi:10.1186/1471-2202-14-S1-P23 | channels (per channel-file notes): Traub RD, Wong RK, Miles R, Michelson H (1991). A model of a CA3 hippocampal pyramidal neuron incorporating voltage-clamp data on intrinsic conductances. Journal of Neurophysiology 66(2):635-650. doi:10.1152/jn.1991.66.2.635",
+    "source_url": "https://github.com/NeuroML/NeuroML2",
+    "commit": "a5f5dadccd23606e683eaa0dd58dd2c3b2a7ed58",
+    "license": "LGPL-3.0 (LICENSE.lesser)",
+    "license_url": "https://github.com/NeuroML/NeuroML2/blob/a5f5dadccd23606e683eaa0dd58dd2c3b2a7ed58/LICENSE.lesser",
+    "download_date": "2026-09-16",
+    "simulator": "jNeuroML",
+    "expected_behavior": "Single segment (d 23 um, L 17 um). Na_pyr 120, Kdr_pyr 80, Ca_pyr 10 (fixed erev 80 mV), Kahp_pyr 2.5, leak 0.142 mS/cm2; Cm 2.84 uF/cm2; Ca_conc pool. Harness: +0.2 nA 100-600 ms. Shipped reference for the jNeuroML OMV test (.test.mep): 8 spikes, ISI 18.3, 27.9, 107.7 ms, then about 76 ms (strong early adaptation into slow regular firing). Not simulated in this sweep.",
+    "inclusion": "candidate",
+    "inclusion_reason": "jNeuroML OMV test (check-runs at this commit include jNeuroML success); strong Ca/AHP-driven adaptation from a simple 4-channel set. Licence concern: the cell comes from the ACnet2 model, whose own OSB repository (OpenSourceBrain/ACnet2) has no licence; the LGPL-3.0 grant is the NeuroML2 repository's. It is a NeuroML format example, not a published single-compartment model; the m_in/m_out/b_in/b_out files are the same cell."
+  },
+  "criteria": {
+    "C01_provenance": true,
+    "C02_reuse_rights": true,
+    "C03_files_present": true,
+    "C04_validation": true,
+    "C05_executes": true,
+    "C06_trace_interpretable": true,
+    "C07_recording_location": true,
+    "C08_responds_to_current": true,
+    "C09_deterministic": true,
+    "C10_refinement_stable": true,
+    "C11_runtime": true,
+    "C12_operators": true,
+    "C13_protocols_compatible": true
+  },
+  "decision": "include_eligible",
+  "reasons": [],
+  "evidence": {
+    "model_id": "acnet2_pyr_soma",
+    "snapshot": "NeuroML2@a5f5dadc",
+    "ion_channels": [
+      "Ca_pyr",
+      "Kahp_pyr",
+      "Kdr_pyr",
+      "LeakConductance_pyr",
+      "Na_pyr"
+    ],
+    "validation_errors": [],
+    "canonical_status": "ok",
+    "canonical_v_range_mV": [
+      -74.00057220458984,
+      45.28001022338867
+    ],
+    "rheobase_status": "ok",
+    "rheobase_nA": 0.007615600027320539,
+    "fingerprint_status": [
+      "ok",
+      "ok"
+    ],
+    "spikes_P04": 2.0,
+    "spikes_P05": 4.0,
+    "firing_regime_P05": "tonic",
+    "rebound_spikes_P08": 0.0,
+    "sag_ratio_P07": 0.07644029205149086,
+    "refinement_excluded": "0/64",
+    "estimated_variant_runtime_s": 1137.9,
+    "semantic_operators_with_site": [
+      "duplicate_conductance",
+      "omit_include",
+      "scale_capacitance",
+      "scale_conductance",
+      "scale_gate_time_constant",
+      "shift_initial_voltage",
+      "shift_reversal",
+      "wrong_channel",
+      "wrong_compatible_component",
+      "wrong_segment_group"
+    ]
+  }
+}

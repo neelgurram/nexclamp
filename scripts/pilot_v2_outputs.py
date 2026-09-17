@@ -1,4 +1,4 @@
-"""Build the prespecified Pilot 2 outputs and branch classification (docs/PILOT_PROTOCOL_V2.md).
+"""Build the prespecified Pilot 2 outputs and branch classification (docs/PILOT2_PROTOCOL.md).
 
     NEURAXIS_CONFIG_DIR=configs/pilot_protocol_v2 python scripts/pilot_v2_outputs.py --campaign pilot2-v2
 """
@@ -20,7 +20,7 @@ from neuraxis.provenance import REPO_ROOT  # noqa: E402
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument("--campaign", required=True)
-    ap.add_argument("--deviations", default="docs/pilot/PILOT_PROTOCOL_V2_DEVIATIONS.md")
+    ap.add_argument("--deviations", default="docs/pilot/PILOT2_PROTOCOL_DEVIATIONS.md")
     a = ap.parse_args(argv)
     cfg = config.study()
     results, work = config.results_dir(cfg), config.work_dir(cfg)

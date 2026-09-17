@@ -417,6 +417,22 @@ Neel: "Do not discard pilot data. Preserve all pilot configurations, raw outputs
 - **Effect.** Any difference gives a different run id, so the run is repeated instead of reused. `cache_key_sha256`, `generation_version`, `generation_code_digest` and `java_version` are stored in every run record and re-checked before reuse.
 - **Invalidation.** The temperature-field correction (X-19) changes generated inputs, so affected entries are invalid by construction. Curation restarted as `curation-v3`; curation v1 and the partial v2 are preserved.
 
+**D-053 Pilot 2 model selection: five eligible models, five source papers** (2026-09-17; fixed before data)
+- **Selected** from curation v3 (23 candidates, 7 eligible, 6 of them new to the study): `acnet2_pyr_soma`, `migliore2014_mt_soma`, `nml2_hh_example`, `osb_hh2_477127614`, `pospischil2008_fs`.
+- **Selection evidence only.** Provenance, licence, response type, channel composition, numerical stability and operator coverage. No preliminary detection outcome was consulted, and none exists for these models.
+- **Not selected.** `migliore2014_gc_soma` (same source paper as the selected mitral cell) and `pospischil2008_rs` (a Pilot 1 model; Pilot 1 models are not repeated). `prinz2004_abpd` and `prinz2004_lp` stay open for human judgement (spontaneously bursting; C08 undefined).
+- **Licence caveats recorded, not waived.** `acnet2_pyr_soma`: LGPL-3.0 through the NeuroML2 repository while the originating publication states no licence; `osb_hh2_477127614`: MIT in its OSB repository, tuned to Allen Cell Types data whose own terms apply to that data.
+- **Held-out isolation.** The five source repositories are development sources and may not appear in the confirmatory held-out pool.
+
+**D-054 Pilot 2 protocol frozen before execution** (2026-09-17; fixed)
+- **Documents.** `docs/PILOT2_PROTOCOL.md` (prespecification), `configs/pilot2_frozen.yaml` (executable settings), `manifests/PILOT2_MODELS.csv`, `PILOT2_VARIANTS.csv`, `PILOT2_EXPERIMENT_MATRIX.csv`, `PILOT2_PRE_RUN.sha256` (the fixed matrix and its hashes). Agreement is enforced by `tests/unit/test_pilot2_protocol.py`.
+- **Design.** 5 models, 8 detection protocols plus the canonical comparator and the rheobase calibration, 6 analysis families, 2 severity levels, 88 primary semantic mutants (16-20 per model), 15 numerical stress tests in their own stratum, 40 valid-transformation controls (8 per model).
+- **Prespecified operator exclusions.** `wrong_segment_group` (inert on single-compartment somatic cells) and `shift_initial_voltage` (erased by the 300 ms settling window). Neither is removed from the code base.
+- **Supersedes** `docs/PILOT_PROTOCOL_V1.md` and `configs/pilot_protocol_v1/`, which described a four-model plan that was never executed; both are preserved unchanged. The protocol version recorded on Pilot 2 data is `PILOT2_PROTOCOL`.
+- **Status.** Exploratory development data. Never independent confirmation, never pooled with the confirmatory held-out estimate. Execution begins only if every automatic-authorisation condition holds, and the study stops for review afterwards.
+- **Kinetics subset (D-049).** All four validated kinetics operators enter Pilot 2: `shift_forward_rate_midpoint` is the only *atomic* operator (one rate expression of one gate), so excluding it would make the atomic-versus-compound report Neel asked for impossible. The family is still limited (4 of 23 operators; 12 of 88 primary mutants) and prespecified, and it stays excluded from protocol selection. This replaces the narrower two-operator subset sketched earlier in `docs/KINETICS_OPERATOR_VALIDATION.md` section 5, and is fixed before any Pilot 2 data.
+- **Infrastructure rehearsal.** Full-trace regression and the A-E levels had never run on a real campaign. `configs/pilot2_rehearsal.yaml` (campaign `pilot2-rehearsal`) exercises them on `pospischil2008_rs`, a Pilot 1 model that is already fully known, so no Pilot 2 model produces a preliminary outcome. The rehearsal is engineering evidence, never study data.
+
 ## Models and licensing
 
 **D-017 Pilot fixtures: Pospischil 2008 RS and LTS** (provisional)

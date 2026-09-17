@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import csv
 import dataclasses as dc
+import re
 import shutil
 from pathlib import Path
 
@@ -19,6 +20,26 @@ MODEL_MANIFEST = REPO_ROOT / "data" / "model_manifest.csv"
 RAW_MODELS = REPO_ROOT / "models" / "raw"
 CANDIDATE_MODELS = REPO_ROOT / "models" / "candidates"   # snapshots under curation
 MANIFEST_COLUMNS = [f.name for f in dc.fields(ModelRecord)]
+
+
+def normalise_fields(fields: dict[str, str]) -> dict[str, str]:
+    """Keep only the machine-readable part of free-text manifest columns (X-19).
+
+    Curation sweeps recorded notes in ``temperature`` ("34 degC (defined in the LEMS file)") and in
+    ``harness_v_column`` ("7 (Pop0[6] at +170 pA)"). Those notes were written verbatim into generated
+    simulation files and broke every rheobase search for the affected models. Both readers normalise
+    here, so no manifest row can reintroduce it.
+    """
+    out = dict(fields)
+    if "harness_v_column" in out:
+        col = re.match(r"\d+", out["harness_v_column"] or "")
+        out["harness_v_column"] = col.group(0) if col else ""
+    if "temperature" in out:
+        temp = re.match(r"\s*([-+]?\d+(?:\.\d+)?\s*degC)\s*", out["temperature"] or "")
+        # An unparseable temperature ("not specified ...") becomes empty: the probe network is then
+        # written without a temperature, never with prose inside the attribute.
+        out["temperature"] = temp.group(1) if temp else ""
+    return out
 
 
 def load_models(path: Path = MODEL_MANIFEST, include_only: bool = False) -> dict[str, ModelRecord]:
@@ -33,7 +54,8 @@ def load_models(path: Path = MODEL_MANIFEST, include_only: bool = False) -> dict
     dup = sorted({i for i in ids if ids.count(i) > 1})
     if dup:
         raise ValueError(f"duplicate model_id in manifest: {dup}")
-    models = {r["model_id"]: ModelRecord(**{k: r[k] for k in MANIFEST_COLUMNS}) for r in rows}
+    models = {r["model_id"]: ModelRecord(**normalise_fields({k: r[k] for k in MANIFEST_COLUMNS}))
+              for r in rows}
     if include_only:
         models = {k: m for k, m in models.items() if m.inclusion == "include"}
     return models

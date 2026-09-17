@@ -87,5 +87,5 @@ never pooled into the primary counts or the primary estimate.
 - **Log the exclusion.** Record it as C04 in `docs/MODEL_CURATION_REPORT.md`.
 - **Optional sensitivity analysis.** If Neel wants the diversity, add WB only as the exploratory
   analysis above, prespecified in the Pilot 2 protocol before any WB mutant is run.
-- **Pilot 2 default.** The PILOT_PROTOCOL_V2 matrix leaves WB out of the primary model set unless
+- **Pilot 2 default.** The PILOT2_PROTOCOL matrix leaves WB out of the primary model set unless
   Neel chooses otherwise.

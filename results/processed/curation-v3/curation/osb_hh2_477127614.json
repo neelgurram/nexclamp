@@ -1,0 +1,83 @@
+{
+  "model": {
+    "model_id": "osb_hh2_477127614",
+    "name": "OSB HH2 point neuron tuned to Allen Cell Types specimen 477127614 (HH2_477127614)",
+    "snapshot": "MultiscaleISN@f0783475",
+    "cell_file": "cells/HH2/HH2_477127614.cell.nml",
+    "cell_id": "HH2_477127614",
+    "harness_lems": "cells/HH2/LEMS_477127614.xml",
+    "harness_output_file": "Allen2stage_STAGE2.Pop0.v.dat",
+    "harness_v_column": "7",
+    "temperature": "34 degC",
+    "source_family": "osb_allen_hh2",
+    "citation": "Repository CITATION.md: Sadeh S, Silver RA, Mrsic-Flogel TD, Muir DR (2017). Assessing the Role of Inhibition in Stabilizing Neocortical Networks Requires Large-Scale Perturbation of the Inhibitory Population. Journal of Neuroscience 37(49):12050-12067. doi:10.1523/JNEUROSCI.0963-17.2017. The cell was tuned by OSB to Allen Cell Types Database data (cells/HH2/README.md); the Na channel file cites Pospischil et al. 2008 (doi:10.1007/s00422-008-0263-8). No publication describes this tuned cell itself.",
+    "source_url": "https://github.com/OpenSourceBrain/MultiscaleISN",
+    "commit": "f07834754d68263a03b6ab8d66b72f2049c6daf6",
+    "license": "MIT (OSB LICENSE, no exceptions stated)",
+    "license_url": "https://github.com/OpenSourceBrain/MultiscaleISN/blob/f07834754d68263a03b6ab8d66b72f2049c6daf6/LICENSE",
+    "download_date": "2026-09-16",
+    "simulator": "jNeuroML",
+    "expected_behavior": "Single compartment (d 30 um). Leak 0.104 (erev -71.3 mV), Kd 20.97, IM 0.0166, IL (L-type Ca, fixed erev 58.7 mV) 0.421 mS/cm2, Na 59.7 mS/cm2 with vShift +1.80 mV (channelDensityVShift); Cm 4.27 uF/cm2. Tuning metadata in the cell notes (not an OMV reference): no spikes at 10-60 pA; 5 spikes at 70 pA (first at 429.6 ms, 6.0 Hz); 48 spikes at 170 pA; -90 pA reaches -101.8 mV. Harness steps start at 270 ms and last past the 1000 ms end. Not simulated in this sweep.",
+    "inclusion": "candidate",
+    "inclusion_reason": "MIT, single compartment, data-tuned rheobase near 60-70 pA with a steep f-I relation; the 7-current harness is already an f-I protocol. Caveats: only a validation OMV test (no spike-time reference); not a published model; Pospischil-derived channel kinetics, so correlated with the existing pospischil2008 family (group with it, or keep as its own family knowingly); Allen data terms may apply to the tuning data (the AllenInstituteNeuroML LICENSE carves out Allen-reused material, the MultiscaleISN LICENSE does not)."
+  },
+  "criteria": {
+    "C01_provenance": true,
+    "C02_reuse_rights": true,
+    "C03_files_present": true,
+    "C04_validation": true,
+    "C05_executes": true,
+    "C06_trace_interpretable": true,
+    "C07_recording_location": true,
+    "C08_responds_to_current": true,
+    "C09_deterministic": true,
+    "C10_refinement_stable": true,
+    "C11_runtime": true,
+    "C12_operators": true,
+    "C13_protocols_compatible": true
+  },
+  "decision": "include_eligible",
+  "reasons": [],
+  "evidence": {
+    "model_id": "osb_hh2_477127614",
+    "snapshot": "MultiscaleISN@f0783475",
+    "ion_channels": [
+      "IL",
+      "IM",
+      "Kd",
+      "LeakConductance",
+      "Na"
+    ],
+    "validation_errors": [],
+    "canonical_status": "ok",
+    "canonical_v_range_mV": [
+      -71.42091369628906,
+      32.29351806640625
+    ],
+    "rheobase_status": "ok",
+    "rheobase_nA": 0.06447647018646267,
+    "fingerprint_status": [
+      "ok",
+      "ok"
+    ],
+    "spikes_P04": 15.0,
+    "spikes_P05": 36.0,
+    "firing_regime_P05": "tonic",
+    "rebound_spikes_P08": 0.0,
+    "sag_ratio_P07": 4.870131081163683e-06,
+    "refinement_excluded": "0/64",
+    "estimated_variant_runtime_s": 1244.1,
+    "semantic_operators_with_site": [
+      "duplicate_conductance",
+      "omit_include",
+      "scale_capacitance",
+      "scale_conductance",
+      "scale_gate_time_constant",
+      "shift_initial_voltage",
+      "shift_reversal",
+      "wrong_channel",
+      "wrong_compatible_component",
+      "wrong_segment_group"
+    ]
+  }
+}
