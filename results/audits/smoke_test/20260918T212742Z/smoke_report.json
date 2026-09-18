@@ -1,0 +1,197 @@
+{
+  "created_utc": "2026-09-18T22:09:32+00:00",
+  "git": {
+    "commit": "115673a9a8a0e3d7d160c126b4ed4b0a16ecc677",
+    "dirty": false
+  },
+  "python": "3.12.10",
+  "executable": "C:\\Users\\gurra\\AppData\\Local\\Temp\\neuraxis_readiness_1789769204\\Scripts\\python.exe",
+  "simulator": {
+    "simulator": "jNeuroML",
+    "jneuroml_version": "0.14.0",
+    "jlems_version": "0.12.0",
+    "org_neuroml_export_version": "1.11.0",
+    "java_version": "openjdk version \"21.0.12.1\" 2026-08-18 LTS | OpenJDK Runtime Environment Temurin-21.0.12.1+1 (build 21.0.12.1+1-LTS) | OpenJDK 64-Bit Server VM Temurin-21.0.12.1+1 (build 21.0.12.1+1-LTS, mixed mode, sharing)",
+    "jar_path": "jNeuroML-0.14.0-jar-with-dependencies.jar",
+    "jar_sha256": "45ee565a65a66008a3b41935358d11b7c19cb6b5a67bbec22481d519f53db931"
+  },
+  "fixtures": [
+    "pospischil2008_rs",
+    "nml2_hh_example"
+  ],
+  "steps": {
+    "1_load_models": {
+      "ok": true,
+      "detail": {
+        "pospischil2008_rs": "loaded",
+        "nml2_hh_example": "loaded"
+      }
+    },
+    "2_validate": {
+      "ok": true,
+      "detail": {
+        "pospischil2008_rs": {
+          "valid": true,
+          "files": [
+            "NeuroML2/cells/RS/RS.cell.nml",
+            "NeuroML2/channels/IM/IM.channel.nml",
+            "NeuroML2/channels/Kd/Kd.channel.nml",
+            "NeuroML2/channels/Leak/Leak.channel.nml",
+            "NeuroML2/channels/Na/Na.channel.nml",
+            "NeuroML2/cells/RS/RS.net.nml"
+          ]
+        },
+        "nml2_hh_example": {
+          "valid": true,
+          "files": [
+            "examples/NML2_SingleCompHHCell.nml"
+          ]
+        }
+      }
+    },
+    "3_current_clamp": {
+      "ok": true,
+      "detail": {
+        "pospischil2008_rs": {
+          "status": "ok",
+          "rheobase_nA": 0.5606515948364182
+        },
+        "nml2_hh_example": {
+          "status": "ok",
+          "rheobase_nA": 0.022436992008742575
+        }
+      }
+    },
+    "4_traces_saved": {
+      "ok": true,
+      "detail": {
+        "pospischil2008_rs": {
+          "trace_files": [
+            "r-1c453cf43294b7bdffba"
+          ],
+          "complete_length": true
+        },
+        "nml2_hh_example": {
+          "trace_files": [
+            "r-9ce48b32ba62d5404325"
+          ],
+          "complete_length": true
+        }
+      }
+    },
+    "5_features": {
+      "ok": true,
+      "detail": {
+        "pospischil2008_rs": {
+          "P04_step_2x": {
+            "spike_count": {
+              "name": "spike_count",
+              "value": 22.0,
+              "state": "defined",
+              "unit": "1",
+              "source": "efel:spike_count_stimint[scalar]"
+            },
+            "first_spike_latency": {
+              "name": "first_spike_latency",
+              "value": 10.689999999862437,
+              "state": "defined",
+              "unit": "ms",
+              "source": "efel:time_to_first_spike[scalar]"
+            },
+            "mean_frequency": {
+              "name": "mean_frequency",
+              "value": 44.11292909854356,
+              "state": "defined",
+              "unit": "Hz",
+              "source": "efel:mean_frequency[scalar]"
+            }
+          }
+        },
+        "nml2_hh_example": {
+          "P04_step_2x": {
+            "spike_count": {
+              "name": "spike_count",
+              "value": 1.0,
+              "state": "defined",
+              "unit": "1",
+              "source": "efel:spike_count_stimint[scalar]"
+            },
+            "first_spike_latency": {
+              "name": "first_spike_latency",
+              "value": 3.5399999998689395,
+              "state": "defined",
+              "unit": "ms",
+              "source": "efel:time_to_first_spike[scalar]"
+            },
+            "mean_frequency": {
+              "name": "mean_frequency",
+              "value": null,
+              "state": "not_applicable",
+              "unit": "Hz",
+              "source": "efel:mean_frequency[scalar]"
+            }
+          }
+        }
+      }
+    },
+    "6_diagnostic_plots": {
+      "ok": true,
+      "detail": {
+        "pospischil2008_rs:P04_step_2x": "C:\\Users\\gurra\\NeuroSem\\results\\audits\\readiness\\20260918T212742Z\\smoke\\plots\\pospischil2008_rs_P04_step_2x.png",
+        "nml2_hh_example:P04_step_2x": "C:\\Users\\gurra\\NeuroSem\\results\\audits\\readiness\\20260918T212742Z\\smoke\\plots\\nml2_hh_example_P04_step_2x.png"
+      }
+    },
+    "7_reproducible": {
+      "ok": true,
+      "detail": {
+        "pospischil2008_rs": {
+          "max_abs_diff_mV": {
+            "P04_step_2x": 0.0
+          },
+          "tolerance_mV": 1e-06,
+          "distinct_run_ids": [
+            "r-1c453cf43294b7bdffba",
+            "r-843cff093f0b3d94ae37"
+          ]
+        },
+        "nml2_hh_example": {
+          "max_abs_diff_mV": {
+            "P04_step_2x": 0.0
+          },
+          "tolerance_mV": 1e-06,
+          "distinct_run_ids": [
+            "r-9ce48b32ba62d5404325",
+            "r-bb27aef0b9dd38f2c3b7"
+          ]
+        }
+      }
+    },
+    "8_provenance": {
+      "ok": true,
+      "detail": {
+        "r-1c453cf43294b7bdffba": {
+          "missing_fields": []
+        },
+        "r-843cff093f0b3d94ae37": {
+          "missing_fields": []
+        },
+        "r-9ce48b32ba62d5404325": {
+          "missing_fields": []
+        },
+        "r-bb27aef0b9dd38f2c3b7": {
+          "missing_fields": []
+        }
+      }
+    },
+    "9_tests": {
+      "ok": true,
+      "detail": {
+        "exit_code": 0,
+        "summary": [
+          "1062 passed, 1 skipped in 2264.13s (0:37:44)"
+        ]
+      }
+    }
+  },
+  "passed": true
+}
