@@ -1,9 +1,16 @@
 # Pilot 2 protocol (`PILOT2_PROTOCOL`, campaign `pilot2`)
 
-*Written and frozen on 2026-09-17, **before any Pilot 2 simulation was executed**. Executable
+*Written and frozen on 2026-09-17, before the Pilot 2 **campaign** was executed. Executable
 settings: `configs/pilot2_frozen.yaml`. Fixed matrix: `manifests/PILOT2_MODELS.csv`,
 `manifests/PILOT2_VARIANTS.csv`, `manifests/PILOT2_EXPERIMENT_MATRIX.csv`, hashed in
 `manifests/PILOT2_PRE_RUN.sha256`.*
+
+> **Correction (amendment A-01, 2026-09-18).** An earlier version of this line said "before any
+> Pilot 2 simulation was executed". That was wrong. Operator-validation simulations of four of the
+> five models ran before this document was last edited, and nine of their edits are identical to
+> frozen mutants of this matrix. See section 14. The design — models, protocols, families,
+> severities, thresholds, exclusions and branch rules — was nonetheless fixed before those
+> simulations, at 16:41 on 2026-09-17, and has not changed since.*
 
 > **EXPLORATORY DEVELOPMENT DATA.** Pilot 2 is a second development iteration informed by Pilot 1.
 > It is **not** independent confirmation, it is **never** pooled with the confirmatory held-out
@@ -408,3 +415,66 @@ dependencies:
   ruff: 0.16.7
   mypy: 2.3.1
 ```
+
+## 14. Amendment A-01 (2026-09-18): pre-campaign outcome exposure
+
+*Numbered, timestamped amendment issued after Neel's pre-launch audit. It changes no threshold, no
+denominator, no variant and no rule. It corrects a false statement and adds a reporting obligation.
+Evidence: `docs/PILOT2_LEAKAGE_ASSESSMENT.md`, `docs/PILOT2_PRELAUNCH_DECISION.md`,
+`results/audits/PILOT2_KINETICS_OVERLAP_AUDIT.csv`.*
+
+### 14.1 What happened
+
+Kinetics operator validation was run on the five Pilot 2 models on 2026-09-17 (21:14-21:19 UTC),
+48 sites, each simulating the model's **canonical shipped harness** before and after the edit. The
+spike counts and maximum voltage differences were printed, read by the assistant and reported to
+Neel. One minute later this protocol's section 5.2 was edited with the resulting applicability
+table, and its atomic/compound definition was corrected because the recorded output contradicted
+the earlier text.
+
+Audit classification: **L5** (the campaign subsequently began before the audit) with an **L4**
+component (outcome exposure with possible design influence).
+
+### 14.2 The nine exposed variants
+
+Nine frozen primary semantic mutants are the *same edit* (model, operator, channel, gate, magnitude)
+as a validated site whose canonical-harness outcome is known:
+
+| model | operator | severity | canonical spikes before -> after |
+|---|---|---|---|
+| `acnet2_pyr_soma` | `shift_gate_midpoint` | mild | 8 -> 10 |
+| `acnet2_pyr_soma` | `scale_gate_slope` | mild | 8 -> 7 |
+| `acnet2_pyr_soma` | `shift_forward_rate_midpoint` | mild | 8 -> 8 |
+| `migliore2014_mt_soma` | `shift_gate_midpoint` | mild | 1 -> 1 |
+| `migliore2014_mt_soma` | `scale_gate_slope` | mild | 1 -> 2 |
+| `nml2_hh_example` | `shift_gate_midpoint` | mild | 7 -> 0 |
+| `nml2_hh_example` | `scale_gate_slope` | mild | 7 -> 19 |
+| `nml2_hh_example` | `shift_forward_rate_midpoint` | mild | 7 -> 1 |
+| `osb_hh2_477127614` | `shift_channel_vshift` | mild | 28 -> 41 |
+
+That is 9 of 88 primary semantic mutants (10.2%) and 9 of 12 kinetics mutants. The 76 non-kinetics
+mutants, the 40 controls and the 15 numerical stress tests carry no exposure, and
+`pospischil2008_fs` carries none at all.
+
+### 14.3 Binding rules added by this amendment
+
+1. **No variant is removed or replaced.** The frozen matrix is unchanged. Exposed variants are not
+   dropped, because dropping them would be a selection made with their outcomes in hand.
+2. **Every primary result is reported twice**: over all admissible primary semantic mutants, and
+   over the 79 that carry no prior outcome exposure. Both numbers appear in the outputs; neither is
+   presented alone.
+3. **Branch classification is computed on both sets** and both are reported. If they disagree, the
+   disagreement is the result, and no branch is claimed.
+4. **Pilot 2 is exploratory development data.** It is never described as confirmatory, untouched,
+   independent confirmation, or held out. It is never pooled with the confirmatory estimate.
+5. **These five models and their five source repositories are permanently development sources** and
+   can never serve as held-out confirmatory models.
+6. **Resumption rule.** The campaign may continue on the frozen matrix. Because runs are
+   content-addressed, re-invoking the campaign reuses completed runs and re-derives nothing; no
+   variant is re-selected, and no threshold changes.
+
+### 14.4 What this amendment does not do
+
+It does not change the tolerance rule, the RMSE calibration, the branch thresholds, the protocol
+battery, the severity bands, the seed, or the set of variants. Options for the RMSE limitation are
+presented for Neel's decision in `docs/PILOT2_PRELAUNCH_DECISION.md` section 10; none is applied.

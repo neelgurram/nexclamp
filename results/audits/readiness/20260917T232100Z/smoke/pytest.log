@@ -1,0 +1,67 @@
+........................................................................ [  6%]
+........................................................................ [ 13%]
+........................................................................ [ 20%]
+........................................................................ [ 27%]
+........................................................................ [ 33%]
+..s..................................................................... [ 40%]
+........................................................................ [ 47%]
+........................................................................ [ 54%]
+........................................................................ [ 60%]
+........................................................................ [ 67%]
+........................................................................ [ 74%]
+........................................................................ [ 81%]
+........................................................................ [ 88%]
+........................................................................ [ 94%]
+................
+[pospischil2008_rs] 38 mutants, 23 distinct cell-file validations
+  duplicate_conductance          valid 2/2
+  increase_dt                    valid 2/2
+  omit_include                   valid 1/2
+      m-omit_include-1e5a6df120: ['Test: 10025 (Ion channel in channelDensity should exist) failed! ... Ion channel: LeakConductance in LeakConductance_all not found!', 'Validated 1 files: 0 passed, 1 failed']
+  record_wrong_variable          valid 2/2
+  recording_resolution           valid 2/2
+  scale_capacitance              valid 2/2
+  scale_conductance              valid 2/2
+  scale_gate_time_constant       valid 2/2
+  shift_channel_vshift           valid 2/2
+  shift_initial_voltage          valid 2/2
+  shift_reversal                 valid 2/2
+  sim_length                     valid 2/2
+  solver_config                  valid 2/2
+  stim_amplitude                 valid 2/2
+  stim_duration                  valid 2/2
+  stim_onset                     valid 2/2
+  wrong_channel                  valid 2/2
+  wrong_compatible_component     valid 2/2
+  wrong_segment_group            valid 2/2
+  operators yielding structurally invalid cell files: ['omit_include']
+.
+[pospischil2008_lts] 36 mutants, 21 distinct cell-file validations
+  duplicate_conductance          valid 2/2
+  increase_dt                    valid 2/2
+  omit_include                   valid 1/2
+      m-omit_include-0307bc9abe: ['Test: 10025 (Ion channel in channelDensity should exist) failed! ... Ion channel: IT in IT_all not found!', 'Validated 1 files: 0 passed, 1 failed']
+  record_wrong_variable          valid 2/2
+  recording_resolution           valid 2/2
+  scale_capacitance              valid 2/2
+  scale_conductance              valid 2/2
+  scale_gate_time_constant       valid 2/2
+  shift_initial_voltage          valid 2/2
+  shift_reversal                 valid 2/2
+  sim_length                     valid 2/2
+  solver_config                  valid 2/2
+  stim_amplitude                 valid 2/2
+  stim_duration                  valid 2/2
+  stim_onset                     valid 2/2
+  wrong_channel                  valid 2/2
+  wrong_compatible_component     valid 2/2
+  wrong_segment_group            valid 2/2
+  operators yielding structurally invalid cell files: ['omit_include']
+.
+[solver_config=rk4] max|dv| vs reference = 0.0 mV
+.
+[solver_config=eulertree] max|dv| vs reference = 0.0 mV
+....................................                  [100%]
+=========================== short test summary info ===========================
+SKIPPED [1] tests\unit\test_infra_bootstrap_java.py:413: set NEUROSEM_NETWORK_TESTS=1 for live API
+1062 passed, 1 skipped in 2308.11s (0:38:28)

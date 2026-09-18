@@ -9,7 +9,9 @@ Neel's conditions (2026-09-17). Pilot 2 may start **only** if all of them hold:
 5. the mutation operators pass their validation tests;
 6. the pre-run files are committed;
 7. the held-out models are isolated;
-8. the Pilot 1 raw data is unchanged.
+8. the Pilot 1 raw data is unchanged;
+9. any frozen variant whose outcome was generated outside the campaign is declared by a numbered
+   protocol amendment (added 2026-09-18 after the leakage audit, D-055).
 
 Anything that fails stops the run and is reported. This script never simulates and never launches
 anything; it writes ``results/audits/pilot2_authorization/<stamp>.json`` and prints the verdict.
@@ -139,6 +141,31 @@ def check_operators() -> dict:
             "evidence": reports}
 
 
+def check_prior_exposure() -> dict:
+    """No frozen variant's outcome may have been generated outside the campaign without a declaration.
+
+    The gate that authorised the first launch had no such condition, which is how operator-validation
+    runs on the Pilot 2 models went unnoticed (D-055). Exposure does not block on its own: it must be
+    declared by a numbered protocol amendment that names the affected variants.
+    """
+    overlap = config.results_dir() / "audits" / "PILOT2_KINETICS_OVERLAP_AUDIT.csv"
+    exposed = []
+    if overlap.is_file():
+        with open(overlap, newline="", encoding="utf-8") as f:
+            exposed = [r for r in csv.DictReader(f) if r.get("in_frozen_variant_manifest") == "yes"]
+    protocol = (REPO_ROOT / "docs" / "PILOT2_PROTOCOL.md").read_text(encoding="utf-8")
+    declared = "Amendment A-01" in protocol and "exposed variants" in protocol.lower()
+    return {"id": "C9_prior_outcome_exposure_declared",
+            "requirement": "any frozen variant whose outcome was generated outside the campaign is declared in a "
+                           "numbered protocol amendment",
+            "passed": (not exposed) or declared,
+            "evidence": {"exact_overlaps": len(exposed), "declared_by_amendment": declared,
+                         "audit": overlap.relative_to(REPO_ROOT).as_posix() if overlap.is_file() else None,
+                         "models": sorted({r["model_id"] for r in exposed}),
+                         "note": "Declared exposure does not make the campaign confirmatory; it requires the "
+                                 "with-and-without reporting rule of amendment A-01."}}
+
+
 def check_pre_run() -> dict:
     tracked = set(git("ls-files", *PRE_RUN_FILES).splitlines())
     untracked = [f for f in PRE_RUN_FILES if f not in tracked]
@@ -170,10 +197,23 @@ def check_heldout(selected: list[str], ev: dict[str, dict]) -> dict:
     clash_fam = sorted({r["item_id"] for r in heldout
                         if ev.get(r["item_id"], {}).get("model", {}).get("source_family", "") in families})
     started = (config.results_dir() / "raw" / "pilot2").exists()
-    return {"id": "C7_heldout_isolated", "requirement": "no selected model or source repository is in the held-out pool",
-            "passed": not clash_ids and not clash_fam and not started,
+    # A campaign that already holds data may only proceed as a declared resumption: the partial run must be
+    # recorded with its status and the protocol must carry the amendment that sanctions resuming on the frozen
+    # matrix (A-01 section 14.3 rule 6). An undeclared partial run still blocks, as it did before D-055.
+    status_file = config.results_dir() / "CAMPAIGN_STATUS_PILOT2.json"
+    declared_partial = False
+    if status_file.is_file():
+        st = json.loads(status_file.read_text(encoding="utf-8"))
+        protocol = (REPO_ROOT / "docs" / "PILOT2_PROTOCOL.md").read_text(encoding="utf-8")
+        declared_partial = bool(st.get("status")) and "Resumption rule" in protocol
+    return {"id": "C7_heldout_isolated", "requirement": "no selected model or source repository is in the held-out "
+            "pool, and any existing partial run is a declared resumption",
+            "passed": not clash_ids and not clash_fam and (not started or declared_partial),
             "evidence": {"heldout_models": sorted(ids), "clashing_models": clash_ids,
-                         "clashing_sources": clash_fam, "pilot2_raw_already_exists": started}}
+                         "clashing_sources": clash_fam, "pilot2_raw_already_exists": started,
+                         "partial_run_declared": declared_partial,
+                         "status_file": status_file.relative_to(REPO_ROOT).as_posix() if status_file.is_file()
+                         else None}}
 
 
 def check_pilot1(campaign: str = "pilot") -> dict:
@@ -214,7 +254,7 @@ def main(argv: list[str] | None = None) -> int:
 
     checks, new_eligible = check_models(ev, selected)
     checks += [check_suite(), check_smoke(), check_operators(), check_pre_run(),
-               check_heldout(selected, ev), check_pilot1()]
+               check_heldout(selected, ev), check_pilot1(), check_prior_exposure()]
     commit, dirty = git_state()
     authorized = all(c["passed"] for c in checks)
     record = {"created_utc": utc_now(), "commit": commit, "tree_dirty": dirty, "curation_campaign": a.curation,

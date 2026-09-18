@@ -1,0 +1,235 @@
+{
+  "created_utc": "2026-09-18T00:45:30+00:00",
+  "stamp": "20260917T232100Z",
+  "commit": "17b9b0638f5575c5b2153a8fb59719c50d53c88b",
+  "dirty": false,
+  "inputs_dirty": [],
+  "duration_s": 5069.5,
+  "steps": {
+    "1_test_suite": {
+      "command": "C:\\Users\\gurra\\NeuroSem\\.venv\\Scripts\\python.exe -m pytest -p no:cacheprovider -rA --durations=15",
+      "returncode": 0,
+      "duration_s": 2338.8,
+      "log": "pytest.log",
+      "tail": [
+        "PASSED tests/unit/test_validation_levels.py::test_scaling_a_zero_conductance_is_not_a_site",
+        "SKIPPED [1] tests\\unit\\test_infra_bootstrap_java.py:413: set NEUROSEM_NETWORK_TESTS=1 for live API",
+        "================ 1065 passed, 1 skipped in 2337.27s (0:38:57) ================="
+      ],
+      "passed": 1065,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 1,
+      "xfailed": 0,
+      "xpassed": 0,
+      "warnings": 0,
+      "summary_line": "================ 1065 passed, 1 skipped in 2337.27s (0:38:57) ================="
+    },
+    "2_ruff": {
+      "command": "C:\\Users\\gurra\\NeuroSem\\.venv\\Scripts\\python.exe -m ruff check src tests scripts",
+      "returncode": 1,
+      "duration_s": 0.7,
+      "log": "ruff.log",
+      "tail": [
+        "",
+        "Found 186 errors.",
+        "[*] 91 fixable with the `--fix` option (70 hidden fixes can be enabled with the `--unsafe-fixes` option)."
+      ],
+      "findings": 186,
+      "baseline_only": true,
+      "note": "recorded baseline, not a readiness gate (R-15)"
+    },
+    "2_mypy": {
+      "command": "C:\\Users\\gurra\\NeuroSem\\.venv\\Scripts\\python.exe -m mypy src",
+      "returncode": 1,
+      "duration_s": 0.7,
+      "log": "mypy.log",
+      "tail": [
+        "src\\neuraxis\\cli.py:26: error: Cannot find implementation or library stub for module named \"fetch_models\"  [import-not-found]",
+        "src\\neuraxis\\cli.py:142: error: Cannot find implementation or library stub for module named \"smoke_jnml\"  [import-not-found]",
+        "Found 120 errors in 35 files (checked 64 source files)"
+      ],
+      "findings": 120,
+      "baseline_only": true,
+      "note": "recorded baseline, not a readiness gate (R-15)"
+    },
+    "3_clean_env_create": {
+      "command": "C:\\Users\\gurra\\NeuroSem\\.venv\\Scripts\\python.exe -m venv C:\\Users\\gurra\\AppData\\Local\\Temp\\neuraxis_readiness_1789689601",
+      "returncode": 0,
+      "duration_s": 8.5,
+      "log": "venv_create.log",
+      "tail": []
+    },
+    "3_clean_env_pip": {
+      "command": "C:\\Users\\gurra\\AppData\\Local\\Temp\\neuraxis_readiness_1789689601\\Scripts\\python.exe -m pip install -q -r requirements.lock",
+      "returncode": 0,
+      "duration_s": 140.2,
+      "log": "venv_pip.log",
+      "tail": [
+        "[notice] A new release of pip is available: 25.0.1 -> 26.2.1",
+        "[notice] To update, run: C:\\Users\\gurra\\AppData\\Local\\Temp\\neuraxis_readiness_1789689601\\Scripts\\python.exe -m pip install --upgrade pip"
+      ]
+    },
+    "3_clean_env_package": {
+      "command": "C:\\Users\\gurra\\AppData\\Local\\Temp\\neuraxis_readiness_1789689601\\Scripts\\python.exe -m pip install -q --no-deps -e .",
+      "returncode": 0,
+      "duration_s": 13.0,
+      "log": "venv_package.log",
+      "tail": [
+        "[notice] A new release of pip is available: 25.0.1 -> 26.2.1",
+        "[notice] To update, run: C:\\Users\\gurra\\AppData\\Local\\Temp\\neuraxis_readiness_1789689601\\Scripts\\python.exe -m pip install --upgrade pip"
+      ]
+    },
+    "4_smoke_test": {
+      "command": "C:\\Users\\gurra\\AppData\\Local\\Temp\\neuraxis_readiness_1789689601\\Scripts\\python.exe -m neuraxis smoke-test --out C:\\Users\\gurra\\NeuroSem\\results\\audits\\readiness\\20260917T232100Z\\smoke",
+      "returncode": 0,
+      "duration_s": 2542.8,
+      "log": "smoke.log",
+      "tail": [
+        "  \"9_tests\": true",
+        "}",
+        "PASSED"
+      ],
+      "passed": true,
+      "copied_to": "results/audits/smoke_test/20260917T232100Z"
+    },
+    "5_pilot1_raw_hashes": {
+      "files_checked": 2689,
+      "mismatched_or_missing": 0,
+      "manifest": "results/processed/pilot/ARCHIVE_MANIFEST.sha256",
+      "returncode": 0
+    },
+    "6_cli_help": {
+      "command": "C:\\Users\\gurra\\NeuroSem\\.venv\\Scripts\\python.exe -m neuraxis --help",
+      "returncode": 0,
+      "duration_s": 1.2,
+      "log": "cli_help.log",
+      "tail": [
+        "",
+        "options:",
+        "  -h, --help            show this help message and exit"
+      ]
+    },
+    "6_import": {
+      "command": "C:\\Users\\gurra\\NeuroSem\\.venv\\Scripts\\python.exe -c import neuraxis, neuraxis.experiments.campaign as c; print(neuraxis.__version__, c.__name__)",
+      "returncode": 0,
+      "duration_s": 1.1,
+      "log": "import.log",
+      "tail": [
+        "0.2.0.dev0 neuraxis.experiments.campaign"
+      ]
+    }
+  },
+  "versions": {
+    "python": "3.12.10",
+    "platform": "Windows-11-10.0.22631-SP0",
+    "executable": "C:\\Users\\gurra\\NeuroSem\\.venv\\Scripts\\python.exe",
+    "simulator": {
+      "simulator": "jNeuroML",
+      "jneuroml_version": "0.14.0",
+      "jlems_version": "0.12.0",
+      "org_neuroml_export_version": "1.11.0",
+      "java_version": "openjdk version \"21.0.12.1\" 2026-08-18 LTS | OpenJDK Runtime Environment Temurin-21.0.12.1+1 (build 21.0.12.1+1-LTS) | OpenJDK 64-Bit Server VM Temurin-21.0.12.1+1 (build 21.0.12.1+1-LTS, mixed mode, sharing)",
+      "jar_path": "jNeuroML-0.14.0-jar-with-dependencies.jar",
+      "jar_sha256": "45ee565a65a66008a3b41935358d11b7c19cb6b5a67bbec22481d519f53db931"
+    },
+    "pinned_requirements": {
+      "airspeed": "0.7.1",
+      "annotated-types": "0.8.0",
+      "anyio": "4.15.1",
+      "attrs": "26.1.0",
+      "blosc2": "4.13.0",
+      "cachetools": "7.1.8",
+      "cattrs": "26.2.0",
+      "certifi": "2026.7.22",
+      "colorama": "0.4.6",
+      "contourpy": "1.4.0",
+      "coverage": "7.16.0",
+      "cycler": "0.12.1",
+      "dill": "0.4.1",
+      "dnspython": "2.8.0",
+      "docstring_parser": "0.18.0",
+      "efel": "5.7.34",
+      "fonttools": "4.65.0",
+      "graphviz": "0.21",
+      "h11": "0.16.0",
+      "h2": "4.4.1",
+      "h5py": "3.16.0",
+      "hpack": "4.2.0",
+      "httpcore": "1.0.9",
+      "httpx": "0.28.1",
+      "hyperframe": "6.1.0",
+      "idna": "3.19",
+      "iniconfig": "2.3.0",
+      "kiwisolver": "1.5.1",
+      "libNeuroML": "0.6.7",
+      "lxml": "6.1.3",
+      "markdown-it-py": "4.2.0",
+      "matplotlib": "3.11.2",
+      "matplotlib-scalebar": "0.9.0",
+      "mdurl": "0.1.2",
+      "modelspec": "0.4.0",
+      "mpmath": "1.3.0",
+      "msgpack": "1.2.2",
+      "mypy": "2.3.1",
+      "mypy_extensions": "1.1.0",
+      "natsort": "8.4.0",
+      "ndindex": "1.10.1",
+      "neo": "0.14.5",
+      "networkx": "3.6.1",
+      "neuromllite": "0.6.1",
+      "numexpr": "2.14.2",
+      "numpy": "2.5.3",
+      "packaging": "26.3",
+      "pandas": "3.0.5",
+      "pillow": "12.3.0",
+      "pluggy": "1.6.0",
+      "ppft": "1.7.8",
+      "progressbar2": "4.6.0",
+      "py-cpuinfo": "9.0.0",
+      "pydantic": "2.13.5",
+      "pydantic_core": "2.46.5",
+      "Pygments": "2.21.0",
+      "PyLEMS": "0.6.9",
+      "pymongo": "4.18.1",
+      "pyNeuroML": "1.3.22",
+      "pyparsing": "3.3.2",
+      "pytest": "9.1.1",
+      "pytest-cov": "7.1.0",
+      "python-dateutil": "2.9.0.post0",
+      "python-utils": "4.0.1",
+      "PyYAML": "6.0.3",
+      "quantities": "0.16.4",
+      "rich": "15.0.0",
+      "ruff": "0.16.7",
+      "scipy": "1.18.1",
+      "six": "1.17.0",
+      "sympy": "1.14.0",
+      "tables": "3.11.1",
+      "tabulate": "0.10.0",
+      "threadpoolctl": "3.6.0",
+      "typing-inspection": "0.4.4",
+      "typing_extensions": "4.16.0",
+      "tzdata": "2026.4"
+    },
+    "jdk": {
+      "release": "jdk-21.0.12.1+1",
+      "name": "OpenJDK21U-jdk_x64_windows_hotspot_21.0.12.1_1.zip",
+      "link": "https://github.com/adoptium/temurin21-binaries/releases/download/jdk-21.0.12.1%2B1/OpenJDK21U-jdk_x64_windows_hotspot_21.0.12.1_1.zip",
+      "sha256": "f9d6e191ab098c0d416e7d588a24420a8621cd2f4720dab2459b8b7b2d2d8b4e",
+      "size": 205073461,
+      "source": "https://api.adoptium.net/v3/assets/latest/21/hotspot"
+    }
+  },
+  "passed": 1065,
+  "failed": 0,
+  "errors": 0,
+  "skipped": 1,
+  "warnings": 0,
+  "suite_summary": "================ 1065 passed, 1 skipped in 2337.27s (0:38:57) =================",
+  "failed_steps": [],
+  "lint_findings": 186,
+  "type_findings": 120,
+  "all_steps_passed": true,
+  "note": "Final readiness record. An earlier run does not count once anything changed."
+}

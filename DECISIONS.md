@@ -433,6 +433,13 @@ Neel: "Do not discard pilot data. Preserve all pilot configurations, raw outputs
 - **Kinetics subset (D-049).** All four validated kinetics operators enter Pilot 2: `shift_forward_rate_midpoint` is the only *atomic* operator (one rate expression of one gate), so excluding it would make the atomic-versus-compound report Neel asked for impossible. The family is still limited (4 of 23 operators; 12 of 88 primary mutants) and prespecified, and it stays excluded from protocol selection. This replaces the narrower two-operator subset sketched earlier in `docs/KINETICS_OPERATOR_VALIDATION.md` section 5, and is fixed before any Pilot 2 data.
 - **Infrastructure rehearsal.** Full-trace regression and the A-E levels had never run on a real campaign. `configs/pilot2_rehearsal.yaml` (campaign `pilot2-rehearsal`) exercises them on `pospischil2008_rs`, a Pilot 1 model that is already fully known, so no Pilot 2 model produces a preliminary outcome. The rehearsal is engineering evidence, never study data.
 
+**D-055 Pilot 2 leakage audit: L5/L4, Path C, campaign continues as exploratory** (2026-09-18)
+- **Finding.** Kinetics operator validation exposed canonical-harness outcomes for 4 of the 5 Pilot 2 models before the freeze commit; 9 frozen mutants share an exact edit with a validated site; the protocol text was edited after the exposure. The campaign then began and was stopped at 38 of 143 variants. Classification **L5** with an **L4** component.
+- **Path C** (reclassify as development-exposed). Pilot 2 was already exploratory development data, so no confirmatory claim is lost; what is lost is the claim that nothing was seen before the freeze, and any future held-out use of these five models or their five source repositories.
+- **Amendment A-01** corrects the protocol, names the nine variants, and requires every primary result and branch classification to be reported over all 88 mutants and over the 79 unexposed ones.
+- **Nothing is removed.** No variant dropped, no threshold changed, no data deleted. Resumption reuses content-addressed runs.
+- **Blocked separately:** the confirmatory held-out study has **zero eligible untouched models**; criterion C11 (runtime budget) or the Prinz C08 question must be resolved by amendment first, and external preregistration is not submitted.
+
 ## Models and licensing
 
 **D-017 Pilot fixtures: Pospischil 2008 RS and LTS** (provisional)
