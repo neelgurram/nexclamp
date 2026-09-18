@@ -379,3 +379,64 @@ adjusted after held-out results are seen**.
 9. Class assignment when the harness runs but the probe does not build.
 10. Source-family clustering rule and how families are assigned to splits.
 11. Final tolerance constants (from discovery calibration) and multipliers.
+
+## 11. Amendment S-01 (2026-09-18): reporting rules fixed before any result is analysed
+
+*Issued after the pre-launch audit (`docs/PILOT2_PRELAUNCH_DECISION.md` section 11), before any
+Pilot 2 outcome was aggregated or inspected. It adds reporting obligations and prohibitions. It
+changes no threshold, no denominator, no test and no decision rule.*
+
+### 11.1 The models are the generalization units
+
+The unit of analysis stays one admissible non-equivalent mutant, but **the unit of generalization is
+the base model**. Every headline number is therefore reported in two forms:
+
+1. the pooled estimate with a model-clustered interval, and
+2. the **per-model values that produced it**, listed individually.
+
+With five models (Pilot 2) or four to six (held out), a cluster interval is coarse by construction:
+K clusters admit only C(2K-1, K) distinct bootstrap resamples, so the interval is discrete and tends
+to be too narrow. That weakness is already stated in section 4.2 and is now a **reporting
+requirement**: a pooled interval is never shown without the per-model values beside it.
+
+### 11.2 Cost-matched comparison is required, not optional
+
+A battery of eight protocols that detects more than one canonical harness is not a finding if it
+simply spent more compute. Every canonical-versus-battery comparison is therefore accompanied by a
+**runtime-matched random battery** (section 6), not only a protocol-count-matched one. Where the
+runtime-matched baseline cannot be constructed for a model, that model is reported as such rather
+than silently compared on count alone.
+
+### 11.3 Exposed variants are reported twice
+
+Nine Pilot 2 kinetics mutants had their canonical outcome observed before the campaign (amendment
+A-01, `docs/PILOT2_LEAKAGE_ASSESSMENT.md`). Every primary result and the branch classification are
+computed **over all admissible primary semantic mutants and over the subset carrying no prior
+exposure**, and both are reported. If the two disagree, the disagreement is the result and no branch
+is claimed.
+
+### 11.4 Attrition is reported in full
+
+Exact denominators at every stage, never a single percentage without its counts: variants attempted,
+generated, structurally valid, executable, numerically stable, admissible, non-equivalent, detected
+by each strategy. The 40 valid-transformation controls and the 15 numerical robustness stress tests
+are reported **in their own tables** and never pooled into the semantic denominator.
+
+### 11.5 Claims that are prohibited regardless of the numbers
+
+- No claim of **universal behavioural equivalence**: absence of a detected difference is evidence
+  about the tested protocols and features, not proof that two models behave identically.
+- No claim of **broad biological validation**: the models here are single-compartment or somatic
+  cells from a handful of papers, and nothing in this study speaks to biological realism.
+- No claim that detection coverage is a property of the method alone: every coverage figure is
+  **conditional on the empirical reference battery**, the frozen tolerance table and the models
+  tested, and is reported with those conditions attached.
+- No confirmatory language for any exploratory campaign, including Pilot 1, Pilot 2, the rehearsal
+  and the agent study.
+- The AI/agent work is **secondary** to the core method and is never the paper's headline claim.
+
+### 11.6 Seeds and tie-breaking
+
+The site-selection seed, the analysis seed, the bootstrap and permutation counts and the
+tie-breaking order are fixed in the frozen configuration and reported verbatim with the results.
+A re-run that changes a seed is a new analysis and is labelled as one.
