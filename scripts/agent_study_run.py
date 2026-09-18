@@ -81,17 +81,19 @@ def prepare(a: argparse.Namespace) -> int:
 def score(a: argparse.Namespace) -> int:
     root = Path(a.trials_root).resolve()
     record = json.loads((root / "TRIALS.json").read_text(encoding="utf-8"))
-    if a.frozen == "development":
-        cfg = ag.FrozenConfig.development(results_root=REPO_ROOT / "results")
-        frozen_sha = ""
-    else:
-        cfg = ag.load_frozen_config(Path(a.frozen))
-        frozen_sha = sha256_file(Path(a.frozen))
-    # The hidden specs are Git-ignored, so a worktree does not carry them. They live in the main checkout.
+    # The hidden specs are Git-ignored, so a worktree does not carry them. They live in the main checkout,
+    # and both the config loader and the scorer must be told where they are, or the loader re-hashes an
+    # empty directory and reports every spec as "changed after freezing".
     hidden_root = Path(a.hidden_root).resolve() if a.hidden_root else ag.HIDDEN_DIR
     if not hidden_root.is_dir():
         print(f"no hidden specs at {hidden_root}; pass --hidden-root <main checkout>/agent_study/hidden")
         return 1
+    if a.frozen == "development":
+        cfg = ag.FrozenConfig.development(results_root=REPO_ROOT / "results")
+        frozen_sha = ""
+    else:
+        cfg = ag.load_frozen_config(Path(a.frozen), hidden_root=hidden_root)
+        frozen_sha = sha256_file(Path(a.frozen))
     rows, scores = [], []
     for t in record["trials"]:
         trial_dir = Path(t["trial_dir"])
