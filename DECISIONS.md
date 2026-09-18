@@ -440,6 +440,13 @@ Neel: "Do not discard pilot data. Preserve all pilot configurations, raw outputs
 - **Nothing is removed.** No variant dropped, no threshold changed, no data deleted. Resumption reuses content-addressed runs.
 - **Blocked separately:** the confirmatory held-out study has **zero eligible untouched models**; criterion C11 (runtime budget) or the Prinz C08 question must be resolved by amendment first, and external preregistration is not submitted.
 
+**D-056 Amendment H-01: criterion C11 runtime budget raised to 4,200 s for the held-out pool** (Neel, 2026-09-18)
+- **Change.** The per-variant simulator-time budget in curation criterion C11 goes from 1,800 s to **4,200 s**.
+- **Derivation, independent of any outcome.** The 1,800 s figure came from a 12-hour window at 12 workers over roughly 200 development variants (X-18). The confirmatory held-out matrix is smaller: about 25 variants on each of 4-6 models, roughly 125 units. A 14-hour window at 12 workers gives 14 x 3600 x 12 / 125 = about 4,838 s per variant; 4,200 s is that figure rounded down with margin.
+- **Disclosed in advance.** Raising the budget admits six previously runtime-excluded models from four untouched sources: `hay2011_soma` (3,465 s), `bbp2015_soma` (3,618 s), `traub2005_testseg2` (3,036 s), `traub2005_testseg_all` (4,115 s), `smith2013_singlecomp` (2,692 s), `migliore2005_ca1_soma` (2,449 s). Which models the change admits is known and stated here; what matters for integrity is that **no mutation outcome has ever been generated for any of them**, and none will be before the split is frozen and preregistered.
+- **Scope.** Applies to the held-out curation (campaign `curation-v4`) and to future development curation. It does **not** re-open Pilot 2, whose matrix stays frozen, and it does not alter any Pilot 1 or Pilot 2 result.
+- **Curation reveals reference behaviour only** (rheobase, firing regime, runtime, convergence) and never a mutation-detection outcome, so screening a held-out candidate does not expose the quantity the study measures.
+
 ## Models and licensing
 
 **D-017 Pilot fixtures: Pospischil 2008 RS and LTS** (provisional)

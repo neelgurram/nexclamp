@@ -200,7 +200,7 @@ def row(result: dict[str, Any], meta: dict[str, str], curated_utc: str, commit: 
     return out
 
 
-def run_curation(campaign: str, sources: Sequence[Path], out_csv: Path, *, budget_s: float = 1800.0,
+def run_curation(campaign: str, sources: Sequence[Path], out_csv: Path, *, budget_s: float = 4200.0,
                  models: Sequence[str] | None = None, workers: int | None = None) -> Path:
     from neuraxis.experiments import campaign as cp
     from neuraxis.experiments import registry

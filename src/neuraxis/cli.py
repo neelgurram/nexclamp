@@ -240,7 +240,9 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--sources", nargs="+", default=["data/model_manifest.csv", "data/model_candidates.csv",
                                                      "data/model_candidates_sweep2.csv"])
     p.add_argument("--out", default="manifests/models.csv")
-    p.add_argument("--budget-s", type=float, default=1800.0)   # X-18: derived from the Pilot 2 compute plan
+    # X-18 set 1800 s from the Pilot 2 compute plan; amendment H-01 (D-056) raises it to 4200 s for the
+    # held-out pool, derived from a 14-hour window at 12 workers over ~125 variants.
+    p.add_argument("--budget-s", type=float, default=4200.0)
     p.add_argument("--workers", type=int)
     _models_arg(p)
     p.set_defaults(fn=cmd_curate)
