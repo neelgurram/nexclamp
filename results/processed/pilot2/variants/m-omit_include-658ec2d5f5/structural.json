@@ -1,0 +1,64 @@
+{
+  "valid": false,
+  "jnml": {
+    "valid": false,
+    "returncode": 1,
+    "messages": [
+      "Test: 10025 (Ion channel in channelDensity should exist) failed! ... Ion channel: Kd in Kd_all not found!",
+      "Validated 6 files: 5 passed, 1 failed"
+    ],
+    "raw_output": " jNeuroML v0.14.0\nValidating: C:\\Users\\gurra\\NeuroSem\\work\\variants\\pilot2\\mutants\\pospischil2008_fs\\m-omit_include-658ec2d5f5\\NeuroML2\\cells\\FS\\FS.cell.nml\nValid against schema\n  Test: 10025 (Ion channel in channelDensity should exist) failed! ... Ion channel: Kd in Kd_all not found!\n1 failure in validation!\nNo warnings\nValidating: C:\\Users\\gurra\\NeuroSem\\work\\variants\\pilot2\\mutants\\pospischil2008_fs\\m-omit_include-658ec2d5f5\\NeuroML2\\channels\\IM\\IM.channel.nml\nValid against schema and all tests\nNo warnings\nValidating: C:\\Users\\gurra\\NeuroSem\\work\\variants\\pilot2\\mutants\\pospischil2008_fs\\m-omit_include-658ec2d5f5\\NeuroML2\\channels\\Leak\\Leak.channel.nml\nValid against schema and all tests\nNo warnings\nValidating: C:\\Users\\gurra\\NeuroSem\\work\\variants\\pilot2\\mutants\\pospischil2008_fs\\m-omit_include-658ec2d5f5\\NeuroML2\\channels\\Na\\Na.channel.nml\nValid against schema and all tests\nNo warnings\nValidating: C:\\Users\\gurra\\NeuroSem\\work\\variants\\pilot2\\mutants\\pospischil2008_fs\\m-omit_include-658ec2d5f5\\NeuroML2\\channels\\Kd\\Kd.channel.nml\nValid against schema and all tests\nNo warnings\nValidating: C:\\Users\\gurra\\NeuroSem\\work\\variants\\pilot2\\mutants\\pospischil2008_fs\\m-omit_include-658ec2d5f5\\NeuroML2\\cells\\FS\\FS.net.nml\nValid against schema and all tests\nNo warnings\n\nValidated 6 files: 5 passed, 1 failed\n\n",
+    "validator": "jNeuroML -validate"
+  },
+  "libneuroml_strict": true,
+  "libneuroml_messages": [],
+  "files": [
+    "NeuroML2/cells/FS/FS.cell.nml",
+    "NeuroML2/channels/IM/IM.channel.nml",
+    "NeuroML2/channels/Leak/Leak.channel.nml",
+    "NeuroML2/channels/Na/Na.channel.nml",
+    "NeuroML2/channels/Kd/Kd.channel.nml",
+    "NeuroML2/cells/FS/FS.net.nml"
+  ],
+  "per_file": {
+    "NeuroML2/cells/FS/FS.cell.nml": {
+      "valid": false,
+      "errors": [
+        "Test: 10025 (Ion channel in channelDensity should exist) failed! ... Ion channel: Kd in Kd_all not found!"
+      ]
+    },
+    "NeuroML2/channels/IM/IM.channel.nml": {
+      "valid": true,
+      "errors": []
+    },
+    "NeuroML2/channels/Leak/Leak.channel.nml": {
+      "valid": true,
+      "errors": []
+    },
+    "NeuroML2/channels/Na/Na.channel.nml": {
+      "valid": true,
+      "errors": []
+    },
+    "NeuroML2/channels/Kd/Kd.channel.nml": {
+      "valid": true,
+      "errors": []
+    },
+    "NeuroML2/cells/FS/FS.net.nml": {
+      "valid": true,
+      "errors": []
+    }
+  },
+  "required_files": [
+    "NeuroML2/cells/FS/FS.cell.nml",
+    "NeuroML2/cells/FS/FS.net.nml"
+  ],
+  "baseline_invalid_files": [
+    "NeuroML2/cells/FS/FS.cell.nml"
+  ],
+  "baseline_errors": [
+    "Test: 10025 (Ion channel in channelDensity should exist) failed! ... Ion channel: Kd in Kd_all not found!"
+  ],
+  "new_errors": [
+    "Test: 10025 (Ion channel in channelDensity should exist) failed! ... Ion channel: Kd in Kd_all not found!"
+  ]
+}

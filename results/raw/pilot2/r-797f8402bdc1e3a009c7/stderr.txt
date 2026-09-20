@@ -1,0 +1,217 @@
+Sep 18, 2026 8:48:00 PM org.lemsml.jlems.io.logging.DefaultLogger msg
+SEVERE:  (ERROR) org.lemsml.jlems.core.run.RuntimeError: Error at PathDerivedVariable eval(): tgt: null; sin: kamt[ionChannelHH]; tgtvar: fcond; path: gates[*]/fcond
+org.lemsml.jlems.core.run.RuntimeError: Error at PathDerivedVariable eval(): tgt: null; sin: kamt[ionChannelHH]; tgtvar: fcond; path: gates[*]/fcond
+	at org.lemsml.jlems.core.run.PathDerivedVariable.eval(PathDerivedVariable.java:128)
+	at org.lemsml.jlems.core.run.StateType.evalDerived(StateType.java:475)
+	at org.lemsml.jlems.core.run.StateType.eulerAdvance(StateType.java:488)
+	at org.lemsml.jlems.core.run.StateInstance.advance(StateInstance.java:288)
+	at org.lemsml.jlems.core.run.StateInstance.advance(StateInstance.java:268)
+	at org.lemsml.jlems.core.run.MultiInstance.advance(MultiInstance.java:70)
+	at org.lemsml.jlems.core.run.StateInstance.advance(StateInstance.java:273)
+	at org.lemsml.jlems.core.run.StateInstance.advance(StateInstance.java:268)
+	at org.lemsml.jlems.core.run.StateInstance.advance(StateInstance.java:268)
+	at org.lemsml.jlems.core.run.StateInstance.advance(StateInstance.java:268)
+	at org.lemsml.jlems.core.run.MultiInstance.advance(MultiInstance.java:70)
+	at org.lemsml.jlems.core.run.StateInstance.advance(StateInstance.java:273)
+	at org.lemsml.jlems.core.run.MultiInstance.advance(MultiInstance.java:70)
+	at org.lemsml.jlems.core.run.StateInstance.advance(StateInstance.java:273)
+	at org.lemsml.jlems.core.sim.Sim.run(Sim.java:288)
+	at org.lemsml.jlems.core.sim.Sim.run(Sim.java:154)
+	at org.lemsml.jlems.core.sim.Sim.run(Sim.java:145)
+	at org.neuroml.export.utils.Utils.loadLemsFile(Utils.java:568)
+	at org.neuroml.export.utils.Utils.runLemsFile(Utils.java:526)
+	at org.neuroml.JNeuroML.main(JNeuroML.java:622)
+Caused by: org.lemsml.jlems.core.run.RuntimeError: 
+Problem while trying to return a value for variable fcond: Infinity
+
+Current StateInstance:
+  +---------------------------------------------------------------------------------------
+  |  StateInstance: h [StateType: gateHHratesTauInf, parent: kamt] 
+  |    Variables: {inf = 1.0, tauUnscaled = 0.0, q = NaN, t = 0.32780499999982554, fcond = Infinity,
+  |                instances = 1.0, alpha = 0.0, tau = 0.0, rateScale = 0.2675805205867436, beta = 0.0}
+  |    Exposures: {inf = 1.0, q = NaN, fcond = Infinity, alpha = 0.0, tau = 0.0,
+  |                rateScale = 0.2675805205867436, beta = 0.0}
+  |    +----------------------------------------------------------------------------------
+  |    |  StateInstance: null [StateType: HHSigmoidVariable, parent: h] 
+  |    |    Variables: {t = 0.32780499999982554, rate = 1.0, v = -83.93301225519096, x = 1.0, midpoint = -0.0417,
+  |    |                scale = -0.006}
+  |    |    Exposures: {x = 1.0}
+  |    +----------------------------------------------------------------------------------
+  |    +----------------------------------------------------------------------------------
+  |    |  StateInstance: null [StateType: HHExpRate, parent: h] 
+  |    |    Variables: {r = 0.0, t = 0.32780499999982554, rate = 1000.0, v = -83.93301225519096, midpoint = -0.07,
+  |    |                scale = 0.005}
+  |    |    Exposures: {r = 0.0}
+  |    +----------------------------------------------------------------------------------
+  |    +----------------------------------------------------------------------------------
+  |    |  StateInstance: null [StateType: HHExpRate, parent: h] 
+  |    |    Variables: {r = 0.0, t = 0.32780499999982554, rate = 1000.0, v = -83.93301225519096, midpoint = -0.07,
+  |    |                scale = 0.00505050505}
+  |    |    Exposures: {r = 0.0}
+  |    +----------------------------------------------------------------------------------
+  |    +----------------------------------------------------------------------------------
+  |    |  StateInstance: null [StateType: kamt_h_tau_tau, parent: h] 
+  |    |    Variables: {VOLT_SCALE = 0.001, t = 0.0, v = -83.93301225519096, V = -83933.01225519096, alpha = 0.0,
+  |    |                ALPHA = 0.0, TIME_SCALE = 0.001, beta = 0.0, BETA = 0.0}
+  |    |    Exposures: {t = 0.0}
+  |    +----------------------------------------------------------------------------------
+  |    | q10Settings[0] +-----------------------------------------------------------------
+  |    | q10Settings[0] |  StateInstance: null [StateType: q10ExpTemp, parent: h] 
+  |    | q10Settings[0] |    Variables: {TENDEGREES = 10.0, q10 = 0.2675805205867436, t = 0.32780499999982554, temperature = 285.15, q10Factor = 3.0,
+  |    | q10Settings[0] |                experimentalTemp = 297.15}
+  |    | q10Settings[0] |    Exposures: {q10 = 0.2675805205867436}
+  |    | q10Settings[0] +-----------------------------------------------------------------
+  |    +---------------------------------------------------------------------------------------
+  +---------------------------------------------------------------------------------------
+
+Current StateInstance's parent:
+  +---------------------------------------------------------------------------------------
+  |  StateInstance: kamt [StateType: ionChannelHH, parent: kamt_ModelViewParmSubset_1] 
+  |    Variables: {fopen = -7.391552530014873E147, t = 0.32780499999982554, conductanceScale = 1.0, v = -7.79734826585865E18, g = -7.391552530014873E136,
+  |                conductance = 1.0E-11, fopen0 = -7.391552530014873E147}
+  |    Exposures: {fopen = -7.391552530014873E147, g = -7.391552530014873E136}
+  |    +----------------------------------------------------------------------------------
+  |    |  StateInstance: null [StateType: annotation, parent: kamt] 
+  |    |    Variables: {t = 0.32780499999982554}
+  |    |    Exposures: {}
+  |    |    +-----------------------------------------------------------------------------
+  |    |    |  StateInstance: null [StateType: rdf_RDF, parent: null] 
+  |    |    |    Variables: {t = 0.32780499999982554}
+  |    |    |    Exposures: {}
+  |    |    |    +------------------------------------------------------------------------
+  |    |    |    |  StateInstance: null [StateType: rdf_Description, parent: null] 
+  |    |    |    |    Variables: {t = 0.32780499999982554}
+  |    |    |    |    Exposures: {}
+  |    |    |    |    +-------------------------------------------------------------------
+  |    |    |    |    |  StateInstance: null [StateType: bqbiol_isVersionOf, parent: null] 
+  |    |    |    |    |    Variables: {t = 0.32780499999982554}
+  |    |    |    |    |    Exposures: {}
+  |    |    |    |    |    +--------------------------------------------------------------
+  |    |    |    |    |    |  StateInstance: null [StateType: rdf_Bag, parent: null] 
+  |    |    |    |    |    |    Variables: {t = 0.32780499999982554}
+  |    |    |    |    |    |    Exposures: {}
+  |    |    |    |    |    |    +---------------------------------------------------------
+  |    |    |    |    |    |    |  StateInstance: null [StateType: rdf_li, parent: null] 
+  |    |    |    |    |    |    |    Variables: {t = 0.32780499999982554}
+  |    |    |    |    |    |    |    Exposures: {}
+  |    |    |    |    |    |    +---------------------------------------------------------
+  |    |    |    |    |    +--------------------------------------------------------------
+  |    |    |    |    +-------------------------------------------------------------------
+  |    |    |    |    +-------------------------------------------------------------------
+  |    |    |    |    |  StateInstance: null [StateType: bqmodel_isDescribedBy, parent: null] 
+  |    |    |    |    |    Variables: {t = 0.32780499999982554}
+  |    |    |    |    |    Exposures: {}
+  |    |    |    |    |    +--------------------------------------------------------------
+  |    |    |    |    |    |  StateInstance: null [StateType: rdf_Bag, parent: null] 
+  |    |    |    |    |    |    Variables: {t = 0.32780499999982554}
+  |    |    |    |    |    |    Exposures: {}
+  |    |    |    |    |    |    +---------------------------------------------------------
+  |    |    |    |    |    |    |  StateInstance: null [StateType: rdf_li, parent: null] 
+  |    |    |    |    |    |    |    Variables: {t = 0.32780499999982554}
+  |    |    |    |    |    |    |    Exposures: {}
+  |    |    |    |    |    |    +---------------------------------------------------------
+  |    |    |    |    |    +--------------------------------------------------------------
+  |    |    |    |    +-------------------------------------------------------------------
+  |    |    |    +------------------------------------------------------------------------
+  |    |    +-----------------------------------------------------------------------------
+  |    +----------------------------------------------------------------------------------
+  |    +----------------------------------------------------------------------------------
+  |    |  StateInstance: null [StateType: notes, parent: kamt] 
+  |    |    Variables: {t = 0.32780499999982554}
+  |    |    Exposures: {}
+  |    +----------------------------------------------------------------------------------
+  |    +----------------------------------------------------------------------------------
+  |    |  StateInstance: h [StateType: gateHHratesTauInf, parent: kamt] 
+  |    |    Variables: {inf = 1.0, tauUnscaled = 0.0, q = NaN, t = 0.32780499999982554, fcond = Infinity,
+  |    |                instances = 1.0, alpha = 0.0, tau = 0.0, rateScale = 0.2675805205867436, beta = 0.0}
+  |    |    Exposures: {inf = 1.0, q = NaN, fcond = Infinity, alpha = 0.0, tau = 0.0,
+  |    |                rateScale = 0.2675805205867436, beta = 0.0}
+  |    |    +-----------------------------------------------------------------------------
+  |    |    |  StateInstance: null [StateType: HHSigmoidVariable, parent: h] 
+  |    |    |    Variables: {t = 0.32780499999982554, rate = 1.0, v = -83.93301225519096, x = 1.0, midpoint = -0.0417,
+  |    |    |                scale = -0.006}
+  |    |    |    Exposures: {x = 1.0}
+  |    |    +-----------------------------------------------------------------------------
+  |    |    +-----------------------------------------------------------------------------
+  |    |    |  StateInstance: null [StateType: HHExpRate, parent: h] 
+  |    |    |    Variables: {r = 0.0, t = 0.32780499999982554, rate = 1000.0, v = -83.93301225519096, midpoint = -0.07,
+  |    |    |                scale = 0.005}
+  |    |    |    Exposures: {r = 0.0}
+  |    |    +-----------------------------------------------------------------------------
+  |    |    +-----------------------------------------------------------------------------
+  |    |    |  StateInstance: null [StateType: HHExpRate, parent: h] 
+  |    |    |    Variables: {r = 0.0, t = 0.32780499999982554, rate = 1000.0, v = -83.93301225519096, midpoint = -0.07,
+  |    |    |                scale = 0.00505050505}
+  |    |    |    Exposures: {r = 0.0}
+  |    |    +-----------------------------------------------------------------------------
+  |    |    +-----------------------------------------------------------------------------
+  |    |    |  StateInstance: null [StateType: kamt_h_tau_tau, parent: h] 
+  |    |    |    Variables: {VOLT_SCALE = 0.001, t = 0.0, v = -83.93301225519096, V = -83933.01225519096, alpha = 0.0,
+  |    |    |                ALPHA = 0.0, TIME_SCALE = 0.001, beta = 0.0, BETA = 0.0}
+  |    |    |    Exposures: {t = 0.0}
+  |    |    +-----------------------------------------------------------------------------
+  |    |    | q10Settings[0] +------------------------------------------------------------
+  |    |    | q10Settings[0] |  StateInstance: null [StateType: q10ExpTemp, parent: h] 
+  |    |    | q10Settings[0] |    Variables: {TENDEGREES = 10.0, q10 = 0.2675805205867436, t = 0.32780499999982554, temperature = 285.15, q10Factor = 3.0,
+  |    |    | q10Settings[0] |                experimentalTemp = 297.15}
+  |    |    | q10Settings[0] |    Exposures: {q10 = 0.2675805205867436}
+  |    |    | q10Settings[0] +------------------------------------------------------------
+  |    |    +----------------------------------------------------------------------------------
+  |    +----------------------------------------------------------------------------------
+  |    +----------------------------------------------------------------------------------
+  |    |  StateInstance: m [StateType: gateHHratesTauInf, parent: kamt] 
+  |    |    Variables: {inf = 0.0, tauUnscaled = 0.0, q = Infinity, t = 0.32780499999982554, fcond = -9.554748200841652E251,
+  |    |                instances = 1.0, alpha = 0.0, tau = 0.0, rateScale = 0.2675805205867436, beta = 0.0}
+  |    |    Exposures: {inf = 0.0, q = Infinity, fcond = -9.554748200841652E251, alpha = 0.0, tau = 0.0,
+  |    |                rateScale = 0.2675805205867436, beta = 0.0}
+  |    |    +-----------------------------------------------------------------------------
+  |    |    |  StateInstance: null [StateType: HHSigmoidVariable, parent: m] 
+  |    |    |    Variables: {t = 0.32780499999982554, rate = 1.0, v = -83.93301225519096, x = 0.0, midpoint = 0.0175,
+  |    |    |                scale = 0.014}
+  |    |    |    Exposures: {x = 0.0}
+  |    |    +-----------------------------------------------------------------------------
+  |    |    +-----------------------------------------------------------------------------
+  |    |    |  StateInstance: null [StateType: HHExpRate, parent: m] 
+  |    |    |    Variables: {r = 0.0, t = 0.32780499999982554, rate = 1000.0, v = -83.93301225519096, midpoint = -0.045,
+  |    |    |                scale = 0.01}
+  |    |    |    Exposures: {r = 0.0}
+  |    |    +-----------------------------------------------------------------------------
+  |    |    +-----------------------------------------------------------------------------
+  |    |    |  StateInstance: null [StateType: HHExpRate, parent: m] 
+  |    |    |    Variables: {r = 0.0, t = 0.32780499999982554, rate = 1000.0, v = -83.93301225519096, midpoint = -0.045,
+  |    |    |                scale = 0.01333333333}
+  |    |    |    Exposures: {r = 0.0}
+  |    |    +-----------------------------------------------------------------------------
+  |    |    +-----------------------------------------------------------------------------
+  |    |    |  StateInstance: null [StateType: kamt_m_tau_tau, parent: m] 
+  |    |    |    Variables: {VOLT_SCALE = 0.001, t = 0.0, v = -83.93301225519096, V = -83933.01225519096, alpha = 0.0,
+  |    |    |                ALPHA = 0.0, TIME_SCALE = 0.001, beta = 0.0, BETA = 0.0}
+  |    |    |    Exposures: {t = 0.0}
+  |    |    +-----------------------------------------------------------------------------
+  |    |    | q10Settings[0] +------------------------------------------------------------
+  |    |    | q10Settings[0] |  StateInstance: null [StateType: q10ExpTemp, parent: m] 
+  |    |    | q10Settings[0] |    Variables: {TENDEGREES = 10.0, q10 = 0.2675805205867436, t = 0.32780499999982554, temperature = 285.15, q10Factor = 3.0,
+  |    |    | q10Settings[0] |                experimentalTemp = 297.15}
+  |    |    | q10Settings[0] |    Exposures: {q10 = 0.2675805205867436}
+  |    |    | q10Settings[0] +------------------------------------------------------------
+  |    |    +----------------------------------------------------------------------------------
+  |    +----------------------------------------------------------------------------------
+  |    +---------------------------------------------------------------------------------------
+  +---------------------------------------------------------------------------------------
+	at org.lemsml.jlems.core.run.StateInstance.checkReturn(StateInstance.java:602)
+	at org.lemsml.jlems.core.run.StateInstance.getVariable(StateInstance.java:573)
+	at org.lemsml.jlems.core.run.PathDerivedVariable.eval(PathDerivedVariable.java:119)
+	... 19 more
+Sep 18, 2026 8:48:00 PM org.lemsml.jlems.io.logging.DefaultLogger msg
+SEVERE:  (ERROR) 
+
+ *******************************************************************************
+ *
+ *    Error occurred when running jLEMS!
+ *    
+ *    Note: LEMS model description was successfully parsed, and simulation started (t = 0.327805 sec)
+ *    This error *MAY* be caused by too large a time step (dt = 5.0E-6 sec currently)
+ *    Try reducing the 'step' attribute in the <Simulation> element
+ *
+ *******************************************************************************
+

@@ -1,0 +1,68 @@
+{
+  "valid": false,
+  "jnml": {
+    "valid": false,
+    "returncode": 1,
+    "messages": [
+      "Test: 10025 (Ion channel in channelDensity should exist) failed! ... Ion channel: IM in IM_all not found!",
+      "Test: 10025 (Ion channel in channelDensity should exist) failed! ... Ion channel: IM in IM_all not found!",
+      "Validated 6 files: 4 passed, 2 failed"
+    ],
+    "raw_output": " jNeuroML v0.14.0\nValidating: C:\\Users\\gurra\\NeuroSem\\work\\variants\\pilot2\\mutants\\osb_hh2_477127614\\m-omit_include-90b7ac2f0a\\cells\\HH2\\HH2_477127614.cell.nml\nValid against schema\n  Test: 10025 (Ion channel in channelDensity should exist) failed! ... Ion channel: IM in IM_all not found!\n1 failure in validation!\nNo warnings\nValidating: C:\\Users\\gurra\\NeuroSem\\work\\variants\\pilot2\\mutants\\osb_hh2_477127614\\m-omit_include-90b7ac2f0a\\cells\\HH2\\IL.channel.nml\nValid against schema and all tests\nNo warnings\nValidating: C:\\Users\\gurra\\NeuroSem\\work\\variants\\pilot2\\mutants\\osb_hh2_477127614\\m-omit_include-90b7ac2f0a\\cells\\HH2\\Kd.channel.nml\nValid against schema and all tests\nNo warnings\nValidating: C:\\Users\\gurra\\NeuroSem\\work\\variants\\pilot2\\mutants\\osb_hh2_477127614\\m-omit_include-90b7ac2f0a\\cells\\HH2\\Leak.channel.nml\nValid against schema and all tests\nNo warnings\nValidating: C:\\Users\\gurra\\NeuroSem\\work\\variants\\pilot2\\mutants\\osb_hh2_477127614\\m-omit_include-90b7ac2f0a\\cells\\HH2\\Na.channel.nml\nValid against schema and all tests\nNo warnings\nValidating: C:\\Users\\gurra\\NeuroSem\\work\\variants\\pilot2\\mutants\\osb_hh2_477127614\\m-omit_include-90b7ac2f0a\\cells\\HH2\\network_477127614_HH2.net.nml\nValid against schema\n  Test: 10025 (Ion channel in channelDensity should exist) failed! ... Ion channel: IM in IM_all not found!\n1 failure in validation!\nNo warnings\n\nValidated 6 files: 4 passed, 2 failed\n\n",
+    "validator": "jNeuroML -validate"
+  },
+  "libneuroml_strict": true,
+  "libneuroml_messages": [],
+  "files": [
+    "cells/HH2/HH2_477127614.cell.nml",
+    "cells/HH2/IL.channel.nml",
+    "cells/HH2/Kd.channel.nml",
+    "cells/HH2/Leak.channel.nml",
+    "cells/HH2/Na.channel.nml",
+    "cells/HH2/network_477127614_HH2.net.nml"
+  ],
+  "per_file": {
+    "cells/HH2/HH2_477127614.cell.nml": {
+      "valid": false,
+      "errors": [
+        "Test: 10025 (Ion channel in channelDensity should exist) failed! ... Ion channel: IM in IM_all not found!"
+      ]
+    },
+    "cells/HH2/IL.channel.nml": {
+      "valid": true,
+      "errors": []
+    },
+    "cells/HH2/Kd.channel.nml": {
+      "valid": true,
+      "errors": []
+    },
+    "cells/HH2/Leak.channel.nml": {
+      "valid": true,
+      "errors": []
+    },
+    "cells/HH2/Na.channel.nml": {
+      "valid": true,
+      "errors": []
+    },
+    "cells/HH2/network_477127614_HH2.net.nml": {
+      "valid": false,
+      "errors": [
+        "Test: 10025 (Ion channel in channelDensity should exist) failed! ... Ion channel: IM in IM_all not found!"
+      ]
+    }
+  },
+  "required_files": [
+    "cells/HH2/HH2_477127614.cell.nml",
+    "cells/HH2/network_477127614_HH2.net.nml"
+  ],
+  "baseline_invalid_files": [
+    "cells/HH2/HH2_477127614.cell.nml",
+    "cells/HH2/network_477127614_HH2.net.nml"
+  ],
+  "baseline_errors": [
+    "Test: 10025 (Ion channel in channelDensity should exist) failed! ... Ion channel: IM in IM_all not found!"
+  ],
+  "new_errors": [
+    "Test: 10025 (Ion channel in channelDensity should exist) failed! ... Ion channel: IM in IM_all not found!"
+  ]
+}

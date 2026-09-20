@@ -1,0 +1,57 @@
+# m-shift_gate_midpoint-cdbd253d57
+
+*study_id: neuron_model_behavioral_validation | project_name: Neuraxis | study_phase: development_pilot | protocol_version: PILOT2_PROTOCOL | designation: Exploratory development data; second development iteration informed by Pilot 1; not independent confirmation; never pooled with the confirmatory held-out estimate*
+
+- model: `nml2_hh_example`
+- stratum: primary_semantic
+- kind/family/operator: mutant / kinetics / shift_gate_midpoint
+- parameters: `{"changes": [{"attribute": "midpoint", "locator": "/neuroml[@id='NML2_SingleCompHHCell']/ionChannelHH[@id='naChan']/gateHHrates[@id='m']/forwardRate[1]", "new": "-35mV", "old": "-40mV"}, {"attribute": "midpoint", "locator": "/neuroml[@id='NML2_SingleCompHHCell']/ionChannelHH[@id='naChan']/gateHHrates[@id='m']/reverseRate[1]", "new": "-60mV", "old": "-65mV"}], "channel": "naChan", "delta_mV": 5.0, "gate": "m", "generator_seed": 20260917, "mechanism": "rates"}`
+- recorded edits: `[{"file": "examples/NML2_SingleCompHHCell.nml", "locator": "/neuroml[@id='NML2_SingleCompHHCell']/ionChannelHH[@id='naChan']/gateHHrates[@id='m']/forwardRate[1]", "attribute": "midpoint", "old": "-40mV", "new": "-35mV", "action": "set", "note": "shift_gate_midpoint"}, {"file": "examples/NML2_SingleCompHHCell.nml", "locator": "/neuroml[@id='NML2_SingleCompHHCell']/ionChannelHH[@id='naChan']/gateHHrates[@id='m']/reverseRate[1]", "attribute": "midpoint", "old": "-65mV", "new": "-60mV", "action": "set", "note": "shift_gate_midpoint"}]`
+- execution overrides: `{}`
+- class: **5_non_equivalent**
+- nominal-level status: ok; runtime 599.695 s
+
+| level | protocol | feature | reason | reference | variant | |diff| | tau | reference run | variant run |
+|---|---|---|---|---|---|---|---|---|---|
+| h/1 | P00_canonical | adaptation_index | definedness | -7.74713208133793e-05 | None |  | 0.01 | `r-5f0a94c66ff17cd98a0a` | `r-b88f32fc4385160d3f1f` |
+| h/1 | P00_canonical | ahp_depth | definedness | -10.343139648437372 | None |  | 0.517157 | `r-5f0a94c66ff17cd98a0a` | `r-b88f32fc4385160d3f1f` |
+| h/1 | P00_canonical | ap_amplitude | definedness | 95.13947677592056 | None |  | 1.90279 | `r-5f0a94c66ff17cd98a0a` | `r-b88f32fc4385160d3f1f` |
+| h/1 | P00_canonical | first_spike_latency | definedness | 2.5200000000155427 | None |  | 0.5 | `r-5f0a94c66ff17cd98a0a` | `r-b88f32fc4385160d3f1f` |
+| h/1 | P00_canonical | last_isi | definedness | 16.12999999998533 | None |  | 0.5 | `r-5f0a94c66ff17cd98a0a` | `r-b88f32fc4385160d3f1f` |
+| h/1 | P00_canonical | spike_count | exceeds | 7.0 | 0.0 | 7 | 0.5 | `r-5f0a94c66ff17cd98a0a` | `r-b88f32fc4385160d3f1f` |
+| h/1 | P02_weak_step | steady_state_voltage | exceeds | -64.08310811767565 | -64.9108287597655 | 0.827721 | 0.5 | `r-66b1007575e04915ac55` | `r-33e48155ce0adc773e25` |
+| h/1 | P03_rheobase | rheobase | exceeds | 0.022436992008742575 | 0.09825148555426541 | 0.0758145 | 0.00044874 | `s-6485b8f0d5e0c45b0b4d` | `s-00a354bc32385158ed74` |
+| h/1 | P04_step_2x | ahp_depth | definedness | -10.697937011716306 | None |  | 0.534897 | `r-66b1007575e04915ac55` | `r-33e48155ce0adc773e25` |
+| h/1 | P04_step_2x | ap_amplitude | definedness | 92.72434234740876 | None |  | 1.85449 | `r-66b1007575e04915ac55` | `r-33e48155ce0adc773e25` |
+| h/1 | P04_step_2x | first_spike_latency | definedness | 3.5399999998689395 | None |  | 0.5 | `r-66b1007575e04915ac55` | `r-33e48155ce0adc773e25` |
+| h/1 | P04_step_2x | spike_count | exceeds | 1.0 | 0.0 | 1 | 0.5 | `r-66b1007575e04915ac55` | `r-33e48155ce0adc773e25` |
+| h/1 | P05_long_step | ahp_depth | definedness | -10.81385040282855 | None |  | 0.540693 | `r-940eedfaa66e3fa96c16` | `r-3a2fb11210dc29d262af` |
+| h/1 | P05_long_step | ap_amplitude | definedness | 91.2126808181487 | None |  | 1.82425 | `r-940eedfaa66e3fa96c16` | `r-3a2fb11210dc29d262af` |
+| h/1 | P05_long_step | first_spike_latency | definedness | 4.42999999986813 | None |  | 0.5 | `r-940eedfaa66e3fa96c16` | `r-3a2fb11210dc29d262af` |
+| h/1 | P05_long_step | spike_count | exceeds | 1.0 | 0.0 | 1 | 0.5 | `r-940eedfaa66e3fa96c16` | `r-3a2fb11210dc29d262af` |
+| h/1 | P07_hyperpolarizing_step | steady_state_voltage | exceeds | -67.26261677551295 | -67.83067097320583 | 0.568054 | 0.5 | `r-66b1007575e04915ac55` | `r-33e48155ce0adc773e25` |
+| h/1 | P08_rebound | first_spike_latency | definedness | 5.219999999412721 | None |  | 0.5 | `r-011ab0e03522b12f620c` | `r-163bfd1de02a49c82537` |
+| h/1 | P08_rebound | spike_count | exceeds | 1.0 | 0.0 | 1 | 0.5 | `r-011ab0e03522b12f620c` | `r-163bfd1de02a49c82537` |
+| h/1 | P09_short_pulse | ahp_depth | exceeds | -11.226577758789873 | -10.489730834960938 | 0.736847 | 0.561329 | `r-efc8f2fd727ba1854c5f` | `r-4e90f5ec7db0057c8d05` |
+| h/2 | P00_canonical | adaptation_index | definedness | -1.02201355559918e-13 | None |  | 0.01 | `r-d4235ef154cdc2eeb44c` | `r-e168859f56e00a0f8230` |
+| h/2 | P00_canonical | ahp_depth | definedness | -10.327699567887592 | None |  | 0.517157 | `r-d4235ef154cdc2eeb44c` | `r-e168859f56e00a0f8230` |
+| h/2 | P00_canonical | ap_amplitude | definedness | 95.29706954941832 | None |  | 1.90279 | `r-d4235ef154cdc2eeb44c` | `r-e168859f56e00a0f8230` |
+| h/2 | P00_canonical | first_spike_latency | definedness | 2.460000000015512 | None |  | 0.5 | `r-d4235ef154cdc2eeb44c` | `r-e168859f56e00a0f8230` |
+| h/2 | P00_canonical | last_isi | definedness | 16.059999999985394 | None |  | 0.5 | `r-d4235ef154cdc2eeb44c` | `r-e168859f56e00a0f8230` |
+| h/2 | P00_canonical | spike_count | exceeds | 7.0 | 0.0 | 7 | 0.5 | `r-d4235ef154cdc2eeb44c` | `r-e168859f56e00a0f8230` |
+| h/2 | P02_weak_step | steady_state_voltage | exceeds | -64.08310755462634 | -64.91082819976793 | 0.827721 | 0.5 | `r-8d6f46142acd4ec898a7` | `r-1d49306c2b2cc327d0e4` |
+| h/2 | P03_rheobase | rheobase | exceeds | 0.02240284133597432 | 0.09821733488149717 | 0.0758145 | 0.00044874 | `s-b96e12fd1e882cb18a94` | `s-a59c0b05d9a83d4808fc` |
+| h/2 | P04_step_2x | ahp_depth | definedness | -10.691650390625 | None |  | 0.534897 | `r-8d6f46142acd4ec898a7` | `r-1d49306c2b2cc327d0e4` |
+| h/2 | P04_step_2x | ap_amplitude | definedness | 92.82558822777118 | None |  | 1.85449 | `r-8d6f46142acd4ec898a7` | `r-1d49306c2b2cc327d0e4` |
+| h/2 | P04_step_2x | first_spike_latency | definedness | 3.509999999868967 | None |  | 0.5 | `r-8d6f46142acd4ec898a7` | `r-1d49306c2b2cc327d0e4` |
+| h/2 | P04_step_2x | spike_count | exceeds | 1.0 | 0.0 | 1 | 0.5 | `r-8d6f46142acd4ec898a7` | `r-1d49306c2b2cc327d0e4` |
+| h/2 | P05_long_step | ahp_depth | definedness | -10.808036804201677 | None |  | 0.540693 | `r-a455ac42295a97429d02` | `r-95c21e72f55a1b9aa8dd` |
+| h/2 | P05_long_step | ap_amplitude | definedness | 91.37988662862392 | None |  | 1.82425 | `r-a455ac42295a97429d02` | `r-95c21e72f55a1b9aa8dd` |
+| h/2 | P05_long_step | first_spike_latency | definedness | 4.3899999998681665 | None |  | 0.5 | `r-a455ac42295a97429d02` | `r-95c21e72f55a1b9aa8dd` |
+| h/2 | P05_long_step | spike_count | exceeds | 1.0 | 0.0 | 1 | 0.5 | `r-a455ac42295a97429d02` | `r-95c21e72f55a1b9aa8dd` |
+| h/2 | P07_hyperpolarizing_step | steady_state_voltage | exceeds | -67.26261789703395 | -67.8306720962527 | 0.568054 | 0.5 | `r-8d6f46142acd4ec898a7` | `r-1d49306c2b2cc327d0e4` |
+| h/2 | P08_rebound | first_spike_latency | definedness | 5.189999999412748 | None |  | 0.5 | `r-a628bd90e08153ec217d` | `r-3b2cdb340661baeffc44` |
+| h/2 | P08_rebound | spike_count | exceeds | 1.0 | 0.0 | 1 | 0.5 | `r-a628bd90e08153ec217d` | `r-3b2cdb340661baeffc44` |
+| h/2 | P09_short_pulse | ahp_depth | exceeds | -11.22248840332071 | -10.484748840331221 | 0.73774 | 0.561329 | `r-2c9f7eaf5c4d0d4f33d4` | `r-654fb5502bd040cf4986` |
+
+Evidence traces: `results/raw/<campaign>/<run_id>/traces.npz` for the run ids above; features in the matching `features.json`. A detection counts toward non-equivalence only if the same protocol and feature are detected at h/1 and h/2.

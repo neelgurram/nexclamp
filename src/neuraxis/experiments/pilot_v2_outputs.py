@@ -223,6 +223,24 @@ def uncertain_cases(c: po.CampaignView, trace_rep: Mapping[str, set], checks: Ma
     return rows
 
 
+def canonical_trace_available(processed: Path) -> dict[str, bool]:
+    """Per model: was canonical full-trace regression (level C) actually evaluable?
+
+    A model whose reference spike count changes between h and h/2 has its canonical trace tolerance
+    excluded during calibration, so level C can never fire for it. Without this check a mutant on
+    such a model satisfies "not detected by canonical trace" for free and is promoted to a
+    full-trace survivor although the test never ran. An unevaluable check is not a passed check.
+    """
+    out: dict[str, bool] = {}
+    for f in sorted((Path(processed) / "references").glob("*/trace_tolerances.json")):
+        try:
+            tol = json.loads(f.read_text(encoding="utf-8"))
+        except (OSError, ValueError):
+            continue
+        out[f.parent.name] = (tol.get(po.CANONICAL_ID, {}) or {}).get("status") == "ok"
+    return out
+
+
 def classify_branch(c: po.CampaignView, processed: Path, rules: Mapping[str, Any] = BRANCH_RULES) -> dict:
     sem = [r for r in c.cls if c.stratum(r) == strata.SEMANTIC and r["kind"] == "mutant"]
     ctl = [r for r in c.cls if c.stratum(r) == strata.CONTROL]
@@ -231,8 +249,12 @@ def classify_branch(c: po.CampaignView, processed: Path, rules: Mapping[str, Any
     broken_controls = [r for r in ctl if not _flag(r, "A_basic_pass")]
     feat_surv = [r for r in sem if _flag(r, "feature_level_canonical_survivor")]
     unconfirmed = [r for r in feat_surv if not po.truthy(r.get("survivor_confirmed_h4"))]
-    full_conf = [r for r in sem if _flag(r, "full_trace_canonical_survivor")
-                 and po.truthy(r.get("full_trace_survivor_confirmed_h4"))]
+    # A full-trace survivor only counts where level C could actually run on that model.
+    trace_ok = canonical_trace_available(processed)
+    full_all = [r for r in sem if _flag(r, "full_trace_canonical_survivor")
+                and po.truthy(r.get("full_trace_survivor_confirmed_h4"))]
+    full_conf = [r for r in full_all if trace_ok.get(r["model_id"], True)]
+    unclassifiable = [r for r in full_all if not trace_ok.get(r["model_id"], True)]
     feat_insuff = [r for r in feat_surv if _flag(r, "C_canonical_trace") and po.truthy(r.get("survivor_confirmed_h4"))]
     tol = po.read_csv(processed / "tolerances.csv")
     excluded = [t for t in tol if t.get("limiting") in ("excluded_definedness", "excluded_regime")]
@@ -243,6 +265,9 @@ def classify_branch(c: po.CampaignView, processed: Path, rules: Mapping[str, Any
           "feature_level_survivors": len(feat_surv), "feature_survivors_unconfirmed_h4": len(unconfirmed),
           "confirmed_full_trace_survivors": len(full_conf),
           "confirmed_full_trace_survivor_models": sorted({r["model_id"] for r in full_conf}),
+          "full_trace_survivors_unclassifiable": len(unclassifiable),
+          "unclassifiable_models": sorted({r["model_id"] for r in unclassifiable}),
+          "models_without_canonical_trace": sorted(m for m, ok in trace_ok.items() if not ok),
           "feature_survivors_detected_by_canonical_trace": len(feat_insuff),
           "refinement_excluded_fraction": len(excluded) / len(tol) if tol else None,
           "canonical_B_or_C_detection_rate": canon / len(adm) if adm else None}

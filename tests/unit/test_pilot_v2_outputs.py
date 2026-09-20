@@ -130,3 +130,30 @@ def test_uncertain_cases_are_listed_rather_than_forced_into_a_class(tmp_path):
     assert "not confirmed at h/4" in out["unconfirmed"]
     assert "not analysable" in out["broken"]
     assert "false positive" in out["fp"]
+
+
+def test_an_unevaluable_canonical_trace_is_never_counted_as_a_survivor(tmp_path):
+    """X-26: a model whose canonical trace tolerance was excluded cannot produce a full-trace survivor.
+
+    Level C can never fire for such a model, so 'not detected by canonical trace' is satisfied for
+    free. Those cases are unclassifiable, not evidence of hidden drift.
+    """
+    rows = [_row("s1", "m_ok", *SEM, d=True, e=True, conf="True", tconf="True"),
+            _row("s2", "m_noC", *SEM, d=True, e=True, conf="True", tconf="True"),
+            _row("s3", "m_noC", *SEM, d=True, e=True, conf="True", tconf="True"),
+            _row("t1", "m_ok", *CTL)]
+    p = _campaign(tmp_path, rows)
+    for model, status in (("m_ok", "ok"), ("m_noC", "excluded_spike_count_changes_under_refinement")):
+        d = p / "references" / model
+        d.mkdir(parents=True, exist_ok=True)
+        (d / "trace_tolerances.json").write_text(json.dumps({"P00_canonical": {"status": status}}), encoding="utf-8")
+
+    assert p2.canonical_trace_available(p) == {"m_ok": True, "m_noC": False}
+    br = p2.classify_branch(po.CampaignView(p, [], []), p)
+    ev = br["evidence"]
+    assert ev["confirmed_full_trace_survivors"] == 1          # only the model where level C could run
+    assert ev["confirmed_full_trace_survivor_models"] == ["m_ok"]
+    assert ev["full_trace_survivors_unclassifiable"] == 2
+    assert ev["unclassifiable_models"] == ["m_noC"]
+    # Two survivors on one model must not reach branch A, which needs two models.
+    assert br["flags"]["A_hidden_drift_supported"] is False

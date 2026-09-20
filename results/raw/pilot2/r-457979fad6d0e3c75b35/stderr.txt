@@ -1,0 +1,139 @@
+Sep 18, 2026 10:08:49 PM org.lemsml.jlems.io.logging.DefaultLogger msg
+SEVERE:  (ERROR) org.lemsml.jlems.core.run.RuntimeError: Error at PathDerivedVariable eval(): tgt: null; sin: IM[ionChannelHH]; tgtvar: fcond; path: gates[*]/fcond
+org.lemsml.jlems.core.run.RuntimeError: Error at PathDerivedVariable eval(): tgt: null; sin: IM[ionChannelHH]; tgtvar: fcond; path: gates[*]/fcond
+	at org.lemsml.jlems.core.run.PathDerivedVariable.eval(PathDerivedVariable.java:128)
+	at org.lemsml.jlems.core.run.StateType.evalDerived(StateType.java:475)
+	at org.lemsml.jlems.core.run.StateType.eulerAdvance(StateType.java:488)
+	at org.lemsml.jlems.core.run.StateInstance.advance(StateInstance.java:288)
+	at org.lemsml.jlems.core.run.StateInstance.advance(StateInstance.java:268)
+	at org.lemsml.jlems.core.run.MultiInstance.advance(MultiInstance.java:70)
+	at org.lemsml.jlems.core.run.StateInstance.advance(StateInstance.java:273)
+	at org.lemsml.jlems.core.run.StateInstance.advance(StateInstance.java:268)
+	at org.lemsml.jlems.core.run.StateInstance.advance(StateInstance.java:268)
+	at org.lemsml.jlems.core.run.StateInstance.advance(StateInstance.java:268)
+	at org.lemsml.jlems.core.run.MultiInstance.advance(MultiInstance.java:70)
+	at org.lemsml.jlems.core.run.StateInstance.advance(StateInstance.java:273)
+	at org.lemsml.jlems.core.run.MultiInstance.advance(MultiInstance.java:70)
+	at org.lemsml.jlems.core.run.StateInstance.advance(StateInstance.java:273)
+	at org.lemsml.jlems.core.sim.Sim.run(Sim.java:288)
+	at org.lemsml.jlems.core.sim.Sim.run(Sim.java:154)
+	at org.lemsml.jlems.core.sim.Sim.run(Sim.java:145)
+	at org.neuroml.export.utils.Utils.loadLemsFile(Utils.java:568)
+	at org.neuroml.export.utils.Utils.runLemsFile(Utils.java:526)
+	at org.neuroml.JNeuroML.main(JNeuroML.java:622)
+Caused by: org.lemsml.jlems.core.run.RuntimeError: 
+Problem while trying to return a value for variable fcond: -Infinity
+
+Current StateInstance:
+  +---------------------------------------------------------------------------------------
+  |  StateInstance: p [StateType: gateHHtauInf, parent: IM] 
+  |    Variables: {inf = 1.0, tauUnscaled = 0.0, q = NaN, t = 0.3260999999999804, fcond = -Infinity,
+  |                instances = 1.0, tau = 0.0, rateScale = 1.0}
+  |    Exposures: {inf = 1.0, q = NaN, fcond = -Infinity, tau = 0.0, rateScale = 1.0}
+  |    +----------------------------------------------------------------------------------
+  |    |  StateInstance: null [StateType: IM_p_inf_inf, parent: p] 
+  |    |    Variables: {VOLT_SCALE = 0.001, t = 0.3260999999999804, v = 35.95700431097269, V = 35957.00431097269, x = 1.0,
+  |    |                TIME_SCALE = 0.001}
+  |    |    Exposures: {x = 1.0}
+  |    +----------------------------------------------------------------------------------
+  |    +----------------------------------------------------------------------------------
+  |    |  StateInstance: null [StateType: IM_p_tau_tau, parent: p] 
+  |    |    Variables: {VOLT_SCALE = 0.001, t = 0.0, v = 35.95700431097269, tmax = 1000.0, V = 35957.00431097269,
+  |    |                TIME_SCALE = 0.001}
+  |    |    Exposures: {t = 0.0}
+  |    +----------------------------------------------------------------------------------
+  +---------------------------------------------------------------------------------------
+
+Current StateInstance's parent:
+  +---------------------------------------------------------------------------------------
+  |  StateInstance: IM [StateType: ionChannelHH, parent: IM_all] 
+  |    Variables: {fopen = 2.2770945048928645E237, t = 0.3260999999999804, conductanceScale = 1.0, v = 13793.297526350094, g = 2.2770945048928644E226,
+  |                conductance = 1.0E-11, fopen0 = 2.2770945048928645E237}
+  |    Exposures: {fopen = 2.2770945048928645E237, g = 2.2770945048928644E226}
+  |    +----------------------------------------------------------------------------------
+  |    |  StateInstance: null [StateType: annotation, parent: IM] 
+  |    |    Variables: {t = 0.3260999999999804}
+  |    |    Exposures: {}
+  |    |    +-----------------------------------------------------------------------------
+  |    |    |  StateInstance: null [StateType: rdf_RDF, parent: null] 
+  |    |    |    Variables: {t = 0.3260999999999804}
+  |    |    |    Exposures: {}
+  |    |    |    +------------------------------------------------------------------------
+  |    |    |    |  StateInstance: null [StateType: rdf_Description, parent: null] 
+  |    |    |    |    Variables: {t = 0.3260999999999804}
+  |    |    |    |    Exposures: {}
+  |    |    |    |    +-------------------------------------------------------------------
+  |    |    |    |    |  StateInstance: null [StateType: bqbiol_isVersionOf, parent: null] 
+  |    |    |    |    |    Variables: {t = 0.3260999999999804}
+  |    |    |    |    |    Exposures: {}
+  |    |    |    |    |    +--------------------------------------------------------------
+  |    |    |    |    |    |  StateInstance: null [StateType: rdf_Bag, parent: null] 
+  |    |    |    |    |    |    Variables: {t = 0.3260999999999804}
+  |    |    |    |    |    |    Exposures: {}
+  |    |    |    |    |    |    +---------------------------------------------------------
+  |    |    |    |    |    |    |  StateInstance: null [StateType: rdf_li, parent: null] 
+  |    |    |    |    |    |    |    Variables: {t = 0.3260999999999804}
+  |    |    |    |    |    |    |    Exposures: {}
+  |    |    |    |    |    |    +---------------------------------------------------------
+  |    |    |    |    |    +--------------------------------------------------------------
+  |    |    |    |    +-------------------------------------------------------------------
+  |    |    |    |    +-------------------------------------------------------------------
+  |    |    |    |    |  StateInstance: null [StateType: bqmodel_isDescribedBy, parent: null] 
+  |    |    |    |    |    Variables: {t = 0.3260999999999804}
+  |    |    |    |    |    Exposures: {}
+  |    |    |    |    |    +--------------------------------------------------------------
+  |    |    |    |    |    |  StateInstance: null [StateType: rdf_Bag, parent: null] 
+  |    |    |    |    |    |    Variables: {t = 0.3260999999999804}
+  |    |    |    |    |    |    Exposures: {}
+  |    |    |    |    |    |    +---------------------------------------------------------
+  |    |    |    |    |    |    |  StateInstance: null [StateType: rdf_li, parent: null] 
+  |    |    |    |    |    |    |    Variables: {t = 0.3260999999999804}
+  |    |    |    |    |    |    |    Exposures: {}
+  |    |    |    |    |    |    +---------------------------------------------------------
+  |    |    |    |    |    +--------------------------------------------------------------
+  |    |    |    |    +-------------------------------------------------------------------
+  |    |    |    +------------------------------------------------------------------------
+  |    |    +-----------------------------------------------------------------------------
+  |    +----------------------------------------------------------------------------------
+  |    +----------------------------------------------------------------------------------
+  |    |  StateInstance: p [StateType: gateHHtauInf, parent: IM] 
+  |    |    Variables: {inf = 1.0, tauUnscaled = 0.0, q = NaN, t = 0.3260999999999804, fcond = -Infinity,
+  |    |                instances = 1.0, tau = 0.0, rateScale = 1.0}
+  |    |    Exposures: {inf = 1.0, q = NaN, fcond = -Infinity, tau = 0.0, rateScale = 1.0}
+  |    |    +-----------------------------------------------------------------------------
+  |    |    |  StateInstance: null [StateType: IM_p_inf_inf, parent: p] 
+  |    |    |    Variables: {VOLT_SCALE = 0.001, t = 0.3260999999999804, v = 35.95700431097269, V = 35957.00431097269, x = 1.0,
+  |    |    |                TIME_SCALE = 0.001}
+  |    |    |    Exposures: {x = 1.0}
+  |    |    +-----------------------------------------------------------------------------
+  |    |    +-----------------------------------------------------------------------------
+  |    |    |  StateInstance: null [StateType: IM_p_tau_tau, parent: p] 
+  |    |    |    Variables: {VOLT_SCALE = 0.001, t = 0.0, v = 35.95700431097269, tmax = 1000.0, V = 35957.00431097269,
+  |    |    |                TIME_SCALE = 0.001}
+  |    |    |    Exposures: {t = 0.0}
+  |    |    +-----------------------------------------------------------------------------
+  |    +----------------------------------------------------------------------------------
+  |    +----------------------------------------------------------------------------------
+  |    |  StateInstance: null [StateType: notes, parent: IM] 
+  |    |    Variables: {t = 0.3260999999999804}
+  |    |    Exposures: {}
+  |    +----------------------------------------------------------------------------------
+  |    +---------------------------------------------------------------------------------------
+  +---------------------------------------------------------------------------------------
+	at org.lemsml.jlems.core.run.StateInstance.checkReturn(StateInstance.java:602)
+	at org.lemsml.jlems.core.run.StateInstance.getVariable(StateInstance.java:573)
+	at org.lemsml.jlems.core.run.PathDerivedVariable.eval(PathDerivedVariable.java:119)
+	... 19 more
+Sep 18, 2026 10:08:49 PM org.lemsml.jlems.io.logging.DefaultLogger msg
+SEVERE:  (ERROR) 
+
+ *******************************************************************************
+ *
+ *    Error occurred when running jLEMS!
+ *    
+ *    Note: LEMS model description was successfully parsed, and simulation started (t = 0.3261 sec)
+ *    This error *MAY* be caused by too large a time step (dt = 1.0E-4 sec currently)
+ *    Try reducing the 'step' attribute in the <Simulation> element
+ *
+ *******************************************************************************
+

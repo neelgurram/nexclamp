@@ -1,0 +1,13 @@
+org.lemsml.jlems.core.run.ConnectionError: No such child element or variable Kd in Kd_all[channelDensity]
+childHM= {ionChannel=IM[ionChannelHH]}
+multiHM= null
+childA= [IM[ionChannelHH]]
+	at org.lemsml.jlems.core.run.StateInstance.getChild(StateInstance.java:559)
+	at org.lemsml.jlems.core.sim.RunnableAccessor.getStateWrapper(RunnableAccessor.java:48)
+	at org.lemsml.jlems.core.run.RuntimeRecorder.connectRunnable(RuntimeRecorder.java:71)
+	at org.lemsml.jlems.core.sim.Sim.run(Sim.java:246)
+	at org.lemsml.jlems.core.sim.Sim.run(Sim.java:154)
+	at org.lemsml.jlems.core.sim.Sim.run(Sim.java:145)
+	at org.neuroml.export.utils.Utils.loadLemsFile(Utils.java:568)
+	at org.neuroml.export.utils.Utils.runLemsFile(Utils.java:526)
+	at org.neuroml.JNeuroML.main(JNeuroML.java:622)

@@ -1,0 +1,114 @@
+{
+  "study_metadata": {
+    "study_id": "neuron_model_behavioral_validation",
+    "project_name": "Neuraxis",
+    "study_phase": "development_pilot",
+    "protocol_version": "PILOT2_PROTOCOL",
+    "designation": "Exploratory development data; second development iteration informed by Pilot 1; not independent confirmation; never pooled with the confirmatory held-out estimate"
+  },
+  "branch": {
+    "primary_branch": "B_feature_level_insufficiency",
+    "flags": {
+      "D_pipeline_uncertainty": false,
+      "A_hidden_drift_supported": false,
+      "B_feature_level_insufficiency": true,
+      "C_canonical_adequacy": false
+    },
+    "evidence": {
+      "n_semantic_mutants": 88,
+      "n_E_admissible": 76,
+      "n_controls": 40,
+      "control_false_positives": 0,
+      "control_false_positive_rate": 0.0,
+      "controls_not_passing_basic_validation": 0,
+      "feature_level_survivors": 9,
+      "feature_survivors_unconfirmed_h4": 1,
+      "confirmed_full_trace_survivors": 2,
+      "confirmed_full_trace_survivor_models": [
+        "migliore2014_mt_soma"
+      ],
+      "full_trace_survivors_unclassifiable": 4,
+      "unclassifiable_models": [
+        "osb_hh2_477127614"
+      ],
+      "models_without_canonical_trace": [
+        "osb_hh2_477127614"
+      ],
+      "feature_survivors_detected_by_canonical_trace": 2,
+      "refinement_excluded_fraction": 0.0,
+      "canonical_B_or_C_detection_rate": 0.9210526315789473
+    },
+    "rules": {
+      "control_false_positive_rate_max": 0.1,
+      "unconfirmed_survivor_fraction_max": 0.5,
+      "refinement_excluded_fraction_max": 0.25,
+      "hidden_drift_min_confirmed_full_trace_survivors": 2,
+      "hidden_drift_min_models": 2,
+      "feature_insufficiency_min_cases": 2,
+      "canonical_adequacy_min_detection": 0.95,
+      "audit_sample_size": 20
+    },
+    "precedence": [
+      "D_pipeline_uncertainty",
+      "A_hidden_drift_supported",
+      "B_feature_level_insufficiency",
+      "C_canonical_adequacy",
+      "indeterminate"
+    ],
+    "note": "Rules fixed in PILOT2_PROTOCOL before data; branch A is never forced."
+  },
+  "provenance": {
+    "run_records": 1633,
+    "git_commits": {
+      "17b9b0638f5575c5b2153a8fb59719c50d53c88b": 495,
+      "bce1100971479505c70a4d5030a16dcd29695991": 1138
+    },
+    "runs_with_dirty_tree": 0,
+    "metadata_combinations": {
+      "Neuraxis | development_pilot | PILOT2_PROTOCOL": 1633
+    },
+    "failed_run_scratch_dirs": [
+      "r-0d1fd3756039b07e93cd",
+      "r-0f9a764a47ccc374801a",
+      "r-457979fad6d0e3c75b35",
+      "r-797f8402bdc1e3a009c7",
+      "r-806ba1f775034ab8298a",
+      "r-829f2b10bfa8a5ed3266",
+      "r-87d6e59bf548181c499f",
+      "r-a5b4617d2cd5855ba207",
+      "r-ab9e23622835fe1708bc",
+      "r-cdc317ff15ad7bf8271c",
+      "r-e5b6bf32c2127439fd26",
+      "s-59a1f49566c6eefe0c6f",
+      "s-776c0478255d82ad1521",
+      "s-c68477d4d92aa315f045"
+    ]
+  },
+  "audit_sample": [
+    "acnet2_pyr_soma__explicit_default__000",
+    "acnet2_pyr_soma__reorder_independent__000",
+    "m-duplicate_conductance-36dae66739",
+    "m-scale_capacitance-8ea1c6d58b",
+    "m-scale_capacitance-d886e6ca3e",
+    "m-scale_capacitance-f459583f48",
+    "m-scale_conductance-10ff293ca8",
+    "m-scale_conductance-de26f4d2e1",
+    "m-scale_conductance-ecad0d4d76",
+    "m-scale_gate_time_constant-06060ba499",
+    "m-scale_gate_time_constant-dda33c4c51",
+    "m-shift_reversal-2ebe75d071",
+    "m-shift_reversal-513c92c08b",
+    "m-shift_reversal-d4460926dc",
+    "m-solver_config-e5acbde8a1",
+    "nml2_hh_example__rename_identifier__000",
+    "osb_hh2_477127614__unit_conversion__000",
+    "pospischil2008_fs__rename_identifier__000",
+    "pospischil2008_fs__reorder_independent__000",
+    "pospischil2008_fs__xml_formatting__000"
+  ],
+  "reporting": {
+    "findings": "exploratory (development pilot); none confirmatory",
+    "analyses_prespecified": "yes: PILOT2_PROTOCOL sections 9-10, fixed before data",
+    "deviations": "# Pilot 2 deviations from `docs/PILOT2_PROTOCOL.md`\n\n*Every departure from the frozen protocol, written down when it happens and before anything is\nre-run. Campaign `pilot2`; protocol version `PILOT2_PROTOCOL`.*\n\n| # | date (UTC) | what the protocol says | what was done | why | effect on the analysis |\n|---|---|---|---|---|---|\n| - | - | - | none recorded: the campaign has not been executed | - | - |"
+  }
+}
