@@ -48,9 +48,16 @@ def xsim():
 
 
 # --------------------------------------------------------------------------- attrition
-def _mutant(vid, klass, model="m1", stratum="primary_semantic", detect=""):
+def _mutant(vid, klass, model="m1", stratum="primary_semantic", detect="", *, b=False, c=False):
+    """A classification row. `b`/`c` are the canonical feature / canonical full-trace level flags,
+    which are what "canonical detected this" means everywhere (branch rule and reporting alike)."""
+    admissible = klass in ("5_non_equivalent", "6_silent_under_canonical")
     return {"variant_id": vid, "model_id": model, "kind": "mutant", "stratum": stratum, "class": klass,
-            "detecting_protocols": detect}
+            "detecting_protocols": detect,
+            "level_A_basic_pass": str(klass not in ("1_structurally_invalid", "2_non_executable",
+                                                    "3_numerically_unstable")),
+            "level_E_full_battery": str(admissible),
+            "level_B_canonical_feature": str(bool(b)), "level_C_canonical_trace": str(bool(c))}
 
 
 def test_attrition_counts_every_stage_and_never_skips_one(results_draft):
@@ -73,9 +80,9 @@ def test_attrition_counts_every_stage_and_never_skips_one(results_draft):
 
 def test_per_model_reports_exposed_and_unexposed_separately(results_draft):
     """Amendment S-01: every primary figure is shown over all mutants and over the unexposed ones."""
-    cls = [_mutant("x1", "5_non_equivalent", detect="P00_canonical"),
+    cls = [_mutant("x1", "5_non_equivalent", b=True),
            _mutant("x2", "5_non_equivalent", detect="P04_step_2x"),
-           _mutant("x3", "5_non_equivalent", detect="P00_canonical")]
+           _mutant("x3", "5_non_equivalent", c=True)]      # canonical trace counts too, not only features
     rows = results_draft.per_model(cls, exposed={"x1"})
     assert len(rows) == 1
     r = rows[0]
