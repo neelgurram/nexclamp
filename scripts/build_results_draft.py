@@ -51,17 +51,36 @@ def exposed_variant_ids() -> set[str]:
 
 
 def attrition(cls: list[dict]) -> list[tuple[str, int]]:
-    """Exact counts at every stage, in the order a reader needs them (S-01 11.4)."""
+    """Exact counts at every stage, in the order a reader needs them (S-01 11.4).
+
+    Two admissibility counts are reported, never one. The frozen **class** is decided by the feature
+    panel alone, so a fault that changes the voltage trace reproducibly while every summary feature
+    stays inside tolerance is classed `4_equivalent_within_tested_domain`. Counting only by class
+    hides such a fault; counting only by level flags silently overrides the frozen classification.
+    Both numbers are shown, and any disagreement is listed by variant id.
+    """
     semantic = [r for r in cls if r.get("stratum") == "primary_semantic" and r.get("kind") == "mutant"]
     executable = [r for r in semantic if r["class"] not in ("1_structurally_invalid", "2_non_executable")]
     stable = [r for r in executable if r["class"] != "3_numerically_unstable"]
-    admissible = [r for r in stable if r["class"] in ("5_non_equivalent", "6_silent_under_canonical")]
+    by_class = [r for r in stable if r["class"] in ("5_non_equivalent", "6_silent_under_canonical")]
+    by_flags = [r for r in semantic if admissible(r)]
     return [("variants generated (all strata)", len(cls)),
             ("primary semantic mutants", len(semantic)),
             ("structurally valid and executable", len(executable)),
             ("numerically stable", len(stable)),
-            ("admissible (non-equivalent or silent)", len(admissible)),
+            ("admissible by frozen class (feature panel)", len(by_class)),
+            ("admissible including trace-only detection", len(by_flags)),
             ("equivalent within the tested domain", sum(1 for r in stable if r["class"].startswith("4_")))]
+
+
+def trace_only_faults(cls: list[dict]) -> list[dict]:
+    """Faults the feature panel called equivalent but full-trace comparison detected reproducibly.
+
+    These are the clearest evidence for the study's finding and they are easy to lose: the frozen
+    class says "no change", so a class-based count drops them.
+    """
+    return [r for r in cls if r.get("stratum") == "primary_semantic" and r.get("kind") == "mutant"
+            and admissible(r) and r["class"] not in ("5_non_equivalent", "6_silent_under_canonical")]
 
 
 def canonical_detected(r: Mapping[str, str]) -> bool:
@@ -133,6 +152,19 @@ def main(argv: list[str] | None = None) -> int:
     L += ["## 1. Attrition", "",
           "Exact counts at every stage; no percentage appears in this section without its counts.", ""]
     L += table([{"stage": k, "n": v} for k, v in attrition(cls)], ["stage", "n"], ["stage", "n"])
+
+    trace_only = trace_only_faults(cls)
+    if trace_only:
+        L += ["", "### Faults detected only by full-trace comparison", "",
+              "The frozen classification uses the feature panel alone. These faults were classed "
+              "**equivalent within the tested domain** - every summary feature inside tolerance on every "
+              "protocol - yet full-trace comparison detected them reproducibly. They are reported here "
+              "explicitly because a class-based count drops them, and they are the clearest evidence that "
+              "feature-based regression testing is structurally blind to some real changes.", ""]
+        L += table([{"variant_id": r["variant_id"], "model_id": r["model_id"], "operator": r.get("operator", ""),
+                     "class": r["class"]} for r in trace_only],
+                   ["variant_id", "model_id", "operator", "class"],
+                   ["variant", "model", "operator", "frozen class"])
 
     L += ["", "## 2. Per-model results (the generalization units)", "",
           "Five models is a small number of clusters, so per-model values are reported beside any pooled "

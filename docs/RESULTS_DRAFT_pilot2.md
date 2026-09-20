@@ -1,6 +1,6 @@
 # Results draft: campaign `pilot2`
 
-*Generated 2026-09-20T00:46:39+00:00 from recorded outputs at commit `930f50d9da3dee011e60420dc7bc60977de2848a` (tree dirty: True). Numbers are copied, never computed here. Bracketed lines are prompts for the researcher.*
+*Generated 2026-09-20T01:39:49+00:00 from recorded outputs at commit `5c92b4abe541a2c6d49ac636ad8509c58ae811e1` (tree dirty: True). Numbers are copied, never computed here. Bracketed lines are prompts for the researcher.*
 
 > **development_pilot** - Exploratory development data; second development iteration informed by Pilot 1; not independent confirmation; never pooled with the confirmatory held-out estimate
 
@@ -16,8 +16,17 @@ Exact counts at every stage; no percentage appears in this section without its c
 | primary semantic mutants | 88 |
 | structurally valid and executable | 81 |
 | numerically stable | 80 |
-| admissible (non-equivalent or silent) | 75 |
+| admissible by frozen class (feature panel) | 75 |
+| admissible including trace-only detection | 76 |
 | equivalent within the tested domain | 5 |
+
+### Faults detected only by full-trace comparison
+
+The frozen classification uses the feature panel alone. These faults were classed **equivalent within the tested domain** - every summary feature inside tolerance on every protocol - yet full-trace comparison detected them reproducibly. They are reported here explicitly because a class-based count drops them, and they are the clearest evidence that feature-based regression testing is structurally blind to some real changes.
+
+| variant | model | operator | frozen class |
+|---|---|---|---|
+| m-shift_reversal-7be708c601 | migliore2014_mt_soma | shift_reversal | 4_equivalent_within_tested_domain |
 
 ## 2. Per-model results (the generalization units)
 
