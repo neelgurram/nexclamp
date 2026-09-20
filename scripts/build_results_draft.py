@@ -23,6 +23,7 @@ import csv
 import json
 import sys
 from collections import Counter
+from collections.abc import Mapping
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
@@ -63,15 +64,30 @@ def attrition(cls: list[dict]) -> list[tuple[str, int]]:
             ("equivalent within the tested domain", sum(1 for r in stable if r["class"].startswith("4_")))]
 
 
+def canonical_detected(r: Mapping[str, str]) -> bool:
+    """The canonical strategy detected this fault: by its features (level B) or its full trace (C).
+
+    This must match the rule the branch classification uses. An earlier version of this function
+    counted only feature-level detections, which disagreed with the headline rate by up to five
+    percentage points on a model - the kind of mismatch that puts two different numbers for the
+    same quantity into one manuscript.
+    """
+    return truthy(r.get("level_B_canonical_feature")) or truthy(r.get("level_C_canonical_trace"))
+
+
+def admissible(r: Mapping[str, str]) -> bool:
+    return truthy(r.get("level_A_basic_pass")) and truthy(r.get("level_E_full_battery"))
+
+
 def per_model(cls: list[dict], exposed: set[str]) -> list[dict]:
     rows = []
     for mid in sorted({r["model_id"] for r in cls}):
         sem = [r for r in cls if r["model_id"] == mid and r.get("stratum") == "primary_semantic"
                and r.get("kind") == "mutant"]
-        adm = [r for r in sem if r["class"] in ("5_non_equivalent", "6_silent_under_canonical")]
-        canon = [r for r in adm if "P00_canonical" in (r.get("detecting_protocols") or "")]
+        adm = [r for r in sem if admissible(r)]
+        canon = [r for r in adm if canonical_detected(r)]
         unexposed = [r for r in adm if r["variant_id"] not in exposed]
-        canon_unexp = [r for r in unexposed if "P00_canonical" in (r.get("detecting_protocols") or "")]
+        canon_unexp = [r for r in unexposed if canonical_detected(r)]
         rows.append({"model_id": mid, "mutants": len(sem), "admissible": len(adm),
                      "canonical_detected": len(canon),
                      "canonical_rate": f"{len(canon) / len(adm):.3f}" if adm else "",
