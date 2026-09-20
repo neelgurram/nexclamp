@@ -1,0 +1,281 @@
+{
+  "created_utc": "2026-09-18T22:25:05+00:00",
+  "commit": "292b7d877089eb8739cf062dc5199c1ba5e00b5d",
+  "tree_dirty": false,
+  "trials_scored": 2,
+  "isolation": "partial",
+  "frozen_config": "C:/Users/gurra/NeuroSem-dev/results/agent_study/dryrun/frozen_agent_eval.yaml",
+  "frozen_config_sha256": "aa644de561a302b892285b57c2306e66ad0c203c7679dc3c77675b8e5f7db712",
+  "provisional": false,
+  "counts": {
+    "basic_pass": 2,
+    "neurosem_pass": 1,
+    "basic_pass_battery_fail": 0,
+    "unauthorized_edits": 0,
+    "model_unchanged": 0
+  },
+  "by_layer": {},
+  "layer_status_counts": {
+    "edit_scope": {
+      "pass": 2
+    },
+    "hidden_assertions_pass": {
+      "pass": 2
+    },
+    "schema_valid": {
+      "pass": 2
+    },
+    "executes": {
+      "pass": 2
+    },
+    "canonical_passes": {
+      "pass": 2
+    },
+    "hidden_battery_passes": {
+      "error": 1,
+      "pass": 1
+    }
+  },
+  "scores": [
+    {
+      "task_id": "t06_single_conductance_change",
+      "trial_id": "t06_single_conductance_change__r01",
+      "layers": {
+        "edit_scope": {
+          "layer": "edit_scope",
+          "status": "pass",
+          "details": {
+            "n_changes": 1,
+            "n_model_changes": 1,
+            "permitted": [
+              {
+                "kind": "attribute_changed",
+                "file": "model/NeuroML2/cells/RS/RS.cell.nml",
+                "locator": "/neuroml/cell[@id='RS']/biophysicalProperties[@id='biophys']/membraneProperties[1]/channelDensity[@id='IM_all']",
+                "after_locator": "/neuroml/cell[@id='RS']/biophysicalProperties[@id='biophys']/membraneProperties[1]/channelDensity[@id='IM_all']",
+                "attribute": "condDensity",
+                "old": "0.07 mS_per_cm2",
+                "new": "0.14 mS_per_cm2",
+                "si_equal": false
+              }
+            ],
+            "representation_only": [],
+            "unauthorized": []
+          }
+        },
+        "hidden_assertions_pass": {
+          "layer": "hidden_assertions_pass",
+          "status": "pass",
+          "details": {
+            "assertions": [
+              {
+                "name": "IM conductance doubled",
+                "kind": "quantity_equals",
+                "passed": true,
+                "detail": "condDensity='0.14 mS_per_cm2', expected '0.14 mS_per_cm2'"
+              },
+              {
+                "name": "IM channel still referenced",
+                "kind": "attribute_equals",
+                "passed": true,
+                "detail": "ionChannel='IM'"
+              }
+            ]
+          }
+        },
+        "schema_valid": {
+          "layer": "schema_valid",
+          "status": "pass",
+          "details": {
+            "validator": "jNeuroML -validate",
+            "returncode": 0,
+            "messages": []
+          }
+        },
+        "executes": {
+          "layer": "executes",
+          "status": "pass",
+          "details": {
+            "run_status": "ok",
+            "runtime_s": 15.613,
+            "message": "",
+            "output_tail": "ge__r01\\scoring_work\\trial_run\\model\\NeuroML2\\cells\\RS\\LEMS_RS.xml\nWARNING Sep 18,2026 18:16  (WARNING) Unused attribute in Component(id=null type=bqmodel_isDescribedBy): XMLAttribute(xmlns:bqmodel, http://biomodels.net/model-qualifiers/)  at: org.lemsml.jlems.core.type.Component.resolve(Component.java:540)\nWARNING Sep 18,2026 18:16  (WARNING) Unused attribute in Component(id=null type=bqbiol_isVersionOf): XMLAttribute(xmlns:bqbiol, http://biomodels.net/biology-qualifiers/)  at: \nWARNING Sep 18,2026 18:16  (WARNING) Unused attribute in Component(id=null type=bqmodel_isDescribedBy): XMLAttribute(xmlns:bqmodel, http://biomodels.net/model-qualifiers/)  at: \nWARNING Sep 18,2026 18:16  (WARNING) Unused attribute in Component(id=null type=bqbiol_isVersionOf): XMLAttribute(xmlns:bqbiol, http://biomodels.net/biology-qualifiers/)  at: \nWARNING Sep 18,2026 18:16  (WARNING) Unused attribute in Component(id=null type=bqmodel_isDescribedBy): XMLAttribute(xmlns:bqmodel, http://biomodels.net/model-qualifiers/)  at: \nWARNING Sep 18,2026 18:16  (WARNING) Unused attribute in Component(id=null type=bqmodel_isDescribedBy): XMLAttribute(xmlns:bqmodel, http://biomodels.net/model-qualifiers/)  at: \nWARNING Sep 18,2026 18:16  (WARNING) Unused attribute in Component(id=null type=bqbiol_isVersionOf): XMLAttribute(xmlns:bqbiol, http://biomodels.net/biology-qualifiers/)  at: \nINFO Sep 18,2026 18:16  (INFO) Finished 1000000 steps in 14.463 seconds (sim duration: 1000.0ms; dt: 0.001ms)\nINFO Sep 18,2026 18:16  (INFO) Written to the file C:\\Users\\gurra\\NeuroSem-dev\\results\\agent_study\\private\\t06_single_conductance_change__r01\\scoring_work\\trial_run\\model\\NeuroML2\\cells\\RS\\.\\RS.dat 22220299\nINFO Sep 18,2026 18:16  (INFO) Simulation report will be saved in C:\\Users\\gurra\\NeuroSem-dev\\results\\agent_study\\private\\t06_single_conductance_change__r01\\scoring_work\\trial_run\\model\\NeuroML2\\cells\\RS\\simulator.props\nINFO Sep 18,2026 18:16  (INFO) Finished reading, building, running and displaying LEMS model"
+          }
+        },
+        "canonical_passes": {
+          "layer": "canonical_passes",
+          "status": "pass",
+          "details": {
+            "detections": [],
+            "run_ids": {
+              "oracle": [
+                "r-abbd64c68fb7296fad0f"
+              ],
+              "trial": [
+                "r-19c30d8a41344dca90e4"
+              ]
+            }
+          }
+        },
+        "hidden_battery_passes": {
+          "layer": "hidden_battery_passes",
+          "status": "pass",
+          "details": {
+            "protocols": [
+              "P00_canonical",
+              "P01_baseline",
+              "P02_weak_step",
+              "P04_step_2x",
+              "P05_long_step",
+              "P06_ramp",
+              "P07_hyperpolarizing_step",
+              "P08_rebound",
+              "P09_short_pulse",
+              "P10_paired_pulses",
+              "P03_rheobase"
+            ],
+            "detections": [],
+            "run_ids": {
+              "oracle": {
+                "P09_short_pulse": "r-b8d713e19ebd68290947",
+                "P10_paired_pulses": "r-b8d713e19ebd68290947",
+                "P01_baseline": "r-d6768afe57442423653a",
+                "P02_weak_step": "r-d6768afe57442423653a",
+                "P04_step_2x": "r-d6768afe57442423653a",
+                "P07_hyperpolarizing_step": "r-d6768afe57442423653a",
+                "P08_rebound": "r-02b681dbf689c66325bf",
+                "P06_ramp": "r-52992b27ea56e5f1b4bc",
+                "P05_long_step": "r-edd2bb37c9eefde31d60",
+                "P00_canonical": "r-abbd64c68fb7296fad0f",
+                "P03_rheobase": "s-921bcad7e9d142c9e5b3"
+              },
+              "trial": {
+                "P09_short_pulse": "r-698cb1b78268a59147a1",
+                "P10_paired_pulses": "r-698cb1b78268a59147a1",
+                "P01_baseline": "r-a0a03d126abcf5ef418b",
+                "P02_weak_step": "r-a0a03d126abcf5ef418b",
+                "P04_step_2x": "r-a0a03d126abcf5ef418b",
+                "P07_hyperpolarizing_step": "r-a0a03d126abcf5ef418b",
+                "P08_rebound": "r-9ad4b98f8c6948085f0b",
+                "P06_ramp": "r-996278172d25ed83c7b4",
+                "P05_long_step": "r-a70f173945fd914be391",
+                "P00_canonical": "r-19c30d8a41344dca90e4",
+                "P03_rheobase": "s-7bfe8e129e56b4280f16"
+              }
+            }
+          }
+        }
+      },
+      "basic_pass": true,
+      "neurosem_pass": true,
+      "basic_pass_battery_fail": false,
+      "first_failed_layer": null,
+      "category": "success",
+      "unauthorized_edits_detected": false,
+      "provisional": false,
+      "frozen_config_sha256": "aa644de561a302b892285b57c2306e66ad0c203c7679dc3c77675b8e5f7db712",
+      "hidden_spec_sha256": "31fd077c088f23d4c463cd0262446b96405c26ae2c9c9912acfae775c45e3bdd",
+      "export_content_sha256": "df30172589ef2e69f084e4a2af4b82459759d2e1c85a52b3eeefd499470fc1d4",
+      "scored_utc": "2026-09-18T22:24:57+00:00",
+      "task_type": "change_one_conductance",
+      "model_changed": true
+    },
+    {
+      "task_id": "t01_unit_repair",
+      "trial_id": "t01_unit_repair__r01",
+      "layers": {
+        "edit_scope": {
+          "layer": "edit_scope",
+          "status": "pass",
+          "details": {
+            "n_changes": 1,
+            "n_model_changes": 1,
+            "permitted": [
+              {
+                "kind": "attribute_changed",
+                "file": "model/examples/NML2_SingleCompHHCell.nml",
+                "locator": "/neuroml/cell[@id='hhcell']/biophysicalProperties[@id='bioPhys1']/membraneProperties[1]/channelDensity[@id='naChans']",
+                "after_locator": "/neuroml/cell[@id='hhcell']/biophysicalProperties[@id='bioPhys1']/membraneProperties[1]/channelDensity[@id='naChans']",
+                "attribute": "condDensity",
+                "old": "120 S_per_m2",
+                "new": "120 mS_per_cm2",
+                "si_equal": false
+              }
+            ],
+            "representation_only": [],
+            "unauthorized": []
+          }
+        },
+        "hidden_assertions_pass": {
+          "layer": "hidden_assertions_pass",
+          "status": "pass",
+          "details": {
+            "assertions": [
+              {
+                "name": "sodium conductance density restored",
+                "kind": "quantity_equals",
+                "passed": true,
+                "detail": "condDensity='120 mS_per_cm2', expected '120 mS_per_cm2'"
+              }
+            ]
+          }
+        },
+        "schema_valid": {
+          "layer": "schema_valid",
+          "status": "pass",
+          "details": {
+            "validator": "jNeuroML -validate",
+            "returncode": 0,
+            "messages": []
+          }
+        },
+        "executes": {
+          "layer": "executes",
+          "status": "pass",
+          "details": {
+            "run_status": "ok",
+            "runtime_s": 1.933,
+            "message": "",
+            "output_tail": "jNeuroML v0.14.0\nLoading: C:\\Users\\gurra\\NeuroSem-dev\\results\\agent_study\\private\\t01_unit_repair__r01\\scoring_work\\trial_run\\model\\LEMSexamples\\LEMS_NML2_Ex5_DetCell.xml with jLEMS, NO GUI mode...\nINFO Sep 18,2026 18:24  (INFO) Loading LEMS file from: C:\\Users\\gurra\\NeuroSem-dev\\results\\agent_study\\private\\t01_unit_repair__r01\\scoring_work\\trial_run\\model\\LEMSexamples\\LEMS_NML2_Ex5_DetCell.xml\nINFO Sep 18,2026 18:24  (INFO) Reading from: C:\\Users\\gurra\\NeuroSem-dev\\results\\agent_study\\private\\t01_unit_repair__r01\\scoring_work\\trial_run\\model\\LEMSexamples\\LEMS_NML2_Ex5_DetCell.xml\nINFO Sep 18,2026 18:25  (INFO) Finished 30000 steps in 0.668 seconds (sim duration: 300.0ms; dt: 0.01ms)\nINFO Sep 18,2026 18:25  (INFO) Written to the file C:\\Users\\gurra\\NeuroSem-dev\\results\\agent_study\\private\\t01_unit_repair__r01\\scoring_work\\trial_run\\model\\LEMSexamples\\.\\results\\ex5_v.dat 640027\nINFO Sep 18,2026 18:25  (INFO) Written to the file C:\\Users\\gurra\\NeuroSem-dev\\results\\agent_study\\private\\t01_unit_repair__r01\\scoring_work\\trial_run\\model\\LEMSexamples\\.\\results\\ex5_vars.dat 1238239\nINFO Sep 18,2026 18:25  (INFO) Simulation report will be saved in C:\\Users\\gurra\\NeuroSem-dev\\results\\agent_study\\private\\t01_unit_repair__r01\\scoring_work\\trial_run\\model\\LEMSexamples\\report.ex5.txt\nINFO Sep 18,2026 18:25  (INFO) Finished reading, building, running and displaying LEMS model"
+          }
+        },
+        "canonical_passes": {
+          "layer": "canonical_passes",
+          "status": "pass",
+          "details": {
+            "detections": [],
+            "run_ids": {
+              "oracle": [
+                "r-c11904d3ef6fcd1427ba"
+              ],
+              "trial": [
+                "r-6ff6d5d3403496e04ea4"
+              ]
+            }
+          }
+        },
+        "hidden_battery_passes": {
+          "layer": "hidden_battery_passes",
+          "status": "error",
+          "details": {
+            "reason": "frozen config lacks protocol selection, reference rheobase or study config"
+          }
+        }
+      },
+      "basic_pass": true,
+      "neurosem_pass": null,
+      "basic_pass_battery_fail": null,
+      "first_failed_layer": null,
+      "category": "indeterminate",
+      "unauthorized_edits_detected": false,
+      "provisional": false,
+      "frozen_config_sha256": "aa644de561a302b892285b57c2306e66ad0c203c7679dc3c77675b8e5f7db712",
+      "hidden_spec_sha256": "2c2acb7ec217126a7912c7501097d71e05a6fb95e14474b485774984dfd43531",
+      "export_content_sha256": "70b939b55aa5ee1ce05d7f056121a7330202e3f7cd6a66161f62c46861742621",
+      "scored_utc": "2026-09-18T22:25:05+00:00",
+      "task_type": "repair_seeded_unit_error",
+      "model_changed": true
+    }
+  ],
+  "interpretation": "basic_pass_battery_fail counts edits that pass the checks a practitioner would normally run (schema validity, execution, the canonical harness) but fail the perturbation battery. That is the only quantity this study claims about agents."
+}

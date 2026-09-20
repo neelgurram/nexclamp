@@ -60,6 +60,7 @@ def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument("--curation", required=True, help="curation campaign whose evidence justifies inclusion")
     ap.add_argument("--protocol", default="docs/PILOT2_PROTOCOL.md")
+    ap.add_argument("--prefix", default="PILOT2", help="manifest prefix; use HELDOUT for the confirmatory study")
     a = ap.parse_args(argv)
     cfg = config.study()
     pilot = cfg["pilot"]
@@ -81,7 +82,7 @@ def main(argv: list[str] | None = None) -> int:
                      "ion_channels": ";".join(e.get("ion_channels", [])),
                      "estimated_variant_runtime_s": e.get("estimated_variant_runtime_s", ""),
                      "semantic_operators_with_site": ";".join(e.get("semantic_operators_with_site", []))})
-    write_csv(REPO_ROOT / "manifests" / "PILOT2_MODELS.csv", rows)
+    write_csv(REPO_ROOT / "manifests" / f"{a.prefix}_MODELS.csv", rows)
 
     from neuraxis import mutations, transforms
 
@@ -114,16 +115,16 @@ def main(argv: list[str] | None = None) -> int:
                                  "exec_overrides": json.dumps(r.exec_overrides),
                                  "tree_sha256": r.tree_sha256, "parent_tree_sha256": r.parent_tree_sha256})
                 for pid in [CANONICAL_ID, *[t.protocol_id for t in templates]]:
-                    for f in (1, 2, 4):
+                    for f in factors:
                         matrix.append({"model_id": mid, "variant_id": r.variant_id, "protocol_id": pid,
                                        "refinement_level": f"h/{f}" if f > 1 else "h",
                                        "planned": "always" if f == 1 else
                                                   ("if detected at h" if f == 2 else "if an apparent canonical survivor"),
                                        "validation_levels": "B,C" if pid == CANONICAL_ID else "D,E"})
-    write_csv(REPO_ROOT / "manifests" / "PILOT2_VARIANTS.csv", variants)
-    write_csv(REPO_ROOT / "manifests" / "PILOT2_EXPERIMENT_MATRIX.csv", matrix)
+    write_csv(REPO_ROOT / "manifests" / f"{a.prefix}_VARIANTS.csv", variants)
+    write_csv(REPO_ROOT / "manifests" / f"{a.prefix}_EXPERIMENT_MATRIX.csv", matrix)
 
-    manifest = ["# Pilot 2 pre-run SHA-256 manifest (neuron_model_behavioral_validation)",
+    manifest = [f"# {a.prefix} pre-run SHA-256 manifest (neuron_model_behavioral_validation)",
                 f"# created {utc_now()}; protocol {a.protocol}; study config {config.study_config_path().relative_to(REPO_ROOT).as_posix()}",
                 "# format: sha256  path  [category]"]
     files = [(a.protocol, "protocol"), (config.study_config_path().relative_to(REPO_ROOT).as_posix(), "config")]
@@ -131,8 +132,8 @@ def main(argv: list[str] | None = None) -> int:
     files += [("data/model_manifest.csv", "model_manifest"), ("requirements.lock", "environment"),
               ("pyproject.toml", "environment"), ("environment.yml", "environment"),
               (".tools/jdk_provenance.json", "environment")]
-    files += [(f"manifests/{n}", "matrix") for n in ("PILOT2_MODELS.csv", "PILOT2_VARIANTS.csv",
-                                                     "PILOT2_EXPERIMENT_MATRIX.csv")]
+    files += [(f"manifests/{a.prefix}_{n}", "matrix")
+              for n in ("MODELS.csv", "VARIANTS.csv", "EXPERIMENT_MATRIX.csv")]
     snaps = sorted({models[m].snapshot for m in pilot["models"]})
     for snap in snaps:
         for root in ("models/raw", "models/candidates"):
@@ -145,7 +146,7 @@ def main(argv: list[str] | None = None) -> int:
                              capture_output=True, text=True, check=True).stdout.split()
     files += [(f, "analysis_code") for f in sorted(tracked) if (REPO_ROOT / f).is_file() and "__pycache__" not in f]
     body = [f"{sha256_file(REPO_ROOT / rel)}  {rel}  [{cat}]" for rel, cat in files if (REPO_ROOT / rel).is_file()]
-    (REPO_ROOT / "manifests" / "PILOT2_PRE_RUN.sha256").write_text("\n".join(manifest + body) + "\n",
+    (REPO_ROOT / "manifests" / f"{a.prefix}_PRE_RUN.sha256").write_text("\n".join(manifest + body) + "\n",
                                                                    encoding="utf-8", newline="\n")
     print(f"models {len(rows)}; variants {len(variants)} "
           f"(mutants {sum(1 for v in variants if v['kind'] == 'mutant')}, "

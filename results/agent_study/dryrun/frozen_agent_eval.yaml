@@ -1,0 +1,82 @@
+schema: neurosem-agent-frozen/1
+campaign: pilot
+results_root: C:\Users\gurra\NeuroSem-dev\results
+dt_ms: 0.005
+timeout_s: 3600.0
+tolerance_table: C:\Users\gurra\NeuroSem-dev\results\processed\pilot\tolerances.csv
+tolerance_table_sha256: c0fa4bca9790eb853af53bf5c1af7eb4dfe15b424e121702ddc579ed23479569
+tolerance_multiplier: 1.0
+selected_protocols:
+- P00_canonical
+- P01_baseline
+- P02_weak_step
+- P04_step_2x
+- P05_long_step
+- P06_ramp
+- P07_hyperpolarizing_step
+- P08_rebound
+- P09_short_pulse
+- P10_paired_pulses
+- P03_rheobase
+reference_rheobase_nA:
+  pospischil2008_lts: 0.038658561573663
+  pospischil2008_rs: 0.5606515948364182
+configs:
+  study:
+    path: C:\Users\gurra\NeuroSem-dev\configs\study.yaml
+    sha256: 4b038db6963ce4d52069a390eaf4a57253700789dea1e8f98425227df9c2e547
+  features:
+    path: C:\Users\gurra\NeuroSem-dev\configs\features.yaml
+    sha256: af9fc73ba8f8e187e1c98f293fc3191b63e1623aac8ae0a21272359acd4ed8bd
+  tolerances:
+    path: C:\Users\gurra\NeuroSem-dev\configs\tolerances.yaml
+    sha256: 9ca05052abe32e152e3c7d65aef85ee4922a6c10ef02ac982b3281c2e8775499
+evaluator_git_commit: 292b7d877089eb8739cf062dc5199c1ba5e00b5d
+notes:
+  created_utc: '2026-09-18T22:14:17+00:00'
+  source_campaign: pilot
+  provenance: Tolerances and the protocol battery come from the main study and were
+    chosen without any agent output. This file lives outside version control and is
+    refused if any hashed input changes.
+policy_sha256: 2e21d7306e11d0aa937046ee609f49e6f73b1cc9b3bf5b9058887b8f5571cec6
+public_runner_sha256: 7938068dd5e087b22ce4776ef064d27887170bffdb415cae64623e8460492130
+task_sha256:
+  t01_unit_repair: 054310fd5fe426554aad7512b7a4adba03e7879539039c6a78273dbf36d6bae1
+  t02_stimulus_restore: c52aac82302c70d1ccd927c2f1d8281d79dc2a7a36307e33ced3a23cc7f34f0a
+  t03_channel_rename: 179b8096110b379923831fd89eb02cddeaa7ca984bb1c638e064913e06e53be4
+  t04_include_refactor: 3d8b8ab947f7425a3455783ef1ba60604c382d5a9b68effe6fd0e277cbe24e0d
+  t05_unit_conversion: 2820a628b3dd93815422e35657eb00ccba0a2ac7ff735339dd234e86dba28913
+  t06_single_conductance_change: eb41d03cbb04b539d6542a0f90f02de176351499d5f361a71a5f9aef5f91564d
+  t07_channel_reference_repair: 23ad5e82d5f3b836ae886783dc79366dcb2c16e7ead6611ae3a3e097da75b5bc
+  t08_runtime_improvement: 5364e7dc19ffd07125b94681cf9d0eaf681100121377acd38ceb5682089a6cfd
+  t09_behaviour_diagnosis: 93d378dd14c9ffa04b78773ef33e7c093567e2e59eab8f5a13d3477d0dc8a0cd
+prompt_sha256:
+  t01_unit_repair: a9479805250d1825876b83558d6c3ad5655cad7892af274b3160c3a2ccc5a5e6
+  t02_stimulus_restore: 27687fc22c4057720d857bc7e1213d4c4a5466f6ffb69b84a7a75fcb0d673e1e
+  t03_channel_rename: 907412b318faf6d4f33af2d9570d4058398b12124364f276fefe81b1eefe9442
+  t04_include_refactor: cbbd4276e3af871331f3d3aeff13cef5b70656d30735d95b821751a5074601f0
+  t05_unit_conversion: 481c1e47f71ae868425b28d711074971949fdaf57fe1f1f3004ab6dc0268b1af
+  t06_single_conductance_change: 2b5d955d5ab0309ecab8282917205f205bd32fb7fc529ac0dbfd7265a21ee79c
+  t07_channel_reference_repair: e1c0d73e47094a4ebb955209126f14d90831ed2e4edd3e3ab98b1fb03c5e28a2
+  t08_runtime_improvement: db62a5fb9b17acc6e710bf4bfe726e5aac9130408649c3fe1af934b7a027e6c1
+  t09_behaviour_diagnosis: 8c426b7a9d6ee8b8107f1fa82f31d479d0d2a248d37d3539f8af04b684e26982
+public_tests_sha256:
+  t01_unit_repair: dce8f15bcc6c3b55460a2dbfe385d55ba88de42eddda7bdc9234ec2f27afc347
+  t02_stimulus_restore: c301d61ea360daa2adb976009857048df489e661a9cac0d21133fe14ff22f433
+  t03_channel_rename: 6b47c05bce7161418d814bf34dbf85c63d6bc6360c73e1ec552f9ad55fc583a6
+  t04_include_refactor: dce8f15bcc6c3b55460a2dbfe385d55ba88de42eddda7bdc9234ec2f27afc347
+  t05_unit_conversion: dce8f15bcc6c3b55460a2dbfe385d55ba88de42eddda7bdc9234ec2f27afc347
+  t06_single_conductance_change: 8bbc6cde9b92ff87237e96ea754841453d1198ba5ecc84595f0e3fa356dc6815
+  t07_channel_reference_repair: 977a4c78b374177011a6de2e7f4fa004a88a71bb3bb8fa3a5f175ec02f014227
+  t08_runtime_improvement: 977a4c78b374177011a6de2e7f4fa004a88a71bb3bb8fa3a5f175ec02f014227
+  t09_behaviour_diagnosis: 977a4c78b374177011a6de2e7f4fa004a88a71bb3bb8fa3a5f175ec02f014227
+hidden_spec_sha256:
+  t01_unit_repair: 2c2acb7ec217126a7912c7501097d71e05a6fb95e14474b485774984dfd43531
+  t02_stimulus_restore: 744a4820c309e1f0858836f6c0de422df50f07a596ea6d038619874eaff60639
+  t03_channel_rename: 83af7455550410d27d7dd89c0e1162d3a024b7f777f802380185196a7ab883a2
+  t04_include_refactor: 1023940ba32429b09f7f97431b85325c456eacc58be4bdee71b8e907ebff24ab
+  t05_unit_conversion: c051823a921d180c763c6bb26020a30db7bdcca5227b4ea5f4676773604a5ca2
+  t06_single_conductance_change: 31fd077c088f23d4c463cd0262446b96405c26ae2c9c9912acfae775c45e3bdd
+  t07_channel_reference_repair: 06646e18debd64e9c5f8986bda3d9daafef811dcf383dc7d595c043faf72df80
+  t08_runtime_improvement: fe41efccdb1e9001c5173f2b3e4bd9e971463f1abbf3e48a4614ab1d32e1537d
+  t09_behaviour_diagnosis: ed8ff25bcad5fe14a5e323ceb86adbdd250184de0172cd04b0dd1a4d00ce0ad6
