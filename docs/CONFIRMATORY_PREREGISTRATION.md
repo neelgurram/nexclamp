@@ -11,7 +11,7 @@ time-stamp.*
 
 ## What is still needed from Neel
 
-1. Title, author list and affiliation (section 0).
+1. Title (section 0). Author list: done 2026-09-20.
 2. An AsPredicted account and the submission itself.
 3. Confirmation of the two numeric judgements in sections 1 and 14 (a material effect of **0.10**,
    and the held-out set size of **4–6 models**), or different numbers of his choosing.
@@ -26,7 +26,7 @@ Everything else below is answered.
 | Field | Value |
 |---|---|
 | Title | **[NEEL]** |
-| Authors, affiliation | **[NEEL]** |
+| Authors, affiliation | 1. **Neel Gurram**, FAU High School, Florida Atlantic University, Jupiter, FL, USA (corresponding)<br>2. **Samyak Singh**, FAU High School, Florida Atlantic University, Jupiter, FL, USA<br>3. **Naithik Somisetti**, FAU High School, Florida Atlantic University, Boca Raton, FL, USA<br>*Authors 2 and 3 were added on 2026-09-20, after the AsPredicted submission, which lists Neel Gurram only. This changes no hypothesis, endpoint, split or analysis; it is disclosed in the manuscript.* |
 | Registry | **AsPredicted** (D-036). OSF is an optional later mirror and is never presented as the original registration |
 | Internal study identifier | `neuron_model_behavioral_validation` (permanent, brand-independent) |
 | Public name | undecided (D-050); no brand appears in the registration |
