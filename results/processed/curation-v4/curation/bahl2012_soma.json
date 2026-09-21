@@ -1,0 +1,49 @@
+{
+  "model": {
+    "model_id": "bahl2012_soma",
+    "name": "Bahl et al. 2012 reduced L5 pyramidal cell, single-compartment soma (pyr_cell)",
+    "snapshot": "BahlEtAl2012_ReducedL5PyrCell@8275beaa",
+    "cell_file": "NeuroML2/pyr_soma_cell.nml",
+    "cell_id": "pyr_cell",
+    "harness_lems": "NeuroML2/LEMS_pyr_single_comp.xml",
+    "harness_output_file": "pyr_single_comp.dat",
+    "harness_v_column": "1",
+    "temperature": "37 degC",
+    "source_family": "bahl2012",
+    "citation": "Bahl A, Stemmler MB, Herz AVM, Roth A (2012). Automated optimization of a reduced layer 5 pyramidal cell model based on experimental data. Journal of Neuroscience Methods 210(1):22-34. doi:10.1016/j.jneumeth.2012.04.006",
+    "source_url": "https://github.com/OpenSourceBrain/BahlEtAl2012_ReducedL5PyrCell",
+    "commit": "8275beaa52267801720d1664856d13e5d56bd11c",
+    "license": "unclear (no LICENSE/LICENCE/COPYING file in the tree at this commit; GitHub licence API: none)",
+    "license_url": "",
+    "download_date": "2026-09-16",
+    "simulator": "jNeuroML",
+    "expected_behavior": "Single segment (d = L = 23.15 um). pas 0.0486, kfast 6.72, kslow 47.6, nat 23.7, nap 0.144, km 1.05 mS/cm2 (given in S/m2); Cm 2.23 uF/cm2; no Ih in this soma-only cell (the multicompartment pyr.cell.nml has dendritic Ih). Harness: +0.4 nA 100-600 ms. Shipped NEURON reference used by the jNeuroML OMV test (NEURON/test/.test.mep, threshold -30 mV): 3 spikes at 102.1, 112.5 and 131.8 ms, then none for the rest of the step (phasic / strongly adapting). Not simulated in this sweep.",
+    "inclusion": "candidate",
+    "inclusion_reason": "Behaviourally distinct (onset spikes then silence, from slow K), from an optimisation-based publication; jNeuroML OMV test (check-runs at this commit: jNeuroML success; the NEURON:8.2.6 job failed). BLOCKER: no licence, so it cannot be redistributed in the study repository without permission (fetch at run time or ask the authors). The cell file name lacks the .cell.nml suffix."
+  },
+  "criteria": {
+    "C01_provenance": true,
+    "C02_reuse_rights": false,
+    "C03_files_present": false,
+    "C04_validation": null,
+    "C05_executes": null,
+    "C06_trace_interpretable": null,
+    "C07_recording_location": null,
+    "C08_responds_to_current": null,
+    "C09_deterministic": null,
+    "C10_refinement_stable": null,
+    "C11_runtime": null,
+    "C12_operators": null,
+    "C13_protocols_compatible": null
+  },
+  "decision": "exclude",
+  "reasons": [
+    "C02_reuse_rights",
+    "C03_files_present"
+  ],
+  "evidence": {
+    "model_id": "bahl2012_soma",
+    "snapshot": "BahlEtAl2012_ReducedL5PyrCell@8275beaa",
+    "error": "snapshot not found: C:\\Users\\gurra\\NeuroSem\\models\\raw\\BahlEtAl2012_ReducedL5PyrCell@8275beaa (run scripts/fetch_models.py)"
+  }
+}

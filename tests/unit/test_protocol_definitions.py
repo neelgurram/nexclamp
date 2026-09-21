@@ -216,7 +216,15 @@ def test_instantiate_coerces_to_float():
 
 # ------------------------------------------------------------------------------ config overrides
 def test_study_config_reproduces_default_catalogue():
-    assert templates_from_config(config.study()["protocols"]) == DEFAULT_TEMPLATES
+    # The frozen confirmatory study selects a subset of the catalogue; every selected protocol
+    # must still match its catalogue definition exactly, parameters and all.
+    defaults = {t.protocol_id: t for t in DEFAULT_TEMPLATES}
+    selected = templates_from_config(config.study()["protocols"])
+    assert selected, "the study must select at least one protocol"
+    for t in selected:
+        base = defaults[t.protocol_id]
+        assert t.kind == base.kind and t.params == base.params, t.protocol_id
+    assert templates_from_config(None) == DEFAULT_TEMPLATES
 
 
 @pytest.mark.parametrize("cfg", [None, []])

@@ -1,0 +1,48 @@
+{
+  "model": {
+    "model_id": "boyle2008_muscle",
+    "name": "Boyle & Cohen 2008 C. elegans body-wall muscle cell (SingleCompMuscleCell)",
+    "snapshot": "muscle_model@2b3c65f4",
+    "cell_file": "NeuroML2/SingleCompMuscle.cell.nml",
+    "cell_id": "SingleCompMuscleCell",
+    "harness_lems": "NeuroML2/LEMS_MuscleStim.xml",
+    "harness_output_file": "m_v.dat",
+    "harness_v_column": "1",
+    "temperature": "",
+    "source_family": "boyle2008",
+    "citation": "Boyle JH, Cohen N (2008). Caenorhabditis elegans body wall muscles are simple actuators. Biosystems 94(1-2):170-181. doi:10.1016/j.biosystems.2008.05.025",
+    "source_url": "https://github.com/openworm/muscle_model",
+    "commit": "2b3c65f4e58f2088633ecbdb930f55701581ea7d",
+    "license": "MIT (OpenWorm LICENSE)",
+    "license_url": "https://github.com/openworm/muscle_model/blob/2b3c65f4e58f2088633ecbdb930f55701581ea7d/LICENSE",
+    "download_date": "2026-09-16",
+    "simulator": "jNeuroML",
+    "expected_behavior": "Single segment (d 10 um, L 230 um), no Na channel: Leak 0.0193 (erev +10 mV), k_slow 0.436, k_fast 0.400, ca_boyle 0.220 mS/cm2 (Ca-carried spikes) and a fixedFactorConcentrationModel Ca pool. Harness: -120 pA holding for the whole run plus +0.23 nA 10-200 ms. Shipped reference for the jNeuroML OMV test (.test.m.mep, threshold -10 mV): 1 spike at 37.6 ms. NeuroML-DB (NMLCL001548) reports a resting potential of -27.9 mV without holding current. Not simulated in this sweep.",
+    "inclusion": "candidate",
+    "inclusion_reason": "MIT; jNeuroML OMV test; distinct channel composition (Ca-based excitability, no Na). Caveats: a muscle cell, not a neuron; the depolarised rest means protocols need a holding current; CaPool.nml notes say \"Not appropriate for muscle model? Needs replacing!\"; the shipped harness produces a single event; no GitHub check-runs recorded at this commit."
+  },
+  "criteria": {
+    "C01_provenance": true,
+    "C02_reuse_rights": true,
+    "C03_files_present": false,
+    "C04_validation": null,
+    "C05_executes": null,
+    "C06_trace_interpretable": null,
+    "C07_recording_location": null,
+    "C08_responds_to_current": null,
+    "C09_deterministic": null,
+    "C10_refinement_stable": null,
+    "C11_runtime": null,
+    "C12_operators": null,
+    "C13_protocols_compatible": null
+  },
+  "decision": "exclude",
+  "reasons": [
+    "C03_files_present"
+  ],
+  "evidence": {
+    "model_id": "boyle2008_muscle",
+    "snapshot": "muscle_model@2b3c65f4",
+    "error": "snapshot not found: C:\\Users\\gurra\\NeuroSem\\models\\raw\\muscle_model@2b3c65f4 (run scripts/fetch_models.py)"
+  }
+}

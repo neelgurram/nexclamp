@@ -164,7 +164,7 @@ selection.
 ### 5.4 Pilot families
 
 `configs/study.yaml` currently lists the pilot families `biophysical`, `reference` and
-`numerical`, with `mutants_per_operator: 2` (sites sampled per operator per model) and
+`numerical`, with `mutants_per_operator: 1` (sites sampled per operator per model, superseded per operator by `sites_per_severity`) and
 `transforms_per_operator: 1` (provisional). These are per-operator counts:
 `experiments/pilot.py` passes them through `campaign.generate_stage` to
 `mutations.generate_mutants` and `transforms.generate_transforms` for each model. The

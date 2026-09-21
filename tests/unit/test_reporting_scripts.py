@@ -74,7 +74,10 @@ def test_attrition_counts_every_stage_and_never_skips_one(results_draft):
     assert stages["primary semantic mutants"] == 6
     assert stages["structurally valid and executable"] == 4      # invalid and non-executable removed
     assert stages["numerically stable"] == 3                     # unstable removed
-    assert stages["admissible (non-equivalent or silent)"] == 2
+    # Two admissibility counts are reported, never one: the frozen class is feature-based, so a
+    # fault detected only by full-trace comparison appears in the second count and not the first.
+    assert stages["admissible by frozen class (feature panel)"] == 2
+    assert stages["admissible including trace-only detection"] == 2
     assert stages["equivalent within the tested domain"] == 1
 
 

@@ -1,0 +1,76 @@
+{
+  "model": {
+    "model_id": "solinas2007_goc_gurnani",
+    "name": "Solinas et al. 2007 cerebellar Golgi cell, 5-segment morphology (GoCl, GoCModel_Basic)",
+    "snapshot": "GoCModel_Basic@90950b59",
+    "cell_file": "Cells/Golgi/GoC.cell.nml",
+    "cell_id": "GoCl",
+    "harness_lems": "Network/LEMS_sim_V2_OneGoC_GoC.xml",
+    "harness_output_file": "../Data_OneGoC/sim_V2_OneGoC_GoC.v.dat",
+    "harness_v_column": "1",
+    "temperature": "23 degC",
+    "source_family": "solinas2007",
+    "citation": "Solinas S, Forti L, Cesana E, Mapelli J, De Schutter E, D'Angelo E (2007). Computational reconstruction of pacemaking and intrinsic electroresponsiveness in cerebellar Golgi cells. Frontiers in Cellular Neuroscience 1:2. doi:10.3389/neuro.03.002.2007 (cited in the README; the Crossref record lists only 'Solinas'). Related work by the repository author, not cited by the repository: Gurnani H, Silver RA (2021). Neuron 109(10):1739-1753.e8. doi:10.1016/j.neuron.2021.03.027",
+    "source_url": "https://github.com/harshagurnani/GoCModel_Basic",
+    "commit": "90950b59d5dc3e285f2c05cf9d26e39a4357c2ab",
+    "license": "GPL-3.0",
+    "license_url": "https://github.com/harshagurnani/GoCModel_Basic/blob/90950b59d5dc3e285f2c05cf9d26e39a4357c2ab/LICENSE",
+    "download_date": "2026-09-16",
+    "simulator": "jNeuroML",
+    "expected_behavior": "5 segments (soma d 27 um, three 3 um dendrites, 1200 um axon). Soma: Na 48, NaP 0.19, NaR 1.7, KA 8, KV 32, KM 1, BK 3, SK2 38 (ionChannelKS), HCN1f/HCN1s 0.05, HCN2f/HCN2s 0.08, CaHVA 0.46 (Nernst), CaLVA 0.25 mS/cm2 (Nernst, ion ca2); leak 0.021 mS/cm2. The harness applies no input (spontaneous activity). README: Solinas-morphology parameter sets give autonomous firing of 2-9 Hz; the model is unstable unless dt is 0.001 ms or lower. No OMV test or reference. Not simulated in this sweep.",
+    "inclusion": "candidate",
+    "inclusion_reason": "Only licensed candidate with HCN1/HCN2 plus T-type Ca in a pacemaking cell (sag/rebound diversity). Low confidence: (1) the LEMS harness includes ../../Mechanisms/*.nml, which resolves outside the repository (the cell file includes the same channels with working paths); (2) CaLVA uses channelDensityNernst with ion ca2 while the ca2 species is commented out; (3) the harness writes to ../Data_OneGoC/, which is not in the tree; (4) GoC.cell.nml also contains its own network element; (5) no CI or OMV test; (6) README reports voltage runaway at larger dt, and the harness dt is 0.0025 ms. Needs jnml -validate and a trial run before any use. GPL-3.0 copyleft. Same original source as the Solinas soma cells screened out in sweep 1, but a different conversion."
+  },
+  "criteria": {
+    "C01_provenance": true,
+    "C02_reuse_rights": true,
+    "C03_files_present": true,
+    "C04_validation": false,
+    "C05_executes": false,
+    "C06_trace_interpretable": false,
+    "C07_recording_location": false,
+    "C08_responds_to_current": null,
+    "C09_deterministic": null,
+    "C10_refinement_stable": null,
+    "C11_runtime": null,
+    "C12_operators": null,
+    "C13_protocols_compatible": null
+  },
+  "decision": "exclude",
+  "reasons": [
+    "C04_validation",
+    "C05_executes",
+    "C06_trace_interpretable",
+    "C07_recording_location"
+  ],
+  "evidence": {
+    "model_id": "solinas2007_goc_gurnani",
+    "snapshot": "GoCModel_Basic@90950b59",
+    "ion_channels": [
+      "GolgiBK",
+      "GolgiCaHVA",
+      "GolgiCaLVA",
+      "GolgiHCN1f",
+      "GolgiHCN1s",
+      "GolgiHCN2f",
+      "GolgiHCN2s",
+      "GolgiKA",
+      "GolgiKM",
+      "GolgiKV",
+      "GolgiNa",
+      "GolgiNaP",
+      "GolgiNaR",
+      "GolgiSK2",
+      "LeakConductance"
+    ],
+    "validation_errors": [
+      "File: C:\\Users\\gurra\\NeuroSem\\work\\variants\\curation-v4\\solinas2007_goc_gurnani\\reference\\Cells\\Golgi\\GoC.cell.nml is not valid against the schema: /Schemas/NeuroML2/NeuroML_v2.3.1.xsd!!",
+      "Error when parsing against Schema (class org.xml.sax.SAXParseException):",
+      "cvc-complex-type.2.4.a: Invalid content was found starting with element '{\"http://www.neuroml.org/schema/neuroml2\":species}'.",
+      "File: C:\\Users\\gurra\\NeuroSem\\work\\variants\\curation-v4\\solinas2007_goc_gurnani\\reference\\Mechanisms\\Golgi_BK.channel.nml is not valid against the schema: /Schemas/NeuroML2/NeuroML_v2.3.1.xsd!!",
+      "Error when parsing against Schema (class org.xml.sax.SAXParseException):",
+      "File: C:\\Users\\gurra\\NeuroSem\\work\\variants\\curation-v4\\solinas2007_goc_gurnani\\reference\\Mechanisms\\Golgi_NaR.channel.nml is not valid against the schema: /Schemas/NeuroML2/NeuroML_v2.3.1.xsd!!"
+    ],
+    "canonical_status": "build_error"
+  }
+}

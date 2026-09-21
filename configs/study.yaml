@@ -1,31 +1,35 @@
-# NeuroSem study configuration.
-# STATUS: provisional. Values become binding only when frozen by preregistration
-# (docs/preregistration.md + configs/FROZEN.lock). Never edit after held-out access.
+# FROZEN CONFIRMATORY STUDY configuration (held-out evaluation).
+# STATUS: FROZEN. Preregistered at AsPredicted on 2026-09-19
+# (https://aspredicted.org/see_one.php?a=Lpqv0ievoeEU9-_b2-bGCmuBdLNeU7HG-PY0bQeRKGg).
+# Every setting below is carried over unchanged from the Pilot 2 development configuration so the
+# confirmatory matrix is comparable; only the status, the study metadata and the mutation families
+# differ. The kinetics family is added by evaluate_heldout from data/splits/heldout/heldout_families.txt,
+# which is why it is absent here: the protocol battery was selected without it (D-037, D-042).
+# Held-out models come from data/splits/heldout/heldout_models.txt, never from this file.
+# The held-out evaluation refuses any configuration override and runs on this file only.
 
-study_id: neuron_model_behavioral_validation   # internal identifier, independent of branding
-status: provisional
+study_id: neuron_model_behavioral_validation    # permanent internal identifier, independent of branding
+status: frozen
 
-study_metadata:                        # stamped on run records, tables, reports and figures
+study_metadata:                        # stamped on every run record, table, report and figure
   study_id: neuron_model_behavioral_validation
-  project_name: Neuraxis
-  study_phase: development
-  protocol_version: DEVELOPMENT_DEFAULTS
-  designation: "Development data; exploratory; never pooled with the confirmatory held-out estimate"
+  project_name: Neuraxis               # internal working label only; the public name is undecided (D-050)
+  study_phase: confirmatory_heldout
+  protocol_version: HELDOUT_PROTOCOL_V1
+  designation: "Confirmatory held-out evaluation; preregistered at AsPredicted before any held-out observation; never pooled with development data"
 
 simulator: jneuroml
 
 numerics:
-  # jLEMS integrates standard NeuroML core types with fixed-step forward Euler.
-  # Pilot probe (2026-09-13, docs/pilot/dt_probe.md): spike times converge at first order;
-  # h = 0.005 ms keeps the RS 5th-spike error to about 4 ms relative to h = 0.001 ms,
-  # at roughly 4 s per 1 s simulated cell. See DECISIONS.md D-007.
   dt_nominal_ms: 0.005
-  refinement_factors: [1, 2, 4]      # h, h/2, h/4 for tolerance calibration
-  admissibility_factor: 2            # non-equivalence must reproduce at h/2
-  settle_ms: 300                     # pre-stimulus settling; eFEL baseline window = last 10 %
+  refinement_factors: [1, 2, 4]        # h, h/2 reproducibility, h/4 survivor confirmation
+  admissibility_factor: 2
+  settle_ms: 300
   timeout_s: 7200
   java_max_memory: 2G
 
+# Calibration procedure, not a detection protocol: the reference model's rheobase sets every
+# protocol amplitude. The same search on a variant is the rheobase detection measurement (P03).
 rheobase:
   step_duration_ms: 500
   initial_hi_nA: 0.5
@@ -33,49 +37,84 @@ rheobase:
   rounds: 4
   expand: 4.0
   max_hi_nA: 32.0
-  spike_threshold_mV: -20.0          # same as eFEL Threshold in configs/features.yaml
-  fallback_rheobase_nA: 0.1          # used to scale protocols only if the reference is spontaneously active
+  spike_threshold_mV: -20.0
+  fallback_rheobase_nA: 0.1
 
+# Comparator, not one of P02-P09: the simulation shipped with each model.
 canonical:
   protocol_id: P00_canonical
-  source: shipped_harness            # the simulation distributed with the model is the conventional regression test
+  source: shipped_harness
+  features: [spike_count, first_spike_latency, last_isi, adaptation_index, ap_amplitude, ahp_depth]
+  secondary_features: [baseline_voltage, mean_frequency, ap_half_width, first_isi, firing_regime]
 
-# Protocol parameters (spec "Protocol battery"). Omitted fields use the defaults in
-# src/neuraxis/protocols/definitions.py.
+# Validation levels A-E (B and C are never merged) with full-trace canonical regression.
+validation_levels:
+  enabled: true
+
+# Detection protocols. `features` = PRIMARY prespecified panel (decides every primary result);
+# `secondary_features` = exploratory only and never change a primary result (D-029).
+# Primary panel across protocols: 8 features. Primary + secondary: the 18 catalogued features.
 protocols:
-  - protocol_id: P01_baseline
   - protocol_id: P02_weak_step
-  - protocol_id: P03_rheobase
+    features: [steady_state_voltage, spike_count]
+    secondary_features: [baseline_voltage, voltage_deflection]
+  - protocol_id: P03_rheobase              # variant rheobase measurement
   - protocol_id: P04_step_2x
+    features: [spike_count, first_spike_latency, last_isi, adaptation_index, ap_amplitude, ahp_depth]
+    secondary_features: [mean_frequency, ap_half_width, first_isi, burst_count, firing_regime]
   - protocol_id: P05_long_step
+    features: [spike_count, first_spike_latency, last_isi, adaptation_index, ap_amplitude, ahp_depth]
+    secondary_features: [mean_frequency, ap_half_width, first_isi, burst_count, firing_regime]
   - protocol_id: P06_ramp
+    features: [spike_count, first_spike_latency]
+    secondary_features: [mean_frequency, firing_regime]
   - protocol_id: P07_hyperpolarizing_step
+    features: [steady_state_voltage, spike_count]
+    secondary_features: [baseline_voltage, voltage_deflection, sag_ratio, minimum_voltage]
   - protocol_id: P08_rebound
+    features: [spike_count, first_spike_latency]
+    secondary_features: [maximum_voltage, firing_regime]
   - protocol_id: P09_short_pulse
-  - protocol_id: P10_paired_pulses
-  - protocol_id: P11_chirp
-  - protocol_id: P12_frozen_noise
+    features: [spike_count, first_spike_latency, ap_amplitude, ahp_depth]
+    secondary_features: [ap_half_width]
 
 execution:
   workers: 12
 
 paths:
-  work: work                          # regenerable variant workspaces and run scratch (git-ignored)
+  work: work
   results: results
 
 pilot:
-  models: [pospischil2008_rs, pospischil2008_lts]
-  mutation_families: [biophysical, reference, numerical]
-  mutants_per_operator: 2            # sites sampled per operator per model (spec pilot: 5-10 mutants per model)
-  transforms_per_operator: 1         # spec pilot: 4-6 valid transformations
+  # Five eligible models from five different source papers, none used in Pilot 1
+  # (docs/MODEL_CURATION_REPORT.md, campaign curation-v3).
+  models: []            # held-out models come from data/splits/heldout/heldout_models.txt
+  new_models: []
+  repeated_models: []
+  # biophysical + reference + kinetics = primary semantic stratum;
+  # numerical = separate robustness and convergence stress tests, never semantic drift (N-15, D-030).
+  mutation_families: [biophysical, reference, numerical]   # kinetics is unioned in from the held-out family file
+  # Prespecified exclusions, fixed before any Pilot 2 data:
+  #   wrong_segment_group: inert on single-compartment somatic cells (Pilot 1: 4 of 4 equivalent);
+  #   shift_initial_voltage: erased by the 300 ms settling window by construction (Pilot 1: 3 of 4 equivalent).
+  # Neither operator is removed from the code base; both stay available for later designs.
+  exclude_operators: [wrong_segment_group, shift_initial_voltage]
+  mutants_per_operator: 1              # superseded per operator by sites_per_severity below
+  transforms_per_operator: 1           # 8 transform operators = 8 valid-transformation controls per model
+  severity_levels: [mild, strong]      # two prespecified severities (severity.py: |ln k| and |d mV| bands)
+  sites_per_severity:
+    default: 1
+    scale_conductance: 2
+    shift_reversal: 2
+  sites_without_severity: 1            # operators with no magnitude (reference swaps)
 
 analysis:
-  n_boot: 10000                      # cluster bootstrap resamples (primary endpoint CI)
-  n_perm: 10000                      # cluster sign-flip permutations
-  seed: 20260913
+  n_boot: 10000
+  n_perm: 10000
+  seed: 20260917
 
 selection:
   budget_k: 4
   random_draws: 10000
-  seed: 20260913
+  seed: 20260917                       # site-selection seed, fixed before generation
   tie_break: [cost, protocol_id]

@@ -139,7 +139,7 @@ Excluded from N but reported in the validation cascade:
 2. Draw K models **with replacement**, keeping all of each drawn model's mutants together.
 3. Compute Delta* = sum(b_j - c_j) / sum(N_j) over the drawn models (pooled ratio estimator).
 4. Repeat B times with a fixed seed. **[decision: Neel: B and seed]** `experiments/heldout.py`
-   reads B = 10000, n_perm = 10000 and seed 20260913 from `configs/study.yaml` (`analysis:
+   reads B = 10000, n_perm = 10000 and seed 20260917 from `configs/study.yaml` (`analysis:
    n_boot, n_perm, seed`) and calls `analysis.bootstrap.paired_comparison` with ci = 0.95.
    Changing them is a configuration change that the preregistration freezes.
 5. Report the 2.5th and 97.5th percentiles of Delta* as the 95 % interval.
@@ -256,7 +256,7 @@ correction is claimed. Any analysis not listed here is labelled exploratory.
 
 - The candidate pool is the same as for greedy selection **[decision: Neel: whether
   `P00_canonical` is a candidate]**.
-- Random sets are drawn once with a fixed seed: `selection.seed` = 20260913, `random_draws`
+- Random sets are drawn once with a fixed seed: `selection.seed` = 20260917, `random_draws`
   = 10000 (provisional).
 
 **Count-matched** (`random_count_matched(m, k, draws, seed)`).
@@ -370,7 +370,7 @@ adjusted after held-out results are seen**.
    the matrix and `heldout.py` together (section 2). Also whether class 6 should use
    reproducible canonical detection.
 3. Material effect size and decision rule (section 4.5).
-4. Bootstrap B, permutation n_perm and seed (currently 10000, 10000 and 20260913 in
+4. Bootstrap B, permutation n_perm and seed (currently 10000, 10000 and 20260917 in
    `configs/study.yaml` `analysis`).
 5. Whether the stimulus family is in the primary population.
 6. Coverage levels for S5.

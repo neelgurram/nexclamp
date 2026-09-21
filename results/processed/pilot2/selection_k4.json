@@ -1,0 +1,56 @@
+{
+  "campaign": "pilot2",
+  "created_utc": "2026-09-21T00:07:47+00:00",
+  "budget_k": 4,
+  "seed": 20260917,
+  "draws": 10000,
+  "detection_matrix": "results/processed/pilot2/detection_matrix.csv",
+  "detection_matrix_sha256": "c5ef5dc8866500bf42078dd8e2ea4b09a76a012a27db16bb7f4c3c9d8b39e53f",
+  "n_discovery_mutants": 63,
+  "n_excluded_from_selection": 12,
+  "families_excluded_from_selection": [
+    "kinetics"
+  ],
+  "discovery_models": [
+    "pospischil2008_rs",
+    "pospischil2008_lts",
+    "pospischil2008_fs",
+    "nml2_hh_example",
+    "acnet2_pyr_soma",
+    "migliore2014_mt_soma",
+    "osb_hh2_477127614"
+  ],
+  "selected_protocols": [
+    "P05_long_step",
+    "P04_step_2x",
+    "P06_ramp"
+  ],
+  "coverage_curve": [
+    0.9523809523809523,
+    0.9682539682539683,
+    0.9841269841269841
+  ],
+  "selected_cost_cell_steps": 1000000.0,
+  "rates": {
+    "selected": 0.9841269841269841,
+    "canonical": 0.8888888888888888,
+    "exhaustive": 1.0
+  },
+  "random_count_matched": {
+    "mean": 0.9027952380952382,
+    "sd": 0.09520600830458727,
+    "p05": 0.7142857142857143,
+    "p50": 0.9365079365079365,
+    "p95": 0.9682539682539683,
+    "n": 10000
+  },
+  "random_runtime_matched": {
+    "mean": 0.9481936507936507,
+    "sd": 0.03611146740697513,
+    "p05": 0.873015873015873,
+    "p50": 0.9682539682539683,
+    "p95": 0.9682539682539683,
+    "n": 10000
+  },
+  "note": "Discovery-set rates are in-sample and optimistic by construction (the selection saw these mutants; the exhaustive battery defines admissibility). Only held-out evaluation tests generalisation."
+}

@@ -75,7 +75,8 @@ def test_protocol_catalog_timing_table_matches_code():
         m = _ROW.match(line)
         if m:
             rows[m.group(1)] = tuple(int(m.group(i).replace(",", "")) for i in range(2, 6))
-    expected_ids = [t.protocol_id for t in batched(templates_from_config(cfg.get("protocols")))]
+    # The catalogue document covers every defined protocol; a frozen study may select a subset.
+    expected_ids = [t.protocol_id for t in batched(templates_from_config(None))]
     assert sorted(rows) == sorted(expected_ids)
     for t in batched(templates_from_config(cfg.get("protocols"))):
         p = t.instantiate(1.0, settle)
@@ -100,7 +101,7 @@ def test_protocol_catalog_cost_table_matches_code():
     cfg = _study()
     settle = float(cfg["numerics"]["settle_ms"])
     dt = float(cfg["numerics"]["dt_nominal_ms"])
-    templates = templates_from_config(cfg.get("protocols"))
+    templates = templates_from_config(None)
     by_short = {t.protocol_id[:3]: t for t in templates}
     section = _section(read("PROTOCOL_CATALOG.md"), "## 6. Cost measure", "## 7.")
 
@@ -234,7 +235,7 @@ def test_detection_rule_matches_heldout_code():
 
 
 def test_protocol_catalog_fingerprint_size_matches_code():
-    templates = [t for t in templates_from_config(_study().get("protocols")) if t.implemented]
+    templates = [t for t in templates_from_config(None) if t.implemented]
     n = sum(len(t.features) for t in templates) + len(CANONICAL_FEATURES)
     assert f"{n} entries per model" in read("PROTOCOL_CATALOG.md")
 

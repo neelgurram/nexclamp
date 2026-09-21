@@ -163,7 +163,7 @@ For each, state estimator and reporting. Current draft proposals are in
 - Comparators: canonical alone; random count-matched; random runtime-matched; full
   candidate battery (ceiling).
 - Random-set sampling (algorithm, number of draws, seed; enumeration when feasible): [NEEL
-  DECISION REQUIRED]. Current provisional: 10000 draws, seed 20260913.
+  DECISION REQUIRED]. Current provisional: 10000 draws, seed 20260917.
 
 ## 8. Features and extraction settings
 
@@ -195,7 +195,7 @@ For each, state estimator and reporting. Current draft proposals are in
 - **Primary analysis.** Paired counts (a, b, c, d), Delta = (b - c) / N, per-model
   Delta_j, and a cluster-bootstrap 95 % interval resampling base models.
 - Bootstrap resamples B, permutations and seed: [NEEL DECISION REQUIRED]. Current values in
-  `configs/study.yaml` `analysis`: B = 10000, n_perm = 10000, seed 20260913, ci 0.95
+  `configs/study.yaml` `analysis`: B = 10000, n_perm = 10000, seed 20260917, ci 0.95
   (`experiments/heldout.py` reads them and calls `paired_comparison`).
 - Detection rule for both strategies: reproducible per-protocol detection at h and h/2, as
   in section 2.

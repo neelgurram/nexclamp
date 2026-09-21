@@ -1,0 +1,88 @@
+{
+  "model": {
+    "model_id": "pospischil2008_ib",
+    "name": "Pospischil 2008 intrinsically bursting (IB) cell",
+    "snapshot": "PospischilEtAl2008@049081c3",
+    "cell_file": "NeuroML2/cells/IB/IB.cell.nml",
+    "cell_id": "IB",
+    "harness_lems": "NeuroML2/cells/IB/LEMS_IB.xml",
+    "harness_output_file": "IB.dat",
+    "harness_v_column": "1",
+    "temperature": "36.0 degC",
+    "source_family": "pospischil2008",
+    "citation": "Pospischil M, Toledo-Rodriguez M, Monier C, Piwkowska Z, Bal T, Fregnac Y, Markram H, Destexhe A (2008). Minimal Hodgkin-Huxley type models for different classes of cortical and thalamic neurons. Biol Cybern 99(4-5):427-441. doi:10.1007/s00422-008-0263-8",
+    "source_url": "https://github.com/OpenSourceBrain/PospischilEtAl2008",
+    "commit": "049081c39357d9e7c478b63ef7b10f374d1c50f4",
+    "license": "MIT (NeuroML2 directory)",
+    "license_url": "https://github.com/OpenSourceBrain/PospischilEtAl2008/blob/049081c39357d9e7c478b63ef7b10f374d1c50f4/LICENSE",
+    "download_date": "2026-09-13",
+    "simulator": "jNeuroML",
+    "expected_behavior": "Single compartment; adds high-threshold Ca (IL); bursting-type onset labelled IB (unverified). Shipped step outlasts the simulation.",
+    "inclusion": "candidate",
+    "inclusion_reason": "Correlated with RS/LTS; candidate for the full study only"
+  },
+  "criteria": {
+    "C01_provenance": true,
+    "C02_reuse_rights": true,
+    "C03_files_present": true,
+    "C04_validation": true,
+    "C05_executes": true,
+    "C06_trace_interpretable": true,
+    "C07_recording_location": true,
+    "C08_responds_to_current": true,
+    "C09_deterministic": true,
+    "C10_refinement_stable": true,
+    "C11_runtime": true,
+    "C12_operators": true,
+    "C13_protocols_compatible": true
+  },
+  "decision": "include_eligible",
+  "reasons": [],
+  "evidence": {
+    "model_id": "pospischil2008_ib",
+    "snapshot": "PospischilEtAl2008@049081c3",
+    "ion_channels": [
+      "IL",
+      "IM",
+      "Kd",
+      "LeakConductance",
+      "Na"
+    ],
+    "validation_errors": [
+      "File: C:\\Users\\gurra\\NeuroSem\\work\\variants\\curation-v4\\pospischil2008_ib\\reference\\NeuroML2\\channels\\Ca\\Ca.nml is not valid against the schema: /Schemas/NeuroML2/NeuroML_v2.3.1.xsd!!",
+      "Error when parsing against Schema (class org.xml.sax.SAXParseException):",
+      "cvc-complex-type.2.4.a: Invalid content was found starting with element '{\"http://www.neuroml.org/schema/neuroml2\":decayingPoolConcentrationModelPosp}'.",
+      "Validated 8 files: 7 passed, 1 failed"
+    ],
+    "canonical_status": "ok",
+    "canonical_v_range_mV": [
+      -85.28221893310547,
+      47.624576568603516
+    ],
+    "rheobase_status": "ok",
+    "rheobase_nA": 0.10948705689502083,
+    "fingerprint_status": [
+      "ok",
+      "ok"
+    ],
+    "spikes_P04": 13.0,
+    "spikes_P05": 14.0,
+    "firing_regime_P05": "tonic",
+    "rebound_spikes_P08": 0.0,
+    "sag_ratio_P07": 0.002019026029512697,
+    "refinement_excluded": "0/64",
+    "estimated_variant_runtime_s": 1698.4,
+    "semantic_operators_with_site": [
+      "duplicate_conductance",
+      "omit_include",
+      "scale_capacitance",
+      "scale_conductance",
+      "scale_gate_time_constant",
+      "shift_initial_voltage",
+      "shift_reversal",
+      "wrong_channel",
+      "wrong_compatible_component",
+      "wrong_segment_group"
+    ]
+  }
+}

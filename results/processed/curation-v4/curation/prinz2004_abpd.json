@@ -1,0 +1,89 @@
+{
+  "model": {
+    "model_id": "prinz2004_abpd",
+    "name": "Prinz et al. 2003/2004 stomatogastric AB/PD pacemaker neuron (AB_PD_3 parameter set)",
+    "snapshot": "PyloricNetwork@e97696fc",
+    "cell_file": "NeuroML2/AB_PD_3.cell.nml",
+    "cell_id": "AB_PD",
+    "harness_lems": "NeuroML2/LEMS_Fig2a.xml",
+    "harness_output_file": "AB_PD.dat",
+    "harness_v_column": "1",
+    "temperature": "10.0 degC",
+    "source_family": "prinz_stg",
+    "citation": "Prinz AA, Billimoria CP, Marder E (2003). Alternative to Hand-Tuning Conductance-Based Models: Construction and Analysis of Databases of Model Neurons. Journal of Neurophysiology 90(6):3998-4015. doi:10.1152/jn.00641.2003 | Prinz AA, Bucher D, Marder E (2004). Similar network activity from disparate circuit parameters. Nature Neuroscience 7(12):1345-1352. doi:10.1038/nn1352",
+    "source_url": "https://github.com/OpenSourceBrain/PyloricNetwork",
+    "commit": "e97696fca408ef375db6cbb2054bf8c1e5e5de0e",
+    "license": "MIT",
+    "license_url": "https://github.com/OpenSourceBrain/PyloricNetwork/blob/e97696fca408ef375db6cbb2054bf8c1e5e5de0e/LICENSE",
+    "download_date": "2026-09-13",
+    "simulator": "jNeuroML",
+    "expected_behavior": "Single compartment; Na, CaT, CaS, KA, KCa, Kd, H (Ih), Ca pool. Expected bursting pacemaker (AB/PD). Screening (jNeuroML, not calibrated, not eFEL; verification.json run 2026-09-13T16:00:56+00:00_aa8fa6a0): shipped harness gives 40 spikes in 5 s in 2 bursts on slow waves; spontaneously active. Hyperpolarisation with depolarising recovery in a spontaneously active cell: -0.3 nA for 1 s reaches -124.5 mV at +264 ms and recovers by 43.2 mV before release, then 13 rebound spikes. Sag ratio undefined (spikes in the pre-step baseline window). Ih contribution to that recovery untested: the Ih-block run of this protocol aborted in jLEMS. At -0.1 nA (spikes during the step with and without Ih) blocking Ih lowered the end-of-step potential by 12.3 mV.",
+    "inclusion": "candidate",
+    "inclusion_reason": "Candidate for the bursting and rebound gaps (independent source, MIT, jnml-valid). Not shown to fill the Ih/sag gap: sag ratio is undefined in this spontaneously active cell and the Ih-block control of the recovering protocol aborted. Decisions needed: rheobase for spontaneously active cells (fallback 0.1 nA used), canonical window (earliest harness pulse is 0-100 ms), burst onsets 1.6 s apart vs 700-1000 ms protocols; harness is a network (AB_PD is presynaptic only)."
+  },
+  "criteria": {
+    "C01_provenance": true,
+    "C02_reuse_rights": true,
+    "C03_files_present": true,
+    "C04_validation": true,
+    "C05_executes": true,
+    "C06_trace_interpretable": true,
+    "C07_recording_location": true,
+    "C08_responds_to_current": null,
+    "C09_deterministic": true,
+    "C10_refinement_stable": true,
+    "C11_runtime": true,
+    "C12_operators": true,
+    "C13_protocols_compatible": true
+  },
+  "decision": "review",
+  "reasons": [
+    "C08_responds_to_current"
+  ],
+  "evidence": {
+    "model_id": "prinz2004_abpd",
+    "snapshot": "PyloricNetwork@e97696fc",
+    "ion_channels": [
+      "CaS_STG",
+      "CaT_STG",
+      "H_STG",
+      "KA_STG",
+      "KCa_STG",
+      "Kd_STG",
+      "LeakConductance",
+      "Na_STG"
+    ],
+    "validation_errors": [],
+    "canonical_status": "ok",
+    "canonical_v_range_mV": [
+      -113.42993927001953,
+      48.64130401611328
+    ],
+    "rheobase_status": "spontaneous",
+    "rheobase_nA": 0.0,
+    "fingerprint_status": [
+      "ok",
+      "ok"
+    ],
+    "spikes_P04": 12.0,
+    "spikes_P05": 36.0,
+    "firing_regime_P05": "bursting",
+    "rebound_spikes_P08": 8.0,
+    "sag_ratio_P07": 0.03530833532016921,
+    "C08_note": "spontaneously active: needs human judgement",
+    "refinement_excluded": "0/64",
+    "estimated_variant_runtime_s": 1242.0,
+    "semantic_operators_with_site": [
+      "duplicate_conductance",
+      "omit_include",
+      "scale_capacitance",
+      "scale_conductance",
+      "scale_gate_time_constant",
+      "shift_initial_voltage",
+      "shift_reversal",
+      "wrong_channel",
+      "wrong_compatible_component",
+      "wrong_segment_group"
+    ]
+  }
+}

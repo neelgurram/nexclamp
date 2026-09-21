@@ -1,0 +1,92 @@
+{
+  "model": {
+    "model_id": "traub2005_testseg2",
+    "name": "Traub et al. 2005 channel test cell 2 (Na/K channel subset in one compartment, TestSeg_test2)",
+    "snapshot": "Thalamocortical@5d1c9aea",
+    "cell_file": "neuroConstruct/generatedNeuroML2/TestSeg_test2.cell.nml",
+    "cell_id": "TestSeg_test2",
+    "harness_lems": "neuroConstruct/generatedNeuroML2/LEMS_SomaTest.xml",
+    "harness_output_file": "CG_tester_0.0.dat",
+    "harness_v_column": "1",
+    "temperature": "6.3 degC",
+    "source_family": "traub2005",
+    "citation": "Traub RD, Contreras D, Cunningham MO, Murray H, LeBeau FEN, Roopun A, Bibbig A, Wilent WB, Higley MJ, Whittington MA (2005). Single-Column Thalamocortical Network Model Exhibiting Gamma Oscillations, Sleep Spindles, and Epileptogenic Bursts. Journal of Neurophysiology 93(4):2194-2232. doi:10.1152/jn.00983.2004",
+    "source_url": "https://github.com/OpenSourceBrain/Thalamocortical",
+    "commit": "5d1c9aea16598092b6a2e75974465b9f4cd7ccc7",
+    "license": "GPL-2.0 (LICENSE preamble: applies to everything except directories Neuron, Fortran_ifc and Fortran_g77, which carry a cite-on-use condition)",
+    "license_url": "https://github.com/OpenSourceBrain/Thalamocortical/blob/5d1c9aea16598092b6a2e75974465b9f4cd7ccc7/LICENSE",
+    "download_date": "2026-09-16",
+    "simulator": "jNeuroML",
+    "expected_behavior": "Single segment (d 20 um). k2 0.1, ka 15, ka_ib 15, kdr 62.5, kdr_fs 62.5, km 1.5, naf/naf2/naf_tcr 0.033 each, nap 0.05, napf 15, napf_spinstell 0.05, napf_tcr 0.05, pas 0.3 mS/cm2; no Ca, no Ih. Harness: +0.08 nA 20-80 ms. Shipped reference for the jNeuroML OMV test (.test.soma.mep): 9 spikes 22.8-77.1 ms, ISI 5.8 -> 7.6 ms (fast firing with lengthening intervals). Not simulated in this sweep.",
+    "inclusion": "candidate",
+    "inclusion_reason": "Tested single-compartment harness with a jNeuroML OMV target; fast adapting firing with M current. Caveats: an artificial channel-comparison cell (notes: \"Test cell2\"), not a published neuron; GPL-2.0 copyleft; no GitHub check-runs recorded at this commit."
+  },
+  "criteria": {
+    "C01_provenance": true,
+    "C02_reuse_rights": true,
+    "C03_files_present": true,
+    "C04_validation": true,
+    "C05_executes": true,
+    "C06_trace_interpretable": true,
+    "C07_recording_location": true,
+    "C08_responds_to_current": true,
+    "C09_deterministic": true,
+    "C10_refinement_stable": true,
+    "C11_runtime": true,
+    "C12_operators": true,
+    "C13_protocols_compatible": true
+  },
+  "decision": "include_eligible",
+  "reasons": [],
+  "evidence": {
+    "model_id": "traub2005_testseg2",
+    "snapshot": "Thalamocortical@5d1c9aea",
+    "ion_channels": [
+      "k2",
+      "ka",
+      "ka_ib",
+      "kdr",
+      "kdr_fs",
+      "km",
+      "naf",
+      "naf2",
+      "naf_tcr",
+      "nap",
+      "napf",
+      "napf_spinstell",
+      "napf_tcr",
+      "pas"
+    ],
+    "validation_errors": [],
+    "canonical_status": "ok",
+    "canonical_v_range_mV": [
+      -71.9365234375,
+      25.79212760925293
+    ],
+    "rheobase_status": "ok",
+    "rheobase_nA": 0.01710948705689502,
+    "fingerprint_status": [
+      "ok",
+      "ok"
+    ],
+    "spikes_P04": 18.0,
+    "spikes_P05": 42.0,
+    "firing_regime_P05": "tonic",
+    "rebound_spikes_P08": 0.0,
+    "sag_ratio_P07": 4.3996659774901356e-05,
+    "refinement_excluded": "0/64",
+    "estimated_variant_runtime_s": 2244.2,
+    "semantic_operators_with_site": [
+      "duplicate_conductance",
+      "omit_include",
+      "scale_capacitance",
+      "scale_conductance",
+      "scale_gate_time_constant",
+      "shift_initial_voltage",
+      "shift_reversal",
+      "wrong_channel",
+      "wrong_compatible_component",
+      "wrong_segment_group"
+    ]
+  }
+}

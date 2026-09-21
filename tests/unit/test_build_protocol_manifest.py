@@ -27,6 +27,16 @@ def bpm():
 
 @pytest.fixture(scope="module")
 def templates():
+    """The manifest is the catalogue of every defined protocol, not the subset a study runs.
+
+    The frozen confirmatory study selects eight protocols; the catalogue still documents all twelve,
+    including the two that cannot be expressed with NeuroML core inputs.
+    """
+    return templates_from_config(None)
+
+
+@pytest.fixture(scope="module")
+def study_templates():
     return templates_from_config(config.study().get("protocols"))
 
 
@@ -140,3 +150,12 @@ def test_study_override_changes_manifest(bpm, tmp_path):
     rows = bpm.parse_csv(bpm.manifest_text(study))
     assert [r["protocol_id"] for r in rows] == ["P04_step_2x"]
     assert json.loads(rows[0]["params_json"])["multiple"] == 3.0
+
+
+def test_catalogue_is_a_superset_of_whatever_the_current_study_runs(bpm, templates, study_templates):
+    """A study that selects a subset must never shrink the catalogue."""
+    catalogue = {t.protocol_id for t in templates}
+    running = {t.protocol_id for t in study_templates}
+    assert running <= catalogue
+    rows = {r["protocol_id"] for r in bpm.parse_csv(bpm.manifest_text())}
+    assert rows == catalogue

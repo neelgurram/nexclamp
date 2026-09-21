@@ -1,0 +1,94 @@
+{
+  "model": {
+    "model_id": "hay2011_soma",
+    "name": "Hay et al. 2011 L5b pyramidal cell channel set in a single soma compartment (Soma_AllCML)",
+    "snapshot": "L5bPyrCellHayEtAl2011@a813a88a",
+    "cell_file": "neuroConstruct/generatedNeuroML2/Soma_AllCML.cell.nml",
+    "cell_id": "Soma_AllCML",
+    "harness_lems": "neuroConstruct/generatedNeuroML2/LEMS_L5bPyrCellHayEtAl2011_LowDt.xml",
+    "harness_output_file": "CG_TestCML_0.dat",
+    "harness_v_column": "1",
+    "temperature": "6.3 degC",
+    "source_family": "hay2011_bbp_channels",
+    "citation": "Hay E, Hill S, Schuermann F, Markram H, Segev I (2011). Models of Neocortical Layer 5b Pyramidal Cells Capturing a Wide Range of Dendritic and Perisomatic Active Properties. PLoS Computational Biology 7(7):e1002107. doi:10.1371/journal.pcbi.1002107",
+    "source_url": "https://github.com/OpenSourceBrain/L5bPyrCellHayEtAl2011",
+    "commit": "a813a88af8eb77fc59ef70bb3e5aef6397e682f7",
+    "license": "MIT (OSB LICENSE; exception: NEURON directory, cite-on-use condition; candidate files lie outside it)",
+    "license_url": "https://github.com/OpenSourceBrain/L5bPyrCellHayEtAl2011/blob/a813a88af8eb77fc59ef70bb3e5aef6397e682f7/LICENSE",
+    "download_date": "2026-09-16",
+    "simulator": "jNeuroML",
+    "expected_behavior": "Single compartment (d 13.47 um, L 23.17 um). Ih 0.2, Im 0.0675, K_Pst 2.23, K_Tst 81.2, Nap_Et2 1.72, NaTa_t 300, SK_E2 0.08, SKv3_1 293, pas 0.0338 mS/cm2; Ca_HVA 0.992 and Ca_LVAst 3.43 mS/cm2 (Nernst); Hay Ca pool. Harness: -0.01 nA 100-200 ms, then +0.05 nA 300-400 ms. Shipped NEURON reference used by the jNeuroML OMV test (NEURON/test/.test.soma.mep): 7 spikes 306.3-397.0 ms, ISI 13.8 -> 15.8 ms (mild lengthening). Not simulated in this sweep.",
+    "inclusion": "candidate",
+    "inclusion_reason": "MIT; jNeuroML OMV test against a NEURON reference (GitHub check-runs at this commit: jNeuroML success). Adds Ih + T-type Ca (Ca_LVAst) + SK in a quiescent-looking cell: a possible route to the open sag/rebound gap (unverified). OSB-assembled soma test cell (\"A single segment/compartment cell\"), not a published single-compartment model. Shares all channel files with bbp2015_soma: keep both in the same split."
+  },
+  "criteria": {
+    "C01_provenance": true,
+    "C02_reuse_rights": true,
+    "C03_files_present": true,
+    "C04_validation": true,
+    "C05_executes": true,
+    "C06_trace_interpretable": true,
+    "C07_recording_location": true,
+    "C08_responds_to_current": true,
+    "C09_deterministic": true,
+    "C10_refinement_stable": true,
+    "C11_runtime": true,
+    "C12_operators": true,
+    "C13_protocols_compatible": true
+  },
+  "decision": "include_eligible",
+  "reasons": [],
+  "evidence": {
+    "model_id": "hay2011_soma",
+    "snapshot": "L5bPyrCellHayEtAl2011@a813a88a",
+    "ion_channels": [
+      "Ca_HVA",
+      "Ca_LVAst",
+      "Ih",
+      "Im",
+      "K_Pst",
+      "K_Tst",
+      "NaTa_t",
+      "Nap_Et2",
+      "SK_E2",
+      "SKv3_1",
+      "pas"
+    ],
+    "validation_errors": [
+      "File: C:\\Users\\gurra\\NeuroSem\\work\\variants\\curation-v4\\hay2011_soma\\reference\\neuroConstruct\\generatedNeuroML2\\CaDynamics_E2_NML2.nml is not valid against the schema: /Schemas/NeuroML2/NeuroML_v2.3.1.xsd!!",
+      "Error when parsing against Schema (class org.xml.sax.SAXParseException):",
+      "cvc-complex-type.2.4.a: Invalid content was found starting with element '{\"http://www.neuroml.org/schema/neuroml2\":concentrationModel}'.",
+      "Validated 14 files: 13 passed, 1 failed"
+    ],
+    "canonical_status": "ok",
+    "canonical_v_range_mV": [
+      -94.07102966308594,
+      37.207786560058594
+    ],
+    "rheobase_status": "ok",
+    "rheobase_nA": 0.020148896933269586,
+    "fingerprint_status": [
+      "ok",
+      "ok"
+    ],
+    "spikes_P04": 15.0,
+    "spikes_P05": 14.0,
+    "firing_regime_P05": "tonic",
+    "rebound_spikes_P08": 0.0,
+    "sag_ratio_P07": 0.44243970453091863,
+    "refinement_excluded": "0/64",
+    "estimated_variant_runtime_s": 2609.8,
+    "semantic_operators_with_site": [
+      "duplicate_conductance",
+      "omit_include",
+      "scale_capacitance",
+      "scale_conductance",
+      "scale_gate_time_constant",
+      "shift_initial_voltage",
+      "shift_reversal",
+      "wrong_channel",
+      "wrong_compatible_component",
+      "wrong_segment_group"
+    ]
+  }
+}

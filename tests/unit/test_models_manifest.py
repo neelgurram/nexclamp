@@ -33,10 +33,16 @@ from neuraxis.units import parse
 EXPECTED_IDS = {"pospischil2008_rs", "pospischil2008_lts", "pospischil2008_fs", "pospischil2008_ib",
                 "nml2_hh_example", "wangbuzsaki1996_wb",
                 # promoted from the curated candidates for Pilot 2 (D-053)
-                "acnet2_pyr_soma", "migliore2014_mt_soma", "osb_hh2_477127614"}
+                "acnet2_pyr_soma", "migliore2014_mt_soma", "osb_hh2_477127614",
+                # held-out evaluation models, assigned 2026-09-20 from curation-v4
+                "hay2011_soma", "bbp2015_soma", "traub2005_testseg2", "traub2005_testseg_all",
+                "smith2013_singlecomp", "migliore2005_ca1_soma"}
 # Pilot 1 models plus the five Pilot 2 models (D-053); `candidate` and `exclude` stay out.
 EXPECTED_INCLUDED = {"pospischil2008_rs", "pospischil2008_lts", "pospischil2008_fs", "nml2_hh_example",
-                     "acnet2_pyr_soma", "migliore2014_mt_soma", "osb_hh2_477127614"}
+                     "acnet2_pyr_soma", "migliore2014_mt_soma", "osb_hh2_477127614",
+                # held-out evaluation models, assigned 2026-09-20 from curation-v4
+                "hay2011_soma", "bbp2015_soma", "traub2005_testseg2", "traub2005_testseg_all",
+                "smith2013_singlecomp", "migliore2005_ca1_soma"}
 
 
 @pytest.fixture(scope="module")

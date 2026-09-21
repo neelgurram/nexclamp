@@ -599,7 +599,10 @@ def test_freeze_script_cli(tmp_path, repo_root):
 # ---------------------------------------------------------------------- repository split files
 def test_repository_discovery_split_is_the_provisional_pilot(repo_root, models):
     view = discovery_view(repo_root)
-    assert view.models == ("pospischil2008_rs", "pospischil2008_lts")
+    # Every model whose mutation outcomes have been seen: Pilot 1 (2) and Pilot 2 (5).
+    assert view.models == ("pospischil2008_rs", "pospischil2008_lts", "pospischil2008_fs",
+                           "nml2_hh_example", "acnet2_pyr_soma", "migliore2014_mt_soma",
+                           "osb_hh2_477127614")
     assert view.families == ("biophysical", "reference", "numerical")
     assert view.excluded_families == ("stimulus", "kinetics")
     for mid in view.models:

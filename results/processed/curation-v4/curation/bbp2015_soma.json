@@ -1,0 +1,96 @@
+{
+  "model": {
+    "model_id": "bbp2015_soma",
+    "name": "Blue Brain Project NMC channel set in a single soma compartment (Soma_AllNML2)",
+    "snapshot": "BlueBrainProjectShowcase@9ab1b393",
+    "cell_file": "NMC/NeuroML2/Soma_AllNML2.cell.nml",
+    "cell_id": "Soma_AllNML2",
+    "harness_lems": "NMC/NeuroML2/LEMS_Soma_AllNML2.xml",
+    "harness_output_file": "CG_TestCML_0.dat",
+    "harness_v_column": "1",
+    "temperature": "6.3 degC",
+    "source_family": "hay2011_bbp_channels",
+    "citation": "Markram H, Muller E, Ramaswamy S, Reimann MW, et al. (2015). Reconstruction and Simulation of Neocortical Microcircuitry. Cell 163(2):456-492. doi:10.1016/j.cell.2015.09.029 (CITATION.md also asks for Ramaswamy et al. 2015, Front Neural Circuits 9:44, doi:10.3389/fncir.2015.00044; that DOI was not checked against Crossref)",
+    "source_url": "https://github.com/OpenSourceBrain/BlueBrainProjectShowcase",
+    "commit": "9ab1b3935e6df511bd84837c1b20f99a4b97555a",
+    "license": "MIT (OSB LICENSE; exception: NMC/parser/L* directories carry their own licence; candidate files are in NMC/NeuroML2)",
+    "license_url": "https://github.com/OpenSourceBrain/BlueBrainProjectShowcase/blob/9ab1b3935e6df511bd84837c1b20f99a4b97555a/LICENSE",
+    "download_date": "2026-09-16",
+    "simulator": "jNeuroML",
+    "expected_behavior": "Single compartment, same geometry as hay2011_soma. Adds NaTs2_t 100 and KdShu2007 0.2 mS/cm2 (erev -100 mV); NaTa_t 200 instead of 300; otherwise the Hay densities (Ih 0.2, Ca_LVAst 3.43). Harness: -0.01 nA 100-200 ms, +0.05 nA 300-400 ms. Shipped NEURON reference used by the jNeuroML OMV test (NMC/NEURON/.test.mep): 5 spikes 307.3-392.6 ms, ISI 17.5 -> 23.6 ms (adapting). Not simulated in this sweep.",
+    "inclusion": "candidate",
+    "inclusion_reason": "MIT; jNeuroML OMV test (check-runs at this commit: jNeuroML success). Adapting reference train. OSB-assembled test cell; uses the same channel files as hay2011_soma (BBP reuses the Hay channels), so the two form one family for splitting. The harness network includes Ca.channel.nml, which the cell does not use."
+  },
+  "criteria": {
+    "C01_provenance": true,
+    "C02_reuse_rights": true,
+    "C03_files_present": true,
+    "C04_validation": true,
+    "C05_executes": true,
+    "C06_trace_interpretable": true,
+    "C07_recording_location": true,
+    "C08_responds_to_current": true,
+    "C09_deterministic": true,
+    "C10_refinement_stable": true,
+    "C11_runtime": true,
+    "C12_operators": true,
+    "C13_protocols_compatible": true
+  },
+  "decision": "include_eligible",
+  "reasons": [],
+  "evidence": {
+    "model_id": "bbp2015_soma",
+    "snapshot": "BlueBrainProjectShowcase@9ab1b393",
+    "ion_channels": [
+      "Ca_HVA",
+      "Ca_LVAst",
+      "Ih",
+      "Im",
+      "K_Pst",
+      "K_Tst",
+      "KdShu2007",
+      "NaTa_t",
+      "NaTs2_t",
+      "Nap_Et2",
+      "SK_E2",
+      "SKv3_1",
+      "pas"
+    ],
+    "validation_errors": [
+      "File: C:\\Users\\gurra\\NeuroSem\\work\\variants\\curation-v4\\bbp2015_soma\\reference\\NMC\\NeuroML2\\CaDynamics_E2_NML2.nml is not valid against the schema: /Schemas/NeuroML2/NeuroML_v2.3.1.xsd!!",
+      "Error when parsing against Schema (class org.xml.sax.SAXParseException):",
+      "cvc-complex-type.2.4.a: Invalid content was found starting with element '{\"http://www.neuroml.org/schema/neuroml2\":concentrationModel}'.",
+      "Validated 17 files: 16 passed, 1 failed"
+    ],
+    "canonical_status": "ok",
+    "canonical_v_range_mV": [
+      -93.94119262695312,
+      35.848175048828125
+    ],
+    "rheobase_status": "ok",
+    "rheobase_nA": 0.02735468888737108,
+    "fingerprint_status": [
+      "ok",
+      "ok"
+    ],
+    "spikes_P04": 30.0,
+    "spikes_P05": 16.0,
+    "firing_regime_P05": "tonic",
+    "rebound_spikes_P08": 0.0,
+    "sag_ratio_P07": 0.47187821963878296,
+    "refinement_excluded": "0/64",
+    "estimated_variant_runtime_s": 2770.3,
+    "semantic_operators_with_site": [
+      "duplicate_conductance",
+      "omit_include",
+      "scale_capacitance",
+      "scale_conductance",
+      "scale_gate_time_constant",
+      "shift_initial_voltage",
+      "shift_reversal",
+      "wrong_channel",
+      "wrong_compatible_component",
+      "wrong_segment_group"
+    ]
+  }
+}

@@ -119,6 +119,19 @@ Development observation (not a study result): `docs/pilot/dt_probe.md` reran the
 and FS harnesses in jNeuroML at six time steps. RS and FS early spikes are stable to about
 0.1 ms, but the LTS third spike moves about 50 ms across the tested range.
 
+### Held-out evaluation models (assigned 2026-09-20)
+
+All six eligible models from sources never used in development, taken without selection discretion (curation-v4, amendment H-01). None has been mutated; no detection outcome exists for any of them. They are read only through `HeldoutGate`, which refuses unless the study is frozen and logs every access.
+
+| model_id | inclusion | source_family | snapshot | license |
+|---|---|---|---|---|
+| `hay2011_soma` | **include** (held out) | hay2011_bbp_channels | L5bPyrCellHayEtAl2011@a813a88a | MIT (OSB LICENSE; exception noted) |
+| `bbp2015_soma` | **include** (held out) | hay2011_bbp_channels | BlueBrainProjectShowcase@9ab1b393 | MIT (OSB LICENSE; exception noted) |
+| `traub2005_testseg2` | **include** (held out) | traub2005 | Thalamocortical@5d1c9aea | GPL-2.0 |
+| `traub2005_testseg_all` | **include** (held out) | traub2005 | Thalamocortical@5d1c9aea | GPL-2.0 |
+| `smith2013_singlecomp` | **include** (held out) | smith2013 | SmithEtAl2013-L23DendriticSpikes@179c596e | MIT |
+| `migliore2005_ca1_soma` | **include** (held out) | migliore2005 | CA1PyramidalCell@b854fd29 | MIT (OSB LICENSE) |
+
 ## 4. Why RS and LTS are the pilot pair
 
 - Both come from one peer-reviewed paper (Pospischil et al. 2008, Biol Cybern 99:427-441,

@@ -111,8 +111,14 @@ def load_templates(study_path: Path | None = None) -> tuple[ProtocolTemplate, ..
     command-line user expects. ``config.load_yaml`` on its own would resolve it under
     ``configs/``.
     """
-    cfg = config.load_yaml(Path(study_path).resolve()) if study_path else config.study()
-    return templates_from_config(cfg.get("protocols"))
+    # The manifest is the protocol CATALOGUE: it documents every protocol the software defines,
+    # including the two that are not implementable with NeuroML core inputs. Which protocols a given
+    # study runs is a property of that study's configuration, not of the catalogue - so a frozen
+    # study that selects a subset (the confirmatory battery does) must not shrink this file.
+    if study_path:
+        cfg = config.load_yaml(Path(study_path).resolve())
+        return templates_from_config(cfg.get("protocols"))
+    return templates_from_config(None)
 
 
 def manifest_text(study_path: Path | None = None) -> str:
