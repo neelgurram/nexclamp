@@ -1,0 +1,41 @@
+$ C:\Users\gurra\NeuroSem\.venv\Scripts\python.exe -m neuraxis --help
+
+usage: neuraxis [-h]
+                {fetch-models,validate-models,run-reference,calibrate-tolerances,generate-mutants,classify-mutants,build-fingerprints,select-protocols,evaluate-heldout,evaluate-agent,analyze,reproduce-paper,pilot,smoke,curate-models,smoke-test}
+                ...
+
+Neuraxis command-line interface (spec "Suggested commands"). Every command is
+a thin wrapper around ``neuraxis.experiments``. Commands never touch held-out
+data except ``evaluate-heldout``, which is gated by ``configs/FROZEN.lock``.
+
+positional arguments:
+  {fetch-models,validate-models,run-reference,calibrate-tolerances,generate-mutants,classify-mutants,build-fingerprints,select-protocols,evaluate-heldout,evaluate-agent,analyze,reproduce-paper,pilot,smoke,curate-models,smoke-test}
+    fetch-models        download commit-pinned model snapshots with provenance
+    validate-models     structural validation of manifest models
+    run-reference       reference fingerprints at h, h/2, h/4 + determinism
+    calibrate-tolerances
+                        tolerance table from reference refinement
+    generate-mutants    mutants and valid transformations
+    classify-mutants    fingerprint, compare and classify generated variants
+    build-fingerprints  fingerprint, compare and classify generated variants
+    select-protocols    greedy selection + random baselines on the discovery
+                        split
+    evaluate-heldout    GATED held-out evaluation (requires
+                        configs/FROZEN.lock)
+    evaluate-agent      score one agent trial with hidden deterministic
+                        evaluators
+    analyze             metrics, statistics and figures from processed results
+    reproduce-paper     rebuild all tables and figures from raw/processed
+                        results
+    pilot               run the Milestone 6 pilot end to end
+    smoke               quick end-to-end simulator smoke check
+    curate-models       apply the model inclusion/exclusion criteria
+                        (reference simulations only)
+    smoke-test          infrastructure smoke test (the execution plan's nine
+                        checks)
+
+options:
+  -h, --help            show this help message and exit
+
+--- stderr ---
+

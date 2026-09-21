@@ -51,7 +51,14 @@ def test_sealed_pilot_is_registered_exploratory_and_read_only():
 
 
 def test_pilot1_run_records_load_under_the_current_schema():
-    runs = sorted((REPO_ROOT / "results" / "raw" / "pilot").glob("r-*/run.json"))[:25]
+    # Scope to the SEALED Pilot 1 set named in the archive manifest. The campaign directory may also
+    # hold foreign runs written later by a tool that named this campaign (X-27); those are not Pilot 1
+    # data and are excluded from every Pilot 1 statement.
+    manifest = (REPO_ROOT / "results" / "processed" / "pilot" / "ARCHIVE_MANIFEST.sha256").read_text(encoding="utf-8")
+    archived = {line.split()[1].split("/")[1] for line in manifest.splitlines()
+                if line.strip() and line.split()[1].startswith("raw/r-")}
+    runs = [f for f in sorted((REPO_ROOT / "results" / "raw" / "pilot").glob("r-*/run.json"))
+            if f.parent.name in archived][:25]
     assert runs
     for f in runs:
         rec = RunRecord(**json.loads(f.read_text(encoding="utf-8")))

@@ -91,6 +91,17 @@ def main(argv: list[str] | None = None) -> int:
     commit, dirty = git_state()
     if dirty:
         problems.append("the working tree is dirty; freeze from a clean, tagged checkout (protocol step 1.4)")
+    # The campaign recorded here is where the scorer writes its simulations. Naming a sealed campaign
+    # (or the source campaign itself) adds foreign runs to finished data - this happened once, on
+    # 2026-09-19, and is recorded as X-27.
+    from neuraxis.experiments import registry
+
+    study_name = a.study or a.campaign
+    if registry.is_sealed(study_name, config.results_dir()):
+        problems.append(f"campaign {study_name!r} is sealed; pass --study with a fresh name for agent scoring")
+    if study_name == a.campaign:
+        problems.append(f"--study must differ from --campaign ({a.campaign!r}): agent scoring writes simulations, "
+                        f"and they must not land in the campaign that supplied the tolerances")
     if problems:
         for p in problems:
             print(f"BLOCKED: {p}")

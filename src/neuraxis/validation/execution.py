@@ -159,6 +159,23 @@ class RunRecorder:
         self._locks: dict[str, threading.Lock] = {}
         self._locks_guard = threading.Lock()
         self._env: tuple[str, dict] | None = None
+        self._results_root = results_root or config.results_dir()
+
+    def _refuse_sealed(self) -> None:
+        """Never write a new simulation into a sealed campaign.
+
+        Sealing marks a campaign finished and its data preserved. ``registry.assert_writable``
+        enforces that for pipeline stages, but a caller that builds a RunRecorder directly - the
+        agent-study scorer does, taking its campaign name from the frozen evaluation config - used to
+        bypass it and could add runs to a sealed campaign's directory. Reading and cache reuse stay
+        allowed; only writing a new run is refused.
+        """
+        from neuraxis.experiments import registry
+
+        if registry.is_sealed(self.campaign, self._results_root):
+            raise registry.CampaignError(
+                f"refusing to write a new run into sealed campaign {self.campaign!r} "
+                f"({registry.seal_path(self.campaign, self._results_root)}); use a different campaign name")
 
     # ------------------------------------------------------------ helpers
     def env(self) -> tuple[str, dict]:
@@ -284,6 +301,7 @@ class RunRecorder:
         from neuraxis.features import trace_metrics
 
         run_dir = self.raw / run_id
+        self._refuse_sealed()
         digest, _ = self.env()
         commit, dirty = git_state()
         prior = run_dir / "run.json"

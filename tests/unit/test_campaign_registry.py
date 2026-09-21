@@ -122,3 +122,27 @@ def test_config_dir_override(tmp_path, monkeypatch):
     monkeypatch.setenv(config.CONFIG_DIR_ENV, str(tmp_path))
     assert not config.uses_default_config_dir()
     assert config.study()["study_id"] == "alt"
+
+
+def test_a_sealed_campaign_refuses_new_runs_from_any_writer(tmp_path):
+    """X-27: a caller that builds a RunRecorder directly must not add runs to sealed data.
+
+    assert_writable guards the pipeline, but the agent-study scorer constructs a recorder from the
+    campaign name in its frozen config. Once a campaign is sealed, every writer is refused.
+    """
+    import pytest
+
+    from neuraxis.experiments import registry
+    from neuraxis.validation.execution import RunRecorder
+
+    results = tmp_path / "results"
+    (results / "processed" / "done").mkdir(parents=True)
+    registry.register("done", registry.EXPLORATORY_PILOT, results)
+    registry.seal("done", results, role=registry.EXPLORATORY_PILOT, code_commit="abc1234", note="finished")
+
+    rec = RunRecorder("done", sim=None, results_root=results, work_root=tmp_path / "work")
+    with pytest.raises(registry.CampaignError, match="sealed"):
+        rec._refuse_sealed()
+
+    open_rec = RunRecorder("still_open", sim=None, results_root=results, work_root=tmp_path / "work")
+    open_rec._refuse_sealed()      # an unsealed campaign is writable
