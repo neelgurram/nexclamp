@@ -448,6 +448,8 @@ responsibility for the content. No AI system is an author.
 
 ## Figure legends
 
+*Files: Fig. 1–5 = `results/figures/heldout-v1/` `h1_per_model_primary`, `h2_primary_difference`, `h3_validation_levels`, `h4_random_baselines`, `h5_attrition` (PDF versions for submission).*
+
 **Fig. 1** Detection of admissible faults on each held-out model by the canonical regression test
 and the selected three-protocol battery. Dashed lines: pooled rates with 95 % cluster-bootstrap
 intervals; dotted line: preregistered adequacy threshold (0.95).
