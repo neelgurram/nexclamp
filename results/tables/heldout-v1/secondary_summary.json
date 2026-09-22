@@ -1,6 +1,6 @@
 {
   "campaign": "heldout-v1",
-  "created_utc": "2026-09-22T15:14:13+00:00",
+  "created_utc": "2026-09-22T15:26:08+00:00",
   "selected_protocols": [
     "P05_long_step",
     "P04_step_2x",
@@ -128,6 +128,23 @@
       "cumulative_cost": NaN
     }
   ],
+  "sensitivity_cluster_by_source_family": {
+    "clusters": [
+      "hay2011_bbp_channels",
+      "migliore2005",
+      "smith2013",
+      "traub2005"
+    ],
+    "diff": 0.13414634146341464,
+    "cluster_ci": [
+      0.04040404040404041,
+      0.2318840579710145
+    ],
+    "bootstrap_reliable": false,
+    "warning": "only 4 base-model cluster(s) (< 5): the cluster bootstrap has few distinct resamples and its percentile interval is unreliable",
+    "permutation_p": 0.25,
+    "permutation_min_attainable_p": 0.25
+  },
   "canonical_levels": {
     "denominator": "A_basic_pass and E_full_battery (features or trace, any protocol)",
     "n": 94,
@@ -256,6 +273,6 @@
     "2.0": 1,
     "4.0": 1
   },
-  "git_commit": "4de0e9d67ffca2de3a8f626fe16bd10a80950a31",
+  "git_commit": "dbe676febca5fcacaf267ea0689ff87e53d61450",
   "git_dirty": false
 }
