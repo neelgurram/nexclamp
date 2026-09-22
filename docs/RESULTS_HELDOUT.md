@@ -131,6 +131,13 @@ Each has `AUDIT_PACK.md` (edit, class, detection and diagnostic per fault) and `
 (verdict columns left empty). Audit independently, then compare. Disagreement is recorded, never
 overwritten.
 
+**Automated re-check (AI-assisted, not the human audit):** `audit/AUTOMATED_CHECK.md`
+(`scripts/audit_autocheck.py`). For all 26 faults: the actual file differences equal the recorded edit
+and match the operator's meaning; the class re-derives from the raw records; every feature detection
+recomputes from the per-run feature files (spike counts also recounted from raw traces); and all 227
+full-trace detections recompute from the raw voltage traces. 0 flagged. The human verdict columns
+are untouched.
+
 ## Figures
 
 `results/figures/heldout-v1/`: h1 per-model detection, h2 primary difference, h3 validation levels,

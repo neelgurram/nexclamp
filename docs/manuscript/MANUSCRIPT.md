@@ -391,8 +391,10 @@ single-site edits; real modification errors may be larger, compound or correlate
 depends on the definition used (82 by feature classification, 94 including trace-only changes).
 The result for the held-out kinetics family is inconclusive. The frozen generator produced 186
 variants, above the preregistered estimate of roughly 100 to 150, and selection produced a
-three-protocol battery under a four-protocol budget; both are reported as they occurred. The human
-audit of sampled faults is [pending / reported in section 3.x].
+three-protocol battery under a four-protocol budget; both are reported as they occurred. An automated
+re-check of the 26 audited faults (a random sample of 20 and the six canonical survivors) found every
+edit, class and detection consistent with the raw model files and voltage traces; the independent human
+audit of the same faults is [pending].
 
 ### 4.2 Deviations from the registration
 
