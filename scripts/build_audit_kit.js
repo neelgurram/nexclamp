@@ -43,6 +43,30 @@ function table(header, rows, widths, o = {}) {
            ...rows.map(r => new TableRow({ children: r.map((s, j) => cell(s, j, false)) }))] });
 }
 const gap = () => new Paragraph({ spacing: { after: 80 }, children: [] });
+const YELLOW = "FFF8D6", BLUE = "DCE6F0";
+const box = (s, w, o = {}) => new TableCell({ width: { size: w, type: WidthType.DXA }, columnSpan: o.span,
+  borders: { top: border, bottom: border, left: border, right: border },
+  shading: o.fill ? { type: ShadingType.CLEAR, fill: o.fill, color: "auto" } : undefined,
+  margins: { top: 70, bottom: o.tall ? 1000 : 70, left: 90, right: 90 },
+  children: [new Paragraph({ children: [t(s, { size: 19, bold: o.bold })] })] });
+
+// Fill-in answer box: the auditor types X in one cell per row and writes notes in the last row.
+function answerBox(n) {
+  const w = [3400, 1490, 1490, 1490, 1490];
+  const row = (q, open) => new TableRow({ children: [box(q, w[0], { bold: true }),
+    ...open.map((o, j) => box(o ? "" : "–", w[j + 1], { fill: o ? YELLOW : "F2F2F2" }))] });
+  return new Table({ width: { size: CONTENT, type: WidthType.DXA }, columnWidths: w, rows: [
+    new TableRow({ children: [box(`Your answers for fault ${n} (type X)`, w[0], { bold: true, fill: BLUE }),
+      ...["Yes", "No", "Unsure", "N/A"].map((h, j) => box(h, w[j + 1], { bold: true, fill: BLUE }))] }),
+    row("Q1  Edit matches its label?", [1, 1, 1, 0]),
+    row("Q2  Assigned class plausible?", [1, 1, 1, 0]),
+    row("Q3  Detection plausible?", [1, 1, 1, 1]),
+    new TableRow({ children: [box("Confidence: type X under one", w[0], { bold: true }),
+      box("High", w[1], { fill: YELLOW }), box("Medium", w[2], { fill: YELLOW }), box("Low", w[3], { fill: YELLOW }),
+      box("–", w[4], { fill: "F2F2F2" })] }),
+    new TableRow({ children: [box("Notes (required for any No or Unsure):", CONTENT, { bold: true, span: 5, fill: YELLOW, tall: true })] }),
+  ] });
+}
 
 // ------------------------------------------------------------------ front matter
 const body = [];
@@ -52,6 +76,11 @@ body.push(new Paragraph({ alignment: AlignmentType.CENTER, spacing: { after: 80 
   children: [t("Neuron model validation study: held-out evaluation", { size: 26 })] }));
 body.push(new Paragraph({ alignment: AlignmentType.CENTER, spacing: { after: 360 },
   children: [t(`For Samyak Singh and Naithik Somisetti · ${faults.length} faults · prepared ${meta.generated_utc.slice(0, 10)}`, { italics: true, size: 20, color: "555555" })] }));
+
+body.push(new Table({ width: { size: CONTENT, type: WidthType.DXA }, columnWidths: [3900, 5460], rows: [
+  ["Auditor name", ""], ["Date completed", ""], ["I worked alone and did not see the automated check (Yes / No)", ""],
+].map(([k, v]) => new TableRow({ children: [box(k, 3900, { bold: true, fill: BLUE }), box(v, 5460, { fill: YELLOW })] })) }));
+body.push(gap());
 
 body.push(h1("1. What you are doing and why"));
 body.push(p("We took six published computer models of single neurons and made small, deliberate edits (\"faults\") to them. Then we checked whether the usual test (re-running the one simulation shipped with each model, called the canonical test) notices the change, and whether a short set of extra stimuli does better."));
@@ -88,10 +117,10 @@ body.push(h2("Question 3: Is the detection plausible?"));
 body.push(p("Look at the evidence tables and the graph. A detection means the difference is bigger than the tolerance, at h and at h/2. In the graph, black is the original model and orange dashed is the edited one: where they separate, the behaviour changed. For the key faults, the top graph (canonical test) should look nearly identical while the lower graph shows the difference. Answer N/A if nothing was detected."));
 
 body.push(h1("5. How to submit"));
-[ "Open the Excel file Audit_Answer_Sheet.xlsx and save a copy named with your name, for example Audit_Answers_Samyak.xlsx.",
-  "Fill in your name and the date at the top, then one row per fault (the row number matches the fault number in this packet).",
-  "Use the drop-down in each answer cell. Add notes whenever you answer No or Unsure.",
-  "Send the finished file back to Neel. Only then compare with each other.",
+[ "Save a copy of this document with your name in the file name, for example Audit_Packet_Samyak.docx.",
+  "Fill in the yellow box on the first page: your name, the date, and whether you worked alone.",
+  "Each fault's section ends with a yellow answer box. Type an X in one cell per row, and write a note whenever you answer No or Unsure.",
+  "Send your finished document back to Neel. Only then compare answers with each other.",
 ].forEach(s => body.push(num(s)));
 
 body.push(h1("6. Summary of the faults"));
@@ -148,7 +177,8 @@ for (const f of faults) {
       children: [new ImageRun({ type: "png", data: buf, transformation: { width, height: Math.round(width * hgt / w) } })] }));
     body.push(p([t("Black: original model. Orange dashed: edited model. Where the lines separate, the behaviour changed.", { italics: true, size: 18 })]));
   }
-  body.push(p([t(`→ Record your answers in row ${f.n} of the answer sheet.`, { bold: true, color: "1F4E79" })]));
+  body.push(gap());
+  body.push(answerBox(f.n));
 }
 
 const doc = new Document({
@@ -212,11 +242,10 @@ async function sheet() {
 
 Packer.toBuffer(doc).then(async b => {
   fs.writeFileSync(path.join(KIT, "Audit_Packet.docx"), b);
-  await sheet();
   fs.writeFileSync(path.join(KIT, "README.txt"),
     "Human audit kit\r\n\r\n1. Read Audit_Packet.docx (sections 1-5 first).\r\n" +
-    "2. Save a copy of Audit_Answer_Sheet.xlsx with your name and fill it in, one row per fault.\r\n" +
-    "3. Work alone; send your sheet to Neel before comparing with anyone.\r\n\r\n" +
+    "2. Save a copy with your name and type your answers into the yellow boxes (one per fault).\r\n" +
+    "3. Work alone; send your document to Neel before comparing with anyone.\r\n\r\n" +
     `Generated ${meta.generated_utc} from commit ${meta.git_commit.slice(0, 8)}.\r\n`);
-  console.log("wrote Audit_Packet.docx, Audit_Answer_Sheet.xlsx, README.txt in", KIT);
+  console.log("wrote Audit_Packet.docx and README.txt in", KIT);
 });
