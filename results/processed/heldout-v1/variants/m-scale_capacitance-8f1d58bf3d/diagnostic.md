@@ -1,0 +1,53 @@
+# m-scale_capacitance-8f1d58bf3d
+
+*study_id: neuron_model_behavioral_validation | project_name: Neuraxis | study_phase: confirmatory_heldout | protocol_version: HELDOUT_PROTOCOL_V1 | designation: Confirmatory held-out evaluation; preregistered at AsPredicted before any held-out observation; never pooled with development data*
+
+- model: `traub2005_testseg_all`
+- stratum: primary_semantic
+- kind/family/operator: mutant / biophysical / scale_capacitance
+- parameters: `{"changes": [{"attribute": "value", "locator": "/neuroml[@id='TestSeg_all']/cell[@id='TestSeg_all']/biophysicalProperties[@id='biophys']/membraneProperties[1]/specificCapacitance[1]", "new": "0.5 uF_per_cm2", "old": "1.0 uF_per_cm2"}], "element": "specificCapacitance", "element_id": null, "factor": 0.5, "generator_seed": 20260917}`
+- recorded edits: `[{"file": "neuroConstruct/generatedNeuroML2/TestSeg_all.cell.nml", "locator": "/neuroml[@id='TestSeg_all']/cell[@id='TestSeg_all']/biophysicalProperties[@id='biophys']/membraneProperties[1]/specificCapacitance[1]", "attribute": "value", "old": "1.0 uF_per_cm2", "new": "0.5 uF_per_cm2", "action": "set", "note": "scale_capacitance"}]`
+- execution overrides: `{}`
+- class: **5_non_equivalent**
+- nominal-level status: ok; runtime 8012.994 s
+
+| level | protocol | feature | reason | reference | variant | |diff| | tau | reference run | variant run |
+|---|---|---|---|---|---|---|---|---|---|
+| h/1 | P00_canonical | adaptation_index | exceeds | 0.5216693418942094 | 0.03544515455543932 | 0.486224 | 0.0521669 | `r-068a1eafd4afbbd6d23e` | `r-9c186180273349ccc400` |
+| h/1 | P00_canonical | ahp_depth | exceeds | -8.248406196708032 | -14.57066472371455 | 6.32226 | 0.5 | `r-068a1eafd4afbbd6d23e` | `r-9c186180273349ccc400` |
+| h/1 | P00_canonical | ap_amplitude | exceeds | 74.70865440368996 | 96.1608352661301 | 21.4522 | 1.49417 | `r-068a1eafd4afbbd6d23e` | `r-9c186180273349ccc400` |
+| h/1 | P00_canonical | first_spike_latency | exceeds | 2.950000000000788 | 1.4000000000005457 | 1.55 | 0.5 | `r-068a1eafd4afbbd6d23e` | `r-9c186180273349ccc400` |
+| h/1 | P00_canonical | last_isi | exceeds | 23.700000000004948 | 4.670000000002389 | 19.03 | 0.5 | `r-068a1eafd4afbbd6d23e` | `r-9c186180273349ccc400` |
+| h/1 | P00_canonical | spike_count | exceeds | 4.0 | 6.0 | 2 | 0.5 | `r-068a1eafd4afbbd6d23e` | `r-9c186180273349ccc400` |
+| h/1 | P04_step_2x | ahp_depth | exceeds | -3.06435100805065 | -14.858714540973594 | 11.7944 | 1.14578 | `r-96e71f2e3b8549494d50` | `r-3088fe90902c2a8ab4e1` |
+| h/1 | P04_step_2x | ap_amplitude | exceeds | 71.33246612267223 | 97.07684516484903 | 25.7444 | 1.42665 | `r-96e71f2e3b8549494d50` | `r-3088fe90902c2a8ab4e1` |
+| h/1 | P04_step_2x | first_spike_latency | exceeds | 29.099999999845693 | 1.4299999998708586 | 27.67 | 0.582 | `r-96e71f2e3b8549494d50` | `r-3088fe90902c2a8ab4e1` |
+| h/1 | P04_step_2x | spike_count | exceeds | 51.0 | 63.0 | 12 | 3 | `r-96e71f2e3b8549494d50` | `r-3088fe90902c2a8ab4e1` |
+| h/1 | P05_long_step | ahp_depth | exceeds | -2.799466059340233 | -15.335879763290492 | 12.5364 | 1.17341 | `r-74af15e68cf19cbae102` | `r-d4540ff1ab10d4740fe7` |
+| h/1 | P05_long_step | ap_amplitude | exceeds | 72.98996734843095 | 94.65307616870018 | 21.6631 | 1.4598 | `r-74af15e68cf19cbae102` | `r-d4540ff1ab10d4740fe7` |
+| h/1 | P05_long_step | first_spike_latency | exceeds | 42.88999999983315 | 2.039999999870304 | 40.85 | 0.8578 | `r-74af15e68cf19cbae102` | `r-d4540ff1ab10d4740fe7` |
+| h/1 | P05_long_step | last_isi | exceeds | 24.470000000534128 | 4.9700000001084845 | 19.5 | 1.11 | `r-74af15e68cf19cbae102` | `r-d4540ff1ab10d4740fe7` |
+| h/1 | P05_long_step | spike_count | exceeds | 83.0 | 96.0 | 13 | 3 | `r-74af15e68cf19cbae102` | `r-d4540ff1ab10d4740fe7` |
+| h/1 | P06_ramp | spike_count | exceeds | 70.0 | 95.0 | 25 | 3 | `r-6afcc4c87334b55f282e` | `r-02cd85a52a4512990f63` |
+| h/1 | P09_short_pulse | ahp_depth | exceeds | -2.697613642280899 | -7.886592348255718 | 5.18898 | 1.32669 | `r-289063c903c8c366c952` | `r-e6b33d9eb357f0cacdbf` |
+| h/1 | P09_short_pulse | ap_amplitude | exceeds | 96.16110801631415 | 104.43485259369677 | 8.27374 | 1.92322 | `r-289063c903c8c366c952` | `r-e6b33d9eb357f0cacdbf` |
+| h/2 | P00_canonical | adaptation_index | exceeds | 0.5214881334190068 | 0.04043194586620632 | 0.481056 | 0.0521669 | `r-87bcc3cd30685deaf603` | `r-944ba96217467d979e9a` |
+| h/2 | P00_canonical | ahp_depth | exceeds | -8.213585962703469 | -14.527078391307768 | 6.31349 | 0.5 | `r-87bcc3cd30685deaf603` | `r-944ba96217467d979e9a` |
+| h/2 | P00_canonical | ap_amplitude | exceeds | 74.66815185545984 | 96.16993713379271 | 21.5018 | 1.49417 | `r-87bcc3cd30685deaf603` | `r-944ba96217467d979e9a` |
+| h/2 | P00_canonical | first_spike_latency | exceeds | 2.950000000000788 | 1.4000000000005457 | 1.55 | 0.5 | `r-87bcc3cd30685deaf603` | `r-944ba96217467d979e9a` |
+| h/2 | P00_canonical | last_isi | exceeds | 23.72000000000496 | 5.640000000002885 | 18.08 | 0.5 | `r-87bcc3cd30685deaf603` | `r-944ba96217467d979e9a` |
+| h/2 | P00_canonical | spike_count | exceeds | 4.0 | 6.0 | 2 | 0.5 | `r-87bcc3cd30685deaf603` | `r-944ba96217467d979e9a` |
+| h/2 | P04_step_2x | ahp_depth | exceeds | -2.68242419940799 | -14.426113784608887 | 11.7437 | 1.14578 | `r-6290d36f97e6ddeb2b58` | `r-d9a677d6f2b4421e16ce` |
+| h/2 | P04_step_2x | ap_amplitude | exceeds | 71.00378608656828 | 96.54705811139884 | 25.5433 | 1.42665 | `r-6290d36f97e6ddeb2b58` | `r-d9a677d6f2b4421e16ce` |
+| h/2 | P04_step_2x | first_spike_latency | exceeds | 29.029999999845757 | 1.4099999998708768 | 27.62 | 0.582 | `r-6290d36f97e6ddeb2b58` | `r-d9a677d6f2b4421e16ce` |
+| h/2 | P04_step_2x | spike_count | exceeds | 50.0 | 60.0 | 10 | 3 | `r-6290d36f97e6ddeb2b58` | `r-d9a677d6f2b4421e16ce` |
+| h/2 | P05_long_step | ahp_depth | exceeds | -2.408330571497629 | -14.918018997227804 | 12.5097 | 1.17341 | `r-f1a8b6a7a66c54d9b827` | `r-0659ea4ae05b4fd74ee9` |
+| h/2 | P05_long_step | ap_amplitude | exceeds | 72.5536842363497 | 94.25395202379482 | 21.7003 | 1.4598 | `r-f1a8b6a7a66c54d9b827` | `r-0659ea4ae05b4fd74ee9` |
+| h/2 | P05_long_step | first_spike_latency | exceeds | 42.819999999833215 | 1.9999999998703402 | 40.82 | 0.8578 | `r-f1a8b6a7a66c54d9b827` | `r-0659ea4ae05b4fd74ee9` |
+| h/2 | P05_long_step | last_isi | exceeds | 24.840000000542204 | 4.990000000108921 | 19.85 | 1.11 | `r-f1a8b6a7a66c54d9b827` | `r-0659ea4ae05b4fd74ee9` |
+| h/2 | P05_long_step | spike_count | exceeds | 82.0 | 95.0 | 13 | 3 | `r-f1a8b6a7a66c54d9b827` | `r-0659ea4ae05b4fd74ee9` |
+| h/2 | P06_ramp | spike_count | exceeds | 69.0 | 93.0 | 24 | 3 | `r-ce6273bb85e534e50ecc` | `r-c94f3ea602b02fe27ff3` |
+| h/2 | P09_short_pulse | ahp_depth | exceeds | -2.255384099392458 | -7.4199492338781 | 5.16457 | 1.32669 | `r-5eb7b54961cd58341dac` | `r-a184c71fc98ed969d05f` |
+| h/2 | P09_short_pulse | ap_amplitude | exceeds | 95.5725460033362 | 103.75049972526742 | 8.17795 | 1.92322 | `r-5eb7b54961cd58341dac` | `r-a184c71fc98ed969d05f` |
+
+Evidence traces: `results/raw/<campaign>/<run_id>/traces.npz` for the run ids above; features in the matching `features.json`. A detection counts toward non-equivalence only if the same protocol and feature are detected at h/1 and h/2.

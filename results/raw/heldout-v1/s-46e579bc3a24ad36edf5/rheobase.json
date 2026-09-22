@@ -1,0 +1,202 @@
+{
+  "cache_key_sha256": "46e579bc3a24ad36edf5c7d1e4d6c54770289bfe26d3e706c182288a51e76a13",
+  "campaign": "heldout-v1",
+  "cell_steps": 7680000,
+  "config": {
+    "expand": 4.0,
+    "fallback_rheobase_nA": 0.1,
+    "grid": 12,
+    "initial_hi_nA": 0.5,
+    "max_hi_nA": 32.0,
+    "rounds": 4,
+    "spike_threshold_mV": -20.0,
+    "step_duration_ms": 500
+  },
+  "config_sha256": "1e5bb74663a737efb630a73fff2009feb035b37e56f52dcee708ac370ac79e23",
+  "configuration_hash": "1e5bb74663a737efb630a73fff2009feb035b37e56f52dcee708ac370ac79e23",
+  "cost": [
+    {
+      "cell_steps": 1920000,
+      "runtime_s": 596.0518147000112,
+      "status": "ok",
+      "tag": "rheo_1"
+    },
+    {
+      "cell_steps": 1920000,
+      "runtime_s": 592.7832886000397,
+      "status": "ok",
+      "tag": "rheo_2"
+    },
+    {
+      "cell_steps": 1920000,
+      "runtime_s": 612.3385720999795,
+      "status": "ok",
+      "tag": "rheo_3"
+    },
+    {
+      "cell_steps": 1920000,
+      "runtime_s": 598.044785599981,
+      "status": "ok",
+      "tag": "rheo_4"
+    }
+  ],
+  "designation": "Confirmatory held-out evaluation; preregistered at AsPredicted before any held-out observation; never pooled with development data",
+  "end_time": "2026-09-22T06:18:53+00:00",
+  "environment_digest": "060d7d05714a28e026e793c487f7588642e880dd66323a8aae5611da2caa9db4",
+  "exec": {
+    "dt_ms": 0.005,
+    "integrator_method": null,
+    "sample_every_ms": null
+  },
+  "execution_id": "299d8fa018dd44269de3f1f692836f23",
+  "generation_code_digest": "16732ed9ba6d83b511d6c713666445015081be8c0b82755e03506b3630834196",
+  "generation_version": 2,
+  "git_commit": "c9230ae5c4e3944690113262ce71590a76a7932e",
+  "git_dirty": false,
+  "inputs_sha256": "b4dade9ee643d6d55eae10bf0ce29bc6c1dd7defc255c6e186312ccb67004ac9",
+  "model_hash": "99af7c8537924427467342ac2594adebfe382afa9e2fa3c4bf463f12bdffd39a",
+  "model_id": "traub2005_testseg_all",
+  "project_name": "Neuraxis",
+  "protocol_id": "P03_rheobase",
+  "protocol_version": "HELDOUT_PROTOCOL_V1",
+  "result": {
+    "history": [
+      {
+        "amplitudes_nA": [
+          0.0,
+          0.045454545454545456,
+          0.09090909090909091,
+          0.13636363636363635,
+          0.18181818181818182,
+          0.2272727272727273,
+          0.2727272727272727,
+          0.3181818181818182,
+          0.36363636363636365,
+          0.4090909090909091,
+          0.4545454545454546,
+          0.5
+        ],
+        "counts": [
+          0,
+          0,
+          19,
+          59,
+          91,
+          112,
+          130,
+          147,
+          162,
+          176,
+          189,
+          201
+        ]
+      },
+      {
+        "amplitudes_nA": [
+          0.045454545454545456,
+          0.049586776859504134,
+          0.05371900826446281,
+          0.05785123966942149,
+          0.06198347107438017,
+          0.06611570247933884,
+          0.07024793388429752,
+          0.0743801652892562,
+          0.07851239669421488,
+          0.08264462809917356,
+          0.08677685950413223,
+          0.09090909090909091
+        ],
+        "counts": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          3,
+          6,
+          9,
+          13,
+          16,
+          19
+        ]
+      },
+      {
+        "amplitudes_nA": [
+          0.05785123966942149,
+          0.05822689706987228,
+          0.058602554470323066,
+          0.05897821187077386,
+          0.059353869271224644,
+          0.059729526671675436,
+          0.06010518407212622,
+          0.06048084147257701,
+          0.0608564988730278,
+          0.06123215627347859,
+          0.06160781367392938,
+          0.06198347107438017
+        ],
+        "counts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ]
+      },
+      {
+        "amplitudes_nA": [
+          0.06123215627347859,
+          0.061266306946246844,
+          0.0613004576190151,
+          0.06133460829178335,
+          0.06136875896455161,
+          0.06140290963731986,
+          0.06143706031008811,
+          0.061471210982856364,
+          0.06150536165562462,
+          0.06153951232839287,
+          0.06157366300116113,
+          0.06160781367392938
+        ],
+        "counts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    ],
+    "lower_nA": 0.06143706031008811,
+    "n_simulations": 4,
+    "rheobase_nA": 0.061471210982856364,
+    "status": "ok",
+    "upper_nA": 0.061471210982856364
+  },
+  "runtime_s": 2399.218,
+  "search_id": "s-46e579bc3a24ad36edf5",
+  "settle_ms": 300.0,
+  "simulator_version": "jNeuroML 0.14.0 / jLEMS 0.12.0",
+  "start_time": "2026-09-22T05:38:49+00:00",
+  "status": "ok",
+  "study_id": "neuron_model_behavioral_validation",
+  "study_phase": "confirmatory_heldout",
+  "timestamp_utc": "2026-09-22T06:18:53+00:00",
+  "variant_id": "m-scale_conductance-9356a476a5",
+  "variant_tree_sha256": "99af7c8537924427467342ac2594adebfe382afa9e2fa3c4bf463f12bdffd39a"
+}

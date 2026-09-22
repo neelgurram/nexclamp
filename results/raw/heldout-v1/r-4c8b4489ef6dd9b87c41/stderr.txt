@@ -1,0 +1,73 @@
+Sep 22, 2026 12:43:24 AM org.lemsml.jlems.io.logging.DefaultLogger msg
+SEVERE:  (ERROR) org.lemsml.jlems.core.run.RuntimeError: Error at PathDerivedVariable eval(): tgt: null[HHExpRate]; sin: m[gateHHrates]; tgtvar: r; path: reverseRate/r
+org.lemsml.jlems.core.run.RuntimeError: Error at PathDerivedVariable eval(): tgt: null[HHExpRate]; sin: m[gateHHrates]; tgtvar: r; path: reverseRate/r
+	at org.lemsml.jlems.core.run.PathDerivedVariable.eval(PathDerivedVariable.java:128)
+	at org.lemsml.jlems.core.run.StateType.evalDerived(StateType.java:475)
+	at org.lemsml.jlems.core.run.StateType.eulerAdvance(StateType.java:488)
+	at org.lemsml.jlems.core.run.StateInstance.advance(StateInstance.java:288)
+	at org.lemsml.jlems.core.run.MultiInstance.advance(MultiInstance.java:70)
+	at org.lemsml.jlems.core.run.StateInstance.advance(StateInstance.java:273)
+	at org.lemsml.jlems.core.run.StateInstance.advance(StateInstance.java:268)
+	at org.lemsml.jlems.core.run.MultiInstance.advance(MultiInstance.java:70)
+	at org.lemsml.jlems.core.run.StateInstance.advance(StateInstance.java:273)
+	at org.lemsml.jlems.core.run.StateInstance.advance(StateInstance.java:268)
+	at org.lemsml.jlems.core.run.StateInstance.advance(StateInstance.java:268)
+	at org.lemsml.jlems.core.run.StateInstance.advance(StateInstance.java:268)
+	at org.lemsml.jlems.core.run.MultiInstance.advance(MultiInstance.java:70)
+	at org.lemsml.jlems.core.run.StateInstance.advance(StateInstance.java:273)
+	at org.lemsml.jlems.core.run.MultiInstance.advance(MultiInstance.java:70)
+	at org.lemsml.jlems.core.run.StateInstance.advance(StateInstance.java:273)
+	at org.lemsml.jlems.core.sim.Sim.run(Sim.java:288)
+	at org.lemsml.jlems.core.sim.Sim.run(Sim.java:154)
+	at org.lemsml.jlems.core.sim.Sim.run(Sim.java:145)
+	at org.neuroml.export.utils.Utils.loadLemsFile(Utils.java:568)
+	at org.neuroml.export.utils.Utils.runLemsFile(Utils.java:526)
+	at org.neuroml.JNeuroML.main(JNeuroML.java:622)
+Caused by: org.lemsml.jlems.core.run.RuntimeError: 
+Problem while trying to return a value for variable r: Infinity
+
+Current StateInstance:
+  +---------------------------------------------------------------------------------------
+  |  StateInstance: null [StateType: HHExpRate, parent: m] 
+  |    Variables: {r = Infinity, t = 0.44322999999930024, rate = 10.0, v = -9.634237060724538E100, midpoint = -0.043000000000000003,
+  |                scale = -0.018000000000000002}
+  |    Exposures: {r = Infinity}
+  +---------------------------------------------------------------------------------------
+
+Current StateInstance's parent:
+  +---------------------------------------------------------------------------------------
+  |  StateInstance: m [StateType: gateHHrates, parent: km] 
+  |    Variables: {inf = 1.0, q = 1.0878610081212582E84, t = 0.44322999999930024, fcond = 1.0879698051017684E84, instances = 1.0,
+  |                alpha = 0.0, tau = 0.05, rateScale = 1.0, beta = 0.0}
+  |    Exposures: {inf = 1.0, q = 1.0878610081212582E84, fcond = 1.0879698051017684E84, alpha = 20.0, tau = 0.05,
+  |                rateScale = 1.0, beta = 0.0}
+  |    +----------------------------------------------------------------------------------
+  |    |  StateInstance: null [StateType: HHSigmoidRate, parent: m] 
+  |    |    Variables: {r = 0.0, t = 0.44322999999930024, rate = 20.0, v = -9.634237060724538E100, midpoint = -0.02,
+  |    |                scale = 0.005}
+  |    |    Exposures: {r = 0.0}
+  |    +----------------------------------------------------------------------------------
+  |    +----------------------------------------------------------------------------------
+  |    |  StateInstance: null [StateType: HHExpRate, parent: m] 
+  |    |    Variables: {r = Infinity, t = 0.44322999999930024, rate = 10.0, v = -9.634237060724538E100, midpoint = -0.043000000000000003,
+  |    |                scale = -0.018000000000000002}
+  |    |    Exposures: {r = Infinity}
+  |    +----------------------------------------------------------------------------------
+  +---------------------------------------------------------------------------------------
+	at org.lemsml.jlems.core.run.StateInstance.checkReturn(StateInstance.java:602)
+	at org.lemsml.jlems.core.run.StateInstance.getVariable(StateInstance.java:573)
+	at org.lemsml.jlems.core.run.PathDerivedVariable.eval(PathDerivedVariable.java:109)
+	... 21 more
+Sep 22, 2026 12:43:24 AM org.lemsml.jlems.io.logging.DefaultLogger msg
+SEVERE:  (ERROR) 
+
+ *******************************************************************************
+ *
+ *    Error occurred when running jLEMS!
+ *    
+ *    Note: LEMS model description was successfully parsed, and simulation started (t = 0.44323 sec)
+ *    This error *MAY* be caused by too large a time step (dt = 5.0E-6 sec currently)
+ *    Try reducing the 'step' attribute in the <Simulation> element
+ *
+ *******************************************************************************
+

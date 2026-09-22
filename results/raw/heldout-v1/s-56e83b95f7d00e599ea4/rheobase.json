@@ -1,0 +1,274 @@
+{
+  "cache_key_sha256": "56e83b95f7d00e599ea47128c0fe6c709b9a60d067f5b262505b017c5a9c9b7a",
+  "campaign": "heldout-v1",
+  "cell_steps": 13440000,
+  "config": {
+    "expand": 4.0,
+    "fallback_rheobase_nA": 0.1,
+    "grid": 12,
+    "initial_hi_nA": 0.5,
+    "max_hi_nA": 32.0,
+    "rounds": 4,
+    "spike_threshold_mV": -20.0,
+    "step_duration_ms": 500
+  },
+  "config_sha256": "1e5bb74663a737efb630a73fff2009feb035b37e56f52dcee708ac370ac79e23",
+  "configuration_hash": "1e5bb74663a737efb630a73fff2009feb035b37e56f52dcee708ac370ac79e23",
+  "cost": [
+    {
+      "cell_steps": 1920000,
+      "runtime_s": 111.62009889999172,
+      "status": "numerically_unstable",
+      "tag": "rheo_1"
+    },
+    {
+      "cell_steps": 1920000,
+      "runtime_s": 115.9152322000009,
+      "status": "numerically_unstable",
+      "tag": "rheo_2"
+    },
+    {
+      "cell_steps": 1920000,
+      "runtime_s": 131.36750350001967,
+      "status": "numerically_unstable",
+      "tag": "rheo_3"
+    },
+    {
+      "cell_steps": 1920000,
+      "runtime_s": 234.64840679999907,
+      "status": "ok",
+      "tag": "rheo_4"
+    },
+    {
+      "cell_steps": 1920000,
+      "runtime_s": 243.6936556000146,
+      "status": "ok",
+      "tag": "rheo_5"
+    },
+    {
+      "cell_steps": 1920000,
+      "runtime_s": 252.47683900000993,
+      "status": "ok",
+      "tag": "rheo_6"
+    },
+    {
+      "cell_steps": 1920000,
+      "runtime_s": 241.24802640004782,
+      "status": "ok",
+      "tag": "rheo_7"
+    }
+  ],
+  "designation": "Confirmatory held-out evaluation; preregistered at AsPredicted before any held-out observation; never pooled with development data",
+  "end_time": "2026-09-22T14:24:16+00:00",
+  "environment_digest": "060d7d05714a28e026e793c487f7588642e880dd66323a8aae5611da2caa9db4",
+  "exec": {
+    "dt_ms": 0.005,
+    "integrator_method": null,
+    "sample_every_ms": null
+  },
+  "execution_id": "e009b186ca8349c4933b4f7fd6917492",
+  "generation_code_digest": "16732ed9ba6d83b511d6c713666445015081be8c0b82755e03506b3630834196",
+  "generation_version": 2,
+  "git_commit": "c9230ae5c4e3944690113262ce71590a76a7932e",
+  "git_dirty": false,
+  "inputs_sha256": "e78625791d6e87942e5a73b950b493eb5440487de5f9d18bd919097499469919",
+  "model_hash": "d9175fcd385a902ebcb60d137dc1571dbbb474e6572fe9432bb156b198845207",
+  "model_id": "migliore2005_ca1_soma",
+  "project_name": "Neuraxis",
+  "protocol_id": "P03_rheobase",
+  "protocol_version": "HELDOUT_PROTOCOL_V1",
+  "result": {
+    "history": [
+      {
+        "amplitudes_nA": [
+          0.0,
+          0.045454545454545456,
+          0.09090909090909091,
+          0.13636363636363635,
+          0.18181818181818182,
+          0.2272727272727273,
+          0.2727272727272727,
+          0.3181818181818182,
+          0.36363636363636365,
+          0.4090909090909091,
+          0.4545454545454546,
+          0.5
+        ],
+        "counts": null,
+        "note": "initial grid failed to simulate; retrying with a smaller upper amplitude"
+      },
+      {
+        "amplitudes_nA": [
+          0.0,
+          0.011363636363636364,
+          0.022727272727272728,
+          0.03409090909090909,
+          0.045454545454545456,
+          0.05681818181818182,
+          0.06818181818181818,
+          0.07954545454545454,
+          0.09090909090909091,
+          0.10227272727272728,
+          0.11363636363636365,
+          0.125
+        ],
+        "counts": null,
+        "note": "initial grid failed to simulate; retrying with a smaller upper amplitude"
+      },
+      {
+        "amplitudes_nA": [
+          0.0,
+          0.002840909090909091,
+          0.005681818181818182,
+          0.008522727272727272,
+          0.011363636363636364,
+          0.014204545454545456,
+          0.017045454545454544,
+          0.019886363636363636,
+          0.022727272727272728,
+          0.02556818181818182,
+          0.02840909090909091,
+          0.03125
+        ],
+        "counts": null,
+        "note": "initial grid failed to simulate; retrying with a smaller upper amplitude"
+      },
+      {
+        "amplitudes_nA": [
+          0.0,
+          0.0007102272727272727,
+          0.0014204545454545455,
+          0.002130681818181818,
+          0.002840909090909091,
+          0.003551136363636364,
+          0.004261363636363636,
+          0.004971590909090909,
+          0.005681818181818182,
+          0.006392045454545455,
+          0.007102272727272728,
+          0.0078125
+        ],
+        "counts": [
+          0,
+          0,
+          13,
+          24,
+          33,
+          41,
+          48,
+          55,
+          61,
+          67,
+          72,
+          78
+        ]
+      },
+      {
+        "amplitudes_nA": [
+          0.0007102272727272727,
+          0.0007747933884297521,
+          0.0008393595041322314,
+          0.0009039256198347108,
+          0.0009684917355371901,
+          0.0010330578512396695,
+          0.0010976239669421488,
+          0.0011621900826446281,
+          0.0012267561983471075,
+          0.0012913223140495868,
+          0.0013558884297520662,
+          0.0014204545454545455
+        ],
+        "counts": [
+          0,
+          0,
+          1,
+          5,
+          6,
+          7,
+          9,
+          10,
+          11,
+          12,
+          12,
+          13
+        ]
+      },
+      {
+        "amplitudes_nA": [
+          0.0007747933884297521,
+          0.0007806630353117957,
+          0.0007865326821938392,
+          0.0007924023290758829,
+          0.0007982719759579264,
+          0.00080414162283997,
+          0.0008100112697220135,
+          0.0008158809166040571,
+          0.0008217505634861007,
+          0.0008276202103681443,
+          0.0008334898572501879,
+          0.0008393595041322314
+        ],
+        "counts": [
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "amplitudes_nA": [
+          0.0007865326821938392,
+          0.0007870662864558432,
+          0.0007875998907178472,
+          0.0007881334949798512,
+          0.0007886670992418551,
+          0.0007892007035038591,
+          0.000789734307765863,
+          0.000790267912027867,
+          0.0007908015162898709,
+          0.0007913351205518749,
+          0.0007918687248138789,
+          0.0007924023290758829
+        ],
+        "counts": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    ],
+    "lower_nA": 0.0007881334949798512,
+    "n_simulations": 7,
+    "rheobase_nA": 0.0007886670992418551,
+    "status": "ok",
+    "upper_nA": 0.0007886670992418551
+  },
+  "runtime_s": 1330.97,
+  "search_id": "s-56e83b95f7d00e599ea4",
+  "settle_ms": 300.0,
+  "simulator_version": "jNeuroML 0.14.0 / jLEMS 0.12.0",
+  "start_time": "2026-09-22T14:01:59+00:00",
+  "status": "numerically_unstable",
+  "study_id": "neuron_model_behavioral_validation",
+  "study_phase": "confirmatory_heldout",
+  "timestamp_utc": "2026-09-22T14:24:16+00:00",
+  "variant_id": "m-wrong_compatible_component-0638e400a0",
+  "variant_tree_sha256": "d9175fcd385a902ebcb60d137dc1571dbbb474e6572fe9432bb156b198845207"
+}

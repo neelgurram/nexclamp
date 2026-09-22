@@ -1,0 +1,107 @@
+{
+  "campaign": "heldout-v1",
+  "campaign_role": "confirmatory_heldout",
+  "code_commit": "c9230ae5c4e3944690113262ce71590a76a7932e",
+  "created_utc": "2026-09-22T14:59:18+00:00",
+  "reason": "frozen confirmatory evaluation (relaunch after X-28)",
+  "selection_file": "results\\processed\\pilot2\\selection_k4.json",
+  "n_heldout_admissible_mutants": 82,
+  "heldout_models": [
+    "hay2011_soma",
+    "bbp2015_soma",
+    "traub2005_testseg2",
+    "traub2005_testseg_all",
+    "smith2013_singlecomp",
+    "migliore2005_ca1_soma"
+  ],
+  "heldout_families": [
+    "kinetics"
+  ],
+  "analysis_config": {
+    "n_boot": 10000,
+    "n_perm": 10000,
+    "seed": 20260917
+  },
+  "primary_endpoint": {
+    "counts": {
+      "both": 67,
+      "only_a": 13,
+      "only_b": 2,
+      "neither": 0,
+      "n": 82
+    },
+    "rate_a": 0.975609756097561,
+    "rate_b": 0.8414634146341463,
+    "diff": 0.13414634146341464,
+    "exact_mcnemar_p": 0.00738525390625,
+    "exact_mcnemar_note": "two-sided exact binomial on discordant pairs; assumes independent mutants",
+    "cluster_bootstrap": {
+      "statistic": "pooled paired difference in detection rate (a - b)",
+      "diff": 0.13414634146341464,
+      "rate_a": 0.975609756097561,
+      "rate_b": 0.8414634146341463,
+      "ci_low": 0.0125,
+      "ci_high": 0.22093023255813954,
+      "rate_a_ci": [
+        0.9210526315789473,
+        1.0
+      ],
+      "rate_b_ci": [
+        0.7777777777777778,
+        0.9113924050632911
+      ],
+      "ci_level": 0.95,
+      "ci_method": "cluster percentile bootstrap (base models resampled with replacement)",
+      "boot_se": 0.05344922553690595,
+      "n_boot": 10000,
+      "seed": 20260917,
+      "n_mutants": 82,
+      "n_clusters": 6,
+      "cluster_sizes": {
+        "bbp2015_soma": 13,
+        "hay2011_soma": 14,
+        "migliore2005_ca1_soma": 17,
+        "smith2013_singlecomp": 14,
+        "traub2005_testseg2": 12,
+        "traub2005_testseg_all": 12
+      },
+      "n_distinct_resamples": 462,
+      "reliable": true,
+      "warning": ""
+    },
+    "cluster_permutation": {
+      "p_value": 0.15625,
+      "statistic": 11,
+      "statistic_definition": "sum over base models of (only_a - only_b)",
+      "per_cluster_difference": {
+        "bbp2015_soma": 2,
+        "hay2011_soma": 2,
+        "migliore2005_ca1_soma": 3,
+        "smith2013_singlecomp": 4,
+        "traub2005_testseg2": 2,
+        "traub2005_testseg_all": -2
+      },
+      "n_clusters": 6,
+      "n_informative_clusters": 6,
+      "exact": true,
+      "n_perm": 64,
+      "seed": 20260918,
+      "min_attainable_p": 0.03125,
+      "reliable": true,
+      "warning": "",
+      "assumption": "independent base models; per-model discordant difference symmetric about 0 under H0"
+    },
+    "n_clusters": 6,
+    "n_informative_clusters": 6,
+    "reliable": true
+  },
+  "cascade": {
+    "total_mutants": 120,
+    "schema_valid": 114,
+    "executable": 112,
+    "numerically_stable": 109,
+    "non_equivalent": 82,
+    "canonical_survivors_detected_elsewhere": 13,
+    "equivalent_within_tested_domain": 27
+  }
+}

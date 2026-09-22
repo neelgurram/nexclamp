@@ -1,0 +1,24 @@
+Traceback (most recent call last):
+  File "C:\Users\gurra\NeuroSem\workflows\run_heldout.py", line 68, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "C:\Users\gurra\NeuroSem\workflows\run_heldout.py", line 64, in main
+    return cli_main(args)
+           ^^^^^^^^^^^^^^
+  File "C:\Users\gurra\NeuroSem\src\neuraxis\cli.py", line 260, in main
+    return int(args.fn(args) or 0)
+               ^^^^^^^^^^^^^
+  File "C:\Users\gurra\NeuroSem\src\neuraxis\cli.py", line 107, in cmd_heldout
+    print(evaluate_heldout(a.campaign, Path(a.selection), a.reason, a.workers))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gurra\NeuroSem\src\neuraxis\experiments\heldout.py", line 33, in evaluate_heldout
+    gate = HeldoutGate(REPO_ROOT, REPO_ROOT / "configs" / "FROZEN.lock", reason)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gurra\NeuroSem\src\neuraxis\selection\splits.py", line 305, in __init__
+    self._verify()
+  File "C:\Users\gurra\NeuroSem\src\neuraxis\selection\splits.py", line 332, in _verify
+    _verify_entries(self.root, entries, str(self.frozen_lock))
+  File "C:\Users\gurra\NeuroSem\src\neuraxis\selection\splits.py", line 122, in _verify_entries
+    raise SplitIntegrityError(f"{source} does not match the current files: " + "; ".join(problems))
+neuraxis.selection.splits.SplitIntegrityError: C:\Users\gurra\NeuroSem\configs\FROZEN.lock does not match the current files: changed since freeze: docs/CONFIRMATORY_PREREGISTRATION.md
+EXIT CODE: 1

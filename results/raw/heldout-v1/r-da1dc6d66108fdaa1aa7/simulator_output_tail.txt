@@ -1,0 +1,25 @@
+  |    |    Exposures: {r = Infinity}
+  |    +----------------------------------------------------------------------------------
+  |    | q10Settings[0] +-----------------------------------------------------------------
+  |    | q10Settings[0] |  StateInstance: null [StateType: q10Fixed, parent: m] 
+  |    | q10Settings[0] |    Variables: {q10 = 2.95288264, t = 0.3144200000000329, fixedQ10 = 2.95288264, temperature = 279.45}
+  |    | q10Settings[0] |    Exposures: {q10 = 2.95288264}
+  |    | q10Settings[0] +-----------------------------------------------------------------
+  |    +---------------------------------------------------------------------------------------
+  +---------------------------------------------------------------------------------------
+	at org.lemsml.jlems.core.run.StateInstance.checkReturn(StateInstance.java:602)
+	at org.lemsml.jlems.core.run.StateInstance.getVariable(StateInstance.java:573)
+	at org.lemsml.jlems.core.run.PathDerivedVariable.eval(PathDerivedVariable.java:109)
+	... 21 more
+Sep 21, 2026 9:23:14 PM org.lemsml.jlems.io.logging.DefaultLogger msg
+SEVERE:  (ERROR) 
+
+ *******************************************************************************
+ *
+ *    Error occurred when running jLEMS!
+ *    
+ *    Note: LEMS model description was successfully parsed, and simulation started (t = 0.31442 sec)
+ *    This error *MAY* be caused by too large a time step (dt = 2.0E-5 sec currently)
+ *    Try reducing the 'step' attribute in the <Simulation> element
+ *
+ *******************************************************************************

@@ -1,0 +1,25 @@
+  |    |    Exposures: {r = 0.0}
+  |    +----------------------------------------------------------------------------------
+  |    +----------------------------------------------------------------------------------
+  |    |  StateInstance: null [StateType: HHExpRate, parent: m] 
+  |    |    Variables: {r = Infinity, t = 0.3178599999998708, rate = 193.0, v = 16722.480962166217, midpoint = 0.0,
+  |    |                scale = 0.033100000000000004}
+  |    |    Exposures: {r = Infinity}
+  |    +----------------------------------------------------------------------------------
+  +---------------------------------------------------------------------------------------
+	at org.lemsml.jlems.core.run.StateInstance.checkReturn(StateInstance.java:602)
+	at org.lemsml.jlems.core.run.StateInstance.getVariable(StateInstance.java:573)
+	at org.lemsml.jlems.core.run.PathDerivedVariable.eval(PathDerivedVariable.java:109)
+	... 21 more
+Sep 21, 2026 7:55:21 PM org.lemsml.jlems.io.logging.DefaultLogger msg
+SEVERE:  (ERROR) 
+
+ *******************************************************************************
+ *
+ *    Error occurred when running jLEMS!
+ *    
+ *    Note: LEMS model description was successfully parsed, and simulation started (t = 0.31786 sec)
+ *    This error *MAY* be caused by too large a time step (dt = 5.0E-6 sec currently)
+ *    Try reducing the 'step' attribute in the <Simulation> element
+ *
+ *******************************************************************************
