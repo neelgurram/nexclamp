@@ -1,0 +1,261 @@
+{
+  "campaign": "heldout-v1",
+  "created_utc": "2026-09-22T15:14:13+00:00",
+  "selected_protocols": [
+    "P05_long_step",
+    "P04_step_2x",
+    "P06_ramp"
+  ],
+  "n_admissible": 82,
+  "n_controls": 48,
+  "seed": 20260917,
+  "detection_matrix_sha256": "3c933448adf7a712187181d3000823c4a03760d0345d97bb11d7f2a70640a8c1",
+  "primary_endpoint_source": "heldout_evaluation.json (frozen pipeline; not recomputed)",
+  "S1_random_baselines": {
+    "selected_rate": 0.975609756097561,
+    "selected_cost_cell_steps": 1000000.0,
+    "candidates": [
+      "P02_weak_step",
+      "P04_step_2x",
+      "P05_long_step",
+      "P06_ramp",
+      "P07_hyperpolarizing_step",
+      "P08_rebound",
+      "P09_short_pulse",
+      "P03_rheobase"
+    ],
+    "count_matched": {
+      "n_sets": 56,
+      "enumerated": true,
+      "mean": 0.8464721254355402,
+      "median": 0.8902439024390244,
+      "p2_5": 0.5289634146341464,
+      "p97_5": 0.9634146341463414,
+      "selected_percentile_rank": 0.9910714285714285,
+      "p_rand": 0.017857142857142856
+    },
+    "runtime_matched": {
+      "n_sets": 10000,
+      "enumerated": false,
+      "mean": 0.9093914634146342,
+      "median": 0.9146341463414634,
+      "p2_5": 0.8414634146341463,
+      "p97_5": 0.975609756097561,
+      "selected_percentile_rank": 0.985,
+      "p_rand": 0.030096990300969902
+    },
+    "exhaustive_rate": 1.0,
+    "canonical_rate": 0.8414634146341463
+  },
+  "S2_silent_survival": {
+    "rate": 0.15853658536585366,
+    "cluster_ci": [
+      0.08860759493670886,
+      0.2222222222222222
+    ],
+    "canonical_detected_at_h_only": 0
+  },
+  "S3_false_positive_rate_any_protocol": {
+    "strategy": "any_protocol_features_or_trace",
+    "false_positives": 0,
+    "controls": 48,
+    "rate": 0.0,
+    "ci_low_exact": 0.0,
+    "ci_high_exact": 0.0739727853472802
+  },
+  "S4_heldout_family": {
+    "kinetics_unseen_family": {
+      "n": 22,
+      "canonical_rate": 0.8636363636363636,
+      "selected_rate": 0.9545454545454546,
+      "diff": 0.09090909090909094,
+      "counts": {
+        "both": 18,
+        "only_a": 3,
+        "only_b": 1,
+        "neither": 0,
+        "n": 22
+      },
+      "cluster_ci": [
+        -0.1,
+        0.21739130434782608
+      ],
+      "reliable": false
+    },
+    "families_seen_in_development": {
+      "n": 60,
+      "canonical_rate": 0.8333333333333334,
+      "selected_rate": 0.9833333333333333,
+      "diff": 0.1499999999999999,
+      "counts": {
+        "both": 49,
+        "only_a": 10,
+        "only_b": 1,
+        "neither": 0,
+        "n": 60
+      },
+      "cluster_ci": [
+        0.03636363636363636,
+        0.23214285714285715
+      ],
+      "reliable": true
+    }
+  },
+  "S5_protocols_to_reach": [
+    {
+      "level": 0.5,
+      "n_protocols": 1.0,
+      "cumulative_cost": 500000.0
+    },
+    {
+      "level": 0.8,
+      "n_protocols": 1.0,
+      "cumulative_cost": 500000.0
+    },
+    {
+      "level": 0.9,
+      "n_protocols": 1.0,
+      "cumulative_cost": 500000.0
+    },
+    {
+      "level": 0.95,
+      "n_protocols": 3.0,
+      "cumulative_cost": 1000000.0
+    },
+    {
+      "level": 1.0,
+      "n_protocols": NaN,
+      "cumulative_cost": NaN
+    }
+  ],
+  "canonical_levels": {
+    "denominator": "A_basic_pass and E_full_battery (features or trace, any protocol)",
+    "n": 94,
+    "B_features": 69,
+    "C_full_trace": 87,
+    "B_only": 1,
+    "C_only": 19,
+    "B_or_C": 88,
+    "neither": 6,
+    "B_or_C_rate": 0.9361702127659575
+  },
+  "branch_classification": {
+    "primary_branch": "A_hidden_drift_supported",
+    "flags": {
+      "D_pipeline_uncertainty": false,
+      "A_hidden_drift_supported": true,
+      "B_feature_level_insufficiency": true,
+      "C_canonical_adequacy": false
+    },
+    "evidence": {
+      "n_semantic_mutants": 120,
+      "n_E_admissible": 94,
+      "n_controls": 48,
+      "control_false_positives": 0,
+      "control_false_positive_rate": 0.0,
+      "controls_not_passing_basic_validation": 0,
+      "feature_level_survivors": 18,
+      "feature_survivors_unconfirmed_h4": 0,
+      "confirmed_full_trace_survivors": 6,
+      "confirmed_full_trace_survivor_models": [
+        "bbp2015_soma",
+        "hay2011_soma",
+        "migliore2005_ca1_soma"
+      ],
+      "full_trace_survivors_unclassifiable": 0,
+      "unclassifiable_models": [],
+      "models_without_canonical_trace": [],
+      "feature_survivors_detected_by_canonical_trace": 12,
+      "refinement_excluded_fraction": 0.0,
+      "canonical_B_or_C_detection_rate": 0.9361702127659575
+    },
+    "rules": {
+      "control_false_positive_rate_max": 0.1,
+      "unconfirmed_survivor_fraction_max": 0.5,
+      "refinement_excluded_fraction_max": 0.25,
+      "hidden_drift_min_confirmed_full_trace_survivors": 2,
+      "hidden_drift_min_models": 2,
+      "feature_insufficiency_min_cases": 2,
+      "canonical_adequacy_min_detection": 0.95,
+      "audit_sample_size": 20
+    },
+    "precedence": [
+      "D_pipeline_uncertainty",
+      "A_hidden_drift_supported",
+      "B_feature_level_insufficiency",
+      "C_canonical_adequacy",
+      "indeterminate"
+    ],
+    "note": "Rules fixed in PILOT2_PROTOCOL before data; branch A is never forced."
+  },
+  "tolerance_sensitivity": [
+    {
+      "tolerance_multiplier": 0.5,
+      "series": "false_positive_rate",
+      "rate": 0.0
+    },
+    {
+      "tolerance_multiplier": 0.5,
+      "series": "admissible_fraction_of_mutants",
+      "rate": 0.6811594202898551
+    },
+    {
+      "tolerance_multiplier": 0.5,
+      "series": "silent_fraction_of_mutants",
+      "rate": 0.08695652173913043
+    },
+    {
+      "tolerance_multiplier": 1.0,
+      "series": "false_positive_rate",
+      "rate": 0.0
+    },
+    {
+      "tolerance_multiplier": 1.0,
+      "series": "admissible_fraction_of_mutants",
+      "rate": 0.6231884057971014
+    },
+    {
+      "tolerance_multiplier": 1.0,
+      "series": "silent_fraction_of_mutants",
+      "rate": 0.11594202898550725
+    },
+    {
+      "tolerance_multiplier": 2.0,
+      "series": "false_positive_rate",
+      "rate": 0.0
+    },
+    {
+      "tolerance_multiplier": 2.0,
+      "series": "admissible_fraction_of_mutants",
+      "rate": 0.5652173913043478
+    },
+    {
+      "tolerance_multiplier": 2.0,
+      "series": "silent_fraction_of_mutants",
+      "rate": 0.15217391304347827
+    },
+    {
+      "tolerance_multiplier": 4.0,
+      "series": "false_positive_rate",
+      "rate": 0.0
+    },
+    {
+      "tolerance_multiplier": 4.0,
+      "series": "admissible_fraction_of_mutants",
+      "rate": 0.5144927536231884
+    },
+    {
+      "tolerance_multiplier": 4.0,
+      "series": "silent_fraction_of_mutants",
+      "rate": 0.2028985507246377
+    }
+  ],
+  "tolerance_sensitivity_not_evaluable": {
+    "0.5": 1,
+    "1.0": 1,
+    "2.0": 1,
+    "4.0": 1
+  },
+  "git_commit": "4de0e9d67ffca2de3a8f626fe16bd10a80950a31",
+  "git_dirty": false
+}
