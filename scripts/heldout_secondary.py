@@ -206,6 +206,19 @@ def main(argv: list[str] | None = None) -> int:
                    "detected": k, "n": len(adm), "cell_steps_per_detection": cost * len(adm) / k if k else None})
     write_csv(out / "S6_cost_per_detection.csv", s6)
 
+    # Sensitivity: cluster by source family instead of base model. The AsPredicted registration
+    # clusters on base model (the primary analysis); the internal plan also named source family
+    # where models share a paper, so both are reported. Two pairs of held-out models share one.
+    fam = {r["model_id"]: r["source_family"] for r in po.read_csv(REPO_ROOT / "data" / "model_manifest.csv")}
+    pc = bootstrap.paired_comparison(m.covered(selected), m.covered([CANONICAL]),
+                                     [fam[m.model_of[i]] for i in m.mutant_ids], n_boot, n_boot, seed)
+    summary["sensitivity_cluster_by_source_family"] = {
+        "clusters": sorted({fam[m.model_of[i]] for i in m.mutant_ids}), "diff": pc["cluster_bootstrap"]["diff"],
+        "cluster_ci": [pc["cluster_bootstrap"]["ci_low"], pc["cluster_bootstrap"]["ci_high"]],
+        "bootstrap_reliable": pc["cluster_bootstrap"]["reliable"], "warning": pc["cluster_bootstrap"]["warning"],
+        "permutation_p": pc["cluster_permutation"]["p_value"],
+        "permutation_min_attainable_p": pc["cluster_permutation"]["min_attainable_p"]}
+
     # Canonical level B versus level C, never merged (on the E-admissible set, as in Pilot 2)
     e_adm = [r for r in sem if p2._flag(r, "A_basic_pass") and p2._flag(r, "E_full_battery")]
     b = [p2._flag(r, "B_canonical_feature") for r in e_adm]
