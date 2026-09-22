@@ -64,6 +64,8 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--n", type=int, default=20, help="mutants to sample (the exit criterion is 20)")
     ap.add_argument("--seed", type=int, default=0, help="0 uses the study seed, for a reproducible sample")
     ap.add_argument("--out", default="")
+    ap.add_argument("--variants", default="", help="comma-separated ids to audit instead of a random sample")
+    ap.add_argument("--title", default="", help="heading suffix, e.g. 'targeted: canonical survivors'")
     a = ap.parse_args(argv)
 
     processed = config.results_dir() / "processed" / a.campaign
@@ -75,7 +77,16 @@ def main(argv: list[str] | None = None) -> int:
     seed = a.seed or int(config.study()["selection"]["seed"])
     rng = random.Random(seed)
     pool = sorted(sheet, key=lambda r: r["variant_id"])
-    sample = pool if len(pool) <= a.n else rng.sample(pool, a.n)
+    if a.variants:
+        wanted = [v.strip() for v in a.variants.split(",") if v.strip()]
+        by_id = {r["variant_id"]: r for r in pool}
+        missing = [v for v in wanted if v not in by_id]
+        if missing:
+            print(f"not in the audit sheet: {missing}")
+            return 1
+        sample = [by_id[v] for v in wanted]
+    else:
+        sample = pool if len(pool) <= a.n else rng.sample(pool, a.n)
     sample.sort(key=lambda r: (r.get("operator", ""), r["variant_id"]))
 
     out = Path(a.out) if a.out else processed / "audit"
@@ -84,8 +95,10 @@ def main(argv: list[str] | None = None) -> int:
     out.mkdir(parents=True, exist_ok=True)
     commit, dirty = git_state()
 
-    L = [f"# Audit pack: campaign `{a.campaign}`", "",
-         f"*{len(sample)} of {len(pool)} mutants, sampled with seed {seed} so the selection is reproducible. "
+    how = (f"chosen by name ({a.title or 'targeted'}), not sampled" if a.variants
+           else f"sampled with seed {seed} so the selection is reproducible")
+    L = [f"# Audit pack: campaign `{a.campaign}`" + (f" ({a.title})" if a.title else ""), "",
+         f"*{len(sample)} of {len(pool)} mutants, {how}. "
          f"Generated {utc_now()} at commit `{commit}` (tree dirty: {dirty}).*", "",
          "## How to audit", "",
          "For each mutant below, three questions. They take a minute each once you have the model file open.", "",
