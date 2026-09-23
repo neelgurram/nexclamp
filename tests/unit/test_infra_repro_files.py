@@ -63,7 +63,12 @@ def test_citation_cff_core_fields():
     assert cff["type"] == "software"
     assert cff["license"] == "Apache-2.0"
     assert str(cff["version"]) == _pyproject()["project"]["version"]
-    assert {"given-names": "Neel", "family-names": "Gurram"} in cff["authors"]
+    # Authors carry affiliations and there are co-authors, so match on the names themselves and keep
+    # the first author first (docs/AUTHORS.md holds the contribution statement).
+    names = [(a.get("given-names"), a.get("family-names")) for a in cff["authors"]]
+    assert names[0] == ("Neel", "Gurram")
+    assert {("Samyak", "Singh"), ("Naithik", "Somisetti")} <= set(names)
+    assert all(a.get("affiliation") for a in cff["authors"])
     assert "doi" not in cff
 
 
