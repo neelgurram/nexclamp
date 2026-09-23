@@ -1,6 +1,6 @@
 # Online Resource 1: methods detail
 
-*Generated 2026-09-23T01:17:34+00:00 by `scripts/build_supplement.py` at commit `63e5759c962d` (tree dirty: True). Every table is read from the repository's recorded files.*
+*Generated 2026-09-23T01:25:17+00:00 by `scripts/build_supplement.py` at commit `9c66f82e30fa` (tree dirty: False). Every table is read from the repository's recorded files.*
 
 ## 1 Model screening criteria
 
