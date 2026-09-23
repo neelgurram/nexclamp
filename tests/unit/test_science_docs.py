@@ -13,10 +13,10 @@ from pathlib import Path
 
 import pytest
 
-from neuraxis import config
-from neuraxis.protocols.definitions import CANONICAL_FEATURES, batched, templates_from_config
-from neuraxis.protocols.generate import group_by_length
-from neuraxis.protocols.rheobase import search
+from nexclamp import config
+from nexclamp.protocols.definitions import CANONICAL_FEATURES, batched, templates_from_config
+from nexclamp.protocols.generate import group_by_length
+from nexclamp.protocols.rheobase import search
 
 REPO = Path(__file__).resolve().parents[2]
 DOCS = REPO / "docs"
@@ -216,7 +216,7 @@ def test_quoted_config_values_match_configs():
 
 def test_quoted_heldout_bootstrap_resamples_match_code():
     """B, n_perm and the seed come from configs/study.yaml `analysis`; the docs must quote those values."""
-    src = (REPO / "src" / "neuraxis" / "experiments" / "heldout.py").read_text(encoding="utf-8")
+    src = (REPO / "src" / "nexclamp" / "experiments" / "heldout.py").read_text(encoding="utf-8")
     assert 'acfg.get("n_boot"' in src and 'acfg.get("n_perm"' in src and "paired_comparison(" in src,         "heldout.py bootstrap call changed; update STATISTICAL_ANALYSIS_PLAN.md and PREREGISTRATION_DRAFT.md"
     acfg = _study()["analysis"]
     for name in ("STATISTICAL_ANALYSIS_PLAN.md", "PREREGISTRATION_DRAFT.md"):
@@ -226,7 +226,7 @@ def test_quoted_heldout_bootstrap_resamples_match_code():
 
 def test_detection_rule_matches_heldout_code():
     """The documented primary-endpoint rule is the one heldout.py applies (reproducible detection)."""
-    src = (REPO / "src" / "neuraxis" / "experiments" / "heldout.py").read_text(encoding="utf-8")
+    src = (REPO / "src" / "nexclamp" / "experiments" / "heldout.py").read_text(encoding="utf-8")
     assert "set(o.detecting_protocols)" in src and "CANONICAL_ID in o.detecting_protocols" in src
     for name in ("STATISTICAL_ANALYSIS_PLAN.md", "PREREGISTRATION_DRAFT.md"):
         text = _norm(read(name))

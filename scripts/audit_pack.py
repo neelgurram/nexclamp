@@ -29,8 +29,8 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
-from neuraxis import config  # noqa: E402
-from neuraxis.provenance import REPO_ROOT, git_state, utc_now  # noqa: E402
+from nexclamp import config  # noqa: E402
+from nexclamp.provenance import REPO_ROOT, git_state, utc_now  # noqa: E402
 
 VERDICT_COLUMNS = ["human_auditor", "edit_matches_label_yes_no", "class_plausible_yes_no",
                    "detection_plausible_yes_no", "notes"]

@@ -32,8 +32,8 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
 import yaml  # noqa: E402
 
-from neuraxis import config  # noqa: E402
-from neuraxis.provenance import REPO_ROOT, git_state, sha256_file, utc_now  # noqa: E402
+from nexclamp import config  # noqa: E402
+from nexclamp.provenance import REPO_ROOT, git_state, sha256_file, utc_now  # noqa: E402
 
 PILOT1_MODELS = ("pospischil2008_rs", "pospischil2008_lts")
 PRE_RUN_FILES = ("docs/PILOT2_PROTOCOL.md", "configs/pilot2_frozen.yaml", "manifests/PILOT2_MODELS.csv",

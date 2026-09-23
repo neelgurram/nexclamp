@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import pytest
 
-from neuraxis.orchestration.kinetics_validation import KINETICS_OPERATORS, default_fixtures, validate_fixtures
+from nexclamp.orchestration.kinetics_validation import KINETICS_OPERATORS, default_fixtures, validate_fixtures
 
 
 @pytest.mark.jnml

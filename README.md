@@ -1,11 +1,12 @@
-# Neuraxis
+# NexClamp
 
-**Perturbation-fingerprint testing for behavioural preservation in computational neuron models.**
-*(Name provisional: see `docs/NAME_AUDIT.md`. Formerly NeuroSem; the `neurosem` import name and
-command still work.)*
+**Perturbation-battery testing for behavioural preservation in computational neuron models.**
+*(Formerly NeuroSem and then Neuraxis, both renamed after name-conflict audits; the `neurosem` and
+`neuraxis` import names and commands still work. See `docs/NAME_AUDIT.md` and
+`docs/NAME_DECISION_PACKET.md`.)*
 
 Does an edited neuron model still behave like the original? A model file can stay valid, run, and
-pass its one standard test while responding differently to other electrical inputs. Neuraxis runs
+pass its one standard test while responding differently to other electrical inputs. NexClamp runs
 models under several current-clamp protocols, extracts interpretable electrophysiological features
 (the model's *perturbation fingerprint*), calibrates detection with controlled mutations and
 harmless transformations, and selects a compact stimulation battery. The battery is then evaluated
@@ -33,19 +34,19 @@ python -m venv .venv
 .venv/Scripts/python -m pip install -r requirements.lock
 .venv/Scripts/python -m pip install --no-deps -e .
 .venv/Scripts/python scripts/bootstrap_java.py
-.venv/Scripts/neuraxis smoke-test --out results/audits/smoke_test/local
+.venv/Scripts/nexclamp smoke-test --out results/audits/smoke_test/local
 ```
 
 ## Main commands
 
 | Command | What it does |
 |---|---|
-| `neuraxis smoke-test` | the nine infrastructure checks; failure blocks data collection |
-| `neuraxis curate-models` | the model inclusion criteria, using reference simulations only |
-| `neuraxis pilot` | a fixed development matrix (exploratory); set `NEURAXIS_CONFIG_DIR` to a protocol's configs |
-| `neuraxis analyze`, `neuraxis reproduce-paper` | tables and figures from recorded results |
-| `neuraxis select-protocols` | greedy battery selection on the development split (kinetics family excluded) |
-| `neuraxis evaluate-heldout` | gated: requires `configs/FROZEN.lock`; use `workflows/run_heldout.py` |
+| `nexclamp smoke-test` | the nine infrastructure checks; failure blocks data collection |
+| `nexclamp curate-models` | the model inclusion criteria, using reference simulations only |
+| `nexclamp pilot` | a fixed development matrix (exploratory); set `NEURAXIS_CONFIG_DIR` to a protocol's configs |
+| `nexclamp analyze`, `neuraxis reproduce-paper` | tables and figures from recorded results |
+| `nexclamp select-protocols` | greedy battery selection on the development split (kinetics family excluded) |
+| `nexclamp evaluate-heldout` | gated: requires `configs/FROZEN.lock`; use `workflows/run_heldout.py` |
 
 The workflow scripts in `workflows/` wrap each step of the execution plan
 (`docs/handoff/NEURAXIS_EXECUTION_PLAN.pdf`).

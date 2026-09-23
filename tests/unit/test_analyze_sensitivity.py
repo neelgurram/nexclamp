@@ -5,7 +5,7 @@ from __future__ import annotations
 import pandas as pd
 import pytest
 
-from neuraxis.experiments.analyze import tolerance_sensitivity
+from nexclamp.experiments.analyze import tolerance_sensitivity
 
 
 def test_rates_exclude_not_evaluable_and_count_them():

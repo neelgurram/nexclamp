@@ -5,10 +5,10 @@ from __future__ import annotations
 import csv
 import json
 
-from neuraxis import config
-from neuraxis.experiments import pilot_outputs as po
-from neuraxis.schemas import RunRecord
-from neuraxis.validation.fingerprint import Detection, write_detections
+from nexclamp import config
+from nexclamp.experiments import pilot_outputs as po
+from nexclamp.schemas import RunRecord
+from nexclamp.validation.fingerprint import Detection, write_detections
 
 META = {"project_name": "Neuraxis", "study_phase": "development_pilot", "protocol_version": "PILOT_PROTOCOL_V1",
         "designation": "development study informed by Pilot 1"}

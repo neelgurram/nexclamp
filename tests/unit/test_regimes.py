@@ -7,11 +7,11 @@ import copy
 import numpy as np
 import pytest
 
-from neuraxis.config import features as load_features_config
-from neuraxis.features.efel_adapter import DEFINED, NOT_APPLICABLE, UNDEFINED, FeatureValue
-from neuraxis.features.regimes import LABELS, depolarization_block, firing_regime, regime_config
-from neuraxis.features.trace_metrics import uniform_grid
-from neuraxis.schemas import AnalysisWindow, Trace
+from nexclamp.config import features as load_features_config
+from nexclamp.features.efel_adapter import DEFINED, NOT_APPLICABLE, UNDEFINED, FeatureValue
+from nexclamp.features.regimes import LABELS, depolarization_block, firing_regime, regime_config
+from nexclamp.features.trace_metrics import uniform_grid
+from nexclamp.schemas import AnalysisWindow, Trace
 
 WINDOW = AnalysisWindow(200.0, 600.0)
 

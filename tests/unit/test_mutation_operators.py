@@ -6,9 +6,9 @@ import dataclasses as dc
 
 import pytest
 
-from neuraxis.models import copy_workspace
-from neuraxis.mutations import FAMILY_OPERATORS, REGISTRY, MutationError, enforce_single_operator
-from neuraxis.mutations.base import (
+from nexclamp.models import copy_workspace
+from nexclamp.mutations import FAMILY_OPERATORS, REGISTRY, MutationError, enforce_single_operator
+from nexclamp.mutations.base import (
     Site,
     element_children,
     localname,
@@ -20,8 +20,8 @@ from neuraxis.mutations.base import (
     snippet,
     write_xml,
 )
-from neuraxis.mutations.biophysics import ScaleGateTimeConstant
-from neuraxis.schemas import Edit, MutationFamily, VariantKind, VariantRecord
+from nexclamp.mutations.biophysics import ScaleGateTimeConstant
+from nexclamp.schemas import Edit, MutationFamily, VariantKind, VariantRecord
 
 BINDING = {
     "stimulus": {"stim_amplitude", "stim_onset", "stim_duration", "sim_length", "record_wrong_variable"},
@@ -106,7 +106,7 @@ def test_stim_onset_and_duration(lts_ws, tmp_path):
 
 
 def test_stim_onset_skips_negative_delays(models, tmp_path):
-    from neuraxis.models import materialize
+    from nexclamp.models import materialize
     wb = materialize(models["wangbuzsaki1996_wb"], tmp_path / "wb")     # delay="0ms"
     assert sorted(s.params["shift_ms"] for s in REGISTRY["stim_onset"].sites(wb)) == [2.0, 10.0, 50.0]
 

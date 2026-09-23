@@ -24,7 +24,7 @@ from pathlib import Path
 
 import yaml
 
-from neuraxis.provenance import REPO_ROOT, git_state, sha256_file, utc_now
+from nexclamp.provenance import REPO_ROOT, git_state, sha256_file, utc_now
 
 LOCK = REPO_ROOT / "configs" / "FROZEN.lock"
 

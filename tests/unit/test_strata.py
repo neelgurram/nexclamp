@@ -6,10 +6,10 @@ from types import SimpleNamespace as NS
 
 import pytest
 
-from neuraxis import mutations
-from neuraxis.experiments import strata
-from neuraxis.protocols.definitions import templates_from_config
-from neuraxis.schemas import Edit, MutantClass, VariantKind, VariantRecord
+from nexclamp import mutations
+from nexclamp.experiments import strata
+from nexclamp.protocols.definitions import templates_from_config
+from nexclamp.schemas import Edit, MutantClass, VariantKind, VariantRecord
 
 
 def _v(family="biophysical", operator="scale_conductance", kind=VariantKind.MUTANT, **kw):

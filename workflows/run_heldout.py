@@ -21,8 +21,8 @@ import json
 import sys
 from pathlib import Path
 
-from neuraxis.cli import main as cli_main
-from neuraxis.provenance import REPO_ROOT, git_state, sha256_file, utc_now
+from nexclamp.cli import main as cli_main
+from nexclamp.provenance import REPO_ROOT, git_state, sha256_file, utc_now
 
 AUTHORIZATION = ("THE ASPREDICTED PREREGISTRATION HAS BEEN SUBMITTED AND VERIFIED. "
                  "BEGIN THE FROZEN HELD-OUT EVALUATION.")

@@ -27,9 +27,9 @@ matplotlib.use("Agg")
 import numpy as np  # noqa: E402
 from matplotlib.figure import Figure  # noqa: E402
 
-from neuraxis import config  # noqa: E402
-from neuraxis.analysis.figures import OKABE_ITO, _save, set_designation  # noqa: E402
-from neuraxis.provenance import REPO_ROOT  # noqa: E402
+from nexclamp import config  # noqa: E402
+from nexclamp.analysis.figures import OKABE_ITO, _save, set_designation  # noqa: E402
+from nexclamp.provenance import REPO_ROOT  # noqa: E402
 
 REF_COLOUR, VAR_COLOUR, DIFF_COLOUR = "#000000", OKABE_ITO["vermillion"], OKABE_ITO["blue"]
 

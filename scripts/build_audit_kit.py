@@ -33,8 +33,8 @@ matplotlib.use("Agg")
 import numpy as np  # noqa: E402
 from matplotlib.figure import Figure  # noqa: E402
 
-from neuraxis import config  # noqa: E402
-from neuraxis.provenance import REPO_ROOT, git_state, utc_now  # noqa: E402
+from nexclamp import config  # noqa: E402
+from nexclamp.provenance import REPO_ROOT, git_state, utc_now  # noqa: E402
 
 MODEL_NAMES = {
     "hay2011_soma": "Hay et al. 2011 layer-5 pyramidal cell (soma only)",

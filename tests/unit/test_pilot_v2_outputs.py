@@ -5,8 +5,8 @@ from __future__ import annotations
 import csv
 import json
 
-from neuraxis.experiments import pilot_outputs as po
-from neuraxis.experiments import pilot_v2_outputs as p2
+from nexclamp.experiments import pilot_outputs as po
+from nexclamp.experiments import pilot_v2_outputs as p2
 
 META = {"project_name": "Neuraxis", "study_phase": "development_pilot", "protocol_version": "PILOT2_PROTOCOL"}
 

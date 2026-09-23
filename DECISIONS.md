@@ -479,3 +479,12 @@ Model files keep their own licenses: MIT, or LGPL-3.0 for the NeuroML2 HH exampl
 | N-17 | Third model-mutation family | **Decided: ion-channel kinetics** (D-037); to be implemented after Pilot 2 and before the freeze |
 | N-12 | Where the hidden agent-study evaluators live permanently (separate private repository, encrypted archive, or offline), and whether Neel revises them independently, given they were written by the assistant that built NeuroSem | local only, Git-ignored, hashes committed |
 | N-10 | Project name. The audit (`docs/m0_evidence/names/`, independently re-checked) found: no PyPI, conda-forge or GitHub-account conflict, but a 2025 CMAME article with an arXiv preprint and code named "NeuroSEM" (a computational simulation framework); an active GPL-3.0 GitHub project spelled "NeuroSem" in neuroscience and language models; the neuromarketing company NeuroSEM holding neurosem.com since 2013; and heavy overloading of "SEM" in neuroscience | **Update 2026-09-14: Neel named the project Neuraxis** (D-033). A name-conflict search for "Neuraxis" is still needed before any public release. Earlier recommendation: **PerturbPrint** (package/CLI `perturbprint`); it matches the defined term "perturbation fingerprint" and had zero hits in every source that answered (Zenodo, EUIPO and some rate-limited indexes could not be checked). `docs/NAME_CONFLICT_AUDIT.md` recommends deciding before preregistration and the frozen study, whose raw results are immutable. Runner-up: DriftClamp. Not legal clearance; re-check registries before release. Code keeps the working name `neurosem` until Neel decides (a rename is a mechanical refactor). |
+
+## D-057 Public name: NexClamp (2026-09-23)
+
+**Decision.** The public name is **NexClamp**. Neel chose it after the shortlist in `docs/NAME_DECISION_PACKET.md` was re-checked and extended; "Nexamp", his first choice, was rejected because it is an operating US clean-energy company (nexamp.com).
+
+**Checks on 2026-09-23** (not legal clearance): free on PyPI and npm, zero GitHub repositories, zero hits in Europe PMC and Crossref, and nexclamp.com unregistered.
+
+**Scope.** The import package and command are `nexclamp`; `neuraxis` and `neurosem` remain working aliases. The study identifier `neuron_model_behavioral_validation` is unchanged, and so is the `project_name: Neuraxis` recorded inside the frozen configs and the sealed campaigns: those files are hash-locked evidence of what ran and are never edited for branding. The manuscript, README, citation file and Zenodo metadata use NexClamp.
+

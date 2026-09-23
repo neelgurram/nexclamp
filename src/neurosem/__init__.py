@@ -1,8 +1,8 @@
-"""Deprecated alias of :mod:`neuraxis` (the project was renamed; DECISIONS D-039).
+"""Deprecated alias of :mod:`nexclamp` (renamed twice: neurosem -> neuraxis -> nexclamp).
 
-``import neurosem.x`` returns the very same module object as ``import neuraxis.x``, so existing
+``import neurosem.x`` returns the very same module object as ``import nexclamp.x``, so existing
 scripts, the hidden agent-study checks and historical provenance references keep working.
-New code imports ``neuraxis``.
+New code imports ``nexclamp``.
 """
 
 from __future__ import annotations
@@ -13,7 +13,7 @@ import importlib.util
 import sys
 from typing import Any
 
-_OLD, _NEW = "neurosem", "neuraxis"
+_OLD, _NEW = "neurosem", "nexclamp"
 
 
 class _AliasLoader(importlib.abc.Loader):
@@ -40,7 +40,7 @@ class _AliasFinder(importlib.abc.MetaPathFinder):
 if not any(isinstance(f, _AliasFinder) for f in sys.meta_path):
     sys.meta_path.insert(0, _AliasFinder())
 
-import neuraxis as _pkg  # noqa: E402
+import nexclamp as _pkg  # noqa: E402
 
 __path__: list[str] = []          # submodules are resolved by _AliasFinder
 __version__ = getattr(_pkg, "__version__", "")

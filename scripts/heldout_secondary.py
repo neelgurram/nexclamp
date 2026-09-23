@@ -34,14 +34,14 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
 import numpy as np  # noqa: E402
 
-from neuraxis import config  # noqa: E402
-from neuraxis.analysis import bootstrap, metrics  # noqa: E402
-from neuraxis.experiments import pilot_outputs as po  # noqa: E402
-from neuraxis.experiments import pilot_v2_outputs as p2  # noqa: E402
-from neuraxis.experiments import strata  # noqa: E402
-from neuraxis.provenance import REPO_ROOT, git_state, sha256_file, utc_now  # noqa: E402
-from neuraxis.selection import greedy  # noqa: E402
-from neuraxis.selection.matrix import DetectionMatrix  # noqa: E402
+from nexclamp import config  # noqa: E402
+from nexclamp.analysis import bootstrap, metrics  # noqa: E402
+from nexclamp.experiments import pilot_outputs as po  # noqa: E402
+from nexclamp.experiments import pilot_v2_outputs as p2  # noqa: E402
+from nexclamp.experiments import strata  # noqa: E402
+from nexclamp.provenance import REPO_ROOT, git_state, sha256_file, utc_now  # noqa: E402
+from nexclamp.selection import greedy  # noqa: E402
+from nexclamp.selection.matrix import DetectionMatrix  # noqa: E402
 
 CANONICAL = "P00_canonical"
 HELDOUT_FAMILY = "kinetics"
@@ -235,7 +235,7 @@ def main(argv: list[str] | None = None) -> int:
     write_csv(out / "unique_protocol_contribution.csv", p2.unique_protocol_contribution(c, p2.trace_reproducible(proc)))
 
     # Tolerance sensitivity
-    from neuraxis.experiments.analyze import reclassify, tolerance_sensitivity
+    from nexclamp.experiments.analyze import reclassify, tolerance_sensitivity
     recl = reclassify(a.campaign, list(config.tolerances()["sensitivity_multipliers"]))
     recl.to_csv(out / "reclassification_by_tolerance.csv", index=False)
     sens, notes = tolerance_sensitivity(recl)

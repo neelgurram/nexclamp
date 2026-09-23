@@ -164,13 +164,13 @@ def test_dockerignore_excludes_local_state_but_keeps_test_inputs():
     patterns = _dockerignore_patterns()
     assert {".git", ".venv", ".tools", "work"} <= set(patterns)
     for local in (".git/HEAD", ".venv/Scripts/python.exe", ".tools/jdk-21.0.12.1+1/bin/java", "work/tmp/x.txt",
-                  "src/neuraxis/__pycache__/cli.cpython-312.pyc", "results/raw/pilot/r1/traces.npz",
+                  "src/nexclamp/__pycache__/cli.cpython-312.pyc", "results/raw/pilot/r1/traces.npz",
                   "docs/handoff/spec.pdf"):
         assert dockerignored(local, patterns), f"{local} should not be copied into the image"
     for needed in FILES_READ_BY_TESTS:
         assert (REPO_ROOT / needed).is_file(), f"{needed} listed but missing"
         assert not dockerignored(needed, patterns), f"{needed} is read by tests but excluded from the Docker context"
-    assert not dockerignored("src/neuraxis/cli.py", patterns) and not dockerignored("tests/conftest.py", patterns)
+    assert not dockerignored("src/nexclamp/cli.py", patterns) and not dockerignored("tests/conftest.py", patterns)
 
 
 def test_ci_workflow_structure():

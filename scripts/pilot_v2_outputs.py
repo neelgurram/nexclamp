@@ -12,9 +12,9 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
-from neuraxis import config  # noqa: E402
-from neuraxis.experiments.pilot_v2_outputs import build  # noqa: E402
-from neuraxis.provenance import REPO_ROOT  # noqa: E402
+from nexclamp import config  # noqa: E402
+from nexclamp.experiments.pilot_v2_outputs import build  # noqa: E402
+from nexclamp.provenance import REPO_ROOT  # noqa: E402
 
 
 def main(argv: list[str] | None = None) -> int:

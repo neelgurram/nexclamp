@@ -20,9 +20,9 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
-from neuraxis import config  # noqa: E402
-from neuraxis.orchestration.curation import CRITERIA  # noqa: E402
-from neuraxis.provenance import REPO_ROOT, git_state, utc_now  # noqa: E402
+from nexclamp import config  # noqa: E402
+from nexclamp.orchestration.curation import CRITERIA  # noqa: E402
+from nexclamp.provenance import REPO_ROOT, git_state, utc_now  # noqa: E402
 
 COLUMNS = ["model_id", "name", "source_family", "decision", "exact_reason", "publication", "license", "license_url",
            "snapshot", "commit", "validation", "validation_errors", "execution", "recording_location",

@@ -24,7 +24,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
-from neuraxis.provenance import REPO_ROOT, sha256_file, utc_now  # noqa: E402
+from nexclamp.provenance import REPO_ROOT, sha256_file, utc_now  # noqa: E402
 
 COLUMNS = ["variant_id", "model_id", "operator", "severity", "channel", "gate", "magnitude",
            "validation_site", "canonical_spikes_before_after", "max_abs_dv_mV", "evidence"]

@@ -5,11 +5,11 @@ from __future__ import annotations
 import numpy as np
 import pytest
 
-from neuraxis.config import study
-from neuraxis.protocols.definitions import batched, templates_from_config
-from neuraxis.protocols.generate import group_by_length, write_probe
-from neuraxis.schemas import ExecConfig
-from neuraxis.selection.matrix import COST_ROW_ID, DetectionMatrix, cell_step_costs
+from nexclamp.config import study
+from nexclamp.protocols.definitions import batched, templates_from_config
+from nexclamp.protocols.generate import group_by_length, write_probe
+from nexclamp.schemas import ExecConfig
+from nexclamp.selection.matrix import COST_ROW_ID, DetectionMatrix, cell_step_costs
 
 
 def small() -> DetectionMatrix:

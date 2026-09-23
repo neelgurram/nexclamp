@@ -13,7 +13,7 @@ This wrapper only scores an existing trial directory against a frozen configurat
 
 import sys
 
-from neuraxis.cli import main
+from nexclamp.cli import main
 
 if __name__ == "__main__":
     sys.exit(main(["evaluate-agent", *sys.argv[1:]]))

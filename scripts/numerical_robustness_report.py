@@ -29,13 +29,13 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
 import yaml  # noqa: E402
 
-from neuraxis import config  # noqa: E402
-from neuraxis.experiments import strata  # noqa: E402
-from neuraxis.protocols.definitions import CANONICAL_ID  # noqa: E402
-from neuraxis.provenance import utc_now  # noqa: E402
-from neuraxis.schemas import MutantClass, VariantKind  # noqa: E402
-from neuraxis.selection.matrix import DetectionMatrix  # noqa: E402
-from neuraxis.validation.fingerprint import load_fingerprint  # noqa: E402
+from nexclamp import config  # noqa: E402
+from nexclamp.experiments import strata  # noqa: E402
+from nexclamp.protocols.definitions import CANONICAL_ID  # noqa: E402
+from nexclamp.provenance import utc_now  # noqa: E402
+from nexclamp.schemas import MutantClass, VariantKind  # noqa: E402
+from nexclamp.selection.matrix import DetectionMatrix  # noqa: E402
+from nexclamp.validation.fingerprint import load_fingerprint  # noqa: E402
 
 INCREASE_DT_NOTE = ("confound: the canonical harness and the battery started from different base steps "
                     "(harness step x factor versus nominal battery step x factor), so canonical and battery "

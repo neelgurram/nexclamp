@@ -31,8 +31,8 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
-from neuraxis.experiments import agent as ag  # noqa: E402
-from neuraxis.provenance import REPO_ROOT, git_state, sha256_file, utc_now  # noqa: E402
+from nexclamp.experiments import agent as ag  # noqa: E402
+from nexclamp.provenance import REPO_ROOT, git_state, sha256_file, utc_now  # noqa: E402
 
 LAYERS = ("edit_scope", "hidden_assertions_pass", "schema_valid", "executes", "canonical_passes",
           "hidden_battery_passes")

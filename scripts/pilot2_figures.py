@@ -35,9 +35,9 @@ matplotlib.use("Agg")
 import numpy as np  # noqa: E402
 from matplotlib.figure import Figure  # noqa: E402
 
-from neuraxis import config  # noqa: E402
-from neuraxis.analysis.figures import OKABE_ITO, _save, set_designation  # noqa: E402
-from neuraxis.provenance import REPO_ROOT  # noqa: E402
+from nexclamp import config  # noqa: E402
+from nexclamp.analysis.figures import OKABE_ITO, _save, set_designation  # noqa: E402
+from nexclamp.provenance import REPO_ROOT  # noqa: E402
 
 BLUE, ORANGE, GREEN, VERM, GREY = (OKABE_ITO["blue"], OKABE_ITO["orange"], OKABE_ITO["bluish_green"],
                                    OKABE_ITO["vermillion"], "#8A8A8A")

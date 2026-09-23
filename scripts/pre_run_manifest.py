@@ -23,7 +23,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
 import yaml  # noqa: E402
 
-from neuraxis.provenance import REPO_ROOT, sha256_bytes, sha256_file  # noqa: E402
+from nexclamp.provenance import REPO_ROOT, sha256_bytes, sha256_file  # noqa: E402
 
 ENVIRONMENT_FILES = ("requirements.lock", "environment.yml", "pyproject.toml", ".tools/jdk_provenance.json", "Dockerfile")
 

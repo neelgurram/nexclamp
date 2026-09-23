@@ -7,11 +7,11 @@ from types import SimpleNamespace as NS
 import numpy as np
 import pytest
 
-from neuraxis.experiments import strata
-from neuraxis.mutations import REGISTRY
-from neuraxis.mutations import severity as sev
-from neuraxis.schemas import Trace
-from neuraxis.validation import trace_regression as tr
+from nexclamp.experiments import strata
+from nexclamp.mutations import REGISTRY
+from nexclamp.mutations import severity as sev
+from nexclamp.schemas import Trace
+from nexclamp.validation import trace_regression as tr
 
 
 def spiky(times, dt=0.01, length=300.0, width=1.0):
@@ -86,8 +86,8 @@ def test_every_semantic_operator_has_an_analysis_family():
 def test_candidate_rows_are_normalised_and_zero_conductances_are_not_sites(tmp_path):
     import csv
 
-    from neuraxis.models import MANIFEST_COLUMNS
-    from neuraxis.orchestration.curation import decide, read_candidates
+    from nexclamp.models import MANIFEST_COLUMNS
+    from nexclamp.orchestration.curation import decide, read_candidates
 
     row = {k: "" for k in MANIFEST_COLUMNS}
     row.update(model_id="x", harness_v_column="7 (Pop0[6] at +170 pA)", temperature="6.3 degC (networkWithTemperature in a.nml)")

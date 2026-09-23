@@ -29,11 +29,11 @@ from pathlib import Path
 import numpy as np
 import pytest
 
-from neuraxis.models import materialize
-from neuraxis.protocols.generate import write_probe
-from neuraxis.provenance import tree_manifest
-from neuraxis.schemas import AnalysisWindow, ConcreteProtocol, ExecConfig, StimulusComponent
-from neuraxis.transforms import REGISTRY, apply_model_overrides, generate_transforms
+from nexclamp.models import materialize
+from nexclamp.protocols.generate import write_probe
+from nexclamp.provenance import tree_manifest
+from nexclamp.schemas import AnalysisWindow, ConcreteProtocol, ExecConfig, StimulusComponent
+from nexclamp.transforms import REGISTRY, apply_model_overrides, generate_transforms
 
 pytestmark = pytest.mark.jnml
 
@@ -59,7 +59,7 @@ def generated(tmp_path_factory, models):
 
 
 def _variant_ws(root: Path, pristine, record):
-    from neuraxis.models import Workspace
+    from nexclamp.models import Workspace
 
     return Workspace(root / "variants" / record.model_id / record.variant_id, pristine.model)
 

@@ -8,8 +8,8 @@ from pathlib import Path
 
 import pytest
 
-from neuraxis import config
-from neuraxis.protocols.definitions import DEFAULT_TEMPLATES, ProtocolTemplate, batched, templates_from_config
+from nexclamp import config
+from nexclamp.protocols.definitions import DEFAULT_TEMPLATES, ProtocolTemplate, batched, templates_from_config
 
 REPO = Path(__file__).resolve().parents[2]
 SCRIPT = REPO / "scripts" / "build_protocol_manifest.py"

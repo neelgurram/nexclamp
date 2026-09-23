@@ -28,12 +28,12 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
-from neuraxis import config  # noqa: E402
-from neuraxis.experiments import strata  # noqa: E402
-from neuraxis.mutations import severity as sev  # noqa: E402
-from neuraxis.orchestration.curation import read_candidates  # noqa: E402
-from neuraxis.protocols.definitions import CANONICAL_ID, templates_from_config  # noqa: E402
-from neuraxis.provenance import REPO_ROOT, sha256_file, utc_now  # noqa: E402
+from nexclamp import config  # noqa: E402
+from nexclamp.experiments import strata  # noqa: E402
+from nexclamp.mutations import severity as sev  # noqa: E402
+from nexclamp.orchestration.curation import read_candidates  # noqa: E402
+from nexclamp.protocols.definitions import CANONICAL_ID, templates_from_config  # noqa: E402
+from nexclamp.provenance import REPO_ROOT, sha256_file, utc_now  # noqa: E402
 
 SOURCES = ("data/model_manifest.csv", "data/model_candidates.csv", "data/model_candidates_sweep2.csv")
 
@@ -84,7 +84,7 @@ def main(argv: list[str] | None = None) -> int:
                      "semantic_operators_with_site": ";".join(e.get("semantic_operators_with_site", []))})
     write_csv(REPO_ROOT / "manifests" / f"{a.prefix}_MODELS.csv", rows)
 
-    from neuraxis import mutations, transforms
+    from nexclamp import mutations, transforms
 
     ops = strata.select_mutation_operators(pilot["mutation_families"], pilot.get("exclude_operators") or [])
     levels = list(pilot.get("severity_levels") or [])

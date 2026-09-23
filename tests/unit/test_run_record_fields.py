@@ -6,9 +6,9 @@ import json
 
 import numpy as np
 
-from neuraxis.schemas import RUN_RECORD_REQUIRED_FIELDS, RunStatus, SimResult, Trace, VariantKind, VariantRecord
-from neuraxis.validation.canonical import canonical_protocol
-from neuraxis.validation.execution import RunRecorder
+from nexclamp.schemas import RUN_RECORD_REQUIRED_FIELDS, RunStatus, SimResult, Trace, VariantKind, VariantRecord
+from nexclamp.validation.canonical import canonical_protocol
+from nexclamp.validation.execution import RunRecorder
 
 
 class FakeSim:
@@ -60,7 +60,7 @@ def test_tool_failure_is_kept_but_never_blocks_the_retry(hh_ws, tmp_path):
 
 
 def test_successful_record_carries_every_required_field(hh_ws, tmp_path, monkeypatch):
-    from neuraxis import config
+    from nexclamp import config
 
     (tmp_path / "cfg").mkdir()
     for name in ("study.yaml", "features.yaml", "tolerances.yaml"):
@@ -84,7 +84,7 @@ def test_successful_record_carries_every_required_field(hh_ws, tmp_path, monkeyp
 
 def test_cached_runs_are_reused_only_under_an_identical_cache_key(hh_ws, tmp_path):
     """Model hash, generation code/version, simulator and Java build, config, step, recording and temperature."""
-    from neuraxis.validation import execution as ex
+    from nexclamp.validation import execution as ex
 
     proto = canonical_protocol(hh_ws)
     sim = FakeSim([RunStatus.OK])

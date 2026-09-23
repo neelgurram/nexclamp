@@ -22,9 +22,9 @@ import numpy as np
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
-from neuraxis.experiments import campaign as cp  # noqa: E402
-from neuraxis.experiments import registry  # noqa: E402
-from neuraxis.provenance import git_state, utc_now  # noqa: E402
+from nexclamp.experiments import campaign as cp  # noqa: E402
+from nexclamp.experiments import registry  # noqa: E402
+from nexclamp.provenance import git_state, utc_now  # noqa: E402
 
 NOT_EXECUTABLE = ("1_structurally_invalid", "2_non_executable", "3_numerically_unstable")
 
@@ -40,7 +40,7 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--n-mutants", type=int, default=6)
     ap.add_argument("--n-controls", type=int, default=2)
     a = ap.parse_args(argv)
-    from neuraxis.mutations import load_variant
+    from nexclamp.mutations import load_variant
 
     ctx = cp.make_context(a.campaign, role=registry.EXPLORATORY_PILOT)
     seed = int(ctx.cfg["selection"]["seed"])

@@ -13,11 +13,11 @@ from collections import defaultdict
 import numpy as np
 import pytest
 
-from neuraxis.models import copy_workspace, materialize
-from neuraxis.mutations import REGISTRY, enforce_single_operator, generate_mutants, load_variant
-from neuraxis.mutations.base import cell_rel, harness_simulation, read_xml, transitive_includes, write_xml
-from neuraxis.provenance import sha256_file, sha256_json
-from neuraxis.simulators.base import OutputSpec
+from nexclamp.models import copy_workspace, materialize
+from nexclamp.mutations import REGISTRY, enforce_single_operator, generate_mutants, load_variant
+from nexclamp.mutations.base import cell_rel, harness_simulation, read_xml, transitive_includes, write_xml
+from nexclamp.provenance import sha256_file, sha256_json
+from nexclamp.simulators.base import OutputSpec
 
 PILOT = ["pospischil2008_rs", "pospischil2008_lts"]
 

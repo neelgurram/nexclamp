@@ -31,7 +31,7 @@ from lxml import etree
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
-from neuraxis.provenance import REPO_ROOT, sha256_bytes, utc_now  # noqa: E402
+from nexclamp.provenance import REPO_ROOT, sha256_bytes, utc_now  # noqa: E402
 
 DEST = REPO_ROOT / "models" / "candidates"
 BUILTIN = ("NeuroML2CoreTypes/", "Cells.xml", "Networks.xml", "Simulation.xml", "Inputs.xml", "Channels.xml",
@@ -47,7 +47,7 @@ def gh_json(path: str):
 
 
 def http_get(url: str, retries: int = 3) -> bytes:
-    req = urllib.request.Request(url, headers={"User-Agent": "neuraxis-model-curation/0.2"})
+    req = urllib.request.Request(url, headers={"User-Agent": "nexclamp-model-curation/0.2"})
     for attempt in range(retries):
         try:
             with urllib.request.urlopen(req, timeout=60) as r:

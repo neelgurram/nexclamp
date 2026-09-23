@@ -1,4 +1,4 @@
-"""Tests for neuraxis.models (manifest, workspaces) and neuraxis.config (hashed YAML configuration).
+"""Tests for nexclamp.models (manifest, workspaces) and nexclamp.config (hashed YAML configuration).
 
 Manifest rows are checked against the pinned snapshot files themselves, so a typo in a
 cell id, harness path or output column name fails here rather than deep inside a run.
@@ -14,8 +14,8 @@ import stat
 import pytest
 from lxml import etree
 
-from neuraxis import config
-from neuraxis.models import (
+from nexclamp import config
+from nexclamp.models import (
     MANIFEST_COLUMNS,
     MODEL_MANIFEST,
     RAW_MODELS,
@@ -26,9 +26,9 @@ from neuraxis.models import (
     snapshot_dir,
     write_models,
 )
-from neuraxis.provenance import REPO_ROOT, sha256_file, tree_manifest, tree_sha256, write_immutable
-from neuraxis.schemas import ExecConfig, ModelRecord
-from neuraxis.units import parse
+from nexclamp.provenance import REPO_ROOT, sha256_file, tree_manifest, tree_sha256, write_immutable
+from nexclamp.schemas import ExecConfig, ModelRecord
+from nexclamp.units import parse
 
 EXPECTED_IDS = {"pospischil2008_rs", "pospischil2008_lts", "pospischil2008_fs", "pospischil2008_ib",
                 "nml2_hh_example", "wangbuzsaki1996_wb",

@@ -1,7 +1,7 @@
 """Workflow step: robustness analyses for a finished campaign (no new simulation).
 
 - tolerance sensitivity (every tolerance multiplied by ``configs/tolerances.yaml``
-  ``sensitivity_multipliers``), written by ``neuraxis analyze``;
+  ``sensitivity_multipliers``), written by ``nexclamp analyze``;
 - numerical robustness: deviation of numerical stress tests against the reference's h, h/2 and h/4
   error (``scripts/numerical_robustness_report.py``).
 
@@ -17,8 +17,8 @@ import argparse
 import runpy
 import sys
 
-from neuraxis.cli import main as cli_main
-from neuraxis.provenance import REPO_ROOT
+from nexclamp.cli import main as cli_main
+from nexclamp.provenance import REPO_ROOT
 
 
 def main(argv: list[str] | None = None) -> int:

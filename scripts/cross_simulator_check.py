@@ -34,13 +34,13 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
 import numpy as np  # noqa: E402
 
-from neuraxis.models import load_models, materialize  # noqa: E402
-from neuraxis.provenance import REPO_ROOT, git_state, sha256_file, utc_now  # noqa: E402
-from neuraxis.schemas import RunStatus  # noqa: E402
-from neuraxis.simulators.jneuroml import JNeuroML  # noqa: E402
-from neuraxis.simulators.neuron import NeuronSimulator, export_to_neuron  # noqa: E402
-from neuraxis.protocols.generate import canonical_output  # noqa: E402
-from neuraxis.validation.trace_regression import SPIKE_THRESHOLD_MV, spikes  # noqa: E402
+from nexclamp.models import load_models, materialize  # noqa: E402
+from nexclamp.provenance import REPO_ROOT, git_state, sha256_file, utc_now  # noqa: E402
+from nexclamp.schemas import RunStatus  # noqa: E402
+from nexclamp.simulators.jneuroml import JNeuroML  # noqa: E402
+from nexclamp.simulators.neuron import NeuronSimulator, export_to_neuron  # noqa: E402
+from nexclamp.protocols.generate import canonical_output  # noqa: E402
+from nexclamp.validation.trace_regression import SPIKE_THRESHOLD_MV, spikes  # noqa: E402
 
 COLUMNS = ["model_id", "source_family", "export_ok", "export_returncode", "mod_files", "hoc_files", "runner",
            "export_seconds", "export_error", "neuron_runtime", "neuron_status", "jlems_spikes", "neuron_spikes",

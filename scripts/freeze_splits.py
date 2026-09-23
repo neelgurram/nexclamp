@@ -16,8 +16,8 @@ import argparse
 import sys
 from pathlib import Path
 
-from neuraxis.provenance import REPO_ROOT
-from neuraxis.selection.splits import ACCESS_LOG_FILE, FrozenSplitError, LeakageError, freeze_splits
+from nexclamp.provenance import REPO_ROOT
+from nexclamp.selection.splits import ACCESS_LOG_FILE, FrozenSplitError, LeakageError, freeze_splits
 
 
 def main(argv: list[str] | None = None) -> int:

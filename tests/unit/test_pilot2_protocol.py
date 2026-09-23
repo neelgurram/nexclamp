@@ -13,10 +13,10 @@ from collections import Counter
 import pytest
 import yaml
 
-from neuraxis import config
-from neuraxis.experiments import strata
-from neuraxis.experiments.pilot_v2_outputs import BRANCH_RULES
-from neuraxis.provenance import REPO_ROOT
+from nexclamp import config
+from nexclamp.experiments import strata
+from nexclamp.experiments.pilot_v2_outputs import BRANCH_RULES
+from nexclamp.provenance import REPO_ROOT
 
 PROTOCOL = REPO_ROOT / "docs" / "PILOT2_PROTOCOL.md"
 CONFIG = REPO_ROOT / "configs" / "pilot2_frozen.yaml"

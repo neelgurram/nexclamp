@@ -24,7 +24,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
-from neuraxis.provenance import REPO_ROOT, sha256_file, utc_now  # noqa: E402
+from nexclamp.provenance import REPO_ROOT, sha256_file, utc_now  # noqa: E402
 
 PILOT2_MODELS = ("acnet2_pyr_soma", "migliore2014_mt_soma", "nml2_hh_example", "osb_hh2_477127614",
                  "pospischil2008_fs")
@@ -119,7 +119,7 @@ def site_key(params: dict) -> tuple:
 
 
 def severity_of(params: dict) -> str:
-    from neuraxis.mutations.severity import severity
+    from nexclamp.mutations.severity import severity
 
     return severity(params)
 

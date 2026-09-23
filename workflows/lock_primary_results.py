@@ -14,9 +14,9 @@ from __future__ import annotations
 import argparse
 import sys
 
-from neuraxis import config
-from neuraxis.experiments import registry
-from neuraxis.provenance import REPO_ROOT, git_state, utc_now
+from nexclamp import config
+from nexclamp.experiments import registry
+from nexclamp.provenance import REPO_ROOT, git_state, utc_now
 
 
 def main(argv: list[str] | None = None) -> int:

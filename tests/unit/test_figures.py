@@ -6,9 +6,9 @@ import numpy as np
 import pandas as pd
 import pytest
 
-from neuraxis.analysis import figures as F
-from neuraxis.analysis import metrics as M
-from neuraxis.schemas import MutantClass as MC
+from nexclamp.analysis import figures as F
+from nexclamp.analysis import metrics as M
+from nexclamp.schemas import MutantClass as MC
 
 PNG_MAGIC = b"\x89PNG\r\n\x1a\n"
 
@@ -175,7 +175,7 @@ def test_fig3_detection_heatmap(tmp_path):
 
 
 def test_fig3_accepts_enum_families_and_object_detected_column(tmp_path, monkeypatch):
-    from neuraxis.schemas import MutationFamily as MF
+    from nexclamp.schemas import MutationFamily as MF
 
     det = _detections()
     det["family"] = det["family"].map(MF)

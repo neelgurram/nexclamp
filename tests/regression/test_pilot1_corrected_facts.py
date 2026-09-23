@@ -11,11 +11,11 @@ import json
 
 import pytest
 
-from neuraxis.experiments import strata
-from neuraxis.protocols.definitions import CANONICAL_ID
-from neuraxis.provenance import REPO_ROOT
-from neuraxis.schemas import MutantClass, RunRecord
-from neuraxis.selection.matrix import DetectionMatrix
+from nexclamp.experiments import strata
+from nexclamp.protocols.definitions import CANONICAL_ID
+from nexclamp.provenance import REPO_ROOT
+from nexclamp.schemas import MutantClass, RunRecord
+from nexclamp.selection.matrix import DetectionMatrix
 
 PILOT = REPO_ROOT / "results" / "processed" / "pilot"
 
@@ -44,7 +44,7 @@ def test_corrected_counts():
 
 
 def test_sealed_pilot_is_registered_exploratory_and_read_only():
-    from neuraxis.experiments import registry
+    from nexclamp.experiments import registry
 
     assert registry.role_of("pilot", REPO_ROOT / "results") == registry.EXPLORATORY_PILOT
     assert registry.is_sealed("pilot", REPO_ROOT / "results")

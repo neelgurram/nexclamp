@@ -22,9 +22,9 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
-from neuraxis.models import load_models, materialize  # noqa: E402
-from neuraxis.orchestration.kinetics_validation import default_fixtures, validate_fixtures  # noqa: E402
-from neuraxis.provenance import REPO_ROOT  # noqa: E402
+from nexclamp.models import load_models, materialize  # noqa: E402
+from nexclamp.orchestration.kinetics_validation import default_fixtures, validate_fixtures  # noqa: E402
+from nexclamp.provenance import REPO_ROOT  # noqa: E402
 
 
 def main(argv: list[str] | None = None) -> int:

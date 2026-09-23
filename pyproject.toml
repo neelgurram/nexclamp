@@ -3,7 +3,7 @@ requires = ["setuptools>=69", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "neuraxis"
+name = "nexclamp"
 version = "0.2.0.dev0"
 description = "Detecting silent behavioural drift in computational neuron models with mutation-calibrated perturbation fingerprints"
 readme = "README.md"
@@ -33,8 +33,8 @@ dependencies = [
 dev = ["pytest>=8", "pytest-cov", "ruff", "mypy>=2"]
 
 [project.scripts]
-neuraxis = "neuraxis.cli:main"
-neurosem = "neuraxis.cli:main"   # legacy command name
+nexclamp = "nexclamp.cli:main"
+neurosem = "nexclamp.cli:main"   # legacy command name
 
 [tool.setuptools.packages.find]
 where = ["src"]

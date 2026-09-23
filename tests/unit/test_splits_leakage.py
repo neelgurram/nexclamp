@@ -17,20 +17,20 @@ from pathlib import Path
 import numpy as np
 import pytest
 
-import neuraxis.selection
-import neuraxis.selection.splits as splits_module
-from neuraxis.config import study
-from neuraxis.provenance import sha256_file
-from neuraxis.schemas import dumps
-from neuraxis.selection.greedy import (
+import nexclamp.selection
+import nexclamp.selection.splits as splits_module
+from nexclamp.config import study
+from nexclamp.provenance import sha256_file
+from nexclamp.schemas import dumps
+from nexclamp.selection.greedy import (
     greedy_cost_sensitive,
     greedy_max_coverage,
     random_count_matched,
     random_runtime_matched,
     selection_settings,
 )
-from neuraxis.selection.matrix import DetectionMatrix
-from neuraxis.selection.splits import (
+from nexclamp.selection.matrix import DetectionMatrix
+from nexclamp.selection.splits import (
     ACCESS_LOG_FILE,
     DISCOVERY_FAMILIES_FILE,
     DISCOVERY_FILES,
@@ -221,7 +221,7 @@ def test_discovery_selection_end_to_end_never_touches_heldout(tmp_path, heldout_
 
 
 def test_import_and_discovery_selection_in_fresh_interpreter(tmp_path, repo_root):
-    """Import-time behaviour too: the guard is installed before neuraxis.selection is imported."""
+    """Import-time behaviour too: the guard is installed before nexclamp.selection is imported."""
     root = make_root(tmp_path)
     freeze_splits(root)
     matrix_csv = root / "matrix.csv"
@@ -231,8 +231,8 @@ def test_import_and_discovery_selection_in_fresh_interpreter(tmp_path, repo_root
         attempts = []
         install({str(root / HELDOUT_DIR)!r}, attempts, setattr)
         assert not any(k.startswith("neurosem") for k in sys.modules)
-        import neuraxis.selection.matrix, neuraxis.selection.greedy
-        from neuraxis.selection import (DetectionMatrix, discovery_view, greedy_max_coverage,
+        import nexclamp.selection.matrix, nexclamp.selection.greedy
+        from nexclamp.selection import (DetectionMatrix, discovery_view, greedy_max_coverage,
                                         random_count_matched, random_runtime_matched)
         view = discovery_view(pathlib.Path({str(root)!r}), require_frozen=True)
         m = view.filter_matrix(DetectionMatrix.from_csv({str(matrix_csv)!r}))
@@ -255,7 +255,7 @@ def test_import_and_discovery_selection_in_fresh_interpreter(tmp_path, repo_root
 
 
 # ---------------------------------------------------------------------- (2) static tests
-SELECTION_DIR = Path(neuraxis.selection.__file__).parent
+SELECTION_DIR = Path(nexclamp.selection.__file__).parent
 # Every spelling in use: the directory name, identifiers, and the specification's prose.
 HELDOUT_WORD = re.compile(r"held[-_ ]?out", re.IGNORECASE)
 

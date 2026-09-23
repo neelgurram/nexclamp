@@ -8,7 +8,7 @@ import zipfile
 import numpy as np
 import pytest
 
-from neuraxis.features.trace_metrics import (
+from nexclamp.features.trace_metrics import (
     align,
     decimate,
     grid_params,
@@ -22,8 +22,8 @@ from neuraxis.features.trace_metrics import (
     uniform_grid,
     unpack_traces,
 )
-from neuraxis.protocols.rheobase import count_upward_crossings
-from neuraxis.schemas import AnalysisWindow, Trace
+from nexclamp.protocols.rheobase import count_upward_crossings
+from nexclamp.schemas import AnalysisWindow, Trace
 
 
 def sine_trace(dt: float, total: float = 100.0, freq_hz: float = 20.0, amp: float = 50.0, offset: float = -20.0,

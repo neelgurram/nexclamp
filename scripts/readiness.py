@@ -34,8 +34,8 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
-from neuraxis import config  # noqa: E402
-from neuraxis.provenance import REPO_ROOT, git_state, sha256_file, utc_now  # noqa: E402
+from nexclamp import config  # noqa: E402
+from nexclamp.provenance import REPO_ROOT, git_state, sha256_file, utc_now  # noqa: E402
 
 INPUT_PATHS = ("src", "scripts", "tests", "configs", "docs", "manifests", "data", "workflows",
                "pyproject.toml", "requirements.lock", "environment.yml", "Makefile", "Dockerfile")
@@ -82,7 +82,7 @@ def parse_pytest(log: Path) -> dict[str, int]:
 def versions() -> dict:
     out = {"python": sys.version.split()[0], "platform": platform.platform(), "executable": sys.executable}
     try:
-        from neuraxis.simulators.jneuroml import JNeuroML
+        from nexclamp.simulators.jneuroml import JNeuroML
 
         sim = JNeuroML()
         out["simulator"] = sim.version_info() if sim.available() else {"available": False}
@@ -148,7 +148,7 @@ def main(argv: list[str] | None = None) -> int:
         py = clean_env_install(out, steps)
         if py is not None:
             smoke_out = out / "smoke"
-            steps["4_smoke_test"] = run([str(py), "-m", "neuraxis", "smoke-test", "--out", str(smoke_out)],
+            steps["4_smoke_test"] = run([str(py), "-m", "nexclamp", "smoke-test", "--out", str(smoke_out)],
                                         out / "logs" / "smoke.log")
             rep = smoke_out / "smoke_report.json"
             if rep.is_file():
@@ -179,9 +179,9 @@ def main(argv: list[str] | None = None) -> int:
                                     "returncode": 0 if checked and not bad else 1}
 
     # 6. CLI and canonical package import
-    steps["6_cli_help"] = run([sys.executable, "-m", "neuraxis", "--help"], out / "logs" / "cli_help.log")
+    steps["6_cli_help"] = run([sys.executable, "-m", "nexclamp", "--help"], out / "logs" / "cli_help.log")
     steps["6_import"] = run([sys.executable, "-c",
-                             "import neuraxis, neuraxis.experiments.campaign as c; print(neuraxis.__version__, c.__name__)"],
+                             "import nexclamp, nexclamp.experiments.campaign as c; print(nexclamp.__version__, c.__name__)"],
                             out / "logs" / "import.log")
 
     failed = [k for k, v in steps.items() if v.get("returncode", 0) != 0 and not v.get("baseline_only")]

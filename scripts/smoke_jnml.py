@@ -13,12 +13,12 @@ import time
 
 import numpy as np
 
-from neuraxis import config
-from neuraxis.models import load_models, materialize
-from neuraxis.protocols import rheobase as rb
-from neuraxis.protocols.definitions import batched, templates_from_config
-from neuraxis.protocols.generate import canonical_output, group_by_length, write_probe
-from neuraxis.simulators.jneuroml import JNeuroML
+from nexclamp import config
+from nexclamp.models import load_models, materialize
+from nexclamp.protocols import rheobase as rb
+from nexclamp.protocols.definitions import batched, templates_from_config
+from nexclamp.protocols.generate import canonical_output, group_by_length, write_probe
+from nexclamp.simulators.jneuroml import JNeuroML
 
 
 def main(model_ids: list[str]) -> int:

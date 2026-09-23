@@ -1,4 +1,4 @@
-"""Tests for neuraxis.protocols.definitions: template instantiation, timing grid and catalogue consistency."""
+"""Tests for nexclamp.protocols.definitions: template instantiation, timing grid and catalogue consistency."""
 
 from __future__ import annotations
 
@@ -7,8 +7,8 @@ import math
 
 import pytest
 
-from neuraxis import config
-from neuraxis.protocols.definitions import (
+from nexclamp import config
+from nexclamp.protocols.definitions import (
     CANONICAL_FEATURES,
     CANONICAL_ID,
     DEFAULT_TEMPLATES,
@@ -16,7 +16,7 @@ from neuraxis.protocols.definitions import (
     batched,
     templates_from_config,
 )
-from neuraxis.schemas import AnalysisWindow, ConcreteProtocol, StimulusComponent
+from nexclamp.schemas import AnalysisWindow, ConcreteProtocol, StimulusComponent
 
 T = {t.protocol_id: t for t in DEFAULT_TEMPLATES}
 IMPLEMENTED = [t for t in DEFAULT_TEMPLATES if t.implemented and t.kind != "rheobase"]

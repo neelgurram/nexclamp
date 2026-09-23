@@ -9,9 +9,9 @@ from __future__ import annotations
 
 import pytest
 
-from neuraxis.protocols.definitions import DEFAULT_TEMPLATES
-from neuraxis.protocols.generate import canonical_output, write_probe
-from neuraxis.schemas import ExecConfig, RunStatus
+from nexclamp.protocols.definitions import DEFAULT_TEMPLATES
+from nexclamp.protocols.generate import canonical_output, write_probe
+from nexclamp.schemas import ExecConfig, RunStatus
 
 pytestmark = pytest.mark.jnml
 

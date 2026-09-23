@@ -13,13 +13,13 @@ from concurrent.futures import ThreadPoolExecutor
 import numpy as np
 import pytest
 
-from neuraxis import config
-from neuraxis.models import materialize
-from neuraxis.protocols.definitions import DEFAULT_TEMPLATES, batched
-from neuraxis.protocols.generate import group_by_length, write_probe
-from neuraxis.protocols.rheobase import make_step_counter
-from neuraxis.schemas import ExecConfig, RunStatus, SimResult
-from neuraxis.simulators.jneuroml import JNeuroML
+from nexclamp import config
+from nexclamp.models import materialize
+from nexclamp.protocols.definitions import DEFAULT_TEMPLATES, batched
+from nexclamp.protocols.generate import group_by_length, write_probe
+from nexclamp.protocols.rheobase import make_step_counter
+from nexclamp.schemas import ExecConfig, RunStatus, SimResult
+from nexclamp.simulators.jneuroml import JNeuroML
 
 pytestmark = pytest.mark.jnml
 

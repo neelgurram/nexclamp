@@ -12,8 +12,8 @@ import shutil
 import pytest
 import yaml
 
-from neuraxis import config
-from neuraxis.provenance import REPO_ROOT
+from nexclamp import config
+from nexclamp.provenance import REPO_ROOT
 
 
 @pytest.mark.jnml
@@ -38,8 +38,8 @@ def test_pilot_v2_pipeline_end_to_end(tmp_path, monkeypatch):
     (cfg_dir / "study.yaml").write_text(yaml.safe_dump(study, sort_keys=False), encoding="utf-8")
     monkeypatch.setenv(config.CONFIG_DIR_ENV, str(cfg_dir))
 
-    from neuraxis.experiments import pilot_v2_outputs as p2
-    from neuraxis.experiments.pilot import run_pilot
+    from nexclamp.experiments import pilot_v2_outputs as p2
+    from nexclamp.experiments.pilot import run_pilot
 
     report = run_pilot("v2-e2e", workers=4, n_transforms=1)
     processed = tmp_path / "results" / "processed" / "v2-e2e"

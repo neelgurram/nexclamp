@@ -1,4 +1,4 @@
-"""Unit tests for neuraxis.analysis.bootstrap: exactness against scipy, cluster-level
+"""Unit tests for nexclamp.analysis.bootstrap: exactness against scipy, cluster-level
 resampling, determinism, small-cluster flags and calibration under clustered nulls."""
 
 from __future__ import annotations
@@ -11,8 +11,8 @@ import numpy as np
 import pytest
 from scipy.stats import binomtest
 
-from neuraxis.analysis import bootstrap as B
-from neuraxis.analysis.bootstrap import SmallClusterWarning
+from nexclamp.analysis import bootstrap as B
+from nexclamp.analysis.bootstrap import SmallClusterWarning
 
 
 def _units(per_cluster: list[list[tuple[int, int]]]) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
@@ -216,7 +216,7 @@ def test_seeded_functions_require_integer_seed(seed):
 
 
 def test_cluster_labels_enum_by_value_and_mixed_types_rejected():
-    from neuraxis.schemas import MutationFamily as MF
+    from nexclamp.schemas import MutationFamily as MF
 
     a, b, _ = _units([[(1, 0)]] * 6)
     enum_cl = [MF.BIOPHYSICAL, MF.REFERENCE, MF.NUMERICAL, MF.STIMULUS, MF.BIOPHYSICAL, MF.REFERENCE]
@@ -249,7 +249,7 @@ def test_permutation_exact_hand_computed():
     assert det["per_cluster_difference"] == {"model_00": 2, "model_01": 1, "model_02": 1}
 
 
-@pytest.mark.filterwarnings("ignore::neuraxis.analysis.bootstrap.SmallClusterWarning")
+@pytest.mark.filterwarnings("ignore::nexclamp.analysis.bootstrap.SmallClusterWarning")
 def test_permutation_matches_brute_force_enumeration():
     rng = np.random.default_rng(99)
     for _ in range(20):
@@ -321,7 +321,7 @@ def test_permutation_no_discordance_and_all_positive():
     assert det["p_value"] == pytest.approx(det["min_attainable_p"]) and det["reliable"]
 
 
-@pytest.mark.filterwarnings("ignore::neuraxis.analysis.bootstrap.SmallClusterWarning")
+@pytest.mark.filterwarnings("ignore::nexclamp.analysis.bootstrap.SmallClusterWarning")
 def test_permutation_type_one_error_under_clustered_null():
     rng = np.random.default_rng(12345)
     n_sims, rejections = 300, 0

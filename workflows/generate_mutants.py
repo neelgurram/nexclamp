@@ -2,7 +2,7 @@
 
 import sys
 
-from neuraxis.cli import main
+from nexclamp.cli import main
 
 if __name__ == "__main__":
     sys.exit(main(["generate-mutants", *sys.argv[1:]]))

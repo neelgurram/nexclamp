@@ -20,7 +20,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
-from neuraxis.provenance import REPO_ROOT, python_environment, sha256_file, utc_now  # noqa: E402
+from nexclamp.provenance import REPO_ROOT, python_environment, sha256_file, utc_now  # noqa: E402
 
 SECRET = re.compile(r"(gho_|ghp_|github_pat_|sk-ant-|AKIA[0-9A-Z]{16}|PRIVATE KEY|password\s*[:=])", re.IGNORECASE)
 
@@ -36,7 +36,7 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--out", required=True, type=Path)
     ap.add_argument("--record", default=Path("manifests/pilot_pre_run_package.json"), type=Path)
     a = ap.parse_args(argv)
-    from neuraxis.simulators.jneuroml import JNeuroML
+    from nexclamp.simulators.jneuroml import JNeuroML
 
     out = REPO_ROOT / a.out
     if out.exists():

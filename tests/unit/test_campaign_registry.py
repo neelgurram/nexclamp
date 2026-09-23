@@ -7,8 +7,8 @@ import tarfile
 
 import pytest
 
-from neuraxis import config
-from neuraxis.experiments import registry as reg
+from nexclamp import config
+from nexclamp.experiments import registry as reg
 
 
 def _run(raw, name, commit="abc", dirty=False):
@@ -132,8 +132,8 @@ def test_a_sealed_campaign_refuses_new_runs_from_any_writer(tmp_path):
     """
     import pytest
 
-    from neuraxis.experiments import registry
-    from neuraxis.validation.execution import RunRecorder
+    from nexclamp.experiments import registry
+    from nexclamp.validation.execution import RunRecorder
 
     results = tmp_path / "results"
     (results / "processed" / "done").mkdir(parents=True)

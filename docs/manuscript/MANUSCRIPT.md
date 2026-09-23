@@ -235,7 +235,10 @@ mutated before the confirmatory run.
 
 ### 2.9 Software and reproducibility
 
-Simulations used jNeuroML 0.14.0 and jLEMS 0.12.0 on Temurin JDK 21.0.12.1+1, with Python 3.12.10,
+The method is implemented in **NexClamp**, an open-source Python package (Apache-2.0) that runs
+the protocols, extracts the features, calibrates the tolerances, generates the faults and
+controls, selects the battery and seals each campaign. Simulations used jNeuroML 0.14.0 and jLEMS
+0.12.0 on Temurin JDK 21.0.12.1+1, with Python 3.12.10,
 pyNeuroML 1.3.22, libNeuroML 0.6.7 and eFEL 5.7.34, on 12 parallel workers. Every run is stored
 write-once under a content-addressed identifier, with its inputs, software versions and outputs.
 The held-out campaign was archived and sealed after completion (17,424 files, each with a SHA-256
@@ -433,7 +436,7 @@ alarms. We recommend both as routine checks when neuron models are edited, conve
 
 ## Information Sharing Statement
 
-The code, frozen configuration, model snapshots (with licences), all per-variant records and summary
+NexClamp, the frozen configuration, model snapshots (with licences), all per-variant records and summary
 tables, and the scripts that produce every number and figure in this article are available at
 [repository URL] and archived at Zenodo [DOI]. Raw voltage traces (4.5 GB) are archived at [location].
 The preregistration is available at https://aspredicted.org/q2ag7w.pdf. All models are third-party
@@ -537,9 +540,8 @@ Zhan Y, Clark JA (2005) Search-based mutation testing for Simulink models. In: P
 3. **Reference details**: volume and page numbers for references given without them, checked
    against Crossref; confirm author lists abbreviated with "et al.".
 4. **Repository and archive**: public repository URL, Zenodo DOI, location for the raw traces.
-5. **Tool name**: the framework is unnamed in this draft (the public name is undecided).
-6. **Online Resources**: 1 (screening criteria, tolerance constants, protocol and operator
+5. **Online Resources**: 1 (screening criteria, tolerance constants, protocol and operator
    definitions), 2 (deviation log, development pilots, Pilot 2 with and without exposed faults).
-7. **All authors** read, correct and approve; confirm contributions.
-8. **Journal formatting**: convert to the Springer Nature LaTeX or Word template; check the abstract
+6. **All authors** read, correct and approve; confirm contributions.
+7. **Journal formatting**: convert to the Springer Nature LaTeX or Word template; check the abstract
    limit and figure requirements in the Neuroinformatics author guidelines.

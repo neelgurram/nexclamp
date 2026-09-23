@@ -1,4 +1,4 @@
-"""Unit tests for neuraxis.transforms on the real pinned NeuroML snapshots (no Java needed).
+"""Unit tests for nexclamp.transforms on the real pinned NeuroML snapshots (no Java needed).
 
 Checks that matter scientifically are done with code that does not reuse the module under
 test: semantic comparisons parse files with lxml directly, exact SI values are recomputed
@@ -17,19 +17,19 @@ from pathlib import Path
 import pytest
 from lxml import etree
 
-from neuraxis.models import materialize
-from neuraxis.provenance import tree_manifest
-from neuraxis.schemas import VariantKind, variant_from_dict
-from neuraxis.transforms import (
+from nexclamp.models import materialize
+from nexclamp.provenance import tree_manifest
+from nexclamp.schemas import VariantKind, variant_from_dict
+from nexclamp.transforms import (
     MANIFEST_COLUMNS,
     REGISTRY,
     apply_model_overrides,
     generate_transforms,
     write_manifest,
 )
-from neuraxis.transforms.formatting import XmlDoc, model_files, scan
-from neuraxis.transforms.identifiers import rewrite_path
-from neuraxis.transforms.units import (
+from nexclamp.transforms.formatting import XmlDoc, model_files, scan
+from nexclamp.transforms.identifiers import rewrite_path
+from nexclamp.transforms.units import (
     convert_literal,
     core_units,
     format_decimal,
@@ -396,7 +396,7 @@ def test_rename_never_touches_default_segment_group_and_sites_are_unique(workspa
 
 
 def test_rewrite_path_grammar():
-    from neuraxis.transforms.identifiers import Definition
+    from nexclamp.transforms.identifiers import Definition
 
     d = Definition("channelDensity", "Na_all", "f", "/l", None, "RS", None, None)
     pops, dens = {"CG_RS": "RS"}, {("RS", "Na_all"): "Na"}

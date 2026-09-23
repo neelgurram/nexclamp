@@ -9,8 +9,8 @@ from __future__ import annotations
 
 import pytest
 
-from neuraxis.schemas import RunStatus
-from neuraxis.simulators.neuron import NeuronSimulator, export_to_neuron
+from nexclamp.schemas import RunStatus
+from nexclamp.simulators.neuron import NeuronSimulator, export_to_neuron
 
 
 @pytest.fixture(scope="module")

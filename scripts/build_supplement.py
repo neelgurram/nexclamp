@@ -26,9 +26,9 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
 import yaml  # noqa: E402
 
-from neuraxis import config  # noqa: E402
-from neuraxis.protocols.definitions import DEFAULT_TEMPLATES  # noqa: E402
-from neuraxis.provenance import REPO_ROOT, git_state, utc_now  # noqa: E402
+from nexclamp import config  # noqa: E402
+from nexclamp.protocols.definitions import DEFAULT_TEMPLATES  # noqa: E402
+from nexclamp.provenance import REPO_ROOT, git_state, utc_now  # noqa: E402
 
 OUT = REPO_ROOT / "docs" / "manuscript"
 

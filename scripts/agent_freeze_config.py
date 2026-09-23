@@ -29,9 +29,9 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
 import yaml  # noqa: E402
 
-from neuraxis import config  # noqa: E402
-from neuraxis.experiments import agent as ag  # noqa: E402
-from neuraxis.provenance import REPO_ROOT, git_state, sha256_file, utc_now  # noqa: E402
+from nexclamp import config  # noqa: E402
+from nexclamp.experiments import agent as ag  # noqa: E402
+from nexclamp.provenance import REPO_ROOT, git_state, sha256_file, utc_now  # noqa: E402
 
 SCHEMA = "neurosem-agent-frozen/1"
 
@@ -94,7 +94,7 @@ def main(argv: list[str] | None = None) -> int:
     # The campaign recorded here is where the scorer writes its simulations. Naming a sealed campaign
     # (or the source campaign itself) adds foreign runs to finished data - this happened once, on
     # 2026-09-19, and is recorded as X-27.
-    from neuraxis.experiments import registry
+    from nexclamp.experiments import registry
 
     study_name = a.study or a.campaign
     if registry.is_sealed(study_name, config.results_dir()):

@@ -9,9 +9,9 @@ from __future__ import annotations
 
 import re
 
-from neuraxis.models import load_models, normalise_fields
-from neuraxis.orchestration.curation import read_candidates
-from neuraxis.provenance import REPO_ROOT
+from nexclamp.models import load_models, normalise_fields
+from nexclamp.orchestration.curation import read_candidates
+from nexclamp.provenance import REPO_ROOT
 
 TEMPERATURE = re.compile(r"^$|^[-+]?\d+(\.\d+)? degC$")
 PILOT2_MODELS = ("acnet2_pyr_soma", "migliore2014_mt_soma", "nml2_hh_example", "osb_hh2_477127614",

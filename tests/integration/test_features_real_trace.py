@@ -15,19 +15,19 @@ import efel
 import numpy as np
 import pytest
 
-from neuraxis.config import features as load_features_config
-from neuraxis.features.efel_adapter import (
+from nexclamp.config import features as load_features_config
+from nexclamp.features.efel_adapter import (
     DEFINED,
     extract_all,
     feature_table_from_json,
     feature_table_to_json,
 )
-from neuraxis.features.regimes import LABELS
-from neuraxis.features.trace_metrics import is_uniform, pack_traces, stored_representation, unpack_traces
-from neuraxis.models import materialize
-from neuraxis.protocols.definitions import SPIKING
-from neuraxis.protocols.generate import write_probe
-from neuraxis.schemas import AnalysisWindow, ConcreteProtocol, ExecConfig, RunStatus, StimulusComponent
+from nexclamp.features.regimes import LABELS
+from nexclamp.features.trace_metrics import is_uniform, pack_traces, stored_representation, unpack_traces
+from nexclamp.models import materialize
+from nexclamp.protocols.definitions import SPIKING
+from nexclamp.protocols.generate import write_probe
+from nexclamp.schemas import AnalysisWindow, ConcreteProtocol, ExecConfig, RunStatus, StimulusComponent
 
 pytestmark = pytest.mark.jnml
 

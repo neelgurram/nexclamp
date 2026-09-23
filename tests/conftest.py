@@ -6,8 +6,8 @@ from pathlib import Path
 
 import pytest
 
-from neuraxis.models import load_models, materialize
-from neuraxis.simulators.jneuroml import JNeuroML
+from nexclamp.models import load_models, materialize
+from nexclamp.simulators.jneuroml import JNeuroML
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 
