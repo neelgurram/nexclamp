@@ -1,0 +1,93 @@
+# Online Resource 2: development record, deviations and preregistration
+
+*Generated 2026-09-23T01:17:34+00:00 by `scripts/build_supplement.py` at commit `63e5759c962d` (tree dirty: True). Every table is read from the repository's recorded files.*
+
+## 1 Preregistration
+
+| Field | Value |
+|---|---|
+| registry | AsPredicted |
+| title | NEURON MODEL VALIDATION - held-out fault detection, Sept 2026 |
+| url | https://aspredicted.org/see_one.php?a=Lpqv0ievoeEU9-_b2-bGCmuBdLNeU7HG-PY0bQeRKGg |
+| recorded_utc | 2026-09-20T00:31:26+00:00 |
+| submitted_by | Neel Gurram |
+| data_collection_answer | It's complicated (development data exists; no held-out observation) |
+| study_id | neuron_model_behavioral_validation |
+| preregistration_source_doc | docs/CONFIRMATORY_PREREGISTRATION.md |
+| preregistration_source_sha256 | fe391d98280fff66889584c45da446e655c3272057eed4643e88a742e4c8b45e |
+| held_out_models | not yet determined; screening campaign curation-v4 in progress |
+| authorisation_sentence_received | False |
+| note | The registration is submitted. The held-out evaluation additionally requires the frozen split, its hashed manifests, and the exact authorisation sentence (D-036). |
+| aspredicted_number | 312455 |
+| preregistered_on | 2026/09/19 17:29 (PT) |
+| pdf_url | https://aspredicted.org/q2ag7w.pdf |
+| pdf_path | docs/preregistration/aspredicted.pdf |
+| pdf_sha256 | f67ac37945242cb21ea0a120f742dcaf9890864eb1367d0c6ce4311465371b35 |
+| pdf_bytes | 199197 |
+| pdf_generated | 2026/09/20 20:22 (PT) |
+| pdf_retrieved_utc | 2026-09-21T03:28:38+00:00 |
+| author_display | anonymous for blind peer review (one author: Neel Gurram); co-authors Singh and Somisetti added 2026-09-20, see docs/AUTHORS.md |
+| held_out_models_update | The held-out list was fixed after submission by the registered rule (thirteen criteria on unmutated models only); frozen in data/splits/heldout/heldout_models.txt, hashed in data/splits/SPLITS.sha256. |
+
+
+## 2 Development pilots (exploratory; never pooled with the confirmatory result)
+
+**Pilot 1** (2 models, exploratory iteration 1): the canonical test detected all 22 admissible model edits; the battery detected 19. Three cases first described as silent were numerical, not semantic, and are reported only in corrected form (deviations X-17, X-38 in the log below).
+
+**Pilot 2** (5 models), recorded outcome:
+
+| Quantity | Value |
+|---|---|
+| primary semantic mutants | 88 |
+| admissible (any protocol, features or trace) | 76 |
+| controls | 40 |
+| control false positives | 0 |
+| feature-level canonical survivors | 9 |
+| survivors not confirmed at h/4 | 1 |
+| confirmed full-trace survivors | 2 |
+| survivors unclassifiable (level C not calibrated) | 4 |
+| canonical detection, features or trace | 0.921 |
+| branch classification | B_feature_level_insufficiency |
+
+Pilot 2's protocol was edited after operator validation had already simulated four of its five models, so nine of its mutants shared an exact edit with a validated site. Pilot 2 is therefore reported both over all mutants and over the 79 unexposed ones (amendment A-01, deviation X-23). No held-out model is affected: none was mutated before the confirmatory run.
+
+## 3 Deviation log (verbatim)
+
+# Deviation log
+
+*Every conflict between the controlling specification
+(`docs/handoff/NEURAXIS_EXECUTION_PLAN.pdf`, received 2026-09-16) and earlier plans or work, with its
+resolution. Protocol-specific deviations of development runs are in
+`docs/pilot/PILOT_PROTOCOL_V1_DEVIATIONS.md`. Decisions are in `DECISIONS.md`.*
+
+| # | Date | Conflict | Resolution | Status |
+|---|---|---|---|---|
+| X-01 | 2026-09-16 | The plan names the package `neuraxis/`; the code was `src/neurosem/` | Renamed to `src/neuraxis/`. `neurosem` stays importable as an alias returning the same module objects; the `neurosem` command and `NEUROSEM_*` variables still work. Feature-source labels (`neurosem:firing_regime`) and the `neurosem:` key in `features.yaml` are unchanged, because renaming them would change hashed configuration and recorded provenance. | done |
+| X-02 | 2026-09-16 | The plan's name "Neuraxis" is provisional pending a documented name search | Search done (`docs/NAME_AUDIT.md`): NeurAxis, Inc. (NYSE American: NRXS, neurostimulation devices) holds live USPTO registrations for NEURAXIS. The audit recommends renaming (PerturbPrint first). Neel decides; another rename is mechanical. | decision pending |
+| X-03 | 2026-09-16 | The plan asks for Apache-2.0 (provisional); the repository was BSD-3-Clause (D-018) | `LICENSE` is now the Apache-2.0 text (official file, SHA-256 `cfc7749b…3d30`). The BSD text is kept in `docs/licensing/`. `CITATION.cff` is updated. `LICENSE_AUDIT.md` sections 7-8 still analyse BSD and need a compatibility re-read before release (L-01, L-11). | provisional |
+| X-04 | 2026-09-16 | The plan's run-record field list differs from the earlier `run.json` | Added `execution_id`, `model_hash`, `base_model_hash`, `mutation_id`, `transformation_id`, `protocol_id`, `time_step_ms`, `configuration_hash`, `start_time`, `end_time`, `runtime_seconds`, `stdout_path`, `stderr_path` (+ hashes), `trace_hash`, `feature_hash`; `project_name` and `study_phase` were added on 2026-09-15. Older records load unchanged; `time_step` is named `time_step_ms` to carry its unit. | done |
+| X-05 | 2026-09-16 | The plan wants "a unique run ID for every execution"; `run_id` was a content address shared by identical inputs | `run_id` still identifies the inputs, so identical inputs are never re-simulated and never overwritten. `execution_id` identifies each execution. A legitimate rerun uses a new replicate or campaign, which gives new run IDs. Completed runs are reused only after their trace, feature and output-stream hashes verify. | done |
+| X-06 | 2026-09-16 | A toolchain failure used to be stored as the run's result, which would have blocked a permitted retry | Toolchain failures are now written to `_tool_failures/` beside the run and never become the run record; legacy tool-failure records are moved there, not deleted. Tested in `tests/unit/test_run_record_fields.py`. | done |
+| X-07 | 2026-09-16 | The plan's recommended tree (`configs/development.yaml`, `protocols.yaml`, `mutations.yaml`, `selection.yaml`, `statistics.yaml`, `agent.yaml`, `heldout_frozen.yaml`) differs from `configs/study.yaml` with sections | Kept, as the plan allows, with equivalent separation (`docs/SPECIFICATION_GAP_ANALYSIS.md` maps each file to its section). A development protocol's configs live in `configs/<protocol>/`. The frozen confirmatory configuration is locked by `configs/FROZEN.lock` (`workflows/freeze_study.py`). | documented |
+| X-08 | 2026-09-16 | The plan's `manifests/` directory did not exist; model tables were in `data/` | `manifests/` is generated by `scripts/build_manifests.py` (protocols, mutations, transformations, splits, model sources, per-snapshot hashes) and `neuraxis curate-models` (`models.csv`). `data/` stays the editable source. | done |
+| X-09 | 2026-09-16 | The plan names documents that existed under other names | Renamed: `protocol_catalog.md`, `mutation_catalog.md`, `statistical_plan.md`, `preregistration_draft.md` and `ai_disclosure.md` become upper-case names; `DEPENDENCY_AUDIT.md` moved to `docs/`. Added `CURRENT_REPOSITORY_STATE`, `SPECIFICATION_GAP_ANALYSIS`, `PRIOR_ART_MATRIX`, `LICENSING_MATRIX`, `NAME_AUDIT`, `PLAIN_LANGUAGE_OVERVIEW`, `DEVELOPMENT_PROTOCOL`, `FEATURE_CATALOG`, `DEVIATION_LOG` and `DECISIONS_REQUIRED`. References are updated; historical evidence folders are untouched. | done |
+| X-10 | 2026-09-16 | The plan requires a prior-art matrix of at least 20 works with verification packets for the five closest | `docs/PRIOR_ART_MATRIX.md` and `docs/prior_art_matrix.csv` (36 rows, DOIs verified) and `docs/prior_art/packets/` (5 packets, full texts read by the assistant). **Researcher manual inspection pending.** 12 rows rest on abstracts or keyword scans. | human step pending |
+| X-11 | 2026-09-16 | The plan's model inclusion criteria were not implemented as a workflow | `neuraxis curate-models` implements criteria C01-C13 on reference simulations only (`docs/MODEL_CURATION_REPORT.md`). | done |
+| X-12 | 2026-09-16 | Wang–Buzsáki fails NeuroML schema validation of its own cell file; the plan requires "appropriate NeuroML validation" | Under the plan's criterion the model is excluded (C04), and the exclusion is logged. Neel's earlier option A (treat the pre-existing error as a baseline error) would change the oracle and needs his decision. | decision pending |
+| X-13 | 2026-09-16 | The plan asks for an infrastructure smoke test from a clean environment | `neuraxis smoke-test` (nine checks) was run in a freshly created virtual environment; results in `results/audits/smoke_test/`. Docker is not available on this machine, so the `Dockerfile` has never been built. | see results |
+| X-14 | 2026-09-16 | The plan's third mutation family (kinetics) needs operators; `scale_gate_time_constant` is a kinetic parameter already used in Pilot 1 | Four new kinetics operators (midpoint shift, slope scaling, forward-rate shift, channel vShift) form the `kinetics` family, excluded from protocol selection in code. `scale_gate_time_constant` stays in the development biophysical family because its Pilot 1 outcomes were inspected; D-037's plan to move it is withdrawn pending Neel's confirmation. | decision pending |
+| X-15 | 2026-09-16 | The plan wants type checking and linting | ruff is configured and pinned; mypy is not installed. A baseline type-check run is recorded in `results/audits/static_checks/` when available. | partial |
+| X-16 | 2026-09-16 | `docs/PILOT_PROTOCOL_V1.md` names the package `neurosem` and the command `neurosem pilot` | Both names still work (X-01). The protocol needs a V1.1 revision anyway for the Wang–Buzsáki decision; the rename will be recorded there. | pending V1.1 |
+| X-17 | 2026-09-13 | Pilot 1 exceeded the pilot bounds; its only "silent" cases were numerical | Kept as exploratory iteration 1 (D-028); reported only in corrected form (D-038). | done |
+| X-18 | 2026-09-17 | Curation v1 runtime criterion C11 used a 300 s per-variant budget, set by the assistant as a placeholder. Every executing model failed it, including models that Pilot 1 ran without difficulty. | **Changed after seeing the v1 results; disclosed.** The budget is now 1,800 s of estimated simulator time per variant, derived from the compute plan rather than from which models pass: about 200 Pilot 2 variants on 12 workers within a 12-hour window allows at most about 2,600 s per variant, rounded down. The v1 estimates were also inflated, because they include a rheobase search at both h and h/2 and were measured with 8 models simulating at once. Curation v1 (`results/processed/curation-v1/`, report `MODEL_CURATION_REPORT_v1.md`) is preserved; curation v2 applies the new budget to all candidates. | disclosed |
+| X-19 | 2026-09-17 | Curation v1 exposed two software defects | (1) Free-text notes in the sweep candidates' temperature column were written into the generated simulation file, which made every rheobase search fail for those six models (criterion C08 "fail" was a tool defect, not a model property). The candidate reader now keeps only the numeric temperature. (2) `scale_conductance` offered zero-valued conductance densities as sites (scaling zero changes nothing, so enforcement rightly rejected them); such sites are no longer offered. Both fixes have regression tests. Curation v2 reruns all candidates. | fixed |
+| X-20 | 2026-09-17 | `docs/PILOT_PROTOCOL_V1.md` and `configs/pilot_protocol_v1/` describe a four-model second pilot (including Wang-Buzsaki and the two Pilot 1 models) that was never executed | Superseded by `docs/PILOT2_PROTOCOL.md` and `configs/pilot2_frozen.yaml`: five models new to the study, Wang-Buzsaki excluded (D-051), Pilot 1 models not repeated, kinetics included, validation levels A-E enabled. The superseded protocol and configuration are preserved unchanged; no Pilot 1 data is affected. | done |
+| X-21 | 2026-09-17 | `docs/KINETICS_OPERATOR_VALIDATION.md` section 5 planned a two-operator kinetics subset for Pilot 2 (`shift_gate_midpoint`, `shift_channel_vshift`) | All four validated operators are included instead (D-054). `shift_forward_rate_midpoint` is the only atomic operator, so the earlier subset would have made the atomic-versus-compound report impossible. Decided and written down before any Pilot 2 data existed; the family is still limited (4 of 23 operators, 12 of 88 primary mutants) and stays excluded from protocol selection. All 48 validated sites on the five Pilot 2 models passed (`results/audits/kinetics_pilot2/`). | done |
+| X-22 | 2026-09-17 | Full-trace regression and validation levels A-E had never run on a real campaign, only in tests | An infrastructure rehearsal (`configs/pilot2_rehearsal.yaml`, campaign `pilot2-rehearsal`) exercises them on `pospischil2008_rs`, a Pilot 1 model, so no Pilot 2 model produces a preliminary outcome. The rehearsal is engineering evidence and is never reported as study data. | done |
+| X-23 | 2026-09-18 | `docs/PILOT2_PROTOCOL.md` claimed it was written "before any Pilot 2 simulation was executed", and the commit `cffd026` message says "frozen before execution" | **False as written, corrected.** Kinetics operator validation simulated four of the five Pilot 2 models on 2026-09-17 21:14-21:19 UTC; its canonical-harness spike counts were printed, read and reported; the protocol's section 5.2 was edited one minute later. Nine frozen mutants share an exact edit with a validated site. Audit classification L5/L4 (`docs/PILOT2_LEAKAGE_ASSESSMENT.md`). Amendment A-01 corrects the statement, names the nine variants and requires every primary result to be reported with and without them. The design itself (models, protocols, families, severities, thresholds, exclusions, branch rules) was fixed at 16:41, before the exposure, and did not change. Commit messages are not rewritten. | disclosed |
+| X-24 | 2026-09-18 | The Pilot 2 campaign was launched under the standing automatic authorisation after the readiness and authorisation gates passed, while Neel believed it had not started | Stopped at Neel's instruction after 38 of 143 variants and 564 raw runs, on two models, with no aggregate written and nothing inspected. All partial data preserved and labelled `status_uncertain_pending_audit` (`results/CAMPAIGN_STATUS_PILOT2.json`). Every begun variant id is in the frozen matrix. | disclosed |
+| X-25 | 2026-09-18 | Criterion C11 used an 1,800 s per-variant budget (X-18), which excluded every remaining untouched candidate and left zero eligible models for the confirmatory held-out pool | **Amendment H-01 (D-056), authorised by Neel:** the budget is raised to 4,200 s, derived from the held-out compute plan (14 h, 12 workers, ~125 variants), not from which models pass. The six models it admits are named in advance in D-056. No mutation outcome exists for any of them. Pilot 2 is unaffected and stays frozen. | applied |
+| X-26 | 2026-09-19 | The Pilot 2 outputs first classified the campaign as **Branch A (hidden drift supported)**: 6 confirmed full-trace canonical survivors across 2 models | **Defect in the analysis, found and corrected before any claim was made.** `full_trace_canonical_survivor` is computed as "not detected by canonical features AND not detected by canonical trace". For `osb_hh2_477127614` the canonical trace tolerance was excluded during calibration (the reference's own spike count changes between h and h/2), so level C could never fire and the second condition was satisfied for free: 4 of the 6 survivors were promoted without the test ever running. `classify_branch` now reads each model's trace-tolerance status and counts a full-trace survivor only where level C was evaluable; the rest are reported as `full_trace_survivors_unclassifiable`. Corrected result: **Branch B (canonical regression is feature-limited)** - 2 confirmed full-trace survivors on 1 model, 4 unclassifiable, 2 feature-level survivors caught by canonical trace. No threshold, denominator or rule was changed; this is a correctness fix to an analysis defect, applied to recorded data with no re-simulation. Both classifications are on the record. | corrected |
+| X-27 | 2026-09-21 | 14 simulation runs were written into `results/raw/pilot`, the **sealed** Pilot 1 campaign directory, on 2026-09-19 | **Found by the Pilot 1 regression test, not by inspection.** The agent-study frozen evaluation config was built with `--campaign pilot`, so its `campaign` field was `pilot`; the scorer builds a RunRecorder directly from that field and wrote its canonical and battery simulations there. `registry.assert_writable` refuses sealed campaigns but is only reached through `make_context`, which the scorer does not use. **No Pilot 1 data was modified**: all 630 archived run directories and all 2,689 archived files still match their recorded hashes, verified in the readiness run. The 14 foreign runs are preserved in place, listed with their ids in `results/processed/pilot/FOREIGN_RUNS.csv`, and excluded from every Pilot 1 statement. Fixes: the RunRecorder now refuses to write a new run into a sealed campaign; the agent-config builder refuses a sealed campaign name and refuses to reuse the source campaign's name; the Pilot 1 regression test now scopes itself to the archive manifest. | corrected |
+| X-28 | 2026-09-21 | `docs/CONFIRMATORY_PREREGISTRATION.md`, a file under `configs/FROZEN.lock`, was edited after the freeze (commit `562bf743`) to add co-authors Samyak Singh and Naithik Somisetti to section 0 | **Caught by the held-out gate, not by inspection.** The first held-out launch (authorisation recorded 2026-09-21T18:31:04Z, commit `cc52d51f`) was refused by `HeldoutGate` with `SplitIntegrityError` before any held-out model was mutated or simulated; `results/raw/heldout-v1` was never created. The edit changed only author rows and one to-do line; no hypothesis, endpoint, split, threshold or analysis. With Neel's explicit approval the file was restored byte-for-byte from `2e30f5d0` (sha256 `fe391d98...b45e`, matching the lock); the author list lives in the unlocked `docs/AUTHORS.md`. The study was not re-frozen and the gate was not changed. The refused attempt's authorisation record is preserved in `results/heldout_authorizations.jsonl`; the evaluation was relaunched under the same authorisation. | corrected |
+

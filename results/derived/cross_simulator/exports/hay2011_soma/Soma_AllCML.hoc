@@ -1,0 +1,302 @@
+// Cell: Soma_AllCML
+/*
+{
+  "id" : "Soma_AllCML",
+  "sections" : [ {
+    "name" : "Soma",
+    "id" : "Soma",
+    "points3d" : [ "0.0, 0.0, 0.0, 13.4715", "0.0, 23.1694, 0.0, 13.4715" ]
+  } ],
+  "groups" : [ {
+    "name" : "soma_group",
+    "groups" : [ ],
+    "sections" : [ "Soma" ]
+  }, {
+    "name" : "all",
+    "sections" : [ "Soma" ]
+  } ],
+  "specificCapacitance" : [ {
+    "group" : "all",
+    "value" : "1.0"
+  } ],
+  "initMembPotential" : [ {
+    "group" : "all",
+    "value" : "-90.0"
+  } ],
+  "resistivity" : [ {
+    "group" : "all",
+    "value" : "100.0"
+  } ],
+  "channelDensity" : [ {
+    "id" : "Ih_all",
+    "ionChannel" : "Ih",
+    "ion" : "hcn",
+    "group" : "all",
+    "condDens" : "2.0E-4",
+    "erev" : "-45.0"
+  }, {
+    "id" : "Im_all",
+    "ionChannel" : "Im",
+    "ion" : "k",
+    "group" : "all",
+    "condDens" : "6.75E-5",
+    "erev" : "-85.0"
+  }, {
+    "id" : "K_Pst_all",
+    "ionChannel" : "K_Pst",
+    "ion" : "k",
+    "group" : "all",
+    "condDens" : "0.00223",
+    "erev" : "-85.0"
+  }, {
+    "id" : "K_Tst_all",
+    "ionChannel" : "K_Tst",
+    "ion" : "k",
+    "group" : "all",
+    "condDens" : "0.081199996",
+    "erev" : "-85.0"
+  }, {
+    "id" : "Nap_Et2_all",
+    "ionChannel" : "Nap_Et2",
+    "ion" : "na",
+    "group" : "all",
+    "condDens" : "0.0017200001",
+    "erev" : "50.0"
+  }, {
+    "id" : "NaTa_t_all",
+    "ionChannel" : "NaTa_t",
+    "ion" : "na",
+    "group" : "all",
+    "condDens" : "0.29999998",
+    "erev" : "50.0"
+  }, {
+    "id" : "pas_all",
+    "ionChannel" : "pas_nml2",
+    "ion" : "non_specific",
+    "group" : "all",
+    "condDens" : "3.38E-5",
+    "erev" : "-90.0"
+  }, {
+    "id" : "SK_E2_all",
+    "ionChannel" : "SK_E2",
+    "ion" : "k",
+    "group" : "all",
+    "condDens" : "8.0E-5",
+    "erev" : "-85.0"
+  }, {
+    "id" : "SKv3_1_all",
+    "ionChannel" : "SKv3_1",
+    "ion" : "k",
+    "group" : "all",
+    "condDens" : "0.29299998",
+    "erev" : "-85.0"
+  }, {
+    "id" : "Ca_HVA_all",
+    "ionChannel" : "Ca_HVA",
+    "ion" : "ca",
+    "group" : "all",
+    "condDens" : "9.92E-4",
+    "erev" : "calculated_by_Nernst_equation"
+  }, {
+    "id" : "Ca_LVAst_all",
+    "ionChannel" : "Ca_LVAst",
+    "ion" : "ca",
+    "group" : "all",
+    "condDens" : "0.0034299998",
+    "erev" : "calculated_by_Nernst_equation"
+  } ],
+  "species" : [ {
+    "id" : "ca",
+    "ion" : "ca",
+    "concentrationModel" : "CaDynamics_E2_NML2",
+    "group" : "all",
+    "initialConcentration" : "5.0E-5",
+    "initialExtConcentration" : "2.0"
+  } ]
+}
+*/
+
+load_file("subiter.hoc")
+
+begintemplate Soma_AllCML
+
+public init, topol, basic_shape, subsets, geom, memb
+public x, y, z, position
+
+
+//  Some methods for referencing the cells
+
+public toString, netInfo, set_initial_v, set_initial_ion_properties, synlist
+
+
+// Section: Soma, id: Soma, parent: $s.parent
+create Soma
+public Soma
+
+// Group: {name=soma_group, groups=[], sections=[Soma]}
+objref soma_group
+// Group: {name=all, sections=[Soma]}
+objref all
+
+objref synlist
+
+proc init() {
+    topol()
+    geom_nseg()
+    subsets()
+    subsets_inhomogeneous()
+    biophys()
+    biophys_inhomogeneous()
+    synlist = new List()
+    x = y = z = 0
+
+}
+
+proc set_initial_v() {
+    // Taken from the initMembPotential value
+    forsec all v = -90.0  // units: mV
+}
+
+
+proc set_initial_ion_properties() {
+    // From species
+    // Ion: ca on group: all, with concentration model: CaDynamics_E2_NML2
+    forsec all {
+        cai = 5.0E-5  // units: mM
+        cao = 2.0  // units: mM
+    }
+}
+
+
+proc topol() {
+    basic_shape()
+
+}
+
+
+proc basic_shape() {
+
+    // Section: Soma, id: Soma, parent: $s.parent (entry count 0/100)
+    Soma { pt3dclear() }
+    Soma { pt3dadd( 0.0, 0.0, 0.0, 13.4715 ) }
+    Soma { pt3dadd( 0.0, 23.1694, 0.0, 13.4715 ) }
+
+}
+
+
+proc subsets() { local i
+
+    // Group: {name=soma_group, groups=[], sections=[Soma]}
+    soma_group = new SectionList()
+    Soma soma_group.append()
+
+    // Group: {name=all, sections=[Soma]}
+    all = new SectionList()
+    Soma all.append()
+
+}
+
+
+proc subsets_inhomogeneous() {
+}
+
+proc biophys() {
+
+    // Specific capacitance
+    forsec all cm = 1.0  // units: uF/cm2
+
+    // Specific axial resistance/resistivity
+    forsec all Ra = 100.0  // units: ohm cm
+
+    // Channel densities
+    forsec all {
+        insert Ih
+        gmax_Ih = 2.0E-4  // units: S cm-2
+        ehcn = -45.0  // units: mV
+    }
+    forsec all {
+        insert Im
+        gmax_Im = 6.75E-5  // units: S cm-2
+        ek = -85.0  // units: mV
+    }
+    forsec all {
+        insert K_Pst
+        gmax_K_Pst = 0.00223  // units: S cm-2
+        ek = -85.0  // units: mV
+    }
+    forsec all {
+        insert K_Tst
+        gmax_K_Tst = 0.081199996  // units: S cm-2
+        ek = -85.0  // units: mV
+    }
+    forsec all {
+        insert Nap_Et2
+        gmax_Nap_Et2 = 0.0017200001  // units: S cm-2
+        ena = 50.0  // units: mV
+    }
+    forsec all {
+        insert NaTa_t
+        gmax_NaTa_t = 0.29999998  // units: S cm-2
+        ena = 50.0  // units: mV
+    }
+    forsec all {
+        insert pas_nml2
+        gmax_pas_nml2 = 3.38E-5  // units: S cm-2
+        e_pas_nml2 = -90.0  // units: mV
+    }
+    forsec all {
+        insert SK_E2
+        gmax_SK_E2 = 8.0E-5  // units: S cm-2
+        ek = -85.0  // units: mV
+    }
+    forsec all {
+        insert SKv3_1
+        gmax_SKv3_1 = 0.29299998  // units: S cm-2
+        ek = -85.0  // units: mV
+    }
+    forsec all {
+        insert Ca_HVA
+        gmax_Ca_HVA = 9.92E-4  // units: S cm-2
+        // erev is calculated by Nernst equation
+    }
+    forsec all {
+        insert Ca_LVAst
+        gmax_Ca_LVAst = 0.0034299998  // units: S cm-2
+        // erev is calculated by Nernst equation
+    }
+
+    // Concentration models for species
+    // Ion: ca on group: all, with concentration model: CaDynamics_E2_NML2
+    forsec all {
+        insert CaDynamics_E2_NML2
+    }
+
+}
+
+func H() { // Heaviside function
+    if ($1>=0) return 1
+    if ($1==0) return 0.5
+    return 0
+}
+
+proc biophys_inhomogeneous() {
+}
+
+proc geom_nseg() {
+    // All sections not mentioned here have nseg = 1
+}
+
+
+proc position() { local i
+    forsec all {
+        for i = 0, n3d()-1 {
+            pt3dchange(i, $1+x3d(i), $2+y3d(i), $3+z3d(i), diam3d(i))
+        }
+    }
+    x = $1  y = $2  z = $3
+}
+
+
+endtemplate Soma_AllCML
+
+

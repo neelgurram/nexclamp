@@ -45,7 +45,7 @@ from neuraxis.validation.trace_regression import SPIKE_THRESHOLD_MV, spikes  # n
 COLUMNS = ["model_id", "source_family", "export_ok", "export_returncode", "mod_files", "hoc_files", "runner",
            "export_seconds", "export_error", "neuron_runtime", "neuron_status", "jlems_spikes", "neuron_spikes",
            "jlems_first_spike_ms", "neuron_first_spike_ms", "max_spike_time_diff_ms", "trace_rmse_mV",
-           "agreement_note"]
+           "agreement_note", "neuron_message"]
 
 
 def compare_traces(a, b) -> dict:
@@ -104,6 +104,7 @@ def check_model(model, jl: JNeuroML, nrn: NeuronSimulator, out_dir: Path, run_ne
         jl_res = jl.run_lems(ws.harness_path, [spec])
         nrn_res = nrn.run_lems(ws.harness_path, [spec])
         row["neuron_status"] = nrn_res.status.value
+        row["neuron_message"] = (nrn_res.message or "")[:400].replace("\n", " ")
         key = next(iter(spec.columns))
         a = jl_res.traces.get(key) if jl_res.status is RunStatus.OK else None
         b = nrn_res.traces.get(key) if nrn_res.status is RunStatus.OK else None
@@ -161,7 +162,12 @@ def main(argv: list[str] | None = None) -> int:
                   "integrator's own discretisation error and say nothing about the gap between two integrators.", ""]
     (out_dir / "cross_simulator.md").write_text("\n".join(lines), encoding="utf-8", newline="\n")
     print("\n".join(lines[:8]))
-    print(f"\nwrote {out_dir.relative_to(REPO_ROOT).as_posix()}")
+    shown = out_dir.resolve()
+    try:
+        shown = shown.relative_to(REPO_ROOT)
+    except ValueError:
+        pass
+    print(f"\nwrote {shown.as_posix()}")
     return 0
 
 

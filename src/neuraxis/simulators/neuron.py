@@ -92,7 +92,11 @@ def export_to_neuron(lems_file: Path, java: Path | None = None, jar: Path | None
     except OSError as exc:
         return ExportResult(False, -1, None, (), (), time.perf_counter() - t0, f"tool failure: {exc}")
     made = sorted({p for p in root.rglob("*") if p.suffix in MOD_SUFFIXES} - before)
-    runner = next((p for p in made if p.name.endswith("_nrn.py")), None)
+    # Re-exporting into a workspace that already holds the artefacts writes the same files again, so
+    # nothing is "new": fall back to the runner jnml names after the LEMS file, otherwise a second
+    # export of the same model looks like a failure.
+    runner = (next((p for p in made if p.name.endswith("_nrn.py")), None)
+              or next(iter(sorted(root.rglob(f"{lems_file.stem}_nrn.py"))), None))
     return ExportResult(proc.returncode == 0 and runner is not None, proc.returncode, runner,
                         tuple(p for p in made if p.suffix == ".mod"), tuple(p for p in made if p.suffix == ".hoc"),
                         time.perf_counter() - t0, (proc.stdout + proc.stderr)[-4000:])

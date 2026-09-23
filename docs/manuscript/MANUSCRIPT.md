@@ -351,6 +351,18 @@ fraction of faults silent under the canonical test rose from 0.087 to 0.116, 0.1
 tolerances loosened (all 138 faults and stress tests). The main finding does not depend on the
 tolerance being tight.
 
+### 3.7 Cross-simulator check (exploratory)
+
+The evaluation used one simulator. To test whether its reference behaviour is simulator-specific,
+each held-out model was exported to NEURON with `jnml -neuron` and its canonical simulation re-run
+under NEURON 9.0.2. All six models exported, compiled and ran. Spike counts were identical in every
+case (7, 5, 9, 4, 7 and 4 spikes), and matched each model's own published NEURON reference. The
+largest difference in any spike time was 0.009 to 0.182 ms, and whole-trace differences were 0.19 to
+2.18 mV RMS, consistent with two integrators rather than two behaviours. This check was added after
+the confirmatory run, is exploratory, and is reported descriptively: the study's tolerances are
+calibrated within one integrator and do not transfer across two. It supports the reference
+simulations the detections are measured against; it does not re-test the faults.
+
 ## 4 Discussion
 
 On six neuron models never used to develop the method, re-running the shipped simulation missed
@@ -385,8 +397,9 @@ this question, which is usually answered with one simulation, needs more than on
 
 The evaluation used six models from four source families, so intervals are wide and the model-level
 permutation test is underpowered by construction; the interval for Δ excludes zero but does not
-establish a material advantage. All models are single-compartment and were simulated with one
-simulator; dendritic faults and simulator-specific numerics were out of scope. Faults were synthetic
+establish a material advantage. All models are single-compartment. The faults themselves were evaluated in one
+simulator, although every held-out model's reference behaviour reproduced in NEURON (section 3.7);
+dendritic faults remain out of scope. Faults were synthetic
 single-site edits; real modification errors may be larger, compound or correlated. Admissibility
 depends on the definition used (82 by feature classification, 94 including trace-only changes).
 The result for the held-out kinetics family is inconclusive. The frozen generator produced 186
@@ -471,77 +484,49 @@ batteries within the same cost (right), compared with the selected battery and t
 
 ## References
 
-Appukuttan S, Davison AP (2022) Reproducing and quantitatively validating a biologically-constrained
-point-neuron model of CA1 pyramidal cells. Front Integr Neurosci. https://doi.org/10.3389/fnint.2022.1041423
+Appukuttan S, Davison AP (2022) Reproducing and quantitatively validating a biologically-constrained point-neuron model of CA1 pyramidal cells. Frontiers in Integrative Neuroscience 16. https://doi.org/10.3389/fnint.2022.1041423
 
-Birgiolas J, Haynes V, Gleeson P, Gerkin RC, Dietrich SW, Crook S (2023) NeuroML-DB: Sharing and
-characterizing data-driven neuroscience models described in NeuroML. PLoS Comput Biol.
-https://doi.org/10.1371/journal.pcbi.1010941
+Birgiolas J, Haynes V, Gleeson P, Gerkin RC, Dietrich SW, Crook S (2023) NeuroML-DB: Sharing and characterizing data-driven neuroscience models described in NeuroML. PLOS Computational Biology 19:e1010941. https://doi.org/10.1371/journal.pcbi.1010941
 
-Druckmann S, Berger TK, Schürmann F, Hill S, Markram H, Segev I (2011) Effective stimuli for
-constructing reliable neuron models. PLoS Comput Biol. https://doi.org/10.1371/journal.pcbi.1002133
+Druckmann S, Berger TK, Schürmann F, Hill S, Markram H, Segev I (2011) Effective stimuli for constructing reliable neuron models. PLoS Computational Biology 7:e1002133. https://doi.org/10.1371/journal.pcbi.1002133
 
-Gerkin RC, Birgiolas J, Jarvis RJ, Omar C, Crook SM (2019) NeuronUnit: A package for data-driven
-validation of neuron models using SciUnit. bioRxiv. https://doi.org/10.1101/665331
+Gerkin RC, Birgiolas J, Jarvis RJ, Omar C, Crook SM (2019) NeuronUnit: A package for data-driven validation of neuron models using SciUnit. bioRxiv. https://doi.org/10.1101/665331
 
-Hay E, Hill S, Schürmann F, Markram H, Segev I (2011) Models of neocortical layer 5b pyramidal cells
-capturing a wide range of dendritic and perisomatic active properties. PLoS Comput Biol 7:e1002107.
-https://doi.org/10.1371/journal.pcbi.1002107
+Hay E, Hill S, Schürmann F, Markram H, Segev I (2011) Models of neocortical layer 5b pyramidal cells capturing a wide range of dendritic and perisomatic active properties. PLoS Computational Biology 7:e1002107. https://doi.org/10.1371/journal.pcbi.1002107
 
-Hook D, Kelly D (2009) Mutation sensitivity testing. Comput Sci Eng.
-https://doi.org/10.1109/MCSE.2009.200
+Hook D, Kelly D (2009) Mutation sensitivity testing. Computing in Science & Engineering 11:40-47. https://doi.org/10.1109/MCSE.2009.200
 
-Kelly D, Gray R, Shao Y (2011) Examining random and designed tests to detect code mistakes in
-scientific software. J Comput Sci. https://doi.org/10.1016/j.jocs.2010.12.002
+Kelly D, Gray R, Shao Y (2011) Examining random and designed tests to detect code mistakes in scientific software. Journal of Computational Science 2:47-56. https://doi.org/10.1016/j.jocs.2010.12.002
 
-Mandge D, Tuncel A, Jaquier A, Kilic I, Damart T, et al. (2026) eFEL: electrophysiology feature
-extraction library. Bioinformatics. https://doi.org/10.1093/bioinformatics/btag328
+Mandge D, Tuncel A, Jaquier A, Kilic I, Damart T, et al. (2026) eFEL: electrophysiology feature extraction library. Bioinformatics 42. https://doi.org/10.1093/bioinformatics/btag328
 
-Marin B, Gleeson P. OSB Model Validation (OMV), version 0.4.0 [software].
-https://github.com/OpenSourceBrain/osb-model-validation
+Marin B, Gleeson P. OSB Model Validation (OMV), version 0.4.0 [software]. https://github.com/OpenSourceBrain/osb-model-validation
 
-Markram H, Muller E, Ramaswamy S, Reimann MW, et al. (2015) Reconstruction and simulation of
-neocortical microcircuitry. Cell 163:456–492. https://doi.org/10.1016/j.cell.2015.09.029
+Markram H, Muller E, Ramaswamy S, Reimann MW, et al. (2015) Reconstruction and simulation of neocortical microcircuitry. Cell 163:456-492. https://doi.org/10.1016/j.cell.2015.09.029
 
-Matinnejad R, Nejati S, Briand LC, Bruckmann T (2019) Test generation and test prioritization for
-Simulink models with dynamic behavior. IEEE Trans Softw Eng. https://doi.org/10.1109/TSE.2018.2811489
+Matinnejad R, Nejati S, Briand LC, Bruckmann T (2019) Test generation and test prioritization for Simulink models with dynamic behavior. IEEE Transactions on Software Engineering 45:919-944. https://doi.org/10.1109/TSE.2018.2811489
 
-Migliore M, Ferrante M, Ascoli GA (2005) Signal propagation in oblique dendrites of CA1 pyramidal
-cells. J Neurophysiol 94:4145–4155. https://doi.org/10.1152/jn.00521.2005
+Migliore M, Ferrante M, Ascoli GA (2005) Signal propagation in oblique dendrites of CA1 pyramidal cells. Journal of Neurophysiology 94:4145-4155. https://doi.org/10.1152/jn.00521.2005
 
-Papadakis M, Kintis M, Zhang J, Jia Y, Le Traon Y, Harman M (2019) Mutation testing advances: an
-analysis and survey. Adv Comput. https://doi.org/10.1016/bs.adcom.2018.03.015
+Papadakis M, Kintis M, Zhang J, Jia Y, Le Traon Y, Harman M (2019) Mutation testing advances: an analysis and survey. Advances in Computers:275-378. https://doi.org/10.1016/bs.adcom.2018.03.015
 
-Reva M, Rössert C, Arnaudon A, Damart T, Mandge D, et al. (2023) A universal workflow for creation,
-validation, and generalization of detailed neuronal models. Patterns.
-https://doi.org/10.1016/j.patter.2023.100855
+Reva M, Rössert C, Arnaudon A, Damart T, Mandge D, et al. (2023) A universal workflow for creation, validation, and generalization of detailed neuronal models. Patterns 4:100855. https://doi.org/10.1016/j.patter.2023.100855
 
-Sáray S, Rössert CA, Appukuttan S, et al. (2021) HippoUnit: A software tool for the automated testing
-and systematic comparison of detailed models of hippocampal neurons based on electrophysiological
-data. PLoS Comput Biol. https://doi.org/10.1371/journal.pcbi.1008114
+Sáray S, Rössert CA, Appukuttan S, et al. (2021) HippoUnit: A software tool for the automated testing and systematic comparison of detailed models of hippocampal neurons based on electrophysiological data. PLOS Computational Biology 17:e1008114. https://doi.org/10.1371/journal.pcbi.1008114
 
-Segura S, Fraser G, Sanchez AB, Ruiz-Cortés A (2016) A survey on metamorphic testing. IEEE Trans Softw
-Eng. https://doi.org/10.1109/TSE.2016.2532875
+Segura S, Fraser G, Sanchez AB, Ruiz-Cortés A (2016) A survey on metamorphic testing. IEEE Transactions on Software Engineering 42:805-824. https://doi.org/10.1109/TSE.2016.2532875
 
-Sinha A, Gleeson P, Marin B, et al. (2025) The NeuroML ecosystem for standardized multi-scale
-modeling in neuroscience. eLife. https://doi.org/10.7554/eLife.95135
+Sinha A, Gleeson P, Marin B, et al. (2025) The NeuroML ecosystem for standardized multi-scale modeling in neuroscience. eLife 13. https://doi.org/10.7554/eLife.95135
 
-Smith SL, Smith IT, Branco T, Häusser M (2013) Dendritic spikes enhance stimulus selectivity in
-cortical neurons in vivo. Nature 503:115–120. https://doi.org/10.1038/nature12600
+Smith SL, Smith IT, Branco T, Häusser M (2013) Dendritic spikes enhance stimulus selectivity in cortical neurons in vivo. Nature 503:115-120. https://doi.org/10.1038/nature12600
 
-Traub RD, Contreras D, Cunningham MO, et al. (2005) Single-column thalamocortical network model
-exhibiting gamma oscillations, sleep spindles, and epileptogenic bursts. J Neurophysiol
-93:2194–2232. https://doi.org/10.1152/jn.00983.2004
+Traub RD, Contreras D, Cunningham MO, et al. (2005) Single-column thalamocortical network model exhibiting gamma oscillations, sleep spindles, and epileptogenic bursts. Journal of Neurophysiology 93:2194-2232. https://doi.org/10.1152/jn.00983.2004
 
-Van Geit W, Gevaert M, Chindemi G, et al. (2016) BluePyOpt: leveraging open source software and cloud
-infrastructure to optimise model parameters in neuroscience. Front Neuroinform.
-https://doi.org/10.3389/fninf.2016.00017
+Van Geit W, Gevaert M, Chindemi G, et al. (2016) BluePyOpt: leveraging open source software and cloud infrastructure to optimise model parameters in neuroscience. Frontiers in Neuroinformatics 10. https://doi.org/10.3389/fninf.2016.00017
 
-Yoo S, Harman M (2012) Regression testing minimization, selection and prioritization: a survey. Softw
-Test Verif Reliab. https://doi.org/10.1002/stvr.430
+Yoo S, Harman M (2012) Regression testing minimization, selection and prioritization: a survey. Software Testing, Verification and Reliability 22:67-120. https://doi.org/10.1002/stvr.430
 
-Zhan Y, Clark JA (2005) Search-based mutation testing for Simulink models. Proc GECCO 2005.
-https://doi.org/10.1145/1068009.1068188
+Zhan Y, Clark JA (2005) Search-based mutation testing for Simulink models. In: Proceedings of GECCO 2005, pp 1061-1068. https://doi.org/10.1145/1068009.1068188
 
 ---
 
