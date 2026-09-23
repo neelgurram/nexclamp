@@ -35,7 +35,7 @@ JAVA_ARGS ?=
 # predate this run), stops with a clear message instead of leaving a half-installed .venv.
 REQUIRE_PY312 := -c "import sys; sys.exit(0 if sys.version_info[:2] == (3, 12) else 'NeuroSem needs CPython 3.12, found ' + sys.version.split()[0] + ' at ' + sys.executable)"
 
-.PHONY: help setup java test test-fast validate-models pilot reproduce-paper docker-build docker-test lint
+.PHONY: help setup java test test-fast validate-models pilot reproduce-paper paper docker-build docker-test lint
 
 help:
 	@echo "NeuroSem make targets"
@@ -80,6 +80,12 @@ pilot:
 
 reproduce-paper:
 	$(NEUROSEM) reproduce-paper --campaign $(CAMPAIGN)
+
+paper:            ## regenerate every manuscript table, figure and supplement from the sealed campaign
+	$(PYTHON) scripts/heldout_secondary.py --campaign heldout-v1
+	$(PYTHON) scripts/heldout_figures.py --campaign heldout-v1
+	$(PYTHON) scripts/build_supplement.py --campaign heldout-v1
+	$(PYTHON) scripts/audit_autocheck.py --campaign heldout-v1
 
 docker-build:
 	docker build --build-arg GIT_COMMIT="$$(git rev-parse HEAD 2>/dev/null || echo unknown)" -t $(IMAGE) .
