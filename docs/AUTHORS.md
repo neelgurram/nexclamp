@@ -3,11 +3,11 @@
 Order as it will appear on the manuscript. Contributions use the CRediT taxonomy; formal analysis is shared equally by all three authors
 (https://credit.niso.org/). Added 2026-09-20.
 
-| # | Name | Affiliation | CRediT roles |
-|---|---|---|---|
-| 1 | Neel Gurram (corresponding) | FAU High School, Florida Atlantic University, Jupiter, FL, USA | Conceptualization; Methodology; Software (AI-assisted, see disclosure); Investigation; Formal analysis; Data curation; Validation; Visualization; Project administration; Writing - original draft; Writing - review & editing |
-| 2 | Samyak Singh | FAU High School, Florida Atlantic University, Jupiter, FL, USA | Formal analysis (equal) |
-| 3 | Naithik Somisetti | FAU High School, Florida Atlantic University, Boca Raton, FL, USA | Formal analysis (equal) |
+| # | Name | ORCID | Affiliation | CRediT roles |
+|---|---|---|---|---|
+| 1 | Neel Gurram (corresponding) | 0009-0009-2441-0825 | FAU High School, Florida Atlantic University, Jupiter, FL, USA | Conceptualization; Methodology; Software (AI-assisted, see disclosure); Investigation; Formal analysis; Data curation; Validation; Visualization; Project administration; Writing - original draft; Writing - review & editing |
+| 2 | Samyak Singh | 0009-0003-5825-3975 | FAU High School, Florida Atlantic University, Jupiter, FL, USA | Formal analysis (equal) |
+| 3 | Naithik Somisetti | 0009-0009-6638-678X | FAU High School, Florida Atlantic University, Boca Raton, FL, USA | Formal analysis (equal) |
 
 ## Notes
 
@@ -22,4 +22,5 @@ Order as it will appear on the manuscript. Contributions use the CRediT taxonomy
 - **AI assistance** is disclosed separately (`docs/AI_DISCLOSURE.md`, `AI_USE_LOG.md`); an AI system
   is not an author.
 
+- **ORCID** identifiers recorded 2026-09-23; all three check digits verified.
 - **Emails** for authors 2 and 3: pending from Neel.

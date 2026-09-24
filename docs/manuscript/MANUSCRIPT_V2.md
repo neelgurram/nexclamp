@@ -19,7 +19,7 @@ Neel Gurram¹ · Samyak Singh¹ · Naithik Somisetti²
 
 **Corresponding author.** Neel Gurram, gurramn2025@fau.edu
 
-**ORCID.** Neel Gurram [ORCID], Samyak Singh [ORCID], Naithik Somisetti [ORCID]
+**ORCID.** Neel Gurram https://orcid.org/0009-0009-2441-0825 · Samyak Singh https://orcid.org/0009-0003-5825-3975 · Naithik Somisetti https://orcid.org/0009-0009-6638-678X
 
 **Acknowledgements.** We thank the Open Source Brain and NeuroML communities for maintaining the public
 model repositories this study depends on. [Add any teacher, mentor or institutional acknowledgement.]
@@ -559,14 +559,13 @@ publication, so the six models form four source families.
 ## Open items before submission (not part of the submitted text)
 
 1. **Human audit** (Sections 3.8, 4.3): results and disagreements from the two co-auditors.
-2. **ORCID** identifiers for all three authors (free at orcid.org; the journal asks for them).
-3. **Repository URL and two Zenodo DOIs** (software/results archive and raw-trace dataset). The journal
+2. **Repository URL and two Zenodo DOIs** (software/results archive and raw-trace dataset). The journal
    does not accept "available on request", so the 4.1 GB raw archive must be deposited.
-4. **Acknowledgements**: add any mentor, teacher or institutional support.
-5. **All authors** read, critically revise and approve; the journal applies ICMJE criteria, so every
+3. **Acknowledgements**: add any mentor, teacher or institutional support.
+4. **All authors** read, critically revise and approve; the journal applies ICMJE criteria, so every
    author must satisfy all three conditions (contribution, critical revision, final approval).
-6. **Compile to Word**: insert `references_apa7.md` under References, place each figure near its first
+5. **Compile to Word**: insert `references_apa7.md` under References, place each figure near its first
    citation, 10-point Times Roman, automatic page numbers, figures as `Fig1.eps`–`Fig5.eps`
    (`results/figures/heldout-v1/journal/`).
-7. **Cover letter** stating preregistration, the pre-commitment to publishing either outcome, and public
+6. **Cover letter** stating preregistration, the pre-commitment to publishing either outcome, and public
    code and data.
