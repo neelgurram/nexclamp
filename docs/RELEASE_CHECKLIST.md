@@ -26,10 +26,8 @@ The repository contains third-party models, so check before publishing:
 
 ## 3 Publish the code [NEEL]
 
-1. Create an **empty public GitHub repository**, for example `neel-gurram/neuraxis`. No README, no
-   licence (this repository already has both).
-2. Send me the URL. I will add it as a remote, push `main` and the tags `study-freeze-v1` and
-   `heldout-v1-code`, and update the repository links in the manuscript, `CITATION.cff` and README.
+1. ~~Create the repository~~ **done 2026-09-23**: https://github.com/neelgurram/nexclamp (public, owner `neelgurram`).
+2. ~~Push `main` and the tags~~ **done**: `study-freeze-v1`, `heldout-v1-code`, `pilot-v1-code`.
 3. Check on GitHub that `docs/RESULTS_HELDOUT.md` and the figures display properly.
 
 **Size note.** The raw voltage traces (4.1 GB) are excluded by `.gitignore`; their SHA-256 hashes are

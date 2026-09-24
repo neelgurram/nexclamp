@@ -424,7 +424,7 @@ or ported.
 ## Information Sharing Statement
 
 NexClamp, the software used for every step of this study, is open-source under the Apache-2.0 licence and
-is distributed from a public repository ([repository URL]) with installation and usage documentation; the
+is distributed from a public repository (https://github.com/neelgurram/nexclamp) with installation and usage documentation; the
 exact version that produced the results reported here is archived with a persistent identifier ([Zenodo
 DOI], version 0.2.0.dev0). The frozen study configuration, the model manifest with per-model licences and
 pinned upstream commits, the preregistration record, every per-variant record (edits, classifications,
@@ -464,7 +464,7 @@ Information Sharing Statement: derived per-variant records and analysis outputs 
 results archive ([Zenodo DOI]), and the complete raw simulation output in the dataset archive ([Zenodo
 data DOI]). No restrictions apply.
 
-**Code availability.** NexClamp is available under Apache-2.0 at [repository URL] and archived at [Zenodo
+**Code availability.** NexClamp is available under Apache-2.0 at https://github.com/neelgurram/nexclamp and archived at [Zenodo
 DOI]. The exact commit, configuration hashes and environment used for the confirmatory campaign are
 recorded in the archive and in Online Resource 1.
 
