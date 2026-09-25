@@ -5,9 +5,9 @@ Order as it will appear on the manuscript. Contributions use the CRediT taxonomy
 
 | # | Name | ORCID | Affiliation | CRediT roles |
 |---|---|---|---|---|
-| 1 | Neel Gurram (corresponding) | 0009-0009-2441-0825 | FAU High School, Florida Atlantic University, Jupiter, FL, USA | Conceptualization; Methodology; Software (AI-assisted, see disclosure); Investigation; Formal analysis; Data curation; Validation; Visualization; Project administration; Writing - original draft; Writing - review & editing |
-| 2 | Samyak Singh | 0009-0003-5825-3975 | FAU High School, Florida Atlantic University, Jupiter, FL, USA | Formal analysis (equal) |
-| 3 | Naithik Somisetti | 0009-0009-6638-678X | FAU High School, Florida Atlantic University, Boca Raton, FL, USA | Formal analysis (equal) |
+| 1 | Neel Gurram (corresponding) | 0009-0009-2441-0825 | Florida Atlantic University, Jupiter, FL, USA | Conceptualization; Methodology; Software (AI-assisted, see disclosure); Investigation; Formal analysis; Data curation; Validation; Visualization; Project administration; Writing - original draft; Writing - review & editing |
+| 2 | Samyak Singh | 0009-0003-5825-3975 | Florida Atlantic University, Jupiter, FL, USA | Formal analysis (equal) |
+| 3 | Naithik Somisetti | 0009-0009-6638-678X | Florida Atlantic University, Boca Raton, FL, USA | Formal analysis (equal) |
 
 ## Notes
 

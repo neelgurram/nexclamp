@@ -14,8 +14,8 @@ preregistered held-out evaluation
 
 Neel Gurram¹ · Samyak Singh¹ · Naithik Somisetti²
 
-¹ FAU High School, Florida Atlantic University, Jupiter, FL, USA
-² FAU High School, Florida Atlantic University, Boca Raton, FL, USA
+¹ Florida Atlantic University, Jupiter, FL, USA
+² Florida Atlantic University, Boca Raton, FL, USA
 
 **Corresponding author.** Neel Gurram, gurramn2025@fau.edu
 
@@ -430,8 +430,7 @@ DOI], version 0.2.0.dev0). The frozen study configuration, the model manifest wi
 pinned upstream commits, the preregistration record, every per-variant record (edits, classifications,
 detections, tolerances), the analysis outputs, and the scripts that regenerate every table and figure in
 this article are included in that archive. The complete raw simulation output of the confirmatory campaign
-(17,424 files, 4.1 GB, including all voltage traces) is deposited as a separate archived dataset ([Zenodo
-data DOI]) together with the SHA-256 manifest that verifies it. The preregistration is publicly readable at
+(17,424 files, 4.1 GB, including all voltage traces) is deposited as a separate archived dataset (https://doi.org/10.5281/zenodo.22928016) together with the SHA-256 manifest that verifies it. The preregistration is publicly readable at
 https://aspredicted.org/q2ag7w.pdf (AsPredicted #312455).
 
 All neuron models analysed here are third-party open-source NeuroML models, redistributed under their own
@@ -461,8 +460,7 @@ and approved the final manuscript and agree to be accountable for all aspects of
 
 **Data availability.** All data supporting the results are publicly archived as described in the
 Information Sharing Statement: derived per-variant records and analysis outputs in the software and
-results archive ([Zenodo DOI]), and the complete raw simulation output in the dataset archive ([Zenodo
-data DOI]). No restrictions apply.
+results archive ([Zenodo DOI]), and the complete raw simulation output in the dataset archive (https://doi.org/10.5281/zenodo.22928016). No restrictions apply.
 
 **Code availability.** NexClamp is available under Apache-2.0 at https://github.com/neelgurram/nexclamp and archived at [Zenodo
 DOI]. The exact commit, configuration hashes and environment used for the confirmatory campaign are

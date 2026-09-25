@@ -2,8 +2,8 @@
 
 **Neel Gurram**¹\*, **Samyak Singh**¹, **Naithik Somisetti**²
 
-¹ FAU High School, Florida Atlantic University, Jupiter, FL, USA
-² FAU High School, Florida Atlantic University, Boca Raton, FL, USA
+¹ Florida Atlantic University, Jupiter, FL, USA
+² Florida Atlantic University, Boca Raton, FL, USA
 
 \* Corresponding author: gurramn2025@fau.edu
 
