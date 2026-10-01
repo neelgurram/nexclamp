@@ -338,14 +338,57 @@ faults.
 
 ### 3.8 Verification of the fault sample
 
-An automated re-check re-derived, from the raw files rather than the pipeline's summaries, the edit, the
-class and every detection for 25 faults (a preregistered random sample of 20 plus the six canonical
-survivors, one of which fell in both). For each, the differences between the edited and unmodified model
-files were exactly the recorded edit and matched the operator's declared meaning; the class re-derived
-correctly; all recorded feature detections recomputed from the per-run feature files; spike-count
-detections were confirmed by recounting spikes directly from the stored voltage traces; and all 227
-full-trace detections recomputed. [The independent human audit of the same faults by two authors is in
-progress; its results and any disagreements will be reported here.]
+Two kinds of check were applied to a sample of 25 faults: the preregistered random sample of 20 plus
+the six canonical survivors, one of which fell in both.
+
+**Automated re-check.** Working from the raw files rather than the pipeline's summaries, the edit, the
+class and every detection were re-derived for all 25. For each fault, the differences between the
+edited and the unmodified model files were exactly the recorded edit and matched the operator's
+declared meaning; the class re-derived correctly; all recorded feature detections recomputed from the
+per-run feature files; spike-count detections were confirmed by recounting spikes directly from the
+stored voltage traces; and all 227 full-trace detections recomputed.
+
+**Human audit.** Two of the authors audited the same 25 faults from a self-contained packet containing,
+for each fault, the exact before-and-after lines of the edited model file, the recorded evidence and a
+plot of the original against the edited model. They answered three questions per fault: whether the
+edit matches its label, whether the assigned class is plausible, and whether the detection is
+plausible. The returned packets, the extracted verdicts and the auditors' notes are published with the
+data.
+
+Neither auditor judged any edit to be mislabelled (Q1: 41 of 50 answers "yes", 9 "unsure", none "no")
+or any class implausible except one marking discussed below (Q2: 47 "yes", 2 "unsure", 1 "no"). The two
+auditors gave identical verdicts on 24 of 25 faults for each question. Their reservations fell into
+three groups.
+
+*Mechanism wording.* Four "unsure" answers concern the gate-time-constant operator, which scales a
+gate's rates through a Q10 setting rather than multiplying the time constant directly, so neither
+auditor could confirm the exact factor from the edit alone. One further "unsure" concerns a 10 mV
+reversal-potential shift described in the packet as "a few mV". Both are descriptions in the audit
+materials rather than defects in the faults; the mechanism is documented and the implementation was
+confirmed by the automated re-check. We have revised both descriptions.
+
+*An option the form lacked in practice.* Most "no" answers to the detection question fall on faults
+with no recorded detection at all, where the intended answer was "not applicable"; one auditor wrote
+"Q3 is N/A" while marking "no". These are therefore not disputes about the evidence. The form offered
+"not applicable" only for that question and the instruction was evidently not clear enough.
+
+*Two substantive flags, both checked.* Both auditors noticed feature rows whose tolerance is infinite
+and judged, correctly, that such a row can never be exceeded. Seven of 342 tolerance entries are
+infinite, all of them where the feature is undefined in the reference at both step sizes (for example,
+first-spike latency on a protocol in which the reference does not spike). Those rows are reached only
+through the preregistered definedness rule, under which a feature defined in one model and undefined in
+the other counts as a difference: all 24 detections involving such a row are definedness mismatches and
+none claims a numeric exceedance. One auditor also flagged a case where a 5 mV reversal shift produced
+a very large change in interspike interval as disproportionate; the model's persistent sodium
+conductance makes this plausible, and the detection reproduced at both step sizes.
+
+One marking is unresolved: on a numerical stress test, one auditor marked the class implausible while
+writing that the class "is satisfied". We report the marking as returned rather than reinterpreting it.
+[Awaiting that auditor's confirmation before submission.]
+
+[Both auditors answered "no" to the packet's statement "I worked alone and did not see the automated
+check". Before submission we will state exactly what this means for the independence of the audit, and
+describe it accurately rather than as a fully independent replication.]
 
 ## 4 Discussion
 
@@ -397,7 +440,7 @@ compound or correlated. Admissibility depends on the definition used (82 at feat
 trace-only changes), and both are reported. The result for the held-out kinetics family is inconclusive.
 The frozen generator produced 186 variants against a preregistered estimate of roughly 100 to 150, and
 selection produced a three-protocol battery under a four-protocol budget; both are reported as they
-occurred. [The human audit is in progress.]
+occurred. The human audit found no mislabelled edit and no misclassified fault, but it was carried out by two of the authors rather than by people outside the study, and its independence is qualified as described in Section 3.8.
 
 ### 4.4 Deviations from the registration
 
@@ -556,7 +599,7 @@ publication, so the six models form four source families.
 
 ## Open items before submission (not part of the submitted text)
 
-1. **Human audit** (Sections 3.8, 4.3): results and disagreements from the two co-auditors.
+1. **Audit follow-ups** (Section 3.8): the unresolved class marking, and an accurate statement of how independently the audit was carried out.
 2. **Repository URL and two Zenodo DOIs** (software/results archive and raw-trace dataset). The journal
    does not accept "available on request", so the 4.1 GB raw archive must be deposited.
 3. **Acknowledgements**: add any mentor, teacher or institutional support.
