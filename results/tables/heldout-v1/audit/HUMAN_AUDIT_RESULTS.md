@@ -1,11 +1,26 @@
 # Human audit: returned verdicts
 
-*25 faults, 2 auditors. Compiled 2026-10-01T00:54:15+00:00 at commit `f937cb7299b5` (tree dirty: False) by `scripts/audit_results.py` from the auditors' own returned files in `returned/`, which are preserved unmodified.*
+*25 faults, 2 auditors. Compiled 2026-10-02T23:03:16+00:00 at commit `572aa596fae6` (tree dirty: True) by `scripts/audit_results.py` from the auditors' own returned files in `returned/`, which are preserved unmodified.*
 
 ## Auditors
 
 - **Naithik**: Auditor name: Naithik Somisetti; worked alone / unseen check: No
 - **Samyak**: Auditor name: Samyak Singh; Date completed: 2026-09-22; I worked alone and did not see the automated check (Yes / No): No
+
+## Clarification of the audit conditions (recorded 2026-10-02)
+
+Both returned packets answer "No" to the printed statement "I worked alone and did not see the
+automated check". The supervising author (N. Gurram) states that both auditors in fact worked
+**completely independently of each other and without access to the automated re-check**: the two
+audits were carried out in the same room under his observation specifically so that the auditors did
+not talk or compare answers, and neither was given anything beyond the audit packet. The "No" marks
+are therefore mis-marks of a compound statement, not a report of shared or assisted work.
+
+This is recorded as a statement by the supervising author, made after the packets were returned. The
+packets themselves are preserved unmodified in `returned/`, so the original marks remain visible.
+
+The auditors are two of the study's authors, so the audit is independent of the analysis software and
+of each other, but it is not an audit by people outside the author list. The manuscript says so.
 
 ## Verdict counts
 

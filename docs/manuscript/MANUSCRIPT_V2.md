@@ -386,9 +386,13 @@ One marking is unresolved: on a numerical stress test, one auditor marked the cl
 writing that the class "is satisfied". We report the marking as returned rather than reinterpreting it.
 [Awaiting that auditor's confirmation before submission.]
 
-[Both auditors answered "no" to the packet's statement "I worked alone and did not see the automated
-check". Before submission we will state exactly what this means for the independence of the audit, and
-describe it accurately rather than as a fully independent replication.]
+The two auditors are authors of this article, so the audit is independent of the analysis software and
+of each other, but not of the author list. They worked separately and simultaneously in one room, under
+the observation of the first author, so that neither could consult the other, and neither had access to
+the automated re-check or to any other result while auditing. Both nevertheless answered "no" to the
+packet's compound statement "I worked alone and did not see the automated check"; the supervising
+author has recorded that this reflects a mis-marked statement rather than shared or assisted work, and
+the returned packets are published unmodified so that readers can see the original marks.
 
 ## 4 Discussion
 

@@ -159,6 +159,9 @@ def main(argv: list[str] | None = None) -> int:
     for who in names:
         hdr = auditors[who][1]
         L.append(f"- **{who}**: " + "; ".join(f"{k}: {v}" for k, v in hdr.items() if v))
+    conditions = audit / "AUDIT_CONDITIONS.md"
+    if conditions.is_file():                       # hand-written record of how the audit was run
+        L += ["", conditions.read_text(encoding="utf-8").strip()]
     L += ["", "## Verdict counts", "",
           "| Question | " + " | ".join(names) + " | both answered the same |", "|---|" + "---|" * (len(names) + 1)]
     for q, meaning in QUESTIONS.items():
