@@ -123,7 +123,10 @@ def main(argv: list[str] | None = None) -> int:
     auto = {r["variant_id"]: r for r in csv.DictReader(open(audit / "AUTOMATED_CHECK.csv", encoding="utf-8"))}
 
     auditors = {}
+    # A corrected return supersedes the first one; the original stays in the folder as evidence.
     for p in sorted(returned.glob("Audit_Packet_*")):
+        if "_firstreturn" in p.stem:
+            continue
         name = p.stem.replace("Audit_Packet_", "").replace(".docx", "")
         auditors[name] = from_docx(p) if p.suffix == ".docx" else from_pdf(p)
 

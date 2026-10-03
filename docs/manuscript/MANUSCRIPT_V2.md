@@ -355,10 +355,10 @@ edit matches its label, whether the assigned class is plausible, and whether the
 plausible. The returned packets, the extracted verdicts and the auditors' notes are published with the
 data.
 
-Neither auditor judged any edit to be mislabelled (Q1: 41 of 50 answers "yes", 9 "unsure", none "no")
-or any class implausible except one marking discussed below (Q2: 47 "yes", 2 "unsure", 1 "no"). The two
-auditors gave identical verdicts on 24 of 25 faults for each question. Their reservations fell into
-three groups.
+Neither auditor judged any edit to be mislabelled (Q1: 40 of 50 answers "yes", 10 "unsure", none "no")
+or any class implausible (Q2: 48 "yes", 2 "unsure", none "no"). The two auditors gave **identical
+verdicts on all 25 faults for all three questions**, having worked without sight of each other's
+packets. Their reservations fell into three groups.
 
 *Mechanism wording.* Four "unsure" answers concern the gate-time-constant operator, which scales a
 gate's rates through a Q10 setting rather than multiplying the time constant directly, so neither
@@ -382,9 +382,10 @@ none claims a numeric exceedance. One auditor also flagged a case where a 5 mV r
 a very large change in interspike interval as disproportionate; the model's persistent sodium
 conductance makes this plausible, and the detection reproduced at both step sizes.
 
-One marking is unresolved: on a numerical stress test, one auditor marked the class implausible while
-writing that the class "is satisfied". We report the marking as returned rather than reinterpreting it.
-[Awaiting that auditor's confirmation before submission.]
+One marking was corrected after return. On a numerical stress test, one auditor had marked the class
+implausible while writing in the same box that the class "is satisfied"; on being asked to confirm which
+he meant, he returned a corrected packet changing that fault's answers. Both the original and the
+corrected packet are published, and the counts above use the corrected one.
 
 The two auditors are authors of this article, so the audit is independent of the analysis software and
 of each other, but not of the author list. They worked separately and simultaneously in one room, under
