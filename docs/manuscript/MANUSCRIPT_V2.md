@@ -471,18 +471,31 @@ or ported.
 
 ## Information Sharing Statement
 
-NexClamp, the software used for every step of this study, is open-source under the Apache-2.0 licence and
-is distributed from a public repository (https://github.com/neelgurram/nexclamp) with installation and usage documentation; the
-exact version that produced the results reported here is archived with a persistent identifier ([Zenodo
-DOI], version 0.2.0.dev0). The frozen study configuration, the model manifest with per-model licences and
-pinned upstream commits, the preregistration record, every per-variant record (edits, classifications,
-detections, tolerances), the analysis outputs, and the scripts that regenerate every table and figure in
-this article are included in that archive. The complete raw simulation output of the confirmatory campaign
-(17,424 files, 4.1 GB, including all voltage traces) is deposited as a separate archived dataset (https://doi.org/10.5281/zenodo.22928016) together with the SHA-256 manifest that verifies it. The preregistration is publicly readable at
-https://aspredicted.org/q2ag7w.pdf (AsPredicted #312455).
+NexClamp, the software used for every step of this study, is open source under the Apache-2.0 licence
+and is distributed from a public repository (https://github.com/neelgurram/nexclamp) with installation
+and usage documentation. The exact version that produced the results reported here is archived with a
+persistent identifier ([Zenodo DOI], release `v1.0.0-study1`, which corresponds to commit `c9230ae5`,
+tagged `heldout-v1-code`). That archive also contains the frozen study configuration and its hash lock,
+the model manifest with each model's licence and pinned upstream commit, the preregistration record, the
+complete set of per-variant records for the confirmatory campaign (edits, structural outcomes,
+classifications, feature and full-trace detections, tolerances and convergence checks), the detection
+matrices, the analysis outputs, the human-audit materials with the auditors' returned packets, and the
+scripts that regenerate every table and figure in this article with one command.
 
-All neuron models analysed here are third-party open-source NeuroML models, redistributed under their own
-licences (MIT or GPL-2.0) with their source repositories and commit identifiers recorded in Online
+The raw simulation output of the confirmatory campaign is 17,424 files and 4.5 GB. Rather than treat it
+as irreplaceable primary data, we make it reproducible: execution is deterministic and was verified to
+be so, with bitwise-identical traces on re-execution recorded for every held-out model
+(`references/<model>/determinism.json`), every run is stored under a content-addressed identifier
+derived from its inputs, and `ARCHIVE_MANIFEST.sha256`, published in the archive above, gives the
+SHA-256 checksum of every raw file. Re-running the sealed campaign from the archived code and
+configuration therefore reproduces the traces exactly, and any regenerated copy can be verified file by
+file against the published checksums. The complete raw archive is additionally available as a deposited
+dataset where a reader prefers the files themselves ([raw-data DOI, optional]).
+
+The preregistration is publicly readable at https://aspredicted.org/q2ag7w.pdf (AsPredicted #312455).
+
+All neuron models analysed here are third-party open-source NeuroML models, redistributed under their
+own licences (MIT or GPL-2.0) with their source repositories and commit identifiers recorded in Online
 Resource 1: the Hay et al. (2011) and Blue Brain (Markram et al., 2015) channel sets, the Traub et al.
 (2005) test cells, the Smith et al. (2013) channel set, and the Migliore et al. (2005) CA1 cell, all
 obtained from Open Source Brain. Simulations used jNeuroML 0.14.0/jLEMS 0.12.0 and, for the exploratory
@@ -506,9 +519,11 @@ review and editing). Samyak Singh: formal analysis, validation, writing (review 
 Somisetti: formal analysis, validation, writing (review and editing). All authors read, critically revised
 and approved the final manuscript and agree to be accountable for all aspects of the work.
 
-**Data availability.** All data supporting the results are publicly archived as described in the
-Information Sharing Statement: derived per-variant records and analysis outputs in the software and
-results archive ([Zenodo DOI]), and the complete raw simulation output in the dataset archive (https://doi.org/10.5281/zenodo.22928016). No restrictions apply.
+**Data availability.** All data supporting the results are publicly archived and openly licensed, as
+described in the Information Sharing Statement: the per-variant records, detection matrices and analysis
+outputs that every reported number is computed from are in the archived software and results release
+([Zenodo DOI]), and the raw simulation output is reproducible from that release, with the SHA-256
+checksum of every raw file published alongside it. No restrictions apply.
 
 **Code availability.** NexClamp is available under Apache-2.0 at https://github.com/neelgurram/nexclamp and archived at [Zenodo
 DOI]. The exact commit, configuration hashes and environment used for the confirmatory campaign are
