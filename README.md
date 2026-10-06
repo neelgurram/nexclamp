@@ -98,5 +98,6 @@ python -c "import hashlib,pathlib; [print(l.split()[1], hashlib.sha256(pathlib.P
 
 ## Citing
 
-See `CITATION.cff`. Please cite the manuscript when it is published, and the archived release
-(Zenodo DOI) for the software and data.
+See `CITATION.cff`. Please cite the manuscript when it is published, and the archived release for
+the software and data: https://doi.org/10.5281/zenodo.23175106 (all versions) or https://doi.org/10.5281/zenodo.23175107
+(the version used in the article).

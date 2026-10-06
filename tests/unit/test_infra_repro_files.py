@@ -69,7 +69,9 @@ def test_citation_cff_core_fields():
     assert names[0] == ("Neel", "Gurram")
     assert {("Samyak", "Singh"), ("Naithik", "Somisetti")} <= set(names)
     assert all(a.get("affiliation") for a in cff["authors"])
-    assert "doi" not in cff
+    # Released and archived: the DOI is the concept DOI, which resolves to the newest version.
+    assert re.fullmatch(r"10\.\d{4,9}/\S+", str(cff["doi"])), cff.get("doi")
+    assert cff.get("repository-code", "").startswith("https://github.com/")
 
 
 MAKE_TARGETS = ["setup", "java", "test", "test-fast", "validate-models", "pilot", "reproduce-paper",
