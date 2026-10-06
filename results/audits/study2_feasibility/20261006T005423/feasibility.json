@@ -1,0 +1,104 @@
+{
+  "written_utc": "2026-10-06T00:54:23+00:00",
+  "git_commit": "7643f904506262eee68f8d7d161fd6f1a53f53e1",
+  "git_dirty": false,
+  "purpose": "timing and toolchain feasibility only; no detection is computed",
+  "battery": [
+    "P05_long_step",
+    "P04_step_2x",
+    "P06_ramp"
+  ],
+  "jlems_version": {
+    "simulator": "jNeuroML",
+    "jneuroml_version": "0.14.0",
+    "jlems_version": "0.12.0",
+    "org_neuroml_export_version": "1.11.0",
+    "java_version": "openjdk version \"21.0.12.1\" 2026-08-18 LTS | OpenJDK Runtime Environment Temurin-21.0.12.1+1 (build 21.0.12.1+1-LTS) | OpenJDK 64-Bit Server VM Temurin-21.0.12.1+1 (build 21.0.12.1+1-LTS, mixed mode, sharing)",
+    "jar_path": "jNeuroML-0.14.0-jar-with-dependencies.jar",
+    "jar_sha256": "45ee565a65a66008a3b41935358d11b7c19cb6b5a67bbec22481d519f53db931"
+  },
+  "neuron_version": {
+    "simulator": "NEURON",
+    "neuron_version": "9.0.2",
+    "python": "C:\\Users\\gurra\\NeuroSem\\.venv\\Scripts\\python.exe",
+    "nrnivmodl": "C:\\Users\\gurra\\nrn\\bin\\nrnivmodl.BAT",
+    "export_available": "True"
+  },
+  "models": {
+    "smith2013_singlecomp": {
+      "model_id": "smith2013_singlecomp",
+      "frozen_rheobase_nA": 0.02165152653507274,
+      "groups": [
+        {
+          "protocols": [
+            "P04_step_2x"
+          ],
+          "length_ms": 1000.0,
+          "cell_steps": 200000,
+          "jlems": {
+            "status": "ok",
+            "seconds": 6.1,
+            "spikes": {
+              "P04_step_2x": 29
+            },
+            "message": ""
+          },
+          "neuron": {
+            "status": "ok",
+            "seconds": 18.6,
+            "spikes": {
+              "P04_step_2x": 29
+            },
+            "message": ""
+          }
+        },
+        {
+          "protocols": [
+            "P06_ramp"
+          ],
+          "length_ms": 1500.0,
+          "cell_steps": 300000,
+          "jlems": {
+            "status": "ok",
+            "seconds": 8.5,
+            "spikes": {
+              "P06_ramp": 35
+            },
+            "message": ""
+          },
+          "neuron": {
+            "status": "ok",
+            "seconds": 8.6,
+            "spikes": {
+              "P06_ramp": 35
+            },
+            "message": ""
+          }
+        },
+        {
+          "protocols": [
+            "P05_long_step"
+          ],
+          "length_ms": 2500.0,
+          "cell_steps": 500000,
+          "jlems": {
+            "status": "ok",
+            "seconds": 13.4,
+            "spikes": {
+              "P05_long_step": 89
+            },
+            "message": ""
+          },
+          "neuron": {
+            "status": "ok",
+            "seconds": 13.8,
+            "spikes": {
+              "P05_long_step": 90
+            },
+            "message": ""
+          }
+        }
+      ]
+    }
+  }
+}
