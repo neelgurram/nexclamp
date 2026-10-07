@@ -62,7 +62,7 @@ def main(argv: list[str] | None = None) -> int:
     if problems:
         print("refused:\n  " + "\n  ".join(problems), file=sys.stderr)
         return 2
-    header = f"# Neuraxis frozen study lock, written {utc_now()} at commit {commit}\n"
+    header = f"# NexClamp frozen study lock, written {utc_now()} at commit {commit}\n"
     LOCK.write_text(header + "\n".join(lock_entries(selection, prereg)) + "\n", encoding="utf-8", newline="\n")
     print(f"wrote {LOCK}. Commit it, then run: git tag -a {a.tag} -m 'Frozen confirmatory study'")
     subprocess.run(["git", "status", "--short", "configs/FROZEN.lock"], cwd=REPO_ROOT)

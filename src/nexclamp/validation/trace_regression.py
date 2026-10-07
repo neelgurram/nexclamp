@@ -98,7 +98,7 @@ def compare(ref: Mapping[str, Any], var: Mapping[str, Any], tol: Mapping[str, Tr
         if t.status != "ok" or pid not in ref or pid not in var:
             continue
         a, b = ref[pid], var[pid]
-        common = dict(variant_id=variant_id, model_id=model_id, level_factor=level_factor, protocol_id=pid)
+        common = {"variant_id": variant_id, "model_id": model_id, "level_factor": level_factor, "protocol_id": pid}
         rm = trace_metrics.rmse(a, b, _dt(a))
         if rm > t.tau_rmse:
             dets.append(TraceDetection(**common, metric="trace_rmse", ref_value=0.0, var_value=rm, diff=rm, tau=t.tau_rmse))

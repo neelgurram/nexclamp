@@ -2,14 +2,14 @@
 
 *Milestone 0 deliverable (spec "Required novelty sweep"). Written 2026-09-13 on branch `m0-audit`.
 Evidence: `docs/m0_evidence/prior_art/`. Matrix: `docs/novelty_matrix.csv`, built reproducibly by
-`scripts/build_novelty_matrix.py`. No study results exist; nothing here is a finding about NeuroSem's
+`scripts/build_novelty_matrix.py`. No study results exist; nothing here is a finding about NexClamp's
 performance.*
 
 ## In plain English
 
 - Before claiming something is new, you check whether someone already did it.
 - We searched eleven kinds of sources with over 1,500 queries. We then opened and checked 335 of the works we found.
-- Every separate ingredient of NeuroSem already exists somewhere:
+- Every separate ingredient of NexClamp already exists somewhere:
   - testing models against saved results;
   - multi-stimulus fingerprints of neurons;
   - picking stimuli that tell models apart;
@@ -71,7 +71,7 @@ These gaps reduce recall. They are listed again under open items (section 7).
 
 ## 2. How candidates were verified
 
-1. **Screening.** Finders returned candidate works with a URL or DOI taken from a retrieved result. Each got an estimated closeness from 1 (irrelevant) to 5 (could anticipate NeuroSem's core claim).
+1. **Screening.** Finders returned candidate works with a URL or DOI taken from a retrieved result. Each got an estimated closeness from 1 (irrelevant) to 5 (could anticipate NexClamp's core claim).
 2. **Deep read.** Every candidate estimated at closeness 2 or higher in the first round was checked against a primary source: Crossref, the DOI landing page, the publisher, the arXiv, PubMed, OpenAlex or Semantic Scholar APIs, or GitHub, PyPI or Zenodo for software. Its abstract, and where possible its methods or README, was read. The matrix columns were then filled with *yes / no / partial / unclear* plus a short justification, and closeness was re-rated.
 3. **Interruption and rescoping.** A session limit interrupted the second-round deep reads. They were re-run for all 73 second-round candidates estimated at closeness 3. The 144 second-round candidates estimated at closeness 2 were **screened but not deep-read**. They are listed in `docs/m0_evidence/prior_art/screened_not_deep_read.json`, are not matrix rows, and are counted here.
 4. **Result** (`docs/m0_evidence/prior_art/novelty_matrix_summary.json`):
@@ -80,9 +80,9 @@ These gaps reduce recall. They are listed again under open items (section 7).
    - 1 candidate rejected at verification;
    - closeness: 100 at 1, 204 at 2, **31 at 3**, **none at 4 or 5**.
 
-The matrix columns follow the spec: citation, year, model type, mutations, multiple stimuli, electrophysiology features, protocol optimisation, held-out evaluation, AI transformations, software availability, and distinction from NeuroSem. Closeness, kind, DOI, URL, verification method, finder route and evidence file are added for traceability.
+The matrix columns follow the spec: citation, year, model type, mutations, multiple stimuli, electrophysiology features, protocol optimisation, held-out evaluation, AI transformations, software availability, and distinction from NexClamp. Closeness, kind, DOI, URL, verification method, finder route and evidence file are added for traceability.
 
-## 3. What NeuroSem reuses and must not claim
+## 3. What NexClamp reuses and must not claim
 
 The specification's novelty boundary is confirmed by verified works (examples; the full list is in the matrix):
 
@@ -100,11 +100,11 @@ The specification's novelty boundary is confirmed by verified works (examples; t
 | Metamorphic testing of scientific and simulation software, including LLM-translated code | Srinivasan and Kanewala 2022; Clark et al. 2023; Li et al. 2026; Ludwig et al. 2026 (Kaizen); Song et al. 2026 |
 | Rigorous evaluation of AI-generated code | Liu et al. 2023 |
 
-NeuroSem uses these as dependencies, baselines or background. It must not present any of them as its contribution.
+NexClamp uses these as dependencies, baselines or background. It must not present any of them as its contribution.
 
 ## 4. Closest prior work: novelty stress test
 
-A hostile-reviewer agent examined the eight closest lines of work. For each, it tried to argue that the work already anticipates NeuroSem, then searched for follow-up work by the same groups (`docs/m0_evidence/prior_art/stress_test_r2.json`). Every verdict was **"partially anticipates"**. None does the whole integrated method.
+A hostile-reviewer agent examined the eight closest lines of work. For each, it tried to argue that the work already anticipates NexClamp, then searched for follow-up work by the same groups (`docs/m0_evidence/prior_art/stress_test_r2.json`). Every verdict was **"partially anticipates"**. None does the whole integrated method.
 
 | Line of work | Already done there | Not done there |
 |---|---|---|
@@ -126,7 +126,7 @@ A hostile-reviewer agent examined the eight closest lines of work. For each, it 
 
 | Lens | Risk | Why |
 |---|---|---|
-| Software testing / mutation analysis | **High** | Mutant-based test adequacy, greedy minimisation over a detection matrix and cost-aware selection are standard. Without a strong transfer result, NeuroSem reads as a routine application. |
+| Software testing / mutation analysis | **High** | Mutant-based test adequacy, greedy minimisation over a detection matrix and cost-aware selection are standard. Without a strong transfer result, NexClamp reads as a routine application. |
 | Computational neuroscience / model validation | **Medium** | OMV, NeuroML-DB fingerprints and protocol design already point in this direction. |
 
 To overcome the objection, the frozen study would need to show most of the following. These are the specification's own success criteria, sharpened by the review.

@@ -440,7 +440,7 @@ def model_files(ws: Workspace, docs: dict[str, XmlDoc] | None = None) -> list[st
 
 # ------------------------------------------------------------------- no-change controls
 
-_NOCHANGE_COMMENT = "NeuroSem no-change control comment"
+_NOCHANGE_COMMENT = "NexClamp no-change control comment"
 
 
 class XmlFormatting:

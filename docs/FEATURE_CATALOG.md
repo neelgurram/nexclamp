@@ -28,12 +28,12 @@
 | `ap_amplitude` | `AP_amplitude` (first) | mV | 1 | height of the first spike | 1 mV / 2% | primary |
 | `ahp_depth` | `AHP_depth` (first) | mV | 1 | depth of the after-hyperpolarisation | 0.5 mV / 5% | primary |
 | `steady_state_voltage` | `steady_state_voltage_stimend` | mV | 0 | voltage at the end of the stimulus | 0.5 mV / 0 | primary |
-| `rheobase` | Neuraxis bracketing search | nA | – | smallest 500 ms step that evokes a spike | 2× search resolution / 2% | primary |
+| `rheobase` | NexClamp bracketing search | nA | – | smallest 500 ms step that evokes a spike | 2× search resolution / 2% | primary |
 | `mean_frequency` | `mean_frequency` | Hz | 2 | mean firing rate | 0.5 Hz / 5% | secondary |
 | `ap_half_width` | `AP_duration_half_width` (first) | ms | 1 | spike width at half height | 0.05 ms / 5% | secondary |
 | `first_isi` | `all_ISI_values` (first) | ms | 2 | first interspike interval | 0.5 ms / 2% | secondary |
 | `burst_count` | `strict_burst_number` | 1 | 4 | number of bursts | 0.5 / 0 | secondary |
-| `firing_regime` | Neuraxis rule on eFEL outputs | label | – | silent, single spike, depolarisation block, bursting, adapting or tonic | exact match | secondary |
+| `firing_regime` | NexClamp rule on eFEL outputs | label | – | silent, single spike, depolarisation block, bursting, adapting or tonic | exact match | secondary |
 | `baseline_voltage` | `voltage_base` | mV | 0 | resting voltage before the stimulus | 0.5 mV / 0 | secondary |
 | `voltage_deflection` | `voltage_deflection_vb_ssse` | mV | 0 | steady-state change from baseline | 0.5 mV / 5% | secondary |
 | `sag_ratio` | `sag_ratio1` (hyperpolarising only) | 1 | 0 | Ih sag during a hyperpolarising step | 0.02 / 5% | secondary |

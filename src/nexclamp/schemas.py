@@ -1,4 +1,4 @@
-"""Typed records shared by every NeuroSem stage.
+"""Typed records shared by every NexClamp stage.
 
 Plain dataclasses keep the records transparent and serialisable. Anything that is
 written to disk goes through :func:`to_jsonable` so JSON output is stable (sorted
@@ -108,13 +108,13 @@ class Edit:
 
 @dc.dataclass(frozen=True)
 class ExecConfig:
-    """Execution configuration applied to every NeuroSem-generated run of a variant."""
+    """Execution configuration applied to every NexClamp-generated run of a variant."""
 
     dt_ms: float
     sample_every_ms: float | None = None     # post-hoc output sampling (recording resolution)
     integrator_method: str | None = None     # LEMS <Meta method=...>; None = simulator default
 
-    def with_dt(self, dt_ms: float) -> "ExecConfig":
+    def with_dt(self, dt_ms: float) -> ExecConfig:
         return dc.replace(self, dt_ms=dt_ms)
 
 

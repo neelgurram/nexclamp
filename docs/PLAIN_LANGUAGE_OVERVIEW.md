@@ -1,6 +1,6 @@
-# Neuraxis in plain language
+# NexClamp in plain language
 
-*Working name Neuraxis (provisional; see `docs/NAME_AUDIT.md`).*
+*Working name NexClamp (provisional; see `docs/NAME_AUDIT.md`).*
 
 ## What it is
 
@@ -21,7 +21,7 @@ How much protection does a model's own standard test really give when the model 
 
 *Internal study identifier: `neuron_model_behavioral_validation` (independent of the provisional name).*
 
-## What Neuraxis does
+## What NexClamp does
 
 1. **Tests many conditions.** It runs each model under several current-injection protocols, not just
    one.

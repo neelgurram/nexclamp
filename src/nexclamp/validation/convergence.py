@@ -20,7 +20,7 @@ import dataclasses as dc
 import math
 from collections.abc import Mapping
 from pathlib import Path
-from typing import Any
+from typing import Any, ClassVar
 
 EXCLUDED_DEFINEDNESS = "excluded:definedness_changes_under_refinement"
 EXCLUDED_REGIME = "excluded:category_changes_under_refinement"
@@ -51,7 +51,7 @@ class TolEntry:
 
 
 class ToleranceTable:
-    COLUMNS = [f.name for f in dc.fields(TolEntry)]
+    COLUMNS: ClassVar[list[str]] = [f.name for f in dc.fields(TolEntry)]
 
     def __init__(self, entries: list[TolEntry]) -> None:
         self._d: dict[tuple[str, str, str], TolEntry] = {}
@@ -72,7 +72,7 @@ class ToleranceTable:
     def entries(self) -> list[TolEntry]:
         return list(self._d.values())
 
-    def merged(self, other: "ToleranceTable") -> "ToleranceTable":
+    def merged(self, other: ToleranceTable) -> ToleranceTable:
         return ToleranceTable(self.entries + other.entries)
 
     def to_csv(self, path: Path) -> None:
@@ -85,7 +85,7 @@ class ToleranceTable:
                 w.writerow({k: ("" if v is None else v) for k, v in row.items()})
 
     @classmethod
-    def from_csv(cls, path: Path) -> "ToleranceTable":
+    def from_csv(cls, path: Path) -> ToleranceTable:
         out = []
         with open(path, newline="", encoding="utf-8") as f:
             for r in csv.DictReader(f):
@@ -127,9 +127,9 @@ def calibrate(fp_by_factor: Mapping[int, Any], model_id: str, tol_cfg: Mapping[s
             spec = fcfg.get(feat, {})
             abs_floor = float(spec.get("abs_floor", 0.0))
             rel = float(spec.get("rel", 0.0))
-            base = dict(model_id=model_id, protocol_id=pid, feature=feat, kind=kind,
-                        f_h=v1.value, f_h2=None if v2 is None else v2.value, f_h4=None if v4 is None else v4.value,
-                        state_h=v1.state, state_h2="missing" if v2 is None else v2.state)
+            base = {"model_id": model_id, "protocol_id": pid, "feature": feat, "kind": kind,
+                        "f_h": v1.value, "f_h2": None if v2 is None else v2.value, "f_h4": None if v4 is None else v4.value,
+                        "state_h": v1.state, "state_h2": "missing" if v2 is None else v2.state}
             if v2 is None:
                 entries.append(TolEntry(**base, abs_floor=abs_floor, rel_term=0.0, refine_term=0.0, tau=None, limiting=MISSING))
                 continue

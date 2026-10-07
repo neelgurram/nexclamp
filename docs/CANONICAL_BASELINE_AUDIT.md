@@ -4,8 +4,8 @@
 existing model-testing practice. Sources:
 - `results/processed/pilot/references/*/canonical_protocol.json`;
 - `results/processed/pilot/tolerances.csv`;
-- `src/neuraxis/validation/canonical.py`;
-- `src/neuraxis/validation/fingerprint.py` (at Pilot 1's code tag `pilot-v1-code`, the same logic);
+- `src/nexclamp/validation/canonical.py`;
+- `src/nexclamp/validation/fingerprint.py` (at Pilot 1's code tag `pilot-v1-code`, the same logic);
 - the prior-art verification packets in `docs/prior_art/packets/`.
 
 Written 2026-09-17, before Pilot 2.*
@@ -119,5 +119,5 @@ Pilot 2 reports five validation levels separately:
 | D. Multi-protocol perturbation testing | additional protocols, with feature, trace and qualitative comparisons |
 | E. Full candidate battery | the empirical reference battery (not a proof of equivalence) |
 
-Levels B and C are never merged. Level C's spike-time comparison is the closest Neuraxis analogue to
+Levels B and C are never merged. Level C's spike-time comparison is the closest NexClamp analogue to
 an OMV spike-time check with a calibrated rather than hand-set tolerance.

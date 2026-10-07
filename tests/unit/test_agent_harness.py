@@ -298,13 +298,13 @@ def test_exported_timestamps_do_not_reveal_the_seeded_file(tid, tmp_path, policy
 
 
 def test_prepare_trial_is_deterministic_and_refuses_unsafe_locations(tmp_path, policy, models):
-    kw = dict(private_root=tmp_path / "private", policy=policy, models=models, allow_dirty=True)
+    kw = {"private_root": tmp_path / "private", "policy": policy, "models": models, "allow_dirty": True}
     a = agent.prepare_trial(T05, tmp_path / "trials" / "a", **kw)
     b = agent.prepare_trial(T05, tmp_path / "trials" / "b", **kw)
     assert a.content_sha256 == b.content_sha256
     assert a.private_dir == (tmp_path / "private" / "a").resolve()           # default: <private_root>/<trial name>
     inside = REPO / "work" / "tmp" / "agent-study" / "inside_repo_trial"
-    with pytest.raises(agent.AgentStudyError, match="outside the NeuroSem repository"):
+    with pytest.raises(agent.AgentStudyError, match="outside the NexClamp repository"):
         agent.prepare_trial(T05, inside, **kw)
     assert not inside.exists()
     with pytest.raises(FileExistsError):
@@ -545,8 +545,8 @@ def test_edit_scope_and_patch_on_an_exported_trial(tmp_path, hidden, policy, mod
                      ("public_tests/public_checks.json", "file_modified"),
                      ("model/NeuroML2/cells/RS/inputs.dat", "file_added")}
     patch = agent.make_patch(base, d, policy.ignore_paths)
-    assert re.search(r'^-.*condDensity="0\.07 mS_per_cm2"', patch, re.M)
-    assert re.search(r'^\+.*condDensity="0\.14 mS_per_cm2"', patch, re.M)
+    assert re.search(r'^-.*condDensity="0\.07 mS_per_cm2"', patch, re.MULTILINE)
+    assert re.search(r'^\+.*condDensity="0\.14 mS_per_cm2"', patch, re.MULTILINE)
     assert "scratch/notes.txt" not in patch and "RS.dat" not in patch
 
 
@@ -554,7 +554,7 @@ def test_edit_scope_and_patch_on_an_exported_trial(tmp_path, hidden, policy, mod
 def test_quantity_assertions_accept_equivalent_spellings_and_reject_decimal_slips(tmp_path, hidden, policy, models):
     exp = _export(T06, tmp_path, policy, models)
     d, base = exp.trial_dir, exp.private_dir / "baseline"
-    run = lambda: [agent.evaluate_assertion(a, d, base).passed for a in hidden[T06].assertions]  # noqa: E731
+    run = lambda: [agent.evaluate_assertion(a, d, base).passed for a in hidden[T06].assertions]
     assert run() == [False, True]
     _replace(d / RS_CELL, 'condDensity="0.07 mS_per_cm2"', 'condDensity="1.4 S_per_m2"')
     assert run() == [True, True]
@@ -564,7 +564,7 @@ def test_quantity_assertions_accept_equivalent_spellings_and_reject_decimal_slip
 
 def test_answer_assertions_normalize_paths(tmp_path, hidden):
     specs = hidden["t09_behaviour_diagnosis"].assertions
-    run = lambda: [agent.evaluate_assertion(a, tmp_path, tmp_path).passed for a in specs]  # noqa: E731
+    run = lambda: [agent.evaluate_assertion(a, tmp_path, tmp_path).passed for a in specs]
     assert run() == [False, False, False]
     answer = tmp_path / "diagnosis.yaml"
     answer.write_text("file: .\\model\\NeuroML2\\cells\\RS\\RS.cell.nml\nelement_id: Kd_all\nattribute: erev\n"
@@ -583,12 +583,12 @@ def _refactor_hh_channels(model_root: Path) -> None:
     text = cell.read_text(encoding="utf-8")
     (model_root / "examples" / "channels").mkdir()
     includes = []
-    for m in re.finditer(r'<ionChannelHH id="(\w+)".*?</ionChannelHH>', text, re.S):
+    for m in re.finditer(r'<ionChannelHH id="(\w+)".*?</ionChannelHH>', text, re.DOTALL):
         (model_root / "examples" / "channels" / f"{m.group(1)}.channel.nml").write_text(
             '<?xml version="1.0" encoding="UTF-8"?>\n<neuroml xmlns="http://www.neuroml.org/schema/neuroml2" '
             f'id="{m.group(1)}_file">\n    {m.group(0)}\n</neuroml>\n', encoding="utf-8")
         includes.append(f'    <include href="channels/{m.group(1)}.channel.nml"/>')
-    text = re.sub(r'<ionChannelHH id="\w+".*?</ionChannelHH>', "", text, flags=re.S)
+    text = re.sub(r'<ionChannelHH id="\w+".*?</ionChannelHH>', "", text, flags=re.DOTALL)
     text = text.replace('id="NML2_SingleCompHHCell">', 'id="NML2_SingleCompHHCell">\n' + "\n".join(includes), 1)
     cell.write_text(text, encoding="utf-8")
 
@@ -827,7 +827,7 @@ def test_score_trial_needs_a_frozen_config_and_accepts_its_path(tmp_path, policy
     dirty = {**CLEAN, "clean": False, "dirty_paths": ["agent_study/tasks"]}
     monkeypatch.setattr(agent, "source_state", lambda repo, paths: dict(dirty))
     exp = _export(T06, tmp_path, policy, models)
-    kw = dict(private_dir=exp.private_dir, evaluators=_StubEvaluators(), policy=policy, models=models)
+    kw = {"private_dir": exp.private_dir, "evaluators": _StubEvaluators(), "policy": policy, "models": models}
     with pytest.raises(agent.FrozenConfigError, match="needs a frozen evaluation config"):
         agent.score_trial(T06, exp.trial_dir, None, **kw)
     with pytest.raises(agent.FrozenConfigError, match="provisional"):
@@ -842,7 +842,7 @@ def test_frozen_scoring_checks_export_record_and_evaluator_state(tmp_path, polic
     exp = _export(T06, tmp_path, policy, models, allow_dirty=False)
     frozen = dc.replace(agent.FrozenConfig.development(tmp_path / "results"), provisional=False,
                         evaluator_git_commit="a" * 40, **agent.freeze_hashes())
-    kw = dict(private_dir=exp.private_dir, evaluators=_StubEvaluators(), policy=policy, models=models)
+    kw = {"private_dir": exp.private_dir, "evaluators": _StubEvaluators(), "policy": policy, "models": models}
     score = agent.score_trial(T06, exp.trial_dir, frozen, **kw)
     assert score.provisional is False and score.model_changed is False
     with pytest.raises(agent.FrozenConfigError, match="prompt: current file differs"):
@@ -893,17 +893,17 @@ def test_trial_log_validation(tasks, policy):
     record = {"content_sha256": "c" * 64}
     assert agent.validate_trial_log(_log(task, policy), task=task, policy=policy, export_record=record) == []
     cases = {
-        "human intervention": dict(human_interventions=[{"utc": "2026-09-13T10:05:00+00:00", "action": "answered"}]),
-        "prompt hash": dict(prompt_sha256="0" * 64),
-        "budget": dict(budget={**task.budget, "max_turns": 5}),
-        "clean export": dict(export_content_sha256="d" * 64),
-        "fresh, non-resumed": dict(session={"fresh_session": True, "resumed": True, "command_line": [],
-                                             "environment_id": "vm"}),
-        "YYYY-MM-DD": dict(access_date="13/09/2026"),
-        "real calendar date": dict(access_date="2026-13-45"),
-        "logs must be": dict(logs=[{"path": "session.log"}]),
-        "costs.source": dict(costs={"usd": 1.0, "input_tokens": 1, "output_tokens": 1}),
-        "permissions": dict(permissions={**policy.permissions, "network": "allowed"}),
+        "human intervention": {"human_interventions": [{"utc": "2026-09-13T10:05:00+00:00", "action": "answered"}]},
+        "prompt hash": {"prompt_sha256": "0" * 64},
+        "budget": {"budget": {**task.budget, "max_turns": 5}},
+        "clean export": {"export_content_sha256": "d" * 64},
+        "fresh, non-resumed": {"session": {"fresh_session": True, "resumed": True, "command_line": [],
+                                             "environment_id": "vm"}},
+        "YYYY-MM-DD": {"access_date": "13/09/2026"},
+        "real calendar date": {"access_date": "2026-13-45"},
+        "logs must be": {"logs": [{"path": "session.log"}]},
+        "costs.source": {"costs": {"usd": 1.0, "input_tokens": 1, "output_tokens": 1}},
+        "permissions": {"permissions": {**policy.permissions, "network": "allowed"}},
     }
     for needle, over in cases.items():
         problems = agent.validate_trial_log(_log(task, policy, **over), task=task, policy=policy, export_record=record)
@@ -923,7 +923,7 @@ def test_trial_log_rehashes_files_and_checks_the_patch(tmp_path, tasks, policy, 
     log = _log(task, policy, transcript_sha256=sha256_file(rec / "transcript.jsonl"),
                patch_sha256=sha256_file(rec / "patch.diff"),
                logs=[{"path": "session.log", "sha256": sha256_file(rec / "session.log")}])
-    kw = dict(task=task, policy=policy, root=rec, private_dir=exp.private_dir, trial_dir=exp.trial_dir)
+    kw = {"task": task, "policy": policy, "root": rec, "private_dir": exp.private_dir, "trial_dir": exp.trial_dir}
     assert agent.validate_trial_log(log, **kw) == []
     (rec / "session.log").write_bytes(b"edited later\n")
     assert agent.validate_trial_log(log, **kw) == ["log session.log sha256 does not match the file"]
@@ -977,13 +977,13 @@ def test_public_runner_on_exported_hh_trial(sim, tmp_path, policy, models):
         pytest.fail("public reference missing: run python agent_study/build_public_references.py")
     exp = _export(T05, tmp_path, policy, models)
     cmd = [sys.executable, str(exp.trial_dir / "public_tests" / agent.PUBLIC_RUNNER)]
-    ok = subprocess.run(cmd, cwd=exp.trial_dir, capture_output=True, text=True, env=_runner_env(sim), timeout=600)
+    ok = subprocess.run(cmd, cwd=exp.trial_dir, capture_output=True, text=True, env=_runner_env(sim), timeout=600, check=False)
     assert ok.returncode == 0, ok.stdout + ok.stderr
     assert "ALL PUBLIC CHECKS PASSED" in ok.stdout
     base = exp.private_dir / "baseline"
     assert agent.semantic_diff(base, exp.trial_dir, policy.ignore_paths) == []     # checks ran in scratch/
     _replace(exp.trial_dir / HH_CELL, 'condDensity="120.0 mS_per_cm2"', 'condDensity="120.0 S_per_m2"')
-    bad = subprocess.run(cmd, cwd=exp.trial_dir, capture_output=True, text=True, env=_runner_env(sim), timeout=600)
+    bad = subprocess.run(cmd, cwd=exp.trial_dir, capture_output=True, text=True, env=_runner_env(sim), timeout=600, check=False)
     assert bad.returncode == 1 and "[FAIL] canonical reference" in bad.stdout, bad.stdout
 
 

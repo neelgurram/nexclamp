@@ -2,7 +2,7 @@
 
 Rheobase is the smallest amplitude of a fixed-duration current step that evokes at
 least one spike. eFEL has no rheobase feature and pyNeuroML's f-I helper only reports
-the lowest tested amplitude that spiked, so NeuroSem performs a bracketing grid search:
+the lowest tested amplitude that spiked, so NexClamp performs a bracketing grid search:
 each round simulates a grid of amplitudes in one batched run and narrows the bracket
 to the interval between the last silent and the first spiking amplitude.
 

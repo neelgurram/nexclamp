@@ -7,6 +7,7 @@ from __future__ import annotations
 
 import pytest
 
+from nexclamp.experiments import strata
 from nexclamp.models import copy_workspace
 from nexclamp.mutations import REGISTRY
 from nexclamp.mutations.base import (
@@ -17,7 +18,6 @@ from nexclamp.mutations.base import (
     read_xml,
     resolve,
 )
-from nexclamp.experiments import strata
 from nexclamp.schemas import Edit, MutationFamily, VariantKind, VariantRecord
 
 KINETICS = ("shift_gate_midpoint", "scale_gate_slope", "shift_forward_rate_midpoint", "shift_channel_vshift")

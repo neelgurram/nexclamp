@@ -52,7 +52,7 @@ class Quantity:
     dimension: str
     si: float
 
-    def to(self, unit: str) -> "Quantity":
+    def to(self, unit: str) -> Quantity:
         return convert(self, unit)
 
 

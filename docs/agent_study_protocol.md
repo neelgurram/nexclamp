@@ -1,11 +1,11 @@
 # Agent-study protocol (Milestone 9)
 
-This protocol describes how a human runs the Claude Code case study of the NeuroSem
+This protocol describes how a human runs the Claude Code case study of the NexClamp
 specification ("Claude Code experiment"). It is a secondary study. In the manuscript it
 belongs in a subsection titled *Application to AI-assisted neuronal-model transformation*,
 and Claude must not appear in the paper title.
 
-The harness (`src/neuraxis/experiments/agent.py`) only prepares and scores trials. It never
+The harness (`src/nexclamp/experiments/agent.py`) only prepares and scores trials. It never
 starts an agent. Every trial is started by a person, following the steps below.
 
 **Status: provisional.** Budgets, the public spike-time tolerance, the runtime threshold of
@@ -51,7 +51,7 @@ definitions is not a sample size. The number of trials per task, and whether mor
 instances are added (other base models or other seeded sites for the same task types), are
 decided and recorded at step 1, before any trial runs.
 
-## 1. Freeze NeuroSem before agent testing
+## 1. Freeze NexClamp before agent testing
 
 1. Finish the frozen main study first. The frozen tolerance table and the selected protocol
    battery must exist, and must have been chosen without looking at any agent output.
@@ -87,11 +87,11 @@ decided and recorded at step 1, before any trial runs.
 Tool permission settings are not a security boundary: an agent's shell can read any path its
 operating-system account can read. Isolation therefore comes from the environment.
 
-1. Use a dedicated OS account, container or VM that **cannot read** the NeuroSem repository
+1. Use a dedicated OS account, container or VM that **cannot read** the NexClamp repository
    (which holds the private records), or earlier trial directories. Keep the repository and
    all private records under a different account.
 2. Install Java and a Python environment with `pyneuroml==1.3.22`, and nothing from
-   NeuroSem. Check that `python -c "import neurosem"` fails in this environment. If the jar or
+   NexClamp. Check that `python -c "import neurosem"` fails in this environment. If the jar or
    Java cannot be found automatically, set `NEUROSEM_JAVA` / `NEUROSEM_JNML_JAR`.
 3. Install the Claude Code version under study. The account must have no user-level Claude
    Code configuration: no CLAUDE.md, memory, skills, plugins, hooks or MCP servers. Network
@@ -110,7 +110,7 @@ operating-system account can read. Isolation therefore comes from the environmen
 Every trial of a task starts from the same clean export: the `content_sha256` in
 `EXPORT_MANIFEST.json` must be identical across trials of that task.
 
-1. **Export** (on the NeuroSem side, in the frozen checkout):
+1. **Export** (on the NexClamp side, in the frozen checkout):
    ```python
    from neurosem.experiments import agent
    exp = agent.prepare_trial("t01_unit_repair", Path("/trials/t01_unit_repair-r01"))
@@ -118,7 +118,7 @@ Every trial of a task starts from the same clean export: the `content_sha256` in
    ```
    The export contains `TASK.md`, `model/`, `public_tests/`, `scratch/` and
    `EXPORT_MANIFEST.json`. It contains no `.git`, no hidden spec, no `task.yaml`, no
-   `PROVENANCE.json`, no NeuroSem code and no results. The seeded fault is written
+   `PROVENANCE.json`, no NexClamp code and no results. The seeded fault is written
    byte-minimally (only the edited attribute value differs from the original file), and every
    file and directory carries the same timestamp, 2000-01-01T00:00:00Z, so neither formatting
    nor modification times point at the edited file. `exp.private_dir`

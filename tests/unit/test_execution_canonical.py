@@ -6,8 +6,15 @@ import pytest
 
 from nexclamp.schemas import ExecConfig, RunStatus, VariantKind, VariantRecord
 from nexclamp.validation.canonical import canonical_protocol, refine_harness_step
-from nexclamp.validation.execution import (TaskError, apply_overrides, effective_workspace, inputs_manifest,
-                                           reachable_files, run_parallel, worst_status)
+from nexclamp.validation.execution import (
+    TaskError,
+    apply_overrides,
+    effective_workspace,
+    inputs_manifest,
+    reachable_files,
+    run_parallel,
+    worst_status,
+)
 from nexclamp.validation.structural import harness_nml_files
 
 

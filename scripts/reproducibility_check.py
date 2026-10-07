@@ -22,9 +22,9 @@ import numpy as np
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
-from nexclamp.experiments import campaign as cp  # noqa: E402
-from nexclamp.experiments import registry  # noqa: E402
-from nexclamp.provenance import git_state, utc_now  # noqa: E402
+from nexclamp.experiments import campaign as cp
+from nexclamp.experiments import registry
+from nexclamp.provenance import git_state, utc_now
 
 NOT_EXECUTABLE = ("1_structurally_invalid", "2_non_executable", "3_numerically_unstable")
 
@@ -46,7 +46,7 @@ def main(argv: list[str] | None = None) -> int:
     seed = int(ctx.cfg["selection"]["seed"])
     with open(ctx.processed / "classification.csv", encoding="utf-8", newline="") as f:
         cls = [r for r in csv.DictReader(f) if r["class"] not in NOT_EXECUTABLE]
-    key = lambda r: hashlib.sha256(f"{seed}:{r['variant_id']}".encode()).hexdigest()  # noqa: E731
+    key = lambda r: hashlib.sha256(f"{seed}:{r['variant_id']}".encode()).hexdigest()
     chosen = (sorted((r for r in cls if r["kind"] == "mutant"), key=key)[:a.n_mutants] +
               sorted((r for r in cls if r["kind"] != "mutant"), key=key)[:a.n_controls])
     models = sorted({r["model_id"] for r in chosen})

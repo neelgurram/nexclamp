@@ -2,7 +2,7 @@
 
 All notable changes to this project are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versions will follow Semantic
-Versioning from the first tagged release. Decisions referenced as D-xxx are in `DECISIONS.md`.
+Versioning from the first tagged release. Decisions referenced as D-xxx are in `docs/project/DECISIONS.md`.
 
 ## [Unreleased]
 
@@ -81,7 +81,7 @@ Controlling specification: `docs/handoff/NEURAXIS_EXECUTION_PLAN.pdf` (D-039). C
 - `scripts/archive_campaign.py`; campaign `pilot` archived (5,186 files, 1.92 GB tar, Git-ignored) and sealed; tag `pilot-v1-code` at `d323afa`.
 - `NEUROSEM_CONFIG_DIR` for development campaigns; `canonical.features` setting (default unchanged).
 - `docs/pilot/PILOT_REGISTER.md`, `docs/pilot/pilot_v2_design.md`, `configs/pilot_v2_draft/` (draft, not run).
-- `PLAN.md` post-pilot freeze sequence; D-026 to D-028; N-14 to N-16.
+- `docs/project/PLAN.md` post-pilot freeze sequence; D-026 to D-028; N-14 to N-16.
 
 #### Changed
 - `evaluate_heldout` refuses exploratory or discovery campaigns, reused campaign names, config overrides, non-held-out models, and mixed-commit or dirty runs.
@@ -147,4 +147,4 @@ Neel instructed Claude to build the whole project (D-003). The integrity gates s
 #### Added
 - `docs/handoff/`: the handoff and the final specification (PDFs archived unchanged, with text extractions).
 - `docs/m0_evidence/`: raw evidence from the verification, critique, name, fixture and prior-art sweeps.
-- `DECISIONS.md`, `CHANGELOG.md`, `AI_USE_LOG.md`, `.gitignore`, `.gitattributes`.
+- `docs/project/DECISIONS.md`, `CHANGELOG.md`, `AI_USE_LOG.md`, `.gitignore`, `.gitattributes`.

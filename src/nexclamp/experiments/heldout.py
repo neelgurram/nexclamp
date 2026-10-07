@@ -58,7 +58,7 @@ def evaluate_heldout(campaign: str, selection_file: Path, reason: str, workers: 
     result = {
         "campaign": campaign, "campaign_role": registry.CONFIRMATORY_HELDOUT, "code_commit": code_commit,
         "created_utc": utc_now(), "reason": reason, "selection_file": str(selection_file),
-        "n_heldout_admissible_mutants": int(len(adm)), "heldout_models": list(split.heldout_models),
+        "n_heldout_admissible_mutants": len(adm), "heldout_models": list(split.heldout_models),
         "heldout_families": list(split.heldout_families), "analysis_config": acfg,
         "primary_endpoint": (bootstrap.paired_comparison(battery, canonical, clusters, int(acfg.get("n_boot", 10000)),
                                                          int(acfg.get("n_perm", 10000)),

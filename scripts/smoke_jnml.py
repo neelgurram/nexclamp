@@ -33,7 +33,7 @@ def main(model_ids: list[str]) -> int:
         ws = materialize(m, config.work_dir(cfg) / "smoke" / mid, overwrite=True)
         v = sim.validate([ws.cell_path])
         print(f"\n[{mid}] validate: {v.valid} {v.messages[:2]}")
-        t0 = time.perf_counter()
+        time.perf_counter()
         can = sim.run_lems(ws.harness_path, [canonical_output(m)])
         tr = can.traces.get("P00_canonical")
         n = rb.count_upward_crossings(tr.v_mV, -20.0) if tr is not None else None

@@ -258,7 +258,7 @@ def unpack_traces(data: bytes) -> dict[str, Trace]:
     with np.load(io.BytesIO(data), allow_pickle=False) as npz:
         parts: dict[str, set[str]] = {}
         for key in npz.files:
-            if key.endswith(V_SUFFIX) or key.endswith(T_SUFFIX):
+            if key.endswith((V_SUFFIX, T_SUFFIX)):
                 parts.setdefault(key[: -len(V_SUFFIX)], set()).add(key[-len(V_SUFFIX):])
             else:
                 raise ValueError(f"unexpected array {key!r} in trace archive")

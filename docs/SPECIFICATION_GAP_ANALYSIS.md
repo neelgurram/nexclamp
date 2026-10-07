@@ -8,10 +8,10 @@ where it is met and what remains. Status: **met**, **partial**, **human** (needs
 
 | Requirement | Status | Where |
 |---|---|---|
-| Name Neuraxis, provisional until a documented name search | partial | `docs/NAME_AUDIT.md`: a trademark conflict was found; decision R-01 |
+| Name NexClamp, provisional until a documented name search | partial | `docs/NAME_AUDIT.md`: a trademark conflict was found; decision R-01 |
 | Software title; positive and neutral manuscript titles; the positive title only if the held-out study shows silent drift | met | `CITATION.cff`; `manuscript/manuscript.md` states the rule |
 | Not presented as a Claude Code benchmark; agent study secondary | met | `docs/PLAIN_LANGUAGE_OVERVIEW.md`; `docs/agent_study_protocol.md`; `workflows/run_agent_study.py` (gated) |
-| Established components not claimed as original | met | `docs/PLAIN_LANGUAGE_OVERVIEW.md`, `PRIOR_ART_AUDIT.md`, `docs/PRIOR_ART_MATRIX.md` |
+| Established components not claimed as original | met | `docs/PLAIN_LANGUAGE_OVERVIEW.md`, `project/PRIOR_ART_AUDIT.md`, `docs/PRIOR_ART_MATRIX.md` |
 | Operational definitions (base model ... empirical behavioural certificate) | met | `docs/glossary.md` (earlier spec terms); plan terms mapped: `docs/FEATURE_CATALOG.md`, `docs/MUTATION_CATALOG.md`, `schemas.MutantClass` |
 | Research questions and hypotheses; no target false-positive rate invented after held-out results | met (draft) | `docs/STATISTICAL_ANALYSIS_PLAN.md`, `docs/PREREGISTRATION_DRAFT.md` |
 
@@ -20,7 +20,7 @@ where it is met and what remains. Status: **met**, **partial**, **human** (needs
 | Requirement | Status | Where |
 |---|---|---|
 | Inventory branches, commits, tags, files, models, configs, results, manifests, audits, plans | met | `docs/CURRENT_REPOSITORY_STATE.md` |
-| Classify work as complete, partial, unverified, obsolete or conflicting; locate NeuroSem/PerturbPrint/Neuraxis references | met | same, sections 1, 4, 5 |
+| Classify work as complete, partial, unverified, obsolete or conflicting; locate NexClamp/PerturbPrint/NexClamp references | met | same, sections 1, 4, 5 |
 | Overwritten raw data? Held-out outcomes accessed? Result status? | met | same, section 2: no overwrite (hash check 2026-09-16); no held-out split or access; Pilot 1 exploratory |
 | Reuse verified components; repair invalid ones; new run IDs for reruns | met | X-05, X-06 in `docs/DEVIATION_LOG.md` |
 | Record every conflict in `docs/DEVIATION_LOG.md`; never relabel inspected data as confirmation data | met | `docs/DEVIATION_LOG.md`; `experiments/registry.py` enforces roles |

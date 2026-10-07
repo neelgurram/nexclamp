@@ -1,6 +1,6 @@
-# NeuroSem requirements traceability (Milestone 0 document)
+# NexClamp requirements traceability (Milestone 0 document)
 
-Working name: NeuroSem (see DECISIONS.md N-10 on renaming). Human author and decision-maker: Neel Gurram.
+Working name: NexClamp (see DECISIONS.md N-10 on renaming). Human author and decision-maker: Neel Gurram.
 Software built by Claude Code. Date of inspection: 2026-09-13. Branch `m0-audit`, HEAD `d323afa`
 (implementation commits `3cdb957` and `d323afa`).
 
@@ -35,7 +35,7 @@ Status vocabulary:
 | human step pending | needs Neel (or another human) to perform or review something |
 | decision pending | needs a choice from Neel; usually listed as N-xx in DECISIONS.md |
 
-Paths are relative to `C:/Users/gurra/NeuroSem`. "Test" means a pytest function name.
+Paths are relative to `C:/Users/gurra/NexClamp`. "Test" means a pytest function name.
 
 ---
 
@@ -43,9 +43,9 @@ Paths are relative to `C:/Users/gurra/NeuroSem`. "Test" means a pytest function 
 
 | ID | Spec section | Requirement (paraphrase) | Status | Evidence |
 |---|---|---|---|---|
-| R-001 | Executive decision; Existing validation | Reuse NeuroML validation, simulation and eFEL capabilities instead of rebuilding them, and do not claim them as new | implemented | `src/neuraxis/simulators/jneuroml.py` (calls the jNeuroML jar, D-005), `src/neuraxis/features/efel_adapter.py`; `tests/integration/test_jneuroml_adapter.py`, `tests/unit/test_efel_adapter.py`; `docs/DEPENDENCY_AUDIT.md` (untracked) says "Built in NeuroSem" is not a novelty claim |
+| R-001 | Executive decision; Existing validation | Reuse NeuroML validation, simulation and eFEL capabilities instead of rebuilding them, and do not claim them as new | implemented | `src/nexclamp/simulators/jneuroml.py` (calls the jNeuroML jar, D-005), `src/nexclamp/features/efel_adapter.py`; `tests/integration/test_jneuroml_adapter.py`, `tests/unit/test_efel_adapter.py`; `docs/DEPENDENCY_AUDIT.md` (untracked) says "Built in NeuroSem" is not a novelty claim |
 | R-002 | Executive decision; AI-assisted development policy | Claude Code is a development assistant; it must not define the title, the main hypothesis or the principal novelty | implemented | `AI_USE_LOG.md` ("Two roles of AI"), `docs/AI_DISCLOSURE.md`, `configs/agent_policy.yaml` header |
-| R-003 | Candidate empirical discoveries | Candidate discoveries are hypotheses and must not be written as findings before data collection | implemented | `src/neuraxis/experiments/pilot.py` report header ("not a confirmatory result"); test `test_palette_is_okabe_ito_and_titles_make_no_claims` (`tests/unit/test_figures.py`) |
+| R-003 | Candidate empirical discoveries | Candidate discoveries are hypotheses and must not be written as findings before data collection | implemented | `src/nexclamp/experiments/pilot.py` report header ("not a confirmatory result"); test `test_palette_is_okabe_ito_and_titles_make_no_claims` (`tests/unit/test_figures.py`) |
 | R-004 | Required novelty sweep | Search Google Scholar, PubMed, IEEE Xplore, ACM DL, WoS/Scopus, Semantic Scholar, arXiv/bioRxiv, GitHub/PyPI/Zenodo with the listed term combinations | partially implemented | 1,552 queries across the required sources except Web of Science/Scopus (no access); several APIs rate-limited; the final spec's two added terms run only 4-5 times (`PRIOR_ART_AUDIT.md` sections 1 and 7) |
 | R-005 | Required novelty sweep | Create `docs/novelty_matrix.csv` with the specified columns (citation, year, model type, mutations, multiple stimuli, features, protocol optimisation, held-out evaluation, AI transformations, software, distinction) | implemented | `docs/novelty_matrix.csv` (335 verified works, spec columns plus provenance), built by `scripts/build_novelty_matrix.py`; summary in `docs/m0_evidence/prior_art/novelty_matrix_summary.json` |
 | R-006 | Required novelty sweep | Absence from a search is not proof of novelty; citations must be human-checked before any novelty claim | human step pending | `AI_USE_LOG.md` Entry 001 ("Neel must spot-check citations"); `docs/AI_DISCLOSURE.md` section 3 |
@@ -55,17 +55,17 @@ Paths are relative to `C:/Users/gurra/NeuroSem`. "Test" means a pytest function 
 | ID | Spec section | Requirement (paraphrase) | Status | Evidence |
 |---|---|---|---|---|
 | R-007 | Operational definitions | Define reference model, transformation, valid transformation, mutant, admissible non-equivalent mutant, canonical protocol, perturbation fingerprint, silent semantic drift and empirical semantic certificate | implemented | `docs/glossary.md` section 1; test `test_glossary_covers_operational_definitions_and_required_terms` (`tests/unit/test_science_docs.py`) |
-| R-008 | Fingerprint definition | F(m) = {f(m,p) : p in P, f in E}; detection when at least one prespecified protocol-feature difference exceeds its calibrated tolerance | implemented | `src/neuraxis/validation/fingerprint.py` (`build_fingerprint`, `compare`); test `test_compare_exceeds_definedness_categorical_and_multiplier` (`tests/unit/test_convergence_fingerprint.py`). Definedness changes and firing-regime changes also count as detections (`configs/tolerances.yaml: definedness_mismatch_is_detection`, `categorical`) |
+| R-008 | Fingerprint definition | F(m) = {f(m,p) : p in P, f in E}; detection when at least one prespecified protocol-feature difference exceeds its calibrated tolerance | implemented | `src/nexclamp/validation/fingerprint.py` (`build_fingerprint`, `compare`); test `test_compare_exceeds_definedness_categorical_and_multiplier` (`tests/unit/test_convergence_fingerprint.py`). Definedness changes and firing-regime changes also count as detections (`configs/tolerances.yaml: definedness_mismatch_is_detection`, `categorical`) |
 | R-009 | Operational definitions | An empirical certificate is evidence of tested preservation, not a proof of equivalence | implemented | `docs/glossary.md` section 1 (checked by `test_glossary_covers_operational_definitions_and_required_terms`) |
 | R-010 | Research questions | The design must be able to answer RQ1-RQ7 | partially implemented | Code paths: RQ1 `analysis/metrics.silent_survival_rate`; RQ2 and RQ4 `experiments/heldout.py`; RQ3 `selection/greedy.random_*`; RQ5 needs a held-out family (unassigned, N-02); RQ6 `metrics.by_family` and the detection matrix; RQ7 `experiments/agent.py`. No RQ has been answered |
-| R-011 | Primary hypothesis; Primary endpoint | Held-out detection rate of the selected battery versus canonical regression | gated by design | `src/neuraxis/experiments/heldout.py` (`paired_comparison(battery, canonical, ...)` behind `HeldoutGate`). Only string-level tests: `test_detection_rule_matches_heldout_code`, `test_quoted_heldout_bootstrap_resamples_match_code` |
+| R-011 | Primary hypothesis; Primary endpoint | Held-out detection rate of the selected battery versus canonical regression | gated by design | `src/nexclamp/experiments/heldout.py` (`paired_comparison(battery, canonical, ...)` behind `HeldoutGate`). Only string-level tests: `test_detection_rule_matches_heldout_code`, `test_quoted_heldout_bootstrap_resamples_match_code` |
 | R-012 | Secondary endpoints | Detection rate versus cost-matched random batteries | implemented | `selection/greedy.py` `random_count_matched`, `random_runtime_matched`; `experiments/analyze.py`; `tests/unit/test_greedy_selection.py` |
 | R-013 | Secondary endpoints | Silent-survival rate after canonical testing | implemented | `analysis/metrics.silent_survival_rate`; test `test_silent_survival_rate_uses_admissible_denominator` |
 | R-014 | Secondary endpoints | False-positive rate on valid transformations | implemented | `metrics.false_positive_rate`, `false_positive_summary`; test `test_false_positive_rate_and_summary` |
 | R-015 | Secondary endpoints | Detection rate by mutation family | implemented | `metrics.by_family`; test `test_by_family_counts_and_intervals` |
 | R-016 | Secondary endpoints | Protocols needed to reach increasing levels of exhaustive-battery coverage | implemented | `metrics.coverage_curve`, `protocols_to_reach`; tests `test_coverage_curve_hand_computed`, `test_protocols_to_reach_levels`. Coverage levels are decision pending (`docs/STATISTICAL_ANALYSIS_PLAN.md` section 10 item 6) |
 | R-017 | Secondary endpoints | Runtime and simulations per detected mutant | implemented | `metrics.runtime_per_detection`; test `test_runtime_per_detection`; cost is simulated cell-steps (D-015) |
-| R-018 | Secondary endpoints | Agent-task success under basic versus NeuroSem validation | implemented | `configs/agent_policy.yaml: scoring.basic_validation / neurosem_validation`; `experiments/agent.summarize_scores`; test `test_summarize_scores_reports_the_permitted_claim_fraction`. No trials exist |
+| R-018 | Secondary endpoints | Agent-task success under basic versus NexClamp validation | implemented | `configs/agent_policy.yaml: scoring.basic_validation / neurosem_validation`; `experiments/agent.summarize_scores`; test `test_summarize_scores_reports_the_permitted_claim_fraction`. No trials exist |
 
 ## 3. Pilot and full-study scope
 
@@ -81,12 +81,12 @@ Paths are relative to `C:/Users/gurra/NeuroSem`. "Test" means a pytest function 
 | R-026 | Solo-feasible scope: Pilot | Pilot success = one admissible canonical-passing mutant reproducibly detected elsewhere, stable features under refinement, and no widespread false positives | partially implemented | `experiments/pilot.write_report` checks three criteria (`crit1`-`crit3`). There is no direct test. Thresholds (<25% features excluded, <=10% false positives) are provisional (N-04) |
 | R-027 | Full solo study | 12-16 reference models | not implemented | `data/model_manifest.csv` has 6 rows, 2 included; `docs/model_selection.md` section 10 item 1 |
 | R-028 | Full solo study | 8-10 discovery and 4-6 held-out models | decision pending | N-02; `data/splits/discovery_models.txt` (2 provisional pilot models); `data/splits/heldout/` contains only README.md |
-| R-029 | Full solo study | 10-16 candidate protocols | implemented | 10 implemented (P01-P10) in `src/neuraxis/protocols/definitions.py` and `data/protocol_manifest.csv`; P11 and P12 deferred (R-054, R-055) |
+| R-029 | Full solo study | 10-16 candidate protocols | implemented | 10 implemented (P01-P10) in `src/nexclamp/protocols/definitions.py` and `data/protocol_manifest.csv`; P11 and P12 deferred (R-054, R-055) |
 | R-030 | Full solo study | 6-8 mutation families | partially implemented | `schemas.MutationFamily` has 4 families (stimulus, biophysical, reference, numerical), which is what the spec itself enumerates. How to reach 6-8 is undecided |
 | R-031 | Full solo study | 100-160 admissible mutants | gated by design | Needs the frozen full study (D-003) |
 | R-032 | Full solo study | 24-40 valid transformations | gated by design | 8 transform operators exist (R-077..R-084); the full-study count needs the frozen study |
 | R-033 | Full solo study | 20-30 Claude Code tasks | partially implemented | 9 task definitions, one per task type (`agent_study/tasks/t01..t09`); `docs/build_notes/agent-study.md` says nine is not a sample size |
-| R-034 | Full solo study | 4-6 cross-simulator models (optional) | decision pending | N-08; `src/neuraxis/simulators/neuron.py` is a stub (NEURON not installed) |
+| R-034 | Full solo study | 4-6 cross-simulator models (optional) | decision pending | N-08; `src/nexclamp/simulators/neuron.py` is a stub (NEURON not installed) |
 | R-035 | Full solo study | Counts are planning bounds; use a pilot runtime estimate or power analysis; reduce mutants before sacrificing curation, provenance, controls or held-out evaluation | decision pending | `docs/PREREGISTRATION_DRAFT.md` section 14 (template with blanks); the runtime estimate needs pilot results (pending) |
 
 ## 4. Model inclusion criteria, diversity and provenance fields
@@ -95,11 +95,11 @@ Paths are relative to `C:/Users/gurra/NeuroSem`. "Test" means a pytest function 
 |---|---|---|---|---|
 | R-036 | Model selection: Inclusion criteria | Traceable public source | implemented | `data/model_manifest.csv` `source_url`, `commit`; `models/raw/*/PROVENANCE.json`; test `test_manifest_provenance_fields` (`tests/unit/test_models_manifest.py`) |
 | R-037 | Inclusion criteria | License permits intended use and redistribution, or no redistribution | partially implemented | `license` and `license_url` columns; `LICENSE_AUDIT.md` (untracked); redistribution of mutated LGPL files is undecided (N-05, D-018) |
-| R-038 | Inclusion criteria | Passes current NeuroML validation | implemented | `src/neuraxis/validation/structural.py` (relative oracle over the include closure, D-006); `neurosem validate-models`; test `test_structural_check_reference_and_broken_reference` (`tests/unit/test_execution_canonical.py`) |
+| R-038 | Inclusion criteria | Passes current NeuroML validation | implemented | `src/nexclamp/validation/structural.py` (relative oracle over the include closure, D-006); `neurosem validate-models`; test `test_structural_check_reference_and_broken_reference` (`tests/unit/test_execution_canonical.py`) |
 | R-039 | Inclusion criteria | Executes deterministically in the frozen environment | implemented | `experiments/campaign.reference_stage` writes `determinism.json` (bitwise-identical battery traces across replicates); test `test_cache_immutability_reproducibility_and_feature_rekeying` (`tests/integration/test_run_recorder.py`) |
 | R-040 | Inclusion criteria | Completes candidate protocols within a practical runtime | partially implemented | `configs/study.yaml: numerics.timeout_s: 7200`; no runtime inclusion threshold is defined |
 | R-041 | Inclusion criteria | Produces interpretable voltage output | implemented | manifest `harness_output_file`, `harness_v_column`; test `test_harness_output_file_and_column_exist` |
-| R-042 | Inclusion criteria | Responds meaningfully to current injection | partially implemented | `src/neuraxis/protocols/rheobase.py` reports spontaneous and not-found cases (`tests/unit/test_rheobase_search.py`); the inclusion rule for not-found or error is unspecified (`docs/PROTOCOL_CATALOG.md` section 8 item 2) |
+| R-042 | Inclusion criteria | Responds meaningfully to current injection | partially implemented | `src/nexclamp/protocols/rheobase.py` reports spontaneous and not-found cases (`tests/unit/test_rheobase_search.py`); the inclusion rule for not-found or error is unspecified (`docs/PROTOCOL_CATALOG.md` section 8 item 2) |
 | R-043 | Inclusion criteria | Scientific provenance linking to a publication or established repository | implemented | manifest `citation`; `docs/model_selection.md` section 8 notes that the HH example is a textbook implementation |
 | R-044 | Inclusion criteria | No unavailable proprietary dependencies | implemented | `docs/model_selection.md` section 9 (e.g. Allen content excluded for its terms of use) |
 | R-045 | Diversity goals | Span tonic spiking, adaptation, bursting, rebound, sag and distinct thresholds | decision pending | `docs/model_selection.md` section 7: no licensed Ih/sag model found; three options are listed for Neel |
@@ -114,12 +114,12 @@ Paths are relative to `C:/Users/gurra/NeuroSem`. "Test" means a pytest function 
 
 | ID | Spec section | Requirement (paraphrase) | Status | Evidence |
 |---|---|---|---|---|
-| R-052 | Protocol battery 1-10 | Implement P01 zero-current baseline, P02 weak step, P03 rheobase search, P04 step at a fixed rheobase multiple (2x), P05 long step, P06 ramp, P07 hyperpolarising step, P08 rebound, P09 short pulse, P10 paired pulses | implemented | `src/neuraxis/protocols/definitions.py`, `generate.py`, `rheobase.py`; `data/protocol_manifest.csv`; tests `tests/unit/test_protocol_definitions.py` (`test_steps`, `test_ramp`, `test_short_pulse`, `test_rebound_window_follows_release`), `tests/unit/test_generate_xml.py`, `tests/integration/test_probe_battery.py`, `tests/unit/test_rheobase_search.py` |
+| R-052 | Protocol battery 1-10 | Implement P01 zero-current baseline, P02 weak step, P03 rheobase search, P04 step at a fixed rheobase multiple (2x), P05 long step, P06 ramp, P07 hyperpolarising step, P08 rebound, P09 short pulse, P10 paired pulses | implemented | `src/nexclamp/protocols/definitions.py`, `generate.py`, `rheobase.py`; `data/protocol_manifest.csv`; tests `tests/unit/test_protocol_definitions.py` (`test_steps`, `test_ramp`, `test_short_pulse`, `test_rebound_window_follows_release`), `tests/unit/test_generate_xml.py`, `tests/integration/test_probe_battery.py`, `tests/unit/test_rheobase_search.py` |
 | R-053 | Protocol battery | Model-specific rheobase normalisation | implemented | D-010; test `test_timing_does_not_depend_on_rheobase_and_amplitudes_scale_linearly` |
 | R-054 | Protocol battery 11 | Deterministic chirp, only if stable | not implemented | `data/protocol_manifest.csv` implemented=false: "no chirp type" in NeuroML v2.3.1 core; deferral permitted by the spec |
 | R-055 | Protocol battery 12 | Frozen pseudo-random waveform, later extension only | not implemented | `data/protocol_manifest.csv` implemented=false; `docs/PROTOCOL_CATALOG.md` section 7 |
 | R-056 | Protocol battery | Amplitudes are appropriate for models with very low rheobase | decision pending | N-07 (LTS short pulses, ramp and rebound evoke no response in smoke runs, D-010) |
-| R-057 | Canonical protocol (definition) | One canonical protocol as the conventional regression baseline | implemented | `src/neuraxis/validation/canonical.py` (shipped harness, D-008, D-021 window rule); test `test_canonical_protocol_windows_from_shipped_harnesses` |
+| R-057 | Canonical protocol (definition) | One canonical protocol as the conventional regression baseline | implemented | `src/nexclamp/validation/canonical.py` (shipped harness, D-008, D-021 window rule); test `test_canonical_protocol_windows_from_shipped_harnesses` |
 | R-058 | Canonical protocol | Canonical metric: the same features and tolerances, or an OMV-style spike-time check | decision pending | N-06 |
 
 ## 6. Features
@@ -130,7 +130,7 @@ Paths are relative to `C:/Users/gurra/NeuroSem`. "Test" means a pytest function 
 | R-060 | Initial features | Steady-state voltage | implemented | `steady_state_voltage` (eFEL `steady_state_voltage_stimend`, D-016) |
 | R-061 | Initial features | Voltage deflection | implemented | `voltage_deflection` (eFEL `voltage_deflection_vb_ssse`); test `test_deflection_direction_follows_stimulus_sign` |
 | R-062 | Initial features | Sag ratio | implemented | `sag_ratio` (eFEL `sag_ratio1`, `requires: hyperpolarizing`); test `test_sag_ratio_requires_a_hyperpolarizing_protocol`. Expected to be uninformative without an Ih model (R-045) |
-| R-063 | Initial features | Rheobase | implemented | `rheobase` (NeuroSem search); test `test_rheobase_floor_uses_search_resolution` |
+| R-063 | Initial features | Rheobase | implemented | `rheobase` (NexClamp search); test `test_rheobase_floor_uses_search_resolution` |
 | R-064 | Initial features | Spike count | implemented | `spike_count` (eFEL `spike_count_stimint`); test `test_no_spike_trace_counts_zero_and_gates_spike_features` |
 | R-065 | Initial features | Mean firing frequency | implemented | `mean_frequency` (min_spikes 2) |
 | R-066 | Initial features | First-spike latency | implemented | `first_spike_latency` (eFEL `time_to_first_spike`) |
@@ -140,7 +140,7 @@ Paths are relative to `C:/Users/gurra/NeuroSem`. "Test" means a pytest function 
 | R-070 | Initial features | First and last interspike intervals | implemented | `first_isi`, `last_isi` (eFEL `all_ISI_values`) |
 | R-071 | Initial features | Adaptation index | implemented | `adaptation_index` (eFEL `adaptation_index2`) |
 | R-072 | Initial features | Burst count | implemented | `burst_count` (eFEL `strict_burst_number`) |
-| R-073 | Initial features | Qualitative firing regime | implemented | `src/neuraxis/features/regimes.py`; `tests/unit/test_regimes.py` |
+| R-073 | Initial features | Qualitative firing regime | implemented | `src/nexclamp/features/regimes.py`; `tests/unit/test_regimes.py` |
 | R-074 | Feature extraction; Initial features | Record eFEL version, interpolation, stimulation windows, thresholds and undefined-feature behaviour; use eFEL only where well defined | implemented | `configs/features.yaml` (`efel_version`, `settings`, `min_spikes`, `requires`); tests `test_settings_are_reset_before_every_extraction`, `test_min_spikes_gating_overrides_numbers_efel_would_return`, `test_efel_settings_rejects_bad_names_and_types` |
 | R-075 | Initial features | Record missing or undefined features explicitly; never replace them with zero | implemented | `FeatureValue.state`; test `test_undefined_efel_result_is_recorded_not_zeroed_and_warning_captured` |
 | R-076 | Initial features (derived) | One spike threshold (-20 mV) for all models, or a per-model threshold | decision pending | `docs/PROTOCOL_CATALOG.md` section 8 item 4 |
@@ -223,7 +223,7 @@ Paths are relative to `C:/Users/gurra/NeuroSem`. "Test" means a pytest function 
 | R-133 | Compare | Random sets with comparable runtime | implemented | `greedy.random_runtime_matched` (cost = cell-steps, D-015); test `test_runtime_matched_sets_fit_budget_and_are_maximal`. The sampling algorithm is open (`docs/STATISTICAL_ANALYSIS_PLAN.md` section 10 item 8) |
 | R-134 | Compare | Full candidate battery | implemented | `discovery.py` `rates.exhaustive`; `analyze.py` curve "exhaustive" |
 | R-135 | Protocol selection | Optional cost-sensitive objective | implemented | `greedy.greedy_cost_sensitive`; tests `test_cost_sensitive_*` |
-| R-136 | Protocol selection | No complicated machine-learning model unless it clearly helps | implemented | Only greedy and random selection exist in `src/neuraxis/selection/` |
+| R-136 | Protocol selection | No complicated machine-learning model unless it clearly helps | implemented | Only greedy and random selection exist in `src/nexclamp/selection/` |
 | R-137 | Protocol selection (derived) | Budget k, whether P00_canonical is a candidate, and how P03 is charged | decision pending | `docs/STATISTICAL_ANALYSIS_PLAN.md` section 10 items 1 and 7; `docs/PROTOCOL_CATALOG.md` section 8 item 5 |
 
 ## 11. Train-test separation and leakage controls
@@ -284,7 +284,7 @@ Paths are relative to `C:/Users/gurra/NeuroSem`. "Test" means a pytest function 
 | R-179 | Task types | Improve runtime without changing tested outputs | implemented | `agent_study/tasks/t08_runtime_improvement/`; its success threshold (at least a 2x step reduction) is provisional (`docs/build_notes/agent-study.md`) |
 | R-180 | Task types | Diagnose why a schema-valid model changed firing behaviour | implemented | `agent_study/tasks/t09_behaviour_diagnosis/` |
 | R-181 | Task types (derived) | Hidden specs and evaluators reviewed, ideally revised, by a human other than the builder; permanent storage location | decision pending | D-022, N-12; `agent_study/hidden/*/hidden_checks.yaml` (Git-ignored, `status: provisional`), `agent_study/HIDDEN_MANIFEST.sha256` |
-| R-182 | Isolation protocol | Freeze NeuroSem before agent testing | human step pending | `agent.freeze_hashes`, `load_frozen_config`; test `test_load_frozen_config_requires_every_hash_and_refuses_provisional`. No frozen agent config exists |
+| R-182 | Isolation protocol | Freeze NexClamp before agent testing | human step pending | `agent.freeze_hashes`, `load_frozen_config`; test `test_load_frozen_config_requires_every_hash_and_refuses_provisional`. No frozen agent config exists |
 | R-183 | Isolation protocol | Give the agent only public tests | implemented | `agent.prepare_trial`; `configs/agent_policy.yaml: export.framework_include: []`; test `test_prepare_trial_exports_only_public_material` |
 | R-184 | Isolation protocol | Hide selected perturbation protocols and answer keys | implemented | `agent.MANDATORY_EXCLUDES`, `scan_for_leaks`; tests `test_export_tree_never_exports_hidden_material_even_if_everything_is_included`, `test_prompts_do_not_reveal_hidden_checks`, `test_exported_timestamps_do_not_reveal_the_seeded_file` |
 | R-185 | Isolation protocol | Start every trial from the same clean commit | implemented | `prepare_trial` refuses uncommitted inputs; tests `test_prepare_trial_refuses_uncommitted_inputs`, `test_prepare_trial_is_deterministic_and_refuses_unsafe_locations` |
@@ -335,7 +335,7 @@ Paths are relative to `C:/Users/gurra/NeuroSem`. "Test" means a pytest function 
 | R-220 | Repository architecture | `results/raw`, `processed`, `tables`, `figures` | partially implemented | `raw/` and `processed/` exist (pilot, incomplete); `tables/` and `figures/` absent (created by `analyze`, not yet run) |
 | R-221 | Repository architecture | `docs/` glossary, model_selection, protocol_catalog, mutation_catalog, statistical_plan, ai_disclosure | implemented | Present; tests `test_doc_exists_and_has_title`, `test_mutation_catalog_covers_every_operator_and_transform`, `test_protocol_catalog_timing_table_matches_code` |
 | R-222 | Repository architecture | `docs/novelty_matrix.csv` | implemented | `docs/novelty_matrix.csv` (same as R-005) |
-| R-223 | Repository architecture | `manuscript/manuscript.md`, `supplement.md` | not implemented | Absent |
+| R-223 | Repository architecture | `docs/manuscript/MANUSCRIPT.md`, `supplement.md` | not implemented | Absent |
 
 ## 16. Per-simulation data requirements and suggested commands
 
@@ -356,7 +356,7 @@ Paths are relative to `C:/Users/gurra/NeuroSem`. "Test" means a pytest function 
 | R-236 | Data requirements | Timestamp and Git commit | implemented | `timestamp_utc`, `git_commit`, `git_dirty` (D-023); tests `test_git_state_in_repository`, `test_utc_now_is_iso_utc` |
 | R-237 | Data requirements | Raw results are immutable | implemented | `provenance.write_immutable`; tests `test_write_immutable_creates_read_only_file`, `test_different_content_raises_and_preserves_original` |
 | R-238 | Data requirements | Derived results reproducible from raw outputs with one workflow command | partially implemented | `neurosem reproduce-paper` (`experiments/analyze.reproduce_paper`); never run (`docs/REPRODUCING.md`) |
-| R-239 | Suggested commands | `validate-models`, `run-reference`, `calibrate-tolerances`, `generate-mutants`, `classify-mutants`, `build-fingerprints`, `select-protocols --budget`, `evaluate-agent`, `analyze`, `reproduce-paper` | implemented | `src/neuraxis/cli.py` subparsers; `validate-models` ran on RS (`docs/REPRODUCING.md`); the other commands have no behavioural test |
+| R-239 | Suggested commands | `validate-models`, `run-reference`, `calibrate-tolerances`, `generate-mutants`, `classify-mutants`, `build-fingerprints`, `select-protocols --budget`, `evaluate-agent`, `analyze`, `reproduce-paper` | implemented | `src/nexclamp/cli.py` subparsers; `validate-models` ran on RS (`docs/REPRODUCING.md`); the other commands have no behavioural test |
 | R-240 | Suggested commands | `evaluate-heldout` | gated by design | `cli.py` help "GATED held-out evaluation (requires configs/FROZEN.lock)" |
 
 ## 17. Milestone deliverables and exit criteria

@@ -11,7 +11,7 @@ Three kinds of check, all mechanical:
    three heading levels, required sections present, Information Sharing Statement immediately before
    the declarations, and no "available on request" wording (the journal forbids it).
 
-    python scripts/check_manuscript.py --manuscript docs/manuscript/MANUSCRIPT_V2.md
+    python scripts/check_manuscript.py --manuscript docs/manuscript/MANUSCRIPT.md
 """
 
 from __future__ import annotations
@@ -19,7 +19,6 @@ from __future__ import annotations
 import argparse
 import json
 import re
-import sys
 import unicodedata
 from pathlib import Path
 
@@ -107,7 +106,7 @@ def check_citations(text: str, refs: str) -> list[str]:
 
 def check_journal_rules(text: str) -> list[str]:
     problems = []
-    abs_m = re.search(r"## Abstract\s+(.*?)\n\*\*Keywords", text, re.S)
+    abs_m = re.search(r"## Abstract\s+(.*?)\n\*\*Keywords", text, re.DOTALL)
     if not abs_m:
         problems.append("no Abstract section ending in a Keywords line")
     else:
@@ -134,7 +133,7 @@ def check_journal_rules(text: str) -> list[str]:
     for banned in ("available on request", "available upon request"):
         if banned in text.lower():
             problems.append(f"the journal does not accept {banned!r} for data or resources")
-    for m in re.finditer(r"\*\*Fig\. \d\*\*.*?(?=\n\n|\Z)", text, re.S):
+    for m in re.finditer(r"\*\*Fig\. \d\*\*.*?(?=\n\n|\Z)", text, re.DOTALL):
         if m.group(0).rstrip().endswith("."):
             problems.append(f"figure caption ends with punctuation: {m.group(0)[:40]}...")
     body = text.split("## Figure captions")[0]
@@ -146,7 +145,7 @@ def check_journal_rules(text: str) -> list[str]:
 
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
-    ap.add_argument("--manuscript", default="docs/manuscript/MANUSCRIPT_V2.md")
+    ap.add_argument("--manuscript", default="docs/manuscript/MANUSCRIPT.md")
     ap.add_argument("--numbers", default="docs/manuscript/verified_numbers.json")
     ap.add_argument("--references", default="docs/manuscript/references_apa7.md")
     a = ap.parse_args(argv)

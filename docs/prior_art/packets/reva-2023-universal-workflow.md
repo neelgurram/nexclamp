@@ -49,9 +49,9 @@ Reva M, Rössert C, Arnaudon A, Damart T, Mandge D, Tuncel A, Ramaswamy S, Markr
   - Notebooks are at BlueBrain/SSCxEModelExamples, and the repository runs continuous-integration tests for reproducibility.
   - The workflow can output NEURON HOC or NeuroML models.
 
-## Overlap with Neuraxis, claim by claim
+## Overlap with NexClamp, claim by claim
 
-| Neuraxis claim | Overlap | Detail |
+| NexClamp claim | Overlap | Detail |
 |---|---|---|
 | Multi-protocol fingerprints | Strong | Rheobase-scaled, multi-protocol e-feature vectors for conductance-based neurons (Table 1, Table 2), with eFEL-family tools. |
 | Controlled mutations of neuron models | Partial | One-at-a-time parameter reductions with a parameter-by-feature sensitivity matrix. These are sensitivity probes, not catalogued model-file edits, and are not scored as detected or missed. |
@@ -62,9 +62,9 @@ Reva M, Rössert C, Arnaudon A, Damart T, Mandge D, Tuncel A, Ramaswamy S, Markr
 
 ## What remains distinct
 
-- **Purpose.** Reva et al. perturb parameters to understand and repair one model. Neuraxis would edit models to test whether a *battery detects* behaviour-changing transformations.
-- **Tolerances.** Neuraxis would calibrate tolerances by refinement and control false alarms on valid transformations.
-- **Selection and transfer.** Neuraxis would choose a battery on discovery mutants, then show that it transfers to different models and a different mutation family.
+- **Purpose.** Reva et al. perturb parameters to understand and repair one model. NexClamp would edit models to test whether a *battery detects* behaviour-changing transformations.
+- **Tolerances.** NexClamp would calibrate tolerances by refinement and control false alarms on valid transformations.
+- **Selection and transfer.** NexClamp would choose a battery on discovery mutants, then show that it transfers to different models and a different mutation family.
 - **Reviewer risk.** A reviewer could say that adding a set-cover step over Figure 6A's sensitivity matrix is an obvious extension. The transfer evidence has to answer this.
 
 ## Checklist

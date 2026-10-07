@@ -96,7 +96,7 @@ because the canonical test defines "silent".
 mossy-fibre-driven, tested upstream only with jNeuroML_NEURON). `ModelRecord.harness_lems` is left
 empty in `data/model_candidates.csv`. The spec defines the canonical protocol as "the simulation
 distributed with the model". These models therefore need either an explicit
-NeuroSem-authored canonical harness, recorded as a deviation in the preregistration, or exclusion
+NexClamp-authored canonical harness, recorded as a deviation in the preregistration, or exclusion
 from the canonical-vs-battery comparison. `models.Workspace.harness_path` and
 `validation.execution.run_canonical` currently assume a harness exists.
 

@@ -1,4 +1,4 @@
-"""Pre-run SHA-256 manifest for a pilot protocol (Neuraxis development pilot).
+"""Pre-run SHA-256 manifest for a pilot protocol (NexClamp development pilot).
 
 Covers the protocol document, every file in the protocol's config directory, the model
 manifest, the stored source-model snapshots of the protocol's models, the environment lock
@@ -21,9 +21,9 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
-import yaml  # noqa: E402
+import yaml
 
-from nexclamp.provenance import REPO_ROOT, sha256_bytes, sha256_file  # noqa: E402
+from nexclamp.provenance import REPO_ROOT, sha256_bytes, sha256_file
 
 ENVIRONMENT_FILES = ("requirements.lock", "environment.yml", "pyproject.toml", ".tools/jdk_provenance.json", "Dockerfile")
 
@@ -74,7 +74,7 @@ def main(argv: list[str] | None = None) -> int:
             return 1
         print(f"verified {len(current)} entries")
         return 0
-    header = ("# Neuraxis development pilot: pre-run SHA-256 manifest\n"
+    header = ("# NexClamp development pilot: pre-run SHA-256 manifest\n"
               f"# protocol: {a.protocol.as_posix()}; config dir: {a.config_dir.as_posix()}\n"
               "# format: sha256  path  [category]; the commit containing this file is recorded in "
               "manifests/pilot_pre_run_push_record.json\n")

@@ -32,16 +32,16 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
-import numpy as np  # noqa: E402
+import numpy as np
 
-from nexclamp import config  # noqa: E402
-from nexclamp.analysis import bootstrap, metrics  # noqa: E402
-from nexclamp.experiments import pilot_outputs as po  # noqa: E402
-from nexclamp.experiments import pilot_v2_outputs as p2  # noqa: E402
-from nexclamp.experiments import strata  # noqa: E402
-from nexclamp.provenance import REPO_ROOT, git_state, sha256_file, utc_now  # noqa: E402
-from nexclamp.selection import greedy  # noqa: E402
-from nexclamp.selection.matrix import DetectionMatrix  # noqa: E402
+from nexclamp import config
+from nexclamp.analysis import bootstrap, metrics
+from nexclamp.experiments import pilot_outputs as po
+from nexclamp.experiments import pilot_v2_outputs as p2
+from nexclamp.experiments import strata
+from nexclamp.provenance import REPO_ROOT, git_state, sha256_file, utc_now
+from nexclamp.selection import greedy
+from nexclamp.selection.matrix import DetectionMatrix
 
 CANONICAL = "P00_canonical"
 HELDOUT_FAMILY = "kinetics"

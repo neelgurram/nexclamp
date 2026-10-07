@@ -34,8 +34,8 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
-from nexclamp import config  # noqa: E402
-from nexclamp.provenance import REPO_ROOT, git_state, sha256_file, utc_now  # noqa: E402
+from nexclamp import config
+from nexclamp.provenance import REPO_ROOT, git_state, sha256_file, utc_now
 
 INPUT_PATHS = ("src", "scripts", "tests", "configs", "docs", "manifests", "data", "workflows",
                "pyproject.toml", "requirements.lock", "environment.yml", "Makefile", "Dockerfile")

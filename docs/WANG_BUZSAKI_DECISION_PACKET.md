@@ -34,7 +34,7 @@ included nor excluded until Neel decides.*
 
 - **Criterion violated.** C04 "passes appropriate NeuroML validation" (execution plan, "Inclusion
   criteria").
-- **Oracle rule.** Neuraxis's structural oracle (D-006) requires a reference's cell file and harness
+- **Oracle rule.** NexClamp's structural oracle (D-006) requires a reference's cell file and harness
   network files to validate. Only failures in *included* files, such as the Pospischil LTS channel
   files, are recorded as baseline errors.
 - **Other criteria.** The curation workflow evaluates every other criterion mechanically; see

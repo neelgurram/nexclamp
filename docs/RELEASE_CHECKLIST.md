@@ -17,7 +17,7 @@ the rest are prepared in the repository already.*
 
 The repository contains third-party models, so check before publishing:
 
-- [x] Licences recorded per model (`data/model_manifest.csv`, `LICENSE_AUDIT.md`). Models are MIT or
+- [x] Licences recorded per model (`data/model_manifest.csv`, `project/LICENSE_AUDIT.md`). Models are MIT or
       GPL-2.0; the GPL-2.0 models (Traub) are redistributed under their own terms with attribution.
 - [x] Study code is Apache-2.0 (`LICENSE`).
 - [ ] **[NEEL]** Confirm you are content that the repository will show your email address
@@ -54,7 +54,7 @@ published. Decide before submission.
 
 1. *Neuroinformatics* (Springer), original article, **standard (non-open-access) route** so there is
    no charge. Confirm on the journal's "Submission guidelines" page that this route is free.
-2. Upload: manuscript (`MANUSCRIPT_v0.1.docx`), figures (PDF versions in
+2. Upload: manuscript (`docs/manuscript/MANUSCRIPT.docx`), figures (PDF versions in
    `results/figures/heldout-v1/`), Online Resources 1 and 2, and the cover letter.
 3. In the cover letter, state: the study was preregistered before any held-out data existed
    (AsPredicted #312455), both outcomes were pre-committed to publication, and the code and data are

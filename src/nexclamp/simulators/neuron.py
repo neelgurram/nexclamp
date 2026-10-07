@@ -86,7 +86,7 @@ def export_to_neuron(lems_file: Path, java: Path | None = None, jar: Path | None
     cmd = [str(java), f"-Xmx{max_memory}", "-Djava.awt.headless=true", "-jar", str(jar), str(lems_file), "-neuron"]
     t0 = time.perf_counter()
     try:
-        proc = subprocess.run(cmd, capture_output=True, text=True, timeout=timeout_s, cwd=root)
+        proc = subprocess.run(cmd, capture_output=True, text=True, timeout=timeout_s, cwd=root, check=False)
     except subprocess.TimeoutExpired:
         return ExportResult(False, -1, None, (), (), time.perf_counter() - t0, f"export timed out after {timeout_s}s")
     except OSError as exc:
@@ -125,7 +125,7 @@ class NeuronSimulator:
         self._probed = True
         probe = "import neuron, sys; sys.stdout.write(neuron.__version__)"
         try:
-            proc = subprocess.run([str(self.python), "-c", probe], capture_output=True, text=True, timeout=180)
+            proc = subprocess.run([str(self.python), "-c", probe], capture_output=True, text=True, timeout=180, check=False)
         except (OSError, subprocess.TimeoutExpired):
             return None
         self._version = proc.stdout.strip() or None if proc.returncode == 0 else None
@@ -161,7 +161,7 @@ class NeuronSimulator:
             return False, "nrnivmodl not found on PATH"
         try:
             proc = subprocess.run([str(self.nrnivmodl)], capture_output=True, text=True,
-                                  timeout=timeout_s, cwd=directory)
+                                  timeout=timeout_s, cwd=directory, check=False)
         except (OSError, subprocess.TimeoutExpired) as exc:
             return False, f"nrnivmodl failed to start or timed out: {exc}"
         return proc.returncode == 0, (proc.stdout + proc.stderr)[-4000:]
@@ -190,7 +190,7 @@ class NeuronSimulator:
         cmd = [str(self.python), exported.runner.name]
         env = {**os.environ, "NEURON_MODULE_OPTIONS": "-nogui"}
         try:
-            proc = subprocess.run(cmd, capture_output=True, text=True, timeout=timeout_s, cwd=work, env=env)
+            proc = subprocess.run(cmd, capture_output=True, text=True, timeout=timeout_s, cwd=work, env=env, check=False)
         except subprocess.TimeoutExpired:
             return SimResult(RunStatus.TIMEOUT, -1, time.perf_counter() - t0, {}, cmd,
                              f"NEURON run exceeded {timeout_s}s")

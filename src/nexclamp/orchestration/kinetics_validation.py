@@ -45,10 +45,10 @@ EQUATIONS = {
 
 
 def fixture_model() -> ModelRecord:
-    return ModelRecord(model_id="kinetics_fixture", name="Neuraxis kinetics validation fixture (HH-type, test only)",
+    return ModelRecord(model_id="kinetics_fixture", name="NexClamp kinetics validation fixture (HH-type, test only)",
                        snapshot="kinetics_fixture", cell_file="KinFix.cell.nml", cell_id="kinfix",
                        harness_lems="LEMS_KinFix.xml", harness_output_file="kinfix_v.dat", harness_v_column="1",
-                       temperature="6.3 degC", source_family="neuraxis_test_fixture", citation="Neuraxis test fixture",
+                       temperature="6.3 degC", source_family="neuraxis_test_fixture", citation="NexClamp test fixture",
                        source_url="tests/fixtures/kinetics_fixture", commit="in-repository", license="Apache-2.0",
                        license_url="LICENSE", download_date="", simulator="jNeuroML",
                        expected_behavior="tonic HH-type spiking", inclusion="test_fixture_only",

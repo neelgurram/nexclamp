@@ -9,6 +9,7 @@ from __future__ import annotations
 import importlib.util
 import json
 from pathlib import Path
+from typing import ClassVar
 
 import pytest
 
@@ -138,7 +139,7 @@ def test_layer_status_reports_absent_and_unevaluated_layers_distinctly(agent_run
             self.status = type("S", (), {"value": value})()
 
     class Score:
-        layers = {"edit_scope": Outcome("pass"), "hidden_battery_passes": Outcome("not_evaluated")}
+        layers: ClassVar[dict] = {"edit_scope": Outcome("pass"), "hidden_battery_passes": Outcome("not_evaluated")}
 
     s = Score()
     assert agent_run.layer_status(s, "edit_scope") == "pass"

@@ -2,13 +2,13 @@
 
 Status: Milestone 0 deliverable, written 2026-09-13 on branch `m0-audit` (drafted at commit `3cdb957`;
 fact-checked 2026-09-13 at commit `d323afa`).
-Scope: every dependency, the Java runtime, every model snapshot under `models/`, NeuroSem's own
+Scope: every dependency, the Java runtime, every model snapshot under `models/`, NexClamp's own
 license, and redistribution scenarios. **This is not legal advice.** No lawyer reviewed it. It records
 what each primary source says, where sources disagree, and what Neel has to decide (DECISIONS N-05).
 
 ## In plain English
 
-1. Every piece NeuroSem uses belongs to someone, and each owner attached rules.
+1. Every piece NexClamp uses belongs to someone, and each owner attached rules.
 2. Think of each model file as a recipe card someone lent us.
 3. An MIT card says: copy it and change it freely, but keep the owner's notice on the card.
 4. The LGPL card (the NeuroML2 HH example) says: you may change it, but any changed copy you hand out stays under the LGPL (or the stricter GPL), not our BSD license.
@@ -79,7 +79,7 @@ Limits:
 | Mutants / transforms | Written only to git-ignored `work/`. Raw run records hold no model files. | none today | Choose: redistribute under upstream licenses, or ship regeneration scripts. |
 | Docker image | Never built. `COPY . .` would include `models/`. | none today | Decide whether to publish an image at all. |
 | Zenodo | No deposit made. Withdrawn records keep a tombstone. | none today | Settle licensing before the first deposit. |
-| NeuroSem license | BSD-3-Clause, provisional (D-018) | low | Neel confirms code, documentation and data licenses. |
+| NexClamp license | BSD-3-Clause, provisional (D-018) | low | Neel confirms code, documentation and data licenses. |
 
 ## 3. Python dependencies
 
@@ -186,7 +186,7 @@ Values are exactly what installed metadata states. "Expr" means `License-Express
 
 File: `.venv/Lib/site-packages/pyneuroml/lib/jNeuroML-0.14.0-jar-with-dependencies.jar`,
 SHA-256 `45ee565a65a66008a3b41935358d11b7c19cb6b5a67bbec22481d519f53db931` (matches D-004).
-It has 12,980 entries and 63 embedded `pom.xml` files. NeuroSem runs it as a separate process
+It has 12,980 entries and 63 embedded `pom.xml` files. NexClamp runs it as a separate process
 (`java -jar`, D-005) and does not modify it.
 
 | component (embedded pom) | license as stated | source |
@@ -204,8 +204,8 @@ It has 12,980 entries and 63 embedded `pom.xml` files. NeuroSem runs it as a sep
 | log4j 2.17.1, commons-lang/lang3/collections, slf4j, JSBML 1.4 and extensions, biojava, ncsa.hdf object 2.12, xstream 1.3.1, javaparser, JAXB runtime 2.3.5, jaxb2-basics 0.12.0, jakarta.xml.bind-api 2.3.3, istack-commons 3.0.12, com.sun.activation 1.2.2, org.neuroml.import 1.11.0, org.neuroml1.model 1.11.0 | **no license stated in the embedded pom** (probably inherited from parent poms that are not in the jar) | **unverified** |
 | (unattributed files) `LICENSE.md` at the jar root and `META-INF/LICENSE.md` | BSD-style text, "Copyright (c) 2017 Oracle and/or its affiliates" (first lines read only); which component they belong to is not stated | **unverified** |
 
-Consequence: NeuroSem does not itself copy the jar when a user installs it from pip, so there is
-nothing for NeuroSem to redistribute there. Publishing an image that contains the jar would
+Consequence: NexClamp does not itself copy the jar when a user installs it from pip, so there is
+nothing for NexClamp to redistribute there. Publishing an image that contains the jar would
 redistribute all of the components above (section 8.3).
 
 ## 5. Java runtime: Eclipse Temurin
@@ -265,7 +265,7 @@ non-standard header text. GitHub does not state a reason, so this is **unverifie
 
 | snapshot | license (file, SHA-256 at fetch) | carve-outs in the LICENSE preamble | files in the snapshot that fall under a carve-out | `.mep` files and their status | citation |
 |---|---|---|---|---|---|
-| `NeuroML2@a5f5dadc` (NeuroML/NeuroML2 `a5f5dadc…`) | LGPL v3 text, `LICENSE.lesser`, `97628afe…`; GitHub `LGPL-3.0` | none | none | `LEMSexamples/test/.test.ex5.mep`: LGPL-3.0 (no carve-out) | No CITATION.md upstream. The manifest cites Hodgkin & Huxley 1952 as NeuroSem's own attribution, not an upstream condition. The tree has **no GPL-3.0 text**, although LGPL v3 incorporates GPL v3 (`fixture_verify.json` D9). Whether upstream means `-only` or `-or-later` is not stated (unverified). |
+| `NeuroML2@a5f5dadc` (NeuroML/NeuroML2 `a5f5dadc…`) | LGPL v3 text, `LICENSE.lesser`, `97628afe…`; GitHub `LGPL-3.0` | none | none | `LEMSexamples/test/.test.ex5.mep`: LGPL-3.0 (no carve-out) | No CITATION.md upstream. The manifest cites Hodgkin & Huxley 1952 as NexClamp's own attribution, not an upstream condition. The tree has **no GPL-3.0 text**, although LGPL v3 incorporates GPL v3 (`fixture_verify.json` D9). Whether upstream means `-only` or `-or-later` is not stated (unverified). |
 | `PospischilEtAl2008@049081c3` | OSB MIT, `e51615a6…`; GitHub NOASSERTION | `NEURON_ORIG`, `NEURON_MODIFIED`: "provided on condition of citing the ModelDB entry and original publication as outlined in CITATION.md" | `NEURON_MODIFIED/.test.{FS,IB,LTS,RS}.spikes.mep` (4 files, all tracked) | **These 4 `.mep` files carry the citation condition and no stated copy or modify permission** (`fixture_verify.json` D1; confirmed by reading LICENSE today). Every `NeuroML2/` file is MIT. | CITATION.md "respectfully ask[s]" citation of Pospischil et al. 2008, ModelDB 123623 and Zenodo `10.5281/zenodo.1936638`. That is a request for MIT files and a **condition** for the carve-out files. |
 | `WangBuzsaki1996@c5322844` | OSB MIT, `18c4dd2b…`; GitHub NOASSERTION | `ModelDB_NEURON`, `NEURON` (citation condition); `Brian` (own `license.txt`) | none (only `NeuroML2/LEMS/*`, root `.test.wb.mep`, CITATION.md and LICENSE were fetched) | `.test.wb.mep` at repository root: MIT | Wang & Buzsaki 1996; ModelDB 26997; Zenodo badge `latestdoi/54382632` |
 
@@ -299,14 +299,14 @@ Eleven `.mep` files are tracked (`git ls-files models | grep .mep`).
 
 The carve-out wording says "Code located there". A `.mep` file is YAML holding spike times (for
 example `.test.RS.spikes.mep`: five spike times). Whether "code" covers such a data file is not stated.
-The conservative reading, used by the verifier and the skeptic, is that it does. NeuroSem's code does
+The conservative reading, used by the verifier and the skeptic, is that it does. NexClamp's code does
 not read any `.mep` file (`grep -rn "\.mep" src/neuraxis`: no hits); the files are kept only as
 provenance. The NEURO and INTEG skeptic verdicts recommend not vendoring them, and referencing them by
 URL plus hash instead.
 
-## 7. NeuroSem's own license
+## 7. NexClamp's own license
 
-- `LICENSE`: BSD 3-Clause, "Copyright (c) 2026, Neel Gurram". A footer limits its scope to "NeuroSem's
+- `LICENSE`: BSD 3-Clause, "Copyright (c) 2026, Neel Gurram". A footer limits its scope to "NexClamp's
   own source code and documentation", states that model files keep their licenses and that
   dependencies are used unmodified, and marks the choice as provisional.
 - Consistent declarations: `pyproject.toml` (`license = { file = "LICENSE" }`), `CITATION.cff`
@@ -318,22 +318,22 @@ URL plus hash instead.
 
 1. The source repository ships **no** LGPL library code. `git ls-files` shows no tracked `.jar`,
    `.xsd` or NeuroML2 core-type file; `requirements.lock` only names versions, and users install the
-   libraries with pip. Distributing NeuroSem's source therefore conveys no LGPL library.
-2. NeuroSem imports pyNeuroML, PyLEMS, neuromllite and eFEL as Python modules, and starts the jNeuroML
+   libraries with pip. Distributing NexClamp's source therefore conveys no LGPL library.
+2. NexClamp imports pyNeuroML, PyLEMS, neuromllite and eFEL as Python modules, and starts the jNeuroML
    jar as a separate `java -jar` process. LGPL v3 section 4 lets a "Combined Work" be conveyed "under
    terms of your choice" that do not restrict modifying the library, provided notices, license copies
    and a way to relink are supplied. BSD-3-Clause adds no such restriction, so on this reading the two
    licenses do not appear to conflict (not a legal opinion). Whether a Python import or a subprocess call makes a "Combined Work" at all is a legal
    question (**unverified**). It matters only when libraries are bundled (section 8.3).
 3. The repository **does** convey third-party model files verbatim (196 tracked files under
-   `models/`, of which 9 are NeuroSem's own `PROVENANCE.json` records), including the LGPL NeuroML2 example. For those, the LGPL and GPL v3 texts must
+   `models/`, of which 9 are NexClamp's own `PROVENANCE.json` records), including the LGPL NeuroML2 example. For those, the LGPL and GPL v3 texts must
    accompany the copy. `LICENSE.lesser` is present; the GPL v3 text is not (section 6.1).
-4. Not audited: whether any NeuroSem source file contains code adapted from an LGPL or GPL project.
+4. Not audited: whether any NexClamp source file contains code adapted from an LGPL or GPL project.
    Nothing indicates this, but no line-by-line check was done.
 5. Open question, not assessed: how AI-assisted authorship (AI_USE_LOG.md) bears on the copyright
    notice. This needs a human answer if it matters for the release.
 
-**Documentation and data.** The LICENSE footer puts NeuroSem documentation under BSD-3-Clause. No
+**Documentation and data.** The LICENSE footer puts NexClamp documentation under BSD-3-Clause. No
 license has been chosen for generated data (traces, features, tables). Common alternatives are
 CC-BY-4.0 for documentation and CC-BY-4.0 or CC0-1.0 for data; the choice is Neel's (L-02, L-03).
 
@@ -375,7 +375,7 @@ or agent-study patches, which the spec publishes "where redistribution is permit
 |---|---|---|
 | MIT (Pospischil `NeuroML2/`, Wang-Buzsaki, candidates) | modified copy | Keep the copyright and permission notice (ship the snapshot LICENSE). Marking changes is not required by MIT but is good practice. |
 | LGPL-3.0 (`nml2_hh_example`) | modified version of a covered work | It cannot be relicensed under BSD-3-Clause. It must stay under LGPL v3 (or GPL v3; LGPL section 2). GPL v3 section 5(a), incorporated by LGPL v3, requires "prominent notices stating that you modified it, and giving a relevant date". Ship `LICENSE.lesser` and the GPL v3 text. Whether a NeuroML model file counts as a "Library" in LGPL's sense is a legal question (**unverified**); treating it as covered is the conservative reading. |
-| Carve-out (citation-only) | not applicable: NeuroSem does not mutate `.mep` files | Do not redistribute (8.1). |
+| Carve-out (citation-only) | not applicable: NexClamp does not mutate `.mep` files | Do not redistribute (8.1). |
 
 Alternative (INTEG skeptic, revised recommendation): publish **regeneration** instead of files, meaning
 the pinned upstream commit and file hashes plus the operator, site, seed and variant id. Variant ids
@@ -436,19 +436,19 @@ What a raw-results deposit would contain today: traces (`traces.npz`, float32 mV
 - A Zenodo archive of a GitHub release would contain the repository, so everything in 8.1 applies,
   including the carve-out `.mep` files and the missing GPL v3 text. Because withdrawal keeps a tombstone,
   fix licensing **before** the first deposit.
-- Choose and state a license for NeuroSem-generated data in the deposit metadata (L-03).
+- Choose and state a license for NexClamp-generated data in the deposit metadata (L-03).
 - D-003 already forbids any public release or DOI without Neel.
 
 ## 9. Documentation and third-party text
 
 | source | license as stated | evidence | implication |
 |---|---|---|---|
-| docs.neuroml.org (built from `NeuroML/Documentation`) | CC-BY-4.0. README line 20: "The documentation is licensed under the CC-By License", linking `creativecommons.org/licenses/by/4.0/`. | `curl` of the raw README, 2026-09-13; GitHub license API: Not Found (no license file detected); `neuroml-lems.verify.json` check 43. A direct fetch of `https://docs.neuroml.org/` returned no readable content today. | Attribution is required if text or figures are reused. Whether any NeuroSem document reuses docs.neuroml.org text beyond citation was **not audited**. |
+| docs.neuroml.org (built from `NeuroML/Documentation`) | CC-BY-4.0. README line 20: "The documentation is licensed under the CC-By License", linking `creativecommons.org/licenses/by/4.0/`. | `curl` of the raw README, 2026-09-13; GitHub license API: Not Found (no license file detected); `neuroml-lems.verify.json` check 43. A direct fetch of `https://docs.neuroml.org/` returned no readable content today. | Attribution is required if text or figures are reused. Whether any NexClamp document reuses docs.neuroml.org text beyond citation was **not audited**. |
 | SciUnit documentation | states the MIT license | `sciunit-neuronunit.verify.json` check 19 | none |
 | eFEL paper (Bioinformatics 2026) | CC BY 4.0 (as reported; the check confirms the Crossref record) | `efel.verify.json` check 16 | CC BY 4.0 permits reuse with attribution, if that license applies to the figure in question. |
 | NeuronUnit bioRxiv preprint | `cc_by_nc_nd` | `sciunit-neuronunit.verify.json` check 40 | ND terms do not permit sharing adaptations; cite only. |
 | Citation File Format specification repository | CC-BY-4.0 | `venues-policy.verify.json` check 48 | none (the format is used, not copied) |
-| NeuroSem documentation | BSD-3-Clause via the LICENSE footer | `LICENSE` | Decision L-02. |
+| NexClamp documentation | BSD-3-Clause via the LICENSE footer | `LICENSE` | Decision L-02. |
 
 ## 10. Open questions and unverified items
 
@@ -482,7 +482,7 @@ models), D-003 (no release or DOI without Neel). No row below has been acted on.
 | L-02 | Documentation license | BSD-3-Clause as now / CC-BY-4.0 | CC-BY-4.0 for `docs/`, so reuse terms match docs.neuroml.org. | first public push |
 | L-03 | License for generated data (traces, features, tables) | CC-BY-4.0 / CC0-1.0 / none stated | State one explicitly in the repository and in Zenodo metadata. | first Zenodo deposit |
 | L-04 | LGPL mutants of `nml2_hh_example` | publish them under LGPL-3.0 with notices / publish regeneration scripts and hashes only / exclude the model from shared artefacts | Regeneration scripts and hashes; if files are published, keep LGPL-3.0, mark changes with dates, ship the LGPL and GPL texts. | any release of variants or agent-study patches |
-| L-05 | The five carve-out `.mep` files tracked in Git (4 Pospischil, 1 Solinas) | remove from the public tree and reference by URL plus SHA-256 / keep with citation and a "no license granted" note / ask OSB maintainers | Remove from the public tree and reference by URL plus hash (NEURO and INTEG skeptic verdicts). NeuroSem code does not read them. | first public push |
+| L-05 | The five carve-out `.mep` files tracked in Git (4 Pospischil, 1 Solinas) | remove from the public tree and reference by URL plus SHA-256 / keep with citation and a "no license granted" note / ask OSB maintainers | Remove from the public tree and reference by URL plus hash (NEURO and INTEG skeptic verdicts). NexClamp code does not read them. | first public push |
 | L-06 | GPL v3 text alongside the NeuroML2 snapshot's `LICENSE.lesser` | add a copy next to the snapshot (outside the hashed upstream files) / leave as is | Add it before any redistribution. | first public push |
 | L-07 | Publish a Docker image? | publish the Dockerfile only / publish an image and meet GPL v2, LGPL and Apache NOTICE duties | Dockerfile only, unless an image is truly needed. If one is, first enumerate section 4 and the base image, and exclude the carve-out `.mep` files from the build context. | any registry push |
 | L-08 | Per-file license metadata | REUSE `REUSE.toml` + license column in the mutation/transform manifests + `reuse lint` in CI / manifest column only / nothing | REUSE metadata, the manifest column and the CI lint (medium-severity pre-release item). | public release |

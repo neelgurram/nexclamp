@@ -71,7 +71,7 @@ Use only after every bracketed condition is true. Delete sentences that do not a
 > Claude Code (Anthropic; model Claude Opus 5, identifier `claude-opus-5`, used between
 > [first date] and [last date]) was used to assist with a literature and tool audit,
 > software scaffolding, implementation, debugging, refactoring, test implementation and
-> drafting of documentation for NeuroSem. [Condition: Neel has reviewed all generated code.]
+> drafting of documentation for NexClamp. [Condition: Neel has reviewed all generated code.]
 > All generated code was reviewed by the author and evaluated through deterministic unit
 > and integration tests, controlled mutations, numerical-convergence checks and
 > reproduction of reference simulations. [Condition: the relevant sections were drafted with

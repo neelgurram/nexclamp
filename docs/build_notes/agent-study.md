@@ -1,7 +1,7 @@
 # Build note: agent-study harness (Milestone 9)
 
-Owner files: `configs/agent_policy.yaml`, `agent_study/**`, `src/neurosem/experiments/__init__.py`
-(docstring only; it was missing), `src/neurosem/experiments/agent.py`,
+Owner files: `configs/agent_policy.yaml`, `agent_study/**`, `src/nexclamp/experiments/__init__.py`
+(docstring only; it was missing), `src/nexclamp/experiments/agent.py`,
 `tests/unit/test_agent_harness.py`, `docs/agent_study_protocol.md`.
 
 No agent was launched, and no trials exist. Everything below is harness plumbing and
@@ -9,7 +9,7 @@ task-design checks, not study results.
 
 ## Requests to other module owners
 
-1. **CLI `evaluate-agent` (owner of `src/neurosem/cli.py`).** `cmd_agent` currently calls
+1. **CLI `evaluate-agent` (owner of `src/nexclamp/cli.py`).** `cmd_agent` currently calls
    `agent.score_trial(a.task, Path(a.trial_dir), Path(a.frozen_config) if a.frozen_config else None)`
    and prints with `json.dumps(score, default=str)`. `score_trial` now accepts a path and
    loads it with `load_frozen_config`, and raises `FrozenConfigError` with a clear message for
@@ -79,8 +79,8 @@ task-design checks, not study results.
   must be real calendar dates.
 - The public checks share one runner, `agent_study/public_common/run_public_checks.py`, copied
   into each trial; only `public_checks.json` and `canonical_reference.json` are stored per task.
-- The trial directory does not export the NeuroSem framework (`export.framework_include` is
-  empty): NeuroSem contains the perturbation battery, and the agent may see public tests only.
+- The trial directory does not export the NexClamp framework (`export.framework_include` is
+  empty): NexClamp contains the perturbation battery, and the agent may see public tests only.
 
 ## Task-design checks run on this machine
 

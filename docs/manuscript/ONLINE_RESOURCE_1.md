@@ -1,6 +1,6 @@
 # Online Resource 1: methods detail
 
-*Generated 2026-09-23T01:25:17+00:00 by `scripts/build_supplement.py` at commit `9c66f82e30fa` (tree dirty: False). Every table is read from the repository's recorded files.*
+*Generated 2026-10-07T21:44:42+00:00 by `scripts/build_supplement.py` at commit `5a00bbab7497` (tree dirty: True). Every table is read from the repository's recorded files.*
 
 ## 1 Model screening criteria
 
@@ -209,6 +209,8 @@ Severities: mild, strong, defined by prespecified bands of |ln k| for multiplica
 | protocol_version | HELDOUT_PROTOCOL_V1 |
 | study_id | neuron_model_behavioral_validation |
 | study_phase | confirmatory_heldout |
+
+The recorded `project_name` is the name the software carried when the campaign ran. The project was renamed to NexClamp afterwards, for the trademark reason given in the deviation log; the recorded value is reproduced as recorded rather than rewritten.
 
 Simulator: jNeuroML 0.14.0 / jLEMS 0.12.0 on Temurin JDK 21.0.12.1+1; Python 3.12.10; pyNeuroML 1.3.22; libNeuroML 0.6.7; eFEL 5.7.34. Every run records its own software versions, inputs and outputs under a content-addressed identifier.
 

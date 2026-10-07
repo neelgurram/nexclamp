@@ -86,7 +86,7 @@ def test_solver_config_harness_still_runs(method, models, sim, tmp_path, capsys)
     trace is therefore an empirical observation for this model, window and simulator
     version, consistent with both paths being forward Euler, not an equivalence that
     holds by construction. Identity is reported here, not asserted, because it is a
-    property of the simulator version rather than of NeuroSem.
+    property of the simulator version rather than of NexClamp.
     """
     model = models["pospischil2008_rs"]
     ref = materialize(model, tmp_path / "ref")

@@ -1,4 +1,4 @@
-# NeuroSem architecture and module contracts
+# NexClamp architecture and module contracts
 
 This file is the implementation contract. Every module below has a fixed public API so
 that modules can be built and tested independently. Names, signatures and file formats
@@ -72,8 +72,8 @@ analysis.metrics / analysis.bootstrap / analysis.figures
 |---|---|---|
 | `data/model_manifest.csv` | yes | `ModelRecord` rows (columns = dataclass fields) |
 | `data/protocol_manifest.csv` | yes | generated from templates: `protocol_id,kind,description,params_json,features,implemented,not_implemented_reason` |
-| `data/mutation_manifest.csv` | yes | one row per mutant: `variant_id,model_id,family,operator,params_json,edits_json,exec_overrides_json,description,generator_seed` |
-| `data/valid_transforms.csv` | yes | same columns as mutation manifest, `family` = transform category, plus `no_change` flag |
+| `results/processed/<campaign>/mutation_manifest.csv` | yes | one row per mutant: `variant_id,model_id,family,operator,params_json,edits_json,exec_overrides_json,description,generator_seed` |
+| `results/processed/<campaign>/valid_transforms.csv` | yes | same columns as mutation manifest, `family` = transform category, plus `no_change` flag |
 | `data/splits/discovery_models.txt` | yes | one model_id per line |
 | `data/splits/heldout/heldout_models.txt` | yes | held-out model ids (read ONLY by `selection.splits.HeldoutGate`) |
 | `data/splits/heldout/heldout_families.txt` | yes | held-out mutation families |

@@ -1,6 +1,6 @@
 # Build note: `selection/` (ARCHITECTURE.md section 3.7)
 
-Implemented: `src/neurosem/selection/{__init__,matrix,greedy,splits}.py`, `scripts/freeze_splits.py`,
+Implemented: `src/nexclamp/selection/{__init__,matrix,greedy,splits}.py`, `scripts/freeze_splits.py`,
 `data/splits/{README.md,discovery_models.txt,discovery_families.txt}`, `data/splits/heldout/README.md`,
 tests `tests/unit/test_{selection_matrix,greedy_selection,splits_leakage}.py`.
 

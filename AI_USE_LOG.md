@@ -2,7 +2,7 @@
 
 This log records every substantive use of generative AI in NeuroSem. IEEE requires that
 the selected venue's AI-disclosure policy be followed. That policy is verified in
-`docs/DEPENDENCY_AUDIT.md` / `PRIOR_ART_AUDIT.md` and must be re-checked at submission. Only
+`docs/DEPENDENCY_AUDIT.md` / `docs/project/PRIOR_ART_AUDIT.md` and must be re-checked at submission. Only
 humans are authors, and the human author is responsible for all content.
 
 **Two roles of AI in this project must never be mixed:**
@@ -62,7 +62,7 @@ is written. AI-verified is not the same as human-verified.
 | Field | Value |
 |---|---|
 | Date | 2026-09-13 |
-| Human instruction | Neel attached `NEUROSEM_FINAL_SPEC.pdf` and wrote "keep going, and build out the entire thing" (see DECISIONS.md D-003) |
+| Human instruction | Neel attached `NEUROSEM_FINAL_SPEC.pdf` and wrote "keep going, and build out the entire thing" (see docs/project/DECISIONS.md D-003) |
 | Tool / model | Claude Code desktop, Claude Opus 5 (`claude-opus-5`) |
 | Orchestration | Main session wrote the core layers. Workflow `wf_dd699b26-8ce` ran parallel module builders, each followed by an adversarial reviewer and a fixer |
 | Transcripts | Claude Code session transcripts under `~/.claude/projects/C--Users-gurra-Continuum/` (session d876c622-…); workflow journals in its `subagents/workflows/` folder |
@@ -72,7 +72,7 @@ is written. AI-verified is not the same as human-verified.
 - `schemas.py`, `units.py`, `provenance.py`, `config.py`, `models.py`, `cli.py`
 - `simulators/*`, `protocols/*`, `validation/*`
 - `experiments/{campaign,pilot,discovery,heldout}.py`
-- configs, model manifest, `docs/ARCHITECTURE.md`, `DECISIONS.md`
+- configs, model manifest, `docs/ARCHITECTURE.md`, `docs/project/DECISIONS.md`
 - validation-layer unit tests
 
 **Written by workflow agents (listed in their reports):**
@@ -110,18 +110,18 @@ Every change came with updated or new tests. The full suite was run before commi
 - **Documents workflow `wf_7ab5e6e4-e5a`:** 3 of 9 agents finished.
 
 On Neel's instruction ("Try again") the remaining work was redone without workflow orchestration, using individual background subagents:
-- `REQUIREMENTS.md`, `RISK_REGISTER.md` and `PLAN.md` were written;
-- `LICENSE_AUDIT.md` and `docs/DEPENDENCY_AUDIT.md` were fact-checked and fixed;
+- `docs/project/REQUIREMENTS.md`, `docs/project/RISK_REGISTER.md` and `docs/project/PLAN.md` were written;
+- `docs/project/LICENSE_AUDIT.md` and `docs/DEPENDENCY_AUDIT.md` were fact-checked and fixed;
 - three deep-read batches covered all 73 second-round candidates estimated at closeness 3;
 - one novelty stress test covered the closest verified works.
 
-The main session fixed the name audit from its fact-check findings. It also built `docs/novelty_matrix.csv` with `scripts/build_novelty_matrix.py` and wrote `PRIOR_ART_AUDIT.md`.
+The main session fixed the name audit from its fact-check findings. It also built `docs/novelty_matrix.csv` with `scripts/build_novelty_matrix.py` and wrote `docs/project/PRIOR_ART_AUDIT.md`.
 
-Scope that was dropped is recorded openly: 144 second-round candidates at estimated closeness 2 were not deep-read, and the third critic round did not run (`PRIOR_ART_AUDIT.md` section 7).
+Scope that was dropped is recorded openly: 144 second-round candidates at estimated closeness 2 were not deep-read, and the third critic round did not run (`docs/project/PRIOR_ART_AUDIT.md` section 7).
 
 **Accepted, modified, or rejected.** All code is pending Neel's review. Nothing has been released.
 
-**Scientific control.** The following remain provisional and are listed for Neel's decision in DECISIONS.md:
+**Scientific control.** The following remain provisional and are listed for Neel's decision in docs/project/DECISIONS.md:
 - tolerance constants
 - pilot thresholds
 - splits and exclusions
@@ -142,7 +142,7 @@ Scope that was dropped is recorded openly: 144 second-round candidates at estima
 - Recorded Neel's direction as D-026 (pilot is exploratory and never pooled), D-027 (preservation and sealing) and D-028 (iteration 1 exceeded the bounds).
 - Wrote the campaign registry and its guards (`experiments/registry.py`) and wired them into `make_context`, the pilot and `evaluate_heldout`, with unit tests.
 - Tagged the iteration-1 code (`pilot-v1-code`), archived and sealed campaign `pilot` (`scripts/archive_campaign.py`), and wrote `docs/pilot/PILOT_REGISTER.md`.
-- Drafted pilot iteration 2 (`docs/pilot/pilot_v2_design.md`, `configs/pilot_v2_draft/`) from iteration-1 data, and added the post-pilot freeze sequence to `PLAN.md`.
+- Drafted pilot iteration 2 (`docs/pilot/pilot_v2_design.md`, `configs/pilot_v2_draft/`) from iteration-1 data, and added the post-pilot freeze sequence to `docs/project/PLAN.md`.
 
 **What the AI did not do**
 - It ran no new simulations and did not run iteration 2.

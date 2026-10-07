@@ -29,6 +29,7 @@ import difflib
 import enum
 import functools
 import importlib
+import itertools
 import json
 import math
 import os
@@ -49,8 +50,16 @@ from lxml import etree
 
 from nexclamp import units
 from nexclamp.models import Workspace, load_models, materialize, snapshot_dir
-from nexclamp.provenance import (REPO_ROOT, git_state, sha256_bytes, sha256_file, sha256_json, tree_manifest,
-                                 utc_now, write_immutable_text)
+from nexclamp.provenance import (
+    REPO_ROOT,
+    git_state,
+    sha256_bytes,
+    sha256_file,
+    sha256_json,
+    tree_manifest,
+    utc_now,
+    write_immutable_text,
+)
 from nexclamp.schemas import ModelRecord, RunStatus, VariantKind, VariantRecord, dumps, to_jsonable
 
 # ----------------------------------------------------------------------------- constants
@@ -182,7 +191,7 @@ class FrozenConfigError(AgentStudyError):
 
 
 # ----------------------------------------------------------------------------- paths and globs
-@functools.lru_cache(maxsize=None)
+@functools.cache
 def _glob_regex(pattern: str) -> re.Pattern[str]:
     """``**/`` = any number of directories, ``**`` = anything, ``*`` / ``?`` stay within one segment."""
     out, i = [], 0
@@ -576,7 +585,7 @@ class PermittedChange:
     attributes: tuple[str, ...] | None = None  # attribute names (None = any)
     require_si_equal: bool = False             # the new value must denote the same physical quantity
 
-    def matches(self, ch: "Change") -> bool:
+    def matches(self, ch: Change) -> bool:
         if not glob_match(ch.file, self.file) or ch.kind not in self.change:
             return False
         if self.locator is not None:
@@ -1266,7 +1275,7 @@ def _attribute_value_span(data: bytes, line: int | None, tag: str, attribute: st
     ls = line_starts[line - 1]
     le = line_starts[line] if line < len(line_starts) else len(data)
     tag_re = re.compile(rb"<(?:[A-Za-z_][\w.\-]*:)?" + re.escape(tag.encode("utf-8")) + rb"(?=[\s/>])")
-    attr_re = re.compile(rb"(?<=\s)" + re.escape(attribute.encode("utf-8")) + rb"\s*=\s*([\"'])(.*?)\1", re.S)
+    attr_re = re.compile(rb"(?<=\s)" + re.escape(attribute.encode("utf-8")) + rb"\s*=\s*([\"'])(.*?)\1", re.DOTALL)
     found = []
     for m in tag_re.finditer(data):
         if m.start() >= le:
@@ -1310,7 +1319,7 @@ def minimal_attribute_rewrite(original: bytes, operator_output: bytes, rel: str)
         entities = {'"': "&quot;"} if quote == 0x22 else {"'": "&apos;"}
         spans.append((start, end, _xml_escape(str(ch.new), entities).encode("utf-8")))
     spans.sort(reverse=True)
-    for (s1, _e1, _n1), (_s2, e2, _n2) in zip(spans, spans[1:]):
+    for (s1, _e1, _n1), (_s2, e2, _n2) in itertools.pairwise(spans):
         if e2 > s1:
             raise SeedError(f"{rel}: overlapping attribute edits")
     data = original
@@ -1467,7 +1476,7 @@ def check_trial_locations(dest: Path, private_dir: Path, repo_root: Path = REPO_
     """
     dest, private_dir, repo = Path(dest).resolve(), Path(private_dir).resolve(), Path(repo_root).resolve()
     if _inside(dest, repo):
-        raise AgentStudyError(f"the trial directory must lie outside the NeuroSem repository ({repo}), "
+        raise AgentStudyError(f"the trial directory must lie outside the NexClamp repository ({repo}), "
                               "so the agent cannot browse to hidden material")
     allowed = repo.joinpath(*PRIVATE_REL)
     if _inside(private_dir, repo) and not (allowed in private_dir.parents):
@@ -1780,7 +1789,7 @@ class FrozenConfig:
 
     @classmethod
     def development(cls, results_root: Path, campaign: str = "agent_dev", dt_ms: float = 0.005,
-                    timeout_s: float = 3600.0) -> "FrozenConfig":
+                    timeout_s: float = 3600.0) -> FrozenConfig:
         """An unfrozen config for developing the harness. It skips every freeze check, behavioural
         layers cannot pass without a tolerance table and protocol selection, and every score is
         marked provisional (and excluded from the claim fraction). ``load_frozen_config`` never
@@ -2448,9 +2457,8 @@ def validate_trial_log(log: TrialLog, *, task: TaskSpec | None = None, policy: A
         problems.append("trial did not run in a fresh, non-resumed session")
     if log.permissions_sha256 != sha256_json(to_jsonable(log.permissions)):
         problems.append("permissions_sha256 does not match the recorded permissions")
-    if policy is not None:
-        if log.permissions_sha256 != policy.permissions_sha256:
-            problems.append("permissions differ from the frozen agent policy")
+    if policy is not None and log.permissions_sha256 != policy.permissions_sha256:
+        problems.append("permissions differ from the frozen agent policy")
     if task is not None:
         if log.task_id != task.task_id:
             problems.append("task_id does not match the task")

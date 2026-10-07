@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import csv
 import json
+import math
 import statistics
 import tempfile
 from collections import Counter, defaultdict
@@ -289,7 +290,7 @@ def _f(x: Any) -> float | None:
         v = float(x)
     except (TypeError, ValueError):
         return None
-    return v if v == v and v not in (float("inf"), float("-inf")) else None
+    return v if math.isfinite(v) else None
 
 
 def convergence_rows(c: CampaignView) -> list[dict]:
@@ -426,7 +427,7 @@ def build_outputs(processed: Path, raw_dir: Path, work_variants_dir: Path, work_
     designation = " | ".join(f"{k}: {v}" for k, v in meta.items())
     c = CampaignView(processed, repeated, new)
     out = Path(processed) / "pilot_outputs"
-    t = lambda name, rows: write_table(out / name, rows, meta)  # noqa: E731
+    t = lambda name, rows: write_table(out / name, rows, meta)
 
     flow = flow_rows(c)
     t("02_flow_counts.csv", flow)

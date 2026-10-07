@@ -47,7 +47,7 @@ re-run, never classified.
 ### 3.1 Stimulus family
 
 These operators edit **only the shipped harness** (the LEMS simulation or its network
-file). NeuroSem's probe files are generated from the cell file and the reference-instantiated
+file). NexClamp's probe files are generated from the cell file and the reference-instantiated
 protocols, so the battery's inputs are unchanged. The content-addressed run ID then reuses
 the reference battery results. **This is by design.** It models the realistic error of
 breaking a model's own test while the model itself is intact.

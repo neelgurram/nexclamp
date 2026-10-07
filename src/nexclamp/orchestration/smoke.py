@@ -134,7 +134,7 @@ def run_smoke(out_dir: Path, fixtures: Sequence[str] = FIXTURES, protocol_ids: S
                 step("8_provenance", not missing, **{r.run_id: {"missing_fields": missing}})
     if run_tests:
         proc = subprocess.run([sys.executable, "-m", "pytest", *pytest_args, "tests/unit", "tests/integration"],
-                              cwd=REPO_ROOT, capture_output=True, text=True)
+                              cwd=REPO_ROOT, capture_output=True, text=True, check=False)
         (out_dir / "pytest.log").write_text(proc.stdout + proc.stderr, encoding="utf-8")
         tail = [ln for ln in proc.stdout.splitlines() if "passed" in ln or "failed" in ln][-1:]
         step("9_tests", proc.returncode == 0, exit_code=proc.returncode, summary=tail)

@@ -1,6 +1,6 @@
 # Name-conflict audit: "NeuroSem"
 
-Milestone 0 deliverable: the name-conflict search (spec, "Milestone 0: Audit"). Written 2026-09-13 on branch `m0-audit`; counts were measured at about 17:07 UTC against the working tree at commit `d323afa` (which differs from `3cdb957` only in `AI_USE_LOG.md` and `src/neuraxis/provenance.py`). The project name is Neel's decision, logged as DECISIONS.md **N-10**.
+Milestone 0 deliverable: the name-conflict search (spec, "Milestone 0: Audit"). Written 2026-09-13 on branch `m0-audit`; counts were measured at about 17:07 UTC against the working tree at commit `d323afa` (which differs from `3cdb957` only in `AI_USE_LOG.md` and `src/nexclamp/provenance.py`). The project name is Neel's decision, logged as project/DECISIONS.md **N-10**.
 
 ## In plain English
 
@@ -240,7 +240,7 @@ git ls-files -- <path> | xargs -r grep -Ili neurosem | wc -l     # files
 | `docs/` outside evidence and handoff | 151 | 21 | Prose, commands |
 | `Dockerfile` | 20 | 1 | Image tags (`neurosem:dev`), user/group `neurosem`, `WORKDIR /opt/neurosem`, `NEUROSEM_*` environment variables |
 | `Makefile` | 16 | 1 | CLI calls |
-| `DECISIONS.md` / `AI_USE_LOG.md` / `CHANGELOG.md` | 13 / 3 / 2 | 3 | Logs. Past entries should probably keep the old name, with a new entry recording the rename. |
+| `project/DECISIONS.md` / `AI_USE_LOG.md` / `CHANGELOG.md` | 13 / 3 / 2 | 3 | Logs. Past entries should probably keep the old name, with a new entry recording the rename. |
 | `.github/workflows/ci.yml` | 6 | 1 | Image tag `neurosem:ci`, import check |
 | `data/` | 4 | 2 | README references to `neurosem.selection...` |
 | `pyproject.toml` | 3 | 1 | Distribution `name = "neurosem"`, script `neurosem = "neurosem.cli:main"` |
@@ -249,7 +249,7 @@ git ls-files -- <path> | xargs -r grep -Ili neurosem | wc -l     # files
 
 Other places the name is attached:
 
-- **CLI.** `pyproject.toml` `[project.scripts] neurosem = "neurosem.cli:main"` and `argparse.ArgumentParser(prog="neurosem", ...)` at `src/neuraxis/cli.py:148`. The spec's suggested commands also use the `neurosem` prefix (`NEUROSEM_FINAL_SPEC.extracted.md`, line 759), and its repository tree is rooted at `neurosem/` (line 529).
+- **CLI.** `pyproject.toml` `[project.scripts] neurosem = "neurosem.cli:main"` and `argparse.ArgumentParser(prog="neurosem", ...)` at `src/nexclamp/cli.py:148`. The spec's suggested commands also use the `neurosem` prefix (`NEUROSEM_FINAL_SPEC.extracted.md`, line 759), and its repository tree is rooted at `neurosem/` (line 529).
 - **Environment variables.** Six distinct names (`NEUROSEM_CONTAINER_IMAGE`, `NEUROSEM_FEATURES`, `NEUROSEM_GIT_COMMIT`, `NEUROSEM_JAVA`, `NEUROSEM_JNML_JAR`, `NEUROSEM_NETWORK_TESTS`), used in 12 tracked files.
 - **Schema and label identifiers** in tracked src, configs, tests, agent_study, workflows and scripts. Examples: `neurosem-public-checks/` (10), `neurosem-agent-task/` (10), `neurosem-public-reference/` (9), `neurosem-agent-policy/` (2), `neurosem-trial-log/`, `neurosem-trial-export/`, `neurosem-hidden-checks/`, `neurosem-agent-frozen/`, and the feature labels `neurosem:firing_regime` and `neurosem:rheobase`.
 - **Installed package.** `.venv/Scripts/python -m pip show neurosem` reports `Name: neurosem`, `Version: 0.1.0.dev0`. A rename needs a reinstall.
@@ -302,9 +302,9 @@ N-10 records the rename recommendation (PerturbPrint preferred, DriftClamp runne
 
 - `docs/m0_evidence/names/name_search.json` (first search, 2026-09-13)
 - `docs/m0_evidence/names/name_verify.json` (independent re-check, 2026-09-13; takes precedence)
-- `DECISIONS.md` (N-10)
+- `project/DECISIONS.md` (N-10)
 - `docs/handoff/NEUROSEM_FINAL_SPEC.extracted.md` (lines 154, 529, 758, 759, 762-766)
 - `docs/handoff/NEUROSEM_CLAUDE_HANDOFF.extracted.md` (lines 49, 210, 280)
 - `docs/glossary.md` (line 40)
-- `pyproject.toml`, `CITATION.cff`, `src/neuraxis/cli.py`, `Dockerfile`, `Makefile`, `environment.yml`, `configs/*.yaml`, `.github/workflows/ci.yml`
+- `pyproject.toml`, `CITATION.cff`, `src/nexclamp/cli.py`, `Dockerfile`, `Makefile`, `environment.yml`, `configs/*.yaml`, `.github/workflows/ci.yml`
 - Scratch outputs from today's checks: `work/tmp/m0docs/name_conflict_audit/` (`gh_repo_neurosem.json`, `gh_repo_perturbprint.json`, `gh_repo_driftclamp.json`, `vafaei.json`, `rdap_neurosem_com.json`)

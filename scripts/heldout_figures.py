@@ -25,20 +25,20 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-import matplotlib  # noqa: E402
+import matplotlib
 
 matplotlib.use("Agg")
-import itertools  # noqa: E402
+import itertools
 
-import numpy as np  # noqa: E402
-from matplotlib.figure import Figure  # noqa: E402
+import numpy as np
+from matplotlib.figure import Figure
+from pilot2_figures import flag, read_csv, short
 
-from nexclamp import config  # noqa: E402
-from nexclamp.analysis.figures import OKABE_ITO, _save, set_designation  # noqa: E402
-from nexclamp.provenance import REPO_ROOT  # noqa: E402
-from nexclamp.selection import greedy  # noqa: E402
-from nexclamp.selection.matrix import DetectionMatrix  # noqa: E402
-from pilot2_figures import flag, read_csv, short  # noqa: E402
+from nexclamp import config
+from nexclamp.analysis.figures import OKABE_ITO, _save, set_designation
+from nexclamp.provenance import REPO_ROOT
+from nexclamp.selection import greedy
+from nexclamp.selection.matrix import DetectionMatrix
 
 BLUE, ORANGE, GREEN, VERM, GREY = (OKABE_ITO["blue"], OKABE_ITO["orange"], OKABE_ITO["bluish_green"],
                                    OKABE_ITO["vermillion"], "#8A8A8A")

@@ -6,7 +6,14 @@ import json
 
 import numpy as np
 
-from nexclamp.schemas import RUN_RECORD_REQUIRED_FIELDS, RunStatus, SimResult, Trace, VariantKind, VariantRecord
+from nexclamp.schemas import (
+    RUN_RECORD_REQUIRED_FIELDS,
+    RunStatus,
+    SimResult,
+    Trace,
+    VariantKind,
+    VariantRecord,
+)
 from nexclamp.validation.canonical import canonical_protocol
 from nexclamp.validation.execution import RunRecorder
 

@@ -1,9 +1,6 @@
 # NexClamp
 
 **Perturbation-battery testing for behavioural preservation in computational neuron models.**
-*(Formerly NeuroSem and then Neuraxis, both renamed after name-conflict audits; the `neurosem` and
-`neuraxis` import names and commands still work. See `docs/NAME_AUDIT.md` and
-`docs/NAME_DECISION_PACKET.md`.)*
 
 Does an edited neuron model still behave like the original? A model file can stay valid, run, and
 pass its one standard test while responding differently to other electrical inputs. NexClamp runs
@@ -23,9 +20,28 @@ on models, and on a mutation family, that were not used to choose it.
 > - `docs/RESULTS_HELDOUT.md` - the results, with every preregistered criterion;
 > - `docs/manuscript/MANUSCRIPT.md` - the paper draft;
 > - `docs/PLAIN_LANGUAGE_OVERVIEW.md` - what the study does, in plain English;
-> - `docs/manuscript/ONLINE_RESOURCE_1.md` and `_2.md` - methods detail and the deviation log.
+> - `docs/manuscript/ONLINE_RESOURCE_1.md` and `docs/manuscript/ONLINE_RESOURCE_2.md` - methods
+>   detail and the deviation log;
+> - `docs/README.md` - what every other document in `docs/` is for.
 >
 > Development (pilot) data are exploratory and are never pooled with the confirmatory result.
+
+## What is where
+
+| Path | Contents |
+|---|---|
+| `src/nexclamp/` | the library: simulators, protocols, features, tolerances, mutations, selection, campaign machinery |
+| `configs/` | study configuration; the ten files of the confirmatory study are hash-locked by `configs/FROZEN.lock` |
+| `data/` | the model manifest (source, commit, licence per model) and the frozen development/held-out splits |
+| `models/` | commit-pinned NeuroML snapshots, each under its own upstream licence |
+| `scripts/` | analysis, figures, audit materials and integrity checks, one job per script |
+| `workflows/` | the gated run scripts for each milestone of the execution plan |
+| `tests/` | 1,002 unit and regression tests, plus integration tests that need the Java toolchain |
+| `results/` | write-once raw run records, processed records, tables and figures, per campaign |
+| `docs/` | the study documents; start at `docs/README.md` |
+| `docs/manuscript/` | the article, its Online Resources, the reference list and the Word build |
+| `docs/project/` | how the project was run: plan, decisions, requirements, risk register, audits |
+| `agent_study/` | the separate agent-exposure study, with its hidden evaluators kept out of the agent's reach |
 
 ## Quick start
 
@@ -43,8 +59,8 @@ python -m venv .venv
 |---|---|
 | `nexclamp smoke-test` | the nine infrastructure checks; failure blocks data collection |
 | `nexclamp curate-models` | the model inclusion criteria, using reference simulations only |
-| `nexclamp pilot` | a fixed development matrix (exploratory); set `NEURAXIS_CONFIG_DIR` to a protocol's configs |
-| `nexclamp analyze`, `neuraxis reproduce-paper` | tables and figures from recorded results |
+| `nexclamp pilot` | a fixed development matrix (exploratory); set `NEXCLAMP_CONFIG_DIR` to a protocol's configs |
+| `nexclamp analyze`, `nexclamp reproduce-paper` | tables and figures from recorded results |
 | `nexclamp select-protocols` | greedy battery selection on the development split (kinetics family excluded) |
 | `nexclamp evaluate-heldout` | gated: requires `configs/FROZEN.lock`; use `workflows/run_heldout.py` |
 
@@ -59,7 +75,7 @@ The workflow scripts in `workflows/` wrap each step of the execution plan
 - **The held-out evaluation** runs once, after the method is frozen and preregistered on
   AsPredicted.
 
-Licence: Apache-2.0 (provisional). Upstream model files keep their own licences
+Licence: Apache-2.0. Upstream model files keep their own licences
 (`docs/LICENSING_MATRIX.md`).
 
 ## Reproducing the paper
@@ -101,3 +117,10 @@ python -c "import hashlib,pathlib; [print(l.split()[1], hashlib.sha256(pathlib.P
 See `CITATION.cff`. Please cite the manuscript when it is published, and the archived release for
 the software and data: https://doi.org/10.5281/zenodo.23175106 (all versions) or https://doi.org/10.5281/zenodo.23175107
 (the version used in the article).
+
+## Name
+
+The project was called NexClamp, then NexClamp, and is now NexClamp; each rename followed a
+name-conflict audit (`docs/NAME_AUDIT.md`, `docs/NAME_DECISION_PACKET.md`). The `neurosem` and
+`neuraxis` import names and the `neurosem` command still work, and the agent harness still
+recognises the old module paths, so records written under the old names stay verifiable.

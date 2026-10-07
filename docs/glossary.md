@@ -1,8 +1,8 @@
-# NeuroSem glossary
+# NexClamp glossary
 
 *Status: living document, drafted 2026-09-13. Definitions in section 1 follow the final
 specification (`docs/handoff/NEUROSEM_FINAL_SPEC.pdf`, which is authoritative). Where a
-definition names a NeuroSem file or setting, that is the current, provisional
+definition names a NexClamp file or setting, that is the current, provisional
 implementation. It becomes binding only when frozen by preregistration.*
 
 Each entry is one or two plain sentences. Terms in *italics* are defined elsewhere in
@@ -13,7 +13,7 @@ this glossary.
 ## 1. Operational definitions from the specification
 
 **Reference model.** An unmodified, validated, reproducibly executable neuron model with
-recorded provenance. In NeuroSem this is a `data/model_manifest.csv` row with
+recorded provenance. In NexClamp this is a `data/model_manifest.csv` row with
 `inclusion = include`, run from its pinned snapshot under `models/raw/`.
 
 **Transformation.** Any deliberate alteration to the model repository, the model
@@ -25,7 +25,7 @@ tested scientific behaviour, such as converting to an equivalent unit or renamin
 identifier consistently. A detection on a valid transformation is a *false positive*.
 
 **Mutant.** A transformed model created by exactly one recorded *mutation operator*.
-NeuroSem rejects a variant if any file change is not covered by its recorded edits
+NexClamp rejects a variant if any file change is not covered by its recorded edits
 (`enforce_single_operator`).
 
 **Admissible non-equivalent mutant.** A structurally valid, executable mutant whose
@@ -34,7 +34,7 @@ behaviour diverges reproducibly from its reference somewhere in the predefined
 (protocol, feature) difference exceeds *tolerance* at both *h* and *h/2*.
 
 **Canonical protocol.** The single standard stimulation test used as the conventional
-behavioural-regression baseline. In NeuroSem it is the simulation shipped with the model
+behavioural-regression baseline. In NexClamp it is the simulation shipped with the model
 (its *harness*), analysed as `P00_canonical`.
 
 **Perturbation fingerprint.** The collection of electrophysiological measurements a model
@@ -84,7 +84,7 @@ labels, and a log of every held-out access.
 models remain to form one.
 
 **Preregistration.** A time-stamped, frozen statement of hypotheses, endpoints, rules and
-analyses written before the final data are seen. NeuroSem's draft is
+analyses written before the final data are seen. NexClamp's draft is
 `docs/PREREGISTRATION_DRAFT.md`.
 
 **`configs/FROZEN.lock`.** The planned file of hashes that fixes configuration and split
@@ -106,7 +106,7 @@ single-compartment.
 A *voltage trace* is the membrane potential recorded over time.
 
 **Current clamp.** An experiment in which a chosen current is injected into the cell and
-the voltage response is recorded. Every NeuroSem protocol is a current-clamp protocol.
+the voltage response is recorded. Every NexClamp protocol is a current-clamp protocol.
 
 **Ion channel.** A membrane protein, modelled as a conductance that opens and closes
 according to *gating variables*. Examples in the fixtures: Na, Kd (delayed-rectifier K),
@@ -136,11 +136,11 @@ normally fades during the settling period before any stimulus.
 **Segment group.** A named set of morphology segments to which a channel density applies.
 In a single-compartment model every group contains the same single segment.
 
-**Action potential (spike).** A brief, large, all-or-none voltage excursion. NeuroSem
+**Action potential (spike).** A brief, large, all-or-none voltage excursion. NexClamp
 detects spikes where voltage crosses -20 mV (the eFEL `Threshold` setting).
 
 **Rheobase.** The smallest amplitude of a long current step (here 500 ms) that makes the
-cell fire at least one spike. NeuroSem finds it by a bracketing search and scales most
+cell fire at least one spike. NexClamp finds it by a bracketing search and scales most
 depolarising protocols to it.
 
 **Spike count.** The number of spikes inside the analysis window.
@@ -152,14 +152,14 @@ length.
 **First-spike latency.** The time from stimulus onset to the first spike. eFEL's
 `time_to_first_spike` measures to the spike's *peak*.
 
-**Interspike interval (ISI).** The time between two consecutive spikes. NeuroSem records
+**Interspike interval (ISI).** The time between two consecutive spikes. NexClamp records
 the first and the last ISI in the window.
 
 **Spike-frequency adaptation.** Firing that slows during a constant stimulus, so ISIs
 lengthen. It is often caused by slow potassium currents such as IM.
 
 **Adaptation index.** A single number summarising how much ISIs lengthen. It is near 0
-for regular firing and positive for adapting firing. NeuroSem uses eFEL's
+for regular firing and positive for adapting firing. NexClamp uses eFEL's
 `adaptation_index2`.
 
 **Action-potential amplitude.** The height of a spike. eFEL's `AP_amplitude` measures it
@@ -183,7 +183,7 @@ hyperpolarising current is switched off. T-type calcium currents are a classic c
 ("sags back") while current is still applied. It is typically caused by the Ih (HCN)
 current. None of the current manifest models contains Ih.
 
-**Sag ratio.** A number that summarises sag. NeuroSem uses eFEL's `sag_ratio1` =
+**Sag ratio.** A number that summarises sag. NexClamp uses eFEL's `sag_ratio1` =
 (steady-state voltage - minimum voltage) / (baseline voltage - minimum voltage).
 
 **Depolarization block.** Strong depolarisation makes a cell stop firing while it is held
@@ -198,7 +198,7 @@ at a raised voltage.
 **Baseline voltage.** Mean voltage just before stimulus onset. eFEL's `voltage_base` uses
 the last 10 % of the time before the window start.
 
-**Steady-state voltage.** Mean voltage near the end of the stimulus. NeuroSem uses eFEL's
+**Steady-state voltage.** Mean voltage near the end of the stimulus. NexClamp uses eFEL's
 `steady_state_voltage_stimend` (last 10 % of the window), not `steady_state_voltage`, which
 eFEL measures after the stimulus ends.
 
@@ -213,7 +213,7 @@ hundreds of milliseconds. It is present in RS, LTS and IB.
 
 ## 3. Models, tools and files
 
-**NeuroML (v2).** An XML standard for describing neuron and network models. NeuroSem pins
+**NeuroML (v2).** An XML standard for describing neuron and network models. NexClamp pins
 validity to the NeuroML v2.3.1 schema.
 
 **LEMS.** A companion XML language that defines component behaviour (`ComponentType`s) and
@@ -235,7 +235,7 @@ spike and voltage features from a trace and a stimulus window.
 
 **OMV (Open Source Brain Model Validation).** A tool that reruns a model and compares a few
 observables, such as spike times, against stored expected values with a relative
-tolerance. It is the conventional regression test that NeuroSem's canonical protocol
+tolerance. It is the conventional regression test that NexClamp's canonical protocol
 mirrors.
 
 **SciUnit / NeuronUnit.** Frameworks for testing models against experimental
@@ -244,7 +244,7 @@ observations. They are prior art and optional adapters, not dependencies.
 **Harness.** The LEMS simulation file shipped with a model (for example
 `LEMS_RS.xml`). It defines the canonical protocol.
 
-**Probe.** A LEMS and NeuroML network pair generated by NeuroSem to run a protocol battery.
+**Probe.** A LEMS and NeuroML network pair generated by NexClamp to run a protocol battery.
 Each protocol gets its own uncoupled single-cell population.
 
 **Snapshot.** A pinned, byte-exact copy of upstream model files under
@@ -283,7 +283,7 @@ and h/2 to h/4.
 **Numerical instability.** The simulation diverges: jLEMS aborts after the run has started
 with its "time step may be too large" hint, or the output contains non-finite values or
 values beyond +-10 V (a deliberately loose bound, so a harness that records a non-voltage
-state is judged by its behaviour instead). NeuroSem treats this as a solver blow-up, not
+state is judged by its behaviour instead). NexClamp treats this as a solver blow-up, not
 physiology (class 3). See DECISIONS D-020 and D-021.
 
 **Settling period.** Stimulus-free time at the start of every probe (300 ms) that lets the
@@ -292,7 +292,7 @@ model reach rest. The eFEL baseline is taken from its last 10 %.
 **Interpolation step (`interp_step`).** eFEL resamples every trace to this uniform step
 (0.01 ms here) before computing features. Time-based features are quantised to it.
 
-**Cell-step.** One simulated cell advanced by one time step. Cells x steps is NeuroSem's
+**Cell-step.** One simulated cell advanced by one time step. Cells x steps is NexClamp's
 simulator-independent cost measure for protocols.
 
 ## 5. Protocols and features
@@ -370,7 +370,7 @@ the selected battery's cost.
 ## 7. Validity layers
 
 **Structural validity (schema validity).** The files obey the NeuroML schema and its
-logical checks. NeuroSem's authoritative check is `jnml -validate`, and libNeuroML's check is
+logical checks. NexClamp's authoritative check is `jnml -validate`, and libNeuroML's check is
 recorded for information only.
 
 **Execution.** The simulator builds and runs the model to completion and writes readable
@@ -382,7 +382,7 @@ refinement, so a difference reflects the model rather than solver error.
 **Tested behaviour preservation.** The variant's features agree with the reference within
 tolerance on every protocol tested. This is the *empirical semantic certificate*.
 
-**Biological validity.** Whether the model reproduces real neurons' behaviour. NeuroSem does
+**Biological validity.** Whether the model reproduces real neurons' behaviour. NexClamp does
 not test this. It compares a variant only against its own reference model.
 
 ## 8. Testing methods

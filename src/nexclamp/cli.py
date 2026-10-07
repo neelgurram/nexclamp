@@ -1,4 +1,4 @@
-"""Neuraxis command-line interface (spec "Suggested commands").
+"""NexClamp command-line interface (spec "Suggested commands").
 
 Every command is a thin wrapper around ``nexclamp.experiments``. Commands never touch
 held-out data except ``evaluate-heldout``, which is gated by ``configs/FROZEN.lock``.
@@ -212,7 +212,7 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--task", required=True)
     p.add_argument("--trial-dir", required=True)
     p.add_argument("--frozen-config", required=True,
-                   help="frozen NeuroSem configuration (tolerances + selected battery) used by the hidden evaluators")
+                   help="frozen NexClamp configuration (tolerances + selected battery) used by the hidden evaluators")
     p.set_defaults(fn=cmd_agent)
 
     p = sub.add_parser("analyze", help="metrics, statistics and figures from processed results")

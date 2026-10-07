@@ -48,7 +48,13 @@ from nexclamp.mutations.base import (
     step_name,
     transitive_includes,
 )
-from nexclamp.mutations.biophysics import CORE_RATES, GATE_TAGS, cell_element, channel_densities, used_channels
+from nexclamp.mutations.biophysics import (
+    CORE_RATES,
+    GATE_TAGS,
+    cell_element,
+    channel_densities,
+    used_channels,
+)
 from nexclamp.schemas import MutationFamily, VariantRecord
 
 MIDPOINT_DELTAS_MV = (-10.0, -5.0, 5.0, 10.0)

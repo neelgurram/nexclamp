@@ -1,4 +1,4 @@
-# NeuroSem implementation plan (Milestones 0-10)
+# NexClamp implementation plan (Milestones 0-10)
 
 | | |
 |---|---|
@@ -12,7 +12,7 @@
 
 ## In plain English
 
-- NeuroSem asks one question: does an edited neuron model still behave like the original?
+- NexClamp asks one question: does an edited neuron model still behave like the original?
 - Most of the machinery is built and tested on this laptop.
 - The first real test run, the pilot, has finished. It passed its formal checks, but the only hidden changes it found came from simulator settings, not from edits to the model's biology (`docs/pilot/pilot_interpretation.md`).
 - The pilot decides whether the project continues. If edits never hide behaviour changes, we do not invent them.
@@ -70,7 +70,7 @@ The handoff's initial prompt also asks for `PLAN.md`, `REQUIREMENTS.md`, `PRIOR_
 
 **Exit tests.**
 1. Every file named above exists: `ls PLAN.md REQUIREMENTS.md PRIOR_ART_AUDIT.md docs/novelty_matrix.csv docs/DEPENDENCY_AUDIT.md LICENSE_AUDIT.md RISK_REGISTER.md DECISIONS.md CHANGELOG.md AI_USE_LOG.md docs/NAME_CONFLICT_AUDIT.md`.
-2. `docs/novelty_matrix.csv` has the spec's columns (citation, year, model type, mutations, multiple stimuli, electrophysiology features, protocol optimisation, held-out evaluation, AI transformations, software availability, distinction from NeuroSem), with a URL per row.
+2. `docs/novelty_matrix.csv` has the spec's columns (citation, year, model type, mutations, multiple stimuli, electrophysiology features, protocol optimisation, held-out evaluation, AI transformations, software availability, distinction from NexClamp), with a URL per row.
 3. Neel spot-checks the closest-prior-work citations (required by `AI_USE_LOG.md` Entry 001).
 4. The audits are committed, and Neel's approval is recorded in `DECISIONS.md`.
 
@@ -101,7 +101,7 @@ The handoff's initial prompt also asks for `PLAN.md`, `REQUIREMENTS.md`, `PRIOR_
 |---|---|---|
 | Python package | built | `pyproject.toml`, `src/neuraxis/`, editable install `neurosem 0.1.0.dev0` |
 | Frozen dependencies | built; fresh Windows install verified | `requirements.lock` (75 pins); `docs/REPRODUCING.md` verification table |
-| jNeuroML execution | works on this machine | `src/neuraxis/simulators/jneuroml.py`; jNeuroML 0.14.0 / jLEMS 0.12.0, Temurin 21.0.12.1+1 in `.tools/` (D-004, D-005); `tests/integration/test_jneuroml_adapter.py` |
+| jNeuroML execution | works on this machine | `src/nexclamp/simulators/jneuroml.py`; jNeuroML 0.14.0 / jLEMS 0.12.0, Temurin 21.0.12.1+1 in `.tools/` (D-004, D-005); `tests/integration/test_jneuroml_adapter.py` |
 | eFEL | installed and version-guarded | eFEL 5.7.34; `configs/features.yaml` pins it |
 | Docker | **written, never built** (Docker is not installed; this is Windows 11 Home) | `Dockerfile`; build context only emulated |
 | CI | **written, never run** (no GitHub remote) | `.github/workflows/ci.yml` |
@@ -148,7 +148,7 @@ The handoff's initial prompt also asks for `PLAN.md`, `REQUIREMENTS.md`, `PRIOR_
 **Status: in progress.**
 - Implemented: P01-P10 (baseline, weak step, rheobase, 2x step, long step, ramp, hyperpolarising step, rebound, short pulse, paired pulses). P11 chirp and P12 frozen noise raise "not implemented" by design (spec: only if stable, or later). Code: `protocols/definitions.py`, `protocols/generate.py`, `protocols/rheobase.py`.
 - Independent tests exist: integer-millisecond edges on every refinement grid, windows, linear amplitude scaling with rheobase, schema-valid generated XML, and on real jLEMS runs the exact pulse onset, ramp onset, paired-pulse timing, deflection sign and release repolarisation (`tests/integration/test_probe_battery.py`). The battery test uses an assumed 0.1 nA rheobase at dt 0.025 ms, so it checks timing, not firing (`docs/build_notes/core.md`).
-- **Visual verification: not done.** No plotting code exists in `src/neuraxis/protocols`, `src/neuraxis/validation`, `scripts/` or `tests/`.
+- **Visual verification: not done.** No plotting code exists in `src/nexclamp/protocols`, `src/nexclamp/validation`, `scripts/` or `tests/`.
 - Known open issue (N-07): on LTS (rheobase about 0.039 nA) the short pulses and the ramp evoke no spikes, and the rebound protocol showed no rebound depolarisation in a smoke run (D-010).
 
 **Next actions.** Produce the plots in exit test 2. Neel reviews them together with N-07, using discovery data only.
@@ -214,13 +214,13 @@ The handoff's initial prompt also asks for `PLAN.md`, `REQUIREMENTS.md`, `PRIOR_
     - 8 primary features plus 10 secondary;
     - 32 primary semantic mutants and 12 numerical stress tests;
     - 32 controls.
-  - Governed by `docs/PILOT_PROTOCOL_V1.md` (Neuraxis development pilot; D-033 to D-035). Authorised 2026-09-14 after the technical readiness gate.
+  - Governed by `docs/PILOT_PROTOCOL_V1.md` (NexClamp development pilot; D-033 to D-035). Authorised 2026-09-14 after the technical readiness gate.
   - Numerical mutants are a separate stratum (D-030). Pilot 1's time-step results are reclassified in `docs/pilot/numerical_reclassification.md`; Pilot 1 is reported only in corrected form (D-038).
 
 **Next actions.**
 1. Pre-run steps (D-034): protocol, manifest, private push, pre-run package; then the readiness gate.
 2. Run the fixed `pilot-v2` matrix; run the reproducibility check and prespecified outputs; seal, archive, verify; stop for Neel.
-3. Before the freeze, implement the ion-channel kinetics family (D-037), reassess redundant protocols with both pilots' data, and draft `docs/CONFIRMATORY_PREREGISTRATION_DRAFT.md` for AsPredicted (D-036).
+3. Before the freeze, implement the ion-channel kinetics family (D-037), reassess redundant protocols with both pilots' data, and draft `docs/CONFIRMATORY_PREREGISTRATION.md` for AsPredicted (D-036).
 3. Further iterations are allowed while the pilot phase lasts. Each gets a new campaign name and is reported.
 4. Neel ends the pilot phase. Then the post-pilot freeze sequence below starts.
 5. Keep valid transformations in the false-positive denominator whatever the battery says about them (P-06).
@@ -289,7 +289,7 @@ Nothing here starts until Neel ends the pilot phase. Each step is a commit, and 
 4. Every patch is audited by hand after scoring. Transcripts, patches, costs and versions are logged under `results/agent_study/`.
 
 **Status: gated by design. The harness is built; no trials exist.**
-- Built: nine task definitions `agent_study/tasks/t01-t09`, the shared public runner, hidden evaluator specs in `agent_study/hidden/` (Git-ignored; hashes committed, D-022), `configs/agent_policy.yaml` (provisional), `docs/agent_study_protocol.md`, `src/neuraxis/experiments/agent.py`, `tests/unit/test_agent_harness.py`.
+- Built: nine task definitions `agent_study/tasks/t01-t09`, the shared public runner, hidden evaluator specs in `agent_study/hidden/` (Git-ignored; hashes committed, D-022), `configs/agent_policy.yaml` (provisional), `docs/agent_study_protocol.md`, `src/nexclamp/experiments/agent.py`, `tests/unit/test_agent_harness.py`.
 - `results/agent_study/` does not exist.
 - D-003: the assistant that built the evaluators does not run the trials.
 - Nine tasks are one per task type, not a sample. The spec plans 20-30 tasks.
@@ -315,7 +315,7 @@ Nothing here starts until Neel ends the pilot phase. Each step is a commit, and 
 
 The full table is in `docs/DEPENDENCY_AUDIT.md` section 5. In short:
 - **Reused, not claimed as new:** NeuroML v2 and LEMS; `jnml -validate` and jLEMS simulation in the jNeuroML jar; libNeuroML validation; eFEL feature algorithms; mutation testing, metamorphic testing, greedy set cover and standard statistics as general methods; GitHub Actions and Docker.
-- **Code written for NeuroSem:** the relative structural oracle, the direct-jar adapter and status taxonomy, protocol generation and rheobase normalisation, the eFEL adapter with three feature states, tolerance calibration by refinement, single-fault NeuroML/LEMS mutation operators and valid transformations, fingerprints and the detection matrix, split and leakage barriers, and clustered statistics.
+- **Code written for NexClamp:** the relative structural oracle, the direct-jar adapter and status taxonomy, protocol generation and rheobase normalisation, the eFEL adapter with three feature states, tolerance calibration by refinement, single-fault NeuroML/LEMS mutation operators and valid transformations, fingerprints and the detection matrix, split and leakage barriers, and clustered statistics.
 - "Written for NeuroSem" is not a novelty claim. Novelty is judged only by the prior-art audit, which is not written yet (M0).
 
 ## Fixture models
@@ -328,7 +328,7 @@ Spec M0 item 6. Details: `docs/model_selection.md`, `docs/m0_evidence/fixtures/f
 |---|---|---|
 | Source | `OpenSourceBrain/PospischilEtAl2008` at commit `049081c39357d9e7c478b63ef7b10f374d1c50f4`, `NeuroML2/cells/RS/` | same commit, `NeuroML2/cells/LTS/` |
 | Model | single compartment; Leak, Na, Kd, IM | single compartment; adds IT (T-type Ca) and a Ca pool |
-| Expected behaviour (upstream, not NeuroSem) | adapting spike train | early spike pair; rebound expected but unverified |
+| Expected behaviour (upstream, not NexClamp) | adapting spike train | early spike pair; rebound expected but unverified |
 | License | MIT for the `NeuroML2/` files. The OMV `.mep` files in `NEURON_MODIFIED/` fall under a citation-only carve-out with no redistribution grant (L-05). | same |
 | Citation | Pospischil et al. (2008), Biol Cybern 99:427-441; ModelDB 123623 (DOI checked in Crossref) | same |
 | Verification | 38/38 SHA-256 values recomputed; upstream OMV CI run 30447139603 passed its jNeuroML jobs at the pinned commit | same |
@@ -365,7 +365,7 @@ Latest recorded full suite: `work/logs/full_suite_3.log`, "979 passed, 1 skipped
 
 ## How to run
 
-Every subcommand below was checked with `C:/Users/gurra/NeuroSem/.venv/Scripts/neurosem --help` and `<subcommand> --help` on 2026-09-13. Most take `--campaign <name>` (results go to `results/processed/<name>/`) and `--workers <n>`. `--models` defaults to the pilot models in `configs/study.yaml`.
+Every subcommand below was checked with `C:/Users/gurra/NexClamp/.venv/Scripts/neurosem --help` and `<subcommand> --help` on 2026-09-13. Most take `--campaign <name>` (results go to `results/processed/<name>/`) and `--workers <n>`. `--models` defaults to the pilot models in `configs/study.yaml`.
 
 | Step | Command | Notes |
 |---|---|---|
@@ -392,7 +392,7 @@ Every subcommand below was checked with `C:/Users/gurra/NeuroSem/.venv/Scripts/n
 1. **Pilot decision before expansion.** No full-study curation, split freeze or selection freeze until Neel records the M6 decision.
 2. **Preregistration and `configs/FROZEN.lock` before any held-out access.** Assign and freeze the split (`SPLITS.sha256`), register the preregistration, then write the lock. `HeldoutGate` enforces the lock in code; the preregistration step is procedural, and Neel must do it first. No held-out evaluation during development (D-003).
 3. **Thresholds before held-out.** Tolerance constants, pilot-derived protocol amplitudes and analysis settings (N-03, N-07, P-07) are fixed before the lock and never tuned after held-out inspection. A forced re-freeze is logged and must be disclosed.
-4. **Hidden-evaluator review before agent trials.** Neel reviews, and ideally revises independently, every hidden evaluator spec (N-12). NeuroSem and the protocol selection are frozen first. The assistant that built the evaluators does not run the trials (D-003).
+4. **Hidden-evaluator review before agent trials.** Neel reviews, and ideally revises independently, every hidden evaluator spec (N-12). NexClamp and the protocol selection are frozen first. The assistant that built the evaluators does not run the trials (D-003).
 5. **Rename decision before public release.** Decide N-10 before any public repository, package, DOI or manuscript. Deciding before the frozen study is cheaper still, because raw results record the `neurosem` name in provenance and feature labels and must stay immutable (`docs/NAME_CONFLICT_AUDIT.md` section 7).
 6. **Licensing before the first public push.** Settle N-01, N-05 and L-01, L-05, L-06 first. Fix licensing before any Zenodo deposit, because a withdrawn record keeps a tombstone.
 7. **No simulation-relevant edits while a campaign runs** (D-023). Otherwise its later runs are marked dirty.
@@ -435,7 +435,7 @@ Every subcommand below was checked with `C:/Users/gurra/NeuroSem/.venv/Scripts/n
 
 ### C. Raised in `docs/NAME_CONFLICT_AUDIT.md` (N-10 detail)
 
-- Choose one: A. rename to PerturbPrint now (recommended); B. DriftClamp now; C. decide later, before public release; D. keep NeuroSem and accept conflicts C1-C3.
+- Choose one: A. rename to PerturbPrint now (recommended); B. DriftClamp now; C. decide later, before public release; D. keep NexClamp and accept conflicts C1-C3.
 - Whatever the choice, re-check registries, GitHub, USPTO and the sources that failed (Semantic Scholar, Zenodo, OpenAlex, EUIPO, WIPO) just before release. The audit is not legal clearance.
 - The audit's claim that a rename is "mechanical" is unverified. A trial rename in a scratch copy followed by the test suite would confirm it.
 

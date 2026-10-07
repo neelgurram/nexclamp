@@ -52,7 +52,7 @@ RS 320.554, 348.522, 387.944, 456.69, 592.105; LTS 431.423, 445.189, 517.237, 72
 3. **Cost.** Each run costs roughly 15-35 microseconds per simulated cell-step plus about
    1 s of JVM start-up.
 
-## Decision taken (see DECISIONS.md)
+## Decision taken (see ../project/DECISIONS.md)
 
 Nominal h = 0.005 ms with refinement to h/2 = 0.0025 ms and h/4 = 0.00125 ms. This keeps
 one pilot variant's full battery near a minute of CPU while keeping stable features well

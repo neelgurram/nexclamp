@@ -28,8 +28,8 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
-from nexclamp import config  # noqa: E402
-from nexclamp.provenance import REPO_ROOT, git_state, utc_now  # noqa: E402
+from nexclamp import config
+from nexclamp.provenance import REPO_ROOT, git_state, utc_now
 
 EXPOSED_MANIFEST = "manifests/PILOT2_EXPOSED_VARIANTS.csv"
 

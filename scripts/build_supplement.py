@@ -24,11 +24,10 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
-import yaml  # noqa: E402
 
-from nexclamp import config  # noqa: E402
-from nexclamp.protocols.definitions import DEFAULT_TEMPLATES  # noqa: E402
-from nexclamp.provenance import REPO_ROOT, git_state, utc_now  # noqa: E402
+from nexclamp import config
+from nexclamp.protocols.definitions import DEFAULT_TEMPLATES
+from nexclamp.provenance import REPO_ROOT, git_state, utc_now
 
 OUT = REPO_ROOT / "docs" / "manuscript"
 
@@ -125,6 +124,9 @@ def main(argv: list[str] | None = None) -> int:
           "## 6 Software environment", ""]
     env = json.loads((proc / "STUDY_METADATA.json").read_text(encoding="utf-8"))
     L += table(["Item", "Value"], [[k, str(v)[:160]] for k, v in env.items()])
+    L += ["The recorded `project_name` is the name the software carried when the campaign ran. The "
+          "project was renamed to NexClamp afterwards, for the trademark reason given in the "
+          "deviation log; the recorded value is reproduced as recorded rather than rewritten.", ""]
     L += ["Simulator: jNeuroML 0.14.0 / jLEMS 0.12.0 on Temurin JDK 21.0.12.1+1; Python 3.12.10; "
           "pyNeuroML 1.3.22; libNeuroML 0.6.7; eFEL 5.7.34. Every run records its own software "
           "versions, inputs and outputs under a content-addressed identifier.", ""]

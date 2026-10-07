@@ -66,9 +66,9 @@ def write_report(ctx, refs, tol, outcomes, summary, seed) -> Path:
     lines += [
         "**EXPLORATORY / DEVELOPMENTAL DATA.** Never pooled with the held-out data for the primary confirmatory "
         "estimate (DECISIONS D-026).", "",
-        "*Generated automatically from `results/processed/{0}/`. Development-stage pilot; "
+        f"*Generated automatically from `results/processed/{ctx.campaign}/`. Development-stage pilot; "
         "not a confirmatory result. Thresholds used below for the pilot decision are provisional and must be "
-        "reviewed by Neel.*".format(ctx.campaign), "",
+        "reviewed by Neel.*", "",
         "## Setup", "",
         f"- models: {', '.join(refs)}",
         f"- nominal dt: {ctx.nominal.dt_ms} ms; refinement factors {ctx.factors}",

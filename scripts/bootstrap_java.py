@@ -1,6 +1,6 @@
 """Download Eclipse Temurin 21 from the Adoptium API into ``.tools/`` with verified provenance.
 
-NeuroSem drives jNeuroML, a Java program bundled with pyNeuroML, so the Java runtime is
+NexClamp drives jNeuroML, a Java program bundled with pyNeuroML, so the Java runtime is
 part of the study environment. This script installs it without installers or admin
 rights, and makes the download auditable:
 

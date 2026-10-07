@@ -139,9 +139,9 @@ def compare(ref: Fingerprint, var: Fingerprint, tol: ToleranceTable, multiplier:
             vv = vtable.get(feat)
             if vv is None:
                 continue
-            common = dict(variant_id=var.variant_id, model_id=var.model_id, level_factor=var.level_factor,
-                          protocol_id=pid, feature=feat, ref_value=rv.value, var_value=vv.value,
-                          ref_run_id=ref.run_ids.get(pid, ""), var_run_id=var.run_ids.get(pid, ""))
+            common = {"variant_id": var.variant_id, "model_id": var.model_id, "level_factor": var.level_factor,
+                          "protocol_id": pid, "feature": feat, "ref_value": rv.value, "var_value": vv.value,
+                          "ref_run_id": ref.run_ids.get(pid, ""), "var_run_id": var.run_ids.get(pid, "")}
             r_def, v_def = rv.state == "defined", vv.state == "defined"
             if r_def != v_def:
                 out.append(Detection(**common, reason="definedness", diff=None, tau=entry.tau))

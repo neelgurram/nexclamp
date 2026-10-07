@@ -23,7 +23,7 @@ Tables: `results/tables/pilot/`. This note is Claude's interpretation for Neel; 
 - The harmless edits never set off an alarm: 0 of 16.
 - Every change to the model's *biology* that altered behaviour (conductances, reversal potentials, capacitance, channel speeds, duplicated or swapped channels) was already caught by the model's own standard test. The extra stimuli added nothing there.
 - The three "hidden" changes all came from *simulator settings* (a bigger time step or coarser recording). Two of them look hidden partly because the standard test and our battery started from different time steps.
-- So the pilot's formal pass criteria are met, but it has **not** yet shown the effect NeuroSem is about: hidden behaviour changes from edits to the model itself. On these two closely related models, the standard test was strong.
+- So the pilot's formal pass criteria are met, but it has **not** yet shown the effect NexClamp is about: hidden behaviour changes from edits to the model itself. On these two closely related models, the standard test was strong.
 - This is exactly the situation where the specification asks you to decide carefully whether to continue, change the plan, or stop. It warns: do not manufacture drift.
 
 ## 1. Numbers (from `classification.csv`, `validation_cascade.json`, `analysis_summary.json`)
@@ -64,7 +64,7 @@ The battery detected 24 of 28 (0.86); the canonical protocol detected 25 of 28 (
    - What changed: the shipped harness step went from 0.001 ms to 0.004 ms. The battery step went from 0.005 ms to 0.02 ms.
    - What detected it: forward-Euler error at 0.02 ms shifts AHP depth by about 2.5 mV, first ISI by about 1 ms, and spike count by 1 (in P04 and P05).
    - Why canonical stayed quiet: at 0.004 ms the canonical run stays accurate. For LTS, the canonical detection seen at h did not reproduce at h/2, and under the single reproducible rule (D-021) that counts as not detected.
-   - Interpretation: the silence is largely an artefact of the harness and the battery using different base steps. It is not evidence that other stimuli reveal hidden behaviour. It is the circularity between the numerical family and tolerance calibration raised in the NUM critique (`RISK_REGISTER.md`).
+   - Interpretation: the silence is largely an artefact of the harness and the battery using different base steps. It is not evidence that other stimuli reveal hidden behaviour. It is the circularity between the numerical family and tolerance calibration raised in the NUM critique (`../project/RISK_REGISTER.md`).
 2. **`m-recording_resolution-7d6e4357af` (RS), output sampled every 0.25 ms.**
    - Action-potential amplitude and half-width change in P05 and P09. This is expected when a 0.7 ms spike is sampled at 0.25 ms.
    - It is a genuine configuration fault that passed the canonical test, but a scientifically trivial one.

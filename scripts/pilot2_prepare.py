@@ -28,12 +28,12 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
-from nexclamp import config  # noqa: E402
-from nexclamp.experiments import strata  # noqa: E402
-from nexclamp.mutations import severity as sev  # noqa: E402
-from nexclamp.orchestration.curation import read_candidates  # noqa: E402
-from nexclamp.protocols.definitions import CANONICAL_ID, templates_from_config  # noqa: E402
-from nexclamp.provenance import REPO_ROOT, sha256_file, utc_now  # noqa: E402
+from nexclamp import config
+from nexclamp.experiments import strata
+from nexclamp.mutations import severity as sev
+from nexclamp.orchestration.curation import read_candidates
+from nexclamp.protocols.definitions import CANONICAL_ID, templates_from_config
+from nexclamp.provenance import REPO_ROOT, sha256_file, utc_now
 
 SOURCES = ("data/model_manifest.csv", "data/model_candidates.csv", "data/model_candidates_sweep2.csv")
 

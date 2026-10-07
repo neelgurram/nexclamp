@@ -57,7 +57,7 @@ sentence recorded in DECISIONS D-036.
 
 ## 3. Model inclusion and exclusion criteria (execution plan)
 
-Implemented mechanically in `src/neuraxis/orchestration/curation.py`, criteria C01-C13:
+Implemented mechanically in `src/nexclamp/orchestration/curation.py`, criteria C01-C13:
 - provenance;
 - reuse rights;
 - files present;

@@ -1,6 +1,6 @@
 # Human audit: returned verdicts
 
-*25 faults, 2 auditors. Compiled 2026-10-03T21:13:57+00:00 at commit `5e5b8bd485dd` (tree dirty: True) by `scripts/audit_results.py` from the auditors' own returned files in `returned/`, which are preserved unmodified.*
+*25 faults, 2 auditors. Compiled 2026-10-07T21:32:09+00:00 at commit `5a00bbab7497` (tree dirty: True) by `scripts/audit_results.py` from the auditors' own returned files in `returned/`, which are preserved unmodified.*
 
 ## Auditors
 

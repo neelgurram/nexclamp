@@ -24,14 +24,14 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
-from nexclamp import config  # noqa: E402
-from nexclamp.models import load_models, materialize  # noqa: E402
-from nexclamp.protocols import rheobase as rb  # noqa: E402
-from nexclamp.protocols.definitions import batched, templates_from_config  # noqa: E402
-from nexclamp.protocols.generate import group_by_length, write_probe  # noqa: E402
-from nexclamp.provenance import REPO_ROOT, git_state, utc_now  # noqa: E402
-from nexclamp.simulators.jneuroml import JNeuroML  # noqa: E402
-from nexclamp.simulators.neuron import NeuronSimulator  # noqa: E402
+from nexclamp import config
+from nexclamp.models import load_models, materialize
+from nexclamp.protocols import rheobase as rb
+from nexclamp.protocols.definitions import batched, templates_from_config
+from nexclamp.protocols.generate import group_by_length, write_probe
+from nexclamp.provenance import REPO_ROOT, git_state, utc_now
+from nexclamp.simulators.jneuroml import JNeuroML
+from nexclamp.simulators.neuron import NeuronSimulator
 
 CAMPAIGN = "heldout-v1"
 BATTERY = json.loads((REPO_ROOT / "results/processed/pilot2/selection_k4.json").read_text(

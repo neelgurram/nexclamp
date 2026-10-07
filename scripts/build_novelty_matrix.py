@@ -8,7 +8,7 @@ silently.
 
 Columns follow the specification ("Required novelty sweep"): citation, year, model type, mutations,
 multiple stimuli, electrophysiology features, protocol optimization, held-out evaluation, AI
-transformations, software availability, distinction from NeuroSem, plus provenance columns.
+transformations, software availability, distinction from NexClamp, plus provenance columns.
 
 Usage: python scripts/build_novelty_matrix.py
 """

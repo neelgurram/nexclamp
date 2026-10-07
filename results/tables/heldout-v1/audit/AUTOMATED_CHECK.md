@@ -1,6 +1,6 @@
 # Automated re-check of the audit sample (AI-assisted, not the human audit)
 
-*26 mutants from 2 packs. Generated 2026-09-22T16:25:05+00:00 at commit `cb874532e3bebf30620afd27defe06ce37eb55f7` (tree dirty: False) by `scripts/audit_autocheck.py`. The human verdict columns in each `AUDIT_SHEET.csv` are left empty on purpose: the preregistered audit is done by people.*
+*26 mutants from 2 packs. Generated 2026-10-07T21:32:08+00:00 at commit `5a00bbab7497fc50e8ba337ebf869937a75d432b` (tree dirty: True) by `scripts/audit_autocheck.py`. The human verdict columns in each `AUDIT_SHEET.csv` are left empty on purpose: the preregistered audit is done by people.*
 
 ## Summary
 

@@ -1,6 +1,6 @@
 # Current repository state
 
-*Required first document of the Neuraxis execution plan (`docs/handoff/NEURAXIS_EXECUTION_PLAN.pdf`,
+*Required first document of the NexClamp execution plan (`docs/handoff/NEURAXIS_EXECUTION_PLAN.pdf`,
 SHA-256 `2ae2a2ce…2ddd`). Inventory taken on 2026-09-16 at commit `c46e10a` (branch `m0-audit`,
 20 commits, tag `pilot-v1-code`, no remote), before this build. Section 7 lists what the build
 changed.*
@@ -16,7 +16,7 @@ changed.*
   checks every launch condition (`scripts/pilot2_authorize.py`). Wang–Buzsáki is excluded (D-051);
   the five Pilot 2 models come from five different papers and none was used in Pilot 1 (D-053).
 - No held-out ("exam") data have been created or looked at.
-- The project was called NeuroSem; it is now Neuraxis. Old names stay where changing them would
+- The project was called NexClamp; it is now NexClamp. Old names stay where changing them would
   damage the record of what was done.
 
 ## 1. What exists
@@ -35,9 +35,9 @@ changed.*
 | Analysis and figures | `analysis/`, `experiments/analyze.py`, `experiments/pilot_outputs.py` | verified on synthetic data; figures drawn for Pilot 1 |
 | Agent-study harness | `experiments/agent.py`, `agent_study/` (hidden checks Git-ignored) | built; no trials run; hidden checks need independent review (N-12) |
 | Configuration | `configs/study.yaml`, `features.yaml`, `tolerances.yaml`, `agent_policy.yaml`; `configs/pilot_protocol_v1/` (superseded); `configs/pilot2_frozen.yaml` | provisional except the frozen Pilot 2 settings; the study itself is not frozen |
-| Models | `models/raw/` (Pospischil 2008, NeuroML2 HH, Wang–Buzsáki), `models/candidates/` (Prinz, Maex, Smith, Migliore, Solinas, Pinsky–Rinzel); `data/model_manifest.csv`, `data/model_candidates.csv` | commit-pinned, hash-verified; licences audited (`LICENSE_AUDIT.md`) |
+| Models | `models/raw/` (Pospischil 2008, NeuroML2 HH, Wang–Buzsáki), `models/candidates/` (Prinz, Maex, Smith, Migliore, Solinas, Pinsky–Rinzel); `data/model_manifest.csv`, `data/model_candidates.csv` | commit-pinned, hash-verified; licences audited (`project/LICENSE_AUDIT.md`) |
 | Environment | `requirements.lock`, `pyproject.toml`, `environment.yml`, `.tools/` JDK, `Dockerfile`, `Makefile`, `.github/workflows` | lock and venv verified; Docker never built (no Docker on this machine); CI never run (no remote) |
-| Audits and plans | `DEPENDENCY_AUDIT.md`, `LICENSE_AUDIT.md`, `PRIOR_ART_AUDIT.md`, `docs/novelty_matrix.csv` (335 works), `docs/NAME_CONFLICT_AUDIT.md`, `RISK_REGISTER.md`, `REQUIREMENTS.md`, `PLAN.md`, `DECISIONS.md` (D-001 to D-038) | written and fact-checked; Neel's review pending |
+| Audits and plans | `DEPENDENCY_AUDIT.md`, `project/LICENSE_AUDIT.md`, `project/PRIOR_ART_AUDIT.md`, `docs/novelty_matrix.csv` (335 works), `docs/NAME_CONFLICT_AUDIT.md`, `project/RISK_REGISTER.md`, `project/REQUIREMENTS.md`, `project/PLAN.md`, `project/DECISIONS.md` (D-001 to D-038) | written and fact-checked; Neel's review pending |
 
 ## 2. Data and their status
 
@@ -82,12 +82,12 @@ during curation", not as "unseen".
 
 ## 5. Names
 
-- **NeuroSem.** Appears about 4,300 times: historical documents, evidence, result records,
+- **NexClamp.** Appears about 4,300 times: historical documents, evidence, result records,
   feature-source labels such as `neurosem:firing_regime`, and environment variables `NEUROSEM_*`.
   - Kept where changing it would alter recorded provenance or hashed configs.
   - `NEURAXIS_*` environment variables now take precedence.
 - **PerturbPrint.** 6 files; it was an earlier naming recommendation.
-- **Neuraxis.** The current, provisional name, pending `docs/NAME_AUDIT.md`.
+- **NexClamp.** The current, provisional name, pending `docs/NAME_AUDIT.md`.
 
 ## 6. Decisions requiring human approval
 

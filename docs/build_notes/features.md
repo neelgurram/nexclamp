@@ -1,6 +1,6 @@
 # Build note: `features/` (efel_adapter, regimes, trace_metrics)
 
-Owner module: `src/neurosem/features/`. No core module was edited. This note lists
+Owner module: `src/nexclamp/features/`. No core module was edited. This note lists
 places where the implementation adds to or interprets ARCHITECTURE.md sections 3.1 to
 3.3, and requests for core/config owners.
 

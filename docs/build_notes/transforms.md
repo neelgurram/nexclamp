@@ -1,6 +1,6 @@
 # Build note: `neurosem.transforms`
 
-Module: `src/neurosem/transforms/` (ARCHITECTURE.md section 3.5). Items below need a decision or
+Module: `src/nexclamp/transforms/` (ARCHITECTURE.md section 3.5). Items below need a decision or
 a change outside this module, or record tool behaviour found while building it.
 
 ## 1. Contract / integration items
@@ -15,7 +15,7 @@ a change outside this module, or record tool behaviour found while building it.
    the probe from `Workspace(ws.root, dc.replace(ws.model, **variant.model_overrides))`.
    Helper provided: `neurosem.transforms.apply_model_overrides(ws, overrides)`. Without it a
    correct rename would surface as `BUILD_ERROR`, a false detection.
-3. **`data/valid_transforms.csv` has one extra column.** Section 2 says "same columns as the
+3. **`results/processed/<campaign>/valid_transforms.csv` has one extra column.** Section 2 says "same columns as the
    mutation manifest plus `no_change`". `transforms.write_manifest` appends
    `model_overrides_json` after `no_change`, because a cell rename cannot be reproduced from the
    manifest without it. Please either accept the column in ARCHITECTURE.md or move overrides into

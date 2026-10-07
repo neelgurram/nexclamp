@@ -1,9 +1,9 @@
-# Reproducing the NeuroSem environment
+# Reproducing the NexClamp environment
 
 This guide gives exact commands to rebuild the environment on Windows and Linux, and says plainly
-what has and has not been verified. NeuroSem is pre-pilot: there are **no scientific results to
+what has and has not been verified. NexClamp is pre-pilot: there are **no scientific results to
 reproduce yet**. The pipeline commands (`neurosem validate-models`, `pilot`, `reproduce-paper`) exist
-in `src/neuraxis/cli.py`; what was checked about them is listed below and in the last section.
+in `src/nexclamp/cli.py`; what was checked about them is listed below and in the last section.
 
 ## What was verified, where (2026-09-13)
 
@@ -40,7 +40,7 @@ Run from the repository root. Use `py -3.12` explicitly: the Python launcher's d
 different version (on the authoring machine it is 3.14).
 
 ```powershell
-cd C:\path\to\NeuroSem
+cd C:\path\to\NexClamp
 py -3.12 -m venv .venv
 .\.venv\Scripts\python -m pip install pip==26.2.1
 .\.venv\Scripts\python -m pip install -r requirements.lock
@@ -71,7 +71,7 @@ whether the distribution provides one depends on the release (package versions c
   separately installed 3.12 (for example pyenv or a python.org source build) or the Docker image.
 
 ```bash
-cd /path/to/NeuroSem
+cd /path/to/NexClamp
 python3.12 -m venv .venv
 .venv/bin/python -c "import sys; assert sys.version_info[:2] == (3, 12), sys.version"
 .venv/bin/python -m pip install pip==26.2.1
@@ -198,7 +198,7 @@ and exit 0. The same one-liner printed that and exited 0 on the Windows developm
 
 ## Pipeline commands
 
-Defined in `docs/ARCHITECTURE.md` §3.9 and implemented in `src/neuraxis/cli.py`:
+Defined in `docs/ARCHITECTURE.md` §3.9 and implemented in `src/nexclamp/cli.py`:
 
 ```bash
 neurosem validate-models

@@ -27,8 +27,8 @@ from xml.etree import ElementTree as ET
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
-from nexclamp import config  # noqa: E402
-from nexclamp.provenance import REPO_ROOT, git_state, utc_now  # noqa: E402
+from nexclamp import config
+from nexclamp.provenance import REPO_ROOT, git_state, utc_now
 
 W = "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}"
 QUESTIONS = {"Q1": "edit matches its label", "Q2": "assigned class plausible", "Q3": "detection plausible"}
@@ -41,7 +41,7 @@ def clean(s: str) -> str:
 def from_docx(path: Path) -> tuple[dict, dict]:
     """Verdicts and header box from a returned Word packet."""
     root = ET.fromstring(zipfile.ZipFile(path).read("word/document.xml"))
-    text = lambda c: " ".join("".join(t.text or "" for t in p.iter(W + "t")).strip()  # noqa: E731
+    text = lambda c: " ".join("".join(t.text or "" for t in p.iter(W + "t")).strip()
                               for p in c.iter(W + "p")).strip()
     out, header = {}, {}
     for tb in root.iter(W + "tbl"):
@@ -103,7 +103,7 @@ def from_pdf(path: Path) -> tuple[dict, dict]:
                      and w[4] in ("High", "Medium", "Low")} if key == "confidence" else cols)
             if opts:
                 out[cur][key] = min(opts, key=lambda o: min(abs(opts[o] - (m[0] + m[2]) / 2) for m in marks))
-        m = re.search(r"Notes \(required for any No or Unsure\):\s*(.*?)(?:\n\s*\n|\Z)", page.get_text(), re.S)
+        m = re.search(r"Notes \(required for any No or Unsure\):\s*(.*?)(?:\n\s*\n|\Z)", page.get_text(), re.DOTALL)
         if m and len(clean(m.group(1))) > 3:
             out[cur]["note"] = clean(out[cur].get("note", "") + " " + clean(m.group(1)))[:600]
     first = doc[0].get_text()

@@ -27,11 +27,11 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
-import yaml  # noqa: E402
+import yaml
 
-from nexclamp import config  # noqa: E402
-from nexclamp.experiments import agent as ag  # noqa: E402
-from nexclamp.provenance import REPO_ROOT, git_state, sha256_file, utc_now  # noqa: E402
+from nexclamp import config
+from nexclamp.experiments import agent as ag
+from nexclamp.provenance import REPO_ROOT, git_state, sha256_file, utc_now
 
 SCHEMA = "neurosem-agent-frozen/1"
 

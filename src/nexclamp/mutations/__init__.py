@@ -3,7 +3,13 @@
 Importing the package registers every operator in :data:`REGISTRY`.
 """
 
-from nexclamp.mutations import biophysics, kinetics, numerical, references, stimulus  # noqa: F401  (registration)
+from nexclamp.mutations import (  # noqa: F401  (registration)
+    biophysics,
+    kinetics,
+    numerical,
+    references,
+    stimulus,
+)
 from nexclamp.mutations.base import (
     GENERATOR_SEED_KEY,
     REGISTRY,

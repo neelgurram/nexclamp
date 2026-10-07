@@ -28,16 +28,38 @@ from collections.abc import Callable, Sequence
 from pathlib import Path
 from typing import Any
 
-from nexclamp import config
+from nexclamp import config, units
 from nexclamp.models import Workspace, copy_workspace
 from nexclamp.protocols import rheobase as rb
-from nexclamp.protocols.generate import DEFAULT_SEED, canonical_output, group_by_length, harness_step_and_length, write_probe
-from nexclamp.provenance import (environment_digest, git_state, relpath, sha256_bytes,
-                                 sha256_file, sha256_json, utc_now, write_immutable, write_immutable_text)
-from nexclamp.schemas import (ConcreteProtocol, ExecConfig, RunRecord, RunStatus, Trace, VariantKind, VariantRecord,
-                              dumps)
+from nexclamp.protocols.generate import (
+    DEFAULT_SEED,
+    canonical_output,
+    group_by_length,
+    harness_step_and_length,
+    write_probe,
+)
+from nexclamp.provenance import (
+    environment_digest,
+    git_state,
+    relpath,
+    sha256_bytes,
+    sha256_file,
+    sha256_json,
+    utc_now,
+    write_immutable,
+    write_immutable_text,
+)
+from nexclamp.schemas import (
+    ConcreteProtocol,
+    ExecConfig,
+    RunRecord,
+    RunStatus,
+    Trace,
+    VariantKind,
+    VariantRecord,
+    dumps,
+)
 from nexclamp.simulators.base import Simulator
-from nexclamp import units
 
 _INCLUDE_RE = re.compile(r'<(?:include\s+href|Include\s+file)\s*=\s*"([^"]+)"', re.IGNORECASE)
 _BUILTIN = {"Cells.xml", "Networks.xml", "Simulation.xml", "Inputs.xml", "Channels.xml", "Synapses.xml", "PyNN.xml",
@@ -89,7 +111,7 @@ def reachable_files(entry: Path) -> list[Path]:
         if p.suffix.lower() not in (".nml", ".xml"):
             continue
         for inc in _INCLUDE_RE.findall(p.read_text(encoding="utf-8", errors="replace")):
-            if inc.startswith(("http://", "https://")) or Path(inc).name in _BUILTIN or inc.startswith("NeuroML2CoreTypes/"):
+            if inc.startswith(("http://", "https://", "NeuroML2CoreTypes/")) or Path(inc).name in _BUILTIN:
                 continue
             stack.append((p.parent / inc).resolve())
     return sorted(seen)
@@ -224,7 +246,7 @@ class RunRecorder:
         return "r-" + sha256_json(payload)[:20]
 
     def features_key(self, trace_sha: str) -> str:
-        """Features depend on the stored trace, the feature config, the eFEL build and NeuroSem's feature code."""
+        """Features depend on the stored trace, the feature config, the eFEL build and NexClamp's feature code."""
         import efel
 
         return sha256_json({"trace_sha256": trace_sha, "features_cfg": self.features_cfg, "efel": efel.__version__,
@@ -508,6 +530,6 @@ def run_parallel(tasks: Sequence[Callable[[], Any]], workers: int) -> list[Any]:
             i = futs[fut]
             try:
                 results[i] = fut.result()
-            except Exception as exc:  # noqa: BLE001 - captured for reporting
+            except Exception as exc:
                 results[i] = TaskError(f"{type(exc).__name__}: {exc}", traceback.format_exc())
     return results

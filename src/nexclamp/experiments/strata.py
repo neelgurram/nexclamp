@@ -204,7 +204,7 @@ def numerical_robustness_rows(ref_fps: Mapping[int, Any], var_fps: Mapping[int, 
         raise ValueError("reference fingerprint at h is required")
     for pid, table in sorted(r1.tables.items()):
         for feat, rv1 in sorted(table.items()):
-            def at(fps: Mapping[int, Any], f: int):
+            def at(fps: Mapping[int, Any], f: int, pid: str = pid, feat: str = feat):
                 fp = fps.get(f)
                 return None if fp is None else fp.tables.get(pid, {}).get(feat)
 

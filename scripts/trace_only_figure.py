@@ -21,15 +21,15 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
-import matplotlib  # noqa: E402
+import matplotlib
 
 matplotlib.use("Agg")
-import numpy as np  # noqa: E402
-from matplotlib.figure import Figure  # noqa: E402
+import numpy as np
+from matplotlib.figure import Figure
 
-from nexclamp import config  # noqa: E402
-from nexclamp.analysis.figures import OKABE_ITO, _save, set_designation  # noqa: E402
-from nexclamp.provenance import REPO_ROOT  # noqa: E402
+from nexclamp import config
+from nexclamp.analysis.figures import OKABE_ITO, _save, set_designation
+from nexclamp.provenance import REPO_ROOT
 
 REF_COLOUR, VAR_COLOUR, DIFF_COLOUR = "#000000", OKABE_ITO["vermillion"], OKABE_ITO["blue"]
 

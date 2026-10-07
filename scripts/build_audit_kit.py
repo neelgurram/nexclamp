@@ -27,14 +27,14 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
-import matplotlib  # noqa: E402
+import matplotlib
 
 matplotlib.use("Agg")
-import numpy as np  # noqa: E402
-from matplotlib.figure import Figure  # noqa: E402
+import numpy as np
+from matplotlib.figure import Figure
 
-from nexclamp import config  # noqa: E402
-from nexclamp.provenance import REPO_ROOT, git_state, utc_now  # noqa: E402
+from nexclamp import config
+from nexclamp.provenance import REPO_ROOT, git_state, utc_now
 
 MODEL_NAMES = {
     "hay2011_soma": "Hay et al. 2011 layer-5 pyramidal cell (soma only)",

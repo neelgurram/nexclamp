@@ -49,23 +49,23 @@ Software has no page numbers. Locations below are README headings, source line n
   - OMV has been applied to Open Source Brain models as the models and the simulators are updated;
   - biological validation is a separate, final level, handled by NeuronUnit/SciUnit.
 
-## Overlap with Neuraxis, claim by claim
+## Overlap with NexClamp, claim by claim
 
-| Neuraxis claim | Overlap | Detail |
+| NexClamp claim | Overlap | Detail |
 |---|---|---|
 | Multi-protocol fingerprints | Partial | A MEP/OMT pair can hold several experiments and observables per model. Authors write them per project. There is no standard protocol library, no rheobase scaling and no feature vector. |
 | Controlled mutations of neuron models | None | Nothing in the README or the analyzer code generates or seeds faults. |
-| Canonical-test survivors | None as a finding. OMV *is* the canonical test. | OMV checks only the outcomes a project author wrote down. It never measures which behaviour changes pass those checks. Neuraxis's "survivor" set is defined relative to exactly this kind of check. |
+| Canonical-test survivors | None as a finding. OMV *is* the canonical test. | OMV checks only the outcomes a project author wrote down. It never measures which behaviour changes pass those checks. NexClamp's "survivor" set is defined relative to exactly this kind of check. |
 | Protocol selection | None | Nothing chooses, ranks or minimises experiments. |
 | Held-out generalisation | None | Pass/fail regression per model and engine only. |
 | Valid-transformation false positives | Partial | Tolerances exist so that the same model on different engines can pass, which is the purpose of avoiding false alarms. But tolerances are set by hand per observable. The suggested tolerance comes from one observed comparison, not from numerical refinement. No false-alarm rate is measured. |
 
 ## What remains distinct
 
-- **Measuring the check.** Neuraxis would measure how adequate an OMV-style canonical check is. It would use controlled mutants and a detection matrix to show which behaviour-changing edits pass the check and which protocols expose them.
-- **Tolerances.** Neuraxis would set tolerances from numerical refinement, not by hand. It would also measure false alarms on transformations known to be valid.
-- **Selection and transfer.** Neuraxis would choose a small battery and test it on held-out models and a held-out mutation family.
-- **Baseline, not contribution.** OMV should be described as the baseline and a reused component, never as something Neuraxis improves on in kind.
+- **Measuring the check.** NexClamp would measure how adequate an OMV-style canonical check is. It would use controlled mutants and a detection matrix to show which behaviour-changing edits pass the check and which protocols expose them.
+- **Tolerances.** NexClamp would set tolerances from numerical refinement, not by hand. It would also measure false alarms on transformations known to be valid.
+- **Selection and transfer.** NexClamp would choose a small battery and test it on held-out models and a held-out mutation family.
+- **Baseline, not contribution.** OMV should be described as the baseline and a reused component, never as something NexClamp improves on in kind.
 
 ## Caveats
 

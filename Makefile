@@ -1,4 +1,4 @@
-# NeuroSem task runner. Needs GNU make and a POSIX shell (Linux, macOS, or Windows Git Bash
+# NexClamp task runner. Needs GNU make and a POSIX shell (Linux, macOS, or Windows Git Bash
 # with make installed). Every target is a thin wrapper: `make -n <target>` prints the exact
 # commands. On Windows without make, run the equivalent commands in docs/REPRODUCING.md.
 # This Makefile has never been executed: GNU make is not installed on the authoring machine.
@@ -33,12 +33,12 @@ JAVA_ARGS ?=
 # The project requires CPython 3.12 (pyproject: >=3.12,<3.13) and the lock holds cp312 wheels.
 # Checking the interpreter before creating the venv, and the venv itself afterwards (it may
 # predate this run), stops with a clear message instead of leaving a half-installed .venv.
-REQUIRE_PY312 := -c "import sys; sys.exit(0 if sys.version_info[:2] == (3, 12) else 'NeuroSem needs CPython 3.12, found ' + sys.version.split()[0] + ' at ' + sys.executable)"
+REQUIRE_PY312 := -c "import sys; sys.exit(0 if sys.version_info[:2] == (3, 12) else 'NexClamp needs CPython 3.12, found ' + sys.version.split()[0] + ' at ' + sys.executable)"
 
 .PHONY: help setup java test test-fast validate-models pilot reproduce-paper paper docker-build docker-test lint
 
 help:
-	@echo "NeuroSem make targets"
+	@echo "NexClamp make targets"
 	@echo "  setup            create $(VENV) with $(SETUP_PYTHON) (must be CPython 3.12), install requirements.lock and neurosem (editable), pip check"
 	@echo "  java             download Eclipse Temurin 21 into .tools/ (scripts/bootstrap_java.py $(JAVA_ARGS))"
 	@echo "  test             full pytest suite (jnml tests are skipped when Java is unavailable)"

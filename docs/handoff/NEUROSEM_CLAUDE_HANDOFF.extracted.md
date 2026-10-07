@@ -274,7 +274,7 @@ A strong paper requires most of these:
 
 ## Initial Claude prompt
 
-You are the lead research-software engineer implementing the attached NEUROSEM_CLAUDE_HANDOFF.md. Read it completely before taking action. This is a rigorous computational-neuroscience research study, not a demonstration app. Reproducibility, scientific validity, provenance, and leakage prevention have priority over speed. Do not implement the full system yet. Perform Milestone 0 only and create: - PLAN.md - REQUIREMENTS.md - PRIOR_ART_AUDIT.md - docs/novelty_matrix.csv - DEPENDENCY_AUDIT.md - LICENSE_AUDIT.md - RISK_REGISTER.md - DECISIONS.md - CHANGELOG.md - AI_USE_LOG.md For Milestone 0:
+You are the lead research-software engineer implementing the attached NEUROSEM_CLAUDE_HANDOFF.md. Read it completely before taking action. This is a rigorous computational-neuroscience research study, not a demonstration app. Reproducibility, scientific validity, provenance, and leakage prevention have priority over speed. Do not implement the full system yet. Perform Milestone 0 only and create: - ../project/PLAN.md - ../project/REQUIREMENTS.md - ../project/PRIOR_ART_AUDIT.md - docs/novelty_matrix.csv - DEPENDENCY_AUDIT.md - ../project/LICENSE_AUDIT.md - ../project/RISK_REGISTER.md - ../project/DECISIONS.md - CHANGELOG.md - AI_USE_LOG.md For Milestone 0:
 1. Separate existing functionality to reuse from genuinely new NeuroSem functionality.
 2. Verify current NeuroML, LEMS, pyNeuroML, jNeuroML, OMV, SciUnit/NeuronUnit, and eFEL documentation, APIs, versions, and licenses from primary sources.
 3. Search for project/package/name conflicts; do not assume NeuroSem is available.

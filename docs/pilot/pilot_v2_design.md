@@ -39,7 +39,7 @@ reference.
 ## 2. The canonical protocol is additional, not one of P03-P09
 
 `P00_canonical` is the simulation shipped with each model, run unchanged. It is the **comparator**,
-the conventional regression test NeuroSem is compared against. It is not part of the battery and not
+the conventional regression test NexClamp is compared against. It is not part of the battery and not
 counted among the seven.
 
 ## 3. Exact protocol count

@@ -68,7 +68,7 @@ def test_cache_immutability_reproducibility_and_feature_rekeying(tmp_path, sim, 
 
 
 def test_build_error_is_recorded_and_not_retried(tmp_path, sim, rs_ws):
-    rec, protos, ref, _ = _setup(tmp_path, sim, rs_ws)
+    rec, protos, _ref, _ = _setup(tmp_path, sim, rs_ws)
     cell = rs_ws.cell_path
     cell.write_text(cell.read_text(encoding="utf-8").replace('ionChannel="Kd"', 'ionChannel="Kdx"'), encoding="utf-8")
     bad = VariantRecord("rs__bad", rs_ws.model.model_id, VariantKind.MUTANT)

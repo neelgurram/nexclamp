@@ -37,7 +37,7 @@ hidden-evaluator review.
 | Raw result paths | `results/raw/pilot/…`, `results/raw/curation-*/…` untouched; sealed campaigns stay sealed. |
 | Recorded metadata | `project_name`, `study_id`, feature-source labels such as `neurosem:firing_regime`, and the `neurosem:` key in `features.yaml` stay as recorded. Renaming them would change hashed configuration and break recorded provenance. |
 | Hashes | No file that any manifest hashes is edited: model snapshots, `ARCHIVE_MANIFEST.sha256`, `SPLITS.sha256`, pre-run manifests, archive tars. Verified before and after. |
-| Earlier names in the record | `DECISIONS.md`, `docs/DEVIATION_LOG.md`, `CHANGELOG.md`, `AI_USE_LOG.md`, `docs/NAME_*`, `docs/build_notes/`, `docs/m0_evidence/`, `docs/handoff/` keep NeuroSem and Neuraxis as written. |
+| Earlier names in the record | `project/DECISIONS.md`, `docs/DEVIATION_LOG.md`, `CHANGELOG.md`, `AI_USE_LOG.md`, `docs/NAME_*`, `docs/build_notes/`, `docs/m0_evidence/`, `docs/handoff/` keep NeuroSem and Neuraxis as written. |
 
 ## 3. Steps (one commit, on a branch)
 
@@ -61,7 +61,7 @@ hidden-evaluator review.
    - `neuraxis`/`perturbprint` CLI `--help` and `import perturbprint` work;
    - `git status` clean; every previously tracked hash file unchanged (`git diff --stat` shows no
      manifest edits).
-9. Record it: `docs/DEVIATION_LOG.md` (new row), `CHANGELOG.md`, `DECISIONS.md`, and a note in
+9. Record it: `docs/DEVIATION_LOG.md` (new row), `CHANGELOG.md`, `project/DECISIONS.md`, and a note in
    `docs/NAME_DECISION_PACKET.md` that the name is adopted.
 
 ## 4. What the rename does not decide

@@ -1,8 +1,8 @@
-# Neuraxis development pilot protocol, version 1 (PILOT_PROTOCOL_V1)
+# NexClamp development pilot protocol, version 1 (PILOT_PROTOCOL_V1)
 
 | | |
 |---|---|
-| Project name | **Neuraxis** (the software package keeps the working name `neurosem` until a rename is done, N-10) |
+| Project name | **NexClamp** (the software package keeps the working name `neurosem` until a rename is done, N-10) |
 | Protocol fixed | 2026-09-15 00:20 UTC (2026-09-14 local), before any Pilot 2 data were generated |
 | Status | **Development / exploratory.** A second development iteration informed by Pilot 1. Not independent confirmation. Never pooled with the confirmatory held-out estimate (DECISIONS D-026). |
 | Records | `study_phase = "development_pilot"`, `project_name = "Neuraxis"`, `protocol_version = "PILOT_PROTOCOL_V1"` in every run record, table, report and figure |
@@ -39,7 +39,7 @@ manifest. Repeated and new models are reported separately.
 | Detection protocols (7) | `P03_rheobase` (variant rheobase measurement); `P04_step_2x` (2x rheobase, 500 ms); `P05_long_step` (1.5x, 2000 ms); `P06_ramp` (0 to 3x over 1000 ms); `P07_hyperpolarizing_step` (−1x, 500 ms); `P08_rebound` (−2x for 500 ms, then 300 ms after release); `P09_short_pulse` (10x for 3 ms, 60 ms window) |
 
 All timing is in whole milliseconds, with a 300 ms settle period before each stimulus. Parameters
-are the defaults in `src/neuraxis/protocols/definitions.py` at the pre-run commit.
+are the defaults in `src/nexclamp/protocols/definitions.py` at the pre-run commit.
 
 ## 4. Features
 

@@ -10,7 +10,7 @@ Each design choice below follows from verified eFEL 5.7.34 behaviour
   is never replaced by zero. Count features return ``array([0])`` when there are no
   spikes, which is a real, defined zero.
 * Some features return numbers where they mean nothing: sag on a depolarising step, or a
-  frequency from a single spike. NeuroSem decides applicability before asking eFEL:
+  frequency from a single spike. NexClamp decides applicability before asking eFEL:
   ``min_spikes`` and ``requires`` make a feature ``not_applicable``.
 * Per-spike arrays are reduced explicitly (``first``/``last``). ``scalar`` insists on
   exactly one value, so a per-spike feature configured as a scalar fails loudly.
@@ -195,9 +195,9 @@ def feature_specs(cfg: Any) -> dict[str, FeatureSpec]:
             specs[name] = FeatureSpec(name, e["efel"], None, e["agg"], unit, min_spikes, requires, kind)
         else:
             if e["neurosem"] not in NEUROSEM_FEATURES:
-                raise FeatureConfigError(f"feature {name!r}: unknown NeuroSem feature {e['neurosem']!r}")
+                raise FeatureConfigError(f"feature {name!r}: unknown NexClamp feature {e['neurosem']!r}")
             if "agg" in e:
-                raise FeatureConfigError(f"feature {name!r}: NeuroSem features take no 'agg'")
+                raise FeatureConfigError(f"feature {name!r}: NexClamp features take no 'agg'")
             specs[name] = FeatureSpec(name, None, e["neurosem"], None, unit, min_spikes, requires, kind)
     sc = specs.get(SPIKE_COUNT)
     if sc is None or sc.efel is None or sc.agg != "scalar" or sc.min_spikes != 0 or sc.requires is not None:

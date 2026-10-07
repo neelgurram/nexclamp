@@ -12,5 +12,5 @@ Many items were acted on afterwards, and some values in the notes are now supers
 - the q10 fallback;
 - container provenance.
 
-The current rules are in `DECISIONS.md` (D-020 to D-023) and `docs/ARCHITECTURE.md`. Where a note and
+The current rules are in `../project/DECISIONS.md` (D-020 to D-023) and `docs/ARCHITECTURE.md`. Where a note and
 those files disagree, the decision log and the code win.

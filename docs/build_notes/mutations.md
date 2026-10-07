@@ -7,7 +7,7 @@ jLEMS 0.12.0, Temurin 21).
 ## 1. Requested contract / core changes
 
 ### 1.1 `VariantRecord` has no generator seed field
-`data/mutation_manifest.csv` has a `generator_seed` column but `schemas.VariantRecord` has
+`results/processed/<campaign>/mutation_manifest.csv` has a `generator_seed` column but `schemas.VariantRecord` has
 no seed field. **Workaround:** `generate_mutants` stores the seed as
 `params["generator_seed"]`; `write_manifest` moves it into the `generator_seed` column and
 leaves it out of `params_json`. **Request:** add `generator_seed: int | None = None` to

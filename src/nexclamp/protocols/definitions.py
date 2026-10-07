@@ -73,7 +73,7 @@ class ProtocolTemplate:
 
 
 # Default catalogue, numbered as in the specification. Parameters are provisional
-# until frozen in configs/study.yaml (see DECISIONS.md).
+# until frozen in configs/study.yaml (see docs/project/DECISIONS.md).
 DEFAULT_TEMPLATES: tuple[ProtocolTemplate, ...] = (
     ProtocolTemplate("P01_baseline", "baseline", "Zero-current baseline", {"duration_ms": 700},
                      ("baseline_voltage", "steady_state_voltage", "spike_count", "firing_regime")),

@@ -1,7 +1,7 @@
 # Cross-simulator validation (N-08)
 
 *Written 2026-09-18. Evidence: `results/audits/cross_simulator/<stamp>/` (CSV, JSON, Markdown, and
-the generated NEURON sources with hashes). Code: `src/neuraxis/simulators/neuron.py`,
+the generated NEURON sources with hashes). Code: `src/nexclamp/simulators/neuron.py`,
 `scripts/cross_simulator_check.py`, `tests/unit/test_neuron_adapter.py`.*
 
 ## Why this exists

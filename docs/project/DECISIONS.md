@@ -9,7 +9,7 @@ again under "Decisions Neel must make".
 ## Process
 
 **D-001 Separate repository, local Git, one branch per milestone** (fixed)
-NeuroSem lives in `C:\Users\gurra\NeuroSem` and is not part of Continuum. The work is on branch `m0-audit`. No GitHub remote exists yet; creating one is outward-facing (see N-01).
+NexClamp lives in `C:\Users\gurra\NexClamp` and is not part of Continuum. The work is on branch `m0-audit`. No GitHub remote exists yet; creating one is outward-facing (see N-01).
 
 **D-002 The final specification supersedes the handoff** (fixed)
 `docs/handoff/NEUROSEM_FINAL_SPEC.pdf` (SHA-256 `2d1f6e51…0c09`) takes precedence over `NEUROSEM_CLAUDE_HANDOFF.pdf` where they differ.
@@ -61,10 +61,10 @@ Pilot probe results (`docs/pilot/dt_probe.md`):
 - Some features are highly step-sensitive; the LTS third spike moves about 50 ms across the tested range.
 
 **D-008 Canonical protocol = the model's shipped harness** (provisional)
-The conventional regression test for an Open Source Brain NeuroML model reruns its shipped LEMS simulation. That simulation is analysed with the same features and calibrated tolerances as every NeuroSem protocol, so canonical and battery results differ only in the stimulus. The analysis window always comes from the reference harness. An OMV-style spike-time check is not the primary canonical metric (see N-06).
+The conventional regression test for an Open Source Brain NeuroML model reruns its shipped LEMS simulation. That simulation is analysed with the same features and calibrated tolerances as every NexClamp protocol, so canonical and battery results differ only in the stimulus. The analysis window always comes from the reference harness. An OMV-style spike-time check is not the primary canonical metric (see N-06).
 
 **D-009 What each mutation family edits** (provisional)
-- **Stimulus mutations** edit only the shipped harness (the canonical test). By construction, the NeuroSem battery cannot see them. They act as a sensitivity control for the canonical layer and are excluded from the pilot families.
+- **Stimulus mutations** edit only the shipped harness (the canonical test). By construction, the NexClamp battery cannot see them. They act as a sensitivity control for the canonical layer and are excluded from the pilot families.
 - **Biophysical and reference mutations** edit model files and affect every protocol.
 - **Numerical mutations** edit both the harness (step, `<Meta>`) and the execution configuration used by every protocol. `recording_resolution` is a configuration-only change (post-hoc output sampling), because LEMS OutputFile has no recording interval.
 
@@ -128,7 +128,7 @@ Such variants are class 2 (structurally valid, non-executable) and are flagged `
 **D-022 Hidden agent-study evaluators are kept out of Git** (provisional; see N-12)
 - **What.** `agent_study/hidden/` (hidden checks and answer-key specs) and `results/agent_study/private/` (baselines) are Git-ignored. Only `agent_study/HIDDEN_MANIFEST.sha256` is committed.
 - **Why.** Trials run on exported directories without Git history, but hidden files that enter history are hard to remove and would leak if the repository is pushed before the trials finish.
-- **Conflict of interest.** The same assistant that built NeuroSem wrote these evaluator specs. Neel should review them, and ideally revise them independently, before any trial.
+- **Conflict of interest.** The same assistant that built NexClamp wrote these evaluator specs. Neel should review them, and ideally revise them independently, before any trial.
 
 **D-023 A run is "dirty" only if simulation-relevant files differ from the commit** (fixed)
 `provenance.git_state` checks `src`, `configs`, `data`, `models`, `scripts`, `workflows`, `pyproject.toml` and `requirements.lock`. Edits to documentation or audit evidence (for example, the prior-art sweep writing into `docs/m0_evidence` while the pilot ran) cannot change a simulation or a derived number, so they do not mark runs dirty.
@@ -183,7 +183,7 @@ Now enforced in code: `evaluate_heldout` calls `registry.check_single_clean_comm
   - generalisation to unseen models;
   - generalisation to an unseen mutation family.
 
-*Enforcement* (`src/neuraxis/experiments/registry.py`, tests in `tests/unit/test_campaign_registry.py`):
+*Enforcement* (`src/nexclamp/experiments/registry.py`, tests in `tests/unit/test_campaign_registry.py`):
 - every campaign has a permanent role (`exploratory_pilot`, `discovery`, `confirmatory_heldout`) in `results/campaign_registry.json`;
 - `evaluate_heldout` refuses:
   - a campaign registered as exploratory or discovery;
@@ -265,8 +265,8 @@ Neel: "Do not discard pilot data. Preserve all pilot configurations, raw outputs
 - **Redundancy in Pilot 1.** P03, P04, P06, P07, P08 and P09 detections were all subsets of P05's. They are kept for Pilot 2 on mechanistic grounds and reassessed before the freeze.
 - **Consequence of D-030.** The primary semantic corpus now has 2 families. Held-out generalisation to an unseen semantic family needs a third family, or a revised aim.
 
-**D-033 Project name Neuraxis; study labels on every record** (Neel, 2026-09-14; fixed)
-- **Name.** The project is Neuraxis. Every data record of the development pilot carries `project_name = "Neuraxis"`, `study_phase = "development_pilot"`, `protocol_version = "PILOT_PROTOCOL_V1"` and a designation string ("development study informed by Pilot 1; exploratory").
+**D-033 Project name NexClamp; study labels on every record** (Neel, 2026-09-14; fixed)
+- **Name.** The project is NexClamp. Every data record of the development pilot carries `project_name = "Neuraxis"`, `study_phase = "development_pilot"`, `protocol_version = "PILOT_PROTOCOL_V1"` and a designation string ("development study informed by Pilot 1; exploratory").
 - **Where the labels go:**
   - `run.json` and rheobase records (with `config_sha256`);
   - classification and all other campaign tables (leading columns);
@@ -302,7 +302,7 @@ Neel: "Do not discard pilot data. Preserve all pilot configurations, raw outputs
 - **Pre-run deviation.** The run commit is not `633482d`: labelling and scripts were added before the run, with no design change.
 
 **D-036 Formal preregistration through AsPredicted before any held-out run** (Neel, 2026-09-14; fixed)
-- **Draft.** After the pilot is reviewed, `docs/CONFIRMATORY_PREREGISTRATION_DRAFT.md` is prepared in AsPredicted format. It covers every item Neel listed, including disclosure of the pilot data already collected and confirmation that held-out outcomes were not inspected.
+- **Draft.** After the pilot is reviewed, `docs/CONFIRMATORY_PREREGISTRATION.md` is prepared in AsPredicted format. It covers every item Neel listed, including disclosure of the pilot data already collected and confirmation that held-out outcomes were not inspected.
 - **Hard stop.** No held-out data run until Neel writes exactly: "THE ASPREDICTED PREREGISTRATION HAS BEEN SUBMITTED AND VERIFIED. BEGIN THE FROZEN HELD-OUT EVALUATION."
 - **Records.** Neel provides the time-stamped PDF and the verification URL.
 
@@ -326,7 +326,7 @@ Neel: "Do not discard pilot data. Preserve all pilot configurations, raw outputs
   - the three previously silent cases were numerical stress cases.
 - **Where the original interpretation may not appear.** `docs/pilot/pilot_interpretation.md` (numerical-only silent cases counted as meeting criterion 1) is not used in any abstract, figure, introduction or publication claim. It stays in the repository only as a historical record, marked superseded.
 
-**D-039 The Neuraxis execution plan is the controlling specification; the package is renamed** (Neel, 2026-09-16; fixed)
+**D-039 The NexClamp execution plan is the controlling specification; the package is renamed** (Neel, 2026-09-16; fixed)
 - **Controlling document.** `docs/handoff/NEURAXIS_EXECUTION_PLAN.pdf` (SHA-256 `2ae2a2ce…2ddd`) controls further work. Conflicts with earlier plans are resolved in `docs/DEVIATION_LOG.md` (X-01 to X-17).
 - **Package.** `src/neurosem/` became `src/neuraxis/`. `neurosem` stays an import alias returning the same module objects, and the `neurosem` command and `NEUROSEM_*` environment variables still work.
 - **Unchanged.** Feature-source labels and the `neurosem:` feature-config key stay, to keep hashed configs and recorded provenance.
@@ -353,7 +353,7 @@ Neel: "Do not discard pilot data. Preserve all pilot configurations, raw outputs
 
 **D-044 Internal study identifier; no final brand without approval** (Neel, 2026-09-17; fixed)
 - **Identifier.** The study's internal identifier is `neuron_model_behavioral_validation` (`configs/study.yaml` `study_id`, `study_metadata.study_id`, `run.json` `study_id`), independent of branding.
-- **Name.** Neuraxis is not publicly released or registered while the live NEURAXIS trademarks stand. The package rename stays on the current branch; no further large rename for now.
+- **Name.** NexClamp is not publicly released or registered while the live NEURAXIS trademarks stand. The package rename stays on the current branch; no further large rename for now.
 - **Brand rule.** No package publication, public repository, DOI, preregistration or manuscript title uses a final brand until Neel approves it. Options are in `docs/NAME_DECISION_PACKET.md`.
 
 **D-045 Wang–Buzsáki undecided; decision packet** (Neel, 2026-09-17)
@@ -400,7 +400,7 @@ Neel: "Do not discard pilot data. Preserve all pilot configurations, raw outputs
 - **Pilot 2 scope.** A limited prespecified subset may enter Pilot 2 once validated.
 
 **D-050 Planned public name: PerturbPrint; one canonical namespace later** (Neel, 2026-09-17)
-- **Public name.** PerturbPrint, subject to the completed name audit. Neuraxis is not used publicly.
+- **Public name.** PerturbPrint, subject to the completed name audit. NexClamp is not used publicly.
 - **Internal identifier.** `neuron_model_behavioral_validation`, permanent and independent of branding.
 - **Rename timing.** No repository-wide rename while curation or tests run. The controlled plan is `docs/RENAME_PLAN.md`.
 - **Namespace.** One canonical package namespace is recommended (`perturbprint`), with no permanent `neurosem`/`neuraxis` aliases. The only documented compatibility need is the Git-ignored hidden agent-study material, which can be updated in the same commit; Neel chooses whether to keep the `neurosem` alias until his evaluator review (N-12).
@@ -477,8 +477,8 @@ Model files keep their own licenses: MIT, or LGPL-3.0 for the NeuroML2 HH exampl
 | N-15 | Time-step mutation | **Decided: removed from the primary semantic corpus; retained as a separate numerical robustness experiment** (D-030). Implemented and tested. |
 | N-16 | Pilot archive storage | **Decided: private redundant storage now; Zenodo at public release** (D-031). Local copy verified. **Update 2026-09-14:** OSF unavailable; OSF is now an optional later mirror, and the pilot proceeds (D-034). An OSF upload package is staged in `archive/pilot/osf_upload/`. **Still open:** a second independent copy of the 1.92 GB Pilot 1 archive (not blocking). |
 | N-17 | Third model-mutation family | **Decided: ion-channel kinetics** (D-037); to be implemented after Pilot 2 and before the freeze |
-| N-12 | Where the hidden agent-study evaluators live permanently (separate private repository, encrypted archive, or offline), and whether Neel revises them independently, given they were written by the assistant that built NeuroSem | local only, Git-ignored, hashes committed |
-| N-10 | Project name. The audit (`docs/m0_evidence/names/`, independently re-checked) found: no PyPI, conda-forge or GitHub-account conflict, but a 2025 CMAME article with an arXiv preprint and code named "NeuroSEM" (a computational simulation framework); an active GPL-3.0 GitHub project spelled "NeuroSem" in neuroscience and language models; the neuromarketing company NeuroSEM holding neurosem.com since 2013; and heavy overloading of "SEM" in neuroscience | **Update 2026-09-14: Neel named the project Neuraxis** (D-033). A name-conflict search for "Neuraxis" is still needed before any public release. Earlier recommendation: **PerturbPrint** (package/CLI `perturbprint`); it matches the defined term "perturbation fingerprint" and had zero hits in every source that answered (Zenodo, EUIPO and some rate-limited indexes could not be checked). `docs/NAME_CONFLICT_AUDIT.md` recommends deciding before preregistration and the frozen study, whose raw results are immutable. Runner-up: DriftClamp. Not legal clearance; re-check registries before release. Code keeps the working name `neurosem` until Neel decides (a rename is a mechanical refactor). |
+| N-12 | Where the hidden agent-study evaluators live permanently (separate private repository, encrypted archive, or offline), and whether Neel revises them independently, given they were written by the assistant that built NexClamp | local only, Git-ignored, hashes committed |
+| N-10 | Project name. The audit (`docs/m0_evidence/names/`, independently re-checked) found: no PyPI, conda-forge or GitHub-account conflict, but a 2025 CMAME article with an arXiv preprint and code named "NeuroSEM" (a computational simulation framework); an active GPL-3.0 GitHub project spelled "NeuroSem" in neuroscience and language models; the neuromarketing company NeuroSEM holding neurosem.com since 2013; and heavy overloading of "SEM" in neuroscience | **Update 2026-09-14: Neel named the project NexClamp** (D-033). A name-conflict search for "Neuraxis" is still needed before any public release. Earlier recommendation: **PerturbPrint** (package/CLI `perturbprint`); it matches the defined term "perturbation fingerprint" and had zero hits in every source that answered (Zenodo, EUIPO and some rate-limited indexes could not be checked). `docs/NAME_CONFLICT_AUDIT.md` recommends deciding before preregistration and the frozen study, whose raw results are immutable. Runner-up: DriftClamp. Not legal clearance; re-check registries before release. Code keeps the working name `neurosem` until Neel decides (a rename is a mechanical refactor). |
 
 ## D-057 Public name: NexClamp (2026-09-23)
 

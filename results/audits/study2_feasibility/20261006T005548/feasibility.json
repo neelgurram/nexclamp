@@ -1,0 +1,404 @@
+{
+  "written_utc": "2026-10-06T00:55:48+00:00",
+  "git_commit": "7643f904506262eee68f8d7d161fd6f1a53f53e1",
+  "git_dirty": false,
+  "purpose": "timing and toolchain feasibility only; no detection is computed",
+  "battery": [
+    "P05_long_step",
+    "P04_step_2x",
+    "P06_ramp"
+  ],
+  "jlems_version": {
+    "simulator": "jNeuroML",
+    "jneuroml_version": "0.14.0",
+    "jlems_version": "0.12.0",
+    "org_neuroml_export_version": "1.11.0",
+    "java_version": "openjdk version \"21.0.12.1\" 2026-08-18 LTS | OpenJDK Runtime Environment Temurin-21.0.12.1+1 (build 21.0.12.1+1-LTS) | OpenJDK 64-Bit Server VM Temurin-21.0.12.1+1 (build 21.0.12.1+1-LTS, mixed mode, sharing)",
+    "jar_path": "jNeuroML-0.14.0-jar-with-dependencies.jar",
+    "jar_sha256": "45ee565a65a66008a3b41935358d11b7c19cb6b5a67bbec22481d519f53db931"
+  },
+  "neuron_version": {
+    "simulator": "NEURON",
+    "neuron_version": "9.0.2",
+    "python": "C:\\Users\\gurra\\NeuroSem\\.venv\\Scripts\\python.exe",
+    "nrnivmodl": "C:\\Users\\gurra\\nrn\\bin\\nrnivmodl.BAT",
+    "export_available": "True"
+  },
+  "models": {
+    "traub2005_testseg2": {
+      "model_id": "traub2005_testseg2",
+      "frozen_rheobase_nA": 0.01710948705689502,
+      "groups": [
+        {
+          "protocols": [
+            "P04_step_2x"
+          ],
+          "length_ms": 1000.0,
+          "cell_steps": 200000,
+          "jlems": {
+            "status": "ok",
+            "seconds": 10.2,
+            "spikes": {
+              "P04_step_2x": 18
+            },
+            "message": ""
+          },
+          "neuron": {
+            "status": "ok",
+            "seconds": 22.2,
+            "spikes": {
+              "P04_step_2x": 18
+            },
+            "message": ""
+          }
+        },
+        {
+          "protocols": [
+            "P06_ramp"
+          ],
+          "length_ms": 1500.0,
+          "cell_steps": 300000,
+          "jlems": {
+            "status": "ok",
+            "seconds": 15.1,
+            "spikes": {
+              "P06_ramp": 27
+            },
+            "message": ""
+          },
+          "neuron": {
+            "status": "ok",
+            "seconds": 11.9,
+            "spikes": {
+              "P06_ramp": 27
+            },
+            "message": ""
+          }
+        },
+        {
+          "protocols": [
+            "P05_long_step"
+          ],
+          "length_ms": 2500.0,
+          "cell_steps": 500000,
+          "jlems": {
+            "status": "ok",
+            "seconds": 22.1,
+            "spikes": {
+              "P05_long_step": 42
+            },
+            "message": ""
+          },
+          "neuron": {
+            "status": "ok",
+            "seconds": 18.4,
+            "spikes": {
+              "P05_long_step": 41
+            },
+            "message": ""
+          }
+        }
+      ]
+    },
+    "traub2005_testseg_all": {
+      "model_id": "traub2005_testseg_all",
+      "frozen_rheobase_nA": 0.06143706031008811,
+      "groups": [
+        {
+          "protocols": [
+            "P04_step_2x"
+          ],
+          "length_ms": 1000.0,
+          "cell_steps": 200000,
+          "jlems": {
+            "status": "ok",
+            "seconds": 15.9,
+            "spikes": {
+              "P04_step_2x": 51
+            },
+            "message": ""
+          },
+          "neuron": {
+            "status": "ok",
+            "seconds": 35.6,
+            "spikes": {
+              "P04_step_2x": 50
+            },
+            "message": ""
+          }
+        },
+        {
+          "protocols": [
+            "P06_ramp"
+          ],
+          "length_ms": 1500.0,
+          "cell_steps": 300000,
+          "jlems": {
+            "status": "ok",
+            "seconds": 23.4,
+            "spikes": {
+              "P06_ramp": 70
+            },
+            "message": ""
+          },
+          "neuron": {
+            "status": "ok",
+            "seconds": 16.8,
+            "spikes": {
+              "P06_ramp": 69
+            },
+            "message": ""
+          }
+        },
+        {
+          "protocols": [
+            "P05_long_step"
+          ],
+          "length_ms": 2500.0,
+          "cell_steps": 500000,
+          "jlems": {
+            "status": "ok",
+            "seconds": 35.2,
+            "spikes": {
+              "P05_long_step": 83
+            },
+            "message": ""
+          },
+          "neuron": {
+            "status": "ok",
+            "seconds": 26.2,
+            "spikes": {
+              "P05_long_step": 82
+            },
+            "message": ""
+          }
+        }
+      ]
+    },
+    "migliore2005_ca1_soma": {
+      "model_id": "migliore2005_ca1_soma",
+      "frozen_rheobase_nA": 0.0005805614370603101,
+      "groups": [
+        {
+          "protocols": [
+            "P04_step_2x"
+          ],
+          "length_ms": 1000.0,
+          "cell_steps": 200000,
+          "jlems": {
+            "status": "ok",
+            "seconds": 8.3,
+            "spikes": {
+              "P04_step_2x": 13
+            },
+            "message": ""
+          },
+          "neuron": {
+            "status": "ok",
+            "seconds": 14.3,
+            "spikes": {
+              "P04_step_2x": 13
+            },
+            "message": ""
+          }
+        },
+        {
+          "protocols": [
+            "P06_ramp"
+          ],
+          "length_ms": 1500.0,
+          "cell_steps": 300000,
+          "jlems": {
+            "status": "ok",
+            "seconds": 11.5,
+            "spikes": {
+              "P06_ramp": 16
+            },
+            "message": ""
+          },
+          "neuron": {
+            "status": "ok",
+            "seconds": 9.9,
+            "spikes": {
+              "P06_ramp": 16
+            },
+            "message": ""
+          }
+        },
+        {
+          "protocols": [
+            "P05_long_step"
+          ],
+          "length_ms": 2500.0,
+          "cell_steps": 500000,
+          "jlems": {
+            "status": "ok",
+            "seconds": 18.1,
+            "spikes": {
+              "P05_long_step": 39
+            },
+            "message": ""
+          },
+          "neuron": {
+            "status": "ok",
+            "seconds": 13.6,
+            "spikes": {
+              "P05_long_step": 39
+            },
+            "message": ""
+          }
+        }
+      ]
+    },
+    "hay2011_soma": {
+      "model_id": "hay2011_soma",
+      "frozen_rheobase_nA": 0.020148896933269586,
+      "groups": [
+        {
+          "protocols": [
+            "P04_step_2x"
+          ],
+          "length_ms": 1000.0,
+          "cell_steps": 200000,
+          "jlems": {
+            "status": "ok",
+            "seconds": 9.0,
+            "spikes": {
+              "P04_step_2x": 15
+            },
+            "message": ""
+          },
+          "neuron": {
+            "status": "ok",
+            "seconds": 19.3,
+            "spikes": {
+              "P04_step_2x": 15
+            },
+            "message": ""
+          }
+        },
+        {
+          "protocols": [
+            "P06_ramp"
+          ],
+          "length_ms": 1500.0,
+          "cell_steps": 300000,
+          "jlems": {
+            "status": "ok",
+            "seconds": 13.1,
+            "spikes": {
+              "P06_ramp": 24
+            },
+            "message": ""
+          },
+          "neuron": {
+            "status": "ok",
+            "seconds": 10.9,
+            "spikes": {
+              "P06_ramp": 24
+            },
+            "message": ""
+          }
+        },
+        {
+          "protocols": [
+            "P05_long_step"
+          ],
+          "length_ms": 2500.0,
+          "cell_steps": 500000,
+          "jlems": {
+            "status": "ok",
+            "seconds": 22.2,
+            "spikes": {
+              "P05_long_step": 14
+            },
+            "message": ""
+          },
+          "neuron": {
+            "status": "ok",
+            "seconds": 16.1,
+            "spikes": {
+              "P05_long_step": 14
+            },
+            "message": ""
+          }
+        }
+      ]
+    },
+    "bbp2015_soma": {
+      "model_id": "bbp2015_soma",
+      "frozen_rheobase_nA": 0.02735468888737108,
+      "groups": [
+        {
+          "protocols": [
+            "P04_step_2x"
+          ],
+          "length_ms": 1000.0,
+          "cell_steps": 200000,
+          "jlems": {
+            "status": "ok",
+            "seconds": 13.1,
+            "spikes": {
+              "P04_step_2x": 30
+            },
+            "message": ""
+          },
+          "neuron": {
+            "status": "ok",
+            "seconds": 27.2,
+            "spikes": {
+              "P04_step_2x": 30
+            },
+            "message": ""
+          }
+        },
+        {
+          "protocols": [
+            "P06_ramp"
+          ],
+          "length_ms": 1500.0,
+          "cell_steps": 300000,
+          "jlems": {
+            "status": "ok",
+            "seconds": 16.2,
+            "spikes": {
+              "P06_ramp": 33
+            },
+            "message": ""
+          },
+          "neuron": {
+            "status": "ok",
+            "seconds": 12.6,
+            "spikes": {
+              "P06_ramp": 33
+            },
+            "message": ""
+          }
+        },
+        {
+          "protocols": [
+            "P05_long_step"
+          ],
+          "length_ms": 2500.0,
+          "cell_steps": 500000,
+          "jlems": {
+            "status": "ok",
+            "seconds": 27.7,
+            "spikes": {
+              "P05_long_step": 16
+            },
+            "message": ""
+          },
+          "neuron": {
+            "status": "ok",
+            "seconds": 19.4,
+            "spikes": {
+              "P05_long_step": 16
+            },
+            "message": ""
+          }
+        }
+      ]
+    }
+  }
+}

@@ -12,14 +12,14 @@ const {
 } = require("docx");
 
 const REPO = "C:/Users/gurra/NeuroSem";
-const IN = process.argv[2] || path.join(REPO, "docs/manuscript/MANUSCRIPT_V2.md");
+const IN = process.argv[2] || path.join(REPO, "docs/manuscript/MANUSCRIPT.md");
 let src = fs.readFileSync(IN, "utf8").replace(/\r/g, "");
 src = src.split("## Open items before submission")[0];         // notes to the authors, not the paper
 src = src.replace(/^\*Draft v[\s\S]*?\*\n/m, "");              // drafting note, not part of the paper
 const REFS = fs.readFileSync(path.join(REPO, "docs/manuscript/references_apa7.md"), "utf8")
   .replace(/\r/g, "").trim();
 src = src.replace("See `references_apa7.md`, inserted here at compile time (APA 7, alphabetical).", REFS);
-const out = process.argv[3] || path.join(REPO, "docs/manuscript/MANUSCRIPT_v2.0.docx");
+const out = process.argv[3] || path.join(REPO, "docs/manuscript/MANUSCRIPT.docx");
 const FIGS = [1, 2, 3, 4, 5].map(n => path.join(REPO, "results/figures/heldout-v1/journal", `Fig${n}.png`));
 const FONT = "Times New Roman", SIZE = 20, CONTENT = 9360;   // 10-point, as the journal asks
 

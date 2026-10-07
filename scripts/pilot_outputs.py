@@ -14,9 +14,9 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
-from nexclamp import config  # noqa: E402
-from nexclamp.experiments.pilot_outputs import build_outputs  # noqa: E402
-from nexclamp.provenance import REPO_ROOT  # noqa: E402
+from nexclamp import config
+from nexclamp.experiments.pilot_outputs import build_outputs
+from nexclamp.provenance import REPO_ROOT
 
 
 def main(argv: list[str] | None = None) -> int:

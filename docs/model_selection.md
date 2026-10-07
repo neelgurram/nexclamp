@@ -4,14 +4,14 @@
 `data/model_manifest.csv`, `models/raw/*/PROVENANCE.json`, and the Milestone 0 evidence in
 `docs/m0_evidence/fixtures/fixture_candidates.json` and `fixture_verify.json`. Behaviour
 descriptions marked **expected** are expectations from upstream reference files or
-channel content, not NeuroSem results. No held-out assignment is made or implied here.*
+channel content, not NexClamp results. No held-out assignment is made or implied here.*
 
 ## 1. Inclusion criteria
 
 The specification requires every reference model to meet all of the following. The table
-shows how NeuroSem checks each one.
+shows how NexClamp checks each one.
 
-| # | Criterion (specification) | How NeuroSem checks it |
+| # | Criterion (specification) | How NexClamp checks it |
 |---|---|---|
 | 1 | Traceable public source | `source_url` + pinned `commit`; files fetched from commit-pinned raw URLs (`scripts/fetch_models.py`) |
 | 2 | License permitting intended use and redistribution, or handled without redistribution | License text read at the pinned commit before download; recorded in `license`, `license_url` and `PROVENANCE.json` |
@@ -29,7 +29,7 @@ thresholds. It asks to begin with single-compartment or simple models and to add
 few multicompartment models once the pipeline is stable.
 
 Current coverage of the diversity goals. Every entry is **expected**, from upstream
-reference spike times or channel content, and none has been confirmed with NeuroSem
+reference spike times or channel content, and none has been confirmed with NexClamp
 protocols yet.
 
 | Behaviour | Candidate(s) | Basis | Status |
@@ -46,7 +46,7 @@ protocols yet.
 The specification lists the fields to record for each model. This table shows where each
 one lives.
 
-| Specification field | NeuroSem location | Notes |
+| Specification field | NexClamp location | Notes |
 |---|---|---|
 | Internal ID | `model_id` | stable key used everywhere |
 | Model name | `name` | |
@@ -61,7 +61,7 @@ one lives.
 | Known expected behaviour | `expected_behavior` | phrased as expectation until simulated |
 | Inclusion decision and reason | `inclusion` (`include` / `candidate` / `exclude`) and `inclusion_reason` | |
 
-NeuroSem adds fields the pipeline needs: `snapshot`, `cell_file`, `cell_id`,
+NexClamp adds fields the pipeline needs: `snapshot`, `cell_file`, `cell_id`,
 `harness_lems`, `harness_output_file`, `harness_v_column`, `temperature` and
 `source_family`. Models that share a `source_family` are treated as correlated.
 
@@ -101,7 +101,7 @@ Model contents and shipped canonical harness, read from the pinned files:
 | Wang-Buzsaki | Na 35 mS/cm2 (+55, instantaneous m via custom gate type); K 9 mS/cm2 (-90); leak 0.1 mS/cm2 (-65) | none | -70 mV | 2 pA from **0 ms**, 100 ms; 100 ms at 0.001 ms; 37 degC |
 
 Upstream expected behaviour (OMV `.mep` reference spike times, generated upstream and
-**not** by NeuroSem):
+**not** by NexClamp):
 
 - RS: 320.554, 348.522, 387.944, 456.69, 592.105 ms. Five spikes with lengthening
   intervals, so adaptation is **expected**.
@@ -207,7 +207,7 @@ Otherwise every LTS mutant would be class 1 by construction.
 
 **Consequences to keep in mind:**
 
-- "Structurally valid" in NeuroSem means *valid according to jNeuroML 0.14.0*. The
+- "Structurally valid" in NexClamp means *valid according to jNeuroML 0.14.0*. The
   validator version is part of the definition and must be reported.
 - Validity rules for custom `ComponentType`s are weaker than for core types. A mutation
   inside custom LEMS dynamics may pass `jnml -validate` and fail only at build or run time

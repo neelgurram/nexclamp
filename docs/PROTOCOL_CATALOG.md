@@ -1,7 +1,7 @@
 # Protocol catalogue
 
 *Status: draft, 2026-09-13. The source of truth is `DEFAULT_TEMPLATES` in
-`src/neuraxis/protocols/definitions.py`, as overridden by the `protocols:` list in
+`src/nexclamp/protocols/definitions.py`, as overridden by the `protocols:` list in
 `configs/study.yaml`, which currently names all twelve templates with no parameter
 overrides. `data/protocol_manifest.csv` is generated from them by
 `scripts/build_protocol_manifest.py`, and a unit test fails if the CSV is stale. All
@@ -247,7 +247,7 @@ model, for example spiking features in a protocol where the cell stays silent.
 
 ## 5. Feature definitions
 
-| NeuroSem feature | Source | Aggregation | Unit | min_spikes | Definition |
+| NexClamp feature | Source | Aggregation | Unit | min_spikes | Definition |
 |---|---|---|---|---|---|
 | baseline_voltage | eFEL `voltage_base` | scalar | mV | 0 | mean V over [0.9 x start, start] |
 | steady_state_voltage | eFEL `steady_state_voltage_stimend` | scalar | mV | 0 | mean V over the last 10 % of the window |
@@ -265,8 +265,8 @@ model, for example spiking features in a protocol where the cell stays silent.
 | last_isi | eFEL `all_ISI_values` | last | ms | 2 | last interspike interval |
 | adaptation_index | eFEL `adaptation_index2` | scalar | 1 | 4 | mean normalised ISI change (see note) |
 | burst_count | eFEL `strict_burst_number` | scalar (count) | 1 | 4 | number of bursts (`strict_burst_factor` 2.0) |
-| firing_regime | NeuroSem `features/regimes.py` | categorical | - | - | silent, single_spike, depolarization_block, bursting (>= 2 bursts), adapting (index > 0.1), tonic |
-| rheobase | NeuroSem `protocols/rheobase.py` | scalar | nA | - | first spiking amplitude of the search |
+| firing_regime | NexClamp `features/regimes.py` | categorical | - | - | silent, single_spike, depolarization_block, bursting (>= 2 bursts), adapting (index > 0.1), tonic |
+| rheobase | NexClamp `protocols/rheobase.py` | scalar | nA | - | first spiking amplitude of the search |
 
 **Synthetic check (eFEL 5.7.34, frozen settings, artificial traces; not a model
 simulation).**
@@ -329,7 +329,7 @@ batched battery at h is therefore roughly 30-70 s of CPU plus 5 JVM starts per v
 
 | protocol | Specification wording | Why deferred |
 |---|---|---|
-| P11_chirp | "Deterministic chirp, only if implementation is stable" | NeuroML v2.3.1 core inputs are `pulseGenerator`, `rampGenerator`, `sineGenerator` (fixed period), `compoundInput` and their DL variants, voltage clamps, and spike-driven inputs. **There is no chirp** (M0 evidence, `neuroml-lems`). A chirp needs a new custom LEMS `ComponentType`: new NeuroSem code whose stability, dt-alignment and exporter support (e.g. NEURON) are unverified. The specification allows deferral |
+| P11_chirp | "Deterministic chirp, only if implementation is stable" | NeuroML v2.3.1 core inputs are `pulseGenerator`, `rampGenerator`, `sineGenerator` (fixed period), `compoundInput` and their DL variants, voltage clamps, and spike-driven inputs. **There is no chirp** (M0 evidence, `neuroml-lems`). A chirp needs a new custom LEMS `ComponentType`: new NexClamp code whose stability, dt-alignment and exporter support (e.g. NEURON) are unverified. The specification allows deferral |
 | P12_frozen_noise | "Frozen pseudo-random waveform, only as a later extension" | There is no core arbitrary-waveform or noise-current input. Two open NeuroML2 feature requests (#97, #99) ask for noisy current sources. The specification itself labels it a later extension |
 
 Consequences:

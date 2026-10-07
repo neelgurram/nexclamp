@@ -278,7 +278,7 @@ def classify_branch(c: po.CampaignView, processed: Path, rules: Mapping[str, Any
             or (feat_surv and len(unconfirmed) / len(feat_surv) > rules["unconfirmed_survivor_fraction_max"])
             or (ev["refinement_excluded_fraction"] or 0) >= rules["refinement_excluded_fraction_max"]),
         "A_hidden_drift_supported": (len(full_conf) >= int(rules["hidden_drift_min_confirmed_full_trace_survivors"])
-                                     and len(set(r["model_id"] for r in full_conf)) >= int(rules["hidden_drift_min_models"])),
+                                     and len({r["model_id"] for r in full_conf}) >= int(rules["hidden_drift_min_models"])),
         "B_feature_level_insufficiency": len(feat_insuff) >= int(rules["feature_insufficiency_min_cases"]),
         "C_canonical_adequacy": (ev["canonical_B_or_C_detection_rate"] is not None
                                  and ev["canonical_B_or_C_detection_rate"] >= rules["canonical_adequacy_min_detection"]),
@@ -295,12 +295,12 @@ def build(processed: Path, raw_dir: Path, work_variants_dir: Path, work_runs_dir
     meta = dict(meta)
     c = po.CampaignView(processed, [], [])
     out = Path(processed) / "pilot_v2_outputs"
-    t = lambda name, rows: po.write_table(out / name, rows, meta)  # noqa: E731
+    t = lambda name, rows: po.write_table(out / name, rows, meta)
     checks = json.loads((processed / "survivor_checks.json").read_text(encoding="utf-8")) \
         if (processed / "survivor_checks.json").is_file() else {}
     trace_rep = trace_reproducible(processed)
-    sem = lambda r: c.stratum(r) == strata.SEMANTIC and r["kind"] == "mutant"  # noqa: E731
-    ctl = lambda r: c.stratum(r) == strata.CONTROL  # noqa: E731
+    sem = lambda r: c.stratum(r) == strata.SEMANTIC and r["kind"] == "mutant"
+    ctl = lambda r: c.stratum(r) == strata.CONTROL
 
     t("01_validation_level_counts.csv", level_counts(c))
     feat_surv = _rows(c, lambda r: sem(r) and _flag(r, "feature_level_canonical_survivor"))

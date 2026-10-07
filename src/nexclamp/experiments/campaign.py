@@ -30,17 +30,36 @@ from nexclamp.experiments import registry, strata
 from nexclamp.models import Workspace, load_models, materialize
 from nexclamp.protocols.definitions import CANONICAL_FEATURES, CANONICAL_ID, batched, templates_from_config
 from nexclamp.provenance import utc_now
-from nexclamp.schemas import (ConcreteProtocol, MutantClass, RunStatus, VariantKind, VariantRecord, dumps, to_jsonable,
-                              variant_from_dict)
+from nexclamp.schemas import (
+    ConcreteProtocol,
+    MutantClass,
+    RunStatus,
+    VariantKind,
+    VariantRecord,
+    dumps,
+    to_jsonable,
+    variant_from_dict,
+)
 from nexclamp.simulators.jneuroml import JNeuroML
 from nexclamp.validation import structural
+from nexclamp.validation import trace_regression as tr
 from nexclamp.validation.canonical import canonical_protocol
 from nexclamp.validation.convergence import ToleranceTable, calibrate, convergence_report
-from nexclamp.validation import trace_regression as tr
 from nexclamp.validation.execution import RunRecorder, TaskError, run_parallel
-from nexclamp.validation.fingerprint import (RHEOBASE_ID, Detection, Fingerprint, ToolFailure, build_fingerprint, classify,
-                                             compare, detecting_protocols, load_fingerprint, reproducible_keys,
-                                             save_fingerprint, write_detections)
+from nexclamp.validation.fingerprint import (
+    RHEOBASE_ID,
+    Detection,
+    Fingerprint,
+    ToolFailure,
+    build_fingerprint,
+    classify,
+    compare,
+    detecting_protocols,
+    load_fingerprint,
+    reproducible_keys,
+    save_fingerprint,
+    write_detections,
+)
 
 
 @dc.dataclass
@@ -259,11 +278,11 @@ def generate_stage(ctx: Context, refs: dict[str, RefState], families: Sequence[s
         per = dict(pcfg.get("sites_per_severity") or {})
         without = int(pcfg.get("sites_without_severity", 1))
 
-        def selector(op, sites):  # noqa: ANN001, ANN202
+        def selector(op, sites):
             return select_sites(sites, op.name, seed, levels, int(per.get(op.name, per.get("default", 1))), without)
     records: list[VariantRecord] = []
-    for mid in refs:
-        model = refs[mid].ws.model
+    for ref in refs.values():
+        model = ref.ws.model
         # Both generators write to root/<model_id>/<variant_id>/.
         records += mutations.generate_mutants(model, mut_ops, n_mutants, seed, ctx.variants_root / "mutants",
                                               selector=selector)

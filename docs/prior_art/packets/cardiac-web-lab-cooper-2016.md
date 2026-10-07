@@ -41,9 +41,9 @@ Cooper J, Scharm M, Mirams GR (2016). The Cardiac Electrophysiology Web Lab. *Bi
 - **Discussion, third paragraph.** Model developers can upload in-development versions, privately if they wish. They can check them against many more protocols than were used to build the model, and iterate until the desired behaviour is reached.
 - **Discussion, later paragraphs.** Further automated checking of results, parameter estimation, and links to experimental data are named as future work.
 
-## Overlap with Neuraxis, claim by claim
+## Overlap with NexClamp, claim by claim
 
-| Neuraxis claim | Overlap | Detail |
+| NexClamp claim | Overlap | Detail |
 |---|---|---|
 | Multi-protocol fingerprints | Strong in idea | The same protocol battery runs on every model and model version, and outputs are compared side by side. There is no feature vector with tolerances. |
 | Controlled mutations of neuron models | None | No seeded faults. The evidence is one real encoding error (Results, "Correcting errors in model encodings"), and the models are cardiac. |
@@ -54,8 +54,8 @@ Cooper J, Scharm M, Mirams GR (2016). The Cardiac Electrophysiology Web Lab. *Bi
 
 ## What remains distinct
 
-- **The core idea is not new.** Rerunning a broad protocol battery on each model version, to catch behaviour the headline test misses, appears here, and in Cooper et al. 2011, a decade before Neuraxis. Neuraxis must credit this line for that idea.
-- **What Neuraxis could still claim:**
+- **The core idea is not new.** Rerunning a broad protocol battery on each model version, to catch behaviour the headline test misses, appears here, and in Cooper et al. 2011, a decade before NexClamp. NexClamp must credit this line for that idea.
+- **What NexClamp could still claim:**
   - a quantitative, mutation-calibrated study of *how often* and *for which kinds of edit* a battery catches changes;
   - tolerances calibrated so that valid transformations do not raise alarms;
   - algorithmic selection of a small battery;

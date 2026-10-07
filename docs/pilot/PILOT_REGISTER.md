@@ -24,7 +24,7 @@ features; at least 3 mutation families; about 20-60 mutants; valid-transformatio
 |---|---|---|
 | Role | exploratory_pilot | exploratory_pilot |
 | Status | complete; archived, verified and sealed | **governed by `docs/PILOT_PROTOCOL_V1.md`; authorised after the readiness gate** (D-033 to D-035) |
-| Project / phase labels | none (made before labels existed); reported only in corrected form (D-038) | `Neuraxis` / `development_pilot` / `PILOT_PROTOCOL_V1` on every record |
+| Project / phase labels | none (made before labels existed); reported only in corrected form (D-038) | `NexClamp` / `development_pilot` / `PILOT_PROTOCOL_V1` on every record |
 | Run | 2026-09-13 17:11-18:55 UTC | - |
 | Code | `d323afa` (tag `pilot-v1-code`) | - |
 | Configs (SHA-256) | study `d6371a7f…`, features `7397da03…`, tolerances `9ca05052…` | `configs/pilot_protocol_v1/` |
@@ -92,4 +92,4 @@ Design proposal: `docs/pilot/pilot_v2_design.md`. Nothing has run.
 1. New campaign name; never write into a sealed campaign (enforced by `make_context`).
 2. One configuration per campaign (enforced: a changed config or simulator is refused).
 3. Seal with `scripts/archive_campaign.py` when finished, then add a column above.
-4. Record what changed and why in `DECISIONS.md`.
+4. Record what changed and why in `../project/DECISIONS.md`.

@@ -20,9 +20,9 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
-from nexclamp import config  # noqa: E402
-from nexclamp.orchestration.curation import CRITERIA  # noqa: E402
-from nexclamp.provenance import REPO_ROOT, git_state, utc_now  # noqa: E402
+from nexclamp import config
+from nexclamp.orchestration.curation import CRITERIA
+from nexclamp.provenance import REPO_ROOT, git_state, utc_now
 
 COLUMNS = ["model_id", "name", "source_family", "decision", "exact_reason", "publication", "license", "license_url",
            "snapshot", "commit", "validation", "validation_errors", "execution", "recording_location",

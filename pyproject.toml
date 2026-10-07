@@ -50,3 +50,14 @@ addopts = "-ra"
 [tool.ruff]
 line-length = 110
 target-version = "py312"
+
+[tool.ruff.lint]
+# ruff is pinned in requirements.lock, so `make lint` resolves the same rule set everywhere.
+# Five of its default rules are deliberately not followed, each for a reason:
+ignore = [
+    "ISC004",   # long diagnostic messages are wrapped as implicit concatenation inside list literals
+    "RUF046",   # explicit int() keeps numpy scalars from reaching a CSV column as "3.0"
+    "BLE001",   # tool boundaries (Java, jnml, NEURON) must catch everything and record a tool failure
+    "SIM115",   # a CSV writer is held open across a streaming write and closed by its caller
+    "TRY004",   # a configuration fault raises ValueError on purpose, type faults included
+]

@@ -4,7 +4,7 @@ Downloads entry files from a commit-pinned GitHub raw URL, follows NeuroML
 ``<include href>`` and LEMS ``<Include file>`` references recursively, verifies
 SHA-256 against previously recorded hashes when available, and writes a
 ``PROVENANCE.json`` next to each snapshot. Licenses must be verified *before*
-a source is added to SOURCES (see LICENSE_AUDIT.md).
+a source is added to SOURCES (see docs/project/LICENSE_AUDIT.md).
 
 Usage:  python scripts/fetch_models.py [--dest models/raw]
 """
@@ -145,7 +145,7 @@ def fetch_source(src: dict, dest_root: Path) -> dict:
         "license": src["license"],
         "license_url": src["license_url"],
         "citation": src["citation"],
-        "downloaded_utc": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"),
+        "downloaded_utc": dt.datetime.now(dt.UTC).isoformat(timespec="seconds"),
         "files": dict(sorted(seen.items())),
     }
     (out_dir / "PROVENANCE.json").write_text(json.dumps(prov, indent=2) + "\n", encoding="utf-8")

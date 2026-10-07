@@ -279,7 +279,7 @@ tests, frozen seeds and tie-breaking, exact denominators, and AI/agent work repo
 - B3. No eligible untouched models exist. C11 must be amended (or the Prinz C08 question resolved)
   before a held-out split is possible.
 - B4. External preregistration is **not complete**: no AsPredicted submission, no timestamp, no
-  registration URL. `docs/CONFIRMATORY_PREREGISTRATION_DRAFT.md` remains a draft.
+  registration URL. `docs/CONFIRMATORY_PREREGISTRATION.md` remains a draft.
 - B5. No Git remote is configured, so no off-machine copy of the pre-run commit exists.
 
 **Non-blocking limitations**
@@ -296,7 +296,7 @@ tests, frozen seeds and tie-breaking, exact denominators, and AI/agent work repo
 |---|---|
 | `docs/PILOT2_PROTOCOL.md` | numbered amendment A-01: correct the freeze statement; list the nine exposed variants; add the with/without reporting rule |
 | `docs/DEVIATION_LOG.md` | X-23: outcome exposure before the freeze commit; X-24: campaign started before this audit and stopped at 38 of 143 variants |
-| `DECISIONS.md` | D-055 recording the L5/L4 classification and Path C |
+| `project/DECISIONS.md` | D-055 recording the L5/L4 classification and Path C |
 | `scripts/pilot2_authorize.py` | add a condition that no frozen variant's outcome was generated outside the campaign |
 | `docs/STATISTICAL_ANALYSIS_PLAN.md` | the four amendments in section 11 |
 | `manifests/PILOT2_PRE_RUN.sha256` | regenerate after the amendment, preserving the existing file as the pre-amendment record |

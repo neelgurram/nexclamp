@@ -1,7 +1,7 @@
 """Numerical mutations: faults in how the model is integrated, discretised or sampled.
 
 Harness edits and ``exec_overrides`` go together: the harness edit mutates the canonical
-run, the override applies the same fault to every NeuroSem-generated probe run, so the
+run, the override applies the same fault to every NexClamp-generated probe run, so the
 fault is visible to both the canonical test and the battery.
 
 Default grids: dt x2 is a plausible "speed-up" edit, x20 approaches forward-Euler

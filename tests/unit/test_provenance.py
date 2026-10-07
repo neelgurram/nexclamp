@@ -185,8 +185,8 @@ def test_existing_mutable_file_with_different_content_is_protected(tmp_path):
 def test_write_immutable_text_is_utf8(tmp_path):
     p = tmp_path / "note.txt"
     digest = write_immutable_text(p, "µV drift ✓")
-    assert p.read_bytes() == "µV drift ✓".encode("utf-8")
-    assert digest == sha256_bytes("µV drift ✓".encode("utf-8"))
+    assert p.read_bytes() == "µV drift ✓".encode()
+    assert digest == sha256_bytes("µV drift ✓".encode())
     assert write_immutable_text(p, "µV drift ✓") == digest
 
 

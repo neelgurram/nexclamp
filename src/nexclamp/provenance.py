@@ -19,7 +19,7 @@ REPO_ROOT = Path(__file__).resolve().parents[2]
 
 
 def utc_now() -> str:
-    return dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds")
+    return dt.datetime.now(dt.UTC).isoformat(timespec="seconds")
 
 
 def sha256_bytes(data: bytes) -> str:

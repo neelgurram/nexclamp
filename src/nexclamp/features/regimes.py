@@ -1,6 +1,6 @@
 """Qualitative firing regime (spec feature "Qualitative firing regime").
 
-eFEL has no single regime feature. NeuroSem labels a trace from three eFEL outputs
+eFEL has no single regime feature. NexClamp labels a trace from three eFEL outputs
 (spike count, strict burst count, adaptation index) plus one check on the trace itself,
 in the order given in ``configs/features.yaml``. The first label whose condition holds
 wins. The label is categorical: a changed label is a detection whatever the numeric

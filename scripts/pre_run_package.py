@@ -20,7 +20,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
-from nexclamp.provenance import REPO_ROOT, python_environment, sha256_file, utc_now  # noqa: E402
+from nexclamp.provenance import REPO_ROOT, python_environment, sha256_file, utc_now
 
 SECRET = re.compile(r"(gho_|ghp_|github_pat_|sk-ant-|AKIA[0-9A-Z]{16}|PRIVATE KEY|password\s*[:=])", re.IGNORECASE)
 

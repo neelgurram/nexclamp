@@ -1,6 +1,6 @@
 """jNeuroML / jLEMS adapter.
 
-NeuroSem calls the jNeuroML jar bundled with pyNeuroML directly, with an argument list
+NexClamp calls the jNeuroML jar bundled with pyNeuroML directly, with an argument list
 (no shell), instead of pyNeuroML's runner helpers. Reasons, from the Milestone 0 audit
 (docs/DEPENDENCY_AUDIT.md): those helpers return a bare ``False`` both for an invalid model
 and for a missing Java runtime, some paths call ``sys.exit``, and they build commands
@@ -86,9 +86,9 @@ class JNeuroML:
         if self._version is not None:
             return self._version
         java, jar = self._require()
-        jv = subprocess.run([str(java), "-version"], capture_output=True, text=True, timeout=60)
+        jv = subprocess.run([str(java), "-version"], capture_output=True, text=True, timeout=60, check=False)
         java_version = (jv.stderr or jv.stdout).strip().splitlines()
-        jn = subprocess.run([str(java), "-jar", str(jar), "-v"], capture_output=True, text=True, timeout=120)
+        jn = subprocess.run([str(java), "-jar", str(jar), "-v"], capture_output=True, text=True, timeout=120, check=False)
         versions = dict(re.findall(r"^\s*(jNeuroML|org\.neuroml\.\w+|jLEMS)\s+v(\S+)", jn.stdout, re.MULTILINE))
         self._version = {
             "simulator": "jNeuroML",
@@ -116,7 +116,7 @@ class JNeuroML:
         cmd = [str(java), f"-Xmx{self.max_memory}", "-Djava.awt.headless=true", "-jar", str(jar), "-validate",
                *[str(Path(f).resolve()) for f in files]]
         try:
-            proc = subprocess.run(cmd, capture_output=True, text=True, timeout=timeout_s)
+            proc = subprocess.run(cmd, capture_output=True, text=True, timeout=timeout_s, check=False)
         except subprocess.TimeoutExpired:
             return ValidationResult(None, -1, ["validation timed out"], "", self.name)
         except OSError as exc:
@@ -154,7 +154,7 @@ class JNeuroML:
                "-nogui"]
         t0 = time.perf_counter()
         try:
-            proc = subprocess.run(cmd, cwd=cwd, capture_output=True, text=True, timeout=timeout_s)
+            proc = subprocess.run(cmd, cwd=cwd, capture_output=True, text=True, timeout=timeout_s, check=False)
         except subprocess.TimeoutExpired:
             return SimResult(RunStatus.TIMEOUT, -1, time.perf_counter() - t0, {}, cmd, f"timeout after {timeout_s}s")
         except OSError as exc:

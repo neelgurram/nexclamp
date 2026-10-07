@@ -57,7 +57,7 @@ them as NeuroML documents, fails. `run_battery` hides it only because `group_by_
 P06 alone in its group with the default catalogue; any config change that gives a ramp the same length
 as a pulse protocol exposes it.
 
-Proposed patch (`src/neurosem/protocols/generate.py`, inside `network_xml`), replacing the
+Proposed patch (`src/nexclamp/protocols/generate.py`, inside `network_xml`), replacing the
 component loop:
 
 ```python
@@ -104,7 +104,7 @@ had already stepped past the 10 ms onset and diverged. Ladder measured (dt 0.1 m
 write out-of-bound voltages to the `.dat`: it throws first, so the existing `UNSTABLE` check on traces
 is never reached for this model (it still covers NaN/out-of-bound output, tested with synthetic files).
 
-Proposed patch (`src/neurosem/simulators/jneuroml.py`, `run_lems`, replacing the returncode branch):
+Proposed patch (`src/nexclamp/simulators/jneuroml.py`, `run_lems`, replacing the returncode branch):
 
 ```python
         if proc.returncode != 0:
@@ -144,7 +144,7 @@ model, a counter bug) silently yields a negative resolution and a wrong rheobase
 status ok. The refinement phase already guards the same case ("lower bracket edge spiked;
 bracket kept").
 
-Proposed patch (`src/neurosem/protocols/rheobase.py`, bracketing phase):
+Proposed patch (`src/nexclamp/protocols/rheobase.py`, bracketing phase):
 
 ```python
         idx = np.flatnonzero(counts > 0)

@@ -43,9 +43,9 @@ Birgiolas J, Haynes V, Gleeson P, Gerkin RC, Dietrich SW, Crook S (2023). NeuroM
   - Missing property values, such as a second-spike amplitude when a cell spikes only once, were filled with minimum, maximum or mean values before PCA.
   - 42 features were reduced to 21 principal components for 1,222 models.
 
-## Overlap with Neuraxis, claim by claim
+## Overlap with NexClamp, claim by claim
 
-| Neuraxis claim | Overlap | Detail |
+| NexClamp claim | Overlap | Detail |
 |---|---|---|
 | Multi-protocol fingerprints | Strong | Multi-protocol, rheobase-scaled feature vectors for NeuroML cell models on the same toolchain: jNeuroML to NEURON, with NeuronUnit tests (pp. 10-11, 22-23). |
 | Controlled mutations of neuron models | None | The models are separate published models. No edits or faults are introduced. |
@@ -56,11 +56,11 @@ Birgiolas J, Haynes V, Gleeson P, Gerkin RC, Dietrich SW, Crook S (2023). NeuroM
 
 ## What remains distinct
 
-- **Purpose of the fingerprint.** NeuroML-DB uses fingerprints to *compare different models* for search and clustering. Neuraxis would compare a *reference model with its own transformed versions*.
+- **Purpose of the fingerprint.** NeuroML-DB uses fingerprints to *compare different models* for search and clustering. NexClamp would compare a *reference model with its own transformed versions*.
 - **Undefined features.** NeuroML-DB fills undefined features with substitute values (p. 23). Change detection needs "undefined before, defined after" to count as a signal.
 - **Tolerances.** NeuroML-DB sets no numerical tolerances and reports no detection or false-alarm rates.
-- **Protocol choice.** NeuroML-DB leaves protocol choice as an open question (p. 20). Neuraxis would choose protocols algorithmically from mutant detections and test the choice on held-out models and a held-out mutation family.
-- **Framing risk.** A reviewer could say that Neuraxis is "NeuroML-DB fingerprints plus a diff". The defence has to come from the mutation-calibrated adequacy study and the transfer results.
+- **Protocol choice.** NeuroML-DB leaves protocol choice as an open question (p. 20). NexClamp would choose protocols algorithmically from mutant detections and test the choice on held-out models and a held-out mutation family.
+- **Framing risk.** A reviewer could say that NexClamp is "NeuroML-DB fingerprints plus a diff". The defence has to come from the mutation-calibrated adequacy study and the transfer results.
 
 ## Checklist
 

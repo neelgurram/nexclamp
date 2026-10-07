@@ -1,4 +1,4 @@
-# NeuroSem risk register (Milestone 0, item 5)
+# NexClamp risk register (Milestone 0, item 5)
 
 *Status: draft, 2026-09-13. Branch `m0-audit`. Author of record: Neel Gurram (decision-maker). Compiled by
 Claude Code from repository evidence only. It contains no study results and makes no novelty claims.
@@ -7,7 +7,7 @@ used as evidence.*
 
 ## In plain English
 
-- NeuroSem asks one question: does a small set of test stimuli catch hidden model changes that the usual single test misses?
+- NexClamp asks one question: does a small set of test stimuli catch hidden model changes that the usual single test misses?
 - The biggest danger is having too few truly independent models to test on. Four of our models come from the same paper and share channel files.
 - The second danger is fooling ourselves. The same battery defines which mutants "count", and it helps to compute the tolerances, so numbers can look better than they are.
 - The third danger is leakage. Held-out data, and hidden agent-study answers, sit on a machine where an AI assistant can read files.
@@ -223,18 +223,18 @@ residual · owner · trigger or monitoring signal · evidence.
 - **Evidence.** STATS-09, SWT-09; `data/splits/heldout/` (README only).
 
 #### R-10 Held-out leakage in an AI-assisted solo repository **INVALIDATES**
-- **Description.** The planned held-out location `data/splits/heldout/` is inside the repository that Claude Code sessions open. Read tools need no approval there. The access log is self-appended. Auto memory from another project loads into sessions (it loaded into the critique review and into this compilation). NeuroSem has no `CLAUDE.md` or `.claude/` settings.
+- **Description.** The planned held-out location `data/splits/heldout/` is inside the repository that Claude Code sessions open. Read tools need no approval there. The access log is self-appended. Auto memory from another project loads into sessions (it loaded into the critique review and into this compilation). NexClamp has no `CLAUDE.md` or `.claude/` settings.
 - **Category.** integrity
 - **Likelihood: medium.** No held-out files exist yet, but the default workflow would place them inside the repository.
 - **Impact: high.** Leakage voids the confirmatory held-out claim.
-- **Mitigation.** Implemented: code-level gate (`selection/splits.py` `HeldoutGate`, `LeakageError`; static test that no held-out access happens outside `splits.py`); `SPLITS.sha256` and access log format (`docs/build_notes/selection.md` s.1); D-003 (no held-out evaluation). Not implemented: held-out files outside the repository and outside any session directory; auto memory disabled for NeuroSem; hash-chained log; external timestamp (INTEG-13, INTEG-09).
+- **Mitigation.** Implemented: code-level gate (`selection/splits.py` `HeldoutGate`, `LeakageError`; static test that no held-out access happens outside `splits.py`); `SPLITS.sha256` and access log format (`docs/build_notes/selection.md` s.1); D-003 (no held-out evaluation). Not implemented: held-out files outside the repository and outside any session directory; auto memory disabled for NexClamp; hash-chained log; external timestamp (INTEG-13, INTEG-09).
 - **Residual: high.**
 - **Owner.** Neel.
 - **Trigger.** Any held-out model or manifest file created under the repository root.
 - **Evidence.** INTEG-13, INTEG-09, STATS-13; `data/splits/README.md`; `ls` of the repository root (no `CLAUDE.md` or `.claude`).
 
 #### R-11 Conflict of interest: the builder wrote the instruments and the hidden evaluators **INVALIDATES**
-- **Description.** The same assistant wrote the mutation operators, classifier, selection, analysis, agent harness and hidden evaluator specs. Benchmark design choices could favour NeuroSem, and agent-study scoring could favour Claude.
+- **Description.** The same assistant wrote the mutation operators, classifier, selection, analysis, agent harness and hidden evaluator specs. Benchmark design choices could favour NexClamp, and agent-study scoring could favour Claude.
 - **Category.** integrity
 - **Likelihood: medium.** No evidence of bias. The structure of the work creates the risk.
 - **Impact: high.** Credibility of the benchmark and the agent study.

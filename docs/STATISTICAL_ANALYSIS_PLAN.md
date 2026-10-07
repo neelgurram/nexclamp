@@ -15,7 +15,7 @@ models will detect a higher proportion of admissible non-equivalent mutants on h
 models than a canonical single-protocol regression test.
 
 **Primary endpoint (specification).** Held-out mutant detection rate under the selected
-NeuroSem battery versus canonical regression.
+NexClamp battery versus canonical regression.
 
 **Secondary endpoints (specification, all seven).**
 
@@ -27,7 +27,7 @@ NeuroSem battery versus canonical regression.
 | S4 | Detection rate by mutation family | RQ5, RQ6 |
 | S5 | Protocols required to reach increasing levels of exhaustive-battery coverage | RQ2, RQ6 |
 | S6 | Runtime and simulations per detected mutant | RQ2 |
-| S7 | Agent-task success under basic versus NeuroSem validation | RQ7 |
+| S7 | Agent-task success under basic versus NexClamp validation | RQ7 |
 
 Further secondary analyses named in the specification are coverage versus number of
 protocols, runtime-adjusted coverage, and robustness to stricter and looser tolerances.
@@ -242,7 +242,7 @@ population, or keep it and report both]**.
 - Also reported: detection rate against a cumulative cell-step curve.
 
 **S7 Agent study (Milestone 9, separate subsection).** Task-level outcomes under basic
-validation (schema, execution, canonical) versus the frozen NeuroSem battery. Counts are
+validation (schema, execution, canonical) versus the frozen NexClamp battery. Counts are
 small and descriptive, and claims are restricted to the evaluated Claude Code
 configuration.
 

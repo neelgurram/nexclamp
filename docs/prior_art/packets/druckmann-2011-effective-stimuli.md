@@ -56,9 +56,9 @@ Druckmann S, Berger TK, Schürmann F, Hill S, Markram H, Segev I (2011). Effecti
   - Stimuli used in training are excluded from testing.
   - Optimisation uses NSGA-II, implemented in NEURON, repeated ten times.
 
-## Overlap with Neuraxis, claim by claim
+## Overlap with NexClamp, claim by claim
 
-| Neuraxis claim | Overlap | Detail |
+| NexClamp claim | Overlap | Detail |
 |---|---|---|
 | Multi-protocol fingerprints | Partial | Feature-based responses to several stimulus types and intensities (pp. 10-11). They serve fitting and generalisation scores, not comparison of a model with its edited versions. |
 | Controlled mutations of neuron models | None | No edits or faults. Parameter-space regions are mapped (p. 3, pp. 8-9) but not used as a fault catalogue. |
@@ -69,9 +69,9 @@ Druckmann S, Berger TK, Schürmann F, Hill S, Markram H, Segev I (2011). Effecti
 
 ## What remains distinct
 
-- **Objective.** Druckmann et al. rank stimuli by how well they *identify parameters from data*. Neuraxis would rank protocols by how well they *detect behaviour-changing edits* of an existing model, while producing no alarms on valid transformations.
-- **The objectives may disagree.** A protocol that constrains parameters well need not expose, for example, unit or kinetics edits. Neuraxis should test this directly, for example by including a "step plus ramp" baseline battery, rather than assume it.
-- **What Neuraxis could claim.** The reusable points are the stimulus-set comparison design, the mechanistic explanation of why stimuli differ, and the minimal-set goal. Neuraxis can claim selection *for edit detection* with held-out model and mutation-family transfer. It cannot claim to be the first to choose effective stimuli for conductance-based neurons.
+- **Objective.** Druckmann et al. rank stimuli by how well they *identify parameters from data*. NexClamp would rank protocols by how well they *detect behaviour-changing edits* of an existing model, while producing no alarms on valid transformations.
+- **The objectives may disagree.** A protocol that constrains parameters well need not expose, for example, unit or kinetics edits. NexClamp should test this directly, for example by including a "step plus ramp" baseline battery, rather than assume it.
+- **What NexClamp could claim.** The reusable points are the stimulus-set comparison design, the mechanistic explanation of why stimuli differ, and the minimal-set goal. NexClamp can claim selection *for edit detection* with held-out model and mutation-family transfer. It cannot claim to be the first to choose effective stimuli for conductance-based neurons.
 
 ## Checklist
 

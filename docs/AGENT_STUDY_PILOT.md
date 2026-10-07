@@ -2,7 +2,7 @@
 
 *Run 2026-09-18 at commit `115673a`. Evidence: `results/agent_study/pilot_20260918/`
 (`trials.csv`, `summary.json`, `agent_study_run.md`). Harness:
-`src/neuraxis/experiments/agent.py`; operator tool: `scripts/agent_study_run.py`; protocol:
+`src/nexclamp/experiments/agent.py`; operator tool: `scripts/agent_study_run.py`; protocol:
 `docs/agent_study_protocol.md`.*
 
 > **This is not the agent study.** It is a feasibility pilot of the harness, run under partial

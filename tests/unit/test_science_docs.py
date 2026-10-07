@@ -137,8 +137,8 @@ def test_protocol_catalog_rheobase_cost_matches_search():
     rh = cfg["rheobase"]
     settle = float(cfg["numerics"]["settle_ms"])
     dt = float(cfg["numerics"]["dt_nominal_ms"])
-    kw = dict(hi_nA=rh["initial_hi_nA"], grid=rh["grid"], rounds=rh["rounds"], expand=rh["expand"],
-              max_hi_nA=rh["max_hi_nA"])
+    kw = {"hi_nA": rh["initial_hi_nA"], "grid": rh["grid"], "rounds": rh["rounds"],
+          "expand": rh["expand"], "max_hi_nA": rh["max_hi_nA"]}
     per_sim = int(rh["grid"]) * round((settle + float(rh["step_duration_ms"])) / dt)
     worst = search(_fake_counter(0.97 * rh["max_hi_nA"]), **kw)     # brackets in the last grid, refines fully
     assert worst.status == "ok"

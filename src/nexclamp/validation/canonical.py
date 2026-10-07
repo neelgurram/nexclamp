@@ -1,7 +1,7 @@
 """The canonical protocol: the simulation shipped with the model (validation layer 3).
 
 The conventional regression test for a published NeuroML model is to rerun the
-simulation distributed with it (e.g. the Open Source Brain OMV spike-time check). NeuroSem
+simulation distributed with it (e.g. the Open Source Brain OMV spike-time check). NexClamp
 therefore treats the shipped harness as the *canonical protocol* and analyses its voltage
 trace with the same features and calibrated tolerances as every other protocol, so that
 canonical and battery results differ only in the stimulus -- not in the metric.

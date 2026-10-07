@@ -194,7 +194,7 @@ def analyze_campaign(campaign: str, n_boot: int = 2000, n_perm: int = 2000, draw
     if len(fp) and len(sens):
         rows = []
         for op, g in fp.groupby("operator"):
-            k, n = int(g["false_positive"].astype(bool).sum()), int(len(g))
+            k, n = int(g["false_positive"].astype(bool).sum()), len(g)
             lo, hi = metrics.proportion_ci(k, n)
             rows.append({"category": op, "n": n, "n_detected": k, "rate": k / n, "ci_low": lo, "ci_high": hi})
         fp_cat = pd.DataFrame(rows)

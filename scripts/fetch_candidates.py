@@ -31,7 +31,7 @@ from lxml import etree
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
-from nexclamp.provenance import REPO_ROOT, sha256_bytes, utc_now  # noqa: E402
+from nexclamp.provenance import REPO_ROOT, sha256_bytes, utc_now
 
 DEST = REPO_ROOT / "models" / "candidates"
 BUILTIN = ("NeuroML2CoreTypes/", "Cells.xml", "Networks.xml", "Simulation.xml", "Inputs.xml", "Channels.xml",
@@ -40,7 +40,7 @@ LICENSE_NAMES = ("LICENSE", "LICENSE.md", "LICENSE.txt", "LICENCE", "LICENSE.les
 
 
 def gh_json(path: str):
-    proc = subprocess.run(["gh", "api", path], capture_output=True, text=True, encoding="utf-8")
+    proc = subprocess.run(["gh", "api", path], capture_output=True, text=True, encoding="utf-8", check=False)
     if proc.returncode != 0:
         raise RuntimeError(f"gh api {path}: {proc.stderr.strip()[:300]}")
     return json.loads(proc.stdout)

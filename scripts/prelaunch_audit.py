@@ -19,12 +19,12 @@ import csv
 import json
 import subprocess
 import sys
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
-from nexclamp.provenance import REPO_ROOT, sha256_file, utc_now  # noqa: E402
+from nexclamp.provenance import REPO_ROOT, sha256_file, utc_now
 
 PILOT2_MODELS = ("acnet2_pyr_soma", "migliore2014_mt_soma", "nml2_hh_example", "osb_hh2_477127614",
                  "pospischil2008_fs")
@@ -76,7 +76,7 @@ def describe(path: Path, category: str) -> dict:
         if part.startswith(("r-", "s-")) and len(part) > 8:
             run_id = part
     return {"path": rel, "category": category, "size_bytes": st.st_size,
-            "modified_utc": datetime.fromtimestamp(st.st_mtime, timezone.utc).isoformat(timespec="seconds"),
+            "modified_utc": datetime.fromtimestamp(st.st_mtime, UTC).isoformat(timespec="seconds"),
             "sha256": sha256_file(path), "git_commit": git_commit_for(rel), "run_id": run_id,
             "contains_pilot2_model_id": "yes" if models else "no",
             "pilot2_models_named": ";".join(models),
