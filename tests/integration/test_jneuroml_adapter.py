@@ -321,7 +321,11 @@ def test_load_dat_reads_out_of_bound_and_nan_values(tmp_path):
 
 def _fake_jlems(monkeypatch, columns: list[np.ndarray], dt_s: float = 1e-5):
     """Replace only the subprocess call: write a synthetic OutputFile and report a finished run."""
-    def fake_run(cmd, cwd=None, capture_output=True, text=True, timeout=None):
+    real_run = subprocess.run
+
+    def fake_run(cmd, cwd=None, capture_output=True, text=True, timeout=None, check=False):
+        if "-nogui" not in cmd:
+            return real_run(cmd, cwd=cwd, capture_output=capture_output, text=text, timeout=timeout, check=check)
         if "-validate" in cmd:
             raise AssertionError("validation not expected")
         lems = Path(cwd) / cmd[-2]

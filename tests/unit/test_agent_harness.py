@@ -52,6 +52,9 @@ def tasks(policy):
 
 @pytest.fixture(scope="module")
 def hidden(tasks):
+    missing = [tid for tid in tasks if not (agent.HIDDEN_DIR / tid / agent.HIDDEN_SPEC_NAME).is_file()]
+    if missing:
+        pytest.skip("requires private agent-study evaluator specs (excluded from public checkout): " + ", ".join(missing))
     return {tid: agent.load_hidden_spec(tid) for tid in tasks}
 
 
@@ -766,7 +769,7 @@ class _StubEvaluators(agent.DefaultEvaluators):
         return agent.LayerOutcome("hidden_battery_passes", S.PASS)
 
 
-def test_score_trial_cascade_and_error_handling(tmp_path, policy, models):
+def test_score_trial_cascade_and_error_handling(tmp_path, policy, models, hidden):
     exp = _export(T06, tmp_path, policy, models)
     ev = _StubEvaluators()
     score = agent.score_trial(T06, exp.trial_dir, agent.FrozenConfig.development(tmp_path / "results"),
@@ -804,7 +807,7 @@ def _frozen_yaml(tmp_path: Path, drop: tuple[str, ...] = (), **over) -> Path:
     return path
 
 
-def test_load_frozen_config_requires_every_hash_and_refuses_provisional(tmp_path, tasks):
+def test_load_frozen_config_requires_every_hash_and_refuses_provisional(tmp_path, tasks, hidden):
     frozen = agent.load_frozen_config(_frozen_yaml(tmp_path))
     assert not frozen.provisional and frozen.task_sha256 == {t: s.sha256 for t, s in tasks.items()}
     assert frozen.policy_sha256 == agent.load_policy().sha256 and frozen.evaluator_git_commit == "a" * 40
@@ -823,7 +826,7 @@ def test_load_frozen_config_requires_every_hash_and_refuses_provisional(tmp_path
         agent.load_frozen_config(_frozen_yaml(tmp_path), tasks_root=tasks_copy)
 
 
-def test_score_trial_needs_a_frozen_config_and_accepts_its_path(tmp_path, policy, models, monkeypatch):
+def test_score_trial_needs_a_frozen_config_and_accepts_its_path(tmp_path, policy, models, monkeypatch, hidden):
     dirty = {**CLEAN, "clean": False, "dirty_paths": ["agent_study/tasks"]}
     monkeypatch.setattr(agent, "source_state", lambda repo, paths: dict(dirty))
     exp = _export(T06, tmp_path, policy, models)
@@ -836,7 +839,7 @@ def test_score_trial_needs_a_frozen_config_and_accepts_its_path(tmp_path, policy
         agent.score_trial(T06, exp.trial_dir, str(_frozen_yaml(tmp_path)), **kw)
 
 
-def test_frozen_scoring_checks_export_record_and_evaluator_state(tmp_path, policy, models, monkeypatch):
+def test_frozen_scoring_checks_export_record_and_evaluator_state(tmp_path, policy, models, monkeypatch, hidden):
     state = dict(CLEAN)
     monkeypatch.setattr(agent, "source_state", lambda repo, paths: dict(state))
     exp = _export(T06, tmp_path, policy, models, allow_dirty=False)
@@ -1005,7 +1008,7 @@ def _synthetic_canonical_tolerances(path: Path, model_id: str) -> Path:
 
 
 @pytest.mark.jnml
-def test_score_trial_real_layers_on_hh_unit_conversion(sim, tmp_path, policy, models):
+def test_score_trial_real_layers_on_hh_unit_conversion(sim, tmp_path, policy, models, hidden):
     tol = _synthetic_canonical_tolerances(tmp_path / "tol.csv", models[agent.load_task(T05, model_ids=models).base_model]
                                           .model_id)
     frozen = dc.replace(agent.FrozenConfig.development(tmp_path / "results"), tolerance_table=tol,

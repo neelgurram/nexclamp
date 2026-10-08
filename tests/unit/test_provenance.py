@@ -215,8 +215,18 @@ def test_environment_digest_extra_changes_digest_without_leaking_into_cache():
     assert d0 == sha256_json(e0)
 
 
-def test_git_state_outside_repository(tmp_path):
+def test_git_state_outside_repository(tmp_path, monkeypatch):
+    monkeypatch.setenv("GIT_CEILING_DIRECTORIES", str(tmp_path.parent))
+    for prefix in ("NEXCLAMP", "NEURAXIS", "NEUROSEM"):
+        monkeypatch.delenv(f"{prefix}_GIT_COMMIT", raising=False)
     assert git_state(tmp_path) == ("unknown", True)
+
+
+def test_git_state_outside_repository_uses_container_commit(tmp_path, monkeypatch):
+    monkeypatch.setenv("GIT_CEILING_DIRECTORIES", str(tmp_path.parent))
+    commit = "a" * 40
+    monkeypatch.setenv("NEXCLAMP_GIT_COMMIT", commit)
+    assert git_state(tmp_path) == (commit, True)
 
 
 def test_git_state_in_repository():
